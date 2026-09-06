@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>{{TITULO_SEO}}</title>
+<meta name="description" content="{{DESCRICAO}}">
+<link rel="canonical" href="{{URL}}">
+<meta name="author" content="Vitor Nogarolli">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Datafy API · Conteúdo">
+<meta property="og:title" content="{{TITULO_SEO}}">
+<meta property="og:description" content="{{DESCRICAO}}">
+<meta property="og:url" content="{{URL}}">
+<meta property="article:published_time" content="{{DATA_ISO}}">
+<meta property="article:modified_time" content="{{DATA_ISO}}">
+<meta property="article:author" content="Vitor Nogarolli">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{TITULO_SEO}}">
+<meta name="twitter:description" content="{{DESCRICAO}}">
+
+<link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
+
+<script type="application/ld+json">
+{{JSONLD}}
+</script>
+
+
+
+<style>
+{{CSS}}
+</style>
+</head>
+<body>
+
+
+
+<header class="site-head">
+  <div class="row">
+    <a class="logo" href="/"><span class="dot">D</span>Datafy<span>API</span></a>
+    <nav class="site-nav" aria-label="Temas">
+{{NAV}}
+    </nav>
+    <div class="head-cta">
+      <a class="ghost" href="https://app.datafyapi.com.br/docs">Documentação</a>
+      <a class="solid" href="https://app.datafyapi.com.br">Teste 7 dias grátis</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero-band">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">{{EYEBROW}}</p>
+      <h1>{{TITULO}}</h1>
+      <div class="byline">
+        <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
+        <span class="badge">Tech Provider verificado pela Meta</span>
+        <span>Atualizado em <time datetime="{{DATA_ISO}}">{{DATA_LONGA}}</time></span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      {{HERO}}
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+<article>
+
+{{CORPO}}
+</article>
+
+<aside class="rail" aria-label="Ações">
+  <div class="rail-inner">
+    <div class="rail-cta">
+      <b>Teste com um número</b>
+      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
+      <small>7 dias · sem cartão · sem setup</small>
+    </div>
+    <nav class="rail-box" aria-label="Sumário lateral">
+      <strong>Nesta página</strong>
+      <ol>
+{{SUMARIO}}
+      </ol>
+    </nav>
+    <div class="rail-box">
+      <strong>Falar com a gente</strong>
+      <p style="margin:0;color:var(--muted);line-height:1.5">Dúvida antes de assinar?
+      <a href="https://wa.me/5541991338055" rel="noopener">Chame no WhatsApp</a>.</p>
+    </div>
+  </div>
+</aside>
+</div>
+
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div class="foot-about">
+      <a class="logo" href="/" style="margin-bottom:.8rem"><span class="dot">D</span>Datafy<span>API</span></a>
+      <p>A API oficial do WhatsApp para quem automatiza e constrói software. Tech Provider verificado pela Meta, com coexistência e espelho 1:1 da Cloud API.</p>
+      <p>Agência Nexum Marketing e Performance Ltda<br>CNPJ 41.756.486/0001-70 · Curitiba/PR</p>
+    </div>
+    <div>
+      <h4>Temas</h4>
+      <ul>
+{{RODAPE_TEMAS}}
+      </ul>
+    </div>
+    <div>
+      <h4>Datafy</h4>
+      <ul>
+        <li><a href="https://datafyapi.com.br/">Site</a></li>
+        <li><a href="https://app.datafyapi.com.br/docs">Documentação</a></li>
+        <li><a href="https://app.datafyapi.com.br">Painel</a></li>
+        <li><a href="/autor/vitor-nogarolli">Sobre o autor</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">© 2026 Datafy API. Conteúdo técnico em português sobre WhatsApp Business API.</div>
+</footer>
+
+</body>
+</html>

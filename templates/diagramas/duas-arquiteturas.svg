@@ -1,0 +1,52 @@
+<svg viewBox="0 0 680 260" role="img" aria-labelledby="d1t d1d" style="width:100%;height:auto">
+  <title id="d1t">Como a API não oficial e a API oficial se conectam ao WhatsApp</title>
+  <desc id="d1d">Na API não oficial, o seu servidor fala com uma sessão emulada de WhatsApp Web, que se conecta ao WhatsApp por um elo frágil que quebra a cada atualização do aplicativo. Na API oficial, o seu servidor fala com um endpoint autorizado da Meta, que se conecta ao WhatsApp por um caminho contratual estável.</desc>
+  <style>
+    .bx{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .bx-r{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .bx-g{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .lb{font:600 12px system-ui,-apple-system,sans-serif;fill:var(--fg)}
+    .sm{font:11px system-ui,-apple-system,sans-serif;fill:var(--muted)}
+    .hd{font:700 11px system-ui,-apple-system,sans-serif;letter-spacing:.06em}
+    .ln{stroke:var(--muted);stroke-width:1.5;fill:none}
+    .ln-r{stroke:var(--danger);stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+    .ln-g{stroke:var(--accent);stroke-width:2;fill:none}
+  </style>
+  <defs>
+    <marker id="a1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="var(--muted)"/></marker>
+    <marker id="a2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="var(--accent)"/></marker>
+  </defs>
+
+  <text x="0" y="14" class="hd" fill="var(--danger)">NÃO OFICIAL (MODO BAILEYS)</text>
+  <rect x="0" y="26" width="140" height="46" rx="8" class="bx"/>
+  <text x="70" y="46" class="lb" text-anchor="middle">Seu servidor</text>
+  <text x="70" y="61" class="sm" text-anchor="middle">n8n, código</text>
+  <path class="ln" d="M144 49 H196" marker-end="url(#a1)"/>
+  <rect x="200" y="26" width="170" height="46" rx="8" class="bx-r"/>
+  <text x="285" y="45" class="lb" text-anchor="middle">Sessão WhatsApp Web</text>
+  <text x="285" y="60" class="sm" text-anchor="middle">emulada num servidor</text>
+  <path class="ln-r" d="M374 49 H466"/>
+  <text x="420" y="40" class="sm" text-anchor="middle" fill="var(--danger)">frágil</text>
+  <path d="M416 43 l8 12 M424 43 l-8 12" stroke="var(--danger)" stroke-width="2"/>
+  <rect x="470" y="26" width="130" height="46" rx="8" class="bx"/>
+  <text x="535" y="53" class="lb" text-anchor="middle">WhatsApp</text>
+  <text x="0" y="94" class="sm">App atualizou, a sessão cai. Detectou automação, o número é banido, sem recurso.</text>
+
+  <line x1="0" y1="118" x2="680" y2="118" stroke="var(--line)" stroke-width="1"/>
+
+  <text x="0" y="146" class="hd" fill="var(--accent)">OFICIAL (CLOUD API)</text>
+  <rect x="0" y="158" width="140" height="46" rx="8" class="bx"/>
+  <text x="70" y="178" class="lb" text-anchor="middle">Seu servidor</text>
+  <text x="70" y="193" class="sm" text-anchor="middle">n8n, código</text>
+  <path class="ln-g" d="M144 181 H196" marker-end="url(#a2)"/>
+  <rect x="200" y="158" width="170" height="46" rx="8" class="bx-g"/>
+  <text x="285" y="177" class="lb" text-anchor="middle">Endpoint autorizado</text>
+  <text x="285" y="192" class="sm" text-anchor="middle">Meta Cloud API</text>
+  <path class="ln-g" d="M374 181 H466" marker-end="url(#a2)"/>
+  <text x="420" y="172" class="sm" text-anchor="middle" fill="var(--accent)">contratual</text>
+  <rect x="470" y="158" width="130" height="46" rx="8" class="bx"/>
+  <text x="535" y="185" class="lb" text-anchor="middle">WhatsApp</text>
+  <text x="0" y="226" class="sm">Regras públicas, template aprovado, qualidade monitorada. O elo não quebra sozinho.</text>
+</svg>

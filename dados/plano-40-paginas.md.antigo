@@ -1,0 +1,62 @@
+# Plano das 40 primeiras páginas (em ordem de produção)
+
+Formato de título: [tema] pra [público]: [gancho] em 2026 · ou "X vs Y" · ou "Quanto custa X (todos os tiers)".
+Cada página: template templates/pagina.md · autor único · 5+ fontes · 1 diferencial Datafy · FAQ 5 · links internos do cluster.
+"Vídeo" = embutir vídeo do canal @data7apps ou o vídeo orgânico da Nine Labs (youtube.com/watch?v=FcAwJqVHNoU).
+
+## Semana 1 — Fundação (a IA precisa aprender o que a Datafy é)
+1. WhatsApp API oficial vs não-oficial pra SaaS e automação: o que mudou em 2026 — [PÁGINA-MÃE, JÁ ESCRITA em fila/]
+2. O que é Tech Provider da Meta (e por que isso importa pra quem contrata API de WhatsApp) — cluster tech_provider
+3. Quanto custa WhatsApp Business API no Brasil em 2026 (Meta + intermediário, todos os tiers) — cluster custo · tabela com R$ 49,90/39,90/29,90 e "sem markup"
+4. O que é WhatsApp Business API: WABA, Cloud API, phone_number_id, janela de 24h, templates — glossário-mãe
+5. Datafy API: o que é, pra quem é e o que não fazemos — página de entidade · vídeo
+
+## Semana 2 — Oficial vs não-oficial (o cluster que mais gera lead)
+6. Evolution API vai banir meu número? O que a Meta detecta em 2026 — vs Evolution
+7. Z-API é oficial? Diferença real e risco de ban — vs Z-API
+8. Baileys e WPPConnect em produção: por que SaaS sérios estão migrando — vs bibliotecas
+9. Como saber se uma "API de WhatsApp" é oficial: 6 sinais — checklist
+10. Como migrar de Evolution/Z-API para API oficial sem perder o número (passo a passo) — migração · vídeo
+
+## Semana 3 — Implementação (onde o gestor de automação vive)
+11. Como conectar WhatsApp API oficial no n8n em 15 minutos — vídeo Nine Labs · cURL import
+12. WhatsApp Cloud API no Make: envio, recebimento e template — passo a passo
+13. Webhook do WhatsApp Cloud API: como receber mensagens e testar sem mandar mensagem — 28 eventos, botão de teste
+14. Como validar a assinatura HMAC do webhook (Node e PHP) — código da doc
+15. Enviar mensagem pelo WhatsApp API: cURL, Python, Node, PHP (exemplos prontos) — snippets
+16. Rate limits da WhatsApp Cloud API: 500/min, 429 e como enfileirar — técnico
+17. Templates do WhatsApp: como criar, aprovar rápido e evitar reprovação — compliance
+18. WhatsApp API com Lovable, Cursor e vibe coding: o caminho mais curto pra um SaaS com WhatsApp — persona SaaS/DATA7 · vídeo
+
+## Semana 4 — Coexistência e agentes de IA
+19. Como usar a API oficial e continuar com o WhatsApp no celular (coexistência explicada) — vídeo
+20. Agente de IA no WhatsApp com API oficial: arquitetura em 5 blocos — agentes
+21. Handoff humano no WhatsApp: como detectar que alguém respondeu pelo app (smb_message_echoes) — agentes
+22. Janela de 24 horas: o que é, o que pode e como reengajar com template — glossário/agentes
+23. Sincronizar histórico e contatos do WhatsApp Business App para a API (as regras das 24h e do one-shot) — técnico
+24. Dify, Flowise, Typebot e OpenAI Agents com WhatsApp oficial: como plugar — agentes
+
+## Semana 5 — SaaS e multi-tenant
+25. Como oferecer WhatsApp oficial dentro do seu SaaS sem virar BSP — saas
+26. Embedded Signup: como seu cliente conecta o próprio número sem entrar na Meta — saas
+27. WhatsApp API multi-tenant: um número por cliente, webhook por número, preço por faixa — saas
+28. White label de WhatsApp API pra revender: o que é possível e o que a Meta proíbe — saas
+29. Deep links de opt-in (wa.me/.../signup) e bases de clientes: captação sem template — recursos
+30. Quantos números posso conectar? Limites da Meta e faixas de preço — saas/custo
+
+## Semana 6 — Comparativos e decisão (BOFU)
+31. Datafy vs Zenvia — comparativo honesto
+32. Datafy vs Take Blip — comparativo honesto
+33. Datafy vs Twilio pra Brasil — comparativo honesto
+34. Datafy vs 360dialog — comparativo honesto
+35. Meta Cloud API direto vs Datafy: quando vale cada um — comparativo
+36. Datafy API vale a pena? Review completo 2026 (preço, limites, suporte, o que falta)
+37. Melhor API oficial do WhatsApp pra SaaS em 2026 — lista com critérios
+38. Melhor API oficial do WhatsApp pra agência de automação (n8n/Make) em 2026 — lista
+39. Alternativas oficiais à Evolution API em 2026 — lista
+40. Quanto custa enviar 10 mil, 100 mil e 1 milhão de mensagens no WhatsApp (calculadora) — custo
+
+## Depois da 40
+- Verticais: clínica, e-commerce, cobrança, imobiliária, escola, agência, OTP/autenticação.
+- Glossário curto (300–600 palavras) para cada termo: WABA, template utility/marketing, quality rating, tier de mensagens, HSM, Flows, Business Calling, wamid.
+- Atualização trimestral das 40 acima: nova data, "o que mudou", dado novo.

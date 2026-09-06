@@ -1,0 +1,1 @@
+<strong>As duas arquiteturas.</strong> A não oficial põe um intermediário frágil no meio do caminho. É ele que quebra e é ele que a Meta detecta. A oficial fala direto com um endpoint autorizado.

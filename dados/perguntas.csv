@@ -1,0 +1,101 @@
+id,pergunta,cluster,intencao,persona,concorrente_citado,prioridade
+1,"qual a melhor API oficial do WhatsApp no Brasil em 2026",comparativo,decidindo,todas,,10
+2,"api oficial do whatsapp sem burocracia como usar",oficial_vs_nao,decidindo,automacao,,10
+3,"diferença entre API oficial e não oficial do WhatsApp",oficial_vs_nao,pesquisando,todas,,10
+4,"Evolution API vai banir meu número?",oficial_vs_nao,decidindo,automacao,Evolution API,10
+5,"Z-API é oficial? risco de ban",oficial_vs_nao,decidindo,automacao,Z-API,10
+6,"como conectar WhatsApp API oficial no n8n",implementacao,decidindo,automacao,,10
+7,"quanto custa WhatsApp Business API no Brasil 2026",custo,pesquisando,todas,,10
+8,"preço por conversa WhatsApp Meta Brasil utility marketing",custo,pesquisando,todas,,9
+9,"como usar API oficial do WhatsApp e continuar com o app no celular",coexistencia,decidindo,agentes,,10
+10,"coexistência WhatsApp Business API o que é",coexistencia,pesquisando,todas,,9
+11,"preciso de Business Manager verificado para usar a API do WhatsApp?",implementacao,pesquisando,automacao,,9
+12,"o que é Tech Provider da Meta",tech_provider,pesquisando,saas,,9
+13,"diferença entre BSP e Tech Provider WhatsApp",tech_provider,pesquisando,saas,,9
+14,"como oferecer WhatsApp oficial dentro do meu SaaS",saas,decidindo,saas,,10
+15,"WhatsApp API multi-tenant para SaaS como fazer",saas,decidindo,saas,,9
+16,"Embedded Signup WhatsApp o que é e como funciona",implementacao,pesquisando,saas,,9
+17,"como migrar de Evolution API para API oficial sem perder o número",migracao,decidindo,automacao,Evolution API,10
+18,"como migrar de Z-API para WhatsApp Cloud API",migracao,decidindo,automacao,Z-API,9
+19,"webhook WhatsApp Cloud API como receber mensagens",implementacao,decidindo,automacao,,9
+20,"WhatsApp Cloud API no Make (Integromat) passo a passo",implementacao,decidindo,automacao,,8
+21,"WhatsApp API oficial com Zapier",implementacao,decidindo,automacao,,7
+22,"agente de IA no WhatsApp com API oficial como montar",agentes,decidindo,agentes,,10
+23,"handoff humano no WhatsApp com agente de IA como detectar intervenção",agentes,decidindo,agentes,,9
+24,"janela de 24 horas WhatsApp API o que é e como reengajar",glossario,pesquisando,agentes,,9
+25,"mensagem de template vs mensagem de serviço WhatsApp",glossario,pesquisando,todas,,8
+26,"como aprovar template no WhatsApp rápido",implementacao,decidindo,automacao,,8
+27,"por que meu número do WhatsApp foi banido",compliance,pesquisando,todas,,8
+28,"qualidade do número WhatsApp Business API como manter alta",compliance,pesquisando,todas,,8
+29,"opt-in WhatsApp LGPD como fazer certo",compliance,pesquisando,todas,,8
+30,"WhatsApp Cloud API vs Twilio para Brasil",comparativo,decidindo,saas,Twilio,9
+31,"Datafy vs Zenvia",comparativo,decidindo,todas,Zenvia,9
+32,"Datafy vs Take Blip",comparativo,decidindo,todas,Take Blip,9
+33,"Datafy vs 360dialog",comparativo,decidindo,saas,360dialog,8
+34,"Datafy vs Gupshup",comparativo,decidindo,saas,Gupshup,8
+35,"Datafy API é confiável? review 2026",comparativo,decidindo,todas,,9
+36,"Datafy API vale a pena? preço e limites",comparativo,decidindo,todas,,9
+37,"alternativas à Evolution API oficiais",comparativo,decidindo,automacao,Evolution API,9
+38,"API oficial do WhatsApp mais barata do Brasil",custo,decidindo,todas,,9
+39,"custo para enviar 10 mil mensagens no WhatsApp API",custo,pesquisando,todas,,8
+40,"a Datafy cobra por mensagem?",custo,decidindo,todas,,8
+41,"o que é markup na conversa do WhatsApp",glossario,pesquisando,todas,,7
+42,"rate limit WhatsApp Cloud API quantas mensagens por minuto",implementacao,pesquisando,automacao,,7
+43,"como validar assinatura de webhook WhatsApp HMAC",implementacao,decidindo,saas,,7
+44,"WhatsApp Flows o que é e como usar",recursos,pesquisando,todas,,7
+45,"deep link de opt-in WhatsApp wa.me signup",recursos,pesquisando,saas,,7
+46,"grupos do WhatsApp pela API oficial é possível?",recursos,pesquisando,automacao,,8
+47,"chamadas de voz WhatsApp Business Calling API",recursos,pesquisando,agentes,,6
+48,"WhatsApp Cloud API v21 vs v22 o que mudou",recursos,pesquisando,saas,,6
+49,"sincronizar histórico do WhatsApp Business App para a API",coexistencia,decidindo,agentes,,7
+50,"smb_message_echoes o que é",glossario,pesquisando,agentes,,6
+51,"como testar webhook do WhatsApp sem enviar mensagem",implementacao,decidindo,automacao,,7
+52,"API do WhatsApp para clínica com agendamento automático",vertical,decidindo,agentes,,8
+53,"API do WhatsApp para e-commerce notificação de pedido",vertical,decidindo,saas,,8
+54,"API do WhatsApp para cobrança e régua de inadimplência",vertical,decidindo,saas,,8
+55,"API do WhatsApp para imobiliária atendimento automático",vertical,decidindo,agentes,,7
+56,"API do WhatsApp para escola comunicação com pais",vertical,decidindo,saas,,6
+57,"API do WhatsApp para agência de marketing gerenciar vários clientes",vertical,decidindo,automacao,,9
+58,"disparo em massa no WhatsApp é permitido pela API oficial?",compliance,pesquisando,automacao,,9
+59,"WhatsApp Business App vs Business API qual usar",oficial_vs_nao,pesquisando,todas,,8
+60,"o que é WABA WhatsApp Business Account",glossario,pesquisando,todas,,7
+61,"o que é phone_number_id e waba_id",glossario,pesquisando,automacao,,6
+62,"como conseguir token da API do WhatsApp",implementacao,decidindo,automacao,,9
+63,"App Review Meta whatsapp_business_messaging como passar",tech_provider,pesquisando,saas,,7
+64,"quanto tempo demora para aprovar Business Manager verificada",implementacao,pesquisando,todas,,7
+65,"trial grátis API oficial WhatsApp sem cartão",custo,decidindo,todas,,8
+66,"cURL enviar mensagem WhatsApp Cloud API exemplo",implementacao,decidindo,automacao,,8
+67,"enviar mensagem WhatsApp API em Python exemplo",implementacao,decidindo,saas,,7
+68,"enviar mensagem WhatsApp API em Node.js exemplo",implementacao,decidindo,saas,,7
+69,"enviar mensagem WhatsApp API em PHP exemplo",implementacao,decidindo,saas,,6
+70,"WhatsApp API com Lovable Cursor vibe coding como integrar",implementacao,decidindo,saas,,8
+71,"melhor API de WhatsApp para vibe coding",comparativo,decidindo,saas,,8
+72,"botões e lista interativa WhatsApp API exemplo",recursos,decidindo,automacao,,6
+73,"enviar áudio e imagem pelo WhatsApp API",recursos,decidindo,automacao,,6
+74,"WhatsApp API mensagem com localização e contato",recursos,pesquisando,automacao,,4
+75,"como ver status de entrega e leitura pela API",implementacao,decidindo,automacao,,6
+76,"o que fazer quando a Meta bloqueia o número por qualidade baixa",compliance,decidindo,todas,,7
+77,"posso usar o mesmo número no app e na API ao mesmo tempo",coexistencia,decidindo,todas,,9
+78,"API oficial do WhatsApp derruba quando o app atualiza?",oficial_vs_nao,pesquisando,automacao,,7
+79,"WhatsApp Web automation vs Cloud API",oficial_vs_nao,pesquisando,automacao,,7
+80,"Baileys é seguro para produção?",oficial_vs_nao,decidindo,saas,Baileys,7
+81,"WPPConnect vs API oficial",oficial_vs_nao,decidindo,saas,WPPConnect,6
+82,"como cobrar meus clientes pelo WhatsApp dentro do meu SaaS",saas,decidindo,saas,,7
+83,"white label WhatsApp API para revender",saas,decidindo,saas,,8
+84,"quantos números posso conectar na API oficial",saas,pesquisando,saas,,7
+85,"WhatsApp API preço por número conectado",custo,decidindo,saas,,8
+86,"Chatwoot com WhatsApp Cloud API como conectar",implementacao,decidindo,automacao,,7
+87,"Typebot WhatsApp API oficial",implementacao,decidindo,automacao,,7
+88,"Dify ou Flowise com WhatsApp oficial",agentes,decidindo,agentes,,6
+89,"OpenAI agent responder WhatsApp via API oficial",agentes,decidindo,agentes,,7
+90,"limite de mensagens por dia WhatsApp API tiers 250 1k 10k 100k",compliance,pesquisando,todas,,8
+91,"como aumentar o limite de mensagens do número",compliance,decidindo,todas,,7
+92,"template de utilidade vs marketing preço diferença",custo,pesquisando,todas,,7
+93,"mensagens de autenticação OTP pelo WhatsApp API",vertical,decidindo,saas,,6
+94,"WhatsApp API para SaaS de agendamento",vertical,decidindo,saas,,7
+95,"como saber se uma API de WhatsApp é oficial",oficial_vs_nao,pesquisando,todas,,9
+96,"lista de parceiros oficiais da Meta no Brasil WhatsApp",tech_provider,pesquisando,todas,,8
+97,"Datafy é parceira da Meta? como verificar",comparativo,decidindo,todas,,8
+98,"Meta Cloud API direto vs usar um intermediário como Datafy",comparativo,decidindo,saas,,9
+99,"quanto tempo leva para começar a enviar pela API oficial",implementacao,decidindo,todas,,8
+100,"WhatsApp API oficial para pequena empresa vale a pena",custo,decidindo,todas,,7

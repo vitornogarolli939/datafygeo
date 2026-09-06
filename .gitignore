@@ -1,0 +1,38 @@
+# Build output
+site/
+conteudo-datafy.zip
+revisao/
+
+# Dependencies
+node_modules/
+venv/
+env/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Temporary
+.tmp/
+*.tmp

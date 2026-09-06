@@ -1,0 +1,33 @@
+<svg viewBox="0 0 680 210" role="img" aria-labelledby="d2t d2d" style="width:100%;height:auto">
+  <title id="d2t">A janela de 24 horas do WhatsApp</title>
+  <desc id="d2d">Quando o cliente envia uma mensagem, abre-se uma janela de 24 horas na qual a empresa responde livremente, sem precisar de template. Cada nova mensagem do cliente reinicia a janela. Depois que ela fecha, a empresa só pode voltar a falar por meio de um template aprovado pela Meta, que é pago.</desc>
+  <style>
+    .lb2{font:600 12px system-ui,-apple-system,sans-serif;fill:var(--fg)}
+    .sm2{font:11px system-ui,-apple-system,sans-serif;fill:var(--muted)}
+  </style>
+  <rect x="0" y="56" width="680" height="4" rx="2" fill="var(--line)"/>
+  <rect x="90" y="56" width="330" height="4" rx="2" fill="var(--accent)"/>
+
+  <circle cx="90" cy="58" r="9" fill="var(--accent)"/>
+  <path d="M85 58 l4 4 l7 -8" stroke="var(--surface)" stroke-width="2" fill="none"/>
+  <text x="90" y="36" class="lb2" text-anchor="middle">Cliente escreve</text>
+  <text x="90" y="88" class="sm2" text-anchor="middle">abre a janela</text>
+
+  <rect x="150" y="100" width="215" height="58" rx="9" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="257" y="121" class="lb2" text-anchor="middle" fill="var(--accent)">Janela de 24 horas</text>
+  <text x="257" y="138" class="sm2" text-anchor="middle">Mensagem de serviço: resposta livre,</text>
+  <text x="257" y="151" class="sm2" text-anchor="middle">sem template. Grátis até 1º/out/2026.</text>
+  <path d="M257 100 L257 62" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <circle cx="420" cy="58" r="6" fill="var(--muted)"/>
+  <text x="420" y="36" class="lb2" text-anchor="middle">Janela fecha</text>
+
+  <rect x="440" y="100" width="240" height="58" rx="9" fill="var(--warn-bg)" stroke="var(--warn-line)" stroke-width="1.5"/>
+  <text x="560" y="121" class="lb2" text-anchor="middle">Só template aprovado</text>
+  <text x="560" y="138" class="sm2" text-anchor="middle">Marketing, utilidade ou autenticação.</text>
+  <text x="560" y="151" class="sm2" text-anchor="middle">Sempre pago, pela tabela da Meta.</text>
+  <path d="M560 100 L560 62" stroke="var(--warn-line)" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <path d="M110 178 Q 255 200 400 178" stroke="var(--accent)" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+  <text x="255" y="200" class="sm2" text-anchor="middle" fill="var(--accent)">cada nova mensagem do cliente reinicia a janela</text>
+</svg>
