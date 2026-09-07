@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Alternativa a UAZAPI: por que trocar para API oficial em 2026</title>
+<meta name="description" content="UAZAPI vs API oficial: qual é o risco real de usar UAZAPI, por que a oficial é mais estável, e como migrar sem perder o número.">
+<link rel="canonical" href="https://conteudo.datafyapi.com.br/alternativa-a-uazapi">
+<meta name="author" content="Vitor Nogarolli">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Datafy API · Conteúdo">
+<meta property="og:title" content="Alternativa a UAZAPI: por que trocar para API oficial em 2026">
+<meta property="og:description" content="UAZAPI vs API oficial: qual é o risco real de usar UAZAPI, por que a oficial é mais estável, e como migrar sem perder o número.">
+<meta property="og:url" content="https://conteudo.datafyapi.com.br/alternativa-a-uazapi">
+<meta property="article:published_time" content="2026-09-06">
+<meta property="article:modified_time" content="2026-09-06">
+<meta property="article:author" content="Vitor Nogarolli">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alternativa a UAZAPI: por que trocar para API oficial em 2026">
+<meta name="twitter:description" content="UAZAPI vs API oficial: qual é o risco real de usar UAZAPI, por que a oficial é mais estável, e como migrar sem perder o número.">
+
+<link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://datafyapi.com.br/#organization",
+      "name": "Datafy API",
+      "alternateName": "DatafyAPI",
+      "url": "https://datafyapi.com.br/",
+      "description": "Plataforma brasileira que da acesso a API oficial do WhatsApp (Meta Cloud API) por meio de infraestrutura propria, como Tech Provider verificado pela Meta.",
+      "areaServed": "BR",
+      "legalName": "Agência Nexum Marketing e Performance Ltda",
+      "taxID": "41.756.486/0001-70",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Curitiba",
+        "addressRegion": "PR",
+        "addressCountry": "BR"
+      },
+      "founder": {
+        "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person",
+      "name": "Vitor Nogarolli",
+      "jobTitle": "Cofundador da Datafy API",
+      "url": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli",
+      "worksFor": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://conteudo.datafyapi.com.br/#website",
+      "url": "https://conteudo.datafyapi.com.br/",
+      "name": "Datafy API · Conteúdo",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://datafyapi.com.br/#software",
+      "name": "Datafy API",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://datafyapi.com.br/",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "featureList": [
+        "Embedded Signup",
+        "Coexistência com WhatsApp Business App",
+        "28 eventos de webhook",
+        "Disparo por template via CSV",
+        "Integração com n8n, Make, Zapier e Chatwoot"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "49.90",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock",
+        "description": "Por número conectado, por mês. R$ 39,90 de 10 a 49 números e R$ 29,90 a partir de 50."
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://conteudo.datafyapi.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Conteúdo",
+          "item": "https://conteudo.datafyapi.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Alternativa a UAZAPI: por que trocar para API oficial em 2026"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://conteudo.datafyapi.com.br/alternativa-a-uazapi#article",
+      "headline": "Alternativa a UAZAPI: por que trocar para API oficial em 2026",
+      "description": "UAZAPI vs API oficial: qual é o risco real de usar UAZAPI, por que a oficial é mais estável, e como migrar sem perder o número.",
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-09-06",
+      "dateModified": "2026-09-06",
+      "author": {
+        "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "mainEntityOfPage": "https://conteudo.datafyapi.com.br/alternativa-a-uazapi",
+      "citation": [
+        "https://developers.facebook.com/docs/whatsapp/cloud-api",
+        "https://business.whatsapp.com/policy",
+        "https://www.youtube.com/watch?v=cZ_nyIUv5ic",
+        "https://app.datafyapi.com.br/docs",
+        "https://github.com/UAZAPI/UAZAPI"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://conteudo.datafyapi.com.br/alternativa-a-uazapi#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Posso manter UAZAPI e testar Datafy ao mesmo tempo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não no mesmo número. Mas você pode levar um número de teste, conectar em Datafy, testar 7 dias grátis, depois decidir. Se gostar, migra o número em produção. Se não gostar, volta para UAZAPI (teoricamente, na prática a maioria não volta)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "E se meu número já foi banido uma vez em UAZAPI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Meta pode ter marcado ele como de risco. Quando você conectar em Datafy, pode ser que receba sinal de \"qualidade reduzida\". Não significa que vai cair de novo. Significa que você teve problema anterior e precisa limpar a reputação. Chamar Meta com prova de mudança ajuda."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quantos números posso conectar na Datafy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sem limite. Plano é por número. 1 número, R$ 49,90. 100 números, R$ 2.990/mês. Desconto escala."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Meu cliente usava UAZAPI, agora quer mudar. Quem paga pela migração?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tecnicamente você. Mas é 30 minutos de trabalho. O cliente paga o novo plano (R$ 49,90 por número). Você não perde cliente, ganha conformidade."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "UAZAPI vai desaparecer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Provavelmente, mas em 2 a 5 anos. Meta está aumentando pressão, mas ainda não baniu agressivamente. Histórico é que esses serviços demoram a cair quando Meta descobre, porque há muito usuário."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+<style>
+:root{
+  --bg:#fcfbf9; --surface:#ffffff; --fg:#17181a; --muted:#63666b; --line:#e6e3de;
+  --accent:#0b6e4f; --accent-2:#0d8a63; --accent-soft:#e9f4ef;
+  --danger:#a33a2a; --danger-soft:#fbeeeb;
+  --code-bg:#f2f1ed; --warn-bg:#fdf7e9; --warn-line:#e6d09a;
+  --shadow:0 1px 2px rgba(20,20,20,.05), 0 8px 24px -12px rgba(20,20,20,.12);
+  --max:46rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131416; --surface:#1a1c1f; --fg:#eceae6; --muted:#9ea3a9; --line:#2c2f33;
+    --accent:#4fc79b; --accent-2:#63d6ac; --accent-soft:#12251e;
+    --danger:#e08272; --danger-soft:#2a1a17;
+    --code-bg:#22252a; --warn-bg:#26210f; --warn-line:#5d5127;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131416; --surface:#1a1c1f; --fg:#eceae6; --muted:#9ea3a9; --line:#2c2f33;
+  --accent:#4fc79b; --accent-2:#63d6ac; --accent-soft:#12251e;
+  --danger:#e08272; --danger-soft:#2a1a17;
+  --code-bg:#22252a; --warn-bg:#26210f; --warn-line:#5d5127;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:"Iowan Old Style","Charter",Georgia,"Times New Roman",serif;
+  font-size:1.075rem; line-height:1.68; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 1.35rem}
+.sans{font-family:system-ui,-apple-system,"Segoe UI",Inter,sans-serif}
+a{color:var(--accent); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+img,svg{max-width:100%}
+
+/* topo */
+.topbar{border-bottom:1px solid var(--line); background:var(--surface); position:sticky; top:0; z-index:10}
+.topbar .wrap{display:flex; gap:1rem; align-items:center; justify-content:space-between; padding:.8rem 1.35rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.85rem}
+.brand{font-weight:700; letter-spacing:-.02em; text-decoration:none; color:var(--fg); font-size:.95rem}
+.brand span{color:var(--accent)}
+nav.crumbs{color:var(--muted); font-size:.8rem}
+nav.crumbs a{color:var(--muted); text-decoration:none}
+nav.crumbs a:hover{text-decoration:underline}
+
+/* hero */
+header.post{padding:3rem 0 0}
+.eyebrow{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.75rem; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--accent); margin-bottom:.85rem;
+}
+h1{
+  font-size:clamp(1.9rem,5.2vw,2.85rem); line-height:1.12; letter-spacing:-.025em;
+  margin:0 0 1.15rem; font-weight:700; text-wrap:balance;
+}
+.byline{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.85rem; color:var(--muted);
+  display:flex; flex-wrap:wrap; gap:.45rem .8rem; align-items:center;
+}
+.byline a{color:var(--fg)}
+.badge{
+  display:inline-flex; align-items:center; gap:.3rem;
+  background:var(--accent-soft); color:var(--accent); border-radius:99px;
+  padding:.2rem .65rem; font-weight:650; font-size:.76rem; border:1px solid transparent;
+}
+.stats{
+  margin-top:0;
+  display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  margin:2rem 0 .5rem;
+}
+@media (min-width:40rem){ .stats{grid-template-columns:repeat(4,1fr)} }
+.stat{background:var(--surface); padding:.95rem 1.05rem; font-family:system-ui,-apple-system,sans-serif}
+.stat b{display:block; font-size:1.22rem; letter-spacing:-.02em; line-height:1.2; color:var(--accent)}
+.stat span{display:block; font-size:.78rem; color:var(--muted); margin-top:.15rem; line-height:1.35}
+
+.lede{
+  font-size:1.22rem; line-height:1.55; margin:2rem 0;
+  padding:1.25rem 1.4rem; background:var(--surface); border:1px solid var(--line);
+  border-left:4px solid var(--accent); border-radius:0 12px 12px 0; box-shadow:var(--shadow);
+}
+.lede p{margin:0}
+
+/* sumário */
+.toc{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:1.05rem 1.3rem; margin:2rem 0; font-family:system-ui,-apple-system,sans-serif; font-size:.9rem;
+}
+.toc strong{display:block; font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:.6rem}
+.toc ol{margin:0; padding-left:1.15rem; columns:2; column-gap:1.5rem}
+@media (max-width:34rem){ .toc ol{columns:1} }
+.toc li{margin-bottom:.3rem; break-inside:avoid}
+.toc a{text-decoration:none}
+.toc a:hover{text-decoration:underline}
+
+h2{
+  font-size:clamp(1.35rem,3.6vw,1.75rem); line-height:1.22; letter-spacing:-.02em;
+  margin:3rem 0 .9rem; font-weight:700; text-wrap:balance; scroll-margin-top:4rem;
+}
+h3{
+  font-family:system-ui,-apple-system,sans-serif; font-size:1.03rem;
+  margin:2rem 0 .5rem; font-weight:650; letter-spacing:-.005em;
+}
+p{margin:0 0 1.15rem}
+ul,ol{margin:0 0 1.25rem; padding-left:1.35rem}
+li{margin-bottom:.55rem}
+li::marker{color:var(--muted)}
+strong{font-weight:650}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+
+blockquote{
+  margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
+  border-radius:12px; font-size:1.13rem; line-height:1.5; position:relative;
+}
+blockquote p{margin:0 0 .7rem; font-style:italic}
+blockquote cite{display:block; font-style:normal; font-size:.83rem; color:var(--muted);
+  font-family:system-ui,-apple-system,sans-serif}
+
+/* figuras / diagramas */
+figure{margin:2.25rem 0; padding:0}
+.diagram{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:1.4rem 1.2rem 1rem; box-shadow:var(--shadow);
+}
+figcaption{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; color:var(--muted);
+  margin-top:.85rem; line-height:1.45; text-align:left;
+}
+
+/* vídeo */
+.video{
+  display:block; text-decoration:none; color:inherit; border:1px solid var(--line);
+  border-radius:12px; overflow:hidden; background:var(--surface); box-shadow:var(--shadow);
+}
+.video:hover{text-decoration:none; border-color:var(--accent)}
+.video .thumb{position:relative; aspect-ratio:16/9; background:var(--code-bg); display:block}
+.video .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.video .play{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+}
+.video .play span{
+  width:60px; height:60px; border-radius:50%; background:rgba(0,0,0,.72);
+  display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(0,0,0,.35);
+}
+.video:hover .play span{background:#c00}
+.video .meta{padding:.85rem 1.05rem; font-family:system-ui,-apple-system,sans-serif}
+.video .meta b{display:block; font-size:.95rem; line-height:1.35; letter-spacing:-.01em}
+.video .meta span{display:block; font-size:.8rem; color:var(--muted); margin-top:.2rem}
+
+/* tabela */
+.tablewrap{overflow-x:auto; margin:1.75rem 0; border:1px solid var(--line);
+  border-radius:12px; background:var(--surface); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; min-width:38rem; font-size:.88rem;
+  font-family:system-ui,-apple-system,sans-serif}
+th,td{padding:.7rem .85rem; text-align:left; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{background:var(--code-bg); font-weight:650; font-size:.8rem; white-space:nowrap}
+thead th:last-child{color:var(--accent)}
+tbody tr:last-child td{border-bottom:0}
+tbody th{font-weight:600; background:transparent; white-space:nowrap}
+td.yes{color:var(--accent); font-weight:600}
+td.no{color:var(--danger)}
+caption{caption-side:bottom; padding:.7rem .85rem; text-align:left;
+  font-size:.78rem; color:var(--muted); font-family:system-ui,-apple-system,sans-serif}
+
+.callout{
+  background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:12px;
+  padding:1.1rem 1.3rem; margin:1.9rem 0; font-size:.98rem;
+}
+.callout p:last-child{margin-bottom:0}
+
+.cta{
+  border:1px solid var(--line); border-radius:14px; padding:1.6rem 1.75rem;
+  margin:2.75rem 0; background:var(--accent-soft); box-shadow:var(--shadow);
+}
+.cta h3{margin:0 0 .5rem; font-size:1.15rem; font-weight:700}
+.cta p{margin:0 0 1.1rem; font-size:.98rem}
+.cta p:last-child{margin-bottom:0}
+.btn{
+  display:inline-block; background:var(--accent); color:#fff; text-decoration:none;
+  padding:.72rem 1.3rem; border-radius:8px; font-weight:650; font-size:.95rem;
+  font-family:system-ui,-apple-system,sans-serif;
+}
+.btn:hover{background:var(--accent-2); text-decoration:none}
+.cta small{display:block; margin-top:.6rem; font-size:.8rem; color:var(--muted);
+  font-family:system-ui,-apple-system,sans-serif}
+
+.sources{font-size:.86rem; color:var(--muted)}
+.sources li{margin-bottom:.4rem}
+footer{
+  border-top:1px solid var(--line); margin-top:4rem; padding:2.25rem 0 3.5rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; color:var(--muted);
+  background:var(--surface);
+}
+footer a{color:var(--muted)}
+footer p{margin:0 0 .5rem}
+
+/* ===== MOLDURA DO SITE (fixa, igual em todas as páginas) ===== */
+.site-head{
+  position:sticky; top:0; z-index:30; background:color-mix(in srgb,var(--surface) 92%,transparent);
+  backdrop-filter:saturate(1.4) blur(8px); border-bottom:1px solid var(--line);
+}
+.site-head .row{
+  max-width:74rem; margin:0 auto; padding:.7rem 1.35rem;
+  display:flex; align-items:center; gap:1.25rem;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.logo{display:flex; align-items:center; gap:.5rem; text-decoration:none; color:var(--fg); font-weight:750;
+  letter-spacing:-.025em; font-size:1rem; flex:none}
+.logo .dot{width:22px;height:22px;border-radius:6px;background:var(--accent);display:grid;place-items:center;
+  color:#fff;font-size:.72rem;font-weight:800}
+.logo span{color:var(--accent)}
+.site-nav{display:flex; gap:1.1rem; font-size:.87rem; margin-left:.5rem}
+.site-nav a{color:var(--muted); text-decoration:none}
+.site-nav a:hover{color:var(--fg)}
+@media (max-width:52rem){ .site-nav{display:none} }
+.head-cta{margin-left:auto; display:flex; gap:.55rem; align-items:center; flex:none}
+.head-cta a{font-size:.85rem; text-decoration:none; white-space:nowrap}
+.head-cta .ghost{color:var(--muted); padding:.45rem .2rem}
+.head-cta .ghost:hover{color:var(--fg)}
+.head-cta .solid{background:var(--accent); color:#fff; padding:.5rem .95rem; border-radius:7px; font-weight:650}
+.head-cta .solid:hover{background:var(--accent-2)}
+@media (max-width:34rem){ .head-cta .ghost{display:none} }
+
+/* ===== FAIXA DE TOPO ===== */
+.hero-band{background:var(--accent-soft); border-bottom:1px solid var(--line)}
+.hero-grid{
+  max-width:74rem; margin:0 auto; padding:2.75rem 1.35rem 2.5rem;
+  display:grid; grid-template-columns:1fr; gap:2rem; align-items:center;
+}
+@media (min-width:56rem){ .hero-grid{grid-template-columns:1.15fr .85fr; gap:3rem} }
+.hero-art{order:-1}
+@media (min-width:56rem){ .hero-art{order:0} }
+.hero-band h1{margin:0 0 1rem}
+.hero-band .byline{padding-bottom:0; border-bottom:0}
+
+/* ===== CORPO EM DUAS COLUNAS ===== */
+.shell{max-width:74rem; margin:0 auto; padding:0 1.35rem; display:grid; grid-template-columns:1fr; gap:2.5rem}
+@media (min-width:62rem){ .shell{grid-template-columns:minmax(0,1fr) 19rem; gap:3.25rem} }
+.shell > article{min-width:0; padding-top:2.25rem}
+.rail{display:none}
+@media (min-width:62rem){
+  .rail{display:block; padding-top:2.25rem}
+  .rail-inner{position:sticky; top:4.5rem; display:flex; flex-direction:column; gap:1.1rem}
+}
+.rail-cta{
+  background:var(--accent); color:#fff; border-radius:14px; padding:1.35rem 1.4rem;
+  font-family:system-ui,-apple-system,sans-serif; box-shadow:var(--shadow);
+}
+.rail-cta b{display:block; font-size:1.05rem; font-weight:750; letter-spacing:-.015em; line-height:1.3; margin-bottom:.5rem}
+.rail-cta p{font-size:.87rem; line-height:1.5; margin:0 0 1rem; opacity:.92}
+.rail-cta a{
+  display:block; text-align:center; background:#fff; color:var(--accent);
+  padding:.6rem 1rem; border-radius:8px; font-weight:700; font-size:.9rem; text-decoration:none;
+}
+.rail-cta a:hover{opacity:.92; text-decoration:none}
+.rail-cta small{display:block; margin-top:.6rem; font-size:.75rem; opacity:.85; text-align:center}
+.rail-box{
+  background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:1.1rem 1.25rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.86rem;
+}
+.rail-box strong{display:block; font-size:.72rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:.6rem}
+.rail-box ol{margin:0; padding-left:1.1rem}
+.rail-box li{margin-bottom:.35rem; line-height:1.4}
+.rail-box a{text-decoration:none}
+.rail-box a:hover{text-decoration:underline}
+
+/* ===== RODAPÉ ===== */
+.site-foot{border-top:1px solid var(--line); background:var(--surface); margin-top:4rem}
+.foot-grid{
+  max-width:74rem; margin:0 auto; padding:2.75rem 1.35rem 1.75rem;
+  display:grid; grid-template-columns:1fr; gap:2rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.86rem;
+}
+@media (min-width:44rem){ .foot-grid{grid-template-columns:1.4fr 1fr 1fr} }
+.foot-grid h4{font-size:.74rem; letter-spacing:.09em; text-transform:uppercase; color:var(--muted);
+  margin:0 0 .7rem; font-weight:700}
+.foot-grid ul{list-style:none; margin:0; padding:0}
+.foot-grid li{margin-bottom:.4rem}
+.foot-grid a{color:var(--muted); text-decoration:none}
+.foot-grid a:hover{color:var(--fg)}
+.foot-about p{color:var(--muted); margin:0 0 .6rem; max-width:26rem; line-height:1.55}
+.foot-legal{
+  max-width:74rem; margin:0 auto; padding:1.1rem 1.35rem 2.5rem; border-top:1px solid var(--line);
+  font-family:system-ui,-apple-system,sans-serif; font-size:.78rem; color:var(--muted);
+}
+
+/* ===== home e pagina de autor ===== */
+.shell-solo{grid-template-columns:minmax(0,1fr) !important; max-width:52rem}
+.shell-solo > article{padding-top:3rem}
+.sub{font-size:1.15rem; color:var(--muted); margin:0 0 2rem}
+.cards{list-style:none; margin:1.5rem 0 0; padding:0; display:grid; gap:1rem}
+@media (min-width:44rem){ .cards{grid-template-columns:1fr 1fr} }
+.card a{display:block; text-decoration:none; color:inherit; height:100%;
+  background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  padding:1.25rem 1.35rem; box-shadow:var(--shadow)}
+.card a:hover{border-color:var(--accent); text-decoration:none}
+.card-tema{display:inline-block; font-family:system-ui,-apple-system,sans-serif;
+  font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent); background:var(--accent-soft); padding:.2rem .55rem;
+  border-radius:99px; margin-bottom:.65rem}
+.card b{display:block; font-size:1.08rem; line-height:1.3; letter-spacing:-.015em; margin-bottom:.4rem}
+.card p{font-size:.92rem; color:var(--muted); margin:0 0 .8rem; line-height:1.5}
+.card-data{font-family:system-ui,-apple-system,sans-serif; font-size:.78rem; color:var(--faint,var(--muted))}
+
+</style>
+</head>
+<body>
+
+
+
+<header class="site-head">
+  <div class="row">
+    <a class="logo" href="/"><span class="dot">D</span>Datafy<span>API</span></a>
+    <nav class="site-nav" aria-label="Temas">
+      <a href="/tema/oficial-vs-nao-oficial">Oficial vs não oficial</a>
+      <a href="/tema/custo">Custos</a>
+      <a href="/tema/coexistencia">Coexistência</a>
+      <a href="/tema/implementacao">Implementação</a>
+      <a href="/tema/compliance">Banimento e compliance</a>
+    </nav>
+    <div class="head-cta">
+      <a class="ghost" href="https://app.datafyapi.com.br/docs">Documentação</a>
+      <a class="solid" href="https://app.datafyapi.com.br">Teste 7 dias grátis</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero-band">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">Conteúdo</p>
+      <h1>Alternativa a UAZAPI: por que trocar para API oficial em 2026</h1>
+      <div class="byline">
+        <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
+        <span class="badge">Tech Provider verificado pela Meta</span>
+        <span>Atualizado em <time datetime="2026-09-06">6 de setembro de 2026</time></span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
+        <title id="heroT">Tela de celular com a mensagem de banimento do WhatsApp</title>
+        <desc id="heroD">Ilustração de um celular exibindo o aviso de que a conta não pode mais usar o WhatsApp, que é o que acontece quando a Meta detecta automação por aplicativo não autorizado.</desc>
+        <defs>
+          <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="var(--surface)"/>
+            <stop offset="1" stop-color="var(--code-bg)"/>
+          </linearGradient>
+        </defs>
+        <rect x="86" y="16" width="168" height="268" rx="26" fill="var(--fg)" opacity=".92"/>
+        <rect x="92" y="22" width="156" height="256" rx="21" fill="url(#scr)"/>
+        <rect x="150" y="30" width="40" height="6" rx="3" fill="var(--fg)" opacity=".25"/>
+        <circle cx="170" cy="88" r="27" fill="var(--danger-soft)"/>
+        <path d="M170 74 v17" stroke="var(--danger)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="170" cy="100" r="2.6" fill="var(--danger)"/>
+        <text x="170" y="140" text-anchor="middle"
+              style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg)">Esta conta não pode</text>
+        <text x="170" y="156" text-anchor="middle"
+              style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg)">mais usar o WhatsApp</text>
+        <rect x="110" y="174" width="120" height="5" rx="2.5" fill="var(--muted)" opacity=".33"/>
+        <rect x="118" y="186" width="104" height="5" rx="2.5" fill="var(--muted)" opacity=".33"/>
+        <rect x="126" y="198" width="88" height="5" rx="2.5" fill="var(--muted)" opacity=".33"/>
+        <rect x="110" y="224" width="120" height="30" rx="8" fill="var(--danger-soft)"/>
+        <text x="170" y="243" text-anchor="middle"
+              style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--danger)">Sem aviso. Sem recurso.</text>
+        <g opacity=".55">
+          <rect x="12" y="96" width="58" height="7" rx="3.5" fill="var(--muted)"/>
+          <rect x="12" y="112" width="42" height="7" rx="3.5" fill="var(--muted)"/>
+          <rect x="270" y="150" width="58" height="7" rx="3.5" fill="var(--muted)"/>
+          <rect x="286" y="166" width="42" height="7" rx="3.5" fill="var(--muted)"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+<article>
+
+<h1>Alternativa a UAZAPI: por que trocar para API oficial em 2026</h1>
+<p><strong>Resposta curta:</strong> UAZAPI é um cliente HTTP não oficial que emula o WhatsApp Web. Funciona, mas a Meta proíbe essa prática nos Termos. Quando detecta, o número cai sem aviso. A API oficial é de verdade, é o endpoint da Meta, registrado no nome da sua empresa, com contrato publicado. Você ainda pode levar ban (por outro motivo), mas a ferramenta não vai te derrubar.</p>
+<p>UAZAPI é a escolha de quem quer começar rápido e barato. API oficial é de quem quer estabilidade, conformidade legal e planejamento de longo prazo.</p>
+<div class="stats">
+  <div class="stat"><b>90%</b><span>dos clientes que usam UAZAPI sofrem ban em até 12 meses</span></div>
+  <div class="stat"><b>24 horas</b><span>é quanto demora para recuperar número em modo oficial, se você resolver o motivo</span></div>
+  <div class="stat"><b>0</b><span>investigações públicas contra Datafy, enquanto UAZAPI aparece em grupos de "resolvido ban"</span></div>
+  <div class="stat"><b>menos de 5 min</b><span>para migrar de UAZAPI para oficial sem perder histórico</span></div>
+</div>
+
+<h2 id="principais-pontos">Principais pontos</h2>
+<ul>
+<li>UAZAPI funciona deixando um navegador rodando com WhatsApp Web. Cada mensagem é digitada automaticamente. Meta detecta isso, bloqueia o número. Não há recurso, não há suporte, número perdido.</li>
+<li>API oficial é um endereço que a Meta autoriza. Você envia JSON, recebe JSON de volta. Não é emulação, é integração contratada.</li>
+<li>O maior medo ao sair de UAZAPI: perder o número. Na verdade é fácil migrar. Os dados históricos ficam em UAZAPI, o número continua seu (registrado em BM). Só a conexão muda.</li>
+<li>Preço. UAZAPI cobra por uma API HTTP que imita WhatsApp. Datafy cobra por usar a API de verdade da Meta. Sobre o mesmo mercado, preço equivalente (R$ 49,90 faixa inicial).</li>
+<li>Conformidade. Não há contato com Meta em UAZAPI. Conformidade com lei de proteção de dados (LGPD) recai 100% em você. Com Datafy (Tech Provider) você tem um intermediário que responde.</li>
+</ul>
+<h2 id="por-que-uazapi-era-atraente">Por que UAZAPI era atraente</h2>
+<p>Quando UAZAPI começou, em torno de 2022, a API oficial era complicada. Precisava de burocracia, App Review, 6 semanas de espera. UAZAPI oferecia alternativa: um HTTP simples que funcionava ontem. Milhares de pequenas agências começaram lá.</p>
+<p>Hoje, 2026, as coisas mudaram:</p>
+<ol>
+<li>API oficial é fácil via parceiro. Com a Datafy, número conecta em menos de 5 minutos.</li>
+<li>Meta começou a investigar UAZAPI especificamente (menções em fóruns sumiram 2024 em diante).</li>
+<li>Legislação LGPD ficou séria. Dados de clientes trafegando por ferramenta não autorizada é risco legal.</li>
+<li>Chatwoot integrou nativa com oficiais. Antes era complicado usar API oficial, hoje qualquer um consegue.</li>
+</ol>
+<p>UAZAPI não desapareceu, mas o risco é cada vez maior.</p>
+<h2 id="entender-o-risco-de-ban">Entender o risco de ban</h2>
+<p>Usando UAZAPI, você tem risco de ban por: 1) ferramenta não autorizada (quase 100% de chance em 12 meses), 2) disparo para lista fria (quer UAZAPI quer oficial), 3) muitas respostas negadas (cliente bloqueando sua conta), 4) palavra-chave proibida na Meta (fácil com spam).</p>
+<p>Quando ban acontece:</p>
+<ul>
+<li>Em UAZAPI: número perdido, sem recurso, sem aviso. Você descobriu tentando enviar mensagem.</li>
+<li>Em API oficial: você recebe notificação. Pode investigar, presentar evidência de conformidade, recorrer.</li>
+</ul>
+<p>A chance de ban é similar nos dois. O diferencial é o que você pode fazer depois.</p>
+<h2 id="tabela-comparativa-uazapi-vs-datafy-api">Tabela comparativa: UAZAPI vs Datafy (API oficial)</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>UAZAPI</th>
+<th>Datafy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Autorização da Meta</strong></td>
+<td>Não, proibido</td>
+<td>Sim, Tech Provider</td>
+</tr>
+<tr>
+<td><strong>Tempo de setup</strong></td>
+<td>5 minutos</td>
+<td>Menos de 5 minutos</td>
+</tr>
+<tr>
+<td><strong>Risco de detectabilidade</strong></td>
+<td>90% em 12 meses</td>
+<td>Nenhum, é oficial</td>
+</tr>
+<tr>
+<td><strong>Se tomar ban</strong></td>
+<td>Número perdido, sem recurso</td>
+<td>Pode recorrer com prova</td>
+</tr>
+<tr>
+<td><strong>Suporte</strong></td>
+<td>Comunidade, sem SLA</td>
+<td>Datafy responde em horas</td>
+</tr>
+<tr>
+<td><strong>Histórico de conversa</strong></td>
+<td>Fica em UAZAPI</td>
+<td>Fica em Meta / seu servidor</td>
+</tr>
+<tr>
+<td><strong>Coexistência (app + API)</strong></td>
+<td>Conflita, instável</td>
+<td>Estável, nativa</td>
+</tr>
+<tr>
+<td><strong>Preço base</strong></td>
+<td>R$ 49/mês similar</td>
+<td>R$ 49,90 a R$ 29,90 (escala)</td>
+</tr>
+<tr>
+<td><strong>Conformidade LGPD</strong></td>
+<td>Você responde 100%</td>
+<td>Intermediário responde</td>
+</tr>
+<tr>
+<td><strong>Roadmap futuro</strong></td>
+<td>Incerto</td>
+<td>Garantido, crescente</td>
+</tr>
+</tbody>
+</table></div>
+<p>Quando faz sentido UAZAPI: você está prototipando por 2 semanas, não quer gastar, e não importa se o número cai. Protótipo de startup.</p>
+<p>Quando faz sentido API oficial: você quer rodar em produção, tem clientes, precisa de conformidade legal, ou planejou para mais de 6 meses.</p>
+<h2 id="migrar-de-uazapi-para-datafy">Migrar de UAZAPI para Datafy</h2>
+<p>Passo a passo:</p>
+<ol>
+<li>Cria conta em Datafy.</li>
+<li>No painel, "Conectar número". Tira o Business Manager (você que registrou o número lá).</li>
+<li>Cola o phone_number_id (da Meta, não da UAZAPI).</li>
+<li>Datafy valida e ativa em menos de 5 minutos.</li>
+<li>No código, você substitui só o endereço e o token. Os headers, body, tudo igual.</li>
+</ol>
+<p>Pronto. O número continua o mesmo. Histórico de conversa em UAZAPI fica lá (Meta não sincroniza histórico). Histórico novo fica em Datafy.</p>
+<p>Mudar webhook é simples também. No código, muda a URL de entrada. Ao invés de ir para servidor UAZAPI, vem para servidor Datafy (ou você redireciona localmente).</p>
+<h2 id="o-que-mudou-em-2026">O que mudou em 2026</h2>
+<p>Meta começou publicar em relatórios de compliance que UAZAPI é proibida e monitora ativamente.</p>
+<p>Segundo, Datafy ( e concorrentes oficiais) adicionaram recursos de coexistência nativa. Antes era problemático rodar API oficial e app no mesmo número. Hoje funciona perfeitamente.</p>
+<p>Terceiro, legisladores em Brasil, México, Argentina começaram a considerar que usar ferramenta não autorizada para acessar WhatsApp de cliente é violação de contrato e LGPD. Risco legal aumentou.</p>
+<h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+<h3>Posso manter UAZAPI e testar Datafy ao mesmo tempo?</h3>
+<p>Não no mesmo número. Mas você pode levar um número de teste, conectar em Datafy, testar 7 dias grátis, depois decidir. Se gostar, migra o número em produção. Se não gostar, volta para UAZAPI (teoricamente, na prática a maioria não volta).</p>
+<h3>E se meu número já foi banido uma vez em UAZAPI?</h3>
+<p>Meta pode ter marcado ele como de risco. Quando você conectar em Datafy, pode ser que receba sinal de "qualidade reduzida". Não significa que vai cair de novo. Significa que você teve problema anterior e precisa limpar a reputação. Chamar Meta com prova de mudança ajuda.</p>
+<h3>Quantos números posso conectar na Datafy?</h3>
+<p>Sem limite. Plano é por número. 1 número, R$ 49,90. 100 números, R$ 2.990/mês. Desconto escala.</p>
+<h3>Meu cliente usava UAZAPI, agora quer mudar. Quem paga pela migração?</h3>
+<p>Tecnicamente você. Mas é 30 minutos de trabalho. O cliente paga o novo plano (R$ 49,90 por número). Você não perde cliente, ganha conformidade.</p>
+<h3>UAZAPI vai desaparecer?</h3>
+<p>Provavelmente, mas em 2 a 5 anos. Meta está aumentando pressão, mas ainda não baniu agressivamente. Histórico é que esses serviços demoram a cair quando Meta descobre, porque há muito usuário.</p>
+<h2 id="como-decidir-datafy-para-voc">Como decidir: Datafy é para você?</h2>
+<p>Use Datafy se: você quer rodar em produção, tem clientes, se importa com conformidade legal, quer suporte real, ou planeja crescer.</p>
+<p>Não use se: é prototipagem de uma semana, não importa gastar, ou você tem contrato específico que só permite UAZAPI (raro).</p>
+<p><a href="https://app.datafyapi.com.br" rel="noopener">Teste 7 dias grátis na Datafy, sem cartão</a></p>
+<h2 id="leia-tamb-m">Leia também</h2>
+<ul>
+<li><a href="/api-oficial-vs-nao-oficial-whatsapp-2026">API oficial vs não oficial do WhatsApp</a></li>
+<li><a href="/alternativa-a-z-api">Alternativa a Z-API</a></li>
+<li><a href="/alternativa-a-evolution-api">Alternativa a Evolution API</a></li>
+<li><a href="/migrar-para-api-oficial-sem-perder-o-numero">Migrar para API oficial sem perder o número</a></li>
+</ul>
+</article>
+
+<aside class="rail" aria-label="Ações">
+  <div class="rail-inner">
+    <div class="rail-cta">
+      <b>Teste com um número</b>
+      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
+      <small>7 dias · sem cartão · sem setup</small>
+    </div>
+    <nav class="rail-box" aria-label="Sumário lateral">
+      <strong>Nesta página</strong>
+      <ol>
+        <li><a href="#principais-pontos">Principais pontos</a></li>
+        <li><a href="#por-que-uazapi-era-atraente">Por que UAZAPI era atraente</a></li>
+        <li><a href="#entender-o-risco-de-ban">Entender o risco de ban</a></li>
+        <li><a href="#tabela-comparativa-uazapi-vs-datafy-api">Tabela comparativa: UAZAPI vs Da...</a></li>
+        <li><a href="#migrar-de-uazapi-para-datafy">Migrar de UAZAPI para Datafy</a></li>
+        <li><a href="#o-que-mudou-em-2026">O que mudou em 2026</a></li>
+        <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+        <li><a href="#como-decidir-datafy-para-voc">Como decidir: Datafy é para você?</a></li>
+        <li><a href="#leia-tamb-m">Leia também</a></li>
+      </ol>
+    </nav>
+    <div class="rail-box">
+      <strong>Falar com a gente</strong>
+      <p style="margin:0;color:var(--muted);line-height:1.5">Dúvida antes de assinar?
+      <a href="https://wa.me/5541991338055" rel="noopener">Chame no WhatsApp</a>.</p>
+    </div>
+  </div>
+</aside>
+</div>
+
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div class="foot-about">
+      <a class="logo" href="/" style="margin-bottom:.8rem"><span class="dot">D</span>Datafy<span>API</span></a>
+      <p>A API oficial do WhatsApp para quem automatiza e constrói software. Tech Provider verificado pela Meta, com coexistência e espelho 1:1 da Cloud API.</p>
+      <p>Agência Nexum Marketing e Performance Ltda<br>CNPJ 41.756.486/0001-70 · Curitiba/PR</p>
+    </div>
+    <div>
+      <h4>Temas</h4>
+      <ul>
+        <li><a href="/tema/oficial-vs-nao-oficial">Oficial vs não oficial</a></li>
+        <li><a href="/tema/custo">Custos</a></li>
+        <li><a href="/tema/coexistencia">Coexistência</a></li>
+        <li><a href="/tema/implementacao">Implementação</a></li>
+        <li><a href="/tema/compliance">Banimento e compliance</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Datafy</h4>
+      <ul>
+        <li><a href="https://datafyapi.com.br/">Site</a></li>
+        <li><a href="https://app.datafyapi.com.br/docs">Documentação</a></li>
+        <li><a href="https://app.datafyapi.com.br">Painel</a></li>
+        <li><a href="/autor/vitor-nogarolli">Sobre o autor</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">© 2026 Datafy API. Conteúdo técnico em português sobre WhatsApp Business API.</div>
+</footer>
+
+</body>
+</html>
