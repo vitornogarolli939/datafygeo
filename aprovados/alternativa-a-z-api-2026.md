@@ -36,7 +36,7 @@ Z-API foi popular porque tinha melhor documentação que outras não oficiais. H
 
 ## Principais pontos
 - Z-API é HTTP que envia para WhatsApp Web emulado. Meta vê uma sessão navegador onde deveria haver um número legítimo. Detecta, bloqueia.
-- Z-API se posiciona como "confiável" comparado a alternativas. Talvez seja mais confiável entre não oficiais. Mas não é confiável vs oficial. É como comparar carro roubado com carro aluguel. Ambos você está usando, mas um é ilegal.
+- Z-API funciona bem entre ferramentas não oficiais. Mas comparada a oficial é uma escolha de risco. Você está usando um cliente HTTP que emula WhatsApp Web, violando os Termos da Meta. Oficial é integração autorizada e contratada.
 - Preço em Z-API varia muito (planos de uso variam, há setup). No fim, sai caro. API oficial via Datafy é tabelado: R$ 49,90 por número/mês.
 - Mudança de integração é fácil. Você sai de Z-API e entra em Datafy em menos de uma hora. Código muda só o endpoint e token.
 - Z-API promete suporte 24h. Datafy oferece suporte por WhatsApp (é simples, é rápido, é sério).
