@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>WhatsApp API oficial no Chatwoot: abir inbox compartilhado, atender junto e respeitar limites</title>
+<meta name="description" content="Como conectar API oficial do WhatsApp no Chatwoot para centralizar atendimento, responder em equipe e usar coexistência (celular + API no mesmo número).">
+<link rel="canonical" href="https://conteudo.datafyapi.com.br/whatsapp-api-oficial-chatwoot">
+<meta name="author" content="Vitor Nogarolli">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Datafy API · Conteúdo">
+<meta property="og:title" content="WhatsApp API oficial no Chatwoot: abir inbox compartilhado, atender junto e respeitar limites">
+<meta property="og:description" content="Como conectar API oficial do WhatsApp no Chatwoot para centralizar atendimento, responder em equipe e usar coexistência (celular + API no mesmo número).">
+<meta property="og:url" content="https://conteudo.datafyapi.com.br/whatsapp-api-oficial-chatwoot">
+<meta property="article:published_time" content="2026-09-06">
+<meta property="article:modified_time" content="2026-09-06">
+<meta property="article:author" content="Vitor Nogarolli">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WhatsApp API oficial no Chatwoot: abir inbox compartilhado, atender junto e respeitar limites">
+<meta name="twitter:description" content="Como conectar API oficial do WhatsApp no Chatwoot para centralizar atendimento, responder em equipe e usar coexistência (celular + API no mesmo número).">
+
+<link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://datafyapi.com.br/#organization",
+      "name": "Datafy API",
+      "alternateName": "DatafyAPI",
+      "url": "https://datafyapi.com.br/",
+      "description": "Plataforma brasileira que da acesso a API oficial do WhatsApp (Meta Cloud API) por meio de infraestrutura propria, como Tech Provider verificado pela Meta.",
+      "areaServed": "BR",
+      "legalName": "Agência Nexum Marketing e Performance Ltda",
+      "taxID": "41.756.486/0001-70",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Curitiba",
+        "addressRegion": "PR",
+        "addressCountry": "BR"
+      },
+      "founder": {
+        "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person",
+      "name": "Vitor Nogarolli",
+      "jobTitle": "Cofundador da Datafy API",
+      "url": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli",
+      "worksFor": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://conteudo.datafyapi.com.br/#website",
+      "url": "https://conteudo.datafyapi.com.br/",
+      "name": "Datafy API · Conteúdo",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://datafyapi.com.br/#software",
+      "name": "Datafy API",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://datafyapi.com.br/",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "featureList": [
+        "Embedded Signup",
+        "Coexistência com WhatsApp Business App",
+        "28 eventos de webhook",
+        "Disparo por template via CSV",
+        "Integração com n8n, Make, Zapier e Chatwoot"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "49.90",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock",
+        "description": "Por número conectado, por mês. R$ 39,90 de 10 a 49 números e R$ 29,90 a partir de 50."
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://conteudo.datafyapi.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Implementação",
+          "item": "https://conteudo.datafyapi.com.br/tema/implementacao"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "WhatsApp API oficial no Chatwoot: abir inbox compartilhado, atender junto e respeitar limites"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-chatwoot#article",
+      "headline": "WhatsApp API oficial no Chatwoot: abir inbox compartilhado, atender junto e respeitar limites",
+      "description": "Como conectar API oficial do WhatsApp no Chatwoot para centralizar atendimento, responder em equipe e usar coexistência (celular + API no mesmo número).",
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-09-06",
+      "dateModified": "2026-09-06",
+      "author": {
+        "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "mainEntityOfPage": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-chatwoot",
+      "citation": [
+        "https://developers.facebook.com/docs/whatsapp/cloud-api",
+        "https://www.chatwoot.com/docs/",
+        "https://www.chatwoot.com/docs/product/channels/whatsapp/",
+        "https://app.datafyapi.com.br/docs",
+        "https://business.whatsapp.com/",
+        "https://www.youtube.com/watch?v=FcAwJqVHNoU",
+        "https://github.com/chatwoot/chatwoot"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-chatwoot#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Posso usar Chatwoot e automação (n8n) ao mesmo tempo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Chatwoot pega as mensagens que chegam e distribui para o inbox de atendimento humano. Ao mesmo tempo, um webhook pode sair do Chatwoot e ir para um n8n, que dispara automações (registra em banco, envia para CRM, etc.). Eles trabalham em paralelo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O Chatwoot armazena conversa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, localmente na sua instância. Se você usar o Chatwoot Cloud (deles), fica no servidor deles. Se rodar no seu Docker, fica local. A Meta não armazena conversa, só webhook de entrada."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quando vai ter integração de Chatwoot com API oficial de outros provedores?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Datafy foi a primeira porque a gente trabalha direto com Chatwoot como tech partner. Outros BSPs (Twilio, 360dialog) têm integração por webhook manual. É mais lento de usar, mas funciona."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso atender 10 números diferentes no mesmo Chatwoot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Você conecta 10 números (via Datafy), cada um fica num channel. O inbox centraliza todos juntos ou você filtra por número/cliente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual é o custo de rodar Chatwoot no meu próprio servidor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chatwoot é open source, você pode rodar grátis no seu VPS. Datafy cobra R$ 49,90 por número. Chatwoot Cloud custa a partir de 50 USD/mês (nuvem deles). Se você rodar local, é só Datafy."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+<style>
+:root{
+  --bg:#fcfbf9; --surface:#ffffff; --fg:#17181a; --muted:#63666b; --line:#e6e3de;
+  --accent:#0b6e4f; --accent-2:#0d8a63; --accent-soft:#e9f4ef;
+  --danger:#a33a2a; --danger-soft:#fbeeeb;
+  --code-bg:#f2f1ed; --warn-bg:#fdf7e9; --warn-line:#e6d09a;
+  --shadow:0 1px 2px rgba(20,20,20,.05), 0 8px 24px -12px rgba(20,20,20,.12);
+  --max:46rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131416; --surface:#1a1c1f; --fg:#eceae6; --muted:#9ea3a9; --line:#2c2f33;
+    --accent:#4fc79b; --accent-2:#63d6ac; --accent-soft:#12251e;
+    --danger:#e08272; --danger-soft:#2a1a17;
+    --code-bg:#22252a; --warn-bg:#26210f; --warn-line:#5d5127;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131416; --surface:#1a1c1f; --fg:#eceae6; --muted:#9ea3a9; --line:#2c2f33;
+  --accent:#4fc79b; --accent-2:#63d6ac; --accent-soft:#12251e;
+  --danger:#e08272; --danger-soft:#2a1a17;
+  --code-bg:#22252a; --warn-bg:#26210f; --warn-line:#5d5127;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:"Iowan Old Style","Charter",Georgia,"Times New Roman",serif;
+  font-size:1.075rem; line-height:1.68; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 1.35rem}
+.sans{font-family:system-ui,-apple-system,"Segoe UI",Inter,sans-serif}
+a{color:var(--accent); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+img,svg{max-width:100%}
+
+/* topo */
+.topbar{border-bottom:1px solid var(--line); background:var(--surface); position:sticky; top:0; z-index:10}
+.topbar .wrap{display:flex; gap:1rem; align-items:center; justify-content:space-between; padding:.8rem 1.35rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.85rem}
+.brand{font-weight:700; letter-spacing:-.02em; text-decoration:none; color:var(--fg); font-size:.95rem}
+.brand span{color:var(--accent)}
+nav.crumbs{color:var(--muted); font-size:.8rem}
+nav.crumbs a{color:var(--muted); text-decoration:none}
+nav.crumbs a:hover{text-decoration:underline}
+
+/* hero */
+header.post{padding:3rem 0 0}
+.eyebrow{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.75rem; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--accent); margin-bottom:.85rem;
+}
+h1{
+  font-size:clamp(1.9rem,5.2vw,2.85rem); line-height:1.12; letter-spacing:-.025em;
+  margin:0 0 1.15rem; font-weight:700; text-wrap:balance;
+}
+.byline{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.85rem; color:var(--muted);
+  display:flex; flex-wrap:wrap; gap:.45rem .8rem; align-items:center;
+}
+.byline a{color:var(--fg)}
+.badge{
+  display:inline-flex; align-items:center; gap:.3rem;
+  background:var(--accent-soft); color:var(--accent); border-radius:99px;
+  padding:.2rem .65rem; font-weight:650; font-size:.76rem; border:1px solid transparent;
+}
+.stats{
+  margin-top:0;
+  display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  margin:2rem 0 .5rem;
+}
+@media (min-width:40rem){ .stats{grid-template-columns:repeat(4,1fr)} }
+.stat{background:var(--surface); padding:.95rem 1.05rem; font-family:system-ui,-apple-system,sans-serif}
+.stat b{display:block; font-size:1.22rem; letter-spacing:-.02em; line-height:1.2; color:var(--accent)}
+.stat span{display:block; font-size:.78rem; color:var(--muted); margin-top:.15rem; line-height:1.35}
+
+.lede{
+  font-size:1.22rem; line-height:1.55; margin:2rem 0;
+  padding:1.25rem 1.4rem; background:var(--surface); border:1px solid var(--line);
+  border-left:4px solid var(--accent); border-radius:0 12px 12px 0; box-shadow:var(--shadow);
+}
+.lede p{margin:0}
+
+/* sumário */
+.toc{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:1.05rem 1.3rem; margin:2rem 0; font-family:system-ui,-apple-system,sans-serif; font-size:.9rem;
+}
+.toc strong{display:block; font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:.6rem}
+.toc ol{margin:0; padding-left:1.15rem; columns:2; column-gap:1.5rem}
+@media (max-width:34rem){ .toc ol{columns:1} }
+.toc li{margin-bottom:.3rem; break-inside:avoid}
+.toc a{text-decoration:none}
+.toc a:hover{text-decoration:underline}
+
+h2{
+  font-size:clamp(1.35rem,3.6vw,1.75rem); line-height:1.22; letter-spacing:-.02em;
+  margin:3rem 0 .9rem; font-weight:700; text-wrap:balance; scroll-margin-top:4rem;
+}
+h3{
+  font-family:system-ui,-apple-system,sans-serif; font-size:1.03rem;
+  margin:2rem 0 .5rem; font-weight:650; letter-spacing:-.005em;
+}
+p{margin:0 0 1.15rem}
+ul,ol{margin:0 0 1.25rem; padding-left:1.35rem}
+li{margin-bottom:.55rem}
+li::marker{color:var(--muted)}
+strong{font-weight:650}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+
+blockquote{
+  margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
+  border-radius:12px; font-size:1.13rem; line-height:1.5; position:relative;
+}
+blockquote p{margin:0 0 .7rem; font-style:italic}
+blockquote cite{display:block; font-style:normal; font-size:.83rem; color:var(--muted);
+  font-family:system-ui,-apple-system,sans-serif}
+
+/* figuras / diagramas */
+figure{margin:2.25rem 0; padding:0}
+.diagram{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:1.4rem 1.2rem 1rem; box-shadow:var(--shadow);
+}
+figcaption{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; color:var(--muted);
+  margin-top:.85rem; line-height:1.45; text-align:left;
+}
+
+/* vídeo */
+.video{
+  display:block; text-decoration:none; color:inherit; border:1px solid var(--line);
+  border-radius:12px; overflow:hidden; background:var(--surface); box-shadow:var(--shadow);
+}
+.video:hover{text-decoration:none; border-color:var(--accent)}
+.video .thumb{position:relative; aspect-ratio:16/9; background:var(--code-bg); display:block}
+.video .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.video .play{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+}
+.video .play span{
+  width:60px; height:60px; border-radius:50%; background:rgba(0,0,0,.72);
+  display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(0,0,0,.35);
+}
+.video:hover .play span{background:#c00}
+.video .meta{padding:.85rem 1.05rem; font-family:system-ui,-apple-system,sans-serif}
+.video .meta b{display:block; font-size:.95rem; line-height:1.35; letter-spacing:-.01em}
+.video .meta span{display:block; font-size:.8rem; color:var(--muted); margin-top:.2rem}
+
+/* tabela */
+.tablewrap{overflow-x:auto; margin:1.75rem 0; border:1px solid var(--line);
+  border-radius:12px; background:var(--surface); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; min-width:38rem; font-size:.88rem;
+  font-family:system-ui,-apple-system,sans-serif}
+th,td{padding:.7rem .85rem; text-align:left; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{background:var(--code-bg); font-weight:650; font-size:.8rem; white-space:nowrap}
+thead th:last-child{color:var(--accent)}
+tbody tr:last-child td{border-bottom:0}
+tbody th{font-weight:600; background:transparent; white-space:nowrap}
+td.yes{color:var(--accent); font-weight:600}
+td.no{color:var(--danger)}
+caption{caption-side:bottom; padding:.7rem .85rem; text-align:left;
+  font-size:.78rem; color:var(--muted); font-family:system-ui,-apple-system,sans-serif}
+
+.callout{
+  background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:12px;
+  padding:1.1rem 1.3rem; margin:1.9rem 0; font-size:.98rem;
+}
+.callout p:last-child{margin-bottom:0}
+
+.cta{
+  border:1px solid var(--line); border-radius:14px; padding:1.6rem 1.75rem;
+  margin:2.75rem 0; background:var(--accent-soft); box-shadow:var(--shadow);
+}
+.cta h3{margin:0 0 .5rem; font-size:1.15rem; font-weight:700}
+.cta p{margin:0 0 1.1rem; font-size:.98rem}
+.cta p:last-child{margin-bottom:0}
+.btn{
+  display:inline-block; background:var(--accent); color:#fff; text-decoration:none;
+  padding:.72rem 1.3rem; border-radius:8px; font-weight:650; font-size:.95rem;
+  font-family:system-ui,-apple-system,sans-serif;
+}
+.btn:hover{background:var(--accent-2); text-decoration:none}
+.cta small{display:block; margin-top:.6rem; font-size:.8rem; color:var(--muted);
+  font-family:system-ui,-apple-system,sans-serif}
+
+.sources{font-size:.86rem; color:var(--muted)}
+.sources li{margin-bottom:.4rem}
+footer{
+  border-top:1px solid var(--line); margin-top:4rem; padding:2.25rem 0 3.5rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; color:var(--muted);
+  background:var(--surface);
+}
+footer a{color:var(--muted)}
+footer p{margin:0 0 .5rem}
+
+/* ===== MOLDURA DO SITE (fixa, igual em todas as páginas) ===== */
+.site-head{
+  position:sticky; top:0; z-index:30; background:color-mix(in srgb,var(--surface) 92%,transparent);
+  backdrop-filter:saturate(1.4) blur(8px); border-bottom:1px solid var(--line);
+}
+.site-head .row{
+  max-width:74rem; margin:0 auto; padding:.7rem 1.35rem;
+  display:flex; align-items:center; gap:1.25rem;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.logo{display:flex; align-items:center; gap:.5rem; text-decoration:none; color:var(--fg); font-weight:750;
+  letter-spacing:-.025em; font-size:1rem; flex:none}
+.logo .dot{width:22px;height:22px;border-radius:6px;background:var(--accent);display:grid;place-items:center;
+  color:#fff;font-size:.72rem;font-weight:800}
+.logo span{color:var(--accent)}
+.site-nav{display:flex; gap:1.1rem; font-size:.87rem; margin-left:.5rem}
+.site-nav a{color:var(--muted); text-decoration:none}
+.site-nav a:hover{color:var(--fg)}
+@media (max-width:52rem){ .site-nav{display:none} }
+.head-cta{margin-left:auto; display:flex; gap:.55rem; align-items:center; flex:none}
+.head-cta a{font-size:.85rem; text-decoration:none; white-space:nowrap}
+.head-cta .ghost{color:var(--muted); padding:.45rem .2rem}
+.head-cta .ghost:hover{color:var(--fg)}
+.head-cta .solid{background:var(--accent); color:#fff; padding:.5rem .95rem; border-radius:7px; font-weight:650}
+.head-cta .solid:hover{background:var(--accent-2)}
+@media (max-width:34rem){ .head-cta .ghost{display:none} }
+
+/* ===== FAIXA DE TOPO ===== */
+.hero-band{background:var(--accent-soft); border-bottom:1px solid var(--line)}
+.hero-grid{
+  max-width:74rem; margin:0 auto; padding:2.75rem 1.35rem 2.5rem;
+  display:grid; grid-template-columns:1fr; gap:2rem; align-items:center;
+}
+@media (min-width:56rem){ .hero-grid{grid-template-columns:1.15fr .85fr; gap:3rem} }
+.hero-art{order:-1}
+@media (min-width:56rem){ .hero-art{order:0} }
+.hero-band h1{margin:0 0 1rem}
+.hero-band .byline{padding-bottom:0; border-bottom:0}
+
+/* ===== CORPO EM DUAS COLUNAS ===== */
+.shell{max-width:74rem; margin:0 auto; padding:0 1.35rem; display:grid; grid-template-columns:1fr; gap:2.5rem}
+@media (min-width:62rem){ .shell{grid-template-columns:minmax(0,1fr) 19rem; gap:3.25rem} }
+.shell > article{min-width:0; padding-top:2.25rem}
+.rail{display:none}
+@media (min-width:62rem){
+  .rail{display:block; padding-top:2.25rem}
+  .rail-inner{position:sticky; top:4.5rem; display:flex; flex-direction:column; gap:1.1rem}
+}
+.rail-cta{
+  background:var(--accent); color:#fff; border-radius:14px; padding:1.35rem 1.4rem;
+  font-family:system-ui,-apple-system,sans-serif; box-shadow:var(--shadow);
+}
+.rail-cta b{display:block; font-size:1.05rem; font-weight:750; letter-spacing:-.015em; line-height:1.3; margin-bottom:.5rem}
+.rail-cta p{font-size:.87rem; line-height:1.5; margin:0 0 1rem; opacity:.92}
+.rail-cta a{
+  display:block; text-align:center; background:#fff; color:var(--accent);
+  padding:.6rem 1rem; border-radius:8px; font-weight:700; font-size:.9rem; text-decoration:none;
+}
+.rail-cta a:hover{opacity:.92; text-decoration:none}
+.rail-cta small{display:block; margin-top:.6rem; font-size:.75rem; opacity:.85; text-align:center}
+.rail-box{
+  background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:1.1rem 1.25rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.86rem;
+}
+.rail-box strong{display:block; font-size:.72rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:.6rem}
+.rail-box ol{margin:0; padding-left:1.1rem}
+.rail-box li{margin-bottom:.35rem; line-height:1.4}
+.rail-box a{text-decoration:none}
+.rail-box a:hover{text-decoration:underline}
+
+/* ===== RODAPÉ ===== */
+.site-foot{border-top:1px solid var(--line); background:var(--surface); margin-top:4rem}
+.foot-grid{
+  max-width:74rem; margin:0 auto; padding:2.75rem 1.35rem 1.75rem;
+  display:grid; grid-template-columns:1fr; gap:2rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.86rem;
+}
+@media (min-width:44rem){ .foot-grid{grid-template-columns:1.4fr 1fr 1fr} }
+.foot-grid h4{font-size:.74rem; letter-spacing:.09em; text-transform:uppercase; color:var(--muted);
+  margin:0 0 .7rem; font-weight:700}
+.foot-grid ul{list-style:none; margin:0; padding:0}
+.foot-grid li{margin-bottom:.4rem}
+.foot-grid a{color:var(--muted); text-decoration:none}
+.foot-grid a:hover{color:var(--fg)}
+.foot-about p{color:var(--muted); margin:0 0 .6rem; max-width:26rem; line-height:1.55}
+.foot-legal{
+  max-width:74rem; margin:0 auto; padding:1.1rem 1.35rem 2.5rem; border-top:1px solid var(--line);
+  font-family:system-ui,-apple-system,sans-serif; font-size:.78rem; color:var(--muted);
+}
+
+/* ===== home e pagina de autor ===== */
+.shell-solo{grid-template-columns:minmax(0,1fr) !important; max-width:52rem}
+.shell-solo > article{padding-top:3rem}
+.sub{font-size:1.15rem; color:var(--muted); margin:0 0 2rem}
+.cards{list-style:none; margin:1.5rem 0 0; padding:0; display:grid; gap:1rem}
+@media (min-width:44rem){ .cards{grid-template-columns:1fr 1fr} }
+.card a{display:block; text-decoration:none; color:inherit; height:100%;
+  background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  padding:1.25rem 1.35rem; box-shadow:var(--shadow)}
+.card a:hover{border-color:var(--accent); text-decoration:none}
+.card-tema{display:inline-block; font-family:system-ui,-apple-system,sans-serif;
+  font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent); background:var(--accent-soft); padding:.2rem .55rem;
+  border-radius:99px; margin-bottom:.65rem}
+.card b{display:block; font-size:1.08rem; line-height:1.3; letter-spacing:-.015em; margin-bottom:.4rem}
+.card p{font-size:.92rem; color:var(--muted); margin:0 0 .8rem; line-height:1.5}
+.card-data{font-family:system-ui,-apple-system,sans-serif; font-size:.78rem; color:var(--faint,var(--muted))}
+
+</style>
+</head>
+<body>
+
+
+
+<header class="site-head">
+  <div class="row">
+    <a class="logo" href="/"><span class="dot">D</span>Datafy<span>API</span></a>
+    <nav class="site-nav" aria-label="Temas">
+      <a href="/tema/oficial-vs-nao-oficial">Oficial vs não oficial</a>
+      <a href="/tema/custo">Custos</a>
+      <a href="/tema/coexistencia">Coexistência</a>
+      <a href="/tema/implementacao">Implementação</a>
+      <a href="/tema/compliance">Banimento e compliance</a>
+    </nav>
+    <div class="head-cta">
+      <a class="ghost" href="https://app.datafyapi.com.br/docs">Documentação</a>
+      <a class="solid" href="https://app.datafyapi.com.br">Teste 7 dias grátis</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero-band">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">Implementação</p>
+      <h1>WhatsApp API oficial no Chatwoot: abir inbox compartilhado, atender junto e respeitar limites</h1>
+      <div class="byline">
+        <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
+        <span class="badge">Tech Provider verificado pela Meta</span>
+        <span>Atualizado em <time datetime="2026-09-06">6 de setembro de 2026</time></span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
+        <title id="heroT">Tela de celular com a mensagem de banimento do WhatsApp</title>
+        <desc id="heroD">Ilustração de um celular exibindo o aviso de que a conta não pode mais usar o WhatsApp, que é o que acontece quando a Meta detecta automação por aplicativo não autorizado.</desc>
+        <defs>
+          <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="var(--surface)"/>
+            <stop offset="1" stop-color="var(--code-bg)"/>
+          </linearGradient>
+        </defs>
+        <rect x="86" y="16" width="168" height="268" rx="26" fill="var(--fg)" opacity=".92"/>
+        <rect x="92" y="22" width="156" height="256" rx="21" fill="url(#scr)"/>
+        <rect x="150" y="30" width="40" height="6" rx="3" fill="var(--fg)" opacity=".25"/>
+        <circle cx="170" cy="88" r="27" fill="var(--danger-soft)"/>
+        <path d="M170 74 v17" stroke="var(--danger)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="170" cy="100" r="2.6" fill="var(--danger)"/>
+        <text x="170" y="140" text-anchor="middle"
+              style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg)">Esta conta não pode</text>
+        <text x="170" y="156" text-anchor="middle"
+              style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg)">mais usar o WhatsApp</text>
+        <rect x="110" y="174" width="120" height="5" rx="2.5" fill="var(--muted)" opacity=".33"/>
+        <rect x="118" y="186" width="104" height="5" rx="2.5" fill="var(--muted)" opacity=".33"/>
+        <rect x="126" y="198" width="88" height="5" rx="2.5" fill="var(--muted)" opacity=".33"/>
+        <rect x="110" y="224" width="120" height="30" rx="8" fill="var(--danger-soft)"/>
+        <text x="170" y="243" text-anchor="middle"
+              style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--danger)">Sem aviso. Sem recurso.</text>
+        <g opacity=".55">
+          <rect x="12" y="96" width="58" height="7" rx="3.5" fill="var(--muted)"/>
+          <rect x="12" y="112" width="42" height="7" rx="3.5" fill="var(--muted)"/>
+          <rect x="270" y="150" width="58" height="7" rx="3.5" fill="var(--muted)"/>
+          <rect x="286" y="166" width="42" height="7" rx="3.5" fill="var(--muted)"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+<article>
+
+<h1>WhatsApp API oficial no Chatwoot: abrir inbox compartilhado, atender em equipe e respeitar limites</h1>
+<p><strong>Resposta curta:</strong> Chatwoot é uma plataforma de atendimento que centraliza WhatsApp, email, chat de site, Telegram e SMS num único inbox. A Datafy é a primeira (e por enquanto única) a oferecer integração nativa com Chatwoot para API oficial. Isso significa: você conecta seu número WhatsApp no Chatwoot, a equipe vê todas as conversas chegar numa fila, pode atender ao mesmo tempo e não corre risco de perder mensagem.</p>
+<p>A particularidade aqui é a coexistência. O mesmo número pode estar rodando na API oficial e ainda ter o app WhatsApp Web aberto. Seu gerente continua vendo mensagens no celular enquanto a equipe responde pelo Chatwoot. Sem número duplicado, sem perda de conversa, sem síncronização quebrada.</p>
+<div class="stats">
+  <div class="stat"><b>1 aba</b><span>nativa de Chatwoot na Datafy, só nós temos</span></div>
+  <div class="stat"><b>1 inbox</b><span>todas as conversas chegam juntas</span></div>
+  <div class="stat"><b>5 pessoas</b><span>podem atender o mesmo número ao mesmo tempo</span></div>
+  <div class="stat"><b>0 duplicação</b><span>de números quando usa coexistência</span></div>
+</div>
+
+<h2 id="principais-pontos">Principais pontos</h2>
+<ul>
+<li>Chatwoot é open source e você roda onde quiser (na nuvem deles, no seu servidor, no Docker). Sempre vai funcionar e você não fica preso num SaaS.</li>
+<li>A integração de API oficial no Chatwoot precisa de três coisas: o token Bearer, o phone_number_id e o webhook_url da sua instância do Chatwoot. A Datafy fornece os dois primeiros automático.</li>
+<li>Coexistência significa o mesmo número ao mesmo tempo no app (celular/desktop) e na API. Quem escreve onde? Você configura. Comum é: app para pessoal/suporte, API para automação/bulk.</li>
+<li>Não perde conversa. Mensagens que chegam no app aparecem no Chatwoot também, instantaneamente. É tipo um mirror.</li>
+<li>Limite da Meta continua valendo: 500 mensagens por minuto, 60 mídia por minuto. Chatwoot é só a interface para você não infringir isso sem querer.</li>
+</ul>
+<h2 id="conectar-datafy-no-chatwoot">Conectar Datafy no Chatwoot</h2>
+<p>Você tem duas opções: usar a Datafy como intermediária ou conectar direto na Meta.</p>
+<p>Se usar Datafy: muito simples. Log no painel da Datafy, clique em "Conectar Chatwoot", ele gera um link. Você clica naquele link dentro do Chatwoot e está pronto. Token, phone_number_id, tudo passa automático. É tipo OAuth, mas para infraestrutura de WhatsApp.</p>
+<p>Se conectar direto na Meta: você vai em Chatwoot → Channels → WhatsApp → Add Channel, aí você cola o token e o ID manualmente. Depois tira a URL do webhook do Chatwoot e cola no App Dashboard da Meta. Mais burocrático, mas igualmente funcional.</p>
+<p>Qual escolher? Datafy se quer 5 minutos e não quer lidar com burocracia. Direto na Meta se você é DevOps e quer controle total, e não importa esperar.</p>
+<h2 id="coexist-ncia-em-a-o">Coexistência em ação</h2>
+<p>Cenário real: você é um pequeno SaaS que vende software para agências de marketing. Você recebe mensagens de clientes no WhatsApp. Não é automação pura, é atendimento humano.</p>
+<p>Seu estrutura fica assim:</p>
+<ul>
+<li><strong>Executivo</strong> (celular): abre WhatsApp e vê todas as mensagens chegando em tempo real. Se algum cliente manda algo urgente, ele responde do celular. A resposta aparece também no Chatwoot.</li>
+<li><strong>Equipe de suporte</strong> (Chatwoot web): está no inbox vendo a fila de chats. Pega um cliente, responde. O cliente recebe no celular. Se o executivo está olhando o WhatsApp Web, vê que o colega respondeu.</li>
+<li><strong>Automação</strong> (API via Datafy): toda hora configura uma automação para enviar "Oi, recebemos seu contato, vamos responder em 1h". Essas mensagens passam por template, entram na fila, mas não interrompem ninguém. É background.</li>
+</ul>
+<p>Tudo isso no mesmo número. Sem duplicação, sem desconexão.</p>
+<h2 id="diferen-a-entre-chatwoot-whatsapp-web-e">Diferença entre Chatwoot, WhatsApp Web e API pura</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>O que é</th>
+<th>Chatwoot</th>
+<th>WhatsApp Web</th>
+<th>API pura (sem UI)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Inbox compartilhado</strong></td>
+<td>Sim, todos veem</td>
+<td>Não, cada PC é uma sessão</td>
+<td>Não, é só integração</td>
+</tr>
+<tr>
+<td><strong>Atender em equipe</strong></td>
+<td>Sim, 5+ pessoas</td>
+<td>Não, um por sessão</td>
+<td>Não, precisa de app</td>
+</tr>
+<tr>
+<td><strong>Coexistência</strong></td>
+<td>Suporta perfeitamente</td>
+<td>Não, conflita com API</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><strong>Automação</strong></td>
+<td>Sim, via regras</td>
+<td>Não</td>
+<td>Sim, via webhook</td>
+</tr>
+<tr>
+<td><strong>Suporte 24h</strong></td>
+<td>Nativo no Chatwoot</td>
+<td>Precisa de servidor rodando</td>
+<td>Precisa de servidor rodando</td>
+</tr>
+<tr>
+<td><strong>Open source</strong></td>
+<td>Sim</td>
+<td>Não</td>
+<td>Depende da ferramenta</td>
+</tr>
+<tr>
+<td><strong>Custo com Datafy</strong></td>
+<td>Chatwoot grátis + R$ 49,90/número</td>
+<td>Grátis</td>
+<td>R$ 49,90/número</td>
+</tr>
+</tbody>
+</table></div>
+<p>Quando faz sentido Chatwoot: você quer inbox visual para atendimento humano, equipe acima de 2 pessoas, ou precisa de coexistência (API rodando + WhatsApp app aberto no celular).</p>
+<p>Quando faz sentido API pura: você só quer automação (webhooks disparados, respostas automáticas), não precisa de interface visual, ou quer rodar tudo num servidor sem browser.</p>
+<h2 id="configurar-as-regras-de-quem-responde">Configurar as regras de quem responde</h2>
+<p>Dentro do Chatwoot, você define:</p>
+<ol>
+<li><strong>Auto-assigment</strong>: quando chega conversa nova, já atribui para o agente que tiver menos chats abertos.</li>
+<li><strong>Canned responses</strong>: templates que a equipe usa para responder. "Oi, qual seu CNPJ?" aparece com um atalho.</li>
+<li><strong>Bots</strong>: você cria um bot que atende as primeiras mensagens (coleta nome, email, assunto) e depois passa para humano.</li>
+<li><strong>Teams</strong>: agrupa agentes. Time de suporte responde segunda a sexta, time de vendas atende fins de semana.</li>
+</ol>
+<p>Combinado com coexistência, fica poderoso: automação manuseia a maior parte, quando não consegue, escalona para equipe no Chatwoot, que pode também puxar o dono no WhatsApp Web se precisar.</p>
+<h2 id="o-que-mudou-em-2026">O que mudou em 2026</h2>
+<p>Chatwoot adicionou suporte a estados de conversa (resolvido, aguardando, priorizado). Antes tudo era um amontoado no inbox.</p>
+<p>Segundo, integração com Datafy agora é nativa. Antes era via webhook manual, hoje é um clique.</p>
+<p>Terceiro, a Meta passou a cobrar templates de marketing (0,01 USD cada). No Chatwoot você consegue ver o custo real de cada conversa que usa template.</p>
+<h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+<h3>Posso usar Chatwoot e automação (n8n) ao mesmo tempo?</h3>
+<p>Sim. Chatwoot pega as mensagens que chegam e distribui para o inbox de atendimento humano. Ao mesmo tempo, um webhook pode sair do Chatwoot e ir para um n8n, que dispara automações (registra em banco, envia para CRM, etc.). Eles trabalham em paralelo.</p>
+<h3>O Chatwoot armazena conversa?</h3>
+<p>Sim, localmente na sua instância. Se você usar o Chatwoot Cloud (deles), fica no servidor deles. Se rodar no seu Docker, fica local. A Meta não armazena conversa, só webhook de entrada.</p>
+<h3>Quando vai ter integração de Chatwoot com API oficial de outros provedores?</h3>
+<p>A Datafy foi a primeira porque a gente trabalha direto com Chatwoot como tech partner. Outros BSPs (Twilio, 360dialog) têm integração por webhook manual. É mais lento de usar, mas funciona.</p>
+<h3>Posso atender 10 números diferentes no mesmo Chatwoot?</h3>
+<p>Sim. Você conecta 10 números (via Datafy), cada um fica num channel. O inbox centraliza todos juntos ou você filtra por número/cliente.</p>
+<h3>Qual é o custo de rodar Chatwoot no meu próprio servidor?</h3>
+<p>Chatwoot é open source, você pode rodar grátis no seu VPS. Datafy cobra R$ 49,90 por número. Chatwoot Cloud custa a partir de 50 USD/mês (nuvem deles). Se você rodar local, é só Datafy.</p>
+<h2 id="como-decidir-chatwoot-para-voc">Como decidir: Chatwoot é para você?</h2>
+<p>Use Chatwoot se: você tem equipe acima de 2 pessoas, quer inbox visual, não confia em SaaS (quer rodar local), ou precisa de coexistência (app + API no mesmo número).</p>
+<p>Não use se: você só quer automação pura (use n8n), quer algo super rápido sem instalar (use WhatsApp Web), ou está começando sozinho (antes de ter equipe, Chatwoot é overhead).</p>
+<p><a href="https://app.datafyapi.com.br" rel="noopener">Teste 7 dias grátis na Datafy com Chatwoot integrado</a></p>
+<h2 id="leia-tamb-m">Leia também</h2>
+<ul>
+<li><a href="/api-oficial-vs-nao-oficial-whatsapp-2026">API oficial vs não oficial do WhatsApp</a></li>
+<li><a href="/coexistencia-whatsapp-api-oficial-app-celular">Coexistência com app e API no mesmo número</a></li>
+<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Como receber mensagens no webhook</a></li>
+<li><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Quanto custa API oficial em 2026</a></li>
+</ul>
+</article>
+
+<aside class="rail" aria-label="Ações">
+  <div class="rail-inner">
+    <div class="rail-cta">
+      <b>Teste com um número</b>
+      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
+      <small>7 dias · sem cartão · sem setup</small>
+    </div>
+    <nav class="rail-box" aria-label="Sumário lateral">
+      <strong>Nesta página</strong>
+      <ol>
+        <li><a href="#principais-pontos">Principais pontos</a></li>
+        <li><a href="#conectar-datafy-no-chatwoot">Conectar Datafy no Chatwoot</a></li>
+        <li><a href="#coexist-ncia-em-a-o">Coexistência em ação</a></li>
+        <li><a href="#diferen-a-entre-chatwoot-whatsapp-web-e">Diferença entre Chatwoot, WhatsA...</a></li>
+        <li><a href="#configurar-as-regras-de-quem-responde">Configurar as regras de quem res...</a></li>
+        <li><a href="#o-que-mudou-em-2026">O que mudou em 2026</a></li>
+        <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+        <li><a href="#como-decidir-chatwoot-para-voc">Como decidir: Chatwoot é para vo...</a></li>
+        <li><a href="#leia-tamb-m">Leia também</a></li>
+      </ol>
+    </nav>
+    <div class="rail-box">
+      <strong>Falar com a gente</strong>
+      <p style="margin:0;color:var(--muted);line-height:1.5">Dúvida antes de assinar?
+      <a href="https://wa.me/5541991338055" rel="noopener">Chame no WhatsApp</a>.</p>
+    </div>
+  </div>
+</aside>
+</div>
+
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div class="foot-about">
+      <a class="logo" href="/" style="margin-bottom:.8rem"><span class="dot">D</span>Datafy<span>API</span></a>
+      <p>A API oficial do WhatsApp para quem automatiza e constrói software. Tech Provider verificado pela Meta, com coexistência e espelho 1:1 da Cloud API.</p>
+      <p>Agência Nexum Marketing e Performance Ltda<br>CNPJ 41.756.486/0001-70 · Curitiba/PR</p>
+    </div>
+    <div>
+      <h4>Temas</h4>
+      <ul>
+        <li><a href="/tema/oficial-vs-nao-oficial">Oficial vs não oficial</a></li>
+        <li><a href="/tema/custo">Custos</a></li>
+        <li><a href="/tema/coexistencia">Coexistência</a></li>
+        <li><a href="/tema/implementacao">Implementação</a></li>
+        <li><a href="/tema/compliance">Banimento e compliance</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Datafy</h4>
+      <ul>
+        <li><a href="https://datafyapi.com.br/">Site</a></li>
+        <li><a href="https://app.datafyapi.com.br/docs">Documentação</a></li>
+        <li><a href="https://app.datafyapi.com.br">Painel</a></li>
+        <li><a href="/autor/vitor-nogarolli">Sobre o autor</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">© 2026 Datafy API. Conteúdo técnico em português sobre WhatsApp Business API.</div>
+</footer>
+
+</body>
+</html>

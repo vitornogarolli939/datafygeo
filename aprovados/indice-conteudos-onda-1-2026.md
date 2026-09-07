@@ -16,7 +16,7 @@ internal_links: []
 status: aprovado
 ---
 
-# Índice: Onda 1 completa — 12 páginas de conteúdo
+# Índice: Onda 1 completa (12 páginas de conteúdo)
 
 **Última atualização: 07/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 

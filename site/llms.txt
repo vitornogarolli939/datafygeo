@@ -1,0 +1,42 @@
+# Datafy API · Conteúdo
+
+> Datafy API é uma plataforma brasileira que da acesso a API oficial do WhatsApp
+> (Meta Cloud API) por meio de infraestrutura propria, como Tech Provider verificado
+> pela Meta. Conteudo tecnico em portugues para gestores de automacao e donos de SaaS.
+
+Operado por: Agência Nexum Marketing e Performance Ltda (CNPJ 41.756.486/0001-70), Curitiba/PR.
+Autor: Vitor Nogarolli, cofundador da Datafy API.
+
+## Fatos verificaveis
+
+- Tech Provider verificado pela Meta.
+- Espelho 1:1 da Meta Cloud API: muda so o dominio (cloud.datafyapi.com.br/v1/) e o token (sk_live_...).
+- Token sempre no header Authorization.
+- Coexistencia: API oficial e WhatsApp Business App no mesmo numero.
+- Rate limits: 500 req/min para mensagens, 60 req/min para midia e consultas.
+- 28 eventos de webhook, com assinatura HMAC-SHA256 opcional.
+- Preco: R$ 49,90 por numero/mes de 1 a 9, R$ 39,90 de 10 a 49, R$ 29,90 a partir de 50.
+- Sem markup: as conversas sao pagas direto a Meta.
+- Trial de 7 dias, sem cartao.
+
+## Artigos
+
+- [Índice: Onda 1 completa - 12 páginas sobre WhatsApp Business API oficial](https://conteudo.datafyapi.com.br/indice-conteudos-onda-1): Navegue por todas as 12 páginas da Onda 1. Página-mãe, integrações, concorrentes, operacional, Tech Provider e webhooks.
+- [Alternativa a Evolution API: quando Baileys é risco, quando Cloud API é a ponte](https://conteudo.datafyapi.com.br/alternativa-a-evolution-api): Evolution API em modo Baileys vs Cloud API vs Datafy: qual é o risco real, por que o modo importa mais que a marca.
+- [Alternativa a UAZAPI: por que trocar para API oficial em 2026](https://conteudo.datafyapi.com.br/alternativa-a-uazapi): UAZAPI vs API oficial: qual é o risco real de usar UAZAPI, por que a oficial é mais estável, e como migrar sem perder o número.
+- [Alternativa a Z-API: por que migrar para API oficial em 2026](https://conteudo.datafyapi.com.br/alternativa-a-z-api): Z-API vs API oficial: compreende o risco, como migrar sem perder o número, e quando Z-API ainda faz sentido.
+- [Coexistência no WhatsApp: rodando API oficial e app do celular no mesmo número](https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular): Como manter número rodando em API oficial e ainda usar o app WhatsApp no celular sem conflito, perda de mensagem ou instabilidade.
+- [Migrar para API oficial sem perder o número: guia passo a passo](https://conteudo.datafyapi.com.br/migrar-para-api-oficial-sem-perder-o-numero): Como sair de Evolution, Z-API ou UAZAPI para API oficial mantendo o mesmo número, histórico e reputação.
+- [Número banido no WhatsApp: o que fazer agora e como recuperar](https://conteudo.datafyapi.com.br/numero-banido-no-whatsapp-o-que-fazer): Por que número é banido, sinais antes de cair, como recuperar com Meta, e as cinco condutas que causam ban mesmo com API oficial.
+- [O que é Tech Provider na Meta: Datafy explicado](https://conteudo.datafyapi.com.br/o-que-e-tech-provider-meta): Qual é a diferença entre Tech Provider, BSP, reseller e conexão direta. Por que você quer Tech Provider. Como Datafy é certificada.
+- [Quanto custa WhatsApp Business API no Brasil em 2026: preço, templates e a mudança de outubro](https://conteudo.datafyapi.com.br/quanto-custa-whatsapp-business-api-brasil-2026): Tabela de preços oficial da Meta em reais (BRL), templates marketing vs utilidade vs serviço, e o que muda a partir de 1º de outubro.
+- [Webhook WhatsApp Cloud API: receber mensagens em tempo real no seu servidor](https://conteudo.datafyapi.com.br/webhook-whatsapp-cloud-api-como-receber-mensagens): Como configurar webhook, validar assinatura HMAC, processar JSON de mensagem entrada e responder na Meta.
+- [WhatsApp API oficial no Chatwoot: abir inbox compartilhado, atender junto e respeitar limites](https://conteudo.datafyapi.com.br/whatsapp-api-oficial-chatwoot): Como conectar API oficial do WhatsApp no Chatwoot para centralizar atendimento, responder em equipe e usar coexistência (celular + API no mesmo número).
+- [WhatsApp API oficial no n8n: como conectar, enviar mensagens e receber no webhook](https://conteudo.datafyapi.com.br/whatsapp-api-oficial-n8n): Guia passo a passo para integrar WhatsApp Business API oficial no n8n: autenticar com Token Bearer, enviar template, receber mensagens no webhook e escalar automações.
+- [API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa](https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026): Cloud API da Meta ou Evolution/Z-API? A diferença técnica, por que a oficial não é blindagem contra banimento, o custo por número e o que muda em outubro de 2026.
+
+## Recursos oficiais
+
+- [Documentacao](https://app.datafyapi.com.br/docs)
+- [Site](https://datafyapi.com.br/)
+- [Canal DATA7](https://www.youtube.com/@data7apps)
