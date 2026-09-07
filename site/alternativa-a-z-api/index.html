@@ -575,8 +575,7 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <h1>Alternativa a Z-API: por que migrar para API oficial em 2026</h1>
-<p><strong>Resposta curta:</strong> Z-API é uma ferramenta que conecta ao WhatsApp através de emulação (WhatsApp Web). Custa caro comparado a outras não oficiais, mas funciona bem enquanto dura. O problema é o "enquanto dura". Meta está cobrando essas ferramentas com mais força em 2026. A API oficial é o passo natural: mesmo preço, risco zero de detectabilidade, conformidade legal.</p>
-<p>Z-API foi popular porque tinha melhor documentação que outras não oficiais. Hoje, isso não compensa mais. A oficial é tão bem documentada quanto (Datafy melhora ainda mais com suporte nativo).</p>
+<p><strong>Resposta curta:</strong> Z-API é uma ferramenta que conecta ao WhatsApp através de emulação (WhatsApp Web). Se você está usando Z-API, aqui estão os trade-offs técnicos de continuar vs mudar para API oficial: você mantém simplicidade de setup, mas depende de atualizações de código sempre que WhatsApp muda; a oficial oferece estabilidade de endpoint, mas com burocracia maior. A escolha depende do seu contexto: prototipagem rápida funciona em ambas, produção com clientes pede oficialização.</p>
 <div class="stats">
   <div class="stat"><b>emulação não autorizada</b><span>viola Termos da Meta</span></div>
   <div class="stat"><b>custo varia</b><span>planos Z-API complexos</span></div>
@@ -592,10 +591,11 @@ footer p{margin:0 0 .5rem}
 <li>Mudança de integração é fácil. Você sai de Z-API e entra em Datafy em menos de uma hora. Código muda só o endpoint e token.</li>
 <li>Z-API promete suporte 24h. Datafy oferece suporte por WhatsApp (é simples, é rápido, é sério).</li>
 </ul>
-<h2 id="por-que-z-api-perdeu-espa-o">Por que Z-API perdeu espaço</h2>
-<p>Z-API começou em torno de 2019, quando a Meta deixava mais espaço para ferramentas emular WhatsApp Web. Com os anos, Meta apertou: bane sessões, requisita login por SMS, monitora múltiplas sessões do mesmo número.</p>
-<p>Z-API se adapta, mas cada atualização do WhatsApp pode quebrar a integração até alguém corrigir o código.</p>
-<p>Isso não acontece em API oficial. Você não depende de quando/se alguém consegue fazer um bot fazer login numa página. O endpoint é estável porque é controlado pela Meta, não por um terceiro.</p>
+<h2 id="trade-off-t-cnico-emula-o-vs-integra-o-o">Trade-off técnico: emulação vs integração oficial</h2>
+<p>Z-API funciona emulando WhatsApp Web: você deixa um navegador rodando e ele digita no seu lugar. Isso tem uma vantagem (rápido de começar) e uma limitação (quebra quando WhatsApp muda).</p>
+<p>A API oficial é um endpoint da Meta: você manda JSON, recebe JSON de volta. Mais estável (você não depende de alguém corrigir código), mas mais lento pra começar (precisa de aprovações).</p>
+<p><strong>Escolher Z-API se:</strong> você prototipa rápido, quer começar hoje, aceita que pode quebrar em 2-3 meses.</p>
+<p><strong>Escolher API oficial se:</strong> você planeja rodar em produção 6+ meses, tem clientes contando com você, quer estabilidade de endpoint.</p>
 <h2 id="z-api-vs-datafy-api-oficial">Z-API vs Datafy (API oficial)</h2>
 <div class="tw"><table>
 <thead>
@@ -659,14 +659,18 @@ footer p{margin:0 0 .5rem}
 </tbody>
 </table></div>
 <p>Único vantagem real de Z-API: é conhecida, tem comunidade grande, há muitos posts de "como integrar". Datafy está crescendo rápido, comunidade está formando.</p>
-<h2 id="quando-z-api-ainda-faz-sentido">Quando Z-API ainda faz sentido</h2>
-<p>Honestamente, hoje em 2026, não faz. Mas se você está em situação específica:</p>
+<h2 id="quando-z-api-a-escolha-certa">Quando Z-API é a escolha certa</h2>
 <ol>
-<li><strong>Prototipagem de 1 dia</strong>: você quer testar uma ideia hoje, não amanhã. Z-API roda em 5 minutos, Datafy também, diferença é nenhuma.</li>
-<li><strong>Contrato específico</strong>: cliente assinou contrato que "deve usar Z-API". Raro, mas acontece. Aí você não tem escolha.</li>
-<li><strong>Falta de Business Manager</strong>: você não tem BM registrada para conectar número oficial. Aí você está preso em emulação até resolver isso.</li>
+<li><strong>Prototipagem de fim de semana</strong>: você quer testar uma ideia hoje, não amanhã. Z-API roda em 5 minutos. API oficial via Datafy também, mas exige BM criada. Se você não tem BM, Z-API ganha.</li>
+<li><strong>Você já investe em Z-API</strong>: migração custa tempo. Se você funciona bem com Z-API, estável, os clientes felizes, talvez não valha quebrar o que funciona.</li>
+<li><strong>Contrato específico com cliente</strong>: raro, mas cliente às vezes exige Z-API. Aí você respeita o contrato.</li>
 </ol>
-<p>Nenhuma dessas situações justifica ficar em Z-API em longo prazo.</p>
+<h2 id="quando-migrar-para-api-oficial-faz-senti">Quando migrar para API oficial faz sentido</h2>
+<ol>
+<li><strong>Você planeja crescer</strong>: centenas de clientes, você precisa de estabilidade. Z-API quebra a cada atualização do app. Oficial não quebra.</li>
+<li><strong>Conformidade legal</strong>: se você opera em setor regulado (financeiro, saúde), oficial oferece contrato e auditoria. Z-API é cinzento.</li>
+<li><strong>Seus clientes reclamam de instabilidade</strong>: se Z-API está caindo muito, é sinal de que você chegou no limite técnico da ferramenta.</li>
+</ol>
 <h2 id="migrar-de-z-api-para-datafy">Migrar de Z-API para Datafy</h2>
 <p>Operacionalmente:</p>
 <ol>
@@ -719,9 +723,10 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#por-que-z-api-perdeu-espa-o">Por que Z-API perdeu espaço</a></li>
+        <li><a href="#trade-off-t-cnico-emula-o-vs-integra-o-o">Trade-off técnico: emulação vs i...</a></li>
         <li><a href="#z-api-vs-datafy-api-oficial">Z-API vs Datafy (API oficial)</a></li>
-        <li><a href="#quando-z-api-ainda-faz-sentido">Quando Z-API ainda faz sentido</a></li>
+        <li><a href="#quando-z-api-a-escolha-certa">Quando Z-API é a escolha certa</a></li>
+        <li><a href="#quando-migrar-para-api-oficial-faz-senti">Quando migrar para API oficial f...</a></li>
         <li><a href="#migrar-de-z-api-para-datafy">Migrar de Z-API para Datafy</a></li>
         <li><a href="#o-que-mudou-em-2026">O que mudou em 2026</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
