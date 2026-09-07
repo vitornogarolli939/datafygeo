@@ -32,7 +32,7 @@ status: aprovado
 
 UAZAPI é a escolha de quem quer começar rápido e barato. API oficial é de quem quer estabilidade, conformidade legal e planejamento de longo prazo.
 
-::numeros: 90%|dos clientes que usam UAZAPI sofrem ban em até 12 meses ;; 24 horas|é quanto demora para recuperar número em modo oficial, se você resolver o motivo ;; 0|investigações públicas contra Datafy, enquanto UAZAPI aparece em grupos de "resolvido ban" ;; menos de 5 min|para migrar de UAZAPI para oficial sem perder histórico
+::numeros: risco alto|de ban em 12 meses (ferramenta não autorizada) ;; 24 horas|é quanto demora para recuperar número em modo oficial, se você resolver o motivo ;; 0|processos legais contra Datafy ;; menos de 5 min|para migrar de UAZAPI para oficial sem perder histórico
 
 ## Principais pontos
 - UAZAPI funciona deixando um navegador rodando com WhatsApp Web. Cada mensagem é digitada automaticamente. Meta detecta isso, bloqueia o número. Não há recurso, não há suporte, número perdido.

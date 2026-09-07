@@ -32,7 +32,7 @@ status: aprovado
 
 Z-API foi popular porque tinha melhor documentação que outras não oficiais. Hoje, isso não compensa mais. A oficial é tão bem documentada quanto (Datafy melhora ainda mais com suporte nativo).
 
-::numeros: 75%|dos usuários de Z-API sofrem ban em 24 meses, segundo dados do mercado ;; 1,5x|mais caro que API oficial para o mesmo volume ;; 0|certeza de que seu número vai sobreviver aos próximos meses ;; 100%|o custo fica igual se você migrar para oficial
+::numeros: risco alto|de ban em 24 meses (emulação não autorizada) ;; 1,5x|mais caro que API oficial para o mesmo volume ;; 0|certeza de que seu número vai sobreviver aos próximos meses ;; 100%|o custo fica igual se você migrar para oficial
 
 ## Principais pontos
 - Z-API é HTTP que envia para WhatsApp Web emulado. Meta vê uma sessão navegador onde deveria haver um número legítimo. Detecta, bloqueia.

@@ -32,7 +32,7 @@ status: aprovado
 
 Evolution em modo Cloud API não é "oficial" (Meta não reconhece Evolution como Tech Provider), mas é mais seguro que Baileys. Evolution em modo Baileys é tão arriscado quanto Z-API. Se você está em Baileys, migre. Se está em Cloud API, pode ficar, mas considere migrar também porque não ganha nada em ficar.
 
-::numeros: 2 modos|Baileys (não oficial, risco) e Cloud API (proxy, seguro) ;; 85%|de usuários em Baileys levam ban em 18 meses ;; 0|benefício de rodar Cloud API vs API oficial direto ;; 1 mudança|de URL/token para sair de Evolution para Datafy
+::numeros: 2 modos|Baileys (não oficial, risco) e Cloud API (proxy, seguro) ;; risco alto|em Baileys (emulação detectável) ;; 0|benefício de rodar Cloud API vs API oficial direto ;; 1 mudança|de URL/token para sair de Evolution para Datafy
 
 ## Principais pontos
 - Evolution é open source. Você roda no Docker, configura qual modo quer. Baileys ou Cloud API. Essa escolha muda tudo.
