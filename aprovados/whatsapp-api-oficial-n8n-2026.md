@@ -41,7 +41,7 @@ O maior diferencial do n8n é que você escala sem código. Um fluxo no n8n cons
 - A Datafy fornece os três. Se você estiver conectado pela Datafy, copia do painel de API. Se estiver direto na Meta, tira do Business Manager.
 - Diferença crítica: na Datafy, o webhook já te aguarda. Você só configura a URL no n8n e aponta para ela. Direto na Meta, você precisa configurar o webhook no App Dashboard da Meta.
 - Cada mensagem recebida no webhook é um JSON com o conteúdo, o remetente, o tipo de mensagem (texto, imagem, áudio, arquivo) e o timestamp. O n8n lê isso com um nó "Webhook" e distribui.
-- A Datafy charge R$ 49,90 por número/mês (faixa inicial), sem markup nas conversas. Teste 7 dias grátis sem cartão.
+- Datafy cobra R$ 49,90 por número/mês (faixa inicial), sem markup nas conversas. Teste 7 dias grátis sem cartão.
 
 ## Como conectar no n8n
 
