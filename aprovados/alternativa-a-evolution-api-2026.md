@@ -1,6 +1,6 @@
 ---
-title: "Alternativa a Evolution API: quando Baileys é risco, quando Cloud API é a ponte"
-description: "Evolution API em modo Baileys vs Cloud API vs Datafy: qual é o risco real, por que o modo importa mais que a marca."
+title: "Evolution API: Baileys vs Cloud API vs Datafy - trade-offs técnicos"
+description: "Evolution tem 2 modos (Baileys emula, Cloud API passa token). Aqui estão os trade-offs, DevOps necessário e quando cada um faz sentido."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "alternativa-a-evolution-api"
 cluster: "concorrentes"
@@ -24,13 +24,11 @@ internal_links:
 status: aprovado
 ---
 
-# Alternativa a Evolution API: quando Baileys é risco, quando Cloud API é a ponte
+# Evolution API: Baileys vs Cloud API vs Datafy - trade-offs técnicos
 
 **Última atualização: 06/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** Evolution API tem dois modos. Modo Baileys emula WhatsApp Web (risco de ban, como Z-API e UAZAPI). Modo Cloud API passa o token direto para Meta (é como um proxy da oficial). O risco não está em "é Evolution", está em qual modo você usa.
-
-Evolution em modo Cloud API não é "oficial" (Meta não reconhece Evolution como Tech Provider), mas é mais seguro que Baileys. Evolution em modo Baileys é tão arriscado quanto Z-API. Se você está em Baileys, migre. Se está em Cloud API, pode ficar, mas considere migrar também porque não ganha nada em ficar.
+**Resposta curta:** Evolution tem dois modos. Modo Baileys emula WhatsApp Web (você roda, quebra quando app atualiza). Modo Cloud API passa token para Meta (você roda, mas estável). Datafy oferece o mesmo que Cloud API sem você rodar servidor. A escolha depende de quanto você quer controlar vs manter.
 
 ::numeros: 2 modos|Baileys (emulação) e Cloud API (proxy) ;; 0|diferença de código entre Cloud API e API oficial direto ;; 1 mudança|de URL/token para migrar de Evolution para Datafy ;; Depende do modo|Baileys emula (não autorizado), Cloud API passa token para Meta
 
