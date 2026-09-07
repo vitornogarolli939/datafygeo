@@ -32,7 +32,7 @@ status: aprovado
 
 UAZAPI é a escolha de quem quer começar rápido e barato. API oficial é de quem quer estabilidade, conformidade legal e planejamento de longo prazo.
 
-::numeros: risco alto|de ban em 12 meses (ferramenta não autorizada) ;; 24 horas|é quanto demora para recuperar número em modo oficial, se você resolver o motivo ;; 0|processos legais contra Datafy ;; menos de 5 min|para migrar de UAZAPI para oficial sem perder histórico
+::numeros: não autorizada|pela Meta (Termos proíbem) ;; 24 horas|pode levar para recuperar número se resolver motivo ;; 0|processos contra Datafy ;; menos de 5 min|migrar sem perder número
 
 ## Principais pontos
 - UAZAPI funciona deixando um navegador rodando com WhatsApp Web. Cada mensagem é digitada automaticamente. Meta detecta isso, bloqueia o número. Não há recurso, não há suporte, número perdido.
@@ -56,7 +56,7 @@ UAZAPI não desapareceu, mas o risco é cada vez maior.
 
 ## Entender o risco de ban
 
-Usando UAZAPI, você tem risco de ban por: 1) ferramenta não autorizada (quase 100% de chance em 12 meses), 2) disparo para lista fria (quer UAZAPI quer oficial), 3) muitas respostas negadas (cliente bloqueando sua conta), 4) palavra-chave proibida na Meta (fácil com spam).
+Usando UAZAPI, você tem risco de ban por: 1) ferramenta não autorizada pela Meta (viola Termos), 2) disparo para lista fria (quer UAZAPI quer oficial), 3) muitas respostas negadas (cliente bloqueando sua conta), 4) palavra-chave proibida na Meta.
 
 Quando ban acontece:
 
@@ -71,7 +71,7 @@ A chance de ban é similar nos dois. O diferencial é o que você pode fazer dep
 |---|---|---|
 | **Autorização da Meta** | Não, proibido | Sim, Tech Provider |
 | **Tempo de setup** | 5 minutos | Menos de 5 minutos |
-| **Risco de detectabilidade** | 90% em 12 meses | Nenhum, é oficial |
+| **Risco de detectabilidade** | Sim, viola Termos | Não, autorizada |
 | **Se tomar ban** | Número perdido, sem recurso | Pode recorrer com prova |
 | **Suporte** | Comunidade, sem SLA | Datafy responde em horas |
 | **Histórico de conversa** | Fica em UAZAPI | Fica em Meta / seu servidor |
@@ -100,17 +100,15 @@ Mudar webhook é simples também. No código, muda a URL de entrada. Ao invés d
 
 ## O que mudou em 2026
 
-Meta começou publicar em relatórios de compliance que UAZAPI é proibida e monitora ativamente.
+A API oficial ficou mais acessível. Datafy e concorrentes adicionaram recursos de coexistência nativa. Antes era problemático rodar API oficial e app no mesmo número. Hoje funciona perfeitamente.
 
-Segundo, Datafy ( e concorrentes oficiais) adicionaram recursos de coexistência nativa. Antes era problemático rodar API oficial e app no mesmo número. Hoje funciona perfeitamente.
-
-Terceiro, legisladores em Brasil, México, Argentina começaram a considerar que usar ferramenta não autorizada para acessar WhatsApp de cliente é violação de contrato e LGPD. Risco legal aumentou.
+A oficialização trouxe conformidade legal. Usar API oficial elimina ambiguidade sobre autorização: você está direto com a Meta, com contrato e responsabilidade clara.
 
 ## Perguntas frequentes
 
 ### Posso manter UAZAPI e testar Datafy ao mesmo tempo?
 
-Não no mesmo número. Mas você pode levar um número de teste, conectar em Datafy, testar 7 dias grátis, depois decidir. Se gostar, migra o número em produção. Se não gostar, volta para UAZAPI (teoricamente, na prática a maioria não volta).
+Não no mesmo número. Mas você pode conectar um número de teste na Datafy, testar 7 dias grátis, e depois decidir. Se gostar, migra o número em produção. Se preferir voltar, UAZAPI continua funcionando.
 
 ### E se meu número já foi banido uma vez em UAZAPI?
 

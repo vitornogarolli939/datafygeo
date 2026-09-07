@@ -60,7 +60,7 @@ Isso não acontece em API oficial. Você não depende de quando/se alguém conse
 |---|---|---|
 | **Risco legal** | Alto, ferramenta proibida | Nenhum, autorizada |
 | **Uptime** | 95% (perde 2-5 dias a cada mês) | 99,9%, garantido por Meta |
-| **Detectabilidade** | 75% em 24 meses | 0%, é oficial |
+| **Tipo de integração** | Emulação (WhatsApp Web) | Oficial (Cloud API) |
 | **Documentação** | Boa | Excelente (Datafy + Meta) |
 | **Setup** | Rápido (5 min) | Muito rápido (menos de 5 min) |
 | **Suporte** | Chat 24h | WhatsApp e email |
@@ -68,7 +68,7 @@ Isso não acontece em API oficial. Você não depende de quando/se alguém conse
 | **Preço base** | Planos complexos, 60+ USD | Simples, R$ 49,90 |
 | **Token refresh** | Manual, frequente | Automático |
 | **Webhooks** | Você configura | Já vem ativo |
-| **Histórico legal** | Risco crescente 2026 | Zero risco |
+| **Autorização Meta** | Não, viola Termos | Sim, Tech Provider |
 
 Único vantagem real de Z-API: é conhecida, tem comunidade grande, há muitos posts de "como integrar". Datafy está crescendo rápido, comunidade está formando.
 
@@ -100,11 +100,11 @@ Custo: Datafy custa R$ 49,90. Z-API sai mais caro no mês (depende do plano, mas
 
 ## O que mudou em 2026
 
-Meta começou a publicar formalmente que Z-API é violação de ToS. Antes era tácito. Agora está explícito em comunidades, comunicados.
+Z-API é explicitamente violação dos Termos da Meta. Ferramenta não é autorizada. Documentação de Z-API não menciona conformidade porque não tem.
 
-Segundo, maior parte das empresas (Twilio, Take, 360dialog) abandonou suporte a Z-API e focou em oficial. Isso reduz documentação cruzada.
+Segundo, maior parte das empresas (Twilio, Take, 360dialog) abandonou suporte a Z-API e focou em oficial. Isso reduz documentação cruzada e viabilidade de longo prazo.
 
-Terceiro, Datafy chegou ao mercado com integração nativa a Chatwoot, n8n, Make. Z-API não tem isso (precisa de webhook manual, é mais lento).
+Terceiro, Datafy chegou ao mercado com integração nativa a Chatwoot, n8n, Make. Z-API não tem isso (precisa de webhook manual, é mais lento). Isso fez integração oficial mais acessível para quem não quer manter infraestrutura.
 
 ## Perguntas frequentes
 

@@ -113,10 +113,10 @@ Veredito: se volume é baixo (até 500 msg serviço/mês), Datafy é mais caro. 
 |---|---|---|---|
 | **Setup** | Complexo, 6 semanas | Fácil, 5 min | Fácil, 5 min |
 | **Custo base mensal** | 0 | R$ 49,90 | R$ 50-100 planos |
-| **Por template marketing** | 0,005 USD | +R$ 0,02 | Grátis (risco) |
-| **Por serviço (depois 24h)** | 0,07-0,08 USD | Incluso até limite | Grátis (risco) |
-| **Transparência** | Alta | Alta | Média |
-| **Risco de ban** | 0 | 0 | 75% em 24m |
+| **Por template marketing** | 0,005 USD | +R$ 0,02 | Grátis |
+| **Por serviço (depois 24h)** | 0,07-0,08 USD | Incluso até limite | Grátis |
+| **Autorização Meta** | Sim, oficial | Sim, Tech Provider | Não, emulação proibida |
+| **Downtime esperado** | Mínimo (SLA 99.9%) | Mínimo (SLA 99.9%) | Frequente (atualiz. WhatsApp) |
 | **Suporte em português** | Não | Sim | Comunitário |
 
 ## Quando cada modelo é melhor
