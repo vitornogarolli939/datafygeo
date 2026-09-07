@@ -578,10 +578,10 @@ footer p{margin:0 0 .5rem}
 <p><strong>Resposta curta:</strong> Evolution API tem dois modos. Modo Baileys emula WhatsApp Web (risco de ban, como Z-API e UAZAPI). Modo Cloud API passa o token direto para Meta (é como um proxy da oficial). O risco não está em "é Evolution", está em qual modo você usa.</p>
 <p>Evolution em modo Cloud API não é "oficial" (Meta não reconhece Evolution como Tech Provider), mas é mais seguro que Baileys. Evolution em modo Baileys é tão arriscado quanto Z-API. Se você está em Baileys, migre. Se está em Cloud API, pode ficar, mas considere migrar também porque não ganha nada em ficar.</p>
 <div class="stats">
-  <div class="stat"><b>2 modos</b><span>Baileys (não oficial) e Cloud API (proxy)</span></div>
+  <div class="stat"><b>2 modos</b><span>Baileys (emulação) e Cloud API (proxy)</span></div>
   <div class="stat"><b>0</b><span>diferença de código entre Cloud API e API oficial direto</span></div>
   <div class="stat"><b>1 mudança</b><span>de URL/token para migrar de Evolution para Datafy</span></div>
-  <div class="stat"><b>Depende do modo</b><span>risco varia (Baileys é risco alto, Cloud API é funcional)</span></div>
+  <div class="stat"><b>Depende do modo</b><span>Baileys emula (não autorizado), Cloud API passa token para Meta</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
@@ -649,9 +649,9 @@ footer p{margin:0 0 .5rem}
 </tr>
 <tr>
 <td><strong>Quando cai</strong></td>
-<td>Frequente (atualização, ban por emulação)</td>
-<td>Raro (só se servidor cai)</td>
-<td>Nunca (SLA 99,9%)</td>
+<td>Quando WhatsApp atualiza</td>
+<td>Quando servidor Evolution cai</td>
+<td>Endpoint da Meta (você não controla)</td>
 </tr>
 <tr>
 <td><strong>Escala</strong></td>
@@ -667,7 +667,7 @@ footer p{margin:0 0 .5rem}
 </tr>
 </tbody>
 </table></div>
-<p>Resumo: Evolution Cloud API é 80% do caminho para oficial. Datafy é 100% com menos trabalho.</p>
+<p>Resumo: Evolution Cloud API funciona, mas você roda e mantém servidor. Datafy oferece o mesmo acesso à Meta, sem manutenção.</p>
 <h2 id="por-que-algu-m-ainda-usa-evolution-em-cl">Por que alguém ainda usa Evolution em Cloud API</h2>
 <p>Razões legítimas:</p>
 <ol>

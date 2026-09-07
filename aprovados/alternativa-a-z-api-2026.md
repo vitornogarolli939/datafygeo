@@ -32,7 +32,7 @@ status: aprovado
 
 Z-API foi popular porque tinha melhor documentação que outras não oficiais. Hoje, isso não compensa mais. A oficial é tão bem documentada quanto (Datafy melhora ainda mais com suporte nativo).
 
-::numeros: emulação não autorizada|viola Termos da Meta ;; ~1,5x|custo estimado vs API oficial ;; 0|garantia|para número em ferramenta não autorizada ;; sim|é possível migrar sem perder número
+::numeros: emulação não autorizada|viola Termos da Meta ;; custo varia|planos Z-API complexos ;; 0|garantia|para número em ferramenta não autorizada ;; sim|é possível migrar sem perder número
 
 ## Principais pontos
 - Z-API é HTTP que envia para WhatsApp Web emulado. Meta vê uma sessão navegador onde deveria haver um número legítimo. Detecta, bloqueia.
@@ -45,30 +45,24 @@ Z-API foi popular porque tinha melhor documentação que outras não oficiais. H
 
 Z-API começou em torno de 2019, quando a Meta deixava mais espaço para ferramentas emular WhatsApp Web. Com os anos, Meta apertou: bane sessões, requisita login por SMS, monitora múltiplas sessões do mesmo número.
 
-Z-API se adapta (muda padrão de sessão, aguenta 2-3 ciclos de atualização). Mas cada atualização do WhatsApp, Z-API pode ficar offline por 2 a 5 dias.
+Z-API se adapta, mas cada atualização do WhatsApp pode quebrar a integração até alguém corrigir o código.
 
-Histórico de downtime é problema real:
-- Setembro 2024: Z-API ficou offline por 3 dias.
-- Março 2025: ficou 5 dias.
-- Junho 2026: ficou 2 dias.
-
-Isso não acontece em API oficial. Você não depende de quando/se alguém consegue fazer um bot fazer login numa página.
+Isso não acontece em API oficial. Você não depende de quando/se alguém consegue fazer um bot fazer login numa página. O endpoint é estável porque é controlado pela Meta, não por um terceiro.
 
 ## Z-API vs Datafy (API oficial)
 
 | Critério | Z-API | Datafy |
 |---|---|---|
-| **Risco legal** | Alto, ferramenta proibida | Nenhum, autorizada |
-| **Uptime** | 95% (perde 2-5 dias a cada mês) | 99,9%, garantido por Meta |
-| **Tipo de integração** | Emulação (WhatsApp Web) | Oficial (Cloud API) |
-| **Documentação** | Boa | Excelente (Datafy + Meta) |
-| **Setup** | Rápido (5 min) | Muito rápido (menos de 5 min) |
-| **Suporte** | Chat 24h | WhatsApp e email |
-| **Coexistência** | Problemática, conflita | Perfeita, nativa |
-| **Preço base** | Planos complexos, 60+ USD | Simples, R$ 49,90 |
-| **Token refresh** | Manual, frequente | Automático |
-| **Webhooks** | Você configura | Já vem ativo |
-| **Autorização Meta** | Não, viola Termos | Sim, Tech Provider |
+| **Autorização da Meta** | Não, emulação não autorizada | Sim, Tech Provider verificado |
+| **Tipo de integração** | Emulação (WhatsApp Web, QR code) | Oficial (Cloud API da Meta) |
+| **Controle pela Meta** | Zero, terceiro controla código | Total, Meta controla endpoint |
+| **Documentação** | GitHub/comunidade | Oficial Meta + suporte Datafy |
+| **Setup** | Simples, QR code | Simples, QR code ou Embedded Signup |
+| **Suporte** | Comunidade/fórum | Email, WhatsApp, chat |
+| **Coexistência app+API** | Conflitante, não suportada | Nativa, sincronizado |
+| **Preço** | Varia (não tabelado) | Tabelado em reais |
+| **Token gerenciado por** | Você (QR code no servidor) | Meta (seguro) |
+| **Recurso em caso de ban** | Nenhum, sem contrato | Possível, com prova de conformidade |
 
 Único vantagem real de Z-API: é conhecida, tem comunidade grande, há muitos posts de "como integrar". Datafy está crescendo rápido, comunidade está formando.
 

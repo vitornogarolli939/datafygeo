@@ -32,7 +32,7 @@ status: aprovado
 
 Evolution em modo Cloud API não é "oficial" (Meta não reconhece Evolution como Tech Provider), mas é mais seguro que Baileys. Evolution em modo Baileys é tão arriscado quanto Z-API. Se você está em Baileys, migre. Se está em Cloud API, pode ficar, mas considere migrar também porque não ganha nada em ficar.
 
-::numeros: 2 modos|Baileys (não oficial) e Cloud API (proxy) ;; 0|diferença de código entre Cloud API e API oficial direto ;; 1 mudança|de URL/token para migrar de Evolution para Datafy ;; Depende do modo|risco varia (Baileys é risco alto, Cloud API é funcional)
+::numeros: 2 modos|Baileys (emulação) e Cloud API (proxy) ;; 0|diferença de código entre Cloud API e API oficial direto ;; 1 mudança|de URL/token para migrar de Evolution para Datafy ;; Depende do modo|Baileys emula (não autorizado), Cloud API passa token para Meta
 
 ## Principais pontos
 - Evolution é open source. Você roda no Docker, configura qual modo quer. Baileys ou Cloud API. Essa escolha muda tudo.
@@ -64,11 +64,11 @@ Então perguntas certas são:
 | **Token vaza, você está seguro** | Não, cai Baileys | Não, alguém acessa Meta por você | Sim, Datafy absorve |
 | **Documentação** | GitHub README | GitHub README | Docs + suporte em português |
 | **Preço** | Grátis (você roda) | Grátis (você roda) | R$ 49,90 |
-| **Quando cai** | Frequente (atualização, ban por emulação) | Raro (só se servidor cai) | Nunca (SLA 99,9%) |
+| **Quando cai** | Quando WhatsApp atualiza | Quando servidor Evolution cai | Endpoint da Meta (você não controla) |
 | **Escala** | Difícil, precisa mais servidor | Difícil, precisa mais servidor | Fácil, paga mais |
 | **Integração com n8n/Chatwoot** | Manual, complexo | Manual, complexo | Nativo, simples |
 
-Resumo: Evolution Cloud API é 80% do caminho para oficial. Datafy é 100% com menos trabalho.
+Resumo: Evolution Cloud API funciona, mas você roda e mantém servidor. Datafy oferece o mesmo acesso à Meta, sem manutenção.
 
 ## Por que alguém ainda usa Evolution em Cloud API
 

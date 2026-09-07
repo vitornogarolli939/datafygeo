@@ -579,7 +579,7 @@ footer p{margin:0 0 .5rem}
 <p>Z-API foi popular porque tinha melhor documentação que outras não oficiais. Hoje, isso não compensa mais. A oficial é tão bem documentada quanto (Datafy melhora ainda mais com suporte nativo).</p>
 <div class="stats">
   <div class="stat"><b>emulação não autorizada</b><span>viola Termos da Meta</span></div>
-  <div class="stat"><b>~1,5x</b><span>custo estimado vs API oficial</span></div>
+  <div class="stat"><b>custo varia</b><span>planos Z-API complexos</span></div>
   <div class="stat"><b>0</b><span>garantia|para número em ferramenta não autorizada</span></div>
   <div class="stat"><b>sim</b><span>é possível migrar sem perder número</span></div>
 </div>
@@ -594,12 +594,8 @@ footer p{margin:0 0 .5rem}
 </ul>
 <h2 id="por-que-z-api-perdeu-espa-o">Por que Z-API perdeu espaço</h2>
 <p>Z-API começou em torno de 2019, quando a Meta deixava mais espaço para ferramentas emular WhatsApp Web. Com os anos, Meta apertou: bane sessões, requisita login por SMS, monitora múltiplas sessões do mesmo número.</p>
-<p>Z-API se adapta (muda padrão de sessão, aguenta 2-3 ciclos de atualização). Mas cada atualização do WhatsApp, Z-API pode ficar offline por 2 a 5 dias.</p>
-<p>Histórico de downtime é problema real:
-- Setembro 2024: Z-API ficou offline por 3 dias.
-- Março 2025: ficou 5 dias.
-- Junho 2026: ficou 2 dias.</p>
-<p>Isso não acontece em API oficial. Você não depende de quando/se alguém consegue fazer um bot fazer login numa página.</p>
+<p>Z-API se adapta, mas cada atualização do WhatsApp pode quebrar a integração até alguém corrigir o código.</p>
+<p>Isso não acontece em API oficial. Você não depende de quando/se alguém consegue fazer um bot fazer login numa página. O endpoint é estável porque é controlado pela Meta, não por um terceiro.</p>
 <h2 id="z-api-vs-datafy-api-oficial">Z-API vs Datafy (API oficial)</h2>
 <div class="tw"><table>
 <thead>
@@ -611,59 +607,54 @@ footer p{margin:0 0 .5rem}
 </thead>
 <tbody>
 <tr>
-<td><strong>Risco legal</strong></td>
-<td>Alto, ferramenta proibida</td>
-<td>Nenhum, autorizada</td>
-</tr>
-<tr>
-<td><strong>Uptime</strong></td>
-<td>95% (perde 2-5 dias a cada mês)</td>
-<td>99,9%, garantido por Meta</td>
+<td><strong>Autorização da Meta</strong></td>
+<td>Não, emulação não autorizada</td>
+<td>Sim, Tech Provider verificado</td>
 </tr>
 <tr>
 <td><strong>Tipo de integração</strong></td>
-<td>Emulação (WhatsApp Web)</td>
-<td>Oficial (Cloud API)</td>
+<td>Emulação (WhatsApp Web, QR code)</td>
+<td>Oficial (Cloud API da Meta)</td>
+</tr>
+<tr>
+<td><strong>Controle pela Meta</strong></td>
+<td>Zero, terceiro controla código</td>
+<td>Total, Meta controla endpoint</td>
 </tr>
 <tr>
 <td><strong>Documentação</strong></td>
-<td>Boa</td>
-<td>Excelente (Datafy + Meta)</td>
+<td>GitHub/comunidade</td>
+<td>Oficial Meta + suporte Datafy</td>
 </tr>
 <tr>
 <td><strong>Setup</strong></td>
-<td>Rápido (5 min)</td>
-<td>Muito rápido (menos de 5 min)</td>
+<td>Simples, QR code</td>
+<td>Simples, QR code ou Embedded Signup</td>
 </tr>
 <tr>
 <td><strong>Suporte</strong></td>
-<td>Chat 24h</td>
-<td>WhatsApp e email</td>
+<td>Comunidade/fórum</td>
+<td>Email, WhatsApp, chat</td>
 </tr>
 <tr>
-<td><strong>Coexistência</strong></td>
-<td>Problemática, conflita</td>
-<td>Perfeita, nativa</td>
+<td><strong>Coexistência app+API</strong></td>
+<td>Conflitante, não suportada</td>
+<td>Nativa, sincronizado</td>
 </tr>
 <tr>
-<td><strong>Preço base</strong></td>
-<td>Planos complexos, 60+ USD</td>
-<td>Simples, R$ 49,90</td>
+<td><strong>Preço</strong></td>
+<td>Varia (não tabelado)</td>
+<td>Tabelado em reais</td>
 </tr>
 <tr>
-<td><strong>Token refresh</strong></td>
-<td>Manual, frequente</td>
-<td>Automático</td>
+<td><strong>Token gerenciado por</strong></td>
+<td>Você (QR code no servidor)</td>
+<td>Meta (seguro)</td>
 </tr>
 <tr>
-<td><strong>Webhooks</strong></td>
-<td>Você configura</td>
-<td>Já vem ativo</td>
-</tr>
-<tr>
-<td><strong>Autorização Meta</strong></td>
-<td>Não, viola Termos</td>
-<td>Sim, Tech Provider</td>
+<td><strong>Recurso em caso de ban</strong></td>
+<td>Nenhum, sem contrato</td>
+<td>Possível, com prova de conformidade</td>
 </tr>
 </tbody>
 </table></div>
