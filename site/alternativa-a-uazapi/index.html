@@ -571,7 +571,7 @@ footer p{margin:0 0 .5rem}
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li>UAZAPI funciona deixando um navegador rodando com WhatsApp Web. Cada mensagem é digitada automaticamente. Meta detecta isso, bloqueia o número. Não há recurso, não há suporte, número perdido.</li>
+<li>A UAZAPI mantém uma sessão de WhatsApp Web aberta e envia por ela. A Meta classifica esse tipo de uso como não autorizado nos <a href="https://business.whatsapp.com/policy" rel="noopener">Termos do WhatsApp Business</a>. O ponto prático é a ausência de contrato: se a conta for restringida, não há canal de recurso.</li>
 <li>API oficial é um endereço que a Meta autoriza. Você envia JSON, recebe JSON de volta. Não é emulação, é integração contratada.</li>
 <li>O maior medo ao sair de UAZAPI: perder o número. Na verdade é fácil migrar. Os dados históricos ficam em UAZAPI, o número continua seu (registrado em BM). Só a conexão muda.</li>
 <li>Preço. UAZAPI cobra por uma API HTTP que imita WhatsApp. Datafy cobra por usar a API de verdade da Meta. Sobre o mesmo mercado, preço equivalente (R$ 49,90 faixa inicial).</li>
@@ -631,7 +631,7 @@ footer p{margin:0 0 .5rem}
 <p>Usando UAZAPI, você tem risco de ban por: 1) ferramenta não autorizada pela Meta (viola Termos), 2) disparo para lista fria (quer UAZAPI quer oficial), 3) muitas respostas negadas (cliente bloqueando sua conta), 4) palavra-chave proibida na Meta.</p>
 <p>Quando ban acontece:</p>
 <ul>
-<li>Em UAZAPI: número perdido, sem recurso, sem aviso. Você descobriu tentando enviar mensagem.</li>
+<li>Sem contrato com a Meta, não há a quem recorrer nem notificação prévia. Você costuma descobrir ao tentar enviar.</li>
 <li>Em API oficial: você recebe notificação. Pode investigar, presentar evidência de conformidade, recorrer.</li>
 </ul>
 <p>A chance de ban é similar nos dois. O diferencial é o que você pode fazer depois.</p>
@@ -661,9 +661,9 @@ footer p{margin:0 0 .5rem}
 <td>Não, autorizada</td>
 </tr>
 <tr>
-<td><strong>Se tomar ban</strong></td>
-<td>Número perdido, sem recurso</td>
-<td>Pode recorrer com prova</td>
+<td><strong>Se a conta for restringida</strong></td>
+<td>Sem canal de recurso</td>
+<td>Recurso possível, com prova de conformidade</td>
 </tr>
 <tr>
 <td><strong>Suporte</strong></td>
@@ -692,8 +692,17 @@ footer p{margin:0 0 .5rem}
 </tr>
 </tbody>
 </table></div>
-<p>Quando faz sentido UAZAPI: você está prototipando por 2 semanas, não quer gastar, e não importa se o número cai. Protótipo de startup.</p>
+<p>Quando a UAZAPI faz sentido: protótipo curto, em que a velocidade de começar vale mais que a garantia de continuidade.</p>
 <p>Quando faz sentido API oficial: você quer rodar em produção, tem clientes, precisa de conformidade legal, ou planejou para mais de 6 meses.</p>
+<h2 id="onde-a-uazapi-melhor">Onde a UAZAPI é melhor</h2>
+<p>Vale dizer com todas as letras, porque é verdade e porque decide caso de uso real. Há coisas que a ferramenta de QR code faz e a API oficial não faz:</p>
+<ul>
+<li><strong>Começa sem Business Manager.</strong> Não há verificação de empresa, não há App Review, não há forma de pagamento a cadastrar. Se você não tem CNPJ à mão ou precisa validar uma ideia hoje, esse é um caminho que existe e o oficial não é.</li>
+<li><strong>Não tem janela de 24 horas nem template.</strong> Você escreve para quem quiser, quando quiser, com o texto que quiser. Na API oficial, fora da janela só sai template aprovado, e aprovação leva tempo.</li>
+<li><strong>Grupos funcionam como no aplicativo.</strong> A Cloud API tem suporte limitado a conversas de grupo, e a coexistência sequer sincroniza grupo. Para quem opera em grupo, essa diferença é decisiva.</li>
+<li><strong>Custo previsível.</strong> Você paga a mensalidade da ferramenta e o servidor, sem tarifa por mensagem entregue.</li>
+</ul>
+<p>Se o seu caso vive dessas quatro coisas, migrar não é upgrade: é perder recurso. A conversa honesta não é "saia da UAZAPI", é entender o que você usa hoje e se o oficial cobre.</p>
 <h2 id="migrar-de-uazapi-para-datafy">Migrar de UAZAPI para Datafy</h2>
 <p>Passo a passo:</p>
 <ol>
@@ -747,6 +756,7 @@ footer p{margin:0 0 .5rem}
         <li><a href="#por-que-uazapi-era-atraente">Por que UAZAPI era atraente</a></li>
         <li><a href="#entender-o-risco-de-ban">Entender o risco de ban</a></li>
         <li><a href="#tabela-comparativa-uazapi-vs-datafy-api">Tabela comparativa: UAZAPI vs Da...</a></li>
+        <li><a href="#onde-a-uazapi-melhor">Onde a UAZAPI é melhor</a></li>
         <li><a href="#migrar-de-uazapi-para-datafy">Migrar de UAZAPI para Datafy</a></li>
         <li><a href="#o-que-mudou-em-2026">O que mudou em 2026</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>

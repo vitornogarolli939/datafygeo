@@ -180,7 +180,7 @@
           "name": "Vale a pena migrar se está tudo funcionando?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Se você está em Cloud API e a operação é estável, não há urgência. Se está em Baileys com clientes dependendo do número, a pergunta não é se vale migrar: é quanto custa o dia em que o número cair."
+            "text": "Se você está em Cloud API e a operação é estável, não há urgência. Se está em Baileys com clientes dependendo do número, a pergunta é quanto custaria uma interrupção sem canal de recurso, e se esse risco cabe na sua operação."
           }
         }
       ]
@@ -572,7 +572,7 @@ footer p{margin:0 0 .5rem}
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li><strong>Baileys</strong> conecta por QR code e não cria registro na Meta. É o modo que a <a href="https://business.whatsapp.com/policy" rel="noopener">política do WhatsApp Business</a> não autoriza, e o número pode cair sem canal de recurso, porque não existe contrato.</li>
+<li><strong>Baileys</strong> conecta por QR code e não cria registro na Meta. É o modo que a <a href="https://business.whatsapp.com/policy" rel="noopener">política do WhatsApp Business</a> não autoriza. Como não há relação contratual, também não há canal de recurso.</li>
 <li><strong>Cloud API</strong> usa o seu token da Meta e repassa a chamada. Está dentro dos Termos, mas não te dá o acesso: você continua tendo que obter as permissões e a Business Manager por conta própria.</li>
 <li>Nos dois modos <strong>o servidor é seu</strong>: instalação, atualização, disponibilidade e a guarda do token ficam com você.</li>
 <li>Apontar para a Cloud API não torna a Evolution oficial, do mesmo jeito que o <code>curl</code> não vira oficial por chamar a Meta. Oficial é o endereço do outro lado, não o programa que disca.</li>
@@ -623,7 +623,7 @@ footer p{margin:0 0 .5rem}
 </figure>
 
 <h2 id="por-que-o-modo-decide-tudo">Por que o modo decide tudo</h2>
-<p>Em <strong>Baileys</strong>, a Evolution mantém uma sessão de WhatsApp Web ativa e envia as mensagens por ali. Não há template, não há categoria, não há aprovação, e é isso que torna o modo atraente: funciona no mesmo dia, sem burocracia. O preço é a ausência de contrato: se a sessão for detectada, o número cai e não há para quem recorrer.</p>
+<p>Em <strong>Baileys</strong>, a Evolution mantém uma sessão de WhatsApp Web ativa e envia as mensagens por ali. Não há template, não há categoria, não há aprovação, e é isso que torna o modo atraente: funciona no mesmo dia, sem burocracia. O preço é a ausência de contrato: a Meta classifica esse uso como não autorizado nos <a href="https://business.whatsapp.com/policy" rel="noopener">Termos do WhatsApp Business</a>, e sem relação contratual não há canal de recurso.</p>
 <p>Em <strong>Cloud API</strong>, a Evolution vira um intermediário no caminho. A mensagem sai do seu código, passa pelo seu servidor Evolution e chega ao endpoint da Meta com o seu token. Do ponto de vista da Meta, é uma chamada legítima. Do seu ponto de vista, é mais uma peça que precisa estar de pé.</p>
 <p>Vale ser justo com o projeto: em Cloud API, a Evolution te dá uma camada de abstração e o código na sua mão. Isso tem valor real para quem quer customizar o comportamento ou não quer depender de fornecedor.</p>
 <figure>
@@ -709,6 +709,16 @@ footer p{margin:0 0 .5rem}
 <p><strong>Fique em Baileys</strong> só em protótipo descartável, com número que você não se importa em perder. Em produção com cliente, o risco não é distribuído: ele cai inteiro no número.</p>
 <p><strong>Fique em Cloud API na Evolution</strong> se você quer o código na sua mão, tem quem cuide de infraestrutura e valoriza não depender de fornecedor. É uma escolha legítima, e para quem já tem plataforma rodando costuma ser a de menor atrito.</p>
 <p><strong>Vá para um serviço gerenciado</strong> se o seu time é de produto, não de infraestrutura, ou se você conecta números de clientes e precisa de Embedded Signup e coexistência, que dependem do papel do provedor na Meta.</p>
+<h2 id="onde-a-evolution-melhor">Onde a Evolution é melhor</h2>
+<p>Nenhum serviço gerenciado ganha da Evolution nestes pontos, e ignorá-los seria desonesto:</p>
+<ul>
+<li><strong>O código é seu e é auditável.</strong> O repositório é público, você lê, modifica e adapta o comportamento. Nenhum provedor entrega isso.</li>
+<li><strong>Não existe dependência de fornecedor.</strong> A instância roda no seu servidor. Se um provedor encerrar as atividades, quem usa provedor precisa migrar; quem roda Evolution, não.</li>
+<li><strong>Custo de software zero.</strong> Você paga infraestrutura, não licença. Em operação com muitos números, isso pesa.</li>
+<li><strong>Comunidade grande em português.</strong> Boa parte do material técnico brasileiro sobre WhatsApp foi escrita em cima dela, e isso encurta muito a busca por solução de problema.</li>
+<li><strong>Em modo Baileys, existem coisas que a Cloud API não faz:</strong> grupos como no aplicativo, sem janela de 24 horas e sem aprovação de template.</li>
+</ul>
+<p>Se você valoriza esses pontos e tem quem cuide da infraestrutura, ficar na Evolution é decisão técnica defensável, não teimosia.</p>
 <h2 id="como-sair-da-evolution">Como sair da Evolution</h2>
 <p><strong>Se você está em Cloud API</strong>, é a troca simples: você já tem Business Manager e token. Muda a URL base e o token no código, e o corpo continua idêntico. Dá para rodar em paralelo por alguns dias antes de desligar a instância.</p>
 <p><strong>Se você está em Baileys</strong>, não é troca de fornecedor: é registrar o número na Meta pela primeira vez. O número ainda não existe na Business Manager, então o processo inclui verificação por SMS ou ligação, e a decisão sobre coexistência. Essa decisão precisa ser tomada <strong>antes</strong> de conectar: sem ela, o número sai do aplicativo do celular.</p>
@@ -727,7 +737,7 @@ footer p{margin:0 0 .5rem}
 <h3>O projeto pode ser descontinuado?</h3>
 <p>É código aberto e o repositório é público, então o código continua disponível mesmo que a manutenção pare. O risco real não é sumir: é ficar sem atualização enquanto o WhatsApp muda, o que atinge principalmente quem está em Baileys.</p>
 <h3>Vale a pena migrar se está tudo funcionando?</h3>
-<p>Se você está em Cloud API e a operação é estável, não há urgência. Se está em Baileys com clientes dependendo do número, a pergunta não é se vale migrar: é quanto custa o dia em que o número cair.</p>
+<p>Se você está em Cloud API e a operação é estável, não há urgência. Se está em Baileys com clientes dependendo do número, a pergunta é quanto custaria uma interrupção sem canal de recurso, e se esse risco cabe na sua operação.</p>
 <h2 id="como-decidir">Como decidir</h2>
 <p>Descubra em que modo você está antes de qualquer coisa. Em Baileys com clientes em produção, planeje a saída, e leia sobre coexistência antes de conectar. Em Cloud API, você já está dentro das regras: a decisão vira só se você quer continuar mantendo servidor ou prefere passar isso adiante.</p>
 <div class="cta"><h3>Confira em que modo você está hoje</h3><p>Se o número foi conectado por QR code, é Baileys. Se foi por token e phone_number_id, é Cloud API. A resposta muda completamente o que você precisa fazer a seguir.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
@@ -756,6 +766,7 @@ footer p{margin:0 0 .5rem}
         <li><a href="#por-que-o-modo-decide-tudo">Por que o modo decide tudo</a></li>
         <li><a href="#o-que-cada-modo-exige-de-voc">O que cada modo exige de você</a></li>
         <li><a href="#quando-cada-caminho-o-certo">Quando cada caminho é o certo</a></li>
+        <li><a href="#onde-a-evolution-melhor">Onde a Evolution é melhor</a></li>
         <li><a href="#como-sair-da-evolution">Como sair da Evolution</a></li>
         <li><a href="#o-que-mudou-em-2026">O que mudou em 2026</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>

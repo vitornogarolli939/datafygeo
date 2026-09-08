@@ -34,7 +34,7 @@ pendencias: ["[VERIFICAR] confirmar preço vigente na tabela da Meta no dia da p
 
 **Última atualização: 06/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API (Tech Provider verificado pela Meta)
 
-**Resposta curta:** a API oficial é a da própria Meta. Você fala com um endereço autorizado, com o número registrado no nome da sua empresa e regras que estão publicadas. A não oficial (Evolution em modo Baileys, Z-API, UAZAPI, WPPConnect, Baileys, entre outras) é um robô que deixa um WhatsApp Web aberto num servidor e digita no seu lugar. Não existe contrato com a Meta, então quando ela detecta, o número cai, sem aviso e sem para quem reclamar.
+**Resposta curta:** a API oficial é a da própria Meta. Você fala com um endereço autorizado, com o número registrado no nome da sua empresa e regras que estão publicadas. A não oficial (Evolution em modo Baileys, Z-API, UAZAPI, WPPConnect, Baileys, entre outras) opera simulando o WhatsApp Web: um servidor mantém a sessão aberta e envia no seu lugar. A Meta classifica isso como uso não autorizado nos [Termos do WhatsApp Business](https://business.whatsapp.com/policy). Como não existe relação contratual, também não existe canal de recurso caso a conta seja restringida.
 
 O que quase ninguém fala: **migrar para a oficial não acaba com o risco de banimento.** Acaba com *um* tipo, o de ser pego usando ferramenta proibida. Todos os outros continuam. Quem dispara para lista fria e ninguém responde é bloqueado do mesmo jeito, com API oficial e template aprovado.
 
@@ -81,7 +81,7 @@ Vale separar por natureza, porque o risco é o mesmo mas o que você contrata é
 
 Antes de tudo, o principal: **a Evolution API não é oficial.** É um software de código aberto que você instala no seu próprio servidor. Não é parceira da Meta, não é BSP e não é Tech Provider.
 
-O que confunde é que ela consegue conectar de duas formas, e o [repositório oficial dela](https://github.com/EvolutionAPI/evolution-api) lista as duas: por **Baileys**, que emula o WhatsApp Web e é o que derruba número, ou apontando para a **Cloud API** da Meta.
+O que confunde é que ela consegue conectar de duas formas, e o [repositório oficial dela](https://github.com/EvolutionAPI/evolution-api) lista as duas: por **Baileys**, que emula o WhatsApp Web e é o modo que fica fora dos [Termos do WhatsApp Business](https://business.whatsapp.com/policy), ou apontando para a **Cloud API** da Meta.
 
 Só que apontar para a API oficial não torna a Evolution oficial, do mesmo jeito que o `curl` não vira oficial por fazer uma chamada para a Meta. Oficial é o endereço da Meta do outro lado da linha, não o programa que disca.
 
