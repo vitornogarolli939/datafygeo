@@ -1,6 +1,6 @@
 ---
 title: "Guia completo: API oficial do WhatsApp"
-description: "12 páginas para developers: como começar, integrar em n8n/Chatwoot, comparar alternativas, evitar bans, escalar. Tudo técnico, sem achismo."
+description: "9 páginas para developers: como começar, integrar em n8n/Chatwoot, migrar sem perder número, entender preço e webhooks."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "guia-completo-api-oficial-whatsapp"
 cluster: "oficial_vs_nao"
@@ -20,134 +20,96 @@ status: aprovado
 
 **Última atualização: 07/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-Você quer usar a API oficial do WhatsApp. Mas tem dúvida: por onde começo? Como integro em n8n? Qual é o risco real? Como migro de Z-API sem perder número? Aqui estão as respostas: 12 páginas técnicas, sem achismo, cada uma respondendo uma pergunta específica que seus devs estão fazendo agora.
+Você quer usar a API oficial do WhatsApp. Mas tem dúvida: por onde começo? Como integro em n8n? Qual é o risco real? Como migro sem perder número? Aqui estão as respostas: 9 páginas técnicas, sem achismo, cada uma respondendo uma pergunta específica que seus devs estão fazendo agora.
 
 ::diagrama: onda-1-roadmap
 
-## Página-mãe (comece aqui)
+## 1. Fundação: Entender a API oficial
 
-Esta é a base de tudo. Se você vai ler uma página, que seja esta:
+Comece aqui para entender a diferença técnica:
 
-**[API oficial vs não oficial do WhatsApp em 2026](/api-oficial-vs-nao-oficial-whatsapp-2026)**
-- Diferença técnica entre oficial e não oficial
+**[API oficial vs não oficial do WhatsApp](/api-oficial-vs-nao-oficial-whatsapp-2026)**
+- Diferença técnica: emulação vs integração contratada
 - Por que "oficial" não é blindagem contra ban
-- Custo por número
-- Todos os outros links partem daqui
+- Todas as próximas páginas partem daqui
 
-## Integrações (como fazer)
+## 2. Integrações: Como usar
 
-Você decidiu usar oficial. Agora: como integrar na sua ferramenta?
+Você está pronto. Agora: qual ferramenta?
 
 **[WhatsApp API oficial no n8n](/whatsapp-api-oficial-n8n)**
-- Conectar, enviar mensagens, receber no webhook
-- Maior demanda técnica do nicho
-- Automação descentralizada
+- Automação visual sem código
+- Webhook, condicional, integração com base de dados
 
 **[WhatsApp API oficial no Chatwoot](/whatsapp-api-oficial-chatwoot)**
 - Inbox compartilhado para equipe
-- Coexistência (app + API no mesmo número)
-- Diferencial Datafy: aba nativa
+- Coexistência: app no celular + API rodando
 
-## Concorrentes (por que migrar)
+## 3. Operacional: O caminho até lá
 
-Você está em Z-API, UAZAPI ou Evolution? Aqui explica o risco e por que mudar:
+Tudo que você precisa para migrar:
 
-**[Alternativa a UAZAPI](/alternativa-a-uazapi)**
-- Emulação não autorizada
-- Quando UAZAPI era atraente (2022)
-- Como migrar sem perder número
-
-**[Alternativa a Z-API](/alternativa-a-z-api)**
-- Similar risco a UAZAPI
-- Melhor documentação, mesmo problema
-- Comparação de custo
-
-**[Alternativa a Evolution API](/alternativa-a-evolution-api)**
-- Dois modos (Baileys arriscado vs Cloud seguro)
-- Por que o modo importa mais que a marca
-- Quando cada um faz sentido
-
-## Operacional (fator medo)
-
-Cinco perguntas que travam migração:
-
-**[Migrar sem perder número](/migrar-para-api-oficial-sem-perder-o-numero)**
-- Passo a passo da migração
-- De Z-API, UAZAPI ou Evolution para Datafy
-- Dowtime zero possível
-- Tempo total: menos de 1 hora
+**[Migrar para API oficial sem perder número](/migrar-para-api-oficial-sem-perder-o-numero)**
+- 5 passos, menos de 1 hora
+- Número continua seu, histórico antigo fica onde estava
 
 **[Número banido: o que fazer](/numero-banido-no-whatsapp-o-que-fazer)**
-- 5 condutas que derrubam número (mesmo em oficial)
-- Recuperação possível?
+- 5 condutas que derram número (mesmo em oficial)
+- Como recuperar com Meta
 - Sinais de aviso antes do ban
 
 **[Quanto custa WhatsApp Business API Brasil 2026](/quanto-custa-whatsapp-business-api-brasil-2026)**
-- Tabelas de preço: Meta direto vs Datafy vs Z-API
+- Tabelas: Meta direto vs plataformas
 - Calculadora de ROI
-- Mudança de outubro (mensagens de serviço ficam pagas)
+- O que muda em outubro
 
-## Diferencial Datafy (Tech Provider)
+## 4. Diferencial: Tech Provider Datafy
 
-Por que Datafy é diferente (e por que isso importa):
+Por que é diferente:
 
 **[Coexistência: API + app no mesmo número](/coexistencia-whatsapp-api-oficial-app-celular)**
-- Seu número roda automação 24/7 E você usa app no celular
-- Sincronizados, zero conflito
-- Recurso que só Tech Provider tem
+- Seu número roda automação 24/7 e você usa app no celular
+- Sincronizado, zero conflito
+- Recurso que só Tech Provider oferece
 
 **[O que é Tech Provider Meta](/o-que-e-tech-provider-meta)**
-- Por que Datafy é certificada
-- Diferença vs BSP, reseller, direto na Meta
-- Embedded Signup (cliente conecta sozinho no seu app)
+- Por que Datafy é certificada pela Meta
+- Diferença: Tech Provider vs BSP vs Reseller vs Direto
+- Embedded Signup (cliente conecta sozinho)
 
-## Técnico (implementação)
+## 5. Técnico: Implementação
 
 Pronto pra código:
 
 **[Webhook: receber mensagens em tempo real](/webhook-whatsapp-cloud-api-como-receber-mensagens)**
-- 28 tipos de eventos que Meta manda
+- 28 tipos de eventos
 - Validar assinatura HMAC
 - Exemplos de código
-- Troubleshooting de webhook
+- Troubleshooting
 
 ---
 
-## Como navegar
+## Roteiros de leitura
 
-**Se você é novo no assunto:**
-1. Leia [API oficial vs não oficial](/api-oficial-vs-nao-oficial-whatsapp-2026)
-2. Escolha seu caminho abaixo
+**Novo no assunto?**
+1. API oficial vs não oficial
+2. Escolha sua ferramenta (n8n ou Chatwoot)
+3. Webhook (se vai usar)
 
-**Se você vem de Z-API/UAZAPI/Evolution:**
-1. Leia [Alternativa a...](/alternativa-a-uazapi) correspondente
-2. Depois [Migrar sem perder número](/migrar-para-api-oficial-sem-perder-o-numero)
-3. Depois [Quanto custa](/quanto-custa-whatsapp-business-api-brasil-2026)
-
-**Se você quer integrar em n8n/Chatwoot:**
-1. Leia [API oficial vs não oficial](/api-oficial-vs-nao-oficial-whatsapp-2026)
-2. Leia [Integração em sua ferramenta](/whatsapp-api-oficial-n8n)
-3. Leia [Webhook](/webhook-whatsapp-cloud-api-como-receber-mensagens)
-
-**Se você quer entender Tech Provider/coexistência:**
-1. Leia [O que é Tech Provider](/o-que-e-tech-provider-meta)
-2. Leia [Coexistência](/coexistencia-whatsapp-api-oficial-app-celular)
-
-**Se você tem número banido:**
-1. Leia [Número banido: o que fazer](/numero-banido-no-whatsapp-o-que-fazer)
+**Vindo de outra solução?**
+1. API oficial vs não oficial (entender trade-off)
+2. Migrar sem perder número (passo a passo)
+3. Quanto custa (comparar)
 
 ---
 
-## Próximas ondas (71 páginas)
+## APIs Não Oficiais: Review técnico
 
-Onda 1 é fundação. Onda 2+ vai cubrir:
+Se está usando Z-API, UAZAPI ou Evolution, temos um análise técnica de trade-offs:
 
-- **Onda 2:** 14 integrações (Make, Zapier, Typebot, Dify, Flowise, etc)
-- **Onda 3:** 16 concorrentes (Twilio, 360dialog, Gupshup, etc)
-- **Onda 4:** 12 problemas concretos (webhook não chega, erro 403, etc)
-- **Onda 5:** 14 glossário técnico (300-600 palavras cada)
-- **Onda 6:** 7 pricing/cost pages
-- **Onda 7:** 8 SaaS/multi-tenant pages
+- [Z-API: trade-offs técnicos](/alternativa-a-z-api)
+- [UAZAPI: emulação vs oficial](/alternativa-a-uazapi)
+- [Evolution: 3 modos diferentes](/alternativa-a-evolution-api)
 
 ---
 

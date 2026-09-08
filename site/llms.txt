@@ -21,7 +21,7 @@ Autor: Vitor Nogarolli, cofundador da Datafy API.
 
 ## Artigos
 
-- [Guia completo: API oficial do WhatsApp](https://conteudo.datafyapi.com.br/guia-completo-api-oficial-whatsapp): 12 páginas para developers: como começar, integrar em n8n/Chatwoot, comparar alternativas, evitar bans, escalar. Tudo técnico, sem achismo.
+- [Guia completo: API oficial do WhatsApp](https://conteudo.datafyapi.com.br/guia-completo-api-oficial-whatsapp): 9 páginas para developers: como começar, integrar em n8n/Chatwoot, migrar sem perder número, entender preço e webhooks.
 - [Evolution API: Baileys vs Cloud API vs Datafy - trade-offs técnicos](https://conteudo.datafyapi.com.br/alternativa-a-evolution-api): Evolution tem 2 modos (Baileys emula, Cloud API passa token). Aqui estão os trade-offs, DevOps necessário e quando cada um faz sentido.
 - [UAZAPI vs API oficial: trade-offs técnicos e como migrar](https://conteudo.datafyapi.com.br/alternativa-a-uazapi): UAZAPI emula WhatsApp Web, API oficial é endpoint da Meta. Aqui estão os trade-offs, o risco real, e como migrar sem perder o número.
 - [Alternativa a Z-API: por que migrar para API oficial em 2026](https://conteudo.datafyapi.com.br/alternativa-a-z-api): Z-API vs API oficial: compreende o risco, como migrar sem perder o número, e quando Z-API ainda faz sentido.
