@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa</title>
+<meta name="description" content="Cloud API da Meta ou Evolution/Z-API? A diferença técnica, por que a oficial não é blindagem contra banimento, o custo por número e o que muda em outubro de 2026.">
+<link rel="canonical" href="https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026">
+<meta name="author" content="Vitor Nogarolli">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Datafy API · Conteúdo">
+<meta property="og:title" content="API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa">
+<meta property="og:description" content="Cloud API da Meta ou Evolution/Z-API? A diferença técnica, por que a oficial não é blindagem contra banimento, o custo por número e o que muda em outubro de 2026.">
+<meta property="og:url" content="https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026">
+<meta property="article:published_time" content="2026-09-06">
+<meta property="article:modified_time" content="2026-09-06">
+<meta property="article:author" content="Vitor Nogarolli">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa">
+<meta name="twitter:description" content="Cloud API da Meta ou Evolution/Z-API? A diferença técnica, por que a oficial não é blindagem contra banimento, o custo por número e o que muda em outubro de 2026.">
+
+<link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://datafyapi.com.br/#organization",
+      "name": "Datafy API",
+      "alternateName": "DatafyAPI",
+      "url": "https://datafyapi.com.br/",
+      "description": "Plataforma brasileira que da acesso a API oficial do WhatsApp (Meta Cloud API) por meio de infraestrutura propria, como Tech Provider verificado pela Meta.",
+      "areaServed": "BR",
+      "legalName": "Agência Nexum Marketing e Performance Ltda",
+      "taxID": "41.756.486/0001-70",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Curitiba",
+        "addressRegion": "PR",
+        "addressCountry": "BR"
+      },
+      "founder": {
+        "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person",
+      "name": "Vitor Nogarolli",
+      "jobTitle": "Cofundador da Datafy API",
+      "url": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli",
+      "worksFor": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://conteudo.datafyapi.com.br/#website",
+      "url": "https://conteudo.datafyapi.com.br/",
+      "name": "Datafy API · Conteúdo",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://datafyapi.com.br/#software",
+      "name": "Datafy API",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://datafyapi.com.br/",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "featureList": [
+        "Embedded Signup",
+        "Coexistência com WhatsApp Business App",
+        "28 eventos de webhook",
+        "Disparo por template via CSV",
+        "Integração com n8n, Make, Zapier e Chatwoot"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "49.90",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock",
+        "description": "Por número conectado, por mês. R$ 39,90 de 10 a 49 números e R$ 29,90 a partir de 50."
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://conteudo.datafyapi.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Oficial vs não oficial",
+          "item": "https://conteudo.datafyapi.com.br/tema/oficial-vs-nao-oficial"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026#article",
+      "headline": "API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa",
+      "description": "Cloud API da Meta ou Evolution/Z-API? A diferença técnica, por que a oficial não é blindagem contra banimento, o custo por número e o que muda em outubro de 2026.",
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-09-06",
+      "dateModified": "2026-09-06",
+      "author": {
+        "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "mainEntityOfPage": "https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026",
+      "citation": [
+        "https://developers.facebook.com/docs/whatsapp/cloud-api",
+        "https://developers.facebook.com/docs/whatsapp/pricing",
+        "https://developers.facebook.com/docs/whatsapp/embedded-signup",
+        "https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks",
+        "https://business.whatsapp.com/policy",
+        "https://app.datafyapi.com.br/docs",
+        "https://github.com/EvolutionAPI/evolution-api",
+        "https://www.youtube.com/watch?v=cZ_nyIUv5ic",
+        "https://www.youtube.com/watch?v=FcAwJqVHNoU"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Evolution API vai banir meu número?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Evolution API não é oficial: é um software de código aberto que você instala no seu servidor, e não é parceira da Meta. Ela consegue conectar por Baileys, que emula o WhatsApp Web e traz risco alto de banimento sem recurso, ou apontando para a Cloud API da Meta. Mas apontar para a API oficial não torna a Evolution oficial, e nesse modo ela não te dá acesso: você continua tendo que passar sozinho por Business Manager verificada, App Review e Tech Provider."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso de Business Manager verificada para usar a API oficial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para começar, não. Basta ter um Business Manager, verificado ou não, e um número elegível. A verificação aumenta os limites diários de envio de template, então vale fazer depois, mas não é pré-requisito para a primeira mensagem."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso continuar usando o WhatsApp Business no celular?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, com coexistência. O número segue no app para atendimento manual e responde também pela API para automações, no mesmo histórico. Para trazer histórico e contatos, é preciso disparar a sincronização em até 24 h após a conexão. É uma vez só por tipo, e perder o prazo significa refazer o onboarding."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto custa usar a API oficial pela Datafy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "R$ 49,90 por número/mês de 1 a 9 números, R$ 39,90 de 10 a 49 e R$ 29,90 a partir de 50, sem taxa de setup. As conversas são pagas diretamente à Meta, pela tabela oficial, sem markup. A Datafy não cobra por mensagem. Trial de 7 dias, sem cartão."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Meus fluxos no n8n vão continuar funcionando se eu migrar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Se eles já falam com a Cloud API, sim: a Datafy espelha os endpoints da Meta. Muda o domínio e o token, que vai sempre no header Authorization, e nunca como ?access_token= na URL. Se falam com Evolution em modo QR ou Z-API, o formato do payload é diferente e precisa ser adaptado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Migrar para a oficial resolve meu problema de banimento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Resolve metade. Acaba com o banimento por usar ferramenta não autorizada. Não muda nada se a conduta continuar a mesma: lista fria, ninguém respondendo e nicho proibido bloqueiam número oficial do mesmo jeito."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Vídeo citado neste artigo",
+      "description": "Cloud API da Meta ou Evolution/Z-API? A diferença técnica, por que a oficial não é blindagem contra banimento, o custo por número e o que muda em outubro de 2026.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/cZ_nyIUv5ic/maxresdefault.jpg",
+      "uploadDate": "2026-09-06",
+      "contentUrl": "https://www.youtube.com/watch?v=cZ_nyIUv5ic",
+      "embedUrl": "https://www.youtube.com/embed/cZ_nyIUv5ic",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Vídeo citado neste artigo",
+      "description": "Cloud API da Meta ou Evolution/Z-API? A diferença técnica, por que a oficial não é blindagem contra banimento, o custo por número e o que muda em outubro de 2026.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/8xA-8z1YW98/maxresdefault.jpg",
+      "uploadDate": "2026-09-06",
+      "contentUrl": "https://www.youtube.com/watch?v=8xA-8z1YW98",
+      "embedUrl": "https://www.youtube.com/embed/8xA-8z1YW98",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    }
+  ]
+}
+</script>
+
+
+
+<style>
+:root{
+  --bg:#fcfbf9; --surface:#ffffff; --fg:#17181a; --muted:#63666b; --line:#e6e3de;
+  --accent:#0b6e4f; --accent-2:#0d8a63; --accent-soft:#e9f4ef;
+  --danger:#a33a2a; --danger-soft:#fbeeeb;
+  --code-bg:#f2f1ed; --warn-bg:#fdf7e9; --warn-line:#e6d09a;
+  --shadow:0 1px 2px rgba(20,20,20,.05), 0 8px 24px -12px rgba(20,20,20,.12);
+  --max:46rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131416; --surface:#1a1c1f; --fg:#eceae6; --muted:#9ea3a9; --line:#2c2f33;
+    --accent:#4fc79b; --accent-2:#63d6ac; --accent-soft:#12251e;
+    --danger:#e08272; --danger-soft:#2a1a17;
+    --code-bg:#22252a; --warn-bg:#26210f; --warn-line:#5d5127;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131416; --surface:#1a1c1f; --fg:#eceae6; --muted:#9ea3a9; --line:#2c2f33;
+  --accent:#4fc79b; --accent-2:#63d6ac; --accent-soft:#12251e;
+  --danger:#e08272; --danger-soft:#2a1a17;
+  --code-bg:#22252a; --warn-bg:#26210f; --warn-line:#5d5127;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:"Iowan Old Style","Charter",Georgia,"Times New Roman",serif;
+  font-size:1.075rem; line-height:1.68; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 1.35rem}
+.sans{font-family:system-ui,-apple-system,"Segoe UI",Inter,sans-serif}
+a{color:var(--accent); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+img,svg{max-width:100%}
+
+/* topo */
+.topbar{border-bottom:1px solid var(--line); background:var(--surface); position:sticky; top:0; z-index:10}
+.topbar .wrap{display:flex; gap:1rem; align-items:center; justify-content:space-between; padding:.8rem 1.35rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.85rem}
+.brand{font-weight:700; letter-spacing:-.02em; text-decoration:none; color:var(--fg); font-size:.95rem}
+.brand span{color:var(--accent)}
+nav.crumbs{color:var(--muted); font-size:.8rem}
+nav.crumbs a{color:var(--muted); text-decoration:none}
+nav.crumbs a:hover{text-decoration:underline}
+
+/* hero */
+header.post{padding:3rem 0 0}
+.eyebrow{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.75rem; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--accent); margin-bottom:.85rem;
+}
+h1{
+  font-size:clamp(1.9rem,5.2vw,2.85rem); line-height:1.12; letter-spacing:-.025em;
+  margin:0 0 1.15rem; font-weight:700; text-wrap:balance;
+}
+.byline{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.85rem; color:var(--muted);
+  display:flex; flex-wrap:wrap; gap:.45rem .8rem; align-items:center;
+}
+.byline a{color:var(--fg)}
+.badge{
+  display:inline-flex; align-items:center; gap:.3rem;
+  background:var(--accent-soft); color:var(--accent); border-radius:99px;
+  padding:.2rem .65rem; font-weight:650; font-size:.76rem; border:1px solid transparent;
+}
+.stats{
+  margin-top:0;
+  display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  margin:2rem 0 .5rem;
+}
+@media (min-width:40rem){ .stats{grid-template-columns:repeat(4,1fr)} }
+.stat{background:var(--surface); padding:.95rem 1.05rem; font-family:system-ui,-apple-system,sans-serif}
+.stat b{display:block; font-size:1.22rem; letter-spacing:-.02em; line-height:1.2; color:var(--accent)}
+.stat span{display:block; font-size:.78rem; color:var(--muted); margin-top:.15rem; line-height:1.35}
+
+.lede{
+  font-size:1.22rem; line-height:1.55; margin:2rem 0;
+  padding:1.25rem 1.4rem; background:var(--surface); border:1px solid var(--line);
+  border-left:4px solid var(--accent); border-radius:0 12px 12px 0; box-shadow:var(--shadow);
+}
+.lede p{margin:0}
+
+/* sumário */
+.toc{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:1.05rem 1.3rem; margin:2rem 0; font-family:system-ui,-apple-system,sans-serif; font-size:.9rem;
+}
+.toc strong{display:block; font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:.6rem}
+.toc ol{margin:0; padding-left:1.15rem; columns:2; column-gap:1.5rem}
+@media (max-width:34rem){ .toc ol{columns:1} }
+.toc li{margin-bottom:.3rem; break-inside:avoid}
+.toc a{text-decoration:none}
+.toc a:hover{text-decoration:underline}
+
+h2{
+  font-size:clamp(1.35rem,3.6vw,1.75rem); line-height:1.22; letter-spacing:-.02em;
+  margin:3rem 0 .9rem; font-weight:700; text-wrap:balance; scroll-margin-top:4rem;
+}
+h3{
+  font-family:system-ui,-apple-system,sans-serif; font-size:1.03rem;
+  margin:2rem 0 .5rem; font-weight:650; letter-spacing:-.005em;
+}
+p{margin:0 0 1.15rem}
+ul,ol{margin:0 0 1.25rem; padding-left:1.35rem}
+li{margin-bottom:.55rem}
+li::marker{color:var(--muted)}
+strong{font-weight:650}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+
+blockquote{
+  margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
+  border-radius:12px; font-size:1.13rem; line-height:1.5; position:relative;
+}
+blockquote p{margin:0 0 .7rem; font-style:italic}
+blockquote cite{display:block; font-style:normal; font-size:.83rem; color:var(--muted);
+  font-family:system-ui,-apple-system,sans-serif}
+
+/* figuras / diagramas */
+figure{margin:2.25rem 0; padding:0}
+.diagram{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:1.4rem 1.2rem 1rem; box-shadow:var(--shadow);
+}
+figcaption{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; color:var(--muted);
+  margin-top:.85rem; line-height:1.45; text-align:left;
+}
+
+/* vídeo */
+.video{
+  display:block; text-decoration:none; color:inherit; border:1px solid var(--line);
+  border-radius:12px; overflow:hidden; background:var(--surface); box-shadow:var(--shadow);
+}
+.video:hover{text-decoration:none; border-color:var(--accent)}
+.video .thumb{position:relative; aspect-ratio:16/9; background:var(--code-bg); display:block}
+.video .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.video .play{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+}
+.video .play span{
+  width:60px; height:60px; border-radius:50%; background:rgba(0,0,0,.72);
+  display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(0,0,0,.35);
+}
+.video:hover .play span{background:#c00}
+.video .meta{padding:.85rem 1.05rem; font-family:system-ui,-apple-system,sans-serif}
+.video .meta b{display:block; font-size:.95rem; line-height:1.35; letter-spacing:-.01em}
+.video .meta span{display:block; font-size:.8rem; color:var(--muted); margin-top:.2rem}
+
+/* tabela */
+.tablewrap{overflow-x:auto; margin:1.75rem 0; border:1px solid var(--line);
+  border-radius:12px; background:var(--surface); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; min-width:38rem; font-size:.88rem;
+  font-family:system-ui,-apple-system,sans-serif}
+th,td{padding:.7rem .85rem; text-align:left; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{background:var(--code-bg); font-weight:650; font-size:.8rem; white-space:nowrap}
+thead th:last-child{color:var(--accent)}
+tbody tr:last-child td{border-bottom:0}
+tbody th{font-weight:600; background:transparent; white-space:nowrap}
+td.yes{color:var(--accent); font-weight:600}
+td.no{color:var(--danger)}
+caption{caption-side:bottom; padding:.7rem .85rem; text-align:left;
+  font-size:.78rem; color:var(--muted); font-family:system-ui,-apple-system,sans-serif}
+
+.callout{
+  background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:12px;
+  padding:1.1rem 1.3rem; margin:1.9rem 0; font-size:.98rem;
+}
+.callout p:last-child{margin-bottom:0}
+
+.cta{
+  border:1px solid var(--line); border-radius:14px; padding:1.6rem 1.75rem;
+  margin:2.75rem 0; background:var(--accent-soft); box-shadow:var(--shadow);
+}
+.cta h3{margin:0 0 .5rem; font-size:1.15rem; font-weight:700}
+.cta p{margin:0 0 1.1rem; font-size:.98rem}
+.cta p:last-child{margin-bottom:0}
+.btn{
+  display:inline-block; background:var(--accent); color:#fff; text-decoration:none;
+  padding:.72rem 1.3rem; border-radius:8px; font-weight:650; font-size:.95rem;
+  font-family:system-ui,-apple-system,sans-serif;
+}
+.btn:hover{background:var(--accent-2); text-decoration:none}
+.cta small{display:block; margin-top:.6rem; font-size:.8rem; color:var(--muted);
+  font-family:system-ui,-apple-system,sans-serif}
+
+.sources{font-size:.86rem; color:var(--muted)}
+.sources li{margin-bottom:.4rem}
+footer{
+  border-top:1px solid var(--line); margin-top:4rem; padding:2.25rem 0 3.5rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; color:var(--muted);
+  background:var(--surface);
+}
+footer a{color:var(--muted)}
+footer p{margin:0 0 .5rem}
+
+/* ===== MOLDURA DO SITE (fixa, igual em todas as páginas) ===== */
+.site-head{
+  position:sticky; top:0; z-index:30; background:color-mix(in srgb,var(--surface) 92%,transparent);
+  backdrop-filter:saturate(1.4) blur(8px); border-bottom:1px solid var(--line);
+}
+.site-head .row{
+  max-width:74rem; margin:0 auto; padding:.7rem 1.35rem;
+  display:flex; align-items:center; gap:1.25rem;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.logo{display:flex; align-items:center; gap:.5rem; text-decoration:none; color:var(--fg); font-weight:750;
+  letter-spacing:-.025em; font-size:1rem; flex:none}
+.logo .dot{width:22px;height:22px;border-radius:6px;background:var(--accent);display:grid;place-items:center;
+  color:#fff;font-size:.72rem;font-weight:800}
+.logo span{color:var(--accent)}
+.site-nav{display:flex; gap:1.1rem; font-size:.87rem; margin-left:.5rem}
+.site-nav a{color:var(--muted); text-decoration:none}
+.site-nav a:hover{color:var(--fg)}
+@media (max-width:52rem){ .site-nav{display:none} }
+.head-cta{margin-left:auto; display:flex; gap:.55rem; align-items:center; flex:none}
+.head-cta a{font-size:.85rem; text-decoration:none; white-space:nowrap}
+.head-cta .ghost{color:var(--muted); padding:.45rem .2rem}
+.head-cta .ghost:hover{color:var(--fg)}
+.head-cta .solid{background:var(--accent); color:#fff; padding:.5rem .95rem; border-radius:7px; font-weight:650}
+.head-cta .solid:hover{background:var(--accent-2)}
+@media (max-width:34rem){ .head-cta .ghost{display:none} }
+
+/* ===== FAIXA DE TOPO ===== */
+.hero-band{background:var(--accent-soft); border-bottom:1px solid var(--line)}
+.hero-grid{
+  max-width:74rem; margin:0 auto; padding:2.75rem 1.35rem 2.5rem;
+  display:grid; grid-template-columns:1fr; gap:2rem; align-items:center;
+}
+@media (min-width:56rem){ .hero-grid{grid-template-columns:1.15fr .85fr; gap:3rem} }
+.hero-art{order:-1}
+@media (min-width:56rem){ .hero-art{order:0} }
+.hero-band h1{margin:0 0 1rem}
+.hero-band .byline{padding-bottom:0; border-bottom:0}
+
+/* ===== CORPO EM DUAS COLUNAS ===== */
+.shell{max-width:74rem; margin:0 auto; padding:0 1.35rem; display:grid; grid-template-columns:1fr; gap:2.5rem}
+@media (min-width:62rem){ .shell{grid-template-columns:minmax(0,1fr) 19rem; gap:3.25rem} }
+.shell > article{min-width:0; padding-top:2.25rem}
+.rail{display:none}
+@media (min-width:62rem){
+  .rail{display:block; padding-top:2.25rem}
+  .rail-inner{position:sticky; top:4.5rem; display:flex; flex-direction:column; gap:1.1rem}
+}
+.rail-cta{
+  background:var(--accent); color:#fff; border-radius:14px; padding:1.35rem 1.4rem;
+  font-family:system-ui,-apple-system,sans-serif; box-shadow:var(--shadow);
+}
+.rail-cta b{display:block; font-size:1.05rem; font-weight:750; letter-spacing:-.015em; line-height:1.3; margin-bottom:.5rem}
+.rail-cta p{font-size:.87rem; line-height:1.5; margin:0 0 1rem; opacity:.92}
+.rail-cta a{
+  display:block; text-align:center; background:#fff; color:var(--accent);
+  padding:.6rem 1rem; border-radius:8px; font-weight:700; font-size:.9rem; text-decoration:none;
+}
+.rail-cta a:hover{opacity:.92; text-decoration:none}
+.rail-cta small{display:block; margin-top:.6rem; font-size:.75rem; opacity:.85; text-align:center}
+.rail-box{
+  background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:1.1rem 1.25rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.86rem;
+}
+.rail-box strong{display:block; font-size:.72rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:.6rem}
+.rail-box ol{margin:0; padding-left:1.1rem}
+.rail-box li{margin-bottom:.35rem; line-height:1.4}
+.rail-box a{text-decoration:none}
+.rail-box a:hover{text-decoration:underline}
+
+/* ===== RODAPÉ ===== */
+.site-foot{border-top:1px solid var(--line); background:var(--surface); margin-top:4rem}
+.foot-grid{
+  max-width:74rem; margin:0 auto; padding:2.75rem 1.35rem 1.75rem;
+  display:grid; grid-template-columns:1fr; gap:2rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.86rem;
+}
+@media (min-width:44rem){ .foot-grid{grid-template-columns:1.4fr 1fr 1fr} }
+.foot-grid h4{font-size:.74rem; letter-spacing:.09em; text-transform:uppercase; color:var(--muted);
+  margin:0 0 .7rem; font-weight:700}
+.foot-grid ul{list-style:none; margin:0; padding:0}
+.foot-grid li{margin-bottom:.4rem}
+.foot-grid a{color:var(--muted); text-decoration:none}
+.foot-grid a:hover{color:var(--fg)}
+.foot-about p{color:var(--muted); margin:0 0 .6rem; max-width:26rem; line-height:1.55}
+.foot-legal{
+  max-width:74rem; margin:0 auto; padding:1.1rem 1.35rem 2.5rem; border-top:1px solid var(--line);
+  font-family:system-ui,-apple-system,sans-serif; font-size:.78rem; color:var(--muted);
+}
+
+/* ===== home e pagina de autor ===== */
+.shell-solo{grid-template-columns:minmax(0,1fr) !important; max-width:52rem}
+.shell-solo > article{padding-top:3rem}
+.sub{font-size:1.15rem; color:var(--muted); margin:0 0 2rem}
+.cards{list-style:none; margin:1.5rem 0 0; padding:0; display:grid; gap:1rem}
+@media (min-width:44rem){ .cards{grid-template-columns:1fr 1fr} }
+.card a{display:block; text-decoration:none; color:inherit; height:100%;
+  background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  padding:1.25rem 1.35rem; box-shadow:var(--shadow)}
+.card a:hover{border-color:var(--accent); text-decoration:none}
+.card-tema{display:inline-block; font-family:system-ui,-apple-system,sans-serif;
+  font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent); background:var(--accent-soft); padding:.2rem .55rem;
+  border-radius:99px; margin-bottom:.65rem}
+.card b{display:block; font-size:1.08rem; line-height:1.3; letter-spacing:-.015em; margin-bottom:.4rem}
+.card p{font-size:.92rem; color:var(--muted); margin:0 0 .8rem; line-height:1.5}
+.card-data{font-family:system-ui,-apple-system,sans-serif; font-size:.78rem; color:var(--faint,var(--muted))}
+
+</style>
+</head>
+<body>
+
+
+
+<header class="site-head">
+  <div class="row">
+    <a class="logo" href="/"><span class="dot">D</span>Datafy<span>API</span></a>
+    <nav class="site-nav" aria-label="Temas">
+      <a href="/tema/oficial-vs-nao-oficial">Oficial vs não oficial</a>
+      <a href="/tema/custo">Custos</a>
+      <a href="/tema/coexistencia">Coexistência</a>
+      <a href="/tema/implementacao">Implementação</a>
+      <a href="/tema/compliance">Banimento e compliance</a>
+    </nav>
+    <div class="head-cta">
+      <a class="ghost" href="https://app.datafyapi.com.br/docs">Documentação</a>
+      <a class="solid" href="https://app.datafyapi.com.br">Teste 7 dias grátis</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero-band">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">Oficial vs não oficial</p>
+      <h1>API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa</h1>
+      <div class="byline">
+        <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
+        <span class="badge">Tech Provider verificado pela Meta</span>
+        <span>Atualizado em <time datetime="2026-09-06">6 de setembro de 2026</time></span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
+        <title id="heroT">Tela de celular com a mensagem de banimento do WhatsApp</title>
+        <desc id="heroD">Ilustração de um celular exibindo o aviso de que a conta não pode mais usar o WhatsApp, que é o que acontece quando a Meta detecta automação por aplicativo não autorizado.</desc>
+        <defs>
+          <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="var(--surface)"/>
+            <stop offset="1" stop-color="var(--code-bg)"/>
+          </linearGradient>
+        </defs>
+        <rect x="86" y="16" width="168" height="268" rx="26" fill="var(--fg)" opacity=".92"/>
+        <rect x="92" y="22" width="156" height="256" rx="21" fill="url(#scr)"/>
+        <rect x="150" y="30" width="40" height="6" rx="3" fill="var(--fg)" opacity=".25"/>
+        <circle cx="170" cy="88" r="27" fill="var(--danger-soft)"/>
+        <path d="M170 74 v17" stroke="var(--danger)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="170" cy="100" r="2.6" fill="var(--danger)"/>
+        <text x="170" y="140" text-anchor="middle"
+              style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg)">Esta conta não pode</text>
+        <text x="170" y="156" text-anchor="middle"
+              style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg)">mais usar o WhatsApp</text>
+        <rect x="110" y="174" width="120" height="5" rx="2.5" fill="var(--muted)" opacity=".33"/>
+        <rect x="118" y="186" width="104" height="5" rx="2.5" fill="var(--muted)" opacity=".33"/>
+        <rect x="126" y="198" width="88" height="5" rx="2.5" fill="var(--muted)" opacity=".33"/>
+        <rect x="110" y="224" width="120" height="30" rx="8" fill="var(--danger-soft)"/>
+        <text x="170" y="243" text-anchor="middle"
+              style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--danger)">Sem aviso. Sem recurso.</text>
+        <g opacity=".55">
+          <rect x="12" y="96" width="58" height="7" rx="3.5" fill="var(--muted)"/>
+          <rect x="12" y="112" width="42" height="7" rx="3.5" fill="var(--muted)"/>
+          <rect x="270" y="150" width="58" height="7" rx="3.5" fill="var(--muted)"/>
+          <rect x="286" y="166" width="42" height="7" rx="3.5" fill="var(--muted)"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+<article>
+
+<h1>API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa</h1>
+<p><strong>Resposta curta:</strong> a API oficial é a da própria Meta. Você fala com um endereço autorizado, com o número registrado no nome da sua empresa e regras que estão publicadas. A não oficial (Evolution em modo Baileys, Z-API, UAZAPI, WPPConnect, Baileys, entre outras) é um robô que deixa um WhatsApp Web aberto num servidor e digita no seu lugar. Não existe contrato com a Meta, então quando ela detecta, o número cai, sem aviso e sem para quem reclamar.</p>
+<p>O que quase ninguém fala: <strong>migrar para a oficial não acaba com o risco de banimento.</strong> Acaba com <em>um</em> tipo, o de ser pego usando ferramenta proibida. Todos os outros continuam. Quem dispara para lista fria e ninguém responde é bloqueado do mesmo jeito, com API oficial e template aprovado.</p>
+<p>Por isso a pergunta certa em 2026 não é "oficial ou clandestina". É oficial, e depois <strong>como</strong> você usa.</p>
+<div class="stats">
+  <div class="stat"><b>R$ 49,90</b><span>por número, por mês, na faixa inicial da Datafy</span></div>
+  <div class="stat"><b>24 horas</b><span>é a janela para responder o cliente sem pagar nada</span></div>
+  <div class="stat"><b>menos de 5 min</b><span>para conectar um número, se você já tem Business Manager</span></div>
+  <div class="stat"><b>1º de outubro</b><span>quando a Meta começa a cobrar as mensagens de atendimento</span></div>
+</div>
+
+<h2 id="principais-pontos">Principais pontos</h2>
+<ul>
+<li>Não oficial emula o WhatsApp Web: qualquer atualização do app derruba a sessão, e automação por app não autorizado viola os <a href="https://business.whatsapp.com/policy" rel="noopener">Termos do WhatsApp Business</a>.</li>
+<li>API oficial <strong>não é blindagem</strong>. Num levantamento com centenas de clientes, a Datafy identificou cinco condutas que derrubam número mesmo em conta oficial, com template aprovado. A primeira delas é prospectar sem template.</li>
+<li>Ir direto na Meta exige até 6 etapas antes da primeira mensagem: Business Manager verificada, verificação de empresa, App Review com vídeo, ser Tech Provider para coexistência, webhooks próprios e app publicado (<a href="https://developers.facebook.com/docs/whatsapp/embedded-signup" rel="noopener">Embedded Signup</a>).</li>
+<li>Via parceiro homologado essas etapas somem: com uma BM já criada, o número conecta e envia em menos de 5 minutos, e os endpoints são os mesmos da Meta. Muda só o domínio e o token.</li>
+<li>Custo na Datafy: R$ 49,90 por número/mês (1 a 9), R$ 39,90 (10 a 49) e R$ 29,90 (50+), sem markup nas conversas. <a href="https://app.datafyapi.com.br" rel="noopener">7 dias grátis, sem cartão</a>.</li>
+</ul>
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .path-box { stroke-width: 2; }
+      .official { stroke: #10b981; fill: var(--bg-secondary); }
+      .unofficial { stroke: #ef4444; fill: var(--bg-secondary); }
+      .path-label { font-size: 14px; font-weight: bold; text-anchor: middle; }
+      .path-good { fill: #10b981; }
+      .path-bad { fill: #ef4444; }
+      .step { font-size: 11px; text-anchor: middle; fill: var(--text-secondary); }
+      .outcome { font-size: 13px; font-weight: bold; text-anchor: middle; }
+      .good-outcome { fill: #10b981; }
+      .bad-outcome { fill: #ef4444; }
+      .arrow { stroke-width: 2; fill: none; marker-end: url(#arrowhead-good); }
+      .arrow-bad { stroke-width: 2; fill: none; marker-end: url(#arrowhead-bad); }
+    </style>
+    <marker id="arrowhead-good" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#10b981"/>
+    </marker>
+    <marker id="arrowhead-bad" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ef4444"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="400" fill="var(--bg-primary)"/>
+
+  <text x="450" y="30" style="font-size: 20px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Dois caminhos: API oficial vs não oficial</text>
+
+  <!-- LEFT PATH: Official -->
+  <g transform="translate(100, 80)">
+    <!-- Start -->
+    <circle cx="100" cy="30" r="20" class="official" style="stroke-width: 2;"/>
+    <text x="100" y="35" class="path-label" style="fill: #10b981;">✓</text>
+
+    <text x="100" y="70" class="path-label path-good">API Oficial</text>
+    <text x="100" y="88" class="step">(Meta → Datafy, 360dialog)</text>
+
+    <!-- Arrow down -->
+    <path class="arrow" stroke="#10b981" d="M 100 100 L 100 140"/>
+
+    <!-- Step 1 -->
+    <rect class="path-box official" x="30" y="140" width="140" height="50" rx="4"/>
+    <text x="100" y="160" class="path-label path-good">✓ Setup: 5 min</text>
+    <text x="100" y="178" class="step">BM → Número → Token</text>
+
+    <!-- Arrow down -->
+    <path class="arrow" stroke="#10b981" d="M 100 190 L 100 230"/>
+
+    <!-- Step 2 -->
+    <rect class="path-box official" x="30" y="230" width="140" height="50" rx="4"/>
+    <text x="100" y="250" class="path-label path-good">✓ Estável</text>
+    <text x="100" y="268" class="step">Endpoint da Meta</text>
+
+    <!-- Arrow down -->
+    <path class="arrow" stroke="#10b981" d="M 100 280 L 100 320"/>
+
+    <!-- Outcome -->
+    <rect class="path-box official" x="15" y="320" width="170" height="50" rx="4"/>
+    <text x="100" y="340" class="outcome good-outcome">Produção segura</text>
+    <text x="100" y="358" class="step">Suporte, recurso, contrato</text>
+  </g>
+
+  <!-- RIGHT PATH: Not Official -->
+  <g transform="translate(550, 80)">
+    <!-- Start -->
+    <circle cx="100" cy="30" r="20" class="unofficial" style="stroke-width: 2;"/>
+    <text x="100" y="38" class="path-label" style="fill: #ef4444;">✗</text>
+
+    <text x="100" y="70" class="path-label path-bad">Não oficial</text>
+    <text x="100" y="88" class="step">(Z-API, UAZAPI, Evolution Baileys)</text>
+
+    <!-- Arrow down -->
+    <path class="arrow-bad" stroke="#ef4444" d="M 100 100 L 100 140"/>
+
+    <!-- Step 1 -->
+    <rect class="path-box unofficial" x="30" y="140" width="140" height="50" rx="4"/>
+    <text x="100" y="160" class="path-label path-bad">⚠ Setup rápido</text>
+    <text x="100" y="178" class="step">Mas depende de código</text>
+
+    <!-- Arrow down -->
+    <path class="arrow-bad" stroke="#ef4444" d="M 100 190 L 100 230"/>
+
+    <!-- Step 2 -->
+    <rect class="path-box unofficial" x="30" y="230" width="140" height="50" rx="4"/>
+    <text x="100" y="250" class="path-label path-bad">✗ Quebra</text>
+    <text x="100" y="268" class="step">Quando app atualiza</text>
+
+    <!-- Arrow down -->
+    <path class="arrow-bad" stroke="#ef4444" d="M 100 280 L 100 320"/>
+
+    <!-- Outcome -->
+    <rect class="path-box unofficial" x="15" y="320" width="170" height="50" rx="4"/>
+    <text x="100" y="340" class="outcome bad-outcome">Prototipagem</text>
+    <text x="100" y="358" class="step">Sem contrato, sem recurso</text>
+  </g>
+
+  <!-- Bottom comparison -->
+  <g transform="translate(50, 360)">
+    <text x="0" y="0" style="font-size: 11px; fill: var(--text-secondary);">Oficial: você está com Meta | Não oficial: você está com terceiro que tenta enganar Meta</text>
+  </g>
+</svg>
+</div>
+<figcaption></figcaption>
+</figure>
+
+<h2 id="qual-a-diferen-a-t-cnica-entre-a-api-ofi">Qual é a diferença técnica entre a API oficial e a não oficial?</h2>
+<p>A oficial é uma interface hospedada pela Meta. A não oficial é um robô operando um WhatsApp Web.</p>
+<p><strong>API oficial (Cloud API):</strong>
+- Envio por <code>POST /{phone_number_id}/messages</code> com JSON. Aceita texto, mídia, template, botões, listas, localização, contato, reação e figurinha (<a href="https://developers.facebook.com/docs/whatsapp/cloud-api" rel="noopener">documentação</a>).
+- Recebimento por <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks" rel="noopener">webhooks</a> HTTPS: mensagens, status de entrega, alertas de conta, qualidade do número, templates, Flows e chamadas.
+- Número com nome de exibição, qualidade monitorada pela Meta e limites diários de template que sobem conforme essa qualidade.
+- Janela de 24 h: depois que o cliente escreve, você responde livremente; fora dela, só template aprovado.</p>
+<p><strong>API não oficial:</strong>
+- Depende do protocolo do WhatsApp Web. Quando o app muda, a biblioteca quebra até alguém corrigir.
+- Não há template, selo, nem tier, mas também não há aprovação: qualquer número entra na hora.
+- Não existe canal de recurso, porque não existe relação contratual.</p>
+<h3>Quais são as APIs não oficiais mais usadas no Brasil</h3>
+<p>Vale separar por natureza, porque o risco é o mesmo mas o que você contrata é diferente.</p>
+<ul>
+<li><strong>Bibliotecas de código aberto</strong>, que você mesmo instala e mantém: <strong>Baileys</strong>, <strong>WPPConnect</strong> e <strong>Venom</strong>. São a base sobre a qual muita ferramenta comercial é construída.</li>
+<li><strong>Serviços e plataformas</strong> que empacotam isso com painel, suporte e cobrança mensal: <strong>Evolution API</strong> em modo Baileys, <strong>Z-API</strong>, <strong>UAZAPI</strong>, <strong>WAHA</strong> e <strong>Zapster</strong>, entre outras.</li>
+</ul>
+<blockquote>
+<p><strong>Cuidado ao julgar pela marca.</strong> Assim como a Evolution, várias dessas ferramentas oferecem tanto a conexão por QR code quanto a chamada para a Cloud API oficial. Antes de concluir qualquer coisa sobre a sua, confira <strong>em que modo ela está rodando</strong>. É o modo que define o risco de banimento, não o nome no contrato.</p>
+</blockquote>
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 680 260" role="img" aria-labelledby="d1t d1d" style="width:100%;height:auto">
+  <title id="d1t">Como a API não oficial e a API oficial se conectam ao WhatsApp</title>
+  <desc id="d1d">Na API não oficial, o seu servidor fala com uma sessão emulada de WhatsApp Web, que se conecta ao WhatsApp por um elo frágil que quebra a cada atualização do aplicativo. Na API oficial, o seu servidor fala com um endpoint autorizado da Meta, que se conecta ao WhatsApp por um caminho contratual estável.</desc>
+  <style>
+    .bx{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .bx-r{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .bx-g{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .lb{font:600 12px system-ui,-apple-system,sans-serif;fill:var(--fg)}
+    .sm{font:11px system-ui,-apple-system,sans-serif;fill:var(--muted)}
+    .hd{font:700 11px system-ui,-apple-system,sans-serif;letter-spacing:.06em}
+    .ln{stroke:var(--muted);stroke-width:1.5;fill:none}
+    .ln-r{stroke:var(--danger);stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+    .ln-g{stroke:var(--accent);stroke-width:2;fill:none}
+  </style>
+  <defs>
+    <marker id="a1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="var(--muted)"/></marker>
+    <marker id="a2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="var(--accent)"/></marker>
+  </defs>
+
+  <text x="0" y="14" class="hd" fill="var(--danger)">NÃO OFICIAL (MODO BAILEYS)</text>
+  <rect x="0" y="26" width="140" height="46" rx="8" class="bx"/>
+  <text x="70" y="46" class="lb" text-anchor="middle">Seu servidor</text>
+  <text x="70" y="61" class="sm" text-anchor="middle">n8n, código</text>
+  <path class="ln" d="M144 49 H196" marker-end="url(#a1)"/>
+  <rect x="200" y="26" width="170" height="46" rx="8" class="bx-r"/>
+  <text x="285" y="45" class="lb" text-anchor="middle">Sessão WhatsApp Web</text>
+  <text x="285" y="60" class="sm" text-anchor="middle">emulada num servidor</text>
+  <path class="ln-r" d="M374 49 H466"/>
+  <text x="420" y="40" class="sm" text-anchor="middle" fill="var(--danger)">frágil</text>
+  <path d="M416 43 l8 12 M424 43 l-8 12" stroke="var(--danger)" stroke-width="2"/>
+  <rect x="470" y="26" width="130" height="46" rx="8" class="bx"/>
+  <text x="535" y="53" class="lb" text-anchor="middle">WhatsApp</text>
+  <text x="0" y="94" class="sm">App atualizou, a sessão cai. Detectou automação, o número é banido, sem recurso.</text>
+
+  <line x1="0" y1="118" x2="680" y2="118" stroke="var(--line)" stroke-width="1"/>
+
+  <text x="0" y="146" class="hd" fill="var(--accent)">OFICIAL (CLOUD API)</text>
+  <rect x="0" y="158" width="140" height="46" rx="8" class="bx"/>
+  <text x="70" y="178" class="lb" text-anchor="middle">Seu servidor</text>
+  <text x="70" y="193" class="sm" text-anchor="middle">n8n, código</text>
+  <path class="ln-g" d="M144 181 H196" marker-end="url(#a2)"/>
+  <rect x="200" y="158" width="170" height="46" rx="8" class="bx-g"/>
+  <text x="285" y="177" class="lb" text-anchor="middle">Endpoint autorizado</text>
+  <text x="285" y="192" class="sm" text-anchor="middle">Meta Cloud API</text>
+  <path class="ln-g" d="M374 181 H466" marker-end="url(#a2)"/>
+  <text x="420" y="172" class="sm" text-anchor="middle" fill="var(--accent)">contratual</text>
+  <rect x="470" y="158" width="130" height="46" rx="8" class="bx"/>
+  <text x="535" y="185" class="lb" text-anchor="middle">WhatsApp</text>
+  <text x="0" y="226" class="sm">Regras públicas, template aprovado, qualidade monitorada. O elo não quebra sozinho.</text>
+</svg>
+</div>
+<figcaption><strong>As duas arquiteturas.</strong> A não oficial põe um intermediário frágil no meio do caminho. É ele que quebra e é ele que a Meta detecta. A oficial fala direto com um endpoint autorizado.</figcaption>
+</figure>
+
+<h2 id="evolution-api-vai-banir-meu-n-mero">Evolution API vai banir meu número?</h2>
+<p>Antes de tudo, o principal: <strong>a Evolution API não é oficial.</strong> É um software de código aberto que você instala no seu próprio servidor. Não é parceira da Meta, não é BSP e não é Tech Provider.</p>
+<p>O que confunde é que ela consegue conectar de duas formas, e o <a href="https://github.com/EvolutionAPI/evolution-api" rel="noopener">repositório oficial dela</a> lista as duas: por <strong>Baileys</strong>, que emula o WhatsApp Web e é o que derruba número, ou apontando para a <strong>Cloud API</strong> da Meta.</p>
+<p>Só que apontar para a API oficial não torna a Evolution oficial, do mesmo jeito que o <code>curl</code> não vira oficial por fazer uma chamada para a Meta. Oficial é o endereço da Meta do outro lado da linha, não o programa que disca.</p>
+<p>E aqui está o que realmente decide: <strong>mesmo no modo Cloud API, a Evolution não te dá acesso à API oficial.</strong> Ela só faz a chamada. Para ter o acesso, você continua tendo que passar sozinho pela Business Manager verificada, pelo App Review e por virar Tech Provider se quiser coexistência. A burocracia fica inteira no seu colo.</p>
+<p>Resumindo a escolha real de quem usa Evolution hoje: em Baileys, risco de banimento. Em Cloud API, todo o processo da Meta para resolver por conta própria. É por isso que a maioria acaba ficando no Baileys.</p>
+<h2 id="api-oficial-protege-contra-banimento">API oficial protege contra banimento?</h2>
+<p>Não. E esse é o ponto que mais separa quem entende de quem está vendendo.</p>
+<blockquote>
+<p>"Usar um template, usar a API oficial do WhatsApp não é blindagem contra banimento."
+Israel, CTO da Datafy API, em <a href="https://www.youtube.com/watch?v=cZ_nyIUv5ic" rel="noopener">Porque você é bloqueado no WhatsApp Business</a></p>
+</blockquote>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=cZ_nyIUv5ic" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/cZ_nyIUv5ic/maxresdefault.jpg" alt="Miniatura do vídeo: Porque você é bloqueado no WhatsApp Business" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Porque você é bloqueado no WhatsApp Business</b><span>Canal DATA7 · 26 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Israel, CTO da Datafy API, abre o levantamento feito com os clientes e mostra, dentro do Gerenciador da Meta, onde ficam o indicador de qualidade do número e a lista de nichos proibidos.</figcaption>
+</figure>
+
+<p>A Datafy acompanhou centenas de clientes para entender o que faziam no momento do bloqueio. As causas, em ordem:</p>
+<ol>
+<li><strong>Prospecção sem template.</strong> Iniciar conversa com quem não falou com você nas últimas 24 h, seja pelo celular, pelo WhatsApp Web, por CRM ou por API não oficial. É a causa número um, e está nos próprios termos: só se inicia conversa por modelo aprovado.</li>
+<li><strong>Engajamento baixo, mesmo com template.</strong> Enviar para muita gente e quase ninguém responder é lido como spam. A recomendação prática é incluir um botão "Não tenho interesse" no template: o clique conta como interação e ainda entrega a lista de quem remover.</li>
+<li><strong>Número novo disparando.</strong> Chip recém-comprado que começa em volume alto cai quase sempre. Não está escrito em termo nenhum. É observação de campo.</li>
+<li><strong>Categoria falsificada.</strong> Template de marketing disfarçado de utilidade é reclassificado pela Meta, e a conta chega a custar 10× mais sem aviso.</li>
+<li><strong>Nicho proibido.</strong> Armas, álcool e tabaco, medicamentos, animais vivos, criptomoeda e day trade, apostas, cobrança de dívida. Vale a regra da Meta, não a lei do país: aposta é legal no Brasil e bloqueia igual.</li>
+</ol>
+<div class="callout"><p><strong>O aviso que quase ninguém olha:</strong> antes do bloqueio, o indicador de <strong>qualidade do número</strong> no Gerenciador do WhatsApp cai de alta para média. Ninguém é bloqueado do nada.</p></div>
+
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 680 210" role="img" aria-labelledby="d2t d2d" style="width:100%;height:auto">
+  <title id="d2t">A janela de 24 horas do WhatsApp</title>
+  <desc id="d2d">Quando o cliente envia uma mensagem, abre-se uma janela de 24 horas na qual a empresa responde livremente, sem precisar de template. Cada nova mensagem do cliente reinicia a janela. Depois que ela fecha, a empresa só pode voltar a falar por meio de um template aprovado pela Meta, que é pago.</desc>
+  <style>
+    .lb2{font:600 12px system-ui,-apple-system,sans-serif;fill:var(--fg)}
+    .sm2{font:11px system-ui,-apple-system,sans-serif;fill:var(--muted)}
+  </style>
+  <rect x="0" y="56" width="680" height="4" rx="2" fill="var(--line)"/>
+  <rect x="90" y="56" width="330" height="4" rx="2" fill="var(--accent)"/>
+
+  <circle cx="90" cy="58" r="9" fill="var(--accent)"/>
+  <path d="M85 58 l4 4 l7 -8" stroke="var(--surface)" stroke-width="2" fill="none"/>
+  <text x="90" y="36" class="lb2" text-anchor="middle">Cliente escreve</text>
+  <text x="90" y="88" class="sm2" text-anchor="middle">abre a janela</text>
+
+  <rect x="150" y="100" width="215" height="58" rx="9" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="257" y="121" class="lb2" text-anchor="middle" fill="var(--accent)">Janela de 24 horas</text>
+  <text x="257" y="138" class="sm2" text-anchor="middle">Mensagem de serviço: resposta livre,</text>
+  <text x="257" y="151" class="sm2" text-anchor="middle">sem template. Grátis até 1º/out/2026.</text>
+  <path d="M257 100 L257 62" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <circle cx="420" cy="58" r="6" fill="var(--muted)"/>
+  <text x="420" y="36" class="lb2" text-anchor="middle">Janela fecha</text>
+
+  <rect x="440" y="100" width="240" height="58" rx="9" fill="var(--warn-bg)" stroke="var(--warn-line)" stroke-width="1.5"/>
+  <text x="560" y="121" class="lb2" text-anchor="middle">Só template aprovado</text>
+  <text x="560" y="138" class="sm2" text-anchor="middle">Marketing, utilidade ou autenticação.</text>
+  <text x="560" y="151" class="sm2" text-anchor="middle">Sempre pago, pela tabela da Meta.</text>
+  <path d="M560 100 L560 62" stroke="var(--warn-line)" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <path d="M110 178 Q 255 200 400 178" stroke="var(--accent)" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+  <text x="255" y="200" class="sm2" text-anchor="middle" fill="var(--accent)">cada nova mensagem do cliente reinicia a janela</text>
+</svg>
+</div>
+<figcaption><strong>A regra que explica quase tudo.</strong> Custo, banimento e estratégia de disparo saem todos daqui: fora da janela de 24 h, só template aprovado, e template é pago.</figcaption>
+</figure>
+
+<h2 id="comparativo-em-8-crit-rios">Comparativo em 8 critérios</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Critério</th>
+<th>Não oficial (Baileys)</th>
+<th>Oficial direto na Meta</th>
+<th>Oficial via Datafy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reconhecimento pela Meta</td>
+<td>Nenhum; viola os termos</td>
+<td>Total</td>
+<td>Total (Tech Provider verificado)</td>
+</tr>
+<tr>
+<td>Risco de banimento por ferramenta</td>
+<td>Alto, sem recurso</td>
+<td>Nenhum</td>
+<td>Nenhum</td>
+</tr>
+<tr>
+<td>Risco de banimento por conduta</td>
+<td>Alto</td>
+<td>Igual para todos</td>
+<td>Igual para todos</td>
+</tr>
+<tr>
+<td>Tempo até a 1ª mensagem</td>
+<td>Minutos</td>
+<td>Dias a semanas</td>
+<td>Minutos, com BM já criada</td>
+</tr>
+<tr>
+<td>Coexistência com o app no celular</td>
+<td>Não existe</td>
+<td>Só para Tech Providers</td>
+<td>Incluída</td>
+</tr>
+<tr>
+<td>Custo fixo</td>
+<td>VPS + licença</td>
+<td>R$ 0</td>
+<td>R$ 29,90 a R$ 49,90 por número/mês</td>
+</tr>
+<tr>
+<td>Custo por conversa</td>
+<td>Não há</td>
+<td>Tabela da Meta</td>
+<td>Tabela da Meta, sem markup</td>
+</tr>
+<tr>
+<td>Webhooks</td>
+<td>Você mantém</td>
+<td>Você configura e mantém</td>
+<td>Painel: múltiplas URLs, filtro de eventos, teste em um clique, assinatura HMAC</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="quando-vale-a-oficial-via-parceiro-homol">Quando vale a oficial via parceiro homologado</h2>
+<ol>
+<li><strong>Você opera mais de um número.</strong> SaaS, agência ou franquia: cada cliente conecta o próprio número pelo Embedded Signup sem você virar BSP, e o preço por número cai com o volume.</li>
+<li><strong>Você roda agentes de IA e precisa de handoff humano.</strong> A coexistência, também escrita <em>Coexistence</em>, <em>Coexist</em> ou <em>CoEx</em>, mantém o número no app do celular para atendimento manual enquanto a API responde as automações, no mesmo histórico. O evento <code>smb_message_echoes</code> avisa quando um humano assumiu pelo celular.</li>
+<li><strong>Você já tem fluxos em n8n, Make ou Zapier.</strong> Se eles falam com a Cloud API, a migração é trocar <code>graph.facebook.com/v21.0/</code> por <code>cloud.datafyapi.com.br/v1/</code> e o token pelo <code>sk_live_…</code>. O payload é idêntico (<a href="https://app.datafyapi.com.br/docs" rel="noopener">documentação</a>).</li>
+<li><strong>Você quer evitar o App Review.</strong> As permissões <code>whatsapp_business_messaging</code> e <code>whatsapp_business_management</code> já estão aprovadas do lado do parceiro.</li>
+</ol>
+<h2 id="onde-as-outras-op-es-s-o-melhores">Onde as outras opções são melhores</h2>
+<p>Nem todo caso é o mesmo, e vale dizer onde a Datafy perde:</p>
+<ul>
+<li><strong>Direto na Meta</strong> é melhor se você tem time de engenharia dedicado, quer custo fixo zero por número e aceita passar pelas aprovações. Também é o caminho de quem quer virar BSP ou Tech Provider por estratégia. Nesse cenário o parceiro é concorrente, não fornecedor.</li>
+<li><strong>Plataformas de atendimento</strong> como Blip, Zenvia ou Wati entregam uma caixa de entrada pronta, com fila, tags e relatório. A Datafy é infraestrutura de API: o painel tem um bate-papo, mas ele é log: guarda 7 dias e 100 mensagens por conversa, e não serve como ferramenta de atendimento. Para isso, integra-se a um Chatwoot (há aba pronta no painel) ou usa-se um produto de atendimento.</li>
+<li><strong>Twilio e Infobip</strong> têm SDKs em mais linguagens, presença global e SLA corporativo.</li>
+<li><strong>A Datafy bloqueia por segurança</strong> rotas com <code>subscribed_apps</code>, <code>deregister</code> e POST direto no ID do número. Se você precisa dessas, precisa da Meta direto.</li>
+</ul>
+<h2 id="um-detalhe-que-muda-a-compara-o-disparo">Um detalhe que muda a comparação: disparo em massa</h2>
+<p>Circula no mercado a ideia de que API oficial não serve para disparo. Serve, e é a única forma permitida de fazê-lo. Na Datafy existe uma aba de campanhas: sobe-se um CSV com uma coluna <code>telefone</code> (formato <code>55</code> + DDD + número), escolhe-se um template já aprovado, mapeiam-se as variáveis e envia-se na hora ou agendado, com status por contato.</p>
+<p>A diferença em relação ao disparo clandestino não é a mecânica. É que cada mensagem passa por um template que a Meta aprovou, e é exatamente isso que mantém o número vivo.</p>
+<h2 id="o-que-mudou-em-2026">O que mudou em 2026</h2>
+<ul>
+<li><strong>Mensagens de serviço deixam de ser gratuitas em 1º de outubro de 2026.</strong> Segundo comunicado da Meta a parceiros de tecnologia, a que a Datafy teve acesso, a resposta dentro da janela de 24 h passa a ser cobrada ao mesmo preço de utilidade e autenticação, com uma franquia mensal de <strong>1.000 mensagens de serviço gratuitas por número</strong>, renovada todo dia 1º e sem acumular. Como a franquia é por número, distribuir o atendimento entre mais números multiplica o que é grátis. Confirme a tabela vigente em <a href="https://developers.facebook.com/docs/whatsapp/pricing" rel="noopener">preços da Meta</a>.</li>
+<li><strong>O Brasil passou a ser faturado em reais desde 1º de julho de 2026.</strong> A Meta abriu a localização de cobrança em BRL para o país, e a migração é obrigatória até 30 de junho de 2027 (<a href="https://developers.facebook.com/docs/whatsapp/pricing" rel="noopener">documentação oficial</a>). Quem orça em dólar precisa refazer a conta.</li>
+<li><strong>O telefone está sendo substituído pelo <code>user_id</code>.</strong> A Meta migra progressivamente para um identificador que não expõe o número. Atenção: o <code>user_id</code> não é universal. Ele é a relação entre aquele usuário e aquela empresa. O mesmo cliente tem <code>user_id</code> diferente em cada conta com que fala, então ele serve como chave única por conta, nunca como identidade global de pessoa.</li>
+</ul>
+<h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+<h3>Evolution API vai banir meu número?</h3>
+<p>A Evolution API não é oficial: é um software de código aberto que você instala no seu servidor, e não é parceira da Meta. Ela consegue conectar por Baileys, que emula o WhatsApp Web e traz risco alto de banimento sem recurso, ou apontando para a Cloud API da Meta. Mas apontar para a API oficial não torna a Evolution oficial, e nesse modo ela não te dá acesso: você continua tendo que passar sozinho por Business Manager verificada, App Review e Tech Provider.</p>
+<h3>Preciso de Business Manager verificada para usar a API oficial?</h3>
+<p>Para começar, não. Basta ter um Business Manager, verificado ou não, e um número elegível. A verificação aumenta os limites diários de envio de template, então vale fazer depois, mas não é pré-requisito para a primeira mensagem.</p>
+<h3>Posso continuar usando o WhatsApp Business no celular?</h3>
+<p>Sim, com coexistência. O número segue no app para atendimento manual e responde também pela API para automações, no mesmo histórico. Para trazer histórico e contatos, é preciso disparar a sincronização em até 24 h após a conexão. É uma vez só por tipo, e perder o prazo significa refazer o onboarding.</p>
+<h3>Quanto custa usar a API oficial pela Datafy?</h3>
+<p>R$ 49,90 por número/mês de 1 a 9 números, R$ 39,90 de 10 a 49 e R$ 29,90 a partir de 50, sem taxa de setup. As conversas são pagas diretamente à Meta, pela tabela oficial, sem markup. A Datafy não cobra por mensagem. Trial de 7 dias, sem cartão.</p>
+<h3>Meus fluxos no n8n vão continuar funcionando se eu migrar?</h3>
+<p>Se eles já falam com a Cloud API, sim: a Datafy espelha os endpoints da Meta. Muda o domínio e o token, que vai sempre no header <code>Authorization</code>, e nunca como <code>?access_token=</code> na URL. Se falam com Evolution em modo QR ou Z-API, o formato do payload é diferente e precisa ser adaptado.</p>
+<h3>Migrar para a oficial resolve meu problema de banimento?</h3>
+<p>Resolve metade. Acaba com o banimento por usar ferramenta não autorizada. Não muda nada se a conduta continuar a mesma: lista fria, ninguém respondendo e nicho proibido bloqueiam número oficial do mesmo jeito.</p>
+<h2 id="como-isso-funciona-na-pr-tica">Como isso funciona na prática</h2>
+<p>Se você quer ver o caminho inteiro antes de decidir, ou seja, conectar o número pelo Embedded Signup, receber o token e fazer o primeiro envio pelo n8n, existe um registro de fora da casa. Um criador da comunidade Nine Labs publicou, sem patrocínio, o processo completo em cerca de 13 minutos, do cadastro ao webhook funcionando.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=FcAwJqVHNoU" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/FcAwJqVHNoU/maxresdefault.jpg" alt="Miniatura do vídeo: API OFICIAL do WhatsApp: jeito simples e fácil de utilizar" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>API OFICIAL do WhatsApp: jeito simples e fácil de utilizar</b><span>Canal DATA7 · 13 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Vídeo orgânico, não patrocinado, da comunidade Nine Labs (n8n): conexão do número e integração no n8n do começo ao fim, com webhook trigger e HTTP Request.</figcaption>
+</figure>
+
+<p>E se o que você quer é o passo a passo da conexão em si, com as duas opções de conta, a tela de compartilhar histórico e o QR code no celular, o canal da Datafy cobre isso em <a href="https://www.youtube.com/watch?v=8xA-8z1YW98" rel="noopener">A forma mais fácil e simples de usar a API Oficial do WhatsApp</a>.</p>
+<h2 id="como-decidir">Como decidir</h2>
+<p>Três perguntas. <strong>O número é seu ou do seu cliente?</strong> <strong>Você aguenta ficar uma semana sem ele?</strong> <strong>Você tem gente para passar pelo App Review da Meta?</strong> Se as respostas forem "do cliente", "não" e "não", a oficial via parceiro homologado é a única opção que sobra.</p>
+<p>E antes de migrar, olhe para a sua lista. Se ela é fria e ninguém responde, a migração vai adiar o bloqueio, não evitá-lo.</p>
+<div class="cta"><h3>Teste com um número antes de mover o resto</h3><p>Conecte pelo Embedded Signup, copie o token `sk_live_...`, cole no n8n e envie a primeira mensagem. Se você já tem um Business Manager, isso leva menos de 5 minutos.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+
+<h2 id="leia-tamb-m">Leia também</h2>
+<ul>
+<li><a href="/o-que-e-tech-provider-meta">O que é Tech Provider da Meta</a></li>
+<li><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Quanto custa WhatsApp Business API no Brasil em 2026</a></li>
+<li><a href="/migrar-evolution-z-api-para-api-oficial">Como migrar de Evolution/Z-API para a API oficial sem perder o número</a></li>
+<li><a href="/whatsapp-api-oficial-n8n">WhatsApp API oficial no n8n em 15 minutos</a></li>
+<li><a href="/coexistencia-whatsapp-api-oficial-app-celular">Coexistência: API oficial e app no celular no mesmo número</a></li>
+</ul>
+</article>
+
+<aside class="rail" aria-label="Ações">
+  <div class="rail-inner">
+    <div class="rail-cta">
+      <b>Teste com um número</b>
+      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
+      <small>7 dias · sem cartão · sem setup</small>
+    </div>
+    <nav class="rail-box" aria-label="Sumário lateral">
+      <strong>Nesta página</strong>
+      <ol>
+        <li><a href="#principais-pontos">Principais pontos</a></li>
+        <li><a href="#qual-a-diferen-a-t-cnica-entre-a-api-ofi">Qual é a diferença técnica entre...</a></li>
+        <li><a href="#evolution-api-vai-banir-meu-n-mero">Evolution API vai banir meu núme...</a></li>
+        <li><a href="#api-oficial-protege-contra-banimento">API oficial protege contra banim...</a></li>
+        <li><a href="#comparativo-em-8-crit-rios">Comparativo em 8 critérios</a></li>
+        <li><a href="#quando-vale-a-oficial-via-parceiro-homol">Quando vale a oficial via parcei...</a></li>
+        <li><a href="#onde-as-outras-op-es-s-o-melhores">Onde as outras opções são melhores</a></li>
+        <li><a href="#um-detalhe-que-muda-a-compara-o-disparo">Um detalhe que muda a comparação...</a></li>
+        <li><a href="#o-que-mudou-em-2026">O que mudou em 2026</a></li>
+        <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+        <li><a href="#como-isso-funciona-na-pr-tica">Como isso funciona na prática</a></li>
+        <li><a href="#como-decidir">Como decidir</a></li>
+        <li><a href="#leia-tamb-m">Leia também</a></li>
+      </ol>
+    </nav>
+    <div class="rail-box">
+      <strong>Falar com a gente</strong>
+      <p style="margin:0;color:var(--muted);line-height:1.5">Dúvida antes de assinar?
+      <a href="https://wa.me/5541991338055" rel="noopener">Chame no WhatsApp</a>.</p>
+    </div>
+  </div>
+</aside>
+</div>
+
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div class="foot-about">
+      <a class="logo" href="/" style="margin-bottom:.8rem"><span class="dot">D</span>Datafy<span>API</span></a>
+      <p>A API oficial do WhatsApp para quem automatiza e constrói software. Tech Provider verificado pela Meta, com coexistência e espelho 1:1 da Cloud API.</p>
+      <p>Agência Nexum Marketing e Performance Ltda<br>CNPJ 41.756.486/0001-70 · Curitiba/PR</p>
+    </div>
+    <div>
+      <h4>Temas</h4>
+      <ul>
+        <li><a href="/tema/oficial-vs-nao-oficial">Oficial vs não oficial</a></li>
+        <li><a href="/tema/custo">Custos</a></li>
+        <li><a href="/tema/coexistencia">Coexistência</a></li>
+        <li><a href="/tema/implementacao">Implementação</a></li>
+        <li><a href="/tema/compliance">Banimento e compliance</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Datafy</h4>
+      <ul>
+        <li><a href="https://datafyapi.com.br/">Site</a></li>
+        <li><a href="https://app.datafyapi.com.br/docs">Documentação</a></li>
+        <li><a href="https://app.datafyapi.com.br">Painel</a></li>
+        <li><a href="/autor/vitor-nogarolli">Sobre o autor</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">© 2026 Datafy API. Conteúdo técnico em português sobre WhatsApp Business API.</div>
+</footer>
+
+</body>
+</html>

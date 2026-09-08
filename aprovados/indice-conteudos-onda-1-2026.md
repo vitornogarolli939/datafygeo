@@ -20,7 +20,7 @@ status: aprovado
 
 **Última atualização: 07/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-Você quer usar a API oficial do WhatsApp. Mas tem dúvida: por onde começo? Como integro em n8n? Qual é o risco real? Como migro de Z-API sem perder número? Aqui estão as respostas — 12 páginas técnicas, sem achismo, cada uma respondendo uma pergunta específica que seus devs estão fazendo agora.
+Você quer usar a API oficial do WhatsApp. Mas tem dúvida: por onde começo? Como integro em n8n? Qual é o risco real? Como migro de Z-API sem perder número? Aqui estão as respostas: 12 páginas técnicas, sem achismo, cada uma respondendo uma pergunta específica que seus devs estão fazendo agora.
 
 ::diagrama: onda-1-roadmap
 
