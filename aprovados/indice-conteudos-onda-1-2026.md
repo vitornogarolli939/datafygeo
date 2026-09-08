@@ -1,6 +1,6 @@
 ---
-title: "Índice: Onda 1 completa - 12 páginas sobre WhatsApp Business API oficial"
-description: "Navegue por todas as 12 páginas da Onda 1. Página-mãe, integrações, concorrentes, operacional, Tech Provider e webhooks."
+title: "Onda 1: Guia completo da API oficial do WhatsApp (12 páginas)"
+description: "12 páginas técnicas sobre WhatsApp Business API: fundação, integrações, concorrentes, operacional, Tech Provider, webhooks. Escolha seu caminho."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "indice-conteudos-onda-1"
 cluster: "oficial_vs_nao"
@@ -16,11 +16,13 @@ internal_links: []
 status: aprovado
 ---
 
-# Índice: Onda 1 completa (12 páginas de conteúdo)
+# Onda 1: Guia completo da API oficial do WhatsApp
 
 **Última atualização: 07/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** aqui estão todas as 12 páginas da Onda 1, organizadas por tema. Comece pela página-mãe. Depois escolha seu caminho: quer integrar? Quer entender riscos? Quer comparar com concorrentes?
+**O que você encontra aqui:** 12 páginas técnicas que cobrem tudo que você precisa saber sobre API oficial do WhatsApp: começar do zero, integrar em suas ferramentas, entender os riscos, comparar com alternativas, e escalar sem quebrar. Cada página responde uma pergunta específica que seus técnicos estão fazendo agora.
+
+::diagrama: onda-1-roadmap
 
 ## Página-mãe (comece aqui)
 

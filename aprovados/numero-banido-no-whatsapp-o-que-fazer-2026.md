@@ -41,6 +41,8 @@ Recuperação é possível, mas leva tempo, prova de conformidade e mudança rea
 - Cinco causas principais: 1) prospecção sem template (mandar para lista fria), 2) alto rejeitamento (cliente bloqueando), 3) spam (muitos bloqueios consecutivos), 4) comportamento suspeito (volume muito alto muito rápido), 5) conteúdo proibido (promocão de drogas, golpes).
 - Mesmo em oficial, mesmo com documento, sem conformidade você cai.
 
+::diagrama: numero-banido-visual
+
 ## Os cinco motivos que derrubam número (mesmo em oficial)
 
 ### 1. Prospecção sem template

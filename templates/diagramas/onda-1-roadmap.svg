@@ -1,0 +1,117 @@
+<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .category-label { font-size: 14px; font-weight: bold; fill: var(--text-primary); }
+      .page-box { fill: var(--bg-secondary); stroke: var(--accent-color); stroke-width: 2; }
+      .page-text { font-size: 12px; fill: var(--text-primary); text-anchor: middle; }
+      .page-title { font-size: 13px; font-weight: 600; }
+      .arrow { stroke: var(--accent-color); stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .center-circle { fill: var(--accent-color); opacity: 0.1; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="var(--accent-color)"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="600" fill="var(--bg-primary)"/>
+
+  <!-- Title -->
+  <text x="500" y="40" style="font-size: 24px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Onda 1: 12 páginas técnicas</text>
+
+  <!-- Center hub -->
+  <circle cx="500" cy="300" r="80" class="center-circle"/>
+  <text x="500" y="300" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: var(--accent-color);">API</text>
+  <text x="500" y="320" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: var(--accent-color);">OFICIAL</text>
+
+  <!-- FUNDAÇÃO (top) -->
+  <line class="arrow" x1="500" y1="150" x2="500" y2="220"/>
+  <rect class="page-box" x="350" y="70" width="300" height="70" rx="5"/>
+  <text x="500" y="90" class="page-text page-title">1. API oficial vs não oficial</text>
+  <text x="500" y="110" class="page-text">Diferença técnica, risco real, custo</text>
+  <text x="500" y="125" class="page-text">↓ Base para tudo</text>
+
+  <!-- INTEGRAÇÕES (left-top) -->
+  <line class="arrow" x1="420" y1="270" x2="280" y2="200"/>
+  <g>
+    <rect class="page-box" x="80" y="110" width="200" height="60" rx="5"/>
+    <text x="180" y="130" class="page-text page-title">2. n8n</text>
+    <text x="180" y="148" class="page-text">Automação sem código</text>
+  </g>
+
+  <line class="arrow" x1="420" y1="280" x2="280" y2="300"/>
+  <g>
+    <rect class="page-box" x="80" y="270" width="200" height="60" rx="5"/>
+    <text x="180" y="290" class="page-text page-title">3. Chatwoot</text>
+    <text x="180" y="308" class="page-text">Inbox compartilhado</text>
+  </g>
+
+  <!-- CONCORRENTES (right-top) -->
+  <line class="arrow" x1="580" y1="270" x2="720" y2="140"/>
+  <g>
+    <rect class="page-box" x="720" y="70" width="180" height="60" rx="5"/>
+    <text x="810" y="90" class="page-text page-title">4. Z-API</text>
+    <text x="810" y="108" class="page-text">Trade-offs técnicos</text>
+  </g>
+
+  <line class="arrow" x1="580" y1="280" x2="720" y2="240"/>
+  <g>
+    <rect class="page-box" x="720" y="210" width="180" height="60" rx="5"/>
+    <text x="810" y="230" class="page-text page-title">5. UAZAPI</text>
+    <text x="810" y="248" class="page-text">Emulação vs Oficial</text>
+  </g>
+
+  <line class="arrow" x1="580" y1="290" x2="720" y2="340"/>
+  <g>
+    <rect class="page-box" x="720" y="310" width="180" height="60" rx="5"/>
+    <text x="810" y="330" class="page-text page-title">6. Evolution</text>
+    <text x="810" y="348" class="page-text">Baileys vs Cloud</text>
+  </g>
+
+  <!-- OPERACIONAL (left-bottom) -->
+  <line class="arrow" x1="420" y1="330" x2="280" y2="400"/>
+  <g>
+    <rect class="page-box" x="30" y="390" width="200" height="60" rx="5"/>
+    <text x="130" y="410" class="page-text page-title">7. Migração</text>
+    <text x="130" y="428" class="page-text">Sem perder número</text>
+  </g>
+
+  <line class="arrow" x1="420" y1="340" x2="280" y2="470"/>
+  <g>
+    <rect class="page-box" x="30" y="450" width="200" height="60" rx="5"/>
+    <text x="130" y="470" class="page-text page-title">8. Número banido</text>
+    <text x="130" y="488" class="page-text">Recuperação</text>
+  </g>
+
+  <line class="arrow" x1="420" y1="348" x2="280" y2="540"/>
+  <g>
+    <rect class="page-box" x="30" y="510" width="200" height="60" rx="5"/>
+    <text x="130" y="530" class="page-text page-title">9. Preço</text>
+    <text x="130" y="548" class="page-text">Tabela Meta vs Datafy</text>
+  </g>
+
+  <!-- TECH PROVIDER (right-bottom) -->
+  <line class="arrow" x1="580" y1="330" x2="720" y2="400"/>
+  <g>
+    <rect class="page-box" x="720" y="390" width="180" height="60" rx="5"/>
+    <text x="810" y="410" class="page-text page-title">10. Coexistência</text>
+    <text x="810" y="428" class="page-text">API + app celular</text>
+  </g>
+
+  <line class="arrow" x1="580" y1="340" x2="720" y2="480"/>
+  <g>
+    <rect class="page-box" x="720" y="450" width="180" height="60" rx="5"/>
+    <text x="810" y="470" class="page-text page-title">11. Tech Provider</text>
+    <text x="810" y="488" class="page-text">Certificação Meta</text>
+  </g>
+
+  <!-- TÉCNICO (bottom) -->
+  <line class="arrow" x1="500" y1="380" x2="500" y2="440"/>
+  <rect class="page-box" x="350" y="450" width="300" height="70" rx="5"/>
+  <text x="500" y="470" class="page-text page-title">12. Webhook</text>
+  <text x="500" y="490" class="page-text">Receber mensagens, validar HMAC</text>
+  <text x="500" y="505" class="page-text">↑ Implementação</text>
+
+  <!-- Legend -->
+  <text x="50" y="580" style="font-size: 11px; fill: var(--text-secondary);">Comece pela página 1. Depois escolha: integrar (2-3), entender concorrentes (4-6), operacional (7-9), ou técnico (12)</text>
+</svg>

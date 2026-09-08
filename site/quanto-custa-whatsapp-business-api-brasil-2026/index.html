@@ -600,6 +600,108 @@ footer p{margin:0 0 .5rem}
 <li>Datafy oferece modelo de assinatura: R$ 49,90 + taxa de uso de templates e serviço. Maioria prefere porque evita surpresa de overage.</li>
 <li>Migração obrigatória de reais: todo account já faturava em USD até junho 2026. Julio em diante, Brasil é em BRL.</li>
 </ul>
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .option-box { stroke: var(--text-primary); stroke-width: 2; rx: 8; }
+      .option-title { font-size: 16px; font-weight: bold; text-anchor: middle; fill: var(--text-primary); }
+      .option-label { font-size: 13px; text-anchor: middle; fill: var(--text-secondary); }
+      .price-text { font-size: 24px; font-weight: bold; text-anchor: middle; fill: var(--accent-color); }
+      .pro { fill: var(--bg-secondary); stroke: var(--accent-color); }
+      .neutral { fill: var(--bg-primary); }
+      .con { fill: var(--bg-secondary); }
+      .pro-label { fill: #10b981; font-weight: bold; }
+      .con-label { fill: #ef4444; font-weight: bold; }
+      .neutral-label { fill: var(--text-secondary); }
+      .item-text { font-size: 11px; fill: var(--text-secondary); }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="350" fill="var(--bg-primary)"/>
+
+  <!-- Title -->
+  <text x="400" y="30" style="font-size: 20px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Quanto custa: 3 caminhos</text>
+
+  <!-- Option 1: Meta direto -->
+  <g transform="translate(50, 70)">
+    <rect class="option-box neutral" x="0" y="0" width="200" height="260" rx="8"/>
+
+    <text x="100" y="30" class="option-title">Meta Direto</text>
+    <text x="100" y="50" class="price-text">R$ 0</text>
+    <text x="100" y="70" class="option-label">Setup</text>
+
+    <!-- Pros -->
+    <text x="10" y="95" class="pro-label">✓ Sem taxa fixa</text>
+    <text x="10" y="115" class="item-text">Paga por mensagem</text>
+    <text x="10" y="130" class="item-text">Se usar pouco, barato</text>
+
+    <!-- Cons -->
+    <text x="10" y="155" class="con-label">✗ 6 semanas de setup</text>
+    <text x="10" y="175" class="item-text">App Review, burocracia</text>
+    <text x="10" y="190" class="item-text">Você é seu próprio</text>
+    <text x="10" y="205" class="item-text">Tech Provider</text>
+    <text x="10" y="220" class="item-text">Sem suporte</text>
+
+    <text x="100" y="250" class="option-label" style="font-size: 10px;">Para: DevOps em produção</text>
+  </g>
+
+  <!-- Option 2: Datafy -->
+  <g transform="translate(300, 50)">
+    <rect class="option-box pro" x="0" y="0" width="200" height="300" rx="8"/>
+
+    <text x="100" y="30" class="option-title" style="fill: var(--accent-color);">Datafy (Recomendado)</text>
+    <text x="100" y="55" class="price-text">R$ 49,90</text>
+    <text x="100" y="75" class="option-label">/número/mês</text>
+
+    <!-- Pros -->
+    <text x="10" y="100" class="pro-label">✓ Setup 5 minutos</text>
+    <text x="10" y="120" class="item-text">Aprovou em horas</text>
+    <text x="10" y="135" class="item-text">Suporte em português</text>
+    <text x="10" y="150" class="item-text">Coexistência nativa</text>
+    <text x="10" y="165" class="item-text">Sem markup em msgs</text>
+
+    <!-- Cons -->
+    <text x="10" y="190" class="neutral-label">⚠ Taxa fixa</text>
+    <text x="10" y="210" class="item-text">Se usar muitíssimo</text>
+    <text x="10" y="225" class="item-text">Meta direto mais barato</text>
+    <text x="10" y="240" class="item-text">Mas muito mais trabalho</text>
+
+    <text x="100" y="285" class="option-label" style="font-size: 10px;">Para: SaaS e agências</text>
+  </g>
+
+  <!-- Option 3: Z-API -->
+  <g transform="translate(550, 70)">
+    <rect class="option-box con" x="0" y="0" width="200" height="260" rx="8"/>
+
+    <text x="100" y="30" class="option-title">Z-API</text>
+    <text x="100" y="50" class="price-text">R$ 50-100</text>
+    <text x="100" y="70" class="option-label">/mês (varia)</text>
+
+    <!-- Pros -->
+    <text x="10" y="95" class="pro-label">✓ Setup rapido</text>
+    <text x="10" y="115" class="item-text">Começa hoje</text>
+
+    <!-- Cons -->
+    <text x="10" y="140" class="con-label">✗ Emulação quebra</text>
+    <text x="10" y="160" class="item-text">Quando WhatsApp</text>
+    <text x="10" y="175" class="item-text">atualiza</text>
+    <text x="10" y="190" class="item-text">Preço confuso</text>
+    <text x="10" y="205" class="item-text">Downtime esperado</text>
+
+    <text x="100" y="250" class="option-label" style="font-size: 10px;">Para: Protótipo 1 dia</text>
+  </g>
+
+  <!-- Bottom guidance -->
+  <rect x="20" y="320" width="760" height="20" fill="var(--bg-secondary)" rx="4"/>
+  <text x="400" y="335" style="font-size: 12px; text-anchor: center; fill: var(--text-secondary);">Pequeno volume (100-500 msg/mês) → Datafy | Grande volume (5000+) → Considere Meta direto</text>
+</svg>
+</div>
+<figcaption></figcaption>
+</figure>
+
 <h2 id="estrutura-de-pre-o-da-meta-direto">Estrutura de preço da Meta (direto)</h2>
 <p>Se você conecta número direto na Meta (sem intermediário):</p>
 <p><strong>Templates:</strong>

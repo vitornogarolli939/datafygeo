@@ -41,6 +41,8 @@ Se você usa Datafy, temos uma camada: R$ 49,90 por número/mês (faixa inicial)
 - Datafy oferece modelo de assinatura: R$ 49,90 + taxa de uso de templates e serviço. Maioria prefere porque evita surpresa de overage.
 - Migração obrigatória de reais: todo account já faturava em USD até junho 2026. Julio em diante, Brasil é em BRL.
 
+::diagrama: preço-comparacao
+
 ## Estrutura de preço da Meta (direto)
 
 Se você conecta número direto na Meta (sem intermediário):

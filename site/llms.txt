@@ -21,7 +21,7 @@ Autor: Vitor Nogarolli, cofundador da Datafy API.
 
 ## Artigos
 
-- [Índice: Onda 1 completa - 12 páginas sobre WhatsApp Business API oficial](https://conteudo.datafyapi.com.br/indice-conteudos-onda-1): Navegue por todas as 12 páginas da Onda 1. Página-mãe, integrações, concorrentes, operacional, Tech Provider e webhooks.
+- [Onda 1: Guia completo da API oficial do WhatsApp (12 páginas)](https://conteudo.datafyapi.com.br/indice-conteudos-onda-1): 12 páginas técnicas sobre WhatsApp Business API: fundação, integrações, concorrentes, operacional, Tech Provider, webhooks. Escolha seu caminho.
 - [Evolution API: Baileys vs Cloud API vs Datafy - trade-offs técnicos](https://conteudo.datafyapi.com.br/alternativa-a-evolution-api): Evolution tem 2 modos (Baileys emula, Cloud API passa token). Aqui estão os trade-offs, DevOps necessário e quando cada um faz sentido.
 - [UAZAPI vs API oficial: trade-offs técnicos e como migrar](https://conteudo.datafyapi.com.br/alternativa-a-uazapi): UAZAPI emula WhatsApp Web, API oficial é endpoint da Meta. Aqui estão os trade-offs, o risco real, e como migrar sem perder o número.
 - [Alternativa a Z-API: por que migrar para API oficial em 2026](https://conteudo.datafyapi.com.br/alternativa-a-z-api): Z-API vs API oficial: compreende o risco, como migrar sem perder o número, e quando Z-API ainda faz sentido.

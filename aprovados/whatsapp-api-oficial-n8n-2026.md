@@ -43,6 +43,8 @@ O maior diferencial do n8n é que você escala sem código. Um fluxo no n8n cons
 - Cada mensagem recebida no webhook é um JSON com o conteúdo, o remetente, o tipo de mensagem (texto, imagem, áudio, arquivo) e o timestamp. O n8n lê isso com um nó "Webhook" e distribui.
 - Datafy cobra R$ 49,90 por número/mês (faixa inicial), sem markup nas conversas. Teste 7 dias grátis sem cartão.
 
+::diagrama: n8n-fluxo
+
 ## Como conectar no n8n
 
 Abra seu painel de automação, escolha "nova automação" e comece com um disparador. A entrada pode ser um webhook (para disparar quando chega mensagem de WhatsApp), um schedule (automático de hora em hora), ou um formulário do Typeform.
