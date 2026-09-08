@@ -295,3 +295,84 @@ da ANATEL é recurso de telecom, e o DLT indiano não alcança OTT)
   chamada dentro de template.
 - **Datas exatas de lançamento de typing indicator e da Block Users API**: as páginas não
   têm changelog. Escrever sem cravar data.
+
+---
+
+# ONDA 14: problemas com demanda medida no Stack Overflow (14)
+
+Levantamento de 08/09/2026 sobre o corpus real do Stack Overflow: 1.664 perguntas
+puxadas das tags `whatsapp-cloud-api` (237), `whatsapp-flows` (65), `whatsapp` (top 400
+por voto) e ~60 buscas por código de erro, filtradas para 374 threads da era Cloud API
+(2022 em diante).
+
+**Ressalva honesta:** as visualizações abaixo são do Stack Overflow, que é global e em
+inglês. Não são volume de busca em português. O que elas provam é que **a dor existe e
+é recorrente**, e o levantamento mostrou que boa parte não tem resposta boa nem em
+inglês. Escrever em português sobre isso é disputar um espaço vazio, não um espaço
+concorrido.
+
+## As sete com mais demanda e menos resposta
+
+`mandei-a-mensagem-recebi-200-e-o-cliente-nao-recebeu` — **o maior cluster sem resposta
+da tag inteira**, 13 threads quase idênticas. A API devolve 200 com `wamid` e a mensagem
+nunca chega. Ninguém publicou um diagnóstico completo.
+
+`token-permanente-na-cloud-api` — 12 threads, **68 mil visualizações somadas**. A thread
+mais votada de toda a tag (25 votos, 34,7 mil visualizações) é sobre isso. System User
+contra token temporário de 24 h, escopos e validade.
+
+`nao-existe-get-messages-na-cloud-api` — 12 threads, 24 mil visualizações, 5 sem
+resposta. Todo mundo procura um endpoint para ler o histórico e ele não existe. Página
+canônica óbvia.
+
+`tech-provider-coexistencia-e-embedded-signup-na-pratica` — 12 threads e **11 sem
+nenhuma resposta**. O maior vazio de concorrência do levantamento, e as threads de 2026
+são novas.
+
+`assinatura-hmac-nao-confere` — 6 threads, 13,7 mil visualizações. Causa raiz repetida:
+gerar o hash em cima do JSON re-serializado em vez do corpo bruto da requisição.
+
+`webhook-chega-duplicado` — 10 threads. A segunda pergunta mais votada da tag (24 votos,
+13,7 mil visualizações). Causa raiz: não devolver 200 rápido, e a Meta reentrega.
+
+`assinar-webhook-por-waba-via-api` — 7 threads, **5 sem resposta**. O caminho
+`POST /{waba-id}/subscribed_apps` e o callback de override do Tech Provider. Assunto
+distinto de "meu webhook não chega", e sem material nenhum.
+
+## As outras sete, por volume
+
+`baixar-midia-do-webhook-401` (17 threads; a causa raiz aparece 8 vezes de forma
+independente: falta o header `Authorization: Bearer` na URL do `lookaside.fbsbx.com`) ·
+`erro-132001-template-nao-existe-nesse-idioma` (3 threads, 24 mil visualizações; é
+descasamento de locale) · `registrar-e-desregistrar-numero` (21 threads, 70 mil
+visualizações) · `esse-numero-tem-whatsapp` (8 threads, 19 mil visualizações; inclui a
+pegadinha do 9 na Argentina e no México) ·
+`a-cloud-api-manda-para-grupo` (10 threads, 18 mil visualizações, respostas
+contraditórias) · `subir-midia-post-media-da-erro-de-mime` (12 threads) ·
+`flows-criptografia-e-dado-dinamico` (6 threads de criptografia e 6 de dado dinâmico na
+tag `whatsapp-flows`)
+
+## Temas sem NENHUMA thread, que continuam sendo dor real
+
+Estes não têm competição alguma, e vários são erro que trava produção. A ausência de
+pergunta aqui não significa ausência de dor: significa que quem apanhou não achou nem
+onde perguntar.
+
+- **Mídia expira**: 30 dias para o arquivo enviado, e a URL de download vale poucos
+  minutos. Zero threads perguntam isso diretamente, mas é a causa de metade dos "a URL
+  não funciona".
+- **Enviar áudio como PTT de verdade** (a bolha de mensagem de voz, não anexo de áudio).
+- **PIN de verificação em duas etapas** do número.
+- **Migrar número entre WABAs**, e **desregistrar número**.
+- **Endpoint de health status** do número.
+- **WABA banida e como recorrer.**
+- **Zero-tap e copy-code** em template de autenticação.
+- **Block Users API.**
+- **Tabela de códigos de erro**: `131051`, `131048`, `131056`, `132007`, `132012`,
+  `132015`, `133005`, `133016`, `135000`, `130429`, `470`, `368`, `1013`. Nenhum tem
+  thread dedicada, e ninguém publicou uma tabela em português.
+- **Solution Partner contra Tech Provider**: o termo aparece em 12 threads, mas a
+  comparação entre os dois programas não existe em lugar nenhum.
+
+Só a tabela de erros já justifica uma página longa, e ela alimenta link interno para
+metade da onda 11.
