@@ -136,7 +136,7 @@ Terceiro, a partir de 1º de outubro de 2026 as mensagens de serviço passam a s
 
 ### O n8n pode substituir uma plataforma de atendimento como Chatwoot?
 
-Pode fazer quase tudo, mas falta a interface de inbox compartilhado. No n8n você trabalha com dados, não com conversa visível tipo chat. Se você quer que a equipe leia as respostas em tempo real, use Chatwoot ou WhatsApp Web. Se quer lógica (se vira para CRM, se responde automático, se archiva), n8n é imbatível.
+Pode fazer quase tudo, mas falta a interface de inbox compartilhado. No n8n você trabalha com dados, não com conversa visível tipo chat. Se você quer que a equipe leia as respostas em tempo real, use Chatwoot ou WhatsApp Web. Se o que você quer é lógica, ou seja, mandar para o CRM, responder automático e arquivar, o n8n resolve bem.
 
 ### Posso integrar n8n com Datafy e ganhar desconto?
 

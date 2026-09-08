@@ -50,7 +50,7 @@ Cenário antigo (pré-2024): você conectava número em Z-API/Evolution. Aí o n
 
 Escolha era: ou automação, ou app. Não os dois.
 
-Cenário novo (2026): você conecta em API oficial (Datafy), abre app no celular, ambos funcionam perfeitamente. Um reforça o outro.
+Cenário novo: você conecta o número pela API oficial, abre o aplicativo no celular, e os dois convivem. O que o humano responde no aparelho chega ao seu servidor pelo campo `smb_message_echoes`.
 
 Uso real: seu gerente/dono está em reunião, recebe WhatsApp de cliente importante. Responde do celular. A resposta sai pela conta oficial, com template (se aplicável), tudo registrado no histórico. Ninguém soube que veio de person, não de bot.
 

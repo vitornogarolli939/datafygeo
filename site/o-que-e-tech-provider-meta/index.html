@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>O que é Tech Provider na Meta: Datafy explicado</title>
-<meta name="description" content="Qual é a diferença entre Tech Provider, BSP, reseller e conexão direta. Por que você quer Tech Provider. Como Datafy é certificada.">
+<title>Tech Provider, Solution Partner e BSP: o que cada um significa na Meta</title>
+<meta name="description" content="A diferença entre Tech Provider, Solution Partner (BSP) e conexão direta na Meta, o que cada caminho exige de você e como escolher.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/o-que-e-tech-provider-meta">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -13,15 +13,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
-<meta property="og:title" content="O que é Tech Provider na Meta: Datafy explicado">
-<meta property="og:description" content="Qual é a diferença entre Tech Provider, BSP, reseller e conexão direta. Por que você quer Tech Provider. Como Datafy é certificada.">
+<meta property="og:title" content="Tech Provider, Solution Partner e BSP: o que cada um significa na Meta">
+<meta property="og:description" content="A diferença entre Tech Provider, Solution Partner (BSP) e conexão direta na Meta, o que cada caminho exige de você e como escolher.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/o-que-e-tech-provider-meta">
-<meta property="article:published_time" content="2026-09-06">
-<meta property="article:modified_time" content="2026-09-06">
+<meta property="article:published_time" content="2026-09-08">
+<meta property="article:modified_time" content="2026-09-08">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="O que é Tech Provider na Meta: Datafy explicado">
-<meta name="twitter:description" content="Qual é a diferença entre Tech Provider, BSP, reseller e conexão direta. Por que você quer Tech Provider. Como Datafy é certificada.">
+<meta name="twitter:title" content="Tech Provider, Solution Partner e BSP: o que cada um significa na Meta">
+<meta name="twitter:description" content="A diferença entre Tech Provider, Solution Partner (BSP) e conexão direta na Meta, o que cada caminho exige de você e como escolher.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -112,18 +112,18 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "O que é Tech Provider na Meta: Datafy explicado"
+          "name": "Tech Provider, Solution Partner e BSP: o que cada um significa na Meta"
         }
       ]
     },
     {
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/o-que-e-tech-provider-meta#article",
-      "headline": "O que é Tech Provider na Meta: Datafy explicado",
-      "description": "Qual é a diferença entre Tech Provider, BSP, reseller e conexão direta. Por que você quer Tech Provider. Como Datafy é certificada.",
+      "headline": "Tech Provider, Solution Partner e BSP: o que cada um significa na Meta",
+      "description": "A diferença entre Tech Provider, Solution Partner (BSP) e conexão direta na Meta, o que cada caminho exige de você e como escolher.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-06",
-      "dateModified": "2026-09-06",
+      "dateModified": "2026-09-08",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,11 +132,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/o-que-e-tech-provider-meta",
       "citation": [
-        "https://developers.facebook.com/docs/whatsapp/partners/tech-provider",
-        "https://business.whatsapp.com/",
-        "https://app.datafyapi.com.br/",
-        "https://www.youtube.com/watch?v=cZ_nyIUv5ic",
-        "https://www.youtube.com/watch?v=FcAwJqVHNoU"
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/solution-providers/overview",
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/solution-providers/get-started-for-tech-providers",
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/solution-providers/upgrade-to-tech-partner/",
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
+        "https://app.datafyapi.com.br/"
       ]
     },
     {
@@ -145,50 +145,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Se Datafy fecha, meu número morre?",
+          "name": "Tech Provider é mais seguro que Solution Partner?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. Seu número está no seu BM. Se Datafy fecha, você vai para Twilio, 360dialog, ou Meta direto. Número continua sendo seu."
+            "text": "Não é uma questão de segurança, e sim de faturamento. Os dois têm o mesmo acesso técnico. No Tech Provider a Meta cobra você direto, o que costuma significar menos chance de markup embutido."
           }
         },
         {
           "@type": "Question",
-          "name": "Datafy pode acessar meus dados?",
+          "name": "Se o meu provedor perder o status, eu perco o número?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Teknicamente sim, porque tem acesso aos webhooks. Mas é proibido por contrato com Meta. Se Datafy acessar, perde certificação. Se quer garantia 100%, vai para Meta direto (você mantém dados)."
+            "text": "Não. O número está registrado na sua Business Manager. Você o reconecta em outro provedor, ou direto na Meta. É por isso que a primeira pergunta da lista acima importa tanto."
           }
         },
         {
           "@type": "Question",
-          "name": "Posso mudar de Datafy para outra Tech Provider sem problemas?",
+          "name": "Preciso ser Tech Provider para usar a API oficial na minha empresa?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. Número é seu. Você tira token de Datafy, gera novo token (em outra Tech Provider ou na Meta). Muda código, pronto."
+            "text": "Não. O papel serve para quem oferece a plataforma a terceiros. Para usar no próprio negócio, basta conectar o seu número, seja direto na Meta, seja por um provedor."
           }
         },
         {
           "@type": "Question",
-          "name": "Tech Provider é caro?",
+          "name": "Quanto tempo leva para virar Tech Provider?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Datafy, não. R$ 49,90 é bem mais barato que Twilio. Mas você paga a taxa fixa. Se seu volume é muito baixo (10 msg/mês), talvez Meta direto saia mais barato (grátis de setup)."
+            "text": "Depende do App Review da Meta, que é a etapa mais imprevisível. O trabalho maior costuma ser preparar os vídeos de demonstração exigidos e passar pela verificação de empresa."
           }
         },
         {
           "@type": "Question",
-          "name": "Preciso de contrato separado com Datafy?",
+          "name": "Ser Tech Provider evita banimento dos meus números?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. Você cria conta em app.datafyapi.com.br e começa. Contrato é implícito no ToS (terms of service)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "E se Meta bloqueia Datafy?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Improvável, mas possível. Meta auditaria Datafy e se visse violação, tira certificação. Aí Datafy não poderia mais oferecer API. Seus números, vocês conseguia migrar para outra provider."
+            "text": "Não. Nenhum papel na Meta muda as regras de conduta. Prospecção sem template, engajamento baixo e nicho proibido derrubam número igual, com API oficial e template aprovado."
           }
         }
       ]
@@ -534,11 +526,11 @@ footer p{margin:0 0 .5rem}
   <div class="hero-grid">
     <div>
       <p class="eyebrow">Oficial vs não oficial</p>
-      <h1>O que é Tech Provider na Meta: Datafy explicado</h1>
+      <h1>Tech Provider, Solution Partner e BSP: o que cada um significa na Meta</h1>
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-06">6 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-08">8 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -582,9 +574,9 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>O que é Tech Provider na Meta: Datafy explicado</h1>
-<p><strong>Resposta curta:</strong> Tech Provider é título que Meta dá para empresa que atende múltiplos clientes usando a API oficial do WhatsApp. Datafy é Tech Provider. Significa: Datafy passou em auditoria de segurança da Meta, assinou contrato, e agora pode oferecer API oficial para você sem você ter que falar direto com Meta.</p>
-<p>Vantagem: você conecta número em 5 minutos em vez de 6 semanas. Meta confia em Datafy para não fazer coisa errada.</p>
+<h1>Tech Provider, Solution Partner e BSP: o que cada um significa na Meta</h1>
+<p><strong>Resposta curta:</strong> a Meta tem três papéis para quem oferece a WhatsApp Business Platform a terceiros. <strong>Solution Partner</strong> é o que o mercado chama de BSP: tem linha de crédito e fatura o cliente. <strong>Tech Provider</strong> oferece o mesmo acesso técnico, mas sem linha de crédito, então a Meta cobra o cliente diretamente. <strong>Tech Partner</strong> é o Tech Provider que também virou Meta Business Partner. A diferença prática entre eles é quase toda de faturamento e de selo comercial, não de capacidade técnica.</p>
+<p>Vale desinflar o termo desde já, porque o mercado vende Tech Provider como se fosse um selo raro: o caminho é <strong>público e self-service</strong>. Qualquer empresa que passe pelo App Review com as permissões certas vira Tech Provider. Não há cota, nem exclusividade por país.</p>
 <div class="stats">
   <div class="stat"><b>3 papéis</b><span>Solution Partner, Tech Provider e Tech Partner</span></div>
   <div class="stat"><b>0</b><span>linha de crédito no Tech Provider: a Meta fatura o cliente direto</span></div>
@@ -594,206 +586,12 @@ footer p{margin:0 0 .5rem}
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li>Tech Provider é apenas um tipo de intermediário autorizado. Existem também BSP (Business Solution Provider, geralmente pagamento) e Reseller (só vende, não integra).</li>
-<li>Ser Tech Provider significa: Meta auditou você, confia seu código, seus servidores, sua segurança. Se você faz coisa errada, Meta responsabiliza você, não cliente final.</li>
-<li>Diferença para conexão direta: você não precisa de App Review, não precisa de reunião com Meta, número conecta automático.</li>
-<li>Diferença para Z-API/Evolution/UAZAPI: tech provider é autorizado (seguro), outros não são (risco).</li>
-<li>Datafy é Tech Provider verificada. Significa: você conecta em Datafy, Datafy conecta em Meta, Meta valida. É cadeia de confiança.</li>
+<li><strong>Solution Partner</strong> é o papel com linha de crédito: ele fatura o cliente, é Meta Business Partner e participa dos programas comerciais da Meta (<a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/solution-providers/overview" rel="noopener">visão geral dos papéis</a>).</li>
+<li><strong>Tech Provider</strong> entrega o mesmo acesso técnico, mas sem linha de crédito. O cliente cadastra o próprio meio de pagamento e a Meta cobra dele.</li>
+<li>Virar Tech Provider é <a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/solution-providers/get-started-for-tech-providers" rel="noopener">um processo aberto</a>: app na Meta, verificação de empresa e App Review com vídeos, pedindo acesso avançado a <code>whatsapp_business_messaging</code> e <code>whatsapp_business_management</code>.</li>
+<li>O que o papel habilita de verdade: <strong>Embedded Signup</strong>, para o cliente conectar o número dentro do seu produto, e <strong>coexistência</strong>, que a Meta restringe a Solution Partner e Tech Provider.</li>
+<li>Nenhum papel dá imunidade a banimento. Se o número cair por conduta, o provedor ajuda a montar o recurso, mas quem decide é a Meta.</li>
 </ul>
-<h2 id="os-quatro-caminhos-de-usar-api-oficial">Os quatro caminhos de usar API oficial</h2>
-<h3>1. Direto na Meta (connection direta)</h3>
-<p>Você vai na Meta Business Manager, cria app WhatsApp, passa por App Review, recebe token. Você é responsável por tudo.</p>
-<p><strong>Tempo:</strong> 6 a 8 semanas</p>
-<p><strong>Custo:</strong> Grátis, mas você paga por infraestrutura (servidor, DevOps)</p>
-<p><strong>Conformidade:</strong> 100% sua responsabilidade</p>
-<p><strong>Vantagem:</strong> total controle</p>
-<p><strong>Desvantagem:</strong> lento, caro de manter</p>
-<h3>2. Tech Provider (Datafy)</h3>
-<p>Você vai em Datafy, conecta número usando BM sua. Datafy faz integração com Meta em nome de você.</p>
-<p><strong>Tempo:</strong> Menos de 5 minutos</p>
-<p><strong>Custo:</strong> R$ 49,90 por número/mês + variável por uso</p>
-<p><strong>Conformidade:</strong> Compartilhado (Datafy assume responsabilidade legal de Tech Provider)</p>
-<p><strong>Vantagem:</strong> rápido, suporte, conformidade</p>
-<p><strong>Desvantagem:</strong> depende de Datafy funcionar</p>
-<h3>3. BSP (Business Solution Provider)</h3>
-<p>Exemplo: Twilio. Você vai em Twilio, Twilio oferece número Twilio (não seu). Número é de Twilio, você só usa.</p>
-<p><strong>Tempo:</strong> 1 semana</p>
-<p><strong>Custo:</strong> Caro (Twilio cobra markup, custa mais)</p>
-<p><strong>Conformidade:</strong> Twilio</p>
-<p><strong>Vantagem:</strong> muito fácil, Twilio resolve tudo</p>
-<p><strong>Desvantagem:</strong> número é deles, você é dependente, caro</p>
-<h3>4. Reseller</h3>
-<p>Exemplo: agência de marketing que oferece WhatsApp de Meta. Reseller compra de Tech Provider (como Datafy), vende para você com markup.</p>
-<p><strong>Tempo:</strong> 2 dias</p>
-<p><strong>Custo:</strong> Mais caro que direto na Tech Provider</p>
-<p><strong>Conformidade:</strong> Reseller</p>
-<p><strong>Vantagem:</strong> você já conhece o reseller</p>
-<p><strong>Desvantagem:</strong> mais caro, menos suporte</p>
-<h2 id="tabela-qual-caminho-escolho">Tabela: qual caminho escolho?</h2>
-<div class="tw"><table>
-<thead>
-<tr>
-<th>Critério</th>
-<th>Direto Meta</th>
-<th>Tech Provider (Datafy)</th>
-<th>BSP (Twilio)</th>
-<th>Reseller</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Tempo setup</strong></td>
-<td>6 semanas</td>
-<td>5 minutos</td>
-<td>1 semana</td>
-<td>2 dias</td>
-</tr>
-<tr>
-<td><strong>Número é seu</strong></td>
-<td>Sim</td>
-<td>Sim</td>
-<td>Não (é de BSP)</td>
-<td>Sim (em nome sua)</td>
-</tr>
-<tr>
-<td><strong>App Review</strong></td>
-<td>Sim, tem que fazer</td>
-<td>Não, Datafy faz</td>
-<td>Não, BSP faz</td>
-<td>Não</td>
-</tr>
-<tr>
-<td><strong>Preço mensal</strong></td>
-<td>Grátis (você paga servidor)</td>
-<td>R$ 49,90+</td>
-<td>3-5x mais caro</td>
-<td>2x mais caro</td>
-</tr>
-<tr>
-<td><strong>Suporte</strong></td>
-<td>Meta (48h+)</td>
-<td>Datafy (horas)</td>
-<td>BSP (horas)</td>
-<td>Reseller (varia)</td>
-</tr>
-<tr>
-<td><strong>Coexistência</strong></td>
-<td>Sim</td>
-<td>Sim</td>
-<td>Sim</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><strong>Conformidade LGPD</strong></td>
-<td>Você 100%</td>
-<td>Datafy 100%</td>
-<td>BSP 100%</td>
-<td>Reseller</td>
-</tr>
-<tr>
-<td><strong>Pode trocar depois</strong></td>
-<td>Difícil (número em sua BM)</td>
-<td>Fácil (saí de Datafy, entro em outra)</td>
-<td>Difícil (número não é seu)</td>
-<td>Fácil (já é seu)</td>
-</tr>
-</tbody>
-</table></div>
-<h2 id="por-que-datafy-tech-provider">Por que Datafy é Tech Provider</h2>
-<p>Datafy passou por:</p>
-<ol>
-<li><strong>Auditoria técnica:</strong> Meta verificou código, servidores, segurança.</li>
-<li><strong>Auditoria legal:</strong> Meta verificou contrato, conformidade LGPD, proteção de dados.</li>
-<li><strong>Certificação:</strong> Meta emitiu certificado de Tech Provider.</li>
-<li><strong>Monitoramento contínuo:</strong> Meta audita Datafy periodicamente.</li>
-</ol>
-<p>Se Datafy fizer coisa errada (roubar dados, usar cliente indevidamente), Meta tira certificação e Datafy perde negócio.</p>
-<p>Por isso Tech Provider é mais seguro: há incentivo alinhado (Datafy quer manter certificação).</p>
-<h2 id="que-datafy-oferece-como-tech-provider">Que Datafy oferece como Tech Provider</h2>
-<p><strong>Acesso à API:</strong>
-- Endpoint Graph API Meta, passthrough
-- Webhooks automático configurado
-- Token gerado automático no seu BM</p>
-<p><strong>Conformidade:</strong>
-- Datafy assina contrato com Meta em nome de você
-- Datafy responsável por LGPD, GDPR se EU
-- Datafy monitora segurança</p>
-<p><strong>Infraestrutura:</strong>
-- Webhook hospedado (você não precisa manter servidor)
-- Escalabilidade (Datafy mantém)</p>
-<p><strong>O que vem pronto por ser Tech Provider:</strong>
-- Coexistência já habilitada (aplicativo e API no mesmo número). A Meta exige que o provedor seja Solution Partner ou Tech Provider para oferecer o recurso
-- Embedded Signup (cliente conecta sozinho no seu app)
-- Integração nativa Chatwoot
-- Integração nativa com n8n, Make</p>
-<p><strong>Suporte:</strong>
-- Suporte em português
-- WhatsApp direto para issues
-- Documentação PT-BR</p>
-<h2 id="datafy-vs-bsp-twilio-360dialog-gupshup">Datafy vs BSP (Twilio, 360dialog, Gupshup)</h2>
-<div class="tw"><table>
-<thead>
-<tr>
-<th>Aspecto</th>
-<th>Datafy</th>
-<th>Twilio</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Tech Provider</strong></td>
-<td>Sim</td>
-<td>Sim</td>
-</tr>
-<tr>
-<td><strong>Número é seu</strong></td>
-<td>Sim</td>
-<td>Sim (usando seu BM)</td>
-</tr>
-<tr>
-<td><strong>Preço Brasil</strong></td>
-<td>R$ 49,90 faixa inicial</td>
-<td>100+ USD = ~500 BRL</td>
-</tr>
-<tr>
-<td><strong>Suporte português</strong></td>
-<td>Sim, nativo</td>
-<td>Não (precisa de outro reseller)</td>
-</tr>
-<tr>
-<td><strong>Coexistência</strong></td>
-<td>Nativa</td>
-<td>Suportada</td>
-</tr>
-<tr>
-<td><strong>Chatwoot nativa</strong></td>
-<td>Sim</td>
-<td>Via webhook</td>
-</tr>
-<tr>
-<td><strong>Quando começou</strong></td>
-<td>2024</td>
-<td>1990s</td>
-</tr>
-<tr>
-<td><strong>Mercado alvo</strong></td>
-<td>Brasil, Latam</td>
-<td>Global</td>
-</tr>
-</tbody>
-</table></div>
-<p>Datafy é mais barato, mais focado em português, mais integrado com ferramentas populares no Brasil (n8n, Chatwoot).</p>
-<p>Twilio é mais estabelecida globalmente, mais recursos avançados, mas mais cara.</p>
-<h2 id="o-que-certifica-o-datafy">O que é certificação Datafy</h2>
-<p>Quando você vê "Datafy, Tech Provider verificada pela Meta", significa:</p>
-<ol>
-<li>Datafy foi auditada e aprovada</li>
-<li>Datafy pode oferecer API oficial</li>
-<li>Datafy tem contrato ativo com Meta</li>
-<li>Datafy compromete-se a seguir regras</li>
-</ol>
-<p>Se você usar Datafy e levar ban, Datafy não pode te desbanir diretamente. Mas pode ajudar você a apelar com Meta (porque tem relacionamento direto).</p>
-<p>Se você fosse direto na Meta, Meta é quem você conversa.</p>
 <figure>
 <div class="diagram">
 <svg viewBox="0 0 720 272" xmlns="http://www.w3.org/2000/svg" class="d">
@@ -840,46 +638,107 @@ footer p{margin:0 0 .5rem}
 <figcaption></figcaption>
 </figure>
 
+<h2 id="os-tr-s-pap-is-lado-a-lado">Os três papéis, lado a lado</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>Solution Partner</th>
+<th>Tech Provider</th>
+<th>Tech Partner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linha de crédito na Meta</td>
+<td>Sim</td>
+<td>Não</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>Quem fatura o cliente</td>
+<td>O parceiro</td>
+<td>A Meta, direto</td>
+<td>A Meta, direto</td>
+</tr>
+<tr>
+<td>É Meta Business Partner</td>
+<td>Sim</td>
+<td>Não</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>Habilita Embedded Signup</td>
+<td>Sim</td>
+<td>Sim</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>Pode oferecer coexistência</td>
+<td>Sim</td>
+<td>Sim</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>Como se torna</td>
+<td>Processo comercial com a Meta</td>
+<td>App Review, self-service</td>
+<td>Tech Provider que sobe de nível</td>
+</tr>
+</tbody>
+</table></div>
+<p>O termo <strong>BSP</strong> não é da documentação atual: é como o mercado ainda chama o Solution Partner. Se um fornecedor se apresenta como BSP, o que ele está dizendo é que fatura você e tem crédito com a Meta.</p>
+<h2 id="os-caminhos-para-usar-a-api-oficial">Os caminhos para usar a API oficial</h2>
+<h3>Direto na Meta</h3>
+<p>Você cria o app, passa pela verificação de empresa, submete ao App Review e hospeda os próprios webhooks. Você é o responsável por tudo.</p>
+<p><strong>A favor:</strong> controle total, sem camada intermediária, sem custo fixo por número.
+<strong>Contra:</strong> o App Review leva tempo e exige vídeo de demonstração. Toda a infraestrutura de webhook é sua.
+<strong>Para quem:</strong> time de engenharia dedicado, volume alto, quem quer virar Tech Provider por estratégia.</p>
+<h3>Por um Tech Provider</h3>
+<p>Você conecta o número usando a sua própria Business Manager, e o provedor já chega com as permissões aprovadas.</p>
+<p><strong>A favor:</strong> não passa por App Review, o número conecta em minutos, e o Embedded Signup e a coexistência vêm habilitados.
+<strong>Contra:</strong> existe uma camada de acesso a pagar, e a disponibilidade do seu envio passa a depender de mais um serviço no caminho.
+<strong>Para quem:</strong> SaaS que conecta números de clientes, agência, quem quer produção rápida.</p>
+<h3>Por um Solution Partner</h3>
+<p>Mesma coisa do ponto de vista técnico, com uma diferença comercial: ele fatura você, em vez de a Meta cobrar direto. Alguns também revendem a mensagem com margem.</p>
+<p><strong>A favor:</strong> uma fatura só, e suporte comercial estruturado.
+<strong>Contra:</strong> é onde costuma aparecer markup na mensagem. Pergunte isso explicitamente.
+<strong>Para quem:</strong> empresa que prefere fornecedor único e nota fiscal local.</p>
+<h2 id="a-pergunta-que-separa-as-propostas">A pergunta que separa as propostas</h2>
+<p>Em qualquer proposta, três perguntas resolvem a comparação:</p>
+<ol>
+<li><strong>O número fica na minha Business Manager?</strong> Se a resposta for não, você não é dono do ativo e a troca de fornecedor fica cara.</li>
+<li><strong>Existe markup na mensagem, ou eu pago a tabela da Meta?</strong> É isso que decide o custo em escala.</li>
+<li><strong>Coexistência e Embedded Signup estão incluídos?</strong> Dependem do papel do provedor na Meta, não do plano que ele te vende.</li>
+</ol>
+<h2 id="sobre-prote-o-de-dados">Sobre proteção de dados</h2>
+<p>Aqui vale precisão, porque circula muita simplificação. Contratar um provedor <strong>não transfere a sua responsabilidade</strong> sobre os dados dos seus clientes. Na estrutura da LGPD, quem decide a finalidade do tratamento continua respondendo por ele. O provedor atua no tratamento em nome de quem contratou, e isso é definido em contrato, não pelo papel que ele tem na Meta.</p>
+<p>O que o papel na Meta define é outra coisa: quem tem contrato com a Meta, quem responde por violar as políticas da plataforma, e quem pode ser descredenciado. São dois planos diferentes, e vale não confundir um com o outro ao ler proposta comercial.</p>
 <h2 id="embedded-signup">Embedded Signup</h2>
 <p>O cliente conecta o próprio número dentro do seu aplicativo, sem sair dele. É o fluxo que a Meta oferece a quem passou pelo App Review com as permissões de mensageria e de gerenciamento.</p>
-<p>Exemplo: você tem SaaS de automação. Cliente quer conectar WhatsApp. Em vez de ir em Meta, pedir BM, tudo burocrático, ele clica em "Conectar WhatsApp" dentro do seu app.</p>
-<p>Pop-up aparece (controlado por Meta), cliente autoriza, volta pro seu app com número conectado.</p>
-<p>Tech Provider oferece isso automático. BSP não. Direto na Meta, você tem que montar fluxo customizado.</p>
-<h2 id="conformidade-legal">Conformidade legal</h2>
-<p>Como Tech Provider, Datafy é responsável por:</p>
-<ul>
-<li>Proteger dados de cliente (LGPD, GDPR)</li>
-<li>Não usar dados para outro fim</li>
-<li>Avisar cliente de qualquer vazamento</li>
-<li>Responder a Meta sobre conformidade</li>
-</ul>
-<p>Se você usa Datafy, Datafy assume essa responsabilidade legal em relação a Meta. Você continua respondendo por seus clientes.</p>
-<p>É como: você &gt; Datafy &gt; Meta.</p>
-<p>Datafy fica no meio, absorve pressão legal de Meta.</p>
+<p>Na prática: você tem um SaaS de automação, o cliente clica em "Conectar WhatsApp", um pop-up controlado pela Meta abre, ele autoriza, e volta para o seu produto com o número já conectado. Sem você pedir acesso à Business Manager dele, e sem ele passar por App Review.</p>
+<p>É o recurso que viabiliza produto multi-cliente. Sem ele, cada cliente teria que percorrer o processo da Meta por conta própria.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Se Datafy fecha, meu número morre?</h3>
-<p>Não. Seu número está no seu BM. Se Datafy fecha, você vai para Twilio, 360dialog, ou Meta direto. Número continua sendo seu.</p>
-<h3>Datafy pode acessar meus dados?</h3>
-<p>Teknicamente sim, porque tem acesso aos webhooks. Mas é proibido por contrato com Meta. Se Datafy acessar, perde certificação. Se quer garantia 100%, vai para Meta direto (você mantém dados).</p>
-<h3>Posso mudar de Datafy para outra Tech Provider sem problemas?</h3>
-<p>Sim. Número é seu. Você tira token de Datafy, gera novo token (em outra Tech Provider ou na Meta). Muda código, pronto.</p>
-<h3>Tech Provider é caro?</h3>
-<p>Datafy, não. R$ 49,90 é bem mais barato que Twilio. Mas você paga a taxa fixa. Se seu volume é muito baixo (10 msg/mês), talvez Meta direto saia mais barato (grátis de setup).</p>
-<h3>Preciso de contrato separado com Datafy?</h3>
-<p>Não. Você cria conta em app.datafyapi.com.br e começa. Contrato é implícito no ToS (terms of service).</p>
-<h3>E se Meta bloqueia Datafy?</h3>
-<p>Improvável, mas possível. Meta auditaria Datafy e se visse violação, tira certificação. Aí Datafy não poderia mais oferecer API. Seus números, vocês conseguia migrar para outra provider.</p>
-<h2 id="como-decidir-qual-caminho">Como decidir: qual caminho?</h2>
-<p>Você é desenvolvedor maduro com infraestrutura: Meta direto.</p>
-<p>Você é SaaS brasileiro querendo focar em produto: Datafy.</p>
-<p>Você é enterprise com exigências globais: Twilio.</p>
-<p><a href="https://app.datafyapi.com.br" rel="noopener">Teste 7 dias grátis em Datafy, Tech Provider Brasil</a></p>
+<h3>Tech Provider é mais seguro que Solution Partner?</h3>
+<p>Não é uma questão de segurança, e sim de faturamento. Os dois têm o mesmo acesso técnico. No Tech Provider a Meta cobra você direto, o que costuma significar menos chance de markup embutido.</p>
+<h3>Se o meu provedor perder o status, eu perco o número?</h3>
+<p>Não. O número está registrado na sua Business Manager. Você o reconecta em outro provedor, ou direto na Meta. É por isso que a primeira pergunta da lista acima importa tanto.</p>
+<h3>Preciso ser Tech Provider para usar a API oficial na minha empresa?</h3>
+<p>Não. O papel serve para quem oferece a plataforma <strong>a terceiros</strong>. Para usar no próprio negócio, basta conectar o seu número, seja direto na Meta, seja por um provedor.</p>
+<h3>Quanto tempo leva para virar Tech Provider?</h3>
+<p>Depende do App Review da Meta, que é a etapa mais imprevisível. O trabalho maior costuma ser preparar os vídeos de demonstração exigidos e passar pela verificação de empresa.</p>
+<h3>Ser Tech Provider evita banimento dos meus números?</h3>
+<p>Não. Nenhum papel na Meta muda as regras de conduta. Prospecção sem template, engajamento baixo e nicho proibido derrubam número igual, com API oficial e template aprovado.</p>
+<h2 id="como-decidir">Como decidir</h2>
+<p>Se você usa WhatsApp só no seu próprio negócio, o papel do provedor importa pouco: olhe preço, suporte e se o número fica na sua Business Manager. Se você constrói produto que conecta números de clientes, aí o papel decide o que dá para construir, porque Embedded Signup e coexistência dependem dele.</p>
+<div class="cta"><h3>Faça as três perguntas antes de assinar</h3><p>O número fica na minha Business Manager? Existe markup na mensagem? Embedded Signup e coexistência estão incluídos? As respostas separam as propostas mais rápido que qualquer tabela de preço.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/api-oficial-vs-nao-oficial-whatsapp-2026">API oficial vs não oficial</a></li>
-<li><a href="/o-que-e-bsp-whatsapp">O que é BSP WhatsApp</a></li>
-<li><a href="/embedded-signup-para-o-cliente-conectar-sozinho">Embedded Signup para cliente conectar sozinho</a></li>
-<li><a href="/coexistencia-whatsapp-api-oficial-app-celular">Coexistência com app e API</a></li>
+<li><a href="/api-oficial-vs-nao-oficial-whatsapp-2026">API oficial vs não oficial do WhatsApp</a></li>
+<li><a href="/coexistencia-whatsapp-api-oficial-app-celular">Coexistência: API e aplicativo no mesmo número</a></li>
+<li><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Quanto custa a WhatsApp Business API no Brasil</a></li>
+<li><a href="/migrar-para-api-oficial-sem-perder-o-numero">Migrar para API oficial sem perder o número</a></li>
 </ul>
 </article>
 
@@ -895,16 +754,13 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#os-quatro-caminhos-de-usar-api-oficial">Os quatro caminhos de usar API o...</a></li>
-        <li><a href="#tabela-qual-caminho-escolho">Tabela: qual caminho escolho?</a></li>
-        <li><a href="#por-que-datafy-tech-provider">Por que Datafy é Tech Provider</a></li>
-        <li><a href="#que-datafy-oferece-como-tech-provider">Que Datafy oferece como Tech Pro...</a></li>
-        <li><a href="#datafy-vs-bsp-twilio-360dialog-gupshup">Datafy vs BSP (Twilio, 360dialog...</a></li>
-        <li><a href="#o-que-certifica-o-datafy">O que é certificação Datafy</a></li>
+        <li><a href="#os-tr-s-pap-is-lado-a-lado">Os três papéis, lado a lado</a></li>
+        <li><a href="#os-caminhos-para-usar-a-api-oficial">Os caminhos para usar a API ofic...</a></li>
+        <li><a href="#a-pergunta-que-separa-as-propostas">A pergunta que separa as propostas</a></li>
+        <li><a href="#sobre-prote-o-de-dados">Sobre proteção de dados</a></li>
         <li><a href="#embedded-signup">Embedded Signup</a></li>
-        <li><a href="#conformidade-legal">Conformidade legal</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
-        <li><a href="#como-decidir-qual-caminho">Como decidir: qual caminho?</a></li>
+        <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>
       </ol>
     </nav>

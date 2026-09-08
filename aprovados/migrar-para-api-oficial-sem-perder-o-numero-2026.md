@@ -183,7 +183,7 @@ Não. Número é seu, está em BM. Empresa fecha, você muda para outra ferramen
 
 Sim. Teoricamente você poderia rodar os dois em paralelo (webhook duplo). Na prática, gera confusão. Melhor é: Z-API vai embora, Datafy fica.
 
-### Quanto tempo até estar 100% seguro?
+### Quanto tempo até a operação estabilizar?
 
 24 horas de operação sem incidentes. Depois disso, você pode remover backup de Z-API.
 

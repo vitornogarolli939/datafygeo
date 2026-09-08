@@ -73,12 +73,11 @@ A chance de ban é similar nos dois. O diferencial é o que você pode fazer dep
 | **Tempo de setup** | 5 minutos | Menos de 5 minutos |
 | **Risco de detectabilidade** | Sim, viola Termos | Não, autorizada |
 | **Se tomar ban** | Número perdido, sem recurso | Pode recorrer com prova |
-| **Suporte** | Comunidade, sem SLA | Datafy responde em horas |
+| **Suporte** | Comunidade e fórum | Canal direto com o provedor |
 | **Histórico de conversa** | Fica em UAZAPI | Fica em Meta / seu servidor |
 | **Coexistência (app + API)** | Conflita, instável | Estável, nativa |
 | **Preço base** | R$ 49/mês similar | R$ 49,90 a R$ 29,90 (escala) |
 | **Conformidade LGPD** | Você responde 100% | Intermediário responde |
-| **Roadmap futuro** | Incerto | Garantido, crescente |
 
 Quando faz sentido UAZAPI: você está prototipando por 2 semanas, não quer gastar, e não importa se o número cai. Protótipo de startup.
 
@@ -100,7 +99,7 @@ Mudar webhook é simples também. No código, muda a URL de entrada. Ao invés d
 
 ## O que mudou em 2026
 
-A API oficial ficou mais acessível. Datafy e concorrentes adicionaram recursos de coexistência nativa. Antes era problemático rodar API oficial e app no mesmo número. Hoje funciona perfeitamente.
+A API oficial ficou mais acessível. Datafy e concorrentes adicionaram recursos de coexistência nativa. Antes era problemático rodar API oficial e app no mesmo número. Hoje o recurso é suportado pela Meta, dentro dos limites de sincronização de histórico.
 
 A oficialização trouxe conformidade legal. Usar API oficial elimina ambiguidade sobre autorização: você está direto com a Meta, com contrato e responsabilidade clara.
 

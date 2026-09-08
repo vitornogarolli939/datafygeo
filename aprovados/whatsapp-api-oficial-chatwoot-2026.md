@@ -73,7 +73,7 @@ Tudo isso no mesmo número. Sem duplicação, sem desconexão.
 |---|---|---|---|
 | **Inbox compartilhado** | Sim, todos veem | Não, cada PC é uma sessão | Não, é só integração |
 | **Atender em equipe** | Sim, 5+ pessoas | Não, um por sessão | Não, precisa de app |
-| **Coexistência** | Suporta perfeitamente | Não, conflita com API | N/A |
+| **Coexistência** | Suportada | Não, conflita com a API | Não se aplica |
 | **Automação** | Sim, via regras | Não | Sim, via webhook |
 | **Suporte 24h** | Nativo no Chatwoot | Precisa de servidor rodando | Precisa de servidor rodando |
 | **Open source** | Sim | Não | Depende da ferramenta |
