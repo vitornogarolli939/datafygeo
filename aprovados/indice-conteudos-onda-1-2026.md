@@ -4,6 +4,7 @@ description: "9 páginas para developers: como começar, integrar em n8n/Chatwoo
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "guia-completo-api-oficial-whatsapp"
 cluster: "oficial_vs_nao"
+hero: "guia"
 intent: "navegacao"
 persona: "automacao, saas, developer"
 competitors: []

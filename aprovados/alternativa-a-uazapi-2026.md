@@ -4,6 +4,7 @@ description: "UAZAPI emula WhatsApp Web, API oficial é endpoint da Meta. Aqui e
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "alternativa-a-uazapi"
 cluster: "concorrentes"
+hero: "comparacao"
 intent: "considerando-trocar"
 persona: "automacao, saas"
 competitors: ["UAZAPI", "Z-API", "Evolution API", "WPPConnect"]

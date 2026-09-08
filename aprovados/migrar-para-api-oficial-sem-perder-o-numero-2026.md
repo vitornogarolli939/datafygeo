@@ -4,6 +4,7 @@ description: "Como sair de Evolution, Z-API ou UAZAPI para API oficial mantendo 
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "migrar-para-api-oficial-sem-perder-o-numero"
 cluster: "implementacao"
+hero: "troca"
 intent: "como-fazer"
 persona: "automacao, saas"
 competitors: ["Z-API", "UAZAPI", "Evolution API"]

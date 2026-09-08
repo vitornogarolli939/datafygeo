@@ -4,6 +4,7 @@ description: "Guia passo a passo para integrar WhatsApp Business API oficial no 
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "whatsapp-api-oficial-n8n"
 cluster: "implementacao"
+hero: "fluxo"
 intent: "como-fazer"
 persona: "automacao, saas"
 competitors: ["Make", "Zapier", "Integromat"]

@@ -4,6 +4,7 @@ description: "A diferença entre Tech Provider, Solution Partner (BSP) e conexã
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "o-que-e-tech-provider-meta"
 cluster: "oficial_vs_nao"
+hero: "camadas"
 intent: "entendendo"
 persona: "automacao, saas"
 competitors: ["Twilio", "360dialog", "Gupshup"]

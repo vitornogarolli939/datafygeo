@@ -4,6 +4,7 @@ description: "Como conectar API oficial do WhatsApp no Chatwoot para centralizar
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "whatsapp-api-oficial-chatwoot"
 cluster: "implementacao"
+hero: "inbox"
 intent: "como-fazer"
 persona: "automacao, saas"
 competitors: ["Wati", "Gorgias", "Zendesk"]

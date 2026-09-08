@@ -4,6 +4,7 @@ description: "Z-API vs API oficial: compreende o risco, como migrar sem perder o
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "alternativa-a-z-api"
 cluster: "concorrentes"
+hero: "comparacao"
 intent: "considerando-trocar"
 persona: "automacao, saas"
 competitors: ["Z-API", "UAZAPI", "Evolution API"]

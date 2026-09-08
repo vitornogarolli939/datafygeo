@@ -4,7 +4,7 @@ description: "Cloud API da Meta ou Evolution/Z-API? A diferença técnica, por q
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "api-oficial-vs-nao-oficial-whatsapp-2026"
 cluster: "oficial_vs_nao"
-hero: "ban"
+hero: "comparacao"
 intent: "decidindo"
 persona: "saas, automacao, agentes"
 competitors: ["Evolution API", "Z-API", "UAZAPI", "WAHA", "Zapster", "Baileys", "WPPConnect", "Venom"]

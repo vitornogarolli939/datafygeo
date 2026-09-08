@@ -4,6 +4,7 @@ description: "Como a Meta cobra: por mensagem, quatro categorias de template, ja
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "quanto-custa-whatsapp-business-api-brasil-2026"
 cluster: "custo"
+hero: "preco"
 intent: "decidindo"
 persona: "automacao, saas"
 competitors: ["Twilio", "360dialog", "Gupshup"]

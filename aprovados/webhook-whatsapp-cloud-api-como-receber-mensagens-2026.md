@@ -4,6 +4,7 @@ description: "Como configurar webhook, validar assinatura HMAC, processar JSON d
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "webhook-whatsapp-cloud-api-como-receber-mensagens"
 cluster: "implementacao"
+hero: "webhook"
 intent: "como-fazer"
 persona: "automacao, saas"
 competitors: []

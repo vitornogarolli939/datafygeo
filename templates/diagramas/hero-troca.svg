@@ -1,0 +1,19 @@
+<svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
+  <title id="heroT">Migração de provedor mantendo o mesmo número</title>
+  <desc id="heroD">Ilustração de um número de telefone que permanece o mesmo enquanto a conexão muda de um provedor para outro.</desc>
+  <rect x="16" y="104" width="88" height="64" rx="12" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="60" y="142" text-anchor="middle" style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg);fill:var(--muted)">antes</text>
+  <rect x="236" y="104" width="88" height="64" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+  <text x="280" y="142" text-anchor="middle" style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg);fill:var(--accent)">depois</text>
+  <path d="M112 136 H150" stroke="var(--muted)" stroke-width="2" fill="none" opacity=".5"/>
+  <path d="M190 136 H228" stroke="var(--accent)" stroke-width="2" fill="none"/>
+  <path d="M222 130 l8 6 -8 6" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+  <rect x="146" y="96" width="48" height="80" rx="12" fill="var(--fg)" opacity=".92"/>
+  <rect x="150" y="100" width="40" height="72" rx="9" fill="var(--surface)"/>
+  <circle cx="170" cy="126" r="12" fill="var(--accent-soft)"/>
+  <path d="M165 126 l4 4 7 -8" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="156" y="148" width="28" height="4" rx="2" fill="var(--muted)" opacity=".45"/>
+  <rect x="160" y="158" width="20" height="4" rx="2" fill="var(--muted)" opacity=".45"/>
+  <text x="170" y="212" text-anchor="middle" style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg)">o número continua seu</text>
+  <text x="170" y="232" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--muted)">muda a URL e o token</text>
+</svg>

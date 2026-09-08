@@ -4,6 +4,7 @@ description: "Como manter número rodando em API oficial e ainda usar o app What
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "coexistencia-whatsapp-api-oficial-app-celular"
 cluster: "implementacao"
+hero: "duplo"
 intent: "como-fazer"
 persona: "automacao, saas"
 competitors: []

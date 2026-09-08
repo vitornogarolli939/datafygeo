@@ -1,0 +1,20 @@
+<svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
+  <title id="heroT">O mesmo número no aplicativo e na API</title>
+  <desc id="heroD">Ilustração de um número usado ao mesmo tempo pelo aplicativo do celular e pela API oficial.</desc>
+  <rect x="24" y="96" width="72" height="104" rx="14" fill="var(--fg)" opacity=".92"/>
+  <rect x="29" y="101" width="62" height="94" rx="10" fill="var(--surface)"/>
+  <rect x="40" y="118" width="40" height="5" rx="2.5" fill="var(--muted)" opacity=".4"/>
+  <rect x="40" y="130" width="30" height="5" rx="2.5" fill="var(--muted)" opacity=".4"/>
+  <rect x="46" y="150" width="34" height="14" rx="7" fill="var(--accent-soft)"/>
+  <text x="60" y="216" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--muted)">aplicativo</text>
+  <path d="M248 118 a26 26 0 0 1 50 6 a22 22 0 0 1 -6 43 h-52 a24 24 0 0 1 -2 -48 a26 26 0 0 1 10 -1 z"
+        fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
+  <text x="272" y="152" text-anchor="middle" style="font:700 10px system-ui,sans-serif;fill:var(--accent)">API</text>
+  <text x="272" y="216" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--muted)">automação</text>
+  <path d="M104 148 H140" stroke="var(--accent)" stroke-width="2" fill="none"/>
+  <path d="M200 148 H236" stroke="var(--accent)" stroke-width="2" fill="none"/>
+  <rect x="140" y="126" width="60" height="44" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+  <text x="170" y="146" text-anchor="middle" style="font:700 11px system-ui,sans-serif;fill:var(--accent)">1</text>
+  <text x="170" y="161" text-anchor="middle" style="font:600 9px system-ui,sans-serif;fill:var(--accent)">número</text>
+  <text x="170" y="248" text-anchor="middle" style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg)">mesmo histórico</text>
+</svg>

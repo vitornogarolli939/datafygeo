@@ -4,6 +4,7 @@ description: "Por que número é banido, sinais antes de cair, como recuperar co
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "numero-banido-no-whatsapp-o-que-fazer"
 cluster: "compliance"
+hero: "ban"
 intent: "problema-urgente"
 persona: "automacao, saas"
 competitors: []

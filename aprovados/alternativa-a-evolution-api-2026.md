@@ -4,6 +4,7 @@ description: "Evolution tem 2 modos (Baileys emula, Cloud API passa token). Aqui
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "alternativa-a-evolution-api"
 cluster: "concorrentes"
+hero: "comparacao"
 intent: "considerando-trocar"
 persona: "automacao, saas"
 competitors: ["Evolution API", "Z-API", "UAZAPI"]
