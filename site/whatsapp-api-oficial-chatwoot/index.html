@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>WhatsApp API oficial no Chatwoot: abir inbox compartilhado, atender junto e respeitar limites</title>
-<meta name="description" content="Como conectar API oficial do WhatsApp no Chatwoot para centralizar atendimento, responder em equipe e usar coexistência (celular + API no mesmo número).">
+<title>WhatsApp API oficial no Chatwoot: inbox compartilhado para a equipe</title>
+<meta name="description" content="Como ligar a WhatsApp Cloud API a um inbox do Chatwoot, o que a coexistência muda no atendimento em equipe e os campos exatos da configuração.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/whatsapp-api-oficial-chatwoot">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -13,15 +13,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
-<meta property="og:title" content="WhatsApp API oficial no Chatwoot: abir inbox compartilhado, atender junto e respeitar limites">
-<meta property="og:description" content="Como conectar API oficial do WhatsApp no Chatwoot para centralizar atendimento, responder em equipe e usar coexistência (celular + API no mesmo número).">
+<meta property="og:title" content="WhatsApp API oficial no Chatwoot: inbox compartilhado para a equipe">
+<meta property="og:description" content="Como ligar a WhatsApp Cloud API a um inbox do Chatwoot, o que a coexistência muda no atendimento em equipe e os campos exatos da configuração.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/whatsapp-api-oficial-chatwoot">
-<meta property="article:published_time" content="2026-09-06">
-<meta property="article:modified_time" content="2026-09-06">
+<meta property="article:published_time" content="2026-09-08">
+<meta property="article:modified_time" content="2026-09-08">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WhatsApp API oficial no Chatwoot: abir inbox compartilhado, atender junto e respeitar limites">
-<meta name="twitter:description" content="Como conectar API oficial do WhatsApp no Chatwoot para centralizar atendimento, responder em equipe e usar coexistência (celular + API no mesmo número).">
+<meta name="twitter:title" content="WhatsApp API oficial no Chatwoot: inbox compartilhado para a equipe">
+<meta name="twitter:description" content="Como ligar a WhatsApp Cloud API a um inbox do Chatwoot, o que a coexistência muda no atendimento em equipe e os campos exatos da configuração.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -112,18 +112,18 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "WhatsApp API oficial no Chatwoot: abir inbox compartilhado, atender junto e respeitar limites"
+          "name": "WhatsApp API oficial no Chatwoot: inbox compartilhado para a equipe"
         }
       ]
     },
     {
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-chatwoot#article",
-      "headline": "WhatsApp API oficial no Chatwoot: abir inbox compartilhado, atender junto e respeitar limites",
-      "description": "Como conectar API oficial do WhatsApp no Chatwoot para centralizar atendimento, responder em equipe e usar coexistência (celular + API no mesmo número).",
+      "headline": "WhatsApp API oficial no Chatwoot: inbox compartilhado para a equipe",
+      "description": "Como ligar a WhatsApp Cloud API a um inbox do Chatwoot, o que a coexistência muda no atendimento em equipe e os campos exatos da configuração.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-06",
-      "dateModified": "2026-09-06",
+      "dateModified": "2026-09-08",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,13 +132,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-chatwoot",
       "citation": [
-        "https://developers.facebook.com/docs/whatsapp/cloud-api",
-        "https://www.chatwoot.com/docs/",
-        "https://www.chatwoot.com/docs/product/channels/whatsapp/",
-        "https://app.datafyapi.com.br/docs",
-        "https://business.whatsapp.com/",
-        "https://www.youtube.com/watch?v=FcAwJqVHNoU",
-        "https://github.com/chatwoot/chatwoot"
+        "https://www.chatwoot.com/docs/product/channels/api/create-channel",
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
+        "https://developers.facebook.com/docs/whatsapp/throughput",
+        "https://github.com/chatwoot/chatwoot",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -147,42 +145,50 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Posso usar Chatwoot e automação (n8n) ao mesmo tempo?",
+          "name": "Dá para usar Chatwoot e n8n ao mesmo tempo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. Chatwoot pega as mensagens que chegam e distribui para o inbox de atendimento humano. Ao mesmo tempo, um webhook pode sair do Chatwoot e ir para um n8n, que dispara automações (registra em banco, envia para CRM, etc.). Eles trabalham em paralelo."
+            "text": "Dá, e é a combinação mais comum. O n8n trata o que é automático e o Chatwoot recebe o que precisa de gente. Uma forma de organizar: o n8n responde primeiro e só encaminha para o Chatwoot quando não resolve."
           }
         },
         {
           "@type": "Question",
-          "name": "O Chatwoot armazena conversa?",
+          "name": "Onde a conversa fica guardada?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim, localmente na sua instância. Se você usar o Chatwoot Cloud (deles), fica no servidor deles. Se rodar no seu Docker, fica local. A Meta não armazena conversa, só webhook de entrada."
+            "text": "Na instância do Chatwoot que você usar. Se rodar no seu servidor, fica na sua infraestrutura. Se usar a nuvem deles, fica lá. Vale conferir isso antes, porque é a pergunta que aparece em qualquer revisão de contrato."
           }
         },
         {
           "@type": "Question",
-          "name": "Quando vai ter integração de Chatwoot com API oficial de outros provedores?",
+          "name": "Posso atender vários números no mesmo Chatwoot?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A Datafy foi a primeira porque a gente trabalha direto com Chatwoot como tech partner. Outros BSPs (Twilio, 360dialog) têm integração por webhook manual. É mais lento de usar, mas funciona."
+            "text": "Pode. Cada número vira um inbox, e a equipe vê todos na mesma tela, com filtro por inbox. É o formato usado por agência que atende vários clientes."
           }
         },
         {
           "@type": "Question",
-          "name": "Posso atender 10 números diferentes no mesmo Chatwoot?",
+          "name": "O atendente consegue mandar mensagem para quem parou de responder?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. Você conecta 10 números (via Datafy), cada um fica num channel. O inbox centraliza todos juntos ou você filtra por número/cliente."
+            "text": "Só por template aprovado, e o template precisa existir antes. Passadas 24 horas da última mensagem do cliente, texto livre é recusado pela API. Vale deixar templates de reengajamento prontos e ensinar a equipe a usar."
           }
         },
         {
           "@type": "Question",
-          "name": "Qual é o custo de rodar Chatwoot no meu próprio servidor?",
+          "name": "Quanto custa?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Chatwoot é open source, você pode rodar grátis no seu VPS. Datafy cobra R$ 49,90 por número. Chatwoot Cloud custa a partir de 50 USD/mês (nuvem deles). Se você rodar local, é só Datafy."
+            "text": "O Chatwoot é open source e roda no seu servidor sem licença. A nuvem deles é paga, e a tabela está no site do projeto. Some a isso a conta das mensagens, que é da Meta, e o custo do provedor, se você usar um."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso de coexistência para usar Chatwoot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. O Chatwoot funciona com o número só na API. A coexistência resolve um caso específico: quando alguém também responde pelo aplicativo do celular e você não quer perder essa resposta do registro."
           }
         }
       ]
@@ -528,11 +534,11 @@ footer p{margin:0 0 .5rem}
   <div class="hero-grid">
     <div>
       <p class="eyebrow">Implementação</p>
-      <h1>WhatsApp API oficial no Chatwoot: abir inbox compartilhado, atender junto e respeitar limites</h1>
+      <h1>WhatsApp API oficial no Chatwoot: inbox compartilhado para a equipe</h1>
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-06">6 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-08">8 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -574,9 +580,9 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>WhatsApp API oficial no Chatwoot: abrir inbox compartilhado, atender em equipe e respeitar limites</h1>
-<p><strong>Resposta curta:</strong> Chatwoot é uma plataforma de atendimento que centraliza WhatsApp, email, chat de site, Telegram e SMS num único inbox. A Datafy é a primeira (e por enquanto única) a oferecer integração nativa com Chatwoot para API oficial. Isso significa: você conecta seu número WhatsApp no Chatwoot, a equipe vê todas as conversas chegar numa fila, pode atender ao mesmo tempo e não corre risco de perder mensagem.</p>
-<p>A particularidade aqui é a coexistência. O mesmo número pode estar rodando na API oficial e ainda ter o app WhatsApp Web aberto. Seu gerente continua vendo mensagens no celular enquanto a equipe responde pelo Chatwoot. Sem número duplicado, sem perda de conversa, sem síncronização quebrada.</p>
+<h1>WhatsApp API oficial no Chatwoot: inbox compartilhado para a equipe</h1>
+<p><strong>Resposta curta:</strong> o Chatwoot é uma central de atendimento de código aberto. Ligado à API oficial, ele transforma o WhatsApp de "cada um responde do seu aparelho" em uma fila única, com atribuição, status e histórico em um lugar só. A ligação é feita por um inbox do tipo <strong>API</strong>: o Chatwoot te dá uma URL de webhook, e você informa ao seu provedor para onde mandar as mensagens.</p>
+<p>Com <strong>coexistência</strong>, o quadro fica completo: o que alguém responde pelo aplicativo do celular também aparece na fila do Chatwoot, pelo campo de webhook <code>smb_message_echoes</code>. Sem isso, a resposta dada no aparelho some do registro da equipe.</p>
 <div class="stats">
   <div class="stat"><b>1 inbox</b><span>para WhatsApp, e-mail, chat de site e Telegram</span></div>
   <div class="stat"><b>180 dias</b><span>de histórico que a Meta sincroniza no onboarding</span></div>
@@ -586,11 +592,11 @@ footer p{margin:0 0 .5rem}
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li>Chatwoot é open source e você roda onde quiser (na nuvem deles, no seu servidor, no Docker). Sempre vai funcionar e você não fica preso num SaaS.</li>
-<li>A integração de API oficial no Chatwoot precisa de três coisas: o token Bearer, o phone_number_id e o webhook_url da sua instância do Chatwoot. A Datafy fornece os dois primeiros automático.</li>
-<li>Coexistência significa o mesmo número ao mesmo tempo no app (celular/desktop) e na API. Quem escreve onde? Você configura. Comum é: app para pessoal/suporte, API para automação/bulk.</li>
-<li>Não perde conversa. Mensagens que chegam no app aparecem no Chatwoot também, instantaneamente. É tipo um mirror.</li>
-<li>O limite da Meta continua valendo: 80 mensagens por segundo por número, e 20 por segundo se o número estiver em coexistência. O Chatwoot é só a interface, ele não muda esse teto.</li>
+<li>O canal usado é o <strong>inbox do tipo API</strong>, não um canal de WhatsApp pronto. É ele que aceita qualquer provedor de Cloud API (<a href="https://www.chatwoot.com/docs/product/channels/api/create-channel" rel="noopener">documentação do Chatwoot</a>).</li>
+<li>A ligação é de mão dupla: o Chatwoot precisa de uma URL para onde mandar o que a equipe escreve, e o provedor precisa da URL de webhook do Chatwoot para entregar o que o cliente responde.</li>
+<li><strong>Coexistência é o que faz valer a pena.</strong> Sem ela, a mensagem que o gerente responde pelo celular não entra na fila, e a equipe fica sem contexto.</li>
+<li>O Chatwoot é open source: dá para rodar no seu servidor e manter a conversa na sua infraestrutura, o que costuma resolver a discussão de onde o dado fica.</li>
+<li>Um número em coexistência envia a <strong>20 mensagens por segundo</strong>, contra 80 do número comum. Para atendimento sobra; para disparo em volume, pesa.</li>
 </ul>
 <figure>
 <div class="diagram">
@@ -630,111 +636,121 @@ footer p{margin:0 0 .5rem}
 <figcaption></figcaption>
 </figure>
 
-<h2 id="conectar-datafy-no-chatwoot">Conectar Datafy no Chatwoot</h2>
-<p>Você tem duas opções: usar a Datafy como intermediária ou conectar direto na Meta.</p>
-<p>Se usar Datafy: muito simples. Log no painel da Datafy, clique em "Conectar Chatwoot", ele gera um link. Você clica naquele link dentro do Chatwoot e está pronto. Token, phone_number_id, tudo passa automático. É tipo OAuth, mas para infraestrutura de WhatsApp.</p>
-<p>Se conectar direto na Meta: você vai em Chatwoot → Channels → WhatsApp → Add Channel, aí você cola o token e o ID manualmente. Depois tira a URL do webhook do Chatwoot e cola no App Dashboard da Meta. Mais burocrático, mas igualmente funcional.</p>
-<p>Qual escolher? Datafy se quer 5 minutos e não quer lidar com burocracia. Direto na Meta se você é DevOps e quer controle total, e não importa esperar.</p>
-<h2 id="coexist-ncia-em-a-o">Coexistência em ação</h2>
-<p>Cenário real: você é um pequeno SaaS que vende software para agências de marketing. Você recebe mensagens de clientes no WhatsApp. Não é automação pura, é atendimento humano.</p>
-<p>Seu estrutura fica assim:</p>
+<h2 id="como-a-liga-o-funciona">Como a ligação funciona</h2>
+<p>O Chatwoot não fala Cloud API sozinho. Ele fala com um inbox do tipo API, e alguém precisa traduzir os dois lados. Na prática são quatro peças:</p>
+<ol>
+<li><strong>No Chatwoot:</strong> você cria um inbox do tipo API. Ele gera uma URL de webhook, que é para onde as mensagens recebidas devem ser entregues.</li>
+<li><strong>No seu provedor:</strong> você informa essa URL, para que cada mensagem que chegar seja repassada ao Chatwoot.</li>
+<li><strong>De volta:</strong> quando um atendente responde no Chatwoot, ele chama a URL configurada no inbox, e essa chamada precisa virar um <code>POST /{phone_number_id}/messages</code> na Cloud API.</li>
+<li><strong>Com coexistência:</strong> o campo <code>smb_message_echoes</code> entrega o que foi digitado no celular, e essa mensagem também precisa entrar na conversa certa do Chatwoot.</li>
+</ol>
+<p>Quem faz a tradução dos passos 3 e 4 é o provedor, ou um fluxo seu em n8n. Na Datafy existe uma aba dedicada: você cola a URL do webhook do Chatwoot e preenche a URL base do Chatwoot, o account ID, o inbox ID e o API token. A partir daí funciona nos dois sentidos, inclusive com o que sai do aparelho em coexistência.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=T_ai6IvLzZE" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/T_ai6IvLzZE/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp no Chatwoot" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como usar a API oficial do WhatsApp no Chatwoot</b><span>Canal DATA7 · passo a passo · assistir no YouTube</span></span>
+</a>
+<figcaption>Israel, CTO da Datafy API, monta a integração do zero: cria o inbox do tipo API, liga os dois lados e mostra a conversa chegando na fila.</figcaption>
+</figure>
+
+<h2 id="o-que-muda-no-atendimento">O que muda no atendimento</h2>
+<p>A diferença aparece quando mais de uma pessoa responde. Sem inbox compartilhado, três coisas acontecem: duas pessoas respondem o mesmo cliente, ninguém sabe o que já foi dito, e o histórico fica espalhado entre aparelhos.</p>
+<p>Com o inbox, você ganha o que uma central de atendimento tem:</p>
 <ul>
-<li><strong>Executivo</strong> (celular): abre WhatsApp e vê todas as mensagens chegando em tempo real. Se algum cliente manda algo urgente, ele responde do celular. A resposta aparece também no Chatwoot.</li>
-<li><strong>Equipe de suporte</strong> (Chatwoot web): está no inbox vendo a fila de chats. Pega um cliente, responde. O cliente recebe no celular. Se o executivo está olhando o WhatsApp Web, vê que o colega respondeu.</li>
-<li><strong>Automação</strong> (API via Datafy): toda hora configura uma automação para enviar "Oi, recebemos seu contato, vamos responder em 1h". Essas mensagens passam por template, entram na fila, mas não interrompem ninguém. É background.</li>
+<li><strong>Atribuição</strong>, automática ou manual, para cada conversa ter um dono.</li>
+<li><strong>Status</strong> de aberto, pendente e resolvido, que é o que impede conversa esquecida.</li>
+<li><strong>Respostas salvas</strong>, para o que a equipe digita toda hora.</li>
+<li><strong>Times</strong>, para separar suporte de vendas.</li>
+<li><strong>Notas internas</strong>, visíveis só para a equipe.</li>
 </ul>
-<p>Tudo isso no mesmo número. Sem duplicação, sem desconexão.</p>
-<h2 id="diferen-a-entre-chatwoot-whatsapp-web-e">Diferença entre Chatwoot, WhatsApp Web e API pura</h2>
+<p>E com coexistência, o dono da empresa que responde do celular durante uma reunião não quebra esse fluxo: a resposta dele aparece na conversa, e a equipe vê que já foi atendido.</p>
+<h2 id="os-limites-que-continuam-valendo">Os limites que continuam valendo</h2>
+<p>O Chatwoot é a interface. Ele não muda nenhuma regra da Meta:</p>
+<ul>
+<li>Fora da <strong>janela de 24 horas</strong>, só sai template aprovado. Se a conversa esfriou, o atendente não consegue mandar texto livre, e é isso que ele vai ver na tela.</li>
+<li>O <strong>throughput</strong> continua sendo o do número, 20 mensagens por segundo em coexistência.</li>
+<li>A <strong>sincronização de histórico</strong> traz 180 dias, sem conversas de grupo, e precisa ser disparada em até 24 horas depois de conectar.</li>
+</ul>
+<p>Esse último ponto é o que mais gera frustração: o Chatwoot não vem preenchido com anos de conversa. Ele começa com o que a Meta sincronizou, e cresce a partir dali.</p>
+<h2 id="chatwoot-whatsapp-web-e-api-pura">Chatwoot, WhatsApp Web e API pura</h2>
 <div class="tw"><table>
 <thead>
 <tr>
-<th>O que é</th>
+<th></th>
 <th>Chatwoot</th>
 <th>WhatsApp Web</th>
-<th>API pura (sem UI)</th>
+<th>API sem interface</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Inbox compartilhado</strong></td>
-<td>Sim, todos veem</td>
-<td>Não, cada PC é uma sessão</td>
-<td>Não, é só integração</td>
-</tr>
-<tr>
-<td><strong>Atender em equipe</strong></td>
-<td>Sim, 5+ pessoas</td>
-<td>Não, um por sessão</td>
-<td>Não, precisa de app</td>
-</tr>
-<tr>
-<td><strong>Coexistência</strong></td>
-<td>Suportada</td>
-<td>Não, conflita com a API</td>
-<td>Não se aplica</td>
-</tr>
-<tr>
-<td><strong>Automação</strong></td>
-<td>Sim, via regras</td>
+<td>Fila compartilhada</td>
+<td>Sim</td>
+<td>Não, cada sessão é isolada</td>
 <td>Não</td>
-<td>Sim, via webhook</td>
 </tr>
 <tr>
-<td><strong>Suporte 24h</strong></td>
-<td>Nativo no Chatwoot</td>
-<td>Precisa de servidor rodando</td>
-<td>Precisa de servidor rodando</td>
-</tr>
-<tr>
-<td><strong>Open source</strong></td>
+<td>Atribuir conversa</td>
 <td>Sim</td>
 <td>Não</td>
-<td>Depende da ferramenta</td>
+<td>Não</td>
 </tr>
 <tr>
-<td><strong>Custo com Datafy</strong></td>
-<td>Chatwoot grátis + R$ 49,90/número</td>
-<td>Grátis</td>
-<td>R$ 49,90/número</td>
+<td>Status e histórico da equipe</td>
+<td>Sim</td>
+<td>Não</td>
+<td>Depende do que você construir</td>
+</tr>
+<tr>
+<td>Convive com a API oficial</td>
+<td>Sim</td>
+<td>Conflita</td>
+<td>É a própria API</td>
+</tr>
+<tr>
+<td>Onde a conversa fica</td>
+<td>Na sua instância ou na nuvem deles</td>
+<td>No aparelho e no navegador</td>
+<td>Onde você guardar</td>
+</tr>
+<tr>
+<td>Automação</td>
+<td>Regras e bots</td>
+<td>Não</td>
+<td>Total</td>
 </tr>
 </tbody>
 </table></div>
-<p>Quando faz sentido Chatwoot: você quer inbox visual para atendimento humano, equipe acima de 2 pessoas, ou precisa de coexistência (API rodando + WhatsApp app aberto no celular).</p>
-<p>Quando faz sentido API pura: você só quer automação (webhooks disparados, respostas automáticas), não precisa de interface visual, ou quer rodar tudo num servidor sem browser.</p>
-<h2 id="configurar-as-regras-de-quem-responde">Configurar as regras de quem responde</h2>
-<p>Dentro do Chatwoot, você define:</p>
-<ol>
-<li><strong>Auto-assigment</strong>: quando chega conversa nova, já atribui para o agente que tiver menos chats abertos.</li>
-<li><strong>Canned responses</strong>: templates que a equipe usa para responder. "Oi, qual seu CNPJ?" aparece com um atalho.</li>
-<li><strong>Bots</strong>: você cria um bot que atende as primeiras mensagens (coleta nome, email, assunto) e depois passa para humano.</li>
-<li><strong>Teams</strong>: agrupa agentes. Time de suporte responde segunda a sexta, time de vendas atende fins de semana.</li>
-</ol>
-<p>Combinado com coexistência, fica poderoso: automação manuseia a maior parte, quando não consegue, escalona para equipe no Chatwoot, que pode também puxar o dono no WhatsApp Web se precisar.</p>
+<p><strong>Use Chatwoot</strong> quando existe gente respondendo. <strong>Use API pura</strong> quando o fluxo é todo automático. Os dois juntos funcionam: o <a href="/whatsapp-api-oficial-n8n">n8n</a> cuida da lógica, o Chatwoot cuida do humano, e o mesmo número atende os dois.</p>
 <h2 id="o-que-mudou-em-2026">O que mudou em 2026</h2>
-<p>Chatwoot adicionou suporte a estados de conversa (resolvido, aguardando, priorizado). Antes tudo era um amontoado no inbox.</p>
-<p>Segundo, integração com Datafy agora é nativa. Antes era via webhook manual, hoje é um clique.</p>
-<p>Terceiro, com a cobrança por mensagem entregue, saber a categoria de cada template virou parte do controle de custo. No Chatwoot você enxerga quais conversas usaram template e quais foram respondidas dentro da janela.</p>
+<p>A coexistência deixou de ser exceção. É ela que permite manter o aplicativo no celular junto com a fila da equipe, e a Meta a disponibiliza para provedores que sejam Solution Partner ou Tech Provider.</p>
+<p>Com a cobrança por mensagem entregue, saber qual conversa usou template e qual foi respondida dentro da janela virou parte do controle de custo. E a partir de <strong>1º de outubro de 2026</strong> as mensagens de serviço passam a ser cobradas, o que atinge em cheio quem faz volume de atendimento.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Posso usar Chatwoot e automação (n8n) ao mesmo tempo?</h3>
-<p>Sim. Chatwoot pega as mensagens que chegam e distribui para o inbox de atendimento humano. Ao mesmo tempo, um webhook pode sair do Chatwoot e ir para um n8n, que dispara automações (registra em banco, envia para CRM, etc.). Eles trabalham em paralelo.</p>
-<h3>O Chatwoot armazena conversa?</h3>
-<p>Sim, localmente na sua instância. Se você usar o Chatwoot Cloud (deles), fica no servidor deles. Se rodar no seu Docker, fica local. A Meta não armazena conversa, só webhook de entrada.</p>
-<h3>Quando vai ter integração de Chatwoot com API oficial de outros provedores?</h3>
-<p>A Datafy foi a primeira porque a gente trabalha direto com Chatwoot como tech partner. Outros BSPs (Twilio, 360dialog) têm integração por webhook manual. É mais lento de usar, mas funciona.</p>
-<h3>Posso atender 10 números diferentes no mesmo Chatwoot?</h3>
-<p>Sim. Você conecta 10 números (via Datafy), cada um fica num channel. O inbox centraliza todos juntos ou você filtra por número/cliente.</p>
-<h3>Qual é o custo de rodar Chatwoot no meu próprio servidor?</h3>
-<p>Chatwoot é open source, você pode rodar grátis no seu VPS. Datafy cobra R$ 49,90 por número. Chatwoot Cloud custa a partir de 50 USD/mês (nuvem deles). Se você rodar local, é só Datafy.</p>
-<h2 id="como-decidir-chatwoot-para-voc">Como decidir: Chatwoot é para você?</h2>
-<p>Use Chatwoot se: você tem equipe acima de 2 pessoas, quer inbox visual, não confia em SaaS (quer rodar local), ou precisa de coexistência (app + API no mesmo número).</p>
-<p>Não use se: você só quer automação pura (use n8n), quer algo super rápido sem instalar (use WhatsApp Web), ou está começando sozinho (antes de ter equipe, Chatwoot é overhead).</p>
-<p><a href="https://app.datafyapi.com.br" rel="noopener">Teste 7 dias grátis na Datafy com Chatwoot integrado</a></p>
+<h3>Dá para usar Chatwoot e n8n ao mesmo tempo?</h3>
+<p>Dá, e é a combinação mais comum. O n8n trata o que é automático e o Chatwoot recebe o que precisa de gente. Uma forma de organizar: o n8n responde primeiro e só encaminha para o Chatwoot quando não resolve.</p>
+<h3>Onde a conversa fica guardada?</h3>
+<p>Na instância do Chatwoot que você usar. Se rodar no seu servidor, fica na sua infraestrutura. Se usar a nuvem deles, fica lá. Vale conferir isso antes, porque é a pergunta que aparece em qualquer revisão de contrato.</p>
+<h3>Posso atender vários números no mesmo Chatwoot?</h3>
+<p>Pode. Cada número vira um inbox, e a equipe vê todos na mesma tela, com filtro por inbox. É o formato usado por agência que atende vários clientes.</p>
+<h3>O atendente consegue mandar mensagem para quem parou de responder?</h3>
+<p>Só por template aprovado, e o template precisa existir antes. Passadas 24 horas da última mensagem do cliente, texto livre é recusado pela API. Vale deixar templates de reengajamento prontos e ensinar a equipe a usar.</p>
+<h3>Quanto custa?</h3>
+<p>O Chatwoot é open source e roda no seu servidor sem licença. A nuvem deles é paga, e a tabela está no site do projeto. Some a isso a conta das mensagens, que é da Meta, e o custo do provedor, se você usar um.</p>
+<h3>Preciso de coexistência para usar Chatwoot?</h3>
+<p>Não. O Chatwoot funciona com o número só na API. A coexistência resolve um caso específico: quando alguém também responde pelo aplicativo do celular e você não quer perder essa resposta do registro.</p>
+<h2 id="como-decidir">Como decidir</h2>
+<p>Se tem mais de uma pessoa respondendo o mesmo número, o inbox compartilhado se paga rápido, e o Chatwoot faz isso sem licença por atendente. Se é você sozinho automatizando, ele é peso a mais: comece pelo n8n e traga o Chatwoot quando a equipe crescer.</p>
+<div class="cta"><h3>Antes de migrar a equipe inteira, ligue um número</h3><p>Crie o inbox do tipo API, ligue um número de teste e peça para duas pessoas atenderem ao mesmo tempo. Em uma tarde você sabe se o fluxo da sua equipe cabe nesse formato.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
+<li><a href="/coexistencia-whatsapp-api-oficial-app-celular">Coexistência: API e aplicativo no mesmo número</a></li>
+<li><a href="/whatsapp-api-oficial-n8n">WhatsApp API oficial no n8n</a></li>
+<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens em tempo real</a></li>
 <li><a href="/api-oficial-vs-nao-oficial-whatsapp-2026">API oficial vs não oficial do WhatsApp</a></li>
-<li><a href="/coexistencia-whatsapp-api-oficial-app-celular">Coexistência com app e API no mesmo número</a></li>
-<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Como receber mensagens no webhook</a></li>
-<li><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Quanto custa API oficial em 2026</a></li>
 </ul>
 </article>
 
@@ -750,13 +766,13 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#conectar-datafy-no-chatwoot">Conectar Datafy no Chatwoot</a></li>
-        <li><a href="#coexist-ncia-em-a-o">Coexistência em ação</a></li>
-        <li><a href="#diferen-a-entre-chatwoot-whatsapp-web-e">Diferença entre Chatwoot, WhatsA...</a></li>
-        <li><a href="#configurar-as-regras-de-quem-responde">Configurar as regras de quem res...</a></li>
+        <li><a href="#como-a-liga-o-funciona">Como a ligação funciona</a></li>
+        <li><a href="#o-que-muda-no-atendimento">O que muda no atendimento</a></li>
+        <li><a href="#os-limites-que-continuam-valendo">Os limites que continuam valendo</a></li>
+        <li><a href="#chatwoot-whatsapp-web-e-api-pura">Chatwoot, WhatsApp Web e API pura</a></li>
         <li><a href="#o-que-mudou-em-2026">O que mudou em 2026</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
-        <li><a href="#como-decidir-chatwoot-para-voc">Como decidir: Chatwoot é para vo...</a></li>
+        <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>
       </ol>
     </nav>

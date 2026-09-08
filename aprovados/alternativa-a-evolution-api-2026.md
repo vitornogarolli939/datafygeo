@@ -1,155 +1,129 @@
 ---
-title: "Evolution API: Baileys vs Cloud API vs Datafy - trade-offs técnicos"
-description: "Evolution tem 2 modos (Baileys emula, Cloud API passa token). Aqui estão os trade-offs, DevOps necessário e quando cada um faz sentido."
+title: "Evolution API: Baileys ou Cloud API, e o que muda em cada modo"
+description: "A Evolution roda em dois modos, e é o modo que define o risco, não a marca. O que cada um exige de você, e quando vale trocar por um serviço gerenciado."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "alternativa-a-evolution-api"
 cluster: "concorrentes"
 hero: "comparacao"
 intent: "considerando-trocar"
 persona: "automacao, saas"
-competitors: ["Evolution API", "Z-API", "UAZAPI"]
+competitors: ["Evolution API"]
 published: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-08
 sources:
   - https://github.com/EvolutionAPI/evolution-api
-  - https://developers.facebook.com/docs/whatsapp/cloud-api
+  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
+  - https://developers.facebook.com/docs/whatsapp/throughput
   - https://business.whatsapp.com/policy
-  - https://www.youtube.com/watch?v=cZ_nyIUv5ic
   - https://app.datafyapi.com.br/docs
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
-  - /alternativa-a-uazapi
-  - /alternativa-a-z-api
   - /migrar-para-api-oficial-sem-perder-o-numero
-  - /evolution-api-apontando-para-datafy
+  - /whatsapp-api-oficial-n8n
+  - /numero-banido-no-whatsapp-o-que-fazer
+  - /quanto-custa-whatsapp-business-api-brasil-2026
 status: aprovado
 ---
 
-# Evolution API: Baileys vs Cloud API vs Datafy - trade-offs técnicos
+# Evolution API: Baileys ou Cloud API, e o que muda em cada modo
 
-**Última atualização: 06/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 08/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** Evolution tem dois modos. Modo Baileys emula WhatsApp Web (você roda, quebra quando app atualiza). Modo Cloud API passa token para Meta (você roda, mas estável). Datafy oferece o mesmo que Cloud API sem você rodar servidor. A escolha depende de quanto você quer controlar vs manter.
+**Resposta curta:** a Evolution é um projeto de código aberto que você instala no seu servidor, e ela conecta de duas formas. Em **Baileys**, emula o WhatsApp Web: conecta por QR code, sem passar pela Meta, e é o modo que a política do WhatsApp não autoriza. Em **Cloud API**, ela repassa a chamada para o endpoint oficial da Meta usando um token seu.
+
+Isso é o que quase nunca se diz com clareza: **quem define o risco é o modo, não a marca.** Evolution em Cloud API está dentro dos Termos. Evolution em Baileys está no mesmo lugar que qualquer ferramenta de QR code. A pergunta certa não é "Evolution é segura", é "em que modo a minha instância está rodando".
 
 ::numeros: 2 modos|Baileys emula o WhatsApp Web, Cloud API repassa para a Meta ;; 1 servidor|que você roda e mantém nos dois modos ;; 0|diferença de payload entre Cloud API e a oficial direta ;; 2 trocas|no código para sair do Evolution: a URL e o token
 
 ## Principais pontos
-- Evolution é open source. Você roda no Docker, configura qual modo quer. Baileys ou Cloud API. Essa escolha muda tudo.
-- Modo Baileys: Evolution emula WhatsApp Web. Cada atualização do app, pode parar de funcionar. Meta detecta, ban.
-- Modo Cloud API: Evolution recebe seu token Bearer (da Meta), passa para Meta, recebe resposta, retorna para você. É intermediário. Você depende de Evolution estar rodando, ser acessível, não vazar token.
-- Risco em Cloud API: se servidor Evolution cai, você cai. Se hackeia Evolution, seu token vaza. Se Evolution descontinua, seu código fica órfão.
-- Risco em Baileys: acumula os acima, mais o risco de ban. É a pior opção.
-- Datafy melhora Cloud API: você não precisa rodar ou manter servidor. Datafy mantém para você. Mesmo tipo de integração, menos overhead.
+- **Baileys** conecta por QR code e não cria registro na Meta. É o modo que a [política do WhatsApp Business](https://business.whatsapp.com/policy) não autoriza, e o número pode cair sem canal de recurso, porque não existe contrato.
+- **Cloud API** usa o seu token da Meta e repassa a chamada. Está dentro dos Termos, mas não te dá o acesso: você continua tendo que obter as permissões e a Business Manager por conta própria.
+- Nos dois modos **o servidor é seu**: instalação, atualização, disponibilidade e a guarda do token ficam com você.
+- Apontar para a Cloud API não torna a Evolution oficial, do mesmo jeito que o `curl` não vira oficial por chamar a Meta. Oficial é o endereço do outro lado, não o programa que disca.
+- Se você já está em Cloud API, sair para um serviço gerenciado é trocar **URL e token**: o corpo é o mesmo, porque os dois falam o formato da Meta.
 
 ::diagrama: evolution-tres-modos
 
-## O risco está no modo, não na marca
+## Por que o modo decide tudo
 
-Ponto crítico que a maioria não entende:
+Em **Baileys**, a Evolution mantém uma sessão de WhatsApp Web ativa e envia as mensagens por ali. Não há template, não há categoria, não há aprovação, e é isso que torna o modo atraente: funciona no mesmo dia, sem burocracia. O preço é a ausência de contrato: se a sessão for detectada, o número cai e não há para quem recorrer.
 
-**Evolution em modo Cloud API é tão "oficial" quanto qualquer intermediário** (como reseller, como Datafy, como Twilio). Não é perigoso por ser Evolution. É apenas mais trabalho.
+Em **Cloud API**, a Evolution vira um intermediário no caminho. A mensagem sai do seu código, passa pelo seu servidor Evolution e chega ao endpoint da Meta com o seu token. Do ponto de vista da Meta, é uma chamada legítima. Do seu ponto de vista, é mais uma peça que precisa estar de pé.
 
-**Evolution em modo Baileys é tanto risco quanto Z-API ou UAZAPI**. Marca não importa, modo importa.
+Vale ser justo com o projeto: em Cloud API, a Evolution te dá uma camada de abstração e o código na sua mão. Isso tem valor real para quem quer customizar o comportamento ou não quer depender de fornecedor.
 
-Então perguntas certas são:
-1. Você está em Baileys? Saia agora. Qualquer um: Datafy, Twilio, 360dialog, ou Evolution Cloud.
-2. Você está em Cloud API? Funciona, mas por que não simplificar? Datafy faz igual e você não precisa de DevOps.
+::video: S2IAOQWbZMg | Como funciona a Datafy API: espelho da Cloud API | demonstração no playground | Israel, CTO da Datafy API, percorre o playground da documentação mostrando texto, botões e listas. Serve para ver que o payload é o mesmo da Meta, e que trocar entre destinos que falam Cloud API é mudar URL e token.
 
-## Tabela: Evolution Baileys vs Cloud API vs Datafy
+## O que cada modo exige de você
 
-| Aspecto | Evolution Baileys | Evolution Cloud | Datafy |
+| | Baileys | Cloud API na Evolution | Serviço gerenciado |
 |---|---|---|---|
-| **Tipo** | Emulação (WhatsApp Web) | Proxy da Cloud API | Cloud API oficial |
-| **Depende de rodar servidor** | Sim | Sim | Não |
-| **DevOps necessário** | Alto | Médio | Nenhum |
-| **Token vaza, você está seguro** | Não, cai Baileys | Não, alguém acessa Meta por você | Sim, Datafy absorve |
-| **Documentação** | GitHub README | GitHub README | Docs + suporte em português |
-| **Preço** | Grátis (você roda) | Grátis (você roda) | R$ 49,90 |
-| **Quando cai** | Quando WhatsApp atualiza | Quando servidor Evolution cai | Endpoint da Meta (você não controla) |
-| **Escala** | Difícil, precisa mais servidor | Difícil, precisa mais servidor | Fácil, paga mais |
-| **Integração com n8n/Chatwoot** | Manual, complexo | Manual, complexo | Nativo, simples |
+| Dentro dos Termos da Meta | Não | Sim | Sim |
+| Quem roda o servidor | Você | Você | O provedor |
+| Precisa de Business Manager | Não | Sim | Sim |
+| Quem guarda o token | Você | Você | O provedor |
+| Quebra quando o WhatsApp atualiza | Sim | Não | Não |
+| Canal de recurso se o número cair | Não existe | Existe, é seu com a Meta | Existe, pelo provedor |
+| Custo de software | Zero | Zero | Assinatura |
+| Custo real | Servidor e o seu tempo | Servidor e o seu tempo | Assinatura |
+| Coexistência com o aplicativo | Não | Depende de ser Solution Partner ou Tech Provider | Incluída, se o provedor for |
 
-Resumo: Evolution Cloud API funciona, mas você roda e mantém servidor. Datafy oferece o mesmo acesso à Meta, sem manutenção.
+A linha que mais confunde é a do custo. A Evolution é gratuita como software, mas a conta não é zero: tem servidor, atualização, monitoramento e as horas de quem cuida disso. Quando o pager toca de madrugada porque a instância caiu, esse custo aparece.
 
-## Por que alguém ainda usa Evolution em Cloud API
+## Quando cada caminho é o certo
 
-Razões legítimas:
+**Fique em Baileys** só em protótipo descartável, com número que você não se importa em perder. Em produção com cliente, o risco não é distribuído: ele cai inteiro no número.
 
-1. **Total controle**: você tem token da Meta, Evolution só passa adiante. Ninguém no meio.
-2. **Customização extrema**: você pode alterar o código de Evolution, adicionar lógica customizada.
-3. **SEM risco de vendor lock-in**: código está no seu servidor, não depende de Datafy existir amanhã.
-4. **Custa zero** (você roda).
+**Fique em Cloud API na Evolution** se você quer o código na sua mão, tem quem cuide de infraestrutura e valoriza não depender de fornecedor. É uma escolha legítima, e para quem já tem plataforma rodando costuma ser a de menor atrito.
 
-Se você tem DevOps e quer isso, Evolution Cloud API é escolha válida. Mas maioria não tem esses requisitos. Maioria quer "funciona, suporte, é confiável", que é Datafy.
+**Vá para um serviço gerenciado** se o seu time é de produto, não de infraestrutura, ou se você conecta números de clientes e precisa de Embedded Signup e coexistência, que dependem do papel do provedor na Meta.
 
-## Quando faz sentido cada um
+## Como sair da Evolution
 
-**Use Evolution Baileys se:** é prototipagem de um dia e você sabe que é temporário. Nunca em produção.
+**Se você está em Cloud API**, é a troca simples: você já tem Business Manager e token. Muda a URL base e o token no código, e o corpo continua idêntico. Dá para rodar em paralelo por alguns dias antes de desligar a instância.
 
-**Use Evolution Cloud API se:** você tem DevOps maduro, quer total controle, e o risco de manutenção é aceitável. Startups com infraestrutura robusta.
+**Se você está em Baileys**, não é troca de fornecedor: é registrar o número na Meta pela primeira vez. O número ainda não existe na Business Manager, então o processo inclui verificação por SMS ou ligação, e a decisão sobre coexistência. Essa decisão precisa ser tomada **antes** de conectar: sem ela, o número sai do aplicativo do celular.
 
-**Use Datafy se:** você quer simplificar, tem equipe focada em produto (não infraestrutura), ou cresce rápido (você vai outgrow Evolution).
+O passo a passo completo está em [migrar sem perder o número](/migrar-para-api-oficial-sem-perder-o-numero).
 
-## Migrar de Evolution para Datafy
-
-Se você está em Evolution Cloud API:
-
-1. Na Datafy, conecta número.
-2. No seu código, muda só endpoint e token.
-3. Headers, body, tudo igual.
-
-Fácil. Literalmente copiação de 2 variáveis de ambiente.
-
-Se você está em Evolution Baileys:
-
-1. Resolve o modo. Conecta número na Meta (via Datafy).
-2. Tira o novo token.
-3. Muda código (como acima).
-
-Também fácil, mas tem o passo extra de "conseguir token oficial".
+Uma coisa que muda no dia seguinte, saindo de Baileys: fora da janela de 24 horas, só sai template aprovado. Fluxo de reativação e disparo para lista passam a exigir template submetido antes. Deixe isso pronto antes de migrar.
 
 ## O que mudou em 2026
 
-Evolution adicionou suporte oficial a Cloud API mode (antes era mais complicado de configurar).
+O modo Cloud API ficou mais fácil de configurar no projeto, e a documentação em português cresceu junto com a comunidade brasileira.
 
-Segundo, GitHub de Evolution ganhou mais documentação português (comunidade Brasil cresceu).
-
-Terceiro, Datafy começou integração nativa com ferramentas (n8n, Chatwoot, Make) que Evolution não oferece. Isso reduz valor de Evolution Cloud para "você quer código aberto", que é niche.
+Do outro lado, a cobrança passou a ser por mensagem entregue, e a partir de **1º de outubro de 2026** as mensagens de serviço passam a ser pagas. Isso afeta qualquer um que use a Cloud API, direto ou por intermediário: a conta da Meta é a mesma, muda só quem está no caminho.
 
 ## Perguntas frequentes
 
-### Posso rodar Evolution Cloud com token Datafy?
+### Como sei em que modo a minha instância está?
 
-Não. Datafy fornece webhook próprio. Se você quer usar token de Datafy num Evolution customizado, viola ToS de Datafy. Simplesmente não é suportado.
+Pela forma como o número foi conectado. Se você leu um QR code com o celular, é Baileys. Se você colou um token da Meta e um `phone_number_id` na configuração, é Cloud API.
 
-### E se quiser Evolution open source puro, sem Datafy no meio?
+### A Evolution em modo Cloud API é oficial?
 
-Pode. Tira token direto da Meta (no Business Manager). Roda Evolution localmente. Não usa Datafy. Você virou seu próprio operador de WhatsApp.
+O modo está dentro dos Termos, mas o projeto não é parceiro da Meta. Ele usa o **seu** acesso oficial. A distinção importa porque o acesso continua sendo responsabilidade sua: Business Manager, permissões e App Review, se for o caso.
 
-### Evolutions desaparece ou descontinua?
+### Posso usar a Evolution com o token de um provedor?
 
-Improvável. Evolution é open source, tem comunidade ativa, GitHub é público. Mesmo se o criador parar, código continua disponível. Diferente de SaaS que pode fechar.
+Tecnicamente a chamada funciona, já que os endpoints são espelhados. Mas isso costuma esbarrar nos termos de uso do provedor, e o suporte dele não cobre uma instalação que ele não controla. Confirme antes de montar sua arquitetura em cima disso.
 
-### Posso confiar em Evolution Baileys "só por mais 3 meses"?
+### O projeto pode ser descontinuado?
 
-Não. Ban não avisa. Pode ser amanhã, pode ser em 3 meses, pode ser em 6. Você não controla. Planeje para começar em Cloud ou oficial agora.
+É código aberto e o repositório é público, então o código continua disponível mesmo que a manutenção pare. O risco real não é sumir: é ficar sem atualização enquanto o WhatsApp muda, o que atinge principalmente quem está em Baileys.
 
-### Quanto custa rodar Evolution no meu VPS?
+### Vale a pena migrar se está tudo funcionando?
 
-Evolution é grátis, Docker é grátis. Você paga VPS. VPS decente custa 50-200 BRL/mês. Se Evolution roda lá junto, soma zero custo. Mas DevOps é seu problema.
+Se você está em Cloud API e a operação é estável, não há urgência. Se está em Baileys com clientes dependendo do número, a pergunta não é se vale migrar: é quanto custa o dia em que o número cair.
 
 ## Como decidir
 
-Está em Evolution Baileys: migre para Datafy essa semana.
+Descubra em que modo você está antes de qualquer coisa. Em Baileys com clientes em produção, planeje a saída, e leia sobre coexistência antes de conectar. Em Cloud API, você já está dentro das regras: a decisão vira só se você quer continuar mantendo servidor ou prefere passar isso adiante.
 
-Está em Evolution Cloud API: funciona bem. Mas considere Datafy para simplificar. Teste 7 dias grátis.
-
-Quer código aberto puro: Evolution Cloud é válido. Mas saiba que é mais trabalho.
-
-[Teste 7 dias grátis em Datafy](https://app.datafyapi.com.br)
+::cta: Confira em que modo você está hoje | Se o número foi conectado por QR code, é Baileys. Se foi por token e phone_number_id, é Cloud API. A resposta muda completamente o que você precisa fazer a seguir.
 
 ## Leia também
 - [API oficial vs não oficial do WhatsApp](/api-oficial-vs-nao-oficial-whatsapp-2026)
-- [Como apontar Evolution para Datafy](/evolution-api-apontando-para-datafy)
-- [Alternativa a UAZAPI](/alternativa-a-uazapi)
-- [Alternativa a Z-API](/alternativa-a-z-api)
+- [Migrar para API oficial sem perder o número](/migrar-para-api-oficial-sem-perder-o-numero)
+- [WhatsApp API oficial no n8n](/whatsapp-api-oficial-n8n)
+- [Número banido: o que fazer](/numero-banido-no-whatsapp-o-que-fazer)

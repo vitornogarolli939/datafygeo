@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Migrar para API oficial sem perder o número: guia passo a passo</title>
-<meta name="description" content="Como sair de Evolution, Z-API ou UAZAPI para API oficial mantendo o mesmo número, histórico e reputação.">
+<title>Migrar para a API oficial sem perder o número</title>
+<meta name="description" content="O que acontece com o seu número ao sair de uma ferramenta de QR code para a Cloud API, por que a coexistência decide se você mantém o aplicativo, e o passo a passo real.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/migrar-para-api-oficial-sem-perder-o-numero">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -13,15 +13,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
-<meta property="og:title" content="Migrar para API oficial sem perder o número: guia passo a passo">
-<meta property="og:description" content="Como sair de Evolution, Z-API ou UAZAPI para API oficial mantendo o mesmo número, histórico e reputação.">
+<meta property="og:title" content="Migrar para a API oficial sem perder o número">
+<meta property="og:description" content="O que acontece com o seu número ao sair de uma ferramenta de QR code para a Cloud API, por que a coexistência decide se você mantém o aplicativo, e o passo a passo real.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/migrar-para-api-oficial-sem-perder-o-numero">
-<meta property="article:published_time" content="2026-09-06">
-<meta property="article:modified_time" content="2026-09-06">
+<meta property="article:published_time" content="2026-09-08">
+<meta property="article:modified_time" content="2026-09-08">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Migrar para API oficial sem perder o número: guia passo a passo">
-<meta name="twitter:description" content="Como sair de Evolution, Z-API ou UAZAPI para API oficial mantendo o mesmo número, histórico e reputação.">
+<meta name="twitter:title" content="Migrar para a API oficial sem perder o número">
+<meta name="twitter:description" content="O que acontece com o seu número ao sair de uma ferramenta de QR code para a Cloud API, por que a coexistência decide se você mantém o aplicativo, e o passo a passo real.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -106,24 +106,24 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Implementação",
-          "item": "https://conteudo.datafyapi.com.br/tema/implementacao"
+          "name": "Banimento e compliance",
+          "item": "https://conteudo.datafyapi.com.br/tema/compliance"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Migrar para API oficial sem perder o número: guia passo a passo"
+          "name": "Migrar para a API oficial sem perder o número"
         }
       ]
     },
     {
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/migrar-para-api-oficial-sem-perder-o-numero#article",
-      "headline": "Migrar para API oficial sem perder o número: guia passo a passo",
-      "description": "Como sair de Evolution, Z-API ou UAZAPI para API oficial mantendo o mesmo número, histórico e reputação.",
+      "headline": "Migrar para a API oficial sem perder o número",
+      "description": "O que acontece com o seu número ao sair de uma ferramenta de QR code para a Cloud API, por que a coexistência decide se você mantém o aplicativo, e o passo a passo real.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-06",
-      "dateModified": "2026-09-06",
+      "dateModified": "2026-09-08",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,11 +132,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/migrar-para-api-oficial-sem-perder-o-numero",
       "citation": [
-        "https://developers.facebook.com/docs/whatsapp/cloud-api",
-        "https://developers.facebook.com/docs/whatsapp/cloud-api/phone-numbers",
-        "https://business.whatsapp.com/",
-        "https://app.datafyapi.com.br/docs",
-        "https://www.youtube.com/watch?v=cZ_nyIUv5ic"
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
+        "https://developers.facebook.com/docs/whatsapp/throughput",
+        "https://www.youtube.com/watch?v=8xA-8z1YW98",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -145,42 +145,58 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Perco número se empresa de ferramenta fecha?",
+          "name": "Vou perder o número?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. Número é seu, está em BM. Empresa fecha, você muda para outra ferramenta. Número fica."
+            "text": "Não. A linha é sua e continua sua. O que muda é onde ela está registrada e por onde as mensagens passam."
           }
         },
         {
           "@type": "Question",
-          "name": "Posso manter backup em Z-API enquanto rodo em Datafy?",
+          "name": "Vou perder o aplicativo do WhatsApp no celular?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. Teoricamente você poderia rodar os dois em paralelo (webhook duplo). Na prática, gera confusão. Melhor é: Z-API vai embora, Datafy fica."
+            "text": "Depende de uma escolha. Com coexistência, não: aplicativo e API convivem. Sem coexistência, sim: o número passa a existir só na API."
           }
         },
         {
           "@type": "Question",
-          "name": "Quanto tempo até a operação estabilizar?",
+          "name": "E as conversas antigas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "24 horas de operação sem incidentes. Depois disso, você pode remover backup de Z-API."
+            "text": "Ficam no aparelho. A sincronização traz até 180 dias para a nuvem, e não traz grupos."
           }
         },
         {
           "@type": "Question",
-          "name": "Devo avisar clientes sobre mudança?",
+          "name": "Meu número já foi bloqueado antes. Migrar resolve?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Só se clientes acessam número direto. Se eles só recebem mensagem, muda nada na perspectiva deles."
+            "text": "Não. A reputação acompanha o número. Migrar tira o risco de bloqueio por usar ferramenta não autorizada, mas não apaga histórico anterior nem muda as regras de conduta. Se a causa do bloqueio foi disparo para lista fria, ela continua valendo na API oficial."
           }
         },
         {
           "@type": "Question",
-          "name": "Posso voltar para Z-API se Datafy não funcionar?",
+          "name": "Quanto tempo leva?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. É mesmo processo reverso. Mas você já começou migração porque Z-API tava arriscada. Melhor não voltar."
+            "text": "A conexão é questão de minutos. O que costuma consumir o dia é o resto: aprovar templates, adaptar o código e testar. Planeje uma tarde, não cinco minutos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso avisar meus clientes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Do lado deles nada muda: mesmo número, mesma conversa. O que aparece de novo é o nome de exibição verificado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso migrar vários números de uma vez?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pode, mas migre um primeiro e rode com ele alguns dias. Os problemas aparecem na conduta, não na conexão, e é melhor descobrir com um número do que com trinta."
           }
         }
       ]
@@ -525,12 +541,12 @@ footer p{margin:0 0 .5rem}
 <div class="hero-band">
   <div class="hero-grid">
     <div>
-      <p class="eyebrow">Implementação</p>
-      <h1>Migrar para API oficial sem perder o número: guia passo a passo</h1>
+      <p class="eyebrow">Banimento e compliance</p>
+      <h1>Migrar para a API oficial sem perder o número</h1>
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-06">6 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-08">8 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -561,23 +577,23 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Migrar para API oficial sem perder o número: guia passo a passo</h1>
-<p><strong>Resposta curta:</strong> o número é seu. Está registrado em sua conta Meta Business Manager. Quando você sair de Z-API, UAZAPI ou Evolution, o número não desaparece. Você só muda qual ferramenta conversa com ele. A migração leva menos de 1 hora, não há perda de dados, e você continua operacional.</p>
-<p>O medo de "perder número" é o maior bloqueador de migração que a gente vê. Aqui a gente desmonta esse medo.</p>
+<h1>Migrar para a API oficial sem perder o número</h1>
+<p><strong>Resposta curta:</strong> a linha é sua, e migrar não faz você perder o número. Mas vale corrigir uma confusão comum: se hoje você usa Z-API, UAZAPI ou Evolution em modo Baileys, esse número <strong>não está registrado na Meta</strong>. Ferramentas de QR code conectam pelo WhatsApp Web, sem passar pela Business Manager. Migrar não é "trocar de fornecedor": é registrar o número na Meta pela primeira vez.</p>
+<p>E é aí que mora a decisão que realmente importa. Se o número for conectado pelo fluxo comum, ele <strong>sai do aplicativo do celular</strong>. Se for conectado por <strong>coexistência</strong>, ele fica nos dois lugares. Essa escolha é feita no momento da conexão e não dá para mudar de ideia depois sem refazer tudo.</p>
 <div class="stats">
-  <div class="stat"><b>1 número</b><span>continua seu, registrado na sua Business Manager</span></div>
-  <div class="stat"><b>2 alterações</b><span>no código: a URL e o token</span></div>
+  <div class="stat"><b>1 número</b><span>continua seu, a linha não muda de dono</span></div>
   <div class="stat"><b>180 dias</b><span>de histórico que a coexistência traz do aplicativo</span></div>
   <div class="stat"><b>24 h</b><span>prazo para disparar a sincronização depois de conectar</span></div>
+  <div class="stat"><b>2 alterações</b><span>no código: a URL base e o token</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li>Número não tem "donos" de ferramenta. Você registrou em Business Manager. Meta conhece você (CPF/CNPJ, conta BM), não conhece Z-API ou Evolution.</li>
-<li>Quando você muda de ferramenta, está só mudando "qual ferramenta fala com Meta em nome do meu número". Meta não se importa com essa mudança técnica.</li>
-<li>Histórico de conversa fica em Meta (você consegue via Graph API depois), fica em Z-API (você exporta antes de sair), fica em Datafy (automático).</li>
-<li>Reputação do número (qualidade, qualificação) fica com número. Se número levou ban, migração não resolve. Se número está bom, migração não estraga.</li>
-<li>Tempo de downtime real: 2 minutos (você muda a conexão). Preparação: 1 hora (testar, validar).</li>
+<li>Quem vem de ferramenta de QR code <strong>não tem o número na Business Manager ainda</strong>. A migração cria esse registro, e é por isso que ela exige verificação por SMS ou ligação.</li>
+<li><strong>Decida a coexistência antes de conectar.</strong> Sem ela, o número sai do aplicativo do celular. Com ela, aplicativo e API convivem, e o que o humano responde no aparelho chega ao seu servidor pelo campo <code>smb_message_echoes</code>.</li>
+<li>A sincronização traz <strong>180 dias</strong> de conversa, sem grupos, e precisa ser disparada em até <strong>24 horas</strong> depois de conectar. Perdeu o prazo, refaz o onboarding.</li>
+<li>No código mudam <strong>duas coisas</strong>: a URL base e o token. O corpo da mensagem passa a ser o formato da Meta, que é diferente do formato das ferramentas de QR code.</li>
+<li>Se o número já tem histórico de bloqueio, migrar <strong>não limpa a ficha</strong>. A reputação acompanha o número, não a ferramenta.</li>
 </ul>
 <figure>
 <div class="diagram">
@@ -631,152 +647,123 @@ footer p{margin:0 0 .5rem}
 <figcaption></figcaption>
 </figure>
 
-<h2 id="pr-requisitos-antes-de-migrar">Pré-requisitos antes de migrar</h2>
-<p>Checklist de coisas que você precisa ter antes de começar:</p>
+<h2 id="antes-de-come-ar">Antes de começar</h2>
+<p>Levante estas cinco coisas. Faltando qualquer uma, a migração trava no meio:</p>
 <ol>
-<li><strong>Business Manager verificada</strong> (se não tiver, você não conseguiu registrar número em Z-API/UAZAPI/Evolution de verdade)</li>
-<li><strong>phone_number_id</strong> (ID do número na Meta, você acha no Business Manager)</li>
-<li><strong>Acesso de admin em Business Manager</strong> (para gerar/ver token)</li>
-<li><strong>Webhook URL atual funcionando</strong> (para você desativar sem perder nada)</li>
-<li><strong>Código da sua aplicação</strong> (para você testar mudanças antes de ir pro ar)</li>
+<li><strong>Acesso a uma Business Manager</strong> onde você seja administrador. Se não tiver, dá para criar na hora, mas é mais um passo.</li>
+<li><strong>O aparelho com o chip em mãos.</strong> A Meta vai mandar um código por SMS ou ligação para confirmar que a linha é sua. Sem o aparelho, não passa.</li>
+<li><strong>Decisão sobre coexistência.</strong> Você vai continuar atendendo pelo aplicativo do celular? Se sim, precisa do fluxo de coexistência, e o provedor tem que ser Solution Partner ou Tech Provider para oferecê-lo.</li>
+<li><strong>Um método de pagamento</strong> para cadastrar na Meta. As mensagens são cobradas por ela, e sem isso o envio não é liberado.</li>
+<li><strong>Onde você mexe no código.</strong> Saber quais serviços chamam a API hoje, porque todos vão trocar de URL e de token.</li>
 </ol>
-<p>Se algum desses falta, a migração não sai.</p>
-<h2 id="passo-a-passo-sair-de-z-api-uazapi">Passo a passo: Sair de Z-API/UAZAPI</h2>
-<p>Essas ferramentas, quando você tira o token, não deixam raastro. Para não perder dados:</p>
-<ol>
-<li><strong>Exporte histórico</strong>: entre no painel de Z-API/UAZAPI, procure "exportar chats" ou "backup". Baixa em JSON ou CSV.</li>
-<li><strong>Teste o backup localmente</strong>: abre o arquivo, valida que contém as conversas.</li>
-<li><strong>Anote a URL do webhook</strong>: você está enviando mensagens para qual endpoint? Anota. Você vai precisar.</li>
-<li><strong>Pausa automações</strong>: se tem alguma automação ativa (n8n, Make), desativa temporariamente. Nada por 5 minutos é ok.</li>
-<li><strong>Nota o token atual</strong>: você vai substituir ele, mas enquanto isso vale ter guardado para referência.</li>
-</ol>
-<p>Feito. Dados salvos, você está pronto para sair.</p>
-<h2 id="passo-a-passo-conectar-em-datafy">Passo a passo: Conectar em Datafy</h2>
-<ol>
-<li><strong>Cria conta em Datafy</strong>: https://app.datafyapi.com.br</li>
-<li><strong>No painel, "Conectar número"</strong>: Datafy pede seu phone_number_id (tira de Business Manager)</li>
-<li><strong>Cola o ID, clica "Conectar"</strong>: Datafy valida com Meta em tempo real</li>
-<li><strong>Em menos de 5 minutos</strong>, Datafy mostra: token Bearer, phone_number_id, webhook_url</li>
-<li><strong>Copia essas três informações</strong>: token, phone_number_id e webhook_url</li>
-</ol>
-<p>Pronto. Você tem tudo que precisa.</p>
-<h2 id="passo-a-passo-trocar-c-digo-integra-o">Passo a passo: Trocar código (integração)</h2>
-<p>Onde você estava chamando Z-API:</p>
-<p><code>POST https://api.z-api.io/instances/{seu_id}/send-text
-Header: Client-Token: seu_token
-Body: { "phone": "5511999...", "message": "..." }</code></p>
-<p>Muda para:</p>
-<p><code>POST https://graph.facebook.com/v20.0/{phone_number_id}/messages
-Header: Authorization: Bearer seu_token_datafy
-Body: { "messaging_product": "whatsapp", "to": "5511999...", "type": "text", "text": { "body": "..." } }</code></p>
-<p>URL muda (de Z-API para graph.facebook.com).
-Token muda (do Z-API para Datafy Bearer).
-Body muda (segue formato Graph API da Meta).</p>
-<p>Se você tem tempo, muda num environment de teste primeiro. Se está com pressa, muda tudo de uma vez (a gente valida depois).</p>
-<h2 id="passo-a-passo-webhook-receber-mensagens">Passo a passo: Webhook (receber mensagens)</h2>
-<p>A Z-API estava mandando mensagens para qual URL? Exemplo: seu_servidor.com/webhook/zapi</p>
-<p>Datafy precisa mandar para outro lugar (seu servidor receber de Datafy).</p>
-<p>Opção 1 (sem mudar código): você redireciona. No seu servidor, adiciona uma rota que recebe de Datafy e repassa para a lógica antiga. Simples.</p>
-<p>Opção 2 (melhor): você muda direto. Abre seu código do webhook, adapta para o formato JSON que Datafy manda (é igual Meta, é mais padronizado).</p>
-<p>No painel de Datafy, você coloca a URL do seu webhook. Datafy valida fazendo um POST de teste. Você recebe, responde com "200 OK". Pronto.</p>
-<h2 id="migra-o-com-downtime-zero">Migração com downtime zero</h2>
-<p>Se você quer zero downtime:</p>
-<ol>
-<li><strong>Configura Datafy em ambiente paralelo</strong> (URL diferente no seu código)</li>
-<li><strong>Testa comunicação</strong>: envia mensagem teste, recebe resposta</li>
-<li><strong>Ativa webhook em Datafy</strong> (isso é o momento crítico)</li>
-<li><strong>Em paralelo, desativa webhook de Z-API</strong></li>
-<li><strong>Muda seu código</strong> (de Z-API para Datafy), faz deploy</li>
-<li><strong>Valida</strong>: envia mensagem teste de novo, via Datafy agora</li>
-</ol>
-<p>Downtime: 0 segundos. Você está rodando em paralelo por 5 minutos, depois corta Z-API.</p>
-<h2 id="checklist-p-s-migra-o">Checklist pós-migração</h2>
-<p>Depois que você está em Datafy:</p>
-<ol>
-<li><strong>Envia teste</strong>: mensagem real para número real, valida que chega</li>
-<li><strong>Recebe teste</strong>: manda WhatsApp para seu número, valida que webhook recebe</li>
-<li><strong>Monitora webhook</strong>: acompanha logs de Datafy por 1 hora, valida que tudo passa</li>
-<li><strong>Confirma histórico</strong>: abre BM, vê se mensagens estão sincronizando</li>
-<li><strong>Avisa time</strong>: se tem equipe usando bot, fala que mudou de ferramenta</li>
-</ol>
-<p>Se tudo passou, você está seguro. Se algo falhou, volta para Z-API em 5 minutos (é só trocar token de novo).</p>
-<h2 id="problemas-comuns-na-migra-o">Problemas comuns na migração</h2>
-<p><strong>"Não consigo encontrar phone_number_id"</strong>
-Entra em Business Manager, vai em "Configurações" &gt; "Business Setups", lá em baixo procura "WhatsApp", vê o número, copia o ID.</p>
-<p><strong>"Webhook não está recebendo mensagens"</strong>
-Valida: 1) a URL que você configurou em Datafy está certa? 2) Seu servidor está ouvindo? (netstat -tuln). 3) Firewall está bloqueando IP de Datafy? (abra as mesmas IPs que Meta usa).</p>
-<p><strong>"Mensagem não está entregando"</strong>
-Valida: 1) número está conectado? (vê status em Datafy). 2) Token está válido? (testa via curl). 3) Body do JSON está no formato correto? (compara com exemplos em Datafy Docs).</p>
-<p><strong>"Qualidade do número caiu"</strong>
-Mudança de ferramenta não muda qualidade. Se caiu, é porque você disparou spam ou volume alto demais. Resolve com boas práticas (templates, opt-in, respostas limpas).</p>
-<h2 id="o-que-irrecuper-vel">O que é irrecuperável</h2>
-<p>Se você estava em Z-API há 2 anos e perdeu todos os dados históricos, você não recupera isso migrando. Backup agora. Historicamente, só quem fez backup em Z-API consegue recuperar.</p>
-<p>Se seu número foi banido em Z-API, trocar de ferramenta não desbanir. Você precisa de prova (mudar de conduta, conformidade legal) para Meta considerar reabilitação.</p>
-<h2 id="quanto-tempo-dura-a-migra-o">Quanto tempo dura a migração</h2>
+<h2 id="o-que-acontece-com-o-hist-rico">O que acontece com o histórico</h2>
+<p>Esta é a parte que costuma decepcionar, então melhor saber antes:</p>
 <div class="tw"><table>
 <thead>
 <tr>
-<th>Fase</th>
-<th>Tempo</th>
+<th>O que</th>
+<th>O que acontece</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Preparação (backup, notas)</td>
-<td>15 minutos</td>
+<td>Conversas dos últimos 180 dias</td>
+<td>Vêm, se você usar coexistência e disparar a sincronização em 24 h</td>
 </tr>
 <tr>
-<td>Criar conta Datafy</td>
-<td>5 minutos</td>
+<td>Conversas mais antigas</td>
+<td>Ficam só no aparelho</td>
 </tr>
 <tr>
-<td>Conectar número em Datafy</td>
-<td>5 minutos</td>
+<td>Conversas de grupo</td>
+<td>Não são sincronizadas</td>
 </tr>
 <tr>
-<td>Adaptar código</td>
-<td>15 minutos</td>
+<td>Arquivos de mídia</td>
+<td>Identificadores só para os últimos 14 dias</td>
 </tr>
 <tr>
-<td>Testar em paralelo</td>
-<td>10 minutos</td>
-</tr>
-<tr>
-<td>Fazer deploy</td>
-<td>5 minutos</td>
-</tr>
-<tr>
-<td>Validar pós-migração</td>
-<td>10 minutos</td>
-</tr>
-<tr>
-<td><strong>Total</strong></td>
-<td><strong>~1 hora</strong></td>
+<td>Histórico na ferramenta antiga</td>
+<td>Fica lá. Exporte antes de cancelar, se ela permitir</td>
 </tr>
 </tbody>
 </table></div>
-<p>Se você já conhece sua arquitetura, sai em 30 minutos.</p>
+<p>Ou seja: você não perde o aparelho nem a linha, mas a nuvem não recebe uma cópia integral do passado. Se a operação depende de consultar conversa antiga, exporte o que der antes de cancelar a ferramenta atual.</p>
+<h2 id="o-passo-a-passo">O passo a passo</h2>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=8xA-8z1YW98" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/8xA-8z1YW98/maxresdefault.jpg" alt="Miniatura do vídeo: A forma mais fácil e simples de usar a API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>A forma mais fácil e simples de usar a API oficial do WhatsApp</b><span>Canal DATA7 · conexão passo a passo · assistir no YouTube</span></span>
+</a>
+<figcaption>Israel, CTO da Datafy API, faz a conexão inteira pelo Embedded Signup: escolha do tipo de conta, tela de compartilhar histórico, leitura do QR code no celular e cadastro da forma de pagamento na Meta.</figcaption>
+</figure>
+
+<p><strong>1. Escolha a janela.</strong> Faça em horário de baixo movimento. A conexão em si é rápida, mas a verificação depende de você receber um código, e é chato correr contra o relógio com cliente esperando.</p>
+<p><strong>2. Exporte o que der da ferramenta atual.</strong> Nem toda ferramenta de QR code oferece exportação, e as que oferecem variam no formato. Faça isso antes de cancelar, não depois.</p>
+<p><strong>3. Conecte o número.</strong> Pelo Embedded Signup, o fluxo é guiado: você escolhe a Business Manager, informa o número e decide entre conta nova ou trazer o aplicativo junto. <strong>É neste ponto que você opta pela coexistência.</strong></p>
+<p><strong>4. Confirme a posse da linha.</strong> Código por SMS ou ligação. Com coexistência, há também a leitura de um QR code no aparelho.</p>
+<p><strong>5. Dispare a sincronização do histórico.</strong> Ainda dentro do fluxo, e dentro do prazo de 24 horas. Deixar para depois significa refazer o onboarding.</p>
+<p><strong>6. Cadastre a forma de pagamento na Meta.</strong> Sem isso o número conecta mas não envia.</p>
+<p><strong>7. Troque no código.</strong> Duas variáveis de ambiente: a URL base e o token.</p>
+<p><strong>8. Teste antes de cortar o antigo.</strong> Mande para um número seu, confirme que chega, responda desse número e confirme que o webhook recebe.</p>
+<h2 id="o-que-muda-no-c-digo">O que muda no código</h2>
+<p>Saindo de uma ferramenta de QR code, muda mais que a URL: <strong>o formato do corpo é outro</strong>. As ferramentas de emulação usam um JSON simplificado próprio; a Meta usa o formato dela.</p>
+<p>Antes, num formato típico de ferramenta de QR code:</p>
+<p><code>POST https://api.exemplo.io/instances/{id}/send-text
+Header: Client-Token: {token}
+Body:   { "phone": "5511999999999", "message": "Olá" }</code></p>
+<p>Depois, na Cloud API:</p>
+<p><code>POST https://graph.facebook.com/v21.0/{phone_number_id}/messages
+Header: Authorization: Bearer {token}
+Body:   {
+          "messaging_product": "whatsapp",
+          "to": "5511999999999",
+          "type": "text",
+          "text": { "body": "Olá" }
+        }</code></p>
+<p>Se você usar um provedor, o corpo é idêntico ao da Meta e muda só o domínio, porque os provedores espelham os endpoints. Entre dois destinos que falam Cloud API, a troca é de fato só URL e token.</p>
+<p>Do lado do recebimento, o webhook também muda de formato. O payload da Meta é aninhado em <code>entry[0].changes[0].value.messages[0]</code>, e o mesmo endpoint recebe status de entrega além de mensagens. Vale reler a <a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">página de webhook</a> antes de portar o código.</p>
+<h2 id="a-regra-nova-que-pega-todo-mundo">A regra nova que pega todo mundo</h2>
+<p>Na ferramenta de QR code você mandava mensagem para qualquer número, a qualquer hora. Na API oficial, não.</p>
+<p>Fora da <strong>janela de 24 horas</strong> contada desde a última mensagem do cliente, só sai <strong>template aprovado</strong>. Texto livre é recusado pela API.</p>
+<p>Isso costuma quebrar dois fluxos no dia seguinte à migração: a mensagem de reativação para quem parou de responder, e o disparo para lista. Os dois passam a exigir template aprovado antes. Deixe os templates submetidos <strong>antes</strong> de migrar, porque a aprovação não é instantânea.</p>
+<h2 id="se-der-errado">Se der errado</h2>
+<p>Tenha o caminho de volta pronto antes de começar:</p>
+<ul>
+<li><strong>Guarde o token e a URL antigos.</strong> Reverter é trocar as duas variáveis de volta.</li>
+<li><strong>Não cancele a ferramenta antiga no mesmo dia.</strong> Deixe rodando uns dias como rede de segurança.</li>
+<li><strong>Atenção:</strong> se você conectou o número na Cloud API <strong>sem</strong> coexistência, ele saiu do aplicativo. Voltar para uma ferramenta de QR code exige desconectar da Meta e ler o QR code de novo. É reversível, mas não é instantâneo, e nesse intervalo o número fica fora do ar.</li>
+</ul>
+<p>É por isso que a decisão sobre coexistência aparece três vezes neste texto: ela é a única do processo que custa caro para desfazer.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Perco número se empresa de ferramenta fecha?</h3>
-<p>Não. Número é seu, está em BM. Empresa fecha, você muda para outra ferramenta. Número fica.</p>
-<h3>Posso manter backup em Z-API enquanto rodo em Datafy?</h3>
-<p>Sim. Teoricamente você poderia rodar os dois em paralelo (webhook duplo). Na prática, gera confusão. Melhor é: Z-API vai embora, Datafy fica.</p>
-<h3>Quanto tempo até a operação estabilizar?</h3>
-<p>24 horas de operação sem incidentes. Depois disso, você pode remover backup de Z-API.</p>
-<h3>Devo avisar clientes sobre mudança?</h3>
-<p>Só se clientes acessam número direto. Se eles só recebem mensagem, muda nada na perspectiva deles.</p>
-<h3>Posso voltar para Z-API se Datafy não funcionar?</h3>
-<p>Sim. É mesmo processo reverso. Mas você já começou migração porque Z-API tava arriscada. Melhor não voltar.</p>
-<h2 id="como-decidir-agora-ou-depois">Como decidir: agora ou depois?</h2>
-<p>Migre agora se: está em Z-API/UAZAPI (risco crescente), está com plan de crescimento (precisa infraestrutura confiável), ou já enfrentou downtime.</p>
-<p>Pode deixar para depois se: é prototipagem de 2 semanas (mesmo aí, por que não começar certo?), ou tem contrato que obriga ferramenta específica (raro).</p>
-<p><a href="https://app.datafyapi.com.br" rel="noopener">Teste 7 dias grátis em Datafy, começa migração hoje</a></p>
+<h3>Vou perder o número?</h3>
+<p>Não. A linha é sua e continua sua. O que muda é onde ela está registrada e por onde as mensagens passam.</p>
+<h3>Vou perder o aplicativo do WhatsApp no celular?</h3>
+<p>Depende de uma escolha. Com coexistência, não: aplicativo e API convivem. Sem coexistência, sim: o número passa a existir só na API.</p>
+<h3>E as conversas antigas?</h3>
+<p>Ficam no aparelho. A sincronização traz até 180 dias para a nuvem, e não traz grupos.</p>
+<h3>Meu número já foi bloqueado antes. Migrar resolve?</h3>
+<p>Não. A reputação acompanha o número. Migrar tira o risco de bloqueio <strong>por usar ferramenta não autorizada</strong>, mas não apaga histórico anterior nem muda as regras de conduta. Se a causa do bloqueio foi disparo para lista fria, ela continua valendo na API oficial.</p>
+<h3>Quanto tempo leva?</h3>
+<p>A conexão é questão de minutos. O que costuma consumir o dia é o resto: aprovar templates, adaptar o código e testar. Planeje uma tarde, não cinco minutos.</p>
+<h3>Preciso avisar meus clientes?</h3>
+<p>Não. Do lado deles nada muda: mesmo número, mesma conversa. O que aparece de novo é o nome de exibição verificado.</p>
+<h3>Posso migrar vários números de uma vez?</h3>
+<p>Pode, mas migre um primeiro e rode com ele alguns dias. Os problemas aparecem na conduta, não na conexão, e é melhor descobrir com um número do que com trinta.</p>
+<h2 id="como-decidir">Como decidir</h2>
+<p>Se você opera com clientes e planeja continuar nisso por mais de alguns meses, a migração se paga na estabilidade. Se é um protótipo com prazo curto, o esforço pode não compensar agora.</p>
+<p>Em qualquer caso, decida a coexistência antes de clicar em conectar. É a única parte do processo que custa caro para desfazer.</p>
+<div class="cta"><h3>Migre um número antes de migrar todos</h3><p>Conecte um número de menor movimento, rode alguns dias com ele e observe a qualidade no Gerenciador. Se ficar estável, leve o resto com o caminho já conhecido.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/api-oficial-vs-nao-oficial-whatsapp-2026">API oficial vs não oficial</a></li>
-<li><a href="/alternativa-a-z-api">Alternativa a Z-API</a></li>
-<li><a href="/alternativa-a-uazapi">Alternativa a UAZAPI</a></li>
-<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Como receber mensagens no webhook</a></li>
+<li><a href="/coexistencia-whatsapp-api-oficial-app-celular">Coexistência: API e aplicativo no mesmo número</a></li>
+<li><a href="/numero-banido-no-whatsapp-o-que-fazer">Número banido: o que fazer</a></li>
+<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens em tempo real</a></li>
+<li><a href="/api-oficial-vs-nao-oficial-whatsapp-2026">API oficial vs não oficial do WhatsApp</a></li>
 </ul>
 </article>
 
@@ -792,18 +779,14 @@ Mudança de ferramenta não muda qualidade. Se caiu, é porque você disparou sp
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#pr-requisitos-antes-de-migrar">Pré-requisitos antes de migrar</a></li>
-        <li><a href="#passo-a-passo-sair-de-z-api-uazapi">Passo a passo: Sair de Z-API/UAZ...</a></li>
-        <li><a href="#passo-a-passo-conectar-em-datafy">Passo a passo: Conectar em Datafy</a></li>
-        <li><a href="#passo-a-passo-trocar-c-digo-integra-o">Passo a passo: Trocar código (in...</a></li>
-        <li><a href="#passo-a-passo-webhook-receber-mensagens">Passo a passo: Webhook (receber...</a></li>
-        <li><a href="#migra-o-com-downtime-zero">Migração com downtime zero</a></li>
-        <li><a href="#checklist-p-s-migra-o">Checklist pós-migração</a></li>
-        <li><a href="#problemas-comuns-na-migra-o">Problemas comuns na migração</a></li>
-        <li><a href="#o-que-irrecuper-vel">O que é irrecuperável</a></li>
-        <li><a href="#quanto-tempo-dura-a-migra-o">Quanto tempo dura a migração</a></li>
+        <li><a href="#antes-de-come-ar">Antes de começar</a></li>
+        <li><a href="#o-que-acontece-com-o-hist-rico">O que acontece com o histórico</a></li>
+        <li><a href="#o-passo-a-passo">O passo a passo</a></li>
+        <li><a href="#o-que-muda-no-c-digo">O que muda no código</a></li>
+        <li><a href="#a-regra-nova-que-pega-todo-mundo">A regra nova que pega todo mundo</a></li>
+        <li><a href="#se-der-errado">Se der errado</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
-        <li><a href="#como-decidir-agora-ou-depois">Como decidir: agora ou depois?</a></li>
+        <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>
       </ol>
     </nav>

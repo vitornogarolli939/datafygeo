@@ -1,170 +1,179 @@
 ---
-title: "WhatsApp API oficial no n8n: como conectar, enviar mensagens e receber no webhook"
-description: "Guia passo a passo para integrar WhatsApp Business API oficial no n8n: autenticar com Token Bearer, enviar template, receber mensagens no webhook e escalar automações."
+title: "WhatsApp API oficial no n8n: conectar, enviar e receber no webhook"
+description: "Como integrar a WhatsApp Cloud API no n8n: autenticar com token Bearer, enviar template, receber mensagem no webhook e respeitar os limites de envio da Meta."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "whatsapp-api-oficial-n8n"
 cluster: "implementacao"
 hero: "fluxo"
 intent: "como-fazer"
 persona: "automacao, saas"
-competitors: ["Make", "Zapier", "Integromat"]
+competitors: ["Make", "Zapier"]
 published: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-08
 sources:
-  - https://developers.facebook.com/docs/whatsapp/cloud-api
-  - https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks
-  - https://developers.facebook.com/docs/whatsapp/business-messaging-api/get-started
-  - https://n8n.io/integrations/
+  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
+  - https://developers.facebook.com/docs/whatsapp/throughput
+  - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/create-webhook-endpoint/
+  - https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.whatsapp/
   - https://app.datafyapi.com.br/docs
-  - https://www.youtube.com/watch?v=cZ_nyIUv5ic
-  - https://github.com/n8n-io/n8n
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
-  - /o-que-e-tech-provider-meta
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
-  - /validar-assinatura-hmac-webhook-whatsapp
   - /quanto-custa-whatsapp-business-api-brasil-2026
+  - /coexistencia-whatsapp-api-oficial-app-celular
+  - /o-que-e-tech-provider-meta
 status: aprovado
 ---
 
-# WhatsApp API oficial no n8n: como conectar, enviar mensagens e receber no webhook
+# WhatsApp API oficial no n8n: conectar, enviar e receber no webhook
 
-**Última atualização: 06/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 08/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** o n8n conversa com a API oficial do WhatsApp através de chamadas HTTP POST. Você precisa do número, do ID do número (phone_number_id), do token Bearer da sua conta Business Manager e de um webhook para receber mensagens de volta. Se você estiver com a Datafy, o webhook já existe: você só aponta para ele dentro do n8n.
+**Resposta curta:** o n8n fala com a Cloud API por HTTP. Você precisa de três coisas: o `phone_number_id`, um token no header `Authorization: Bearer`, e uma URL de webhook para receber o que o cliente responde. Dá para usar o node nativo de WhatsApp do n8n ou um HTTP Request cru. O node é mais rápido de montar; o HTTP Request te dá acesso a qualquer campo que a Meta aceite, inclusive os que o node ainda não expõe.
 
-O maior diferencial do n8n é que você escala sem código. Um fluxo no n8n consegue integrar WhatsApp com seu banco de dados, CRM, Typeform, Discord, Airtable e centenas de ferramentas, tudo sem escrever JavaScript. Por isso é o maior nome em automação descentralizada fora do Make.
+O que mais derruba fluxo em produção não é a integração, é limite: **80 mensagens por segundo** por número, e **uma mensagem a cada 6 segundos para o mesmo contato**. Fluxo que dispara em laço sem controle esbarra nisso e começa a receber erro 130429.
 
 ::numeros: 80 msg/s|throughput padrão de um número, escalável até 1.000 ;; 1 msg / 6 s|limite de envio para o mesmo contato ;; 24 h|janela para responder o cliente sem template ;; 200|o status HTTP que o webhook do n8n precisa devolver
 
 ## Principais pontos
-- O n8n precisa de três informações para falar com WhatsApp: o token Bearer (chave de acesso), o phone_number_id (ID do número) e o webhook_token (para validar que as mensagens chegadas são mesmo da Meta).
-- A Datafy fornece os três. Se você estiver conectado pela Datafy, copia do painel de API. Se estiver direto na Meta, tira do Business Manager.
-- Diferença crítica: na Datafy, o webhook já te aguarda. Você só configura a URL no n8n e aponta para ela. Direto na Meta, você precisa configurar o webhook no App Dashboard da Meta.
-- Cada mensagem recebida no webhook é um JSON com o conteúdo, o remetente, o tipo de mensagem (texto, imagem, áudio, arquivo) e o timestamp. O n8n lê isso com um nó "Webhook" e distribui.
-- Datafy cobra R$ 49,90 por número/mês (faixa inicial), sem markup nas conversas. Teste 7 dias grátis sem cartão.
+- Três informações bastam para enviar: `phone_number_id`, token no header `Authorization` e o telefone do destinatário no formato `55` + DDD + número.
+- **O token vai no header, nunca na URL.** `?access_token=` deixa a credencial no log do servidor, no histórico do navegador e em qualquer proxy do caminho.
+- Fora da janela de 24 horas só sai **template aprovado**. Dentro dela você manda texto livre. É a regra que mais quebra fluxo de reengajamento.
+- O nó de Webhook do n8n precisa **responder 200 rápido**. Se você pendurar o processamento pesado antes da resposta, a Meta trata como falha e reentrega.
+- Limites da Meta: 80 msg/s por número (20 se estiver em coexistência) e 1 mensagem a cada 6 segundos por contato ([throughput](https://developers.facebook.com/docs/whatsapp/throughput)).
 
 ::diagrama: n8n-fluxo
 
-## Como conectar no n8n
+## Enviar a primeira mensagem
 
-Abra seu painel de automação, escolha "nova automação" e comece com um disparador. A entrada pode ser um webhook (para disparar quando chega mensagem de WhatsApp), um schedule (automático de hora em hora), ou um formulário do Typeform.
+Duas rotas. A primeira é o node **WhatsApp Business Cloud**, que já vem no n8n: você cria a credencial com o token e o `phone_number_id`, escolhe a operação e preenche os campos. Resolve a maioria dos casos.
 
-Se escolher webhook, o n8n gera uma URL. Você copia essa URL e cola na Datafy, dentro da seção de webhooks do seu painel.
+A segunda é o **HTTP Request**, que é o que uso quando preciso de um campo que o node não expõe (botões, listas, componentes de template com variável nomeada). A chamada é esta:
 
-Depois, adicione um nó "HTTP Request". Nele você vai:
+```
+POST https://graph.facebook.com/v21.0/{{phone_number_id}}/messages
+Authorization: Bearer {{token}}
+Content-Type: application/json
+```
 
-1. Escolher método POST
-2. Colar a URL da Meta: `https://graph.facebook.com/v20.0/{{phone_number_id}}/messages`
-3. Adicionar o Header `Authorization: Bearer {{seu_token}}`
-4. No body, passar o JSON com a mensagem
-
-Exemplo de body para enviar template aprovado:
+Corpo para um template aprovado, com uma variável no corpo:
 
 ```json
 {
   "messaging_product": "whatsapp",
-  "to": "55XX999999999",
+  "to": "5511999999999",
   "type": "template",
   "template": {
-    "name": "seu_template_aprovado",
-    "language": {
-      "code": "pt_BR"
-    }
+    "name": "confirmacao_pedido",
+    "language": { "code": "pt_BR" },
+    "components": [
+      {
+        "type": "body",
+        "parameters": [
+          { "type": "text", "text": "{{ $json.nome }}" }
+        ]
+      }
+    ]
   }
 }
 ```
 
-Simples assim. O n8n preenche os `{{}}` com as variáveis que você definiu no webhook anterior.
+Se o número estiver conectado por um provedor, muda a URL base e o token. O corpo é o mesmo, porque o payload é o da Meta.
 
-## Receber mensagens e responder
+Para texto livre, dentro da janela de 24 horas:
 
-O fluxo reverso é quando o cliente manda mensagem para o seu número.
-
-1. No n8n, comece com um nó "Webhook" de entrada.
-2. Configure o método como POST.
-3. Ele gera uma URL. Copia essa URL.
-4. Se está na Datafy, vai no painel de API, webhooks, cola lá.
-5. Se está direto na Meta, vai no App Dashboard → WhatsApp, Webhooks, colas a URL lá.
-
-A Meta (ou a Datafy) vai fazer POST para aquele webhook toda vez que chega mensagem.
-
-No n8n, quando a mensagem chegar, você consegue puxar:
-
-```
-body.entry[0].changes[0].value.messages[0].from
-body.entry[0].changes[0].value.messages[0].text.body
-body.entry[0].changes[0].value.messages[0].type
+```json
+{
+  "messaging_product": "whatsapp",
+  "to": "5511999999999",
+  "type": "text",
+  "text": { "body": "Recebemos seu pedido, já separamos aqui." }
+}
 ```
 
-Daí você trata a mensagem (procura em banco de dados, envia para Discord, adiciona em Airtable) e responde chamando HTTP Request de novo, para enviar a mensagem de volta.
+::video: dIIkttPeBS0 | Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia | tutorial completo | Israel, CTO da Datafy API, faz a conexão do número em coexistência, configura o webhook e monta o primeiro envio dentro do n8n, do começo ao fim.
 
-## Diferença entre Datafy e direto na Meta
+## Receber a resposta
 
-| O que é | Datafy | Direto na Meta |
-|---|---|---|
-| **Setup** | Conecta número em menos de 5 minutos | Precisa App Review, vídeo, esperar aprovação |
-| **Webhook** | Já está ativo e apontado | Você configura manualmente no App Dashboard |
-| **Token** | Gerado automaticamente no painel | Você tira do Business Manager |
-| **Suporte** | Datafy responde em horas | Meta responde em 48h ou mais |
-| **Custo base** | R$ 49,90/mês por número | Grátis, mas você paga template, mensagens de serviço e escalação |
-| **Escala** | Sem burocracia até 100 números | Cada crescimento precisa conversar com Meta |
+O caminho de volta é um nó **Webhook** no n8n, em POST. Ele gera uma URL, e é essa URL que você registra do lado da Meta ou no painel do seu provedor.
 
-Quando faz sentido ir direto na Meta: você já tem estrutura de DevOps, quer total controle, e não importa esperar semanas para setup. Quando faz sentido Datafy: você quer rodar hoje, n8n é novo para você, ou você já tem números em teste que não pode perder tempo.
+Os campos que interessam ficam aninhados:
 
-## Integração real: formulário Typeform + n8n + WhatsApp
+```
+{{ $json.body.entry[0].changes[0].value.messages[0].from }}
+{{ $json.body.entry[0].changes[0].value.messages[0].type }}
+{{ $json.body.entry[0].changes[0].value.messages[0].text.body }}
+```
 
-Um caso concreto de uso no n8n:
+Três detalhes que economizam horas de depuração:
 
-1. Typeform: cliente preenche formulário com nome, email e telefone.
-2. n8n: recebe do webhook do Typeform, tira o telefone.
-3. WhatsApp: manda template "Obrigado, recebemos seu contato" para aquele número.
-4. Espera 2 minutos.
-5. Registra no Airtable com o timestamp.
-6. Se o cliente respondeu no WhatsApp (recebeu no webhook de entrada), valida a assinatura HMAC e registra a resposta.
+**Nem todo POST é mensagem.** O mesmo webhook recebe status de entrega, leitura e falha. Se o fluxo assume que `messages[0]` sempre existe, ele quebra no primeiro `statuses` que chegar. Coloque um nó de condição logo na entrada, checando se `messages` existe.
 
-Isso é uma automação completa e tudo dentro do n8n, sem código. Você monta com os nós de arrasta e solta.
+**Responda 200 antes de processar.** No nó de Webhook, configure a resposta como imediata e mande o trabalho pesado para o ramo seguinte. Se o n8n só responder no fim do fluxo, uma chamada lenta a banco vira reentrega da Meta e mensagem duplicada.
+
+**A validação de assinatura é sua, não da Meta.** A Meta assina o corpo em HMAC SHA-256 no header `X-Hub-Signature-256`. Se você não conferir, ela continua entregando normalmente: quem fica exposto a receber POST forjado é você. Não conferir não interrompe a entrega, só remove a sua proteção.
+
+## Um fluxo que funciona em produção
+
+O formato que mais vejo dar certo, e que evita os erros acima:
+
+1. **Webhook** recebe o POST e responde 200 na hora.
+2. **IF** checa se `messages` existe. Se for só status de entrega, encerra ali.
+3. **Switch** separa por `type`: texto vai para um caminho, imagem e áudio para outro, clique de botão para um terceiro.
+4. **Consulta** ao seu banco ou CRM pelo telefone do remetente.
+5. **HTTP Request** responde pela API. Dentro da janela, texto livre resolve.
+6. **Registro** da conversa, para você ter histórico fora da Meta.
+
+Para disparo em lote, acrescente um **Split in Batches** com espera entre os lotes. É o que segura o limite de 80 msg/s e evita o erro 130429.
+
+## Onde o Make e o Zapier levam vantagem
+
+O n8n não é a resposta para todo caso. Se a sua equipe não é técnica, o Make tem uma curva mais suave e a montagem visual é mais guiada. Se você já vive dentro do Google Workspace ou de um CRM que tem integração pronta no Zapier, o caminho mais curto costuma ser ficar lá.
+
+O n8n compensa quando você quer **rodar no seu servidor**, precisa de lógica que os outros não expõem, ou quer evitar cobrança por execução em fluxo de volume alto.
+
+E se o que você precisa é uma equipe lendo e respondendo conversa, nenhum dos três resolve: isso é caixa de entrada, e o caminho é [Chatwoot](/whatsapp-api-oficial-chatwoot). O n8n cuida da lógica, não do atendimento humano.
 
 ## O que mudou em 2026
 
-O Brasil passou a ser faturado em reais em 1º de julho de 2026. A cobrança é por mensagem entregue, e a categoria do template decide o preço: marketing custa cerca de dez vezes uma mensagem de utilidade. Confira a tabela vigente em [preços da plataforma](https://whatsappbusiness.com/pt-br/products/platform-pricing/).
+O Brasil passou a ser faturado em reais em 1º de julho de 2026, e a cobrança é por mensagem entregue. A categoria do template decide o preço, e marketing custa cerca de dez vezes uma mensagem de utilidade.
 
-Segundo, a Meta começou a pedir que a URL do webhook tenha certificado SSL válido. Não aceita mais localhost ou IP.
-
-Terceiro, a partir de 1º de outubro de 2026 as mensagens de serviço passam a ser cobradas. Se o seu fluxo no n8n responde muito dentro da janela de 24 horas, vale refazer a conta de custo.
+A partir de **1º de outubro de 2026** as mensagens de serviço passam a ser cobradas, junto com as de utilidade enviadas dentro de uma janela aberta. Se o seu fluxo responde muito dentro das 24 horas, essa conta muda ([preços](https://whatsappbusiness.com/pt-br/products/platform-pricing/)).
 
 ## Perguntas frequentes
 
-### O n8n pode substituir uma plataforma de atendimento como Chatwoot?
+### O n8n substitui uma plataforma de atendimento?
 
-Pode fazer quase tudo, mas falta a interface de inbox compartilhado. No n8n você trabalha com dados, não com conversa visível tipo chat. Se você quer que a equipe leia as respostas em tempo real, use Chatwoot ou WhatsApp Web. Se o que você quer é lógica, ou seja, mandar para o CRM, responder automático e arquivar, o n8n resolve bem.
+Não. No n8n você trabalha com dados, não com conversa visível. Para a equipe ler e responder, você precisa de uma caixa de entrada como o Chatwoot. Os dois convivem bem: o n8n cuida da automação, o Chatwoot do humano.
 
-### Posso integrar n8n com Datafy e ganhar desconto?
+### Uso o node nativo ou o HTTP Request?
 
-Não. Datafy cobra R$ 49,90 por número/mês, n8n cobra pela quantidade de automações e execuções, são billings independentes. Mas você roda tudo junto: Datafy fornece a API, n8n faz a orquestração.
+Comece pelo node. Troque para HTTP Request quando precisar de um campo que ele não expõe, tipicamente botões, listas ou componentes de template mais elaborados.
 
-### E se o webhook não receber a mensagem?
+### Meu webhook não recebe nada. Por onde começo?
 
-Verifique três coisas. Primeira, a URL do webhook está certa. Segunda, a assinatura HMAC está sendo validada (se esquecer, a Meta vai deixar de chamar). Terceira, o firewall não está bloqueando IP da Meta. Teste mandar um teste manual do WhatsApp Web.
+Confira, nesta ordem: a URL registrada é exatamente a do nó de Webhook, ela é HTTPS com certificado válido, o fluxo está ativo (não em modo de teste, que só escuta uma chamada), e o campo `messages` está assinado do lado da Meta. O modo de teste do n8n é a causa mais comum.
 
-### Quanto custa usar WhatsApp no n8n?
+### Recebo a mensagem duas vezes. Por quê?
 
-n8n cobra por automação ativa e por quantidade de execuções. O plano gratuito deixa até 30 execuções por minuto. Plano pro é a partir de 20 USD/mês. É separado do custo da API (Datafy ou direto na Meta).
+Provavelmente o seu webhook demora a responder 200 e a Meta reentrega. Responda primeiro, processe depois. Guardar o `id` da mensagem e ignorar repetidos também resolve o caso de borda.
 
-### Posso testar sem gastar?
+### Posso mandar mensagem para quem nunca falou comigo?
 
-Sim. Datafy oferece 7 dias grátis, sem cartão. n8n oferece plano gratuito que roda qualquer automação, mas com limite de execuções. Teste nessa janela.
+Só por template aprovado. Fora da janela de 24 horas, texto livre é recusado pela API. E template para lista fria é a causa número um de bloqueio de número, mesmo com API oficial.
 
-## Como decidir: n8n é para você?
+### Quanto custa rodar isso?
 
-Use n8n se você: quer montar automações sem programação, já usa Make ou Zapier e quer ferramentas mais abertas, precisa de integrações criativas (três APIs conversando), ou trabalha com equipes que entendem de automação mas não de código.
+São duas contas separadas: a do n8n, que depende de você usar a nuvem deles ou hospedar por conta própria, e a das mensagens, que você paga à Meta pela tabela dela. Confira as duas antes de orçar.
 
-Não use se: você só quer receber e responder mensagens (use Chatwoot), quer algo muito rápido para começar (considere n8n como fase 2), ou precisa de uma UI de atendimento profissional.
+## Como decidir
 
-[Teste 7 dias grátis na Datafy](https://app.datafyapi.com.br)
+Use o n8n se você quer montar a lógica sem escrever backend, ou já tem fluxos rodando e vai só acrescentar o WhatsApp. Se o objetivo é atendimento humano em equipe, comece pelo Chatwoot e deixe o n8n para o que for automático.
+
+::cta: Antes de subir para produção, teste os três erros comuns | Mande um status de entrega para o seu fluxo e veja se ele quebra. Force uma resposta lenta e veja se chega mensagem duplicada. Dispare em lote e veja se bate no limite.
 
 ## Leia também
 - [API oficial vs não oficial do WhatsApp](/api-oficial-vs-nao-oficial-whatsapp-2026)
-- [Como receber mensagens no webhook](/webhook-whatsapp-cloud-api-como-receber-mensagens)
-- [Validar assinatura HMAC de webhook](/validar-assinatura-hmac-webhook-whatsapp)
-- [O que é Tech Provider](/o-que-e-tech-provider-meta)
+- [Webhook: receber mensagens em tempo real](/webhook-whatsapp-cloud-api-como-receber-mensagens)
+- [WhatsApp API oficial no Chatwoot](/whatsapp-api-oficial-chatwoot)
+- [Quanto custa a WhatsApp Business API no Brasil](/quanto-custa-whatsapp-business-api-brasil-2026)
