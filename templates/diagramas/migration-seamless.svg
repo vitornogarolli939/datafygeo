@@ -1,55 +1,55 @@
 <svg viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="250" fill="var(--bg-primary)"/>
+  <rect width="800" height="250" fill="#ffffff"/>
 
-  <text x="400" y="30" style="font-size: 18px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Migração: Sem perder número</text>
+  <text x="400" y="30" style="font-size: 18px; font-weight: bold; text-anchor: center; fill: #1a1a1a;">Migração: Sem perder número</text>
 
   <!-- Step 1 -->
   <g transform="translate(50, 70)">
-    <circle cx="30" cy="30" r="25" fill="var(--accent-color)" opacity="0.3" stroke="var(--accent-color)" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: var(--accent-color);">1</text>
+    <circle cx="30" cy="30" r="25" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #0ea5e9;">1</text>
 
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: var(--text-primary);">Cria conta</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">Datafy</text>
+    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #1a1a1a;">Cria conta</text>
+    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">Datafy</text>
   </g>
 
   <!-- Arrow -->
-  <path stroke="var(--accent-color)" stroke-width="2" fill="none" d="M 130 100 L 180 100" marker-end="url(#arrowhead)"/>
+  <path stroke="#0ea5e9" stroke-width="2" fill="none" d="M 130 100 L 180 100" marker-end="url(#arrowhead)"/>
 
   <!-- Step 2 -->
   <g transform="translate(200, 70)">
-    <circle cx="30" cy="30" r="25" fill="var(--accent-color)" opacity="0.3" stroke="var(--accent-color)" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: var(--accent-color);">2</text>
+    <circle cx="30" cy="30" r="25" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #0ea5e9;">2</text>
 
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: var(--text-primary);">Conecta</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">Seu número (BM)</text>
+    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #1a1a1a;">Conecta</text>
+    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">Seu número (BM)</text>
   </g>
 
   <!-- Arrow -->
-  <path stroke="var(--accent-color)" stroke-width="2" fill="none" d="M 280 100 L 330 100" marker-end="url(#arrowhead)"/>
+  <path stroke="#0ea5e9" stroke-width="2" fill="none" d="M 280 100 L 330 100" marker-end="url(#arrowhead)"/>
 
   <!-- Step 3 -->
   <g transform="translate(350, 70)">
-    <circle cx="30" cy="30" r="25" fill="var(--accent-color)" opacity="0.3" stroke="var(--accent-color)" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: var(--accent-color);">3</text>
+    <circle cx="30" cy="30" r="25" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #0ea5e9;">3</text>
 
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: var(--text-primary);">Copia token</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">sk_live_...</text>
+    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #1a1a1a;">Copia token</text>
+    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">sk_live_...</text>
   </g>
 
   <!-- Arrow -->
-  <path stroke="var(--accent-color)" stroke-width="2" fill="none" d="M 430 100 L 480 100" marker-end="url(#arrowhead)"/>
+  <path stroke="#0ea5e9" stroke-width="2" fill="none" d="M 430 100 L 480 100" marker-end="url(#arrowhead)"/>
 
   <!-- Step 4 -->
   <g transform="translate(500, 70)">
-    <circle cx="30" cy="30" r="25" fill="var(--accent-color)" opacity="0.3" stroke="var(--accent-color)" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: var(--accent-color);">4</text>
+    <circle cx="30" cy="30" r="25" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #0ea5e9;">4</text>
 
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: var(--text-primary);">Muda código</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">URL + token</text>
+    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #1a1a1a;">Muda código</text>
+    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">URL + token</text>
   </g>
 
   <!-- Arrow -->
-  <path stroke="var(--accent-color)" stroke-width="2" fill="none" d="M 580 100 L 630 100" marker-end="url(#arrowhead)"/>
+  <path stroke="#0ea5e9" stroke-width="2" fill="none" d="M 580 100 L 630 100" marker-end="url(#arrowhead)"/>
 
   <!-- Step 5 -->
   <g transform="translate(650, 70)">
@@ -57,17 +57,17 @@
     <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #10b981;">✓</text>
 
     <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #10b981">Pronto!</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">1 hora total</text>
+    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">1 hora total</text>
   </g>
 
   <!-- Key info -->
-  <rect x="50" y="180" width="700" height="50" fill="var(--bg-secondary)" rx="4"/>
-  <text x="60" y="200" style="font-size: 11px; fill: var(--text-primary); font-weight: bold;">✓ Número continua seu (registrado em BM)</text>
-  <text x="60" y="220" style="font-size: 11px; fill: var(--text-primary); font-weight: bold;">✓ Histórico em Z-API/Evolution fica lá (novo fica em Datafy)</text>
+  <rect x="50" y="180" width="700" height="50" fill="#f5f5f5" rx="4"/>
+  <text x="60" y="200" style="font-size: 11px; fill: #1a1a1a; font-weight: bold;">✓ Número continua seu (registrado em BM)</text>
+  <text x="60" y="220" style="font-size: 11px; fill: #1a1a1a; font-weight: bold;">✓ Histórico em Z-API/Evolution fica lá (novo fica em Datafy)</text>
 
   <defs>
     <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <polygon points="0 0, 10 3, 0 6" fill="var(--accent-color)"/>
+      <polygon points="0 0, 10 3, 0 6" fill="#0ea5e9"/>
     </marker>
   </defs>
 </svg>

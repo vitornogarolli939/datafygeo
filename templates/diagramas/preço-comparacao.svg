@@ -1,25 +1,25 @@
 <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      .option-box { stroke: var(--text-primary); stroke-width: 2; rx: 8; }
-      .option-title { font-size: 16px; font-weight: bold; text-anchor: middle; fill: var(--text-primary); }
-      .option-label { font-size: 13px; text-anchor: middle; fill: var(--text-secondary); }
-      .price-text { font-size: 24px; font-weight: bold; text-anchor: middle; fill: var(--accent-color); }
-      .pro { fill: var(--bg-secondary); stroke: var(--accent-color); }
-      .neutral { fill: var(--bg-primary); }
-      .con { fill: var(--bg-secondary); }
+      .option-box { stroke: #1a1a1a; stroke-width: 2; rx: 8; }
+      .option-title { font-size: 16px; font-weight: bold; text-anchor: middle; fill: #1a1a1a; }
+      .option-label { font-size: 13px; text-anchor: middle; fill: #666; }
+      .price-text { font-size: 24px; font-weight: bold; text-anchor: middle; fill: #0ea5e9; }
+      .pro { fill: #f5f5f5; stroke: #0ea5e9; }
+      .neutral { fill: #ffffff; }
+      .con { fill: #f5f5f5; }
       .pro-label { fill: #10b981; font-weight: bold; }
       .con-label { fill: #ef4444; font-weight: bold; }
-      .neutral-label { fill: var(--text-secondary); }
-      .item-text { font-size: 11px; fill: var(--text-secondary); }
+      .neutral-label { fill: #666; }
+      .item-text { font-size: 11px; fill: #666; }
     </style>
   </defs>
 
   <!-- Background -->
-  <rect width="800" height="350" fill="var(--bg-primary)"/>
+  <rect width="800" height="350" fill="#ffffff"/>
 
   <!-- Title -->
-  <text x="400" y="30" style="font-size: 20px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Quanto custa: 3 caminhos</text>
+  <text x="400" y="30" style="font-size: 20px; font-weight: bold; text-anchor: center; fill: #1a1a1a;">Quanto custa: 3 caminhos</text>
 
   <!-- Option 1: Meta direto -->
   <g transform="translate(50, 70)">
@@ -48,7 +48,7 @@
   <g transform="translate(300, 50)">
     <rect class="option-box pro" x="0" y="0" width="200" height="300" rx="8"/>
 
-    <text x="100" y="30" class="option-title" style="fill: var(--accent-color);">Datafy (Recomendado)</text>
+    <text x="100" y="30" class="option-title" style="fill: #0ea5e9;">Datafy (Recomendado)</text>
     <text x="100" y="55" class="price-text">R$ 49,90</text>
     <text x="100" y="75" class="option-label">/número/mês</text>
 
@@ -91,6 +91,6 @@
   </g>
 
   <!-- Bottom guidance -->
-  <rect x="20" y="320" width="760" height="20" fill="var(--bg-secondary)" rx="4"/>
-  <text x="400" y="335" style="font-size: 12px; text-anchor: center; fill: var(--text-secondary);">Pequeno volume (100-500 msg/mês) → Datafy | Grande volume (5000+) → Considere Meta direto</text>
+  <rect x="20" y="320" width="760" height="20" fill="#f5f5f5" rx="4"/>
+  <text x="400" y="335" style="font-size: 12px; text-anchor: center; fill: #666;">Pequeno volume (100-500 msg/mês) → Datafy | Grande volume (5000+) → Considere Meta direto</text>
 </svg>

@@ -1,22 +1,22 @@
 <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      .node { fill: var(--bg-secondary); stroke: var(--accent-color); stroke-width: 2; }
-      .node-text { font-size: 12px; font-weight: bold; fill: var(--text-primary); text-anchor: middle; }
-      .arrow { stroke: var(--accent-color); stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
-      .label { font-size: 10px; fill: var(--text-secondary); }
-      .data-flow { font-size: 10px; fill: var(--accent-color); font-style: italic; }
+      .node { fill: #f5f5f5; stroke: #0ea5e9; stroke-width: 2; }
+      .node-text { font-size: 12px; font-weight: bold; fill: #1a1a1a; text-anchor: middle; }
+      .arrow { stroke: #0ea5e9; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .label { font-size: 10px; fill: #666; }
+      .data-flow { font-size: 10px; fill: #0ea5e9; font-style: italic; }
     </style>
     <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <polygon points="0 0, 10 3, 0 6" fill="var(--accent-color)"/>
+      <polygon points="0 0, 10 3, 0 6" fill="#0ea5e9"/>
     </marker>
   </defs>
 
   <!-- Background -->
-  <rect width="800" height="300" fill="var(--bg-primary)"/>
+  <rect width="800" height="300" fill="#ffffff"/>
 
   <!-- Title -->
-  <text x="400" y="30" style="font-size: 18px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Automação no n8n: WhatsApp + qualquer ferramenta</text>
+  <text x="400" y="30" style="font-size: 18px; font-weight: bold; text-anchor: center; fill: #1a1a1a;">Automação no n8n: WhatsApp + qualquer ferramenta</text>
 
   <!-- Node 1: Webhook (entrada) -->
   <g transform="translate(50, 80)">
@@ -82,11 +82,11 @@
 
   <!-- Bottom legend -->
   <g transform="translate(50, 170)">
-    <text x="0" y="0" style="font-size: 12px; font-weight: bold; fill: var(--text-primary);">Exemplo real:</text>
-    <text x="0" y="20" style="font-size: 11px; fill: var(--text-secondary);">1. Cliente manda mensagem no WhatsApp</text>
-    <text x="0" y="35" style="font-size: 11px; fill: var(--text-secondary);">2. n8n recebe, lê conteúdo (webhook)</text>
-    <text x="0" y="50" style="font-size: 11px; fill: var(--text-secondary);">3. Se pergunta de venda → envia Typeform | Se resposta já conhecida → WhatsApp API</text>
-    <text x="0" y="65" style="font-size: 11px; fill: var(--text-secondary);">4. Salva histórico em database e atualiza CRM</text>
-    <text x="0" y="80" style="font-size: 11px; fill: var(--text-secondary);">5. Tudo sem escrever código (visual workflow)</text>
+    <text x="0" y="0" style="font-size: 12px; font-weight: bold; fill: #1a1a1a;">Exemplo real:</text>
+    <text x="0" y="20" style="font-size: 11px; fill: #666;">1. Cliente manda mensagem no WhatsApp</text>
+    <text x="0" y="35" style="font-size: 11px; fill: #666;">2. n8n recebe, lê conteúdo (webhook)</text>
+    <text x="0" y="50" style="font-size: 11px; fill: #666;">3. Se pergunta de venda → envia Typeform | Se resposta já conhecida → WhatsApp API</text>
+    <text x="0" y="65" style="font-size: 11px; fill: #666;">4. Salva histórico em database e atualiza CRM</text>
+    <text x="0" y="80" style="font-size: 11px; fill: #666;">5. Tudo sem escrever código (visual workflow)</text>
   </g>
 </svg>
