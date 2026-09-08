@@ -157,3 +157,141 @@ porque as páginas são curtas.
   mas fala com quem não é nosso público. Reabrir só se o time decidir mudar o alvo.
 - **Variações de ordem de palavra** na mesma URL. A Mindo faz, cria página quase
   duplicada e buscador pune. Uma URL por assunto.
+
+---
+---
+
+# EXPANSÃO: ondas 8 a 13 (levantada em 08/09/2026)
+
+Feita a partir do changelog e da documentação oficial da Meta. O que não deu para
+confirmar em fonte oficial está listado no fim e **não vira página** até alguém
+confirmar. A regra 9 vale aqui igual.
+
+Quatro achados mudam a prioridade do plano original:
+
+1. **O Brasil é o único mercado grande onde a Meta ainda cobra AI Provider por mensagem
+   não-template.** Começou em 16/02/2026 na Itália, chegou ao Brasil e a 29 mercados
+   europeus em 11/03/2026, e foi revogado para UE e EEE em 13/05/2026. No Brasil
+   continua. Atinge em cheio quem roda agente de IA no WhatsApp, que é o nosso público,
+   e não existe uma linha sobre isso em português.
+2. **O telefone está deixando de ser a chave.** Desde abril de 2026 os webhooks trazem
+   BSUID, e o telefone só aparece se você mandou mensagem para aquele número nos
+   **últimos 30 dias**. Quem usa telefone como chave primária no banco vai quebrar sem
+   entender por quê. Já existe erro para isso, o `131062`.
+3. **A migração para BRL tem corte de ENTREGA, não só de cobrança.** A partir de
+   01/07/2027 a Meta deixa de entregar mensagem de WABA que não migrou.
+4. **A Meta virou concorrente de quem faz agente.** O Meta Business Agent foi lançado
+   globalmente em 03/06/2026 e é cobrado por token desde 01/08/2026, a US$ 2,00 por
+   milhão de tokens. Quem vende agente de IA no WhatsApp precisa saber comparar.
+
+## ONDA 8: a virada de 1º de outubro (7) — máxima urgência
+
+Falta menos de um mês. Publicar antes da data vale mais que qualquer outra pauta.
+
+`mensagem-de-servico-vai-ser-paga-outubro-2026` (já previsto, subir na fila) ·
+`utilidade-dentro-da-janela-passa-a-ser-cobrada` (some a gratuidade que valia desde
+01/07/2025) · `free-entry-point-72-horas` (segue gratuito, quase ninguém cobre) ·
+`como-refazer-a-conta-depois-de-outubro-2026` ·
+`migrar-faturamento-para-brl-prazo-de-2027` (o corte é de entrega) ·
+`currency-migration-api-como-usar` (disponível desde 01/06/2026) ·
+`por-que-nao-existe-tabela-de-preco-para-copiar` (a tabela da Meta é interativa, e é
+por isso que todo número que circula por aí está desatualizado)
+
+## ONDA 9: agente de IA no WhatsApp (9)
+
+O assunto mais quente do público e o mais mal servido em português.
+
+`cobranca-de-ai-provider-no-brasil` **[prioridade máxima do site]** ·
+`o-que-e-ai-provider-para-a-meta` (a definição oficial e quem se enquadra) ·
+`meta-business-agent-o-que-muda-para-quem-vende-agente` (cobrado por token desde
+01/08/2026) · `custo-real-de-agente-de-ia-no-whatsapp` (token do modelo + mensagem da
+Meta + possível cobrança de AI Provider) ·
+`categoria-general-purpose-ai-no-webhook` (como detectar o que virou billable) ·
+`existe-mcp-oficial-do-whatsapp` (não existe: só o de Ads, em mcp.facebook.com/ads.
+Pergunta que dev faz e que hoje só tem resposta errada) ·
+`handoff-de-bot-para-humano-sem-perder-contexto` ·
+`latencia-de-agente-de-ia-no-whatsapp` (inclui typing indicator, que segura 25 s) ·
+`memoria-de-conversa-e-janela-de-24-horas`
+
+## ONDA 10: o fim do telefone como identificador (6)
+
+Está acontecendo agora e vai quebrar integração de gente que não viu.
+
+`o-que-e-bsuid-business-scoped-user-id` ·
+`usernames-no-whatsapp-o-que-muda-na-api` ·
+`o-telefone-sumiu-do-meu-webhook` (a janela rolante de 30 dias) ·
+`erro-131062-template-de-autenticacao-com-bsuid` (one-tap, zero-tap e copy-code ainda
+exigem telefone) · `migrar-o-banco-de-telefone-para-user-id` ·
+`webhook-user-id-update-e-user-changed-user-id`
+
+## ONDA 11: limites, qualidade e punição (8)
+
+Todo mundo descobre quando o número já está limitado.
+
+`limite-por-usuario-de-mensagem-de-marketing` (é por PESSOA, somado entre todas as
+empresas: não se contorna com mais número, mais WABA nem trocando de provedor) ·
+`erro-131049-vs-131050` (parecidos, tratamento oposto. Um é limite por usuário e pede
+espera de 24 h; o outro é opt-out do usuário. Retentar o 131049 escala para bloqueio
+no nível da WABA) · `messaging-limits-agora-sao-por-portfolio` (mudou em 08/10/2025:
+um número pode consumir a capacidade de todos) ·
+`portfolio-pacing-por-que-a-campanha-trava-no-meio` (desde 08/12/2025) ·
+`erro-131064-classificacao-de-template` · `escalada-de-punicao-por-categoria-errada`
+(aviso, limite de volume, restrição de utilidade, restrição de portfolio) ·
+`template-pausado-3h-6h-desabilitado` ·
+`como-a-meta-calcula-a-qualidade-do-numero` (janela de 7 dias, com peso por recência)
+
+## ONDA 12: recursos que ninguém documenta em português (10)
+
+`calling-api-chamada-de-voz-pela-cloud-api` (GA em jul/2025, tarifa em BRL desde
+01/07/2026, cobrada em blocos de 6 s; chamada iniciada pelo usuário é gratuita) ·
+`permissao-para-ligar-para-o-cliente` (1 pedido por dia, 2 por semana) ·
+`whatsapp-flows-formularios-nativos` · `versoes-do-flow-json-e-o-que-congela` (5.0
+frozen, 7.3 atual, e o ciclo de 12 meses até expirar) ·
+`payments-no-brasil-pix-boleto-e-link` (e o ponto que quebra operação: **o WhatsApp
+não reconcilia pagamento**, quem concilia é você, pelo reference_id) ·
+`carrossel-de-midia-interativo` (desde fev/2026, de 2 a 10 cards, sem exigir catálogo) ·
+`typing-indicator-e-marcar-como-lida` · `block-users-api` (limite de 64 mil na lista,
+erro 139101) · `embedded-signup-v2-vai-ser-desligado` (15/10/2026, migrar para a v4) ·
+`marketing-messages-api-a-antiga-mm-lite` (e o erro 131063, que quebra integração de
+Cloud API quando alguém liga uma opção no WhatsApp Manager)
+
+## ONDA 13: conformidade, sem juridiquês (6)
+
+Hoje só existe material jurídico genérico. Falta a versão de quem implementa.
+
+`lgpd-e-whatsapp-api-quem-e-controlador-e-quem-e-operador` ·
+`opt-in-por-canal-email-nao-cobre-whatsapp` (orientação da ANPD; é o item de
+conformidade mais acionável e quase ninguém aplica) ·
+`opt-out-e-o-webhook-user-preferences` · `nichos-proibidos-pela-politica-da-meta` ·
+`retencao-de-conversa-onde-o-dado-fica` ·
+`anatel-e-dlt-nao-se-aplicam-ao-whatsapp` (desmontar um mito que circula: a jurisdição
+da ANATEL é recurso de telecom, e o DLT indiano não alcança OTT)
+
+## Conta da expansão
+
+| Onda | Páginas | Acumulado |
+|---|---|---|
+| 1 a 7 (plano original) | 83 | 83 |
+| 8. Virada de outubro | 7 | 90 |
+| 9. Agente de IA | 9 | 99 |
+| 10. Fim do telefone | 6 | 105 |
+| 11. Limites e punição | 8 | 113 |
+| 12. Recursos não documentados | 10 | 123 |
+| 13. Conformidade | 6 | 129 |
+
+## O que NÃO vira pauta, e por quê
+
+- **"A Meta removeu os tiers de 2 mil e 10 mil"**: circula em blog de BSP, mas a 360dialog
+  desmente e a doc oficial ainda lista os dois. Não publicar.
+- **"A Meta acabou com o status Flagged"**: não confirmado em fonte oficial.
+- **"Desde janeiro de 2026 é obrigatório verificar a empresa para enviar template"**: não
+  confirmado. A verificação é porta para subir o limite de envio, não para enviar.
+- **Valor do limite por usuário de marketing**: a Meta não publica de propósito. O
+  "2 por 24 h" que circula é folclore de BSP. A página explica o mecanismo, nunca crava
+  número.
+- **"A Marketing Messages API ignora o limite por usuário"**: afirmado por BSP, não
+  confirmado na doc.
+- **Template de voz**: não existe. O que existe é botão de pedido de permissão de
+  chamada dentro de template.
+- **Datas exatas de lançamento de typing indicator e da Block Users API**: as páginas não
+  têm changelog. Escrever sem cravar data.
