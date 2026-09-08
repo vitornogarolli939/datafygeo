@@ -49,6 +49,8 @@ Por isso a pergunta certa em 2026 não é "oficial ou clandestina". É oficial, 
 - Via parceiro homologado essas etapas somem: com uma BM já criada, o número conecta e envia em menos de 5 minutos, e os endpoints são os mesmos da Meta. Muda só o domínio e o token.
 - Custo na Datafy: R$ 49,90 por número/mês (1 a 9), R$ 39,90 (10 a 49) e R$ 29,90 (50+), sem markup nas conversas. [7 dias grátis, sem cartão](https://app.datafyapi.com.br).
 
+::diagrama: oficial-vs-nao-oficial
+
 ## Qual é a diferença técnica entre a API oficial e a não oficial?
 
 A oficial é uma interface hospedada pela Meta. A não oficial é um robô operando um WhatsApp Web.

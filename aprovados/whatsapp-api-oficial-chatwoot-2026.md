@@ -43,6 +43,8 @@ A particularidade aqui é a coexistência. O mesmo número pode estar rodando na
 - Não perde conversa. Mensagens que chegam no app aparecem no Chatwoot também, instantaneamente. É tipo um mirror.
 - Limite da Meta continua valendo: 500 mensagens por minuto, 60 mídia por minuto. Chatwoot é só a interface para você não infringir isso sem querer.
 
+::diagrama: chatwoot-inbox
+
 ## Conectar Datafy no Chatwoot
 
 Você tem duas opções: usar a Datafy como intermediária ou conectar direto na Meta.

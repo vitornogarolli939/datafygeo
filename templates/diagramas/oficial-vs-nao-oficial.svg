@@ -1,0 +1,101 @@
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .path-box { stroke-width: 2; }
+      .official { stroke: #10b981; fill: var(--bg-secondary); }
+      .unofficial { stroke: #ef4444; fill: var(--bg-secondary); }
+      .path-label { font-size: 14px; font-weight: bold; text-anchor: middle; }
+      .path-good { fill: #10b981; }
+      .path-bad { fill: #ef4444; }
+      .step { font-size: 11px; text-anchor: middle; fill: var(--text-secondary); }
+      .outcome { font-size: 13px; font-weight: bold; text-anchor: middle; }
+      .good-outcome { fill: #10b981; }
+      .bad-outcome { fill: #ef4444; }
+      .arrow { stroke-width: 2; fill: none; marker-end: url(#arrowhead-good); }
+      .arrow-bad { stroke-width: 2; fill: none; marker-end: url(#arrowhead-bad); }
+    </style>
+    <marker id="arrowhead-good" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#10b981"/>
+    </marker>
+    <marker id="arrowhead-bad" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ef4444"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="400" fill="var(--bg-primary)"/>
+
+  <text x="450" y="30" style="font-size: 20px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Dois caminhos: API oficial vs não oficial</text>
+
+  <!-- LEFT PATH: Official -->
+  <g transform="translate(100, 80)">
+    <!-- Start -->
+    <circle cx="100" cy="30" r="20" class="official" style="stroke-width: 2;"/>
+    <text x="100" y="35" class="path-label" style="fill: #10b981;">✓</text>
+
+    <text x="100" y="70" class="path-label path-good">API Oficial</text>
+    <text x="100" y="88" class="step">(Meta → Datafy, 360dialog)</text>
+
+    <!-- Arrow down -->
+    <path class="arrow" stroke="#10b981" d="M 100 100 L 100 140"/>
+
+    <!-- Step 1 -->
+    <rect class="path-box official" x="30" y="140" width="140" height="50" rx="4"/>
+    <text x="100" y="160" class="path-label path-good">✓ Setup: 5 min</text>
+    <text x="100" y="178" class="step">BM → Número → Token</text>
+
+    <!-- Arrow down -->
+    <path class="arrow" stroke="#10b981" d="M 100 190 L 100 230"/>
+
+    <!-- Step 2 -->
+    <rect class="path-box official" x="30" y="230" width="140" height="50" rx="4"/>
+    <text x="100" y="250" class="path-label path-good">✓ Estável</text>
+    <text x="100" y="268" class="step">Endpoint da Meta</text>
+
+    <!-- Arrow down -->
+    <path class="arrow" stroke="#10b981" d="M 100 280 L 100 320"/>
+
+    <!-- Outcome -->
+    <rect class="path-box official" x="15" y="320" width="170" height="50" rx="4"/>
+    <text x="100" y="340" class="outcome good-outcome">Produção segura</text>
+    <text x="100" y="358" class="step">Suporte, recurso, contrato</text>
+  </g>
+
+  <!-- RIGHT PATH: Not Official -->
+  <g transform="translate(550, 80)">
+    <!-- Start -->
+    <circle cx="100" cy="30" r="20" class="unofficial" style="stroke-width: 2;"/>
+    <text x="100" y="38" class="path-label" style="fill: #ef4444;">✗</text>
+
+    <text x="100" y="70" class="path-label path-bad">Não oficial</text>
+    <text x="100" y="88" class="step">(Z-API, UAZAPI, Evolution Baileys)</text>
+
+    <!-- Arrow down -->
+    <path class="arrow-bad" stroke="#ef4444" d="M 100 100 L 100 140"/>
+
+    <!-- Step 1 -->
+    <rect class="path-box unofficial" x="30" y="140" width="140" height="50" rx="4"/>
+    <text x="100" y="160" class="path-label path-bad">⚠ Setup rápido</text>
+    <text x="100" y="178" class="step">Mas depende de código</text>
+
+    <!-- Arrow down -->
+    <path class="arrow-bad" stroke="#ef4444" d="M 100 190 L 100 230"/>
+
+    <!-- Step 2 -->
+    <rect class="path-box unofficial" x="30" y="230" width="140" height="50" rx="4"/>
+    <text x="100" y="250" class="path-label path-bad">✗ Quebra</text>
+    <text x="100" y="268" class="step">Quando app atualiza</text>
+
+    <!-- Arrow down -->
+    <path class="arrow-bad" stroke="#ef4444" d="M 100 280 L 100 320"/>
+
+    <!-- Outcome -->
+    <rect class="path-box unofficial" x="15" y="320" width="170" height="50" rx="4"/>
+    <text x="100" y="340" class="outcome bad-outcome">Prototipagem</text>
+    <text x="100" y="358" class="step">Sem contrato, sem recurso</text>
+  </g>
+
+  <!-- Bottom comparison -->
+  <g transform="translate(50, 360)">
+    <text x="0" y="0" style="font-size: 11px; fill: var(--text-secondary);">Oficial: você está com Meta | Não oficial: você está com terceiro que tenta enganar Meta</text>
+  </g>
+</svg>

@@ -39,6 +39,8 @@ status: aprovado
 - Mudança de integração é fácil. Você sai de Z-API e entra em Datafy em menos de uma hora. Código muda só o endpoint e token.
 - Z-API promete suporte 24h. Datafy oferece suporte por WhatsApp (é simples, é rápido, é sério).
 
+::diagrama: z-api-trade-off
+
 ## Trade-off técnico: emulação vs integração oficial
 
 Z-API funciona emulando WhatsApp Web: você deixa um navegador rodando e ele digita no seu lugar. Isso tem uma vantagem (rápido de começar) e uma limitação (quebra quando WhatsApp muda).
@@ -77,6 +79,8 @@ A API oficial é um endpoint da Meta: você manda JSON, recebe JSON de volta. Ma
 1. **Você planeja crescer**: centenas de clientes, você precisa de estabilidade. Z-API quebra a cada atualização do app. Oficial não quebra.
 2. **Conformidade legal**: se você opera em setor regulado (financeiro, saúde), oficial oferece contrato e auditoria. Z-API é cinzento.
 3. **Seus clientes reclamam de instabilidade**: se Z-API está caindo muito, é sinal de que você chegou no limite técnico da ferramenta.
+
+::diagrama: migration-seamless
 
 ## Migrar de Z-API para Datafy
 

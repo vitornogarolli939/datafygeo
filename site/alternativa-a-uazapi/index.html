@@ -591,6 +591,55 @@ footer p{margin:0 0 .5rem}
 <li>Preço. UAZAPI cobra por uma API HTTP que imita WhatsApp. Datafy cobra por usar a API de verdade da Meta. Sobre o mesmo mercado, preço equivalente (R$ 49,90 faixa inicial).</li>
 <li>Conformidade. Não há contato com Meta em UAZAPI. Conformidade com lei de proteção de dados (LGPD) recai 100% em você. Com Datafy (Tech Provider) você tem um intermediário que responde.</li>
 </ul>
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="280" fill="var(--bg-primary)"/>
+
+  <text x="400" y="25" style="font-size: 18px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">UAZAPI: Trade-off técnico</text>
+
+  <!-- Left -->
+  <g transform="translate(50, 60)">
+    <rect fill="var(--bg-secondary)" stroke="var(--text-secondary)" stroke-width="2" x="0" y="0" width="300" height="200" rx="5"/>
+
+    <text x="150" y="30" style="font-size: 13px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">UAZAPI</text>
+    <text x="150" y="50" style="font-size: 10px; text-anchor: center; fill: var(--text-secondary);">Emulação HTTP</text>
+
+    <text x="10" y="80" style="font-size: 10px; fill: #10b981; font-weight: bold;">✓ Rápido demais</text>
+    <text x="10" y="98" style="font-size: 9px; fill: var(--text-secondary);">Literal hoje</text>
+
+    <text x="10" y="120" style="font-size: 10px; fill: #10b981; font-weight: bold;">✓ Sem burocracia</text>
+    <text x="10" y="138" style="font-size: 9px; fill: var(--text-secondary);">Começa na hora</text>
+
+    <text x="10" y="160" style="font-size: 10px; fill: #ef4444; font-weight: bold;">✗ Zero contrato</text>
+    <text x="10" y="178" style="font-size: 9px; fill: var(--text-secondary);">Ban sem recurso</text>
+
+    <text x="150" y="210" style="font-size: 9px; text-anchor: center; fill: var(--text-secondary);">Para: Protótipo 48h</text>
+  </g>
+
+  <!-- Right -->
+  <g transform="translate(420, 60)">
+    <rect fill="var(--bg-secondary)" stroke="var(--accent-color)" stroke-width="3" x="0" y="0" width="300" height="200" rx="5"/>
+
+    <text x="150" y="30" style="font-size: 13px; font-weight: bold; text-anchor: center; fill: var(--accent-color);">API Oficial</text>
+    <text x="150" y="50" style="font-size: 10px; text-anchor: center; fill: var(--text-secondary);">Com Datafy</text>
+
+    <text x="10" y="80" style="font-size: 10px; fill: #10b981; font-weight: bold;">✓ Rápido igual</text>
+    <text x="10" y="98" style="font-size: 9px; fill: var(--text-secondary);">5 minutos setup</text>
+
+    <text x="10" y="120" style="font-size: 10px; fill: #10b981; font-weight: bold;">✓ Com contrato</text>
+    <text x="10" y="138" style="font-size: 9px; fill: var(--text-secondary);">Suporte, recurso</text>
+
+    <text x="10" y="160" style="font-size: 10px; fill: var(--text-secondary); font-weight: bold;">⚠ Taxa fixa</text>
+    <text x="10" y="178" style="font-size: 9px; fill: var(--text-secondary);">R$ 49,90/mês</text>
+
+    <text x="150" y="210" style="font-size: 9px; text-anchor: center; fill: var(--text-secondary);">Para: Produção 6+ meses</text>
+  </g>
+</svg>
+</div>
+<figcaption></figcaption>
+</figure>
+
 <h2 id="por-que-uazapi-era-atraente">Por que UAZAPI era atraente</h2>
 <p>Quando UAZAPI começou, em torno de 2022, a API oficial era complicada. Precisava de burocracia, App Review, 6 semanas de espera. UAZAPI oferecia alternativa: um HTTP simples que funcionava ontem. Milhares de pequenas agências começaram lá.</p>
 <p>Hoje, 2026, as coisas mudaram:</p>

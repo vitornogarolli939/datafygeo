@@ -39,6 +39,8 @@ status: aprovado
 - Preço. UAZAPI cobra por uma API HTTP que imita WhatsApp. Datafy cobra por usar a API de verdade da Meta. Sobre o mesmo mercado, preço equivalente (R$ 49,90 faixa inicial).
 - Conformidade. Não há contato com Meta em UAZAPI. Conformidade com lei de proteção de dados (LGPD) recai 100% em você. Com Datafy (Tech Provider) você tem um intermediário que responde.
 
+::diagrama: uazapi-trade-off
+
 ## Por que UAZAPI era atraente
 
 Quando UAZAPI começou, em torno de 2022, a API oficial era complicada. Precisava de burocracia, App Review, 6 semanas de espera. UAZAPI oferecia alternativa: um HTTP simples que funcionava ontem. Milhares de pequenas agências começaram lá.

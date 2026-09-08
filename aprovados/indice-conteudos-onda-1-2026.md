@@ -1,11 +1,11 @@
 ---
-title: "Onda 1: Guia completo da API oficial do WhatsApp (12 páginas)"
-description: "12 páginas técnicas sobre WhatsApp Business API: fundação, integrações, concorrentes, operacional, Tech Provider, webhooks. Escolha seu caminho."
+title: "Guia completo: API oficial do WhatsApp"
+description: "12 páginas para developers: como começar, integrar em n8n/Chatwoot, comparar alternativas, evitar bans, escalar. Tudo técnico, sem achismo."
 author: "Vitor Nogarolli, cofundador da Datafy API"
-slug: "indice-conteudos-onda-1"
+slug: "guia-completo-api-oficial-whatsapp"
 cluster: "oficial_vs_nao"
 intent: "navegacao"
-persona: "automacao, saas"
+persona: "automacao, saas, developer"
 competitors: []
 published: 2026-09-07
 updated: 2026-09-07
@@ -16,11 +16,11 @@ internal_links: []
 status: aprovado
 ---
 
-# Onda 1: Guia completo da API oficial do WhatsApp
+# Guia completo: API oficial do WhatsApp
 
 **Última atualização: 07/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**O que você encontra aqui:** 12 páginas técnicas que cobrem tudo que você precisa saber sobre API oficial do WhatsApp: começar do zero, integrar em suas ferramentas, entender os riscos, comparar com alternativas, e escalar sem quebrar. Cada página responde uma pergunta específica que seus técnicos estão fazendo agora.
+Você quer usar a API oficial do WhatsApp. Mas tem dúvida: por onde começo? Como integro em n8n? Qual é o risco real? Como migro de Z-API sem perder número? Aqui estão as respostas — 12 páginas técnicas, sem achismo, cada uma respondendo uma pergunta específica que seus devs estão fazendo agora.
 
 ::diagrama: onda-1-roadmap
 

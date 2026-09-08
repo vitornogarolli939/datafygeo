@@ -1,0 +1,76 @@
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="300" fill="var(--bg-primary)"/>
+
+  <text x="400" y="25" style="font-size: 18px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Webhook: Duas vias com Meta</text>
+
+  <!-- Left: Seu servidor -->
+  <g transform="translate(50, 60)">
+    <rect fill="var(--bg-secondary)" stroke="var(--accent-color)" stroke-width="2" x="0" y="0" width="200" height="200" rx="5"/>
+    <text x="100" y="30" style="font-size: 13px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Seu Servidor</text>
+
+    <circle cx="100" cy="80" r="15" fill="var(--accent-color)" opacity="0.2"/>
+    <text x="100" y="87" style="font-size: 13px; font-weight: bold; text-anchor: center; fill: var(--accent-color);">📱</text>
+
+    <text x="100" y="120" style="font-size: 10px; text-anchor: center; fill: var(--text-secondary); font-weight: bold;">URL do webhook</text>
+    <text x="100" y="137" style="font-size: 9px; text-anchor: center; fill: var(--text-secondary);">Aguardando</text>
+    <text x="100" y="152" style="font-size: 9px; text-anchor: center; fill: var(--text-secondary);">mensagens de Meta</text>
+
+    <text x="100" y="185" style="font-size: 11px; text-anchor: center; fill: var(--text-primary); font-weight: bold;">POST HMAC</text>
+  </g>
+
+  <!-- Center: Meta -->
+  <g transform="translate(320, 80)">
+    <rect fill="var(--bg-secondary)" stroke="#f59e0b" stroke-width="3" x="0" y="0" width="160" height="160" rx="5"/>
+    <text x="80" y="35" style="font-size: 13px; font-weight: bold; text-anchor: center; fill: #f59e0b">Meta</text>
+    <text x="80" y="55" style="font-size: 9px; text-anchor: center; fill: var(--text-secondary)">(WhatsApp API)</text>
+
+    <circle cx="80" cy="100" r="10" fill="#f59e0b" opacity="0.3"/>
+  </g>
+
+  <!-- Right: Cliente -->
+  <g transform="translate(550, 60)">
+    <rect fill="var(--bg-secondary)" stroke="var(--accent-color)" stroke-width="2" x="0" y="0" width="200" height="200" rx="5"/>
+    <text x="100" y="30" style="font-size: 13px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Cliente</text>
+
+    <circle cx="100" cy="80" r="15" fill="var(--accent-color)" opacity="0.2"/>
+    <text x="100" y="87" style="font-size: 13px; font-weight: bold; text-anchor: center; fill: var(--accent-color);">💬</text>
+
+    <text x="100" y="120" style="font-size: 10px; text-anchor: center; fill: var(--text-secondary); font-weight: bold;">Envia mensagem</text>
+    <text x="100" y="137" style="font-size: 9px; text-anchor: center; fill: var(--text-secondary);">WhatsApp</text>
+
+    <text x="100" y="185" style="font-size: 11px; text-anchor: center; fill: var(--text-primary); font-weight: bold;">JSON</text>
+  </g>
+
+  <!-- Arrows -->
+  <!-- De Cliente para Meta -->
+  <path stroke="var(--accent-color)" stroke-width="2" fill="none" d="M 620 120 L 560 120" marker-end="url(#arrowhead-blue)"/>
+  <text x="590" y="110" style="font-size: 9px; text-anchor: center; fill: var(--accent-color);">1. Envia</text>
+
+  <!-- De Meta para Servidor (webhook push) -->
+  <path stroke="#10b981" stroke-width="2" fill="none" d="M 320 150 L 250 150" marker-end="url(#arrowhead-green)"/>
+  <text x="285" y="140" style="font-size: 9px; text-anchor: center; fill: #10b981;">2. POST webhook</text>
+
+  <!-- De Servidor para Meta (resposta) -->
+  <path stroke="#f59e0b" stroke-width="2" fill="none" d="M 250 90 L 320 90" marker-end="url(#arrowhead-orange)"/>
+  <text x="285" y="75" style="font-size: 9px; text-anchor: center; fill: #f59e0b;">3. Processa</text>
+
+  <!-- De Meta para Cliente -->
+  <path stroke="var(--accent-color)" stroke-width="2" fill="none" d="M 480 100 L 550 100" marker-end="url(#arrowhead-blue)"/>
+  <text x="515" y="90" style="font-size: 9px; text-anchor: center; fill: var(--accent-color);">4. Responde</text>
+
+  <!-- Bottom info -->
+  <rect x="50" y="270" width="700" height="25" fill="var(--bg-secondary)" rx="3"/>
+  <text x="400" y="288" style="font-size: 10px; text-anchor: center; fill: var(--text-secondary);">28 tipos de eventos: mensagens, entrega, status, templates, qualidade do número, etc</text>
+
+  <defs>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="var(--accent-color)"/>
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#10b981"/>
+    </marker>
+    <marker id="arrowhead-orange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#f59e0b"/>
+    </marker>
+  </defs>
+</svg>

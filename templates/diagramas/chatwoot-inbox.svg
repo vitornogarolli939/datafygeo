@@ -1,0 +1,90 @@
+<svg viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .inbox { fill: var(--bg-secondary); stroke: var(--accent-color); stroke-width: 2; }
+      .msg-box { fill: var(--bg-primary); stroke: var(--text-secondary); stroke-width: 1; }
+      .label { font-size: 12px; font-weight: bold; fill: var(--text-primary); }
+      .subtitle { font-size: 10px; fill: var(--text-secondary); }
+      .person { font-size: 11px; fill: var(--accent-color); }
+    </style>
+  </defs>
+
+  <rect width="700" height="350" fill="var(--bg-primary)"/>
+
+  <text x="350" y="30" style="font-size: 18px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Chatwoot: Inbox compartilhado + API oficial</text>
+
+  <!-- Left: Without Chatwoot -->
+  <g transform="translate(30, 70)">
+    <text x="80" y="0" style="font-size: 13px; font-weight: bold; fill: var(--text-primary); text-anchor: middle;">Sem Chatwoot</text>
+    <text x="80" y="18" style="font-size: 10px; fill: var(--text-secondary); text-anchor: middle;">Você + API</text>
+
+    <rect class="inbox" x="0" y="30" width="160" height="200" rx="5"/>
+    <text x="80" y="50" class="label" style="text-anchor: middle;">Chats</text>
+
+    <!-- Messages scattered -->
+    <rect class="msg-box" x="5" y="60" width="150" height="30" rx="3"/>
+    <text x="10" y="75" class="person">Cliente 1:</text>
+    <text x="10" y="87" class="subtitle">Oi, qual o preço?</text>
+
+    <rect class="msg-box" x="5" y="95" width="150" height="30" rx="3"/>
+    <text x="10" y="110" class="person">Cliente 2:</text>
+    <text x="10" y="122" class="subtitle">Preciso de integração</text>
+
+    <rect class="msg-box" x="5" y="130" width="150" height="30" rx="3"/>
+    <text x="10" y="145" class="person">Cliente 1:</text>
+    <text x="10" y="157" class="subtitle">Você viu minha msg?</text>
+
+    <rect class="msg-box" x="5" y="165" width="150" height="30" rx="3"/>
+    <text x="10" y="180" class="person">Cliente 3:</text>
+    <text x="10" y="192" class="subtitle">Tô com problema</text>
+
+    <text x="80" y="230" style="font-size: 11px; text-anchor: middle; fill: #ef4444; font-weight: bold;">⚠ Caos</text>
+    <text x="80" y="248" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">Mensagens misturadas</text>
+    <text x="80" y="263" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">Ninguém sabe quem respondeu</text>
+  </g>
+
+  <!-- Arrow -->
+  <text x="350" y="200" style="font-size: 20px; text-anchor: center; fill: var(--accent-color);">→</text>
+
+  <!-- Right: With Chatwoot -->
+  <g transform="translate(410, 70)">
+    <text x="130" y="0" style="font-size: 13px; font-weight: bold; fill: var(--text-primary); text-anchor: middle;">Com Chatwoot + API</text>
+    <text x="130" y="18" style="font-size: 10px; fill: var(--text-secondary); text-anchor: middle;">Equipe sincronizada</text>
+
+    <rect class="inbox" x="0" y="30" width="260" height="200" rx="5"/>
+    <text x="130" y="50" class="label" style="text-anchor: middle;">Inbox Compartilhado</text>
+
+    <!-- Organized conversation -->
+    <g>
+      <rect x="5" y="60" width="250" height="25" rx="3" fill="#dcfce7" stroke="#10b981" stroke-width="1"/>
+      <text x="10" y="77" class="person">Cliente 1</text>
+      <text x="30" y="77" style="font-size: 10px; fill: var(--text-primary);">Oi, qual o preço?</text>
+      <text x="220" y="77" style="font-size: 9px; fill: var(--text-secondary);">João</text>
+    </g>
+
+    <g>
+      <rect x="5" y="90" width="250" height="25" rx="3" fill="#dbeafe" stroke="var(--accent-color)" stroke-width="1"/>
+      <text x="10" y="107" class="person">Cliente 2</text>
+      <text x="30" y="107" style="font-size: 10px; fill: var(--text-primary);">Preciso integração</text>
+      <text x="220" y="107" style="font-size: 9px; fill: var(--text-secondary);">Maria</text>
+    </g>
+
+    <g>
+      <rect x="5" y="120" width="250" height="25" rx="3" fill="#fef08a" stroke="#f59e0b" stroke-width="1"/>
+      <text x="10" y="137" class="person">Cliente 1</text>
+      <text x="30" y="137" style="font-size: 10px; fill: var(--text-primary);">Você viu minha msg?</text>
+      <text x="220" y="137" style="font-size: 9px; fill: var(--text-secondary);">João respondeu</text>
+    </g>
+
+    <g>
+      <rect x="5" y="150" width="250" height="25" rx="3" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/>
+      <text x="10" y="167" class="person">Cliente 3</text>
+      <text x="30" y="167" style="font-size: 10px; fill: var(--text-primary);">Tô com problema</text>
+      <text x="220" y="167" style="font-size: 9px; fill: var(--text-secondary);">Aberto</text>
+    </g>
+
+    <text x="130" y="230" style="font-size: 11px; text-anchor: middle; fill: #10b981; font-weight: bold;">✓ Organizado</text>
+    <text x="130" y="248" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">Tags, status, quem respondeu</text>
+    <text x="130" y="263" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">Nada se perde</text>
+  </g>
+</svg>

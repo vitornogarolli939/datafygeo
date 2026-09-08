@@ -1,0 +1,58 @@
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .column { fill: var(--bg-secondary); stroke: var(--text-primary); stroke-width: 2; }
+      .title { font-size: 14px; font-weight: bold; text-anchor: middle; fill: var(--text-primary); }
+      .pro { fill: #10b981; }
+      .con { fill: #ef4444; }
+      .neutral { fill: var(--text-secondary); }
+      .item { font-size: 11px; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect width="800" height="300" fill="var(--bg-primary)"/>
+
+  <text x="400" y="25" style="font-size: 16px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Z-API: Trade-off técnico</text>
+
+  <!-- Left: Z-API emulation -->
+  <g transform="translate(50, 50)">
+    <rect class="column" x="0" y="0" width="280" height="240" rx="5"/>
+    <text x="140" y="25" class="title">Z-API (Emulação)</text>
+    <text x="140" y="45" style="font-size: 11px; text-anchor: center; fill: var(--text-secondary);">WhatsApp Web emulado</text>
+
+    <text x="10" y="70" class="title pro" style="font-size: 12px; text-anchor: start;">✓ Rápido</text>
+    <text x="10" y="90" class="item" style="text-anchor: start;">Começa hoje</text>
+
+    <text x="10" y="115" class="title pro" style="font-size: 12px; text-anchor: start;">✓ Simples</text>
+    <text x="10" y="135" class="item" style="text-anchor: start;">QR code, pronto</text>
+
+    <text x="10" y="160" class="title con" style="font-size: 12px; text-anchor: start;">✗ Quebra</text>
+    <text x="10" y="180" class="item" style="text-anchor: start;">Quando app atualiza</text>
+
+    <text x="10" y="205" class="title con" style="font-size: 12px; text-anchor: start;">✗ Zero recurso</text>
+    <text x="10" y="225" class="item" style="text-anchor: start;">Se detectado, acabou</text>
+  </g>
+
+  <!-- Right: API Oficial -->
+  <g transform="translate(470, 50)">
+    <rect class="column" x="0" y="0" width="280" height="240" rx="5" style="stroke: var(--accent-color); stroke-width: 3;"/>
+    <text x="140" y="25" class="title" style="fill: var(--accent-color);">API Oficial</text>
+    <text x="140" y="45" style="font-size: 11px; text-anchor: center; fill: var(--text-secondary);">Endpoint da Meta</text>
+
+    <text x="10" y="70" class="title pro" style="font-size: 12px; text-anchor: start;">✓ Estável</text>
+    <text x="10" y="90" class="item" style="text-anchor: start;">Não quebra</text>
+
+    <text x="10" y="115" class="title pro" style="font-size: 12px; text-anchor: start;">✓ Contrato</text>
+    <text x="10" y="135" class="item" style="text-anchor: start;">Suporte, recurso</text>
+
+    <text x="10" y="160" class="title neutral" style="font-size: 12px; text-anchor: start;">⚠ Setup</text>
+    <text x="10" y="180" class="item" style="text-anchor: start;">5 min com Datafy</text>
+
+    <text x="10" y="205" class="title neutral" style="font-size: 12px; text-anchor: start;">⚠ Taxa fixa</text>
+    <text x="10" y="225" class="item" style="text-anchor: start;">R$ 49,90/mês</text>
+  </g>
+
+  <!-- Bottom decision -->
+  <rect x="50" y="280" width="700" height="20" rx="3" fill="var(--bg-secondary)"/>
+  <text x="400" y="295" style="font-size: 11px; text-anchor: center; fill: var(--text-secondary);">Protótipo rápido? Z-API. Produção 6+ meses? API Oficial</text>
+</svg>

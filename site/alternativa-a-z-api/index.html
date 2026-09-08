@@ -591,6 +591,70 @@ footer p{margin:0 0 .5rem}
 <li>Mudança de integração é fácil. Você sai de Z-API e entra em Datafy em menos de uma hora. Código muda só o endpoint e token.</li>
 <li>Z-API promete suporte 24h. Datafy oferece suporte por WhatsApp (é simples, é rápido, é sério).</li>
 </ul>
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .column { fill: var(--bg-secondary); stroke: var(--text-primary); stroke-width: 2; }
+      .title { font-size: 14px; font-weight: bold; text-anchor: middle; fill: var(--text-primary); }
+      .pro { fill: #10b981; }
+      .con { fill: #ef4444; }
+      .neutral { fill: var(--text-secondary); }
+      .item { font-size: 11px; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect width="800" height="300" fill="var(--bg-primary)"/>
+
+  <text x="400" y="25" style="font-size: 16px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Z-API: Trade-off técnico</text>
+
+  <!-- Left: Z-API emulation -->
+  <g transform="translate(50, 50)">
+    <rect class="column" x="0" y="0" width="280" height="240" rx="5"/>
+    <text x="140" y="25" class="title">Z-API (Emulação)</text>
+    <text x="140" y="45" style="font-size: 11px; text-anchor: center; fill: var(--text-secondary);">WhatsApp Web emulado</text>
+
+    <text x="10" y="70" class="title pro" style="font-size: 12px; text-anchor: start;">✓ Rápido</text>
+    <text x="10" y="90" class="item" style="text-anchor: start;">Começa hoje</text>
+
+    <text x="10" y="115" class="title pro" style="font-size: 12px; text-anchor: start;">✓ Simples</text>
+    <text x="10" y="135" class="item" style="text-anchor: start;">QR code, pronto</text>
+
+    <text x="10" y="160" class="title con" style="font-size: 12px; text-anchor: start;">✗ Quebra</text>
+    <text x="10" y="180" class="item" style="text-anchor: start;">Quando app atualiza</text>
+
+    <text x="10" y="205" class="title con" style="font-size: 12px; text-anchor: start;">✗ Zero recurso</text>
+    <text x="10" y="225" class="item" style="text-anchor: start;">Se detectado, acabou</text>
+  </g>
+
+  <!-- Right: API Oficial -->
+  <g transform="translate(470, 50)">
+    <rect class="column" x="0" y="0" width="280" height="240" rx="5" style="stroke: var(--accent-color); stroke-width: 3;"/>
+    <text x="140" y="25" class="title" style="fill: var(--accent-color);">API Oficial</text>
+    <text x="140" y="45" style="font-size: 11px; text-anchor: center; fill: var(--text-secondary);">Endpoint da Meta</text>
+
+    <text x="10" y="70" class="title pro" style="font-size: 12px; text-anchor: start;">✓ Estável</text>
+    <text x="10" y="90" class="item" style="text-anchor: start;">Não quebra</text>
+
+    <text x="10" y="115" class="title pro" style="font-size: 12px; text-anchor: start;">✓ Contrato</text>
+    <text x="10" y="135" class="item" style="text-anchor: start;">Suporte, recurso</text>
+
+    <text x="10" y="160" class="title neutral" style="font-size: 12px; text-anchor: start;">⚠ Setup</text>
+    <text x="10" y="180" class="item" style="text-anchor: start;">5 min com Datafy</text>
+
+    <text x="10" y="205" class="title neutral" style="font-size: 12px; text-anchor: start;">⚠ Taxa fixa</text>
+    <text x="10" y="225" class="item" style="text-anchor: start;">R$ 49,90/mês</text>
+  </g>
+
+  <!-- Bottom decision -->
+  <rect x="50" y="280" width="700" height="20" rx="3" fill="var(--bg-secondary)"/>
+  <text x="400" y="295" style="font-size: 11px; text-anchor: center; fill: var(--text-secondary);">Protótipo rápido? Z-API. Produção 6+ meses? API Oficial</text>
+</svg>
+</div>
+<figcaption></figcaption>
+</figure>
+
 <h2 id="trade-off-t-cnico-emula-o-vs-integra-o-o">Trade-off técnico: emulação vs integração oficial</h2>
 <p>Z-API funciona emulando WhatsApp Web: você deixa um navegador rodando e ele digita no seu lugar. Isso tem uma vantagem (rápido de começar) e uma limitação (quebra quando WhatsApp muda).</p>
 <p>A API oficial é um endpoint da Meta: você manda JSON, recebe JSON de volta. Mais estável (você não depende de alguém corrigir código), mas mais lento pra começar (precisa de aprovações).</p>
@@ -671,6 +735,85 @@ footer p{margin:0 0 .5rem}
 <li><strong>Conformidade legal</strong>: se você opera em setor regulado (financeiro, saúde), oficial oferece contrato e auditoria. Z-API é cinzento.</li>
 <li><strong>Seus clientes reclamam de instabilidade</strong>: se Z-API está caindo muito, é sinal de que você chegou no limite técnico da ferramenta.</li>
 </ol>
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="250" fill="var(--bg-primary)"/>
+
+  <text x="400" y="30" style="font-size: 18px; font-weight: bold; text-anchor: center; fill: var(--text-primary);">Migração: Sem perder número</text>
+
+  <!-- Step 1 -->
+  <g transform="translate(50, 70)">
+    <circle cx="30" cy="30" r="25" fill="var(--accent-color)" opacity="0.3" stroke="var(--accent-color)" stroke-width="2"/>
+    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: var(--accent-color);">1</text>
+
+    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: var(--text-primary);">Cria conta</text>
+    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">Datafy</text>
+  </g>
+
+  <!-- Arrow -->
+  <path stroke="var(--accent-color)" stroke-width="2" fill="none" d="M 130 100 L 180 100" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 2 -->
+  <g transform="translate(200, 70)">
+    <circle cx="30" cy="30" r="25" fill="var(--accent-color)" opacity="0.3" stroke="var(--accent-color)" stroke-width="2"/>
+    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: var(--accent-color);">2</text>
+
+    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: var(--text-primary);">Conecta</text>
+    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">Seu número (BM)</text>
+  </g>
+
+  <!-- Arrow -->
+  <path stroke="var(--accent-color)" stroke-width="2" fill="none" d="M 280 100 L 330 100" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 3 -->
+  <g transform="translate(350, 70)">
+    <circle cx="30" cy="30" r="25" fill="var(--accent-color)" opacity="0.3" stroke="var(--accent-color)" stroke-width="2"/>
+    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: var(--accent-color);">3</text>
+
+    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: var(--text-primary);">Copia token</text>
+    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">sk_live_...</text>
+  </g>
+
+  <!-- Arrow -->
+  <path stroke="var(--accent-color)" stroke-width="2" fill="none" d="M 430 100 L 480 100" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 4 -->
+  <g transform="translate(500, 70)">
+    <circle cx="30" cy="30" r="25" fill="var(--accent-color)" opacity="0.3" stroke="var(--accent-color)" stroke-width="2"/>
+    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: var(--accent-color);">4</text>
+
+    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: var(--text-primary);">Muda código</text>
+    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">URL + token</text>
+  </g>
+
+  <!-- Arrow -->
+  <path stroke="var(--accent-color)" stroke-width="2" fill="none" d="M 580 100 L 630 100" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 5 -->
+  <g transform="translate(650, 70)">
+    <circle cx="30" cy="30" r="25" fill="#10b981" opacity="0.3" stroke="#10b981" stroke-width="2"/>
+    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #10b981;">✓</text>
+
+    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #10b981">Pronto!</text>
+    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: var(--text-secondary);">1 hora total</text>
+  </g>
+
+  <!-- Key info -->
+  <rect x="50" y="180" width="700" height="50" fill="var(--bg-secondary)" rx="4"/>
+  <text x="60" y="200" style="font-size: 11px; fill: var(--text-primary); font-weight: bold;">✓ Número continua seu (registrado em BM)</text>
+  <text x="60" y="220" style="font-size: 11px; fill: var(--text-primary); font-weight: bold;">✓ Histórico em Z-API/Evolution fica lá (novo fica em Datafy)</text>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="var(--accent-color)"/>
+    </marker>
+  </defs>
+</svg>
+</div>
+<figcaption></figcaption>
+</figure>
+
 <h2 id="migrar-de-z-api-para-datafy">Migrar de Z-API para Datafy</h2>
 <p>Operacionalmente:</p>
 <ol>
