@@ -1,80 +1,39 @@
-<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <style>
-      .phone-bg { fill: #f5f5f5; stroke: #1a1a1a; stroke-width: 3; }
-      .screen { fill: #ffffff; }
-      .error-icon { fill: #ef4444; }
-      .error-text { font-size: 18px; font-weight: bold; fill: #ef4444; text-anchor: middle; }
-      .error-message { font-size: 14px; fill: #1a1a1a; text-anchor: middle; }
-      .label-text { font-size: 12px; fill: #666; text-anchor: middle; }
-      .warning-box { fill: #f5f5f5; stroke: #f59e0b; stroke-width: 2; }
-      .warning-text { font-size: 12px; fill: #f59e0b; }
-    </style>
-  </defs>
-
-  <!-- Background -->
-  <rect width="600" height="400" fill="#ffffff"/>
-
-  <!-- Title -->
-  <text x="300" y="30" style="font-size: 20px; font-weight: bold; text-anchor: center; fill: #1a1a1a;">Número banido: sem aviso, sem recurso</text>
-
-  <!-- Left: Phone with error -->
-  <g transform="translate(150, 100)">
-    <!-- Phone frame -->
-    <rect class="phone-bg" x="0" y="0" width="160" height="200" rx="15"/>
-
-    <!-- Screen -->
-    <rect class="screen" x="8" y="15" width="144" height="170"/>
-
-    <!-- Status bar -->
-    <rect fill="#0ea5e9" x="8" y="15" width="144" height="20"/>
-    <text x="80" y="32" style="font-size: 10px; fill: white; text-anchor: middle;">WhatsApp</text>
-
-    <!-- Error icon -->
-    <circle class="error-icon" cx="80" cy="70" r="20"/>
-    <text x="80" y="78" style="font-size: 28px; text-anchor: middle; fill: white;">!</text>
-
-    <!-- Error message -->
-    <text x="80" y="115" class="error-text">Erro</text>
-    <text x="80" y="145" class="error-message">Esta conta não pode</text>
-    <text x="80" y="162" class="error-message">mais usar WhatsApp</text>
-  </g>
-
-  <!-- Right: Timeline/Impact -->
-  <g transform="translate(360, 80)">
-    <!-- Timeline -->
-    <line x1="10" y1="20" x2="10" y2="220" stroke="#0ea5e9" stroke-width="2"/>
-
-    <!-- Point 1: Works fine -->
-    <circle cx="10" cy="20" r="6" fill="#0ea5e9"/>
-    <rect class="warning-box" x="25" y="8" width="120" height="40" rx="4"/>
-    <text x="85" y="20" class="warning-text" style="font-weight: bold;">✓ Funcionando</text>
-    <text x="85" y="35" class="label-text">Você não sabe</text>
-
-    <!-- Point 2: Quality warning -->
-    <circle cx="10" cy="85" r="6" fill="#f59e0b"/>
-    <rect class="warning-box" x="25" y="73" width="120" height="40" rx="4"/>
-    <text x="85" y="85" class="warning-text" style="font-weight: bold;">⚠ Qualidade cai</text>
-    <text x="85" y="100" class="label-text">Sinal de alerta</text>
-
-    <!-- Point 3: Ban -->
-    <circle cx="10" cy="150" r="6" fill="#ef4444"/>
-    <rect x="25" y="138" width="120" height="40" rx="4" fill="#fecaca" stroke="#ef4444" stroke-width="2"/>
-    <text x="85" y="150" class="error-text" style="font-weight: bold;">✗ BAN</text>
-    <text x="85" y="165" class="label-text">Sem aviso prévio</text>
-
-    <!-- Point 4: Recovery -->
-    <circle cx="10" cy="215" r="6" fill="#10b981"/>
-    <rect class="warning-box" x="25" y="203" width="120" height="40" rx="4" fill="#f5f5f5" stroke="#10b981" stroke-width="2"/>
-    <text x="85" y="215" style="font-size: 12px; font-weight: bold; fill: #10b981; text-anchor: middle;">📧 Apelo</text>
-    <text x="85" y="230" class="label-text">10-30 dias</text>
-  </g>
-
-  <!-- Bottom: Key facts -->
-  <g transform="translate(0, 310)">
-    <rect fill="#f5f5f5" x="20" y="0" width="560" height="70" rx="5"/>
-    <text x="300" y="20" style="font-size: 13px; font-weight: bold; text-anchor: center; fill: #1a1a1a;">5 condutas que causam ban (mesmo com API oficial):</text>
-    <text x="300" y="40" style="font-size: 11px; text-anchor: center; fill: #666;">1) Prospecção sem template  2) Alto rejeitamento  3) Volume muito alto muito rápido</text>
-    <text x="300" y="55" style="font-size: 11px; text-anchor: center; fill: #666;">4) Conteúdo proibido  5) Comportamento suspeito</text>
-  </g>
+<svg viewBox="0 0 720 256" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Ninguém é bloqueado do nada</text>
+<line class="ln" x1="90" y1="80" x2="630" y2="80"/>
+<circle cx="90" cy="80" r="9" fill="var(--accent)"/>
+<text class="h" x="90" y="112" text-anchor="middle">Funcionando</text>
+<text class="s" x="90" y="130" text-anchor="middle">qualidade alta</text>
+<circle cx="270" cy="80" r="9" fill="var(--warn-line)"/>
+<text class="h" x="270" y="112" text-anchor="middle">Qualidade cai</text>
+<text class="s" x="270" y="130" text-anchor="middle">alta vira média</text>
+<circle cx="450" cy="80" r="9" fill="var(--danger)"/>
+<text class="h" x="450" y="112" text-anchor="middle">Bloqueio</text>
+<text class="s" x="450" y="130" text-anchor="middle">sem aviso novo</text>
+<circle cx="630" cy="80" r="9" fill="var(--muted)"/>
+<text class="h" x="630" y="112" text-anchor="middle">Recurso</text>
+<text class="s" x="630" y="130" text-anchor="middle">com prova de conformidade</text>
+<rect class="box" x="20" y="152" width="680" height="92" rx="8"/>
+<text class="h" x="36" y="176">As cinco condutas que derrubam número, mesmo com API oficial</text>
+<text class="p" x="36" y="200">1. Prospecção sem template</text>
+<text class="p" x="376" y="200">2. Engajamento baixo, mesmo com template</text>
+<text class="p" x="36" y="220">3. Número novo disparando em volume</text>
+<text class="p" x="376" y="220">4. Categoria de template falsificada</text>
+<text class="p" x="36" y="240">5. Nicho proibido pela Meta</text>
 </svg>

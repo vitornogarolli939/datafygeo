@@ -32,7 +32,7 @@ status: aprovado
 
 Vantagem: você conecta número em 5 minutos em vez de 6 semanas. Meta confia em Datafy para não fazer coisa errada.
 
-::numeros: 1 auditoria|técnica e legal com Meta ;; 0|intermediários entre você e Meta, Datafy passa direto ;; 6 semanas|economia de tempo comparado a ir direto ;; 1 Tech Provider|Brasil: Datafy (outros vêm chegando)
+::numeros: 3 papéis|Solution Partner, Tech Provider e Tech Partner ;; 0|linha de crédito no Tech Provider: a Meta fatura o cliente direto ;; 2 permissões|whatsapp_business_messaging e whatsapp_business_management ;; 180 dias|de histórico que a coexistência sincroniza
 
 ## Principais pontos
 - Tech Provider é apenas um tipo de intermediário autorizado. Existem também BSP (Business Solution Provider, geralmente pagamento) e Reseller (só vende, não integra).
@@ -140,10 +140,9 @@ Por isso Tech Provider é mais seguro: há incentivo alinhado (Datafy quer mante
 **Infraestrutura:**
 - Webhook hospedado (você não precisa manter servidor)
 - Escalabilidade (Datafy mantém)
-- Uptime 99,9%
 
-**Recursos únicos (por ser Tech Provider):**
-- Coexistência automática (app + API no mesmo número)
+**O que vem pronto por ser Tech Provider:**
+- Coexistência já habilitada (aplicativo e API no mesmo número). A Meta exige que o provedor seja Solution Partner ou Tech Provider para oferecer o recurso
 - Embedded Signup (cliente conecta sozinho no seu app)
 - Integração nativa Chatwoot
 - Integração nativa com n8n, Make
@@ -183,9 +182,11 @@ Se você usar Datafy e levar ban, Datafy não pode te desbanir diretamente. Mas 
 
 Se você fosse direto na Meta, Meta é quem você conversa.
 
-## Embedded Signup (recurso de Tech Provider)
+::diagrama: tech-provider-badge
 
-Recurso único de Tech Provider: cliente conecta seu número no seu app sem sair dela.
+## Embedded Signup
+
+O cliente conecta o próprio número dentro do seu aplicativo, sem sair dele. É o fluxo que a Meta oferece a quem passou pelo App Review com as permissões de mensageria e de gerenciamento.
 
 Exemplo: você tem SaaS de automação. Cliente quer conectar WhatsApp. Em vez de ir em Meta, pedir BM, tudo burocrático, ele clica em "Conectar WhatsApp" dentro do seu app.
 

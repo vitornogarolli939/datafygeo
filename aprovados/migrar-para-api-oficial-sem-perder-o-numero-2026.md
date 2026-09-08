@@ -32,7 +32,7 @@ status: aprovado
 
 O medo de "perder número" é o maior bloqueador de migração que a gente vê. Aqui a gente desmonta esse medo.
 
-::numeros: 1 número|continua sendo seu após migração ;; 0|mensagens perdidas, histórico fica em BM ;; 59 minutos|tempo total de migração, do planejamento a rodando em produção ;; 5 minutos|o que demora para conectar em Datafy
+::numeros: 1 número|continua seu, registrado na sua Business Manager ;; 2 alterações|no codigo: a URL e o token ;; 180 dias|de histórico que a coexistência traz do aplicativo ;; 24 h|prazo para disparar a sincronização depois de conectar
 
 ## Principais pontos
 - Número não tem "donos" de ferramenta. Você registrou em Business Manager. Meta conhece você (CPF/CNPJ, conta BM), não conhece Z-API ou Evolution.
@@ -40,6 +40,8 @@ O medo de "perder número" é o maior bloqueador de migração que a gente vê. 
 - Histórico de conversa fica em Meta (você consegue via Graph API depois), fica em Z-API (você exporta antes de sair), fica em Datafy (automático).
 - Reputação do número (qualidade, qualificação) fica com número. Se número levou ban, migração não resolve. Se número está bom, migração não estraga.
 - Tempo de downtime real: 2 minutos (você muda a conexão). Preparação: 1 hora (testar, validar).
+
+::diagrama: migration-seamless
 
 ## Pré-requisitos antes de migrar
 
@@ -88,12 +90,12 @@ Body: { "phone": "5511999...", "message": "..." }
 Muda para:
 
 ```
-POST https://graph.instagram.com/v20.0/{phone_number_id}/messages
+POST https://graph.facebook.com/v20.0/{phone_number_id}/messages
 Header: Authorization: Bearer seu_token_datafy
 Body: { "messaging_product": "whatsapp", "to": "5511999...", "type": "text", "text": { "body": "..." } }
 ```
 
-URL muda (de Z-API para graph.instagram.com).
+URL muda (de Z-API para graph.facebook.com).
 Token muda (do Z-API para Datafy Bearer).
 Body muda (segue formato Graph API da Meta).
 

@@ -1,90 +1,32 @@
-<svg viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <style>
-      .inbox { fill: #f5f5f5; stroke: #0ea5e9; stroke-width: 2; }
-      .msg-box { fill: #ffffff; stroke: #666; stroke-width: 1; }
-      .label { font-size: 12px; font-weight: bold; fill: #1a1a1a; }
-      .subtitle { font-size: 10px; fill: #666; }
-      .person { font-size: 11px; fill: #0ea5e9; }
-    </style>
-  </defs>
-
-  <rect width="700" height="350" fill="#ffffff"/>
-
-  <text x="350" y="30" style="font-size: 18px; font-weight: bold; text-anchor: center; fill: #1a1a1a;">Chatwoot: Inbox compartilhado + API oficial</text>
-
-  <!-- Left: Without Chatwoot -->
-  <g transform="translate(30, 70)">
-    <text x="80" y="0" style="font-size: 13px; font-weight: bold; fill: #1a1a1a; text-anchor: middle;">Sem Chatwoot</text>
-    <text x="80" y="18" style="font-size: 10px; fill: #666; text-anchor: middle;">Você + API</text>
-
-    <rect class="inbox" x="0" y="30" width="160" height="200" rx="5"/>
-    <text x="80" y="50" class="label" style="text-anchor: middle;">Chats</text>
-
-    <!-- Messages scattered -->
-    <rect class="msg-box" x="5" y="60" width="150" height="30" rx="3"/>
-    <text x="10" y="75" class="person">Cliente 1:</text>
-    <text x="10" y="87" class="subtitle">Oi, qual o preço?</text>
-
-    <rect class="msg-box" x="5" y="95" width="150" height="30" rx="3"/>
-    <text x="10" y="110" class="person">Cliente 2:</text>
-    <text x="10" y="122" class="subtitle">Preciso de integração</text>
-
-    <rect class="msg-box" x="5" y="130" width="150" height="30" rx="3"/>
-    <text x="10" y="145" class="person">Cliente 1:</text>
-    <text x="10" y="157" class="subtitle">Você viu minha msg?</text>
-
-    <rect class="msg-box" x="5" y="165" width="150" height="30" rx="3"/>
-    <text x="10" y="180" class="person">Cliente 3:</text>
-    <text x="10" y="192" class="subtitle">Tô com problema</text>
-
-    <text x="80" y="230" style="font-size: 11px; text-anchor: middle; fill: #ef4444; font-weight: bold;">⚠ Caos</text>
-    <text x="80" y="248" style="font-size: 10px; text-anchor: middle; fill: #666;">Mensagens misturadas</text>
-    <text x="80" y="263" style="font-size: 10px; text-anchor: middle; fill: #666;">Ninguém sabe quem respondeu</text>
-  </g>
-
-  <!-- Arrow -->
-  <text x="350" y="200" style="font-size: 20px; text-anchor: center; fill: #0ea5e9;">→</text>
-
-  <!-- Right: With Chatwoot -->
-  <g transform="translate(410, 70)">
-    <text x="130" y="0" style="font-size: 13px; font-weight: bold; fill: #1a1a1a; text-anchor: middle;">Com Chatwoot + API</text>
-    <text x="130" y="18" style="font-size: 10px; fill: #666; text-anchor: middle;">Equipe sincronizada</text>
-
-    <rect class="inbox" x="0" y="30" width="260" height="200" rx="5"/>
-    <text x="130" y="50" class="label" style="text-anchor: middle;">Inbox Compartilhado</text>
-
-    <!-- Organized conversation -->
-    <g>
-      <rect x="5" y="60" width="250" height="25" rx="3" fill="#dcfce7" stroke="#10b981" stroke-width="1"/>
-      <text x="10" y="77" class="person">Cliente 1</text>
-      <text x="30" y="77" style="font-size: 10px; fill: #1a1a1a;">Oi, qual o preço?</text>
-      <text x="220" y="77" style="font-size: 9px; fill: #666;">João</text>
-    </g>
-
-    <g>
-      <rect x="5" y="90" width="250" height="25" rx="3" fill="#dbeafe" stroke="#0ea5e9" stroke-width="1"/>
-      <text x="10" y="107" class="person">Cliente 2</text>
-      <text x="30" y="107" style="font-size: 10px; fill: #1a1a1a;">Preciso integração</text>
-      <text x="220" y="107" style="font-size: 9px; fill: #666;">Maria</text>
-    </g>
-
-    <g>
-      <rect x="5" y="120" width="250" height="25" rx="3" fill="#fef08a" stroke="#f59e0b" stroke-width="1"/>
-      <text x="10" y="137" class="person">Cliente 1</text>
-      <text x="30" y="137" style="font-size: 10px; fill: #1a1a1a;">Você viu minha msg?</text>
-      <text x="220" y="137" style="font-size: 9px; fill: #666;">João respondeu</text>
-    </g>
-
-    <g>
-      <rect x="5" y="150" width="250" height="25" rx="3" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/>
-      <text x="10" y="167" class="person">Cliente 3</text>
-      <text x="30" y="167" style="font-size: 10px; fill: #1a1a1a;">Tô com problema</text>
-      <text x="220" y="167" style="font-size: 9px; fill: #666;">Aberto</text>
-    </g>
-
-    <text x="130" y="230" style="font-size: 11px; text-anchor: middle; fill: #10b981; font-weight: bold;">✓ Organizado</text>
-    <text x="130" y="248" style="font-size: 10px; text-anchor: middle; fill: #666;">Tags, status, quem respondeu</text>
-    <text x="130" y="263" style="font-size: 10px; text-anchor: middle; fill: #666;">Nada se perde</text>
-  </g>
+<svg viewBox="0 0 720 254" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Chatwoot: uma fila no lugar de várias caixas</text>
+<rect class="box" x="20" y="46" width="330" height="172" rx="8"/>
+<text class="h" x="185" y="76" text-anchor="middle">Sem inbox compartilhado</text>
+<text class="p " x="36" y="104">Cada um responde do seu aparelho</text>
+<text class="p " x="36" y="126">Ninguém sabe quem já respondeu</text>
+<text class="p " x="36" y="148">Histórico espalhado</text>
+<text class="p " x="36" y="170">Cliente recebe resposta repetida</text>
+<rect class="boxok" x="370" y="46" width="330" height="172" rx="8"/>
+<text class="h" x="535" y="76" text-anchor="middle">Com inbox compartilhado</text>
+<text class="p ok" x="386" y="104">✓ Uma fila para a equipe</text>
+<text class="p ok" x="386" y="126">✓ Da para ver quem assumiu</text>
+<text class="p ok" x="386" y="148">✓ Tags, status e atribuição</text>
+<text class="p ok" x="386" y="170">✓ Histórico em um lugar só</text>
+<text class="s" x="360" y="240" text-anchor="middle">Com coexistência, o que o gerente responde pelo celular aparece na mesma fila.</text>
 </svg>

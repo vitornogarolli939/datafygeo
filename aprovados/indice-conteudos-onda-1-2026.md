@@ -82,7 +82,7 @@ Por que é diferente:
 Pronto pra código:
 
 **[Webhook: receber mensagens em tempo real](/webhook-whatsapp-cloud-api-como-receber-mensagens)**
-- 28 tipos de eventos
+- 19 campos de webhook documentados
 - Validar assinatura HMAC
 - Exemplos de código
 - Troubleshooting

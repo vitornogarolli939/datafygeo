@@ -578,10 +578,10 @@ footer p{margin:0 0 .5rem}
 <p><strong>Resposta curta:</strong> o número é seu. Está registrado em sua conta Meta Business Manager. Quando você sair de Z-API, UAZAPI ou Evolution, o número não desaparece. Você só muda qual ferramenta conversa com ele. A migração leva menos de 1 hora, não há perda de dados, e você continua operacional.</p>
 <p>O medo de "perder número" é o maior bloqueador de migração que a gente vê. Aqui a gente desmonta esse medo.</p>
 <div class="stats">
-  <div class="stat"><b>1 número</b><span>continua sendo seu após migração</span></div>
-  <div class="stat"><b>0</b><span>mensagens perdidas, histórico fica em BM</span></div>
-  <div class="stat"><b>59 minutos</b><span>tempo total de migração, do planejamento a rodando em produção</span></div>
-  <div class="stat"><b>5 minutos</b><span>o que demora para conectar em Datafy</span></div>
+  <div class="stat"><b>1 número</b><span>continua seu, registrado na sua Business Manager</span></div>
+  <div class="stat"><b>2 alterações</b><span>no codigo: a URL e o token</span></div>
+  <div class="stat"><b>180 dias</b><span>de histórico que a coexistência traz do aplicativo</span></div>
+  <div class="stat"><b>24 h</b><span>prazo para disparar a sincronização depois de conectar</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
@@ -592,6 +592,58 @@ footer p{margin:0 0 .5rem}
 <li>Reputação do número (qualidade, qualificação) fica com número. Se número levou ban, migração não resolve. Se número está bom, migração não estraga.</li>
 <li>Tempo de downtime real: 2 minutos (você muda a conexão). Preparação: 1 hora (testar, validar).</li>
 </ul>
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 720 228" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Migrar sem perder o número</text>
+<circle cx="85" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="85" y="82" text-anchor="middle">1</text>
+<text class="p" x="85" y="116" text-anchor="middle">Criar conta</text>
+<path class="ar" d="M108,76 L152,76"/>
+<circle cx="219" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="219" y="82" text-anchor="middle">2</text>
+<text class="p" x="219" y="116" text-anchor="middle">Conectar número</text>
+<path class="ar" d="M242,76 L286,76"/>
+<circle cx="353" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="353" y="82" text-anchor="middle">3</text>
+<text class="p" x="353" y="116" text-anchor="middle">Copiar token</text>
+<path class="ar" d="M376,76 L420,76"/>
+<circle cx="487" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="487" y="82" text-anchor="middle">4</text>
+<text class="p" x="487" y="116" text-anchor="middle">Trocar URL</text>
+<path class="ar" d="M510,76 L554,76"/>
+<circle cx="621" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="621" y="82" text-anchor="middle">5</text>
+<text class="p" x="621" y="116" text-anchor="middle">Testar envio</text>
+<rect class="boxok" x="30" y="140" width="330" height="70" rx="8"/>
+<text class="h ok" x="46" y="164">O número continua seu</text>
+<text class="p" x="46" y="186">Ele está registrado na sua Business</text>
+<text class="p" x="46" y="202">Manager, não no provedor.</text>
+<rect class="box" x="380" y="140" width="310" height="70" rx="8"/>
+<text class="h" x="396" y="164">No codigo</text>
+<text class="p" x="396" y="186">Mudam duas coisas: a URL base</text>
+<text class="p" x="396" y="202">e o token. O payload é o mesmo.</text>
+</svg>
+</div>
+<figcaption></figcaption>
+</figure>
+
 <h2 id="pr-requisitos-antes-de-migrar">Pré-requisitos antes de migrar</h2>
 <p>Checklist de coisas que você precisa ter antes de começar:</p>
 <ol>
@@ -627,10 +679,10 @@ footer p{margin:0 0 .5rem}
 Header: Client-Token: seu_token
 Body: { "phone": "5511999...", "message": "..." }</code></p>
 <p>Muda para:</p>
-<p><code>POST https://graph.instagram.com/v20.0/{phone_number_id}/messages
+<p><code>POST https://graph.facebook.com/v20.0/{phone_number_id}/messages
 Header: Authorization: Bearer seu_token_datafy
 Body: { "messaging_product": "whatsapp", "to": "5511999...", "type": "text", "text": { "body": "..." } }</code></p>
-<p>URL muda (de Z-API para graph.instagram.com).
+<p>URL muda (de Z-API para graph.facebook.com).
 Token muda (do Z-API para Datafy Bearer).
 Body muda (segue formato Graph API da Meta).</p>
 <p>Se você tem tempo, muda num environment de teste primeiro. Se está com pressa, muda tudo de uma vez (a gente valida depois).</p>

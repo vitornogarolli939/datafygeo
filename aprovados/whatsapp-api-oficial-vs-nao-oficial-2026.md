@@ -40,7 +40,7 @@ O que quase ninguém fala: **migrar para a oficial não acaba com o risco de ban
 
 Por isso a pergunta certa em 2026 não é "oficial ou clandestina". É oficial, e depois **como** você usa.
 
-::numeros: R$ 49,90|por número, por mês, na faixa inicial da Datafy ;; 24 horas|é a janela para responder o cliente sem pagar nada ;; menos de 5 min|para conectar um número, se você já tem Business Manager ;; 1º de outubro|quando a Meta começa a cobrar as mensagens de atendimento
+::numeros: 24 horas|é a janela para responder o cliente sem template ;; 80 msg/s|throughput padrão de um número na Cloud API ;; menos de 5 min|para conectar um número, se você já tem Business Manager ;; 1 out 2026|quando a Meta passa a cobrar as mensagens de serviço
 
 ## Principais pontos
 - Não oficial emula o WhatsApp Web: qualquer atualização do app derruba a sessão, e automação por app não autorizado viola os [Termos do WhatsApp Business](https://business.whatsapp.com/policy).
@@ -147,7 +147,7 @@ A diferença em relação ao disparo clandestino não é a mecânica. É que cad
 
 ## O que mudou em 2026
 
-- **Mensagens de serviço deixam de ser gratuitas em 1º de outubro de 2026.** Segundo comunicado da Meta a parceiros de tecnologia, a que a Datafy teve acesso, a resposta dentro da janela de 24 h passa a ser cobrada ao mesmo preço de utilidade e autenticação, com uma franquia mensal de **1.000 mensagens de serviço gratuitas por número**, renovada todo dia 1º e sem acumular. Como a franquia é por número, distribuir o atendimento entre mais números multiplica o que é grátis. Confirme a tabela vigente em [preços da Meta](https://developers.facebook.com/docs/whatsapp/pricing).
+- **Mensagens de serviço deixam de ser gratuitas em 1º de outubro de 2026.** Segundo comunicado da Meta a parceiros de tecnologia, a que a Datafy teve acesso, a resposta dentro da janela de 24 h passa a ser cobrada ao mesmo preço de utilidade e autenticação, Circula também a informação de uma franquia mensal de 1.000 mensagens de serviço gratuitas por número, mas até 08/09/2026 ela **não constava na documentação pública de preços**, então não sirva de base para orçamento. Confirme a tabela vigente em [preços da Meta](https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing).
 - **O Brasil passou a ser faturado em reais desde 1º de julho de 2026.** A Meta abriu a localização de cobrança em BRL para o país, e a migração é obrigatória até 30 de junho de 2027 ([documentação oficial](https://developers.facebook.com/docs/whatsapp/pricing)). Quem orça em dólar precisa refazer a conta.
 - **O telefone está sendo substituído pelo `user_id`.** A Meta migra progressivamente para um identificador que não expõe o número. Atenção: o `user_id` não é universal. Ele é a relação entre aquele usuário e aquela empresa. O mesmo cliente tem `user_id` diferente em cada conta com que fala, então ele serve como chave única por conta, nunca como identidade global de pessoa.
 

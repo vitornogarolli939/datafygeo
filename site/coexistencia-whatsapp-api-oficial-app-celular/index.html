@@ -576,24 +576,68 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <h1>Coexistência no WhatsApp: rodando API oficial e app do celular no mesmo número</h1>
-<p><strong>Resposta curta:</strong> coexistência (coexist) é capacidade de ter o mesmo número rodando na API oficial e abrindo o app WhatsApp no celular ao mesmo tempo, sem que um derrube o outro, sem perda de mensagem. Pré-requisito: Tech Provider.</p>
+<p><strong>Resposta curta:</strong> coexistência (coexist) é capacidade de ter o mesmo número rodando na API oficial e abrindo o app WhatsApp no celular ao mesmo tempo, sem que um derrube o outro, sem perda de mensagem. O provedor precisa ser Solution Partner ou Tech Provider na Meta para oferecer o recurso.</p>
 <p>Caso real: seu número roda automação 24/7 na API. Ao mesmo tempo, você abre o WhatsApp no celular e vê a conversa lá também. Se gerente responde no celular, a resposta sai de verdade, cliente recebe. Se automação manda mensagem, aparece lá também. Um espelho.</p>
 <div class="stats">
-  <div class="stat"><b>1 número</b><span>rodando API + app celular</span></div>
-  <div class="stat"><b>0</b><span>conflitos, zero perda</span></div>
-  <div class="stat"><b>1 feature</b><span>que só Tech Provider tem</span></div>
-  <div class="stat"><b>100%</b><span>sincronização de histórico em tempo real</span></div>
+  <div class="stat"><b>180 dias</b><span>de histórico de conversa que a Meta sincroniza</span></div>
+  <div class="stat"><b>24 h</b><span>prazo para disparar a sincronização depois de conectar</span></div>
+  <div class="stat"><b>20 msg/s</b><span>throughput de um número em coexistência</span></div>
+  <div class="stat"><b>0</b><span>conversas de grupo sincronizadas, a Meta não inclui grupos</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
 <li>Coexistência é autorizada e nativa em 2026. Antes era experimental, hoje é estável.</li>
-<li>Pré-requisito: ser Tech Provider na Meta. A Datafy é, então você consegue isso conectando via Datafy.</li>
-<li>Sincronização é instantânea. Mensagem chega no app, aparece em webhook. Mensagem sai pela API, aparece no celular.</li>
-<li>Não há limite de simultâneas. Um número pode estar rodando em 10 dispositivos (API chamadas) e no app celular ao mesmo tempo.</li>
-<li>Performance: zero impacto. Você não vai ver lentidão. Meta garante 99,9% de entrega.</li>
+<li>Pré-requisito do lado do provedor: a Meta exige que ele seja Solution Partner ou Tech Provider para oferecer o recurso. A Datafy é Tech Provider, então o recurso vem junto na conexão.</li>
+<li>No dia a dia a troca é imediata: mensagem que chega no aplicativo aparece no webhook, e mensagem que sai pela API aparece no celular. O que tem limite é o histórico antigo, trazido uma única vez no onboarding.</li>
+<li>Mensagem enviada pelo aplicativo do celular chega ao seu servidor pelo campo de webhook <code>smb_message_echoes</code>. É por ele que você sabe que um humano assumiu a conversa.</li>
+<li>Um número em coexistência tem throughput de 20 mensagens por segundo, contra 80 do número comum (<a href="https://developers.facebook.com/docs/whatsapp/throughput" rel="noopener">documentação de throughput</a>). Para atendimento não faz diferença. Para disparo em volume, faz.</li>
 </ul>
-<h2 id="por-que-coexist-ncia-revolucion-rio">Por que coexistência é revolucionário</h2>
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 720 262" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Coexistência: o mesmo número nos dois lugares</text>
+<rect class="box" x="60" y="52" width="200" height="72" rx="8"/>
+<text class="h" x="160" y="80" text-anchor="middle">Aplicativo no celular</text>
+<text class="s" x="160" y="100" text-anchor="middle">atendimento humano</text>
+<rect class="box" x="460" y="52" width="200" height="72" rx="8"/>
+<text class="h" x="560" y="80" text-anchor="middle">Cloud API</text>
+<text class="s" x="560" y="100" text-anchor="middle">automacao e disparo</text>
+<rect class="boxok" x="290" y="60" width="140" height="56" rx="8"/>
+<text class="h ok" x="360" y="84" text-anchor="middle">1 número</text>
+<text class="s" x="360" y="102" text-anchor="middle">mesmo histórico</text>
+<path class="ar" d="M265,88 L283,88"/>
+<path class="ar" d="M437,88 L455,88"/>
+<rect class="box" x="30" y="146" width="660" height="100" rx="8"/>
+<text class="h" x="46" y="170">Limites reais da sincronização de histórico</text>
+<text class="p" x="46" y="196">• 180 dias de conversa</text>
+<text class="p" x="266" y="196">• grupos não sincronizam</text>
+<text class="p" x="486" y="196">• mídia só dos últimos 14 dias</text>
+<text class="p" x="46" y="218">• 24 h para disparar a sync</text>
+<text class="p" x="266" y="218">• 20 msg/s de throughput</text>
+<text class="p" x="486" y="218">• uma vez só, no onboarding</text>
+</svg>
+</div>
+<figcaption></figcaption>
+</figure>
+
+<h2 id="o-que-a-coexist-ncia-resolve">O que a coexistência resolve</h2>
 <p>Cenário antigo (pré-2024): você conectava número em Z-API/Evolution. Aí o número ficava preso em emulação. Se tentava abrir app WhatsApp Web no navegador, conflitava, perdia mensagem.</p>
 <p>Escolha era: ou automação, ou app. Não os dois.</p>
 <p>Cenário novo (2026): você conecta em API oficial (Datafy), abre app no celular, ambos funcionam perfeitamente. Um reforça o outro.</p>
@@ -607,9 +651,9 @@ footer p{margin:0 0 .5rem}
 <li>Quando chega mensagem, Meta roteia para webhook (API) e também mostra no app.</li>
 <li>Quando você manda pelo app, Meta roteia também para webhook.</li>
 </ol>
-<p>Tudo é real time. Sem delay. Sem cache.</p>
+<p>O tráfego novo corre nos dois sentidos. O que tem limite é o histórico antigo, trazido uma vez só no onboarding.</p>
 <h2 id="configurar-coexist-ncia">Configurar coexistência</h2>
-<p>Você não precisa "ativar" coexistência. Se você é Tech Provider e conectou número em API oficial, coexistência já funciona.</p>
+<p>A coexistência é escolhida no momento do onboarding do número, e não depois. Se o número for conectado pelo fluxo comum, trazer o aplicativo para junto exige refazer a conexão.</p>
 <p>Teste:</p>
 <ol>
 <li>Conecta número em Datafy (já faz isso automático).</li>
@@ -643,18 +687,51 @@ footer p{margin:0 0 .5rem}
 <li>Se você responde no app, também aparece no webhook</li>
 </ul>
 <p>Coexistência é webhook + app sincronizados. Não é um ou outro, é os dois.</p>
-<h2 id="limita-es-e-edge-cases">Limitações e edge cases</h2>
-<p>Coexistência é estável, mas tem algumas limitações:</p>
+<h2 id="o-que-a-sincroniza-o-traz-e-o-que-ela-n">O que a sincronização traz, e o que ela não traz</h2>
+<p>Este é o ponto que mais gera expectativa errada. A coexistência não copia o seu WhatsApp inteiro para a nuvem. Ela traz uma janela de histórico, uma vez só, no momento em que você conecta. O que está <a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/" rel="noopener">documentado pela Meta</a>:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>O que</th>
+<th>Limite real</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Histórico de conversa</td>
+<td>Os <strong>últimos 180 dias</strong>, ou seja, cerca de 6 meses</td>
+</tr>
+<tr>
+<td>Conversas de grupo</td>
+<td><strong>Não são sincronizadas</strong></td>
+</tr>
+<tr>
+<td>Arquivos de mídia</td>
+<td>Os identificadores só vêm para mensagens dos <strong>últimos 14 dias</strong></td>
+</tr>
+<tr>
+<td>Prazo para disparar a sincronização</td>
+<td><strong>24 horas</strong> depois de conectar</td>
+</tr>
+<tr>
+<td>Throughput do número</td>
+<td><strong>20 mensagens por segundo</strong>, contra 80 do número comum</td>
+</tr>
+</tbody>
+</table></div>
+<p>O prazo de 24 horas é o que mais pega gente desprevenida: se você conecta o número e deixa para sincronizar o histórico depois, perde a janela. A conta precisa ser desconectada e todo o fluxo de onboarding refeito.</p>
+<p>Conversa de grupo não vir é o segundo. Se a sua operação usa grupos, essa parte continua existindo só no aparelho.</p>
+<p>Depois que o número está conectado, o tráfego novo flui nos dois sentidos sem esses limites: o que chega no aplicativo aparece no webhook, o que sai pela API aparece no celular.</p>
+<h2 id="outros-detalhes-de-comportamento">Outros detalhes de comportamento</h2>
 <ol>
-<li><strong>Mensagens ignoradas</strong>: se você manda mesma mensagem 2x pela API (por engano), aparece 2x no app. Meta não deduplicação cliente.</li>
-<li><strong>Reações e replies</strong>: se você usa feature "responder a mensagem específica" (reply) no app, aparece no webhook assim. Se usa via API, aparece no app. Funciona nos dois sentidos.</li>
-<li><strong>Status de entrega</strong>: "enviado", "entregue", "lido" são sincronizados. App e API veem o mesmo status.</li>
-<li><strong>Mídia grande</strong>: se você manda vídeo 100MB pela API, o app consegue receber? Sim, Meta cuida disso. Mas pode demorar mais sincronizar no app (até 30s).</li>
+<li><strong>Duplicidade</strong>: se você enviar a mesma mensagem duas vezes pela API, ela aparece duas vezes no aplicativo. Não existe deduplicação automática, o controle é seu.</li>
+<li><strong>Resposta a mensagem específica</strong>: funciona nos dois sentidos. O que você responde no aplicativo chega ao webhook como resposta, e vice-versa.</li>
+<li><strong>Status de entrega</strong>: enviado, entregue e lido ficam iguais nos dois lados.</li>
+<li><strong>Quem escreve pelo aplicativo não abre janela de atendimento.</strong> Mensagem enviada pelo aplicativo do WhatsApp Business não abre nem estende a janela de 24 horas da API. Vale a pena saber disso antes de montar automação em cima de janela.</li>
 </ol>
-<h2 id="por-que-s-tech-provider-tem">Por que só Tech Provider tem</h2>
-<p>Tech Provider é certificado pela Meta para gerenciar números em escala. Como parte dessa certificação, Meta confia que você (ou Datafy) não vai fazer coisa errada com coexistência (como clonar mensagem, simular outro conta, etc).</p>
-<p>Se você conectar direto na Meta sem ser Tech Provider, Meta oferece coexistência também, mas é mais limitada e vocênão consegue oferecerquanto coexistência é estável.</p>
-<p>A Datafy como Tech Provider oferece coexistência garantida estável. Se algo sair errado, Datafy responde por você junto à Meta.</p>
+<h2 id="o-requisito-do-lado-do-provedor">O requisito do lado do provedor</h2>
+<p>A Meta exige que quem oferece coexistência seja <strong>Solution Partner ou Tech Provider</strong>. Não é um recurso que qualquer integração consegue habilitar: depende do App Review aprovado com as permissões <code>whatsapp_business_messaging</code> e <code>whatsapp_business_management</code>.</p>
+<p>Isso significa que a escolha do provedor decide se você tem o recurso. Se você for direto na Meta por conta própria, precisa passar por esse processo você mesmo.</p>
 <h2 id="compara-o-chatwoot-coexist-ncia-vs-whats">Comparação: Chatwoot + coexistência vs WhatsApp Web</h2>
 <p>Chatwoot já oferece inbox centralizado (vários agentes veem conversa). Coexistência é diferente: é você no celular vendo e respondendo direto.</p>
 <div class="tw"><table>
@@ -745,13 +822,14 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#por-que-coexist-ncia-revolucion-rio">Por que coexistência é revolucio...</a></li>
+        <li><a href="#o-que-a-coexist-ncia-resolve">O que a coexistência resolve</a></li>
         <li><a href="#como-funciona-tecnicamente">Como funciona tecnicamente</a></li>
         <li><a href="#configurar-coexist-ncia">Configurar coexistência</a></li>
         <li><a href="#cen-rios-de-uso-reais">Cenários de uso reais</a></li>
         <li><a href="#diferen-a-coexist-ncia-vs-webhook">Diferença coexistência vs webhook</a></li>
-        <li><a href="#limita-es-e-edge-cases">Limitações e edge cases</a></li>
-        <li><a href="#por-que-s-tech-provider-tem">Por que só Tech Provider tem</a></li>
+        <li><a href="#o-que-a-sincroniza-o-traz-e-o-que-ela-n">O que a sincronização traz, e o...</a></li>
+        <li><a href="#outros-detalhes-de-comportamento">Outros detalhes de comportamento</a></li>
+        <li><a href="#o-requisito-do-lado-do-provedor">O requisito do lado do provedor</a></li>
         <li><a href="#compara-o-chatwoot-coexist-ncia-vs-whats">Comparação: Chatwoot + coexistên...</a></li>
         <li><a href="#monitorar-coexist-ncia">Monitorar coexistência</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>

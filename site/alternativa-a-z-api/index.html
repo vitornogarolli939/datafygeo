@@ -577,10 +577,10 @@ footer p{margin:0 0 .5rem}
 <h1>Alternativa a Z-API: por que migrar para API oficial em 2026</h1>
 <p><strong>Resposta curta:</strong> Z-API é uma ferramenta que conecta ao WhatsApp através de emulação (WhatsApp Web). Se você está usando Z-API, aqui estão os trade-offs técnicos de continuar vs mudar para API oficial: você mantém simplicidade de setup, mas depende de atualizações de código sempre que WhatsApp muda; a oficial oferece estabilidade de endpoint, mas com burocracia maior. A escolha depende do seu contexto: prototipagem rápida funciona em ambas, produção com clientes pede oficialização.</p>
 <div class="stats">
-  <div class="stat"><b>emulação não autorizada</b><span>viola Termos da Meta</span></div>
-  <div class="stat"><b>custo varia</b><span>planos Z-API complexos</span></div>
-  <div class="stat"><b>0</b><span>garantia|para número em ferramenta não autorizada</span></div>
-  <div class="stat"><b>sim</b><span>é possível migrar sem perder número</span></div>
+  <div class="stat"><b>2 arquiteturas</b><span>emular o WhatsApp Web ou falar com o endpoint da Meta</span></div>
+  <div class="stat"><b>0</b><span>relação contratual com a Meta em ferramenta não oficial</span></div>
+  <div class="stat"><b>24 h</b><span>janela para responder o cliente sem template, igual nas duas</span></div>
+  <div class="stat"><b>2 trocas</b><span>no codigo para migrar: a URL e o token</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
@@ -593,63 +593,39 @@ footer p{margin:0 0 .5rem}
 </ul>
 <figure>
 <div class="diagram">
-<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <style>
-      .column { fill: #f5f5f5; stroke: #1a1a1a; stroke-width: 2; }
-      .title { font-size: 14px; font-weight: bold; text-anchor: middle; fill: #1a1a1a; }
-      .pro { fill: #10b981; }
-      .con { fill: #ef4444; }
-      .neutral { fill: #666; }
-      .item { font-size: 11px; text-anchor: middle; }
-    </style>
-  </defs>
-
-  <rect width="800" height="300" fill="#ffffff"/>
-
-  <text x="400" y="25" style="font-size: 16px; font-weight: bold; text-anchor: center; fill: #1a1a1a;">Z-API: Trade-off técnico</text>
-
-  <!-- Left: Z-API emulation -->
-  <g transform="translate(50, 50)">
-    <rect class="column" x="0" y="0" width="280" height="240" rx="5"/>
-    <text x="140" y="25" class="title">Z-API (Emulação)</text>
-    <text x="140" y="45" style="font-size: 11px; text-anchor: center; fill: #666;">WhatsApp Web emulado</text>
-
-    <text x="10" y="70" class="title pro" style="font-size: 12px; text-anchor: start;">✓ Rápido</text>
-    <text x="10" y="90" class="item" style="text-anchor: start;">Começa hoje</text>
-
-    <text x="10" y="115" class="title pro" style="font-size: 12px; text-anchor: start;">✓ Simples</text>
-    <text x="10" y="135" class="item" style="text-anchor: start;">QR code, pronto</text>
-
-    <text x="10" y="160" class="title con" style="font-size: 12px; text-anchor: start;">✗ Quebra</text>
-    <text x="10" y="180" class="item" style="text-anchor: start;">Quando app atualiza</text>
-
-    <text x="10" y="205" class="title con" style="font-size: 12px; text-anchor: start;">✗ Zero recurso</text>
-    <text x="10" y="225" class="item" style="text-anchor: start;">Se detectado, acabou</text>
-  </g>
-
-  <!-- Right: API Oficial -->
-  <g transform="translate(470, 50)">
-    <rect class="column" x="0" y="0" width="280" height="240" rx="5" style="stroke: #0ea5e9; stroke-width: 3;"/>
-    <text x="140" y="25" class="title" style="fill: #0ea5e9;">API Oficial</text>
-    <text x="140" y="45" style="font-size: 11px; text-anchor: center; fill: #666;">Endpoint da Meta</text>
-
-    <text x="10" y="70" class="title pro" style="font-size: 12px; text-anchor: start;">✓ Estável</text>
-    <text x="10" y="90" class="item" style="text-anchor: start;">Não quebra</text>
-
-    <text x="10" y="115" class="title pro" style="font-size: 12px; text-anchor: start;">✓ Contrato</text>
-    <text x="10" y="135" class="item" style="text-anchor: start;">Suporte, recurso</text>
-
-    <text x="10" y="160" class="title neutral" style="font-size: 12px; text-anchor: start;">⚠ Setup</text>
-    <text x="10" y="180" class="item" style="text-anchor: start;">5 min com Datafy</text>
-
-    <text x="10" y="205" class="title neutral" style="font-size: 12px; text-anchor: start;">⚠ Taxa fixa</text>
-    <text x="10" y="225" class="item" style="text-anchor: start;">R$ 49,90/mês</text>
-  </g>
-
-  <!-- Bottom decision -->
-  <rect x="50" y="280" width="700" height="20" rx="3" fill="#f5f5f5"/>
-  <text x="400" y="295" style="font-size: 11px; text-anchor: center; fill: #666;">Protótipo rápido? Z-API. Produção 6+ meses? API Oficial</text>
+<svg viewBox="0 0 720 268" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Z-API e API oficial: o que muda</text>
+<rect class="box" x="20" y="46" width="330" height="186" rx="8"/>
+<text class="h" x="185" y="76" text-anchor="middle">Z-API</text>
+<text class="s" x="185" y="93" text-anchor="middle">emulação do WhatsApp Web</text>
+<text class="p ok" x="36" y="118">✓ Começa sem Business Manager</text>
+<text class="p ok" x="36" y="140">✓ Conecta por QR code</text>
+<text class="p no" x="36" y="162">✗ Sem contrato com a Meta</text>
+<text class="p no" x="36" y="184">✗ Sem canal de recurso</text>
+<rect class="boxok" x="370" y="46" width="330" height="186" rx="8"/>
+<text class="h" x="535" y="76" text-anchor="middle">API oficial</text>
+<text class="s" x="535" y="93" text-anchor="middle">endpoint da Meta</text>
+<text class="p ok" x="386" y="118">✓ Contrato e recurso</text>
+<text class="p ok" x="386" y="140">✓ Endpoint versionado</text>
+<text class="p ok" x="386" y="162">✓ Coexistência com o app</text>
+<text class="p " x="386" y="184">• Exige Business Manager</text>
+<text class="s" x="360" y="254" text-anchor="middle">Protótipo de fim de semana ou produção com clientes: a resposta muda com o prazo.</text>
 </svg>
 </div>
 <figcaption></figcaption>
@@ -737,78 +713,51 @@ footer p{margin:0 0 .5rem}
 </ol>
 <figure>
 <div class="diagram">
-<svg viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="250" fill="#ffffff"/>
-
-  <text x="400" y="30" style="font-size: 18px; font-weight: bold; text-anchor: center; fill: #1a1a1a;">Migração: Sem perder número</text>
-
-  <!-- Step 1 -->
-  <g transform="translate(50, 70)">
-    <circle cx="30" cy="30" r="25" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #0ea5e9;">1</text>
-
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #1a1a1a;">Cria conta</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">Datafy</text>
-  </g>
-
-  <!-- Arrow -->
-  <path stroke="#0ea5e9" stroke-width="2" fill="none" d="M 130 100 L 180 100" marker-end="url(#arrowhead)"/>
-
-  <!-- Step 2 -->
-  <g transform="translate(200, 70)">
-    <circle cx="30" cy="30" r="25" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #0ea5e9;">2</text>
-
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #1a1a1a;">Conecta</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">Seu número (BM)</text>
-  </g>
-
-  <!-- Arrow -->
-  <path stroke="#0ea5e9" stroke-width="2" fill="none" d="M 280 100 L 330 100" marker-end="url(#arrowhead)"/>
-
-  <!-- Step 3 -->
-  <g transform="translate(350, 70)">
-    <circle cx="30" cy="30" r="25" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #0ea5e9;">3</text>
-
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #1a1a1a;">Copia token</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">sk_live_...</text>
-  </g>
-
-  <!-- Arrow -->
-  <path stroke="#0ea5e9" stroke-width="2" fill="none" d="M 430 100 L 480 100" marker-end="url(#arrowhead)"/>
-
-  <!-- Step 4 -->
-  <g transform="translate(500, 70)">
-    <circle cx="30" cy="30" r="25" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #0ea5e9;">4</text>
-
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #1a1a1a;">Muda código</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">URL + token</text>
-  </g>
-
-  <!-- Arrow -->
-  <path stroke="#0ea5e9" stroke-width="2" fill="none" d="M 580 100 L 630 100" marker-end="url(#arrowhead)"/>
-
-  <!-- Step 5 -->
-  <g transform="translate(650, 70)">
-    <circle cx="30" cy="30" r="25" fill="#10b981" opacity="0.3" stroke="#10b981" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #10b981;">✓</text>
-
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #10b981">Pronto!</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">1 hora total</text>
-  </g>
-
-  <!-- Key info -->
-  <rect x="50" y="180" width="700" height="50" fill="#f5f5f5" rx="4"/>
-  <text x="60" y="200" style="font-size: 11px; fill: #1a1a1a; font-weight: bold;">✓ Número continua seu (registrado em BM)</text>
-  <text x="60" y="220" style="font-size: 11px; fill: #1a1a1a; font-weight: bold;">✓ Histórico em Z-API/Evolution fica lá (novo fica em Datafy)</text>
-
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <polygon points="0 0, 10 3, 0 6" fill="#0ea5e9"/>
-    </marker>
-  </defs>
+<svg viewBox="0 0 720 228" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Migrar sem perder o número</text>
+<circle cx="85" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="85" y="82" text-anchor="middle">1</text>
+<text class="p" x="85" y="116" text-anchor="middle">Criar conta</text>
+<path class="ar" d="M108,76 L152,76"/>
+<circle cx="219" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="219" y="82" text-anchor="middle">2</text>
+<text class="p" x="219" y="116" text-anchor="middle">Conectar número</text>
+<path class="ar" d="M242,76 L286,76"/>
+<circle cx="353" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="353" y="82" text-anchor="middle">3</text>
+<text class="p" x="353" y="116" text-anchor="middle">Copiar token</text>
+<path class="ar" d="M376,76 L420,76"/>
+<circle cx="487" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="487" y="82" text-anchor="middle">4</text>
+<text class="p" x="487" y="116" text-anchor="middle">Trocar URL</text>
+<path class="ar" d="M510,76 L554,76"/>
+<circle cx="621" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="621" y="82" text-anchor="middle">5</text>
+<text class="p" x="621" y="116" text-anchor="middle">Testar envio</text>
+<rect class="boxok" x="30" y="140" width="330" height="70" rx="8"/>
+<text class="h ok" x="46" y="164">O número continua seu</text>
+<text class="p" x="46" y="186">Ele está registrado na sua Business</text>
+<text class="p" x="46" y="202">Manager, não no provedor.</text>
+<rect class="box" x="380" y="140" width="310" height="70" rx="8"/>
+<text class="h" x="396" y="164">No codigo</text>
+<text class="p" x="396" y="186">Mudam duas coisas: a URL base</text>
+<text class="p" x="396" y="202">e o token. O payload é o mesmo.</text>
 </svg>
 </div>
 <figcaption></figcaption>

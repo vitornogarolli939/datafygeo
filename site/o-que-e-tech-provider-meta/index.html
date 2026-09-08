@@ -586,10 +586,10 @@ footer p{margin:0 0 .5rem}
 <p><strong>Resposta curta:</strong> Tech Provider é título que Meta dá para empresa que atende múltiplos clientes usando a API oficial do WhatsApp. Datafy é Tech Provider. Significa: Datafy passou em auditoria de segurança da Meta, assinou contrato, e agora pode oferecer API oficial para você sem você ter que falar direto com Meta.</p>
 <p>Vantagem: você conecta número em 5 minutos em vez de 6 semanas. Meta confia em Datafy para não fazer coisa errada.</p>
 <div class="stats">
-  <div class="stat"><b>1 auditoria</b><span>técnica e legal com Meta</span></div>
-  <div class="stat"><b>0</b><span>intermediários entre você e Meta, Datafy passa direto</span></div>
-  <div class="stat"><b>6 semanas</b><span>economia de tempo comparado a ir direto</span></div>
-  <div class="stat"><b>1 Tech Provider</b><span>Brasil: Datafy (outros vêm chegando)</span></div>
+  <div class="stat"><b>3 papéis</b><span>Solution Partner, Tech Provider e Tech Partner</span></div>
+  <div class="stat"><b>0</b><span>linha de crédito no Tech Provider: a Meta fatura o cliente direto</span></div>
+  <div class="stat"><b>2 permissões</b><span>whatsapp_business_messaging e whatsapp_business_management</span></div>
+  <div class="stat"><b>180 dias</b><span>de histórico que a coexistência sincroniza</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
@@ -720,10 +720,9 @@ footer p{margin:0 0 .5rem}
 - Datafy monitora segurança</p>
 <p><strong>Infraestrutura:</strong>
 - Webhook hospedado (você não precisa manter servidor)
-- Escalabilidade (Datafy mantém)
-- Uptime 99,9%</p>
-<p><strong>Recursos únicos (por ser Tech Provider):</strong>
-- Coexistência automática (app + API no mesmo número)
+- Escalabilidade (Datafy mantém)</p>
+<p><strong>O que vem pronto por ser Tech Provider:</strong>
+- Coexistência já habilitada (aplicativo e API no mesmo número). A Meta exige que o provedor seja Solution Partner ou Tech Provider para oferecer o recurso
 - Embedded Signup (cliente conecta sozinho no seu app)
 - Integração nativa Chatwoot
 - Integração nativa com n8n, Make</p>
@@ -795,8 +794,54 @@ footer p{margin:0 0 .5rem}
 </ol>
 <p>Se você usar Datafy e levar ban, Datafy não pode te desbanir diretamente. Mas pode ajudar você a apelar com Meta (porque tem relacionamento direto).</p>
 <p>Se você fosse direto na Meta, Meta é quem você conversa.</p>
-<h2 id="embedded-signup-recurso-de-tech-provider">Embedded Signup (recurso de Tech Provider)</h2>
-<p>Recurso único de Tech Provider: cliente conecta seu número no seu app sem sair dela.</p>
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 720 272" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Os três papéis de parceiro na Meta</text>
+<rect class="box" x="20" y="46" width="216" height="190" rx="8"/>
+<text class="h" x="128" y="76" text-anchor="middle">Solution Partner</text>
+<text class="s" x="128" y="93" text-anchor="middle">o que chamam de BSP</text>
+<text class="p " x="36" y="118">Tem linha de crédito</text>
+<text class="p " x="36" y="140">Fatura o cliente</text>
+<text class="p " x="36" y="162">É Meta Business Partner</text>
+<text class="p " x="36" y="184">Entra no Accelerator</text>
+<rect class="boxok" x="252" y="46" width="216" height="190" rx="8"/>
+<text class="h" x="360" y="76" text-anchor="middle">Tech Provider</text>
+<text class="s" x="360" y="93" text-anchor="middle">onde a Datafy está</text>
+<text class="p " x="268" y="118">Sem linha de crédito</text>
+<text class="p " x="268" y="140">Meta fatura o cliente</text>
+<text class="p " x="268" y="162">Habilita coexistência</text>
+<text class="p " x="268" y="184">Processo self-service</text>
+<rect class="box" x="484" y="46" width="216" height="190" rx="8"/>
+<text class="h" x="592" y="76" text-anchor="middle">Tech Partner</text>
+<text class="s" x="592" y="93" text-anchor="middle">nível acima</text>
+<text class="p " x="500" y="118">Tech Provider que virou</text>
+<text class="p " x="500" y="140">Meta Business Partner</text>
+<text class="p " x="500" y="162">Exige aprovacao extra</text>
+<text class="s" x="360" y="258" text-anchor="middle">Coexistência exige que o provedor seja Solution Partner ou Tech Provider.</text>
+</svg>
+</div>
+<figcaption></figcaption>
+</figure>
+
+<h2 id="embedded-signup">Embedded Signup</h2>
+<p>O cliente conecta o próprio número dentro do seu aplicativo, sem sair dele. É o fluxo que a Meta oferece a quem passou pelo App Review com as permissões de mensageria e de gerenciamento.</p>
 <p>Exemplo: você tem SaaS de automação. Cliente quer conectar WhatsApp. Em vez de ir em Meta, pedir BM, tudo burocrático, ele clica em "Conectar WhatsApp" dentro do seu app.</p>
 <p>Pop-up aparece (controlado por Meta), cliente autoriza, volta pro seu app com número conectado.</p>
 <p>Tech Provider oferece isso automático. BSP não. Direto na Meta, você tem que montar fluxo customizado.</p>
@@ -856,7 +901,7 @@ footer p{margin:0 0 .5rem}
         <li><a href="#que-datafy-oferece-como-tech-provider">Que Datafy oferece como Tech Pro...</a></li>
         <li><a href="#datafy-vs-bsp-twilio-360dialog-gupshup">Datafy vs BSP (Twilio, 360dialog...</a></li>
         <li><a href="#o-que-certifica-o-datafy">O que é certificação Datafy</a></li>
-        <li><a href="#embedded-signup-recurso-de-tech-provider">Embedded Signup (recurso de Tech...</a></li>
+        <li><a href="#embedded-signup">Embedded Signup</a></li>
         <li><a href="#conformidade-legal">Conformidade legal</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir-qual-caminho">Como decidir: qual caminho?</a></li>

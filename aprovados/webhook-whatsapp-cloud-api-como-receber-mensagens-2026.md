@@ -28,18 +28,18 @@ status: aprovado
 
 **Última atualização: 06/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** webhook é um POST HTTP que Meta (ou Datafy em nome dela) faz para seu servidor toda vez que chega mensagem no número. Seu servidor recebe JSON, processa (salva em banco, envia para CRM, etc), responde com "200 OK". Meta garante entrega do webhook (3 tentativas).
+**Resposta curta:** webhook é um POST HTTP que Meta (ou Datafy em nome dela) faz para seu servidor toda vez que chega mensagem no número. Seu servidor recebe JSON, processa (salva em banco, envia para CRM, etc), responde com "200 OK". Se o seu servidor falhar, a Meta reentrega, com frequência decrescente, por até 7 dias.
 
 Pré-requisito: servidor com HTTPS válido (certificado SSL), URL acessível de fora, porta 443 aberta.
 
-::numeros: 28 eventos|que Meta manda no webhook (mensagem, template update, status delivery, etc) ;; 3 tentativas|Meta faz se webhook falhar ;; 1 validação|assinatura HMAC para garantir que POST veio de Meta ;; 60 segundos|timeout se seu servidor não responde
+::numeros: 19 campos|de webhook na conta, verificado em setembro de 2026 ;; 7 dias|que a Meta reentrega, com frequência decrescente, se você falhar ;; 200|o status HTTP que a Meta espera de volta ;; SHA-256|o HMAC do header X-Hub-Signature-256
 
 ## Principais pontos
 - Webhook é a única forma de receber mensagens em tempo real. Sem webhook, seu app não sabe que chegou conversa.
 - Meta faz POST com conteúdo JSON. JSON tem: remetente, conteúdo, tipo (texto, imagem, áudio), timestamp, message_id.
-- Você valida que JSON veio de Meta (assinatura HMAC), processa, retorna 200 OK em menos de 60 segundos.
-- Se você demorar mais de 60s, Meta desiste e tenta de novo (até 3x total).
-- 28 tipos de eventos diferentes: mensagem text, imagem, áudio, documento, status de entrega, template aprovado/reprovado, mudança de qualidade do número, etc.
+- Você valida que o JSON veio da Meta (assinatura HMAC no header X-Hub-Signature-256), responde 200 na hora e processa depois. A Meta não publica um tempo limite de resposta, então o seguro é confirmar primeiro e trabalhar de forma assíncrona.
+- A Meta não publica um tempo limite de resposta nem um número fixo de tentativas: ela reentrega com frequência decrescente por até 7 dias.
+- A conta tem 19 campos de webhook disponíveis na documentação da Meta, verificado em setembro de 2026: mensagens, status de entrega, alertas de conta, qualidade do número, situação e categoria de template, histórico, segurança, entre outros. A lista cresce sem aviso, e provedores podem expor eventos próprios além dela.
 
 ## Configurar webhook no Datafy
 
@@ -166,37 +166,43 @@ def webhook_receive():
 "location": { "latitude": -23.55, "longitude": -46.63 }
 ```
 
-## Os 28 eventos que Meta envia
+::diagrama: webhook-fluxo
 
-Meta envia webhook para:
+## Os campos de webhook que a Meta disponibiliza
 
-1. **Mensagem text** (entrada)
-2. **Imagem** (entrada)
-3. **Áudio** (entrada)
-4. **Vídeo** (entrada)
-5. **Documento** (entrada)
-6. **Localização** (entrada)
-7. **Sticker** (entrada)
-8. **Contato** (entrada, remetente mandou seu contato)
-9. **Mensagem com botão clicada** (entrada, cliente clicou em botão)
-10. **Mensagem com lista** (entrada, cliente escolheu em lista)
-11. **Interativo escolhido** (entrada, cliente clicou resposta rápida)
-12. **Template enviado com sucesso** (confirmação)
-13. **Template não chegou / falhado** (erro)
-14. **Mensagem entregue** (status)
-15. **Mensagem lida** (status)
-16. **Chat aberto** (cliente abriu conversa)
-17. **Telefone descartado** (cliente bloqueou você)
-18. **Qualidade do número mudou** (ALTA, MÉDIA, BAIXA)
-19. **Número novo qualificado** (novo número conectado, qualidade validada)
-20. **Account update** (algo mudou em BM)
-21. **Template reprovado** (motivo no payload)
-22. **Template pré-aprovado** (rápido, aparecendo)
-23. **Template pendente** (em review)
-24. **Security event** (alguém tentou acessar token, etc)
-25-28. **Outros** (eventos novos que Meta adiciona)
+Aqui mora uma confusão que custa horas de debug: **campo de webhook não é o mesmo que tipo de mensagem.**
 
-Você processa os eventos que interessam, ignora os outros.
+O campo é o que você assina no App Dashboard. Texto, imagem, áudio, localização e figurinha **não são campos**: todos chegam dentro do campo `messages`, e você diferencia lendo o `type` de cada mensagem no payload. Assinar `messages` já traz todos eles.
+
+Na documentação da Meta, a conta tem **19 campos** disponíveis, verificado em setembro de 2026:
+
+| Campo | O que avisa |
+|---|---|
+| `messages` | Mensagem recebida e status de entrega, leitura e falha |
+| `smb_message_echoes` | Mensagem enviada pelo aplicativo do celular, em coexistência |
+| `smb_app_state_sync` | Sincronização de contatos e estado do aplicativo |
+| `history` | Histórico de conversa importado no onboarding |
+| `message_template_status_update` | Template aprovado, reprovado ou pausado |
+| `message_template_quality_update` | Qualidade do template mudou |
+| `message_template_components_update` | Componentes do template foram alterados |
+| `template_category_update` | A Meta reclassificou a categoria, e isso muda o preço |
+| `phone_number_quality_update` | Qualidade do número caiu ou subiu |
+| `phone_number_name_update` | Nome de exibição aprovado ou recusado |
+| `account_update` | Mudança na conta, inclusive banimento |
+| `account_alerts` | Alertas da Meta sobre a conta |
+| `account_review_update` | Resultado da revisão da conta |
+| `business_capability_update` | Limites de envio e de números mudaram |
+| `payment_configuration_update` | Configuração de pagamento |
+| `partner_solutions` | Eventos de solução de parceiro |
+| `user_preferences` | Cliente optou por não receber marketing |
+| `automatic_events` | Eventos automáticos de mensageria |
+| `security` | Eventos de segurança da conta |
+
+Assine só o que você vai tratar. Cada campo assinado é volume de POST no seu servidor.
+
+Dois valem atenção especial: **`template_category_update`**, porque uma reclassificação de utilidade para marketing multiplica o custo da mensagem sem aviso, e **`phone_number_quality_update`**, porque é o sinal que antecede o bloqueio.
+
+A lista muda sem aviso, a Meta acrescenta campos com o tempo. Confira a [referência de webhooks](https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview) antes de assumir que está completa. Provedores também podem expor eventos próprios além dos campos da Meta.
 
 ## Validar assinatura HMAC
 
@@ -238,7 +244,7 @@ Receber é POST de Meta. Responder é POST seu para Meta:
 import requests
 
 def send_message(to_number, message_text, token):
-    url = f'https://graph.instagram.com/v20.0/{{phone_number_id}}/messages'
+    url = f'https://graph.facebook.com/v20.0/{{phone_number_id}}/messages'
     
     headers = {
         'Authorization': f'Bearer {token}',

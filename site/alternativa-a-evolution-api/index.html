@@ -577,10 +577,10 @@ footer p{margin:0 0 .5rem}
 <h1>Evolution API: Baileys vs Cloud API vs Datafy - trade-offs técnicos</h1>
 <p><strong>Resposta curta:</strong> Evolution tem dois modos. Modo Baileys emula WhatsApp Web (você roda, quebra quando app atualiza). Modo Cloud API passa token para Meta (você roda, mas estável). Datafy oferece o mesmo que Cloud API sem você rodar servidor. A escolha depende de quanto você quer controlar vs manter.</p>
 <div class="stats">
-  <div class="stat"><b>2 modos</b><span>Baileys (emulação) e Cloud API (proxy)</span></div>
-  <div class="stat"><b>0</b><span>diferença de código entre Cloud API e API oficial direto</span></div>
-  <div class="stat"><b>1 mudança</b><span>de URL/token para migrar de Evolution para Datafy</span></div>
-  <div class="stat"><b>Depende do modo</b><span>Baileys emula (não autorizado), Cloud API passa token para Meta</span></div>
+  <div class="stat"><b>2 modos</b><span>Baileys emula o WhatsApp Web, Cloud API repassa para a Meta</span></div>
+  <div class="stat"><b>1 servidor</b><span>que você roda e mantém nos dois modos</span></div>
+  <div class="stat"><b>0</b><span>diferença de payload entre Cloud API e a oficial direta</span></div>
+  <div class="stat"><b>2 trocas</b><span>no codigo para sair do Evolution: a URL e o token</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
@@ -592,6 +592,50 @@ footer p{margin:0 0 .5rem}
 <li>Risco em Baileys: acumula os acima, mais o risco de ban. É a pior opção.</li>
 <li>Datafy melhora Cloud API: você não precisa rodar ou manter servidor. Datafy mantém para você. Mesmo tipo de integração, menos overhead.</li>
 </ul>
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 720 258" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Evolution API: o modo decide tudo</text>
+<rect class="boxno" x="20" y="46" width="216" height="176" rx="8"/>
+<text class="h" x="128" y="76" text-anchor="middle">Modo Baileys</text>
+<text class="s" x="128" y="93" text-anchor="middle">emula o WhatsApp Web</text>
+<text class="p no" x="36" y="118">✗ Fora dos Termos</text>
+<text class="p " x="36" y="140">Você roda o servidor</text>
+<text class="p " x="36" y="162">Quebra quando o app muda</text>
+<rect class="box" x="252" y="46" width="216" height="176" rx="8"/>
+<text class="h" x="360" y="76" text-anchor="middle">Modo Cloud API</text>
+<text class="s" x="360" y="93" text-anchor="middle">repassa para a Meta</text>
+<text class="p " x="268" y="118">Dentro dos Termos</text>
+<text class="p " x="268" y="140">Você roda o servidor</text>
+<text class="p " x="268" y="162">Você guarda o token</text>
+<rect class="boxok" x="484" y="46" width="216" height="176" rx="8"/>
+<text class="h" x="592" y="76" text-anchor="middle">Provedor gerenciado</text>
+<text class="s" x="592" y="93" text-anchor="middle">exemplo: Datafy</text>
+<text class="p ok" x="500" y="118">✓ Dentro dos Termos</text>
+<text class="p ok" x="500" y="140">✓ Não roda servidor</text>
+<text class="p " x="500" y="162">Assinatura por número</text>
+<text class="s" x="360" y="244" text-anchor="middle">Mesmo payload nos dois últimos: muda a URL e o token.</text>
+</svg>
+</div>
+<figcaption></figcaption>
+</figure>
+
 <h2 id="o-risco-est-no-modo-n-o-na-marca">O risco está no modo, não na marca</h2>
 <p>Ponto crítico que a maioria não entende:</p>
 <p><strong>Evolution em modo Cloud API é tão "oficial" quanto qualquer intermediário</strong> (como reseller, como Datafy, como Twilio). Não é perigoso por ser Evolution. É apenas mais trabalho.</p>

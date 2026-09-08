@@ -30,7 +30,7 @@ status: aprovado
 
 **Resposta curta:** Evolution tem dois modos. Modo Baileys emula WhatsApp Web (você roda, quebra quando app atualiza). Modo Cloud API passa token para Meta (você roda, mas estável). Datafy oferece o mesmo que Cloud API sem você rodar servidor. A escolha depende de quanto você quer controlar vs manter.
 
-::numeros: 2 modos|Baileys (emulação) e Cloud API (proxy) ;; 0|diferença de código entre Cloud API e API oficial direto ;; 1 mudança|de URL/token para migrar de Evolution para Datafy ;; Depende do modo|Baileys emula (não autorizado), Cloud API passa token para Meta
+::numeros: 2 modos|Baileys emula o WhatsApp Web, Cloud API repassa para a Meta ;; 1 servidor|que você roda e mantém nos dois modos ;; 0|diferença de payload entre Cloud API e a oficial direta ;; 2 trocas|no codigo para sair do Evolution: a URL e o token
 
 ## Principais pontos
 - Evolution é open source. Você roda no Docker, configura qual modo quer. Baileys ou Cloud API. Essa escolha muda tudo.
@@ -39,6 +39,8 @@ status: aprovado
 - Risco em Cloud API: se servidor Evolution cai, você cai. Se hackeia Evolution, seu token vaza. Se Evolution descontinua, seu código fica órfão.
 - Risco em Baileys: acumula os acima, mais o risco de ban. É a pior opção.
 - Datafy melhora Cloud API: você não precisa rodar ou manter servidor. Datafy mantém para você. Mesmo tipo de integração, menos overhead.
+
+::diagrama: evolution-tres-modos
 
 ## O risco está no modo, não na marca
 

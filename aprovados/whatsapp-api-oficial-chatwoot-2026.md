@@ -34,14 +34,14 @@ status: aprovado
 
 A particularidade aqui é a coexistência. O mesmo número pode estar rodando na API oficial e ainda ter o app WhatsApp Web aberto. Seu gerente continua vendo mensagens no celular enquanto a equipe responde pelo Chatwoot. Sem número duplicado, sem perda de conversa, sem síncronização quebrada.
 
-::numeros: 1 aba|nativa de Chatwoot na Datafy, só nós temos ;; 1 inbox|todas as conversas chegam juntas ;; 5 pessoas|podem atender o mesmo número ao mesmo tempo ;; 0 duplicação|de números quando usa coexistência
+::numeros: 1 inbox|para WhatsApp, e-mail, chat de site e Telegram ;; 180 dias|de histórico que a Meta sincroniza no onboarding ;; 20 msg/s|throughput de um número em coexistência ;; 24 h|prazo para disparar a sincronização do histórico
 
 ## Principais pontos
 - Chatwoot é open source e você roda onde quiser (na nuvem deles, no seu servidor, no Docker). Sempre vai funcionar e você não fica preso num SaaS.
 - A integração de API oficial no Chatwoot precisa de três coisas: o token Bearer, o phone_number_id e o webhook_url da sua instância do Chatwoot. A Datafy fornece os dois primeiros automático.
 - Coexistência significa o mesmo número ao mesmo tempo no app (celular/desktop) e na API. Quem escreve onde? Você configura. Comum é: app para pessoal/suporte, API para automação/bulk.
 - Não perde conversa. Mensagens que chegam no app aparecem no Chatwoot também, instantaneamente. É tipo um mirror.
-- Limite da Meta continua valendo: 500 mensagens por minuto, 60 mídia por minuto. Chatwoot é só a interface para você não infringir isso sem querer.
+- O limite da Meta continua valendo: 80 mensagens por segundo por número, e 20 por segundo se o número estiver em coexistência. O Chatwoot é só a interface, ele não muda esse teto.
 
 ::diagrama: chatwoot-inbox
 
@@ -100,7 +100,7 @@ Chatwoot adicionou suporte a estados de conversa (resolvido, aguardando, prioriz
 
 Segundo, integração com Datafy agora é nativa. Antes era via webhook manual, hoje é um clique.
 
-Terceiro, a Meta passou a cobrar templates de marketing (0,01 USD cada). No Chatwoot você consegue ver o custo real de cada conversa que usa template.
+Terceiro, com a cobrança por mensagem entregue, saber a categoria de cada template virou parte do controle de custo. No Chatwoot você enxerga quais conversas usaram template e quais foram respondidas dentro da janela.
 
 ## Perguntas frequentes
 

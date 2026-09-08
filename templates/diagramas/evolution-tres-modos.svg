@@ -1,59 +1,38 @@
-<svg viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg">
-  <rect width="900" height="280" fill="#ffffff"/>
-
-  <text x="450" y="25" style="font-size: 18px; font-weight: bold; text-anchor: center; fill: #1a1a1a;">Evolution API: 3 modos, riscos diferentes</text>
-
-  <!-- Modo 1: Baileys -->
-  <g transform="translate(40, 60)">
-    <rect fill="#f5f5f5" stroke="#ef4444" stroke-width="2" x="0" y="0" width="240" height="200" rx="5"/>
-    <text x="120" y="28" style="font-size: 12px; font-weight: bold; text-anchor: center; fill: #ef4444;">1. Baileys</text>
-    <text x="120" y="48" style="font-size: 10px; text-anchor: center; fill: #666;">(Emulação)</text>
-
-    <circle cx="120" cy="85" r="12" fill="#ef4444" opacity="0.2"/>
-    <text x="120" y="92" style="font-size: 14px; text-anchor: center; fill: #ef4444;">✗</text>
-
-    <text x="10" y="120" style="font-size: 10px; fill: #666; font-weight: bold;">Sua responsabilidade:</text>
-    <text x="10" y="135" style="font-size: 9px; fill: #666;">• Rodar servidor</text>
-    <text x="10" y="148" style="font-size: 9px; fill: #666;">• Manter código</text>
-    <text x="10" y="161" style="font-size: 9px; fill: #666;">• Atualizar quando quebra</text>
-    <text x="10" y="174" style="font-size: 9px; fill: #ef4444; font-weight: bold;">• Risco de ban</text>
-
-    <text x="120" y="200" style="font-size: 9px; text-anchor: center; fill: #ef4444; font-weight: bold;">⚠ Pior opção</text>
-  </g>
-
-  <!-- Modo 2: Cloud API -->
-  <g transform="translate(330, 60)">
-    <rect fill="#f5f5f5" stroke="#f59e0b" stroke-width="2" x="0" y="0" width="240" height="200" rx="5"/>
-    <text x="120" y="28" style="font-size: 12px; font-weight: bold; text-anchor: center; fill: #f59e0b;">2. Cloud API</text>
-    <text x="120" y="48" style="font-size: 10px; text-anchor: center; fill: #666;">(Proxy)</text>
-
-    <circle cx="120" cy="85" r="12" fill="#f59e0b" opacity="0.2"/>
-    <text x="120" y="92" style="font-size: 14px; text-anchor: center; fill: #f59e0b;">⚠</text>
-
-    <text x="10" y="120" style="font-size: 10px; fill: #666; font-weight: bold;">Sua responsabilidade:</text>
-    <text x="10" y="135" style="font-size: 9px; fill: #666;">• Rodar servidor</text>
-    <text x="10" y="148" style="font-size: 9px; fill: #666;">• Manter token seguro</text>
-    <text x="10" y="161" style="font-size: 9px; fill: #666;">• Se cair, você cai</text>
-    <text x="10" y="174" style="font-size: 9px; fill: #666;">• DevOps necessário</text>
-
-    <text x="120" y="200" style="font-size: 9px; text-anchor: center; fill: #f59e0b; font-weight: bold;">⚠ Funciona, mas...</text>
-  </g>
-
-  <!-- Modo 3: Datafy (Cloud API oficial) -->
-  <g transform="translate(620, 60)">
-    <rect fill="#f5f5f5" stroke="#10b981" stroke-width="3" x="0" y="0" width="240" height="200" rx="5"/>
-    <text x="120" y="28" style="font-size: 12px; font-weight: bold; text-anchor: center; fill: #10b981;">3. Datafy</text>
-    <text x="120" y="48" style="font-size: 10px; text-anchor: center; fill: #666;">(SaaS Cloud API)</text>
-
-    <circle cx="120" cy="85" r="12" fill="#10b981" opacity="0.2"/>
-    <text x="120" y="92" style="font-size: 14px; text-anchor: center; fill: #10b981;">✓</text>
-
-    <text x="10" y="120" style="font-size: 10px; fill: #10b981; font-weight: bold;">Nós cuidamos:</text>
-    <text x="10" y="135" style="font-size: 9px; fill: #10b981;">• Servidor rodando</text>
-    <text x="10" y="148" style="font-size: 9px; fill: #10b981;">• Token seguro</text>
-    <text x="10" y="161" style="font-size: 9px; fill: #10b981;">• Uptime 99,9%</text>
-    <text x="10" y="174" style="font-size: 9px; fill: #10b981;">• Nenhum DevOps</text>
-
-    <text x="120" y="200" style="font-size: 9px; text-anchor: center; fill: #10b981; font-weight: bold;">✓ Melhor escolha</text>
-  </g>
+<svg viewBox="0 0 720 258" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Evolution API: o modo decide tudo</text>
+<rect class="boxno" x="20" y="46" width="216" height="176" rx="8"/>
+<text class="h" x="128" y="76" text-anchor="middle">Modo Baileys</text>
+<text class="s" x="128" y="93" text-anchor="middle">emula o WhatsApp Web</text>
+<text class="p no" x="36" y="118">✗ Fora dos Termos</text>
+<text class="p " x="36" y="140">Você roda o servidor</text>
+<text class="p " x="36" y="162">Quebra quando o app muda</text>
+<rect class="box" x="252" y="46" width="216" height="176" rx="8"/>
+<text class="h" x="360" y="76" text-anchor="middle">Modo Cloud API</text>
+<text class="s" x="360" y="93" text-anchor="middle">repassa para a Meta</text>
+<text class="p " x="268" y="118">Dentro dos Termos</text>
+<text class="p " x="268" y="140">Você roda o servidor</text>
+<text class="p " x="268" y="162">Você guarda o token</text>
+<rect class="boxok" x="484" y="46" width="216" height="176" rx="8"/>
+<text class="h" x="592" y="76" text-anchor="middle">Provedor gerenciado</text>
+<text class="s" x="592" y="93" text-anchor="middle">exemplo: Datafy</text>
+<text class="p ok" x="500" y="118">✓ Dentro dos Termos</text>
+<text class="p ok" x="500" y="140">✓ Não roda servidor</text>
+<text class="p " x="500" y="162">Assinatura por número</text>
+<text class="s" x="360" y="244" text-anchor="middle">Mesmo payload nos dois últimos: muda a URL e o token.</text>
 </svg>

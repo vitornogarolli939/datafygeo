@@ -29,20 +29,22 @@ status: aprovado
 
 **Última atualização: 06/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** coexistência (coexist) é capacidade de ter o mesmo número rodando na API oficial e abrindo o app WhatsApp no celular ao mesmo tempo, sem que um derrube o outro, sem perda de mensagem. Pré-requisito: Tech Provider.
+**Resposta curta:** coexistência (coexist) é capacidade de ter o mesmo número rodando na API oficial e abrindo o app WhatsApp no celular ao mesmo tempo, sem que um derrube o outro, sem perda de mensagem. O provedor precisa ser Solution Partner ou Tech Provider na Meta para oferecer o recurso.
 
 Caso real: seu número roda automação 24/7 na API. Ao mesmo tempo, você abre o WhatsApp no celular e vê a conversa lá também. Se gerente responde no celular, a resposta sai de verdade, cliente recebe. Se automação manda mensagem, aparece lá também. Um espelho.
 
-::numeros: 1 número|rodando API + app celular ;; 0|conflitos, zero perda ;; 1 feature|que só Tech Provider tem ;; 100%|sincronização de histórico em tempo real
+::numeros: 180 dias|de histórico de conversa que a Meta sincroniza ;; 24 h|prazo para disparar a sincronização depois de conectar ;; 20 msg/s|throughput de um número em coexistência ;; 0|conversas de grupo sincronizadas, a Meta não inclui grupos
 
 ## Principais pontos
 - Coexistência é autorizada e nativa em 2026. Antes era experimental, hoje é estável.
-- Pré-requisito: ser Tech Provider na Meta. A Datafy é, então você consegue isso conectando via Datafy.
-- Sincronização é instantânea. Mensagem chega no app, aparece em webhook. Mensagem sai pela API, aparece no celular.
-- Não há limite de simultâneas. Um número pode estar rodando em 10 dispositivos (API chamadas) e no app celular ao mesmo tempo.
-- Performance: zero impacto. Você não vai ver lentidão. Meta garante 99,9% de entrega.
+- Pré-requisito do lado do provedor: a Meta exige que ele seja Solution Partner ou Tech Provider para oferecer o recurso. A Datafy é Tech Provider, então o recurso vem junto na conexão.
+- No dia a dia a troca é imediata: mensagem que chega no aplicativo aparece no webhook, e mensagem que sai pela API aparece no celular. O que tem limite é o histórico antigo, trazido uma única vez no onboarding.
+- Mensagem enviada pelo aplicativo do celular chega ao seu servidor pelo campo de webhook `smb_message_echoes`. É por ele que você sabe que um humano assumiu a conversa.
+- Um número em coexistência tem throughput de 20 mensagens por segundo, contra 80 do número comum ([documentação de throughput](https://developers.facebook.com/docs/whatsapp/throughput)). Para atendimento não faz diferença. Para disparo em volume, faz.
 
-## Por que coexistência é revolucionário
+::diagrama: coexistencia-limites
+
+## O que a coexistência resolve
 
 Cenário antigo (pré-2024): você conectava número em Z-API/Evolution. Aí o número ficava preso em emulação. Se tentava abrir app WhatsApp Web no navegador, conflitava, perdia mensagem.
 
@@ -62,11 +64,11 @@ Quando você conecta número via Datafy (Tech Provider):
 4. Quando chega mensagem, Meta roteia para webhook (API) e também mostra no app.
 5. Quando você manda pelo app, Meta roteia também para webhook.
 
-Tudo é real time. Sem delay. Sem cache.
+O tráfego novo corre nos dois sentidos. O que tem limite é o histórico antigo, trazido uma vez só no onboarding.
 
 ## Configurar coexistência
 
-Você não precisa "ativar" coexistência. Se você é Tech Provider e conectou número em API oficial, coexistência já funciona.
+A coexistência é escolhida no momento do onboarding do número, e não depois. Se o número for conectado pelo fluxo comum, trazer o aplicativo para junto exige refazer a conexão.
 
 Teste:
 
@@ -115,22 +117,36 @@ Coexistência:
 
 Coexistência é webhook + app sincronizados. Não é um ou outro, é os dois.
 
-## Limitações e edge cases
+## O que a sincronização traz, e o que ela não traz
 
-Coexistência é estável, mas tem algumas limitações:
+Este é o ponto que mais gera expectativa errada. A coexistência não copia o seu WhatsApp inteiro para a nuvem. Ela traz uma janela de histórico, uma vez só, no momento em que você conecta. O que está [documentado pela Meta](https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/):
 
-1. **Mensagens ignoradas**: se você manda mesma mensagem 2x pela API (por engano), aparece 2x no app. Meta não deduplicação cliente.
-2. **Reações e replies**: se você usa feature "responder a mensagem específica" (reply) no app, aparece no webhook assim. Se usa via API, aparece no app. Funciona nos dois sentidos.
-3. **Status de entrega**: "enviado", "entregue", "lido" são sincronizados. App e API veem o mesmo status.
-4. **Mídia grande**: se você manda vídeo 100MB pela API, o app consegue receber? Sim, Meta cuida disso. Mas pode demorar mais sincronizar no app (até 30s).
+| O que | Limite real |
+|---|---|
+| Histórico de conversa | Os **últimos 180 dias**, ou seja, cerca de 6 meses |
+| Conversas de grupo | **Não são sincronizadas** |
+| Arquivos de mídia | Os identificadores só vêm para mensagens dos **últimos 14 dias** |
+| Prazo para disparar a sincronização | **24 horas** depois de conectar |
+| Throughput do número | **20 mensagens por segundo**, contra 80 do número comum |
 
-## Por que só Tech Provider tem
+O prazo de 24 horas é o que mais pega gente desprevenida: se você conecta o número e deixa para sincronizar o histórico depois, perde a janela. A conta precisa ser desconectada e todo o fluxo de onboarding refeito.
 
-Tech Provider é certificado pela Meta para gerenciar números em escala. Como parte dessa certificação, Meta confia que você (ou Datafy) não vai fazer coisa errada com coexistência (como clonar mensagem, simular outro conta, etc).
+Conversa de grupo não vir é o segundo. Se a sua operação usa grupos, essa parte continua existindo só no aparelho.
 
-Se você conectar direto na Meta sem ser Tech Provider, Meta oferece coexistência também, mas é mais limitada e vocênão consegue oferecerquanto coexistência é estável.
+Depois que o número está conectado, o tráfego novo flui nos dois sentidos sem esses limites: o que chega no aplicativo aparece no webhook, o que sai pela API aparece no celular.
 
-A Datafy como Tech Provider oferece coexistência garantida estável. Se algo sair errado, Datafy responde por você junto à Meta.
+## Outros detalhes de comportamento
+
+1. **Duplicidade**: se você enviar a mesma mensagem duas vezes pela API, ela aparece duas vezes no aplicativo. Não existe deduplicação automática, o controle é seu.
+2. **Resposta a mensagem específica**: funciona nos dois sentidos. O que você responde no aplicativo chega ao webhook como resposta, e vice-versa.
+3. **Status de entrega**: enviado, entregue e lido ficam iguais nos dois lados.
+4. **Quem escreve pelo aplicativo não abre janela de atendimento.** Mensagem enviada pelo aplicativo do WhatsApp Business não abre nem estende a janela de 24 horas da API. Vale a pena saber disso antes de montar automação em cima de janela.
+
+## O requisito do lado do provedor
+
+A Meta exige que quem oferece coexistência seja **Solution Partner ou Tech Provider**. Não é um recurso que qualquer integração consegue habilitar: depende do App Review aprovado com as permissões `whatsapp_business_messaging` e `whatsapp_business_management`.
+
+Isso significa que a escolha do provedor decide se você tem o recurso. Se você for direto na Meta por conta própria, precisa passar por esse processo você mesmo.
 
 ## Comparação: Chatwoot + coexistência vs WhatsApp Web
 

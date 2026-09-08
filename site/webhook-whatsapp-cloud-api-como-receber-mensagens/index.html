@@ -575,22 +575,22 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <h1>Webhook WhatsApp Cloud API: receber mensagens em tempo real no seu servidor</h1>
-<p><strong>Resposta curta:</strong> webhook é um POST HTTP que Meta (ou Datafy em nome dela) faz para seu servidor toda vez que chega mensagem no número. Seu servidor recebe JSON, processa (salva em banco, envia para CRM, etc), responde com "200 OK". Meta garante entrega do webhook (3 tentativas).</p>
+<p><strong>Resposta curta:</strong> webhook é um POST HTTP que Meta (ou Datafy em nome dela) faz para seu servidor toda vez que chega mensagem no número. Seu servidor recebe JSON, processa (salva em banco, envia para CRM, etc), responde com "200 OK". Se o seu servidor falhar, a Meta reentrega, com frequência decrescente, por até 7 dias.</p>
 <p>Pré-requisito: servidor com HTTPS válido (certificado SSL), URL acessível de fora, porta 443 aberta.</p>
 <div class="stats">
-  <div class="stat"><b>28 eventos</b><span>que Meta manda no webhook (mensagem, template update, status delivery, etc)</span></div>
-  <div class="stat"><b>3 tentativas</b><span>Meta faz se webhook falhar</span></div>
-  <div class="stat"><b>1 validação</b><span>assinatura HMAC para garantir que POST veio de Meta</span></div>
-  <div class="stat"><b>60 segundos</b><span>timeout se seu servidor não responde</span></div>
+  <div class="stat"><b>19 campos</b><span>de webhook na conta, verificado em setembro de 2026</span></div>
+  <div class="stat"><b>7 dias</b><span>que a Meta reentrega, com frequência decrescente, se você falhar</span></div>
+  <div class="stat"><b>200</b><span>o status HTTP que a Meta espera de volta</span></div>
+  <div class="stat"><b>SHA-256</b><span>o HMAC do header X-Hub-Signature-256</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
 <li>Webhook é a única forma de receber mensagens em tempo real. Sem webhook, seu app não sabe que chegou conversa.</li>
 <li>Meta faz POST com conteúdo JSON. JSON tem: remetente, conteúdo, tipo (texto, imagem, áudio), timestamp, message_id.</li>
-<li>Você valida que JSON veio de Meta (assinatura HMAC), processa, retorna 200 OK em menos de 60 segundos.</li>
-<li>Se você demorar mais de 60s, Meta desiste e tenta de novo (até 3x total).</li>
-<li>28 tipos de eventos diferentes: mensagem text, imagem, áudio, documento, status de entrega, template aprovado/reprovado, mudança de qualidade do número, etc.</li>
+<li>Você valida que o JSON veio da Meta (assinatura HMAC no header X-Hub-Signature-256), responde 200 na hora e processa depois. A Meta não publica um tempo limite de resposta, então o seguro é confirmar primeiro e trabalhar de forma assíncrona.</li>
+<li>A Meta não publica um tempo limite de resposta nem um número fixo de tentativas: ela reentrega com frequência decrescente por até 7 dias.</li>
+<li>A conta tem 19 campos de webhook disponíveis na documentação da Meta, verificado em setembro de 2026: mensagens, status de entrega, alertas de conta, qualidade do número, situação e categoria de template, histórico, segurança, entre outros. A lista cresce sem aviso, e provedores podem expor eventos próprios além dela.</li>
 </ul>
 <h2 id="configurar-webhook-no-datafy">Configurar webhook no Datafy</h2>
 <p>Se você usa Datafy:</p>
@@ -689,36 +689,143 @@ return 'ok', 200
 <p><strong>Localização:</strong>
 <code>"type": "location"
 "location": { "latitude": -23.55, "longitude": -46.63 }</code></p>
-<h2 id="os-28-eventos-que-meta-envia">Os 28 eventos que Meta envia</h2>
-<p>Meta envia webhook para:</p>
-<ol>
-<li><strong>Mensagem text</strong> (entrada)</li>
-<li><strong>Imagem</strong> (entrada)</li>
-<li><strong>Áudio</strong> (entrada)</li>
-<li><strong>Vídeo</strong> (entrada)</li>
-<li><strong>Documento</strong> (entrada)</li>
-<li><strong>Localização</strong> (entrada)</li>
-<li><strong>Sticker</strong> (entrada)</li>
-<li><strong>Contato</strong> (entrada, remetente mandou seu contato)</li>
-<li><strong>Mensagem com botão clicada</strong> (entrada, cliente clicou em botão)</li>
-<li><strong>Mensagem com lista</strong> (entrada, cliente escolheu em lista)</li>
-<li><strong>Interativo escolhido</strong> (entrada, cliente clicou resposta rápida)</li>
-<li><strong>Template enviado com sucesso</strong> (confirmação)</li>
-<li><strong>Template não chegou / falhado</strong> (erro)</li>
-<li><strong>Mensagem entregue</strong> (status)</li>
-<li><strong>Mensagem lida</strong> (status)</li>
-<li><strong>Chat aberto</strong> (cliente abriu conversa)</li>
-<li><strong>Telefone descartado</strong> (cliente bloqueou você)</li>
-<li><strong>Qualidade do número mudou</strong> (ALTA, MÉDIA, BAIXA)</li>
-<li><strong>Número novo qualificado</strong> (novo número conectado, qualidade validada)</li>
-<li><strong>Account update</strong> (algo mudou em BM)</li>
-<li><strong>Template reprovado</strong> (motivo no payload)</li>
-<li><strong>Template pré-aprovado</strong> (rápido, aparecendo)</li>
-<li><strong>Template pendente</strong> (em review)</li>
-<li><strong>Security event</strong> (alguém tentou acessar token, etc)
-25-28. <strong>Outros</strong> (eventos novos que Meta adiciona)</li>
-</ol>
-<p>Você processa os eventos que interessam, ignora os outros.</p>
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Como o webhook entrega a mensagem</text>
+<rect class="box" x="30" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="115" y="80" text-anchor="middle">Cliente</text>
+<text class="s" x="115" y="100" text-anchor="middle">escreve no WhatsApp</text>
+<rect class="box" x="275" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="360" y="80" text-anchor="middle">Meta</text>
+<text class="s" x="360" y="100" text-anchor="middle">faz POST no seu endpoint</text>
+<rect class="box" x="520" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="605" y="80" text-anchor="middle">Seu servidor</text>
+<text class="s" x="605" y="100" text-anchor="middle">responde 200 na hora</text>
+<path class="ar" d="M205,87 L268,87"/>
+<path class="ar" d="M450,87 L513,87"/>
+<rect class="box" x="30" y="146" width="330" height="76" rx="8"/>
+<text class="h" x="46" y="170">Se você falhar</text>
+<text class="p" x="46" y="192">A Meta reentrega com frequência</text>
+<text class="p" x="46" y="210">decrescente por até 7 dias.</text>
+<rect class="box" x="380" y="146" width="310" height="76" rx="8"/>
+<text class="h" x="396" y="170">Como validar</text>
+<text class="p" x="396" y="192">HMAC SHA-256 no header</text>
+<text class="p" x="396" y="210">X-Hub-Signature-256.</text>
+</svg>
+</div>
+<figcaption></figcaption>
+</figure>
+
+<h2 id="os-campos-de-webhook-que-a-meta-disponib">Os campos de webhook que a Meta disponibiliza</h2>
+<p>Aqui mora uma confusão que custa horas de debug: <strong>campo de webhook não é o mesmo que tipo de mensagem.</strong></p>
+<p>O campo é o que você assina no App Dashboard. Texto, imagem, áudio, localização e figurinha <strong>não são campos</strong>: todos chegam dentro do campo <code>messages</code>, e você diferencia lendo o <code>type</code> de cada mensagem no payload. Assinar <code>messages</code> já traz todos eles.</p>
+<p>Na documentação da Meta, a conta tem <strong>19 campos</strong> disponíveis, verificado em setembro de 2026:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>O que avisa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>messages</code></td>
+<td>Mensagem recebida e status de entrega, leitura e falha</td>
+</tr>
+<tr>
+<td><code>smb_message_echoes</code></td>
+<td>Mensagem enviada pelo aplicativo do celular, em coexistência</td>
+</tr>
+<tr>
+<td><code>smb_app_state_sync</code></td>
+<td>Sincronização de contatos e estado do aplicativo</td>
+</tr>
+<tr>
+<td><code>history</code></td>
+<td>Histórico de conversa importado no onboarding</td>
+</tr>
+<tr>
+<td><code>message_template_status_update</code></td>
+<td>Template aprovado, reprovado ou pausado</td>
+</tr>
+<tr>
+<td><code>message_template_quality_update</code></td>
+<td>Qualidade do template mudou</td>
+</tr>
+<tr>
+<td><code>message_template_components_update</code></td>
+<td>Componentes do template foram alterados</td>
+</tr>
+<tr>
+<td><code>template_category_update</code></td>
+<td>A Meta reclassificou a categoria, e isso muda o preço</td>
+</tr>
+<tr>
+<td><code>phone_number_quality_update</code></td>
+<td>Qualidade do número caiu ou subiu</td>
+</tr>
+<tr>
+<td><code>phone_number_name_update</code></td>
+<td>Nome de exibição aprovado ou recusado</td>
+</tr>
+<tr>
+<td><code>account_update</code></td>
+<td>Mudança na conta, inclusive banimento</td>
+</tr>
+<tr>
+<td><code>account_alerts</code></td>
+<td>Alertas da Meta sobre a conta</td>
+</tr>
+<tr>
+<td><code>account_review_update</code></td>
+<td>Resultado da revisão da conta</td>
+</tr>
+<tr>
+<td><code>business_capability_update</code></td>
+<td>Limites de envio e de números mudaram</td>
+</tr>
+<tr>
+<td><code>payment_configuration_update</code></td>
+<td>Configuração de pagamento</td>
+</tr>
+<tr>
+<td><code>partner_solutions</code></td>
+<td>Eventos de solução de parceiro</td>
+</tr>
+<tr>
+<td><code>user_preferences</code></td>
+<td>Cliente optou por não receber marketing</td>
+</tr>
+<tr>
+<td><code>automatic_events</code></td>
+<td>Eventos automáticos de mensageria</td>
+</tr>
+<tr>
+<td><code>security</code></td>
+<td>Eventos de segurança da conta</td>
+</tr>
+</tbody>
+</table></div>
+<p>Assine só o que você vai tratar. Cada campo assinado é volume de POST no seu servidor.</p>
+<p>Dois valem atenção especial: <strong><code>template_category_update</code></strong>, porque uma reclassificação de utilidade para marketing multiplica o custo da mensagem sem aviso, e <strong><code>phone_number_quality_update</code></strong>, porque é o sinal que antecede o bloqueio.</p>
+<p>A lista muda sem aviso, a Meta acrescenta campos com o tempo. Confira a <a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview" rel="noopener">referência de webhooks</a> antes de assumir que está completa. Provedores também podem expor eventos próprios além dos campos da Meta.</p>
 <h2 id="validar-assinatura-hmac">Validar assinatura HMAC</h2>
 <p>Antes de processar, você PRECISA validar que POST veio de Meta:</p>
 <p>```python
@@ -750,7 +857,7 @@ return 'ok', 200
 <p>```python
 import requests</p>
 <p>def send_message(to_number, message_text, token):
-    url = f'https://graph.instagram.com/v20.0/{{phone_number_id}}/messages'</p>
+    url = f'https://graph.facebook.com/v20.0/{{phone_number_id}}/messages'</p>
 <pre><code>headers = {
     'Authorization': f'Bearer {token}',
     'Content-Type': 'application/json'
@@ -830,7 +937,7 @@ return response.json()
         <li><a href="#responder-a-post-de-teste-da-meta">Responder a POST de teste da Meta</a></li>
         <li><a href="#receber-mensagem-de-verdade">Receber mensagem de verdade</a></li>
         <li><a href="#estrutura-json-de-mensagem-todos-os-tipo">Estrutura JSON de mensagem (todo...</a></li>
-        <li><a href="#os-28-eventos-que-meta-envia">Os 28 eventos que Meta envia</a></li>
+        <li><a href="#os-campos-de-webhook-que-a-meta-disponib">Os campos de webhook que a Meta...</a></li>
         <li><a href="#validar-assinatura-hmac">Validar assinatura HMAC</a></li>
         <li><a href="#responder-mensagem">Responder mensagem</a></li>
         <li><a href="#problemas-comuns">Problemas comuns</a></li>

@@ -32,7 +32,7 @@ status: aprovado
 
 Recuperação é possível, mas leva tempo, prova de conformidade e mudança real de conduta.
 
-::numeros: 5 condutas|específicas causam ban, mesmo com API oficial ;; 48 horas|é quanto dura temporário às vezes, ou é permanente ;; 1 email|ao suporte Meta com prova de conformidade pode reabrir ;; 0|chance sem mudar causa raiz
+::numeros: 5 condutas|que derrubam número mesmo com API oficial ;; 24 h|janela em que você responde sem template ;; média|a qualidade cai de alta para media antes do bloqueio ;; 1 recurso|no suporte da Meta, com prova de conformidade
 
 ## Principais pontos
 - Ban é de conta, não é de ferramenta. Se você muda de Z-API para API oficial mas não muda conduta, ban continua ou volta.

@@ -30,7 +30,7 @@ status: aprovado
 
 **Resposta curta:** UAZAPI emula WhatsApp Web (simples, rápido de começar, depende de atualizações). API oficial é um endpoint da Meta (estável, com contrato, burocracia de aprovação). Se você usa UAZAPI agora, aqui estão os trade-offs de continuar vs migrar: simplicidade vs estabilidade. A escolha depende do tempo que você planeja rodar.
 
-::numeros: não autorizada|pela Meta (Termos proíbem) ;; 24 horas|pode levar para recuperar número se resolver motivo ;; 0|processos contra Datafy ;; menos de 5 min|migrar sem perder número
+::numeros: 2 arquiteturas|emular o WhatsApp Web ou falar com o endpoint da Meta ;; 0|canal de recurso quando não existe contrato ;; 80 msg/s|throughput padrão de um número na Cloud API ;; 2 trocas|no codigo para migrar: a URL e o token
 
 ## Principais pontos
 - UAZAPI funciona deixando um navegador rodando com WhatsApp Web. Cada mensagem é digitada automaticamente. Meta detecta isso, bloqueia o número. Não há recurso, não há suporte, número perdido.

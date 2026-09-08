@@ -1,73 +1,46 @@
-<svg viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="250" fill="#ffffff"/>
-
-  <text x="400" y="30" style="font-size: 18px; font-weight: bold; text-anchor: center; fill: #1a1a1a;">Migração: Sem perder número</text>
-
-  <!-- Step 1 -->
-  <g transform="translate(50, 70)">
-    <circle cx="30" cy="30" r="25" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #0ea5e9;">1</text>
-
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #1a1a1a;">Cria conta</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">Datafy</text>
-  </g>
-
-  <!-- Arrow -->
-  <path stroke="#0ea5e9" stroke-width="2" fill="none" d="M 130 100 L 180 100" marker-end="url(#arrowhead)"/>
-
-  <!-- Step 2 -->
-  <g transform="translate(200, 70)">
-    <circle cx="30" cy="30" r="25" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #0ea5e9;">2</text>
-
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #1a1a1a;">Conecta</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">Seu número (BM)</text>
-  </g>
-
-  <!-- Arrow -->
-  <path stroke="#0ea5e9" stroke-width="2" fill="none" d="M 280 100 L 330 100" marker-end="url(#arrowhead)"/>
-
-  <!-- Step 3 -->
-  <g transform="translate(350, 70)">
-    <circle cx="30" cy="30" r="25" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #0ea5e9;">3</text>
-
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #1a1a1a;">Copia token</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">sk_live_...</text>
-  </g>
-
-  <!-- Arrow -->
-  <path stroke="#0ea5e9" stroke-width="2" fill="none" d="M 430 100 L 480 100" marker-end="url(#arrowhead)"/>
-
-  <!-- Step 4 -->
-  <g transform="translate(500, 70)">
-    <circle cx="30" cy="30" r="25" fill="#0ea5e9" opacity="0.3" stroke="#0ea5e9" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #0ea5e9;">4</text>
-
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #1a1a1a;">Muda código</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">URL + token</text>
-  </g>
-
-  <!-- Arrow -->
-  <path stroke="#0ea5e9" stroke-width="2" fill="none" d="M 580 100 L 630 100" marker-end="url(#arrowhead)"/>
-
-  <!-- Step 5 -->
-  <g transform="translate(650, 70)">
-    <circle cx="30" cy="30" r="25" fill="#10b981" opacity="0.3" stroke="#10b981" stroke-width="2"/>
-    <text x="30" y="38" style="font-size: 18px; font-weight: bold; text-anchor: middle; fill: #10b981;">✓</text>
-
-    <text x="30" y="75" style="font-size: 12px; font-weight: bold; text-anchor: middle; fill: #10b981">Pronto!</text>
-    <text x="30" y="92" style="font-size: 10px; text-anchor: middle; fill: #666;">1 hora total</text>
-  </g>
-
-  <!-- Key info -->
-  <rect x="50" y="180" width="700" height="50" fill="#f5f5f5" rx="4"/>
-  <text x="60" y="200" style="font-size: 11px; fill: #1a1a1a; font-weight: bold;">✓ Número continua seu (registrado em BM)</text>
-  <text x="60" y="220" style="font-size: 11px; fill: #1a1a1a; font-weight: bold;">✓ Histórico em Z-API/Evolution fica lá (novo fica em Datafy)</text>
-
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <polygon points="0 0, 10 3, 0 6" fill="#0ea5e9"/>
-    </marker>
-  </defs>
+<svg viewBox="0 0 720 228" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Migrar sem perder o número</text>
+<circle cx="85" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="85" y="82" text-anchor="middle">1</text>
+<text class="p" x="85" y="116" text-anchor="middle">Criar conta</text>
+<path class="ar" d="M108,76 L152,76"/>
+<circle cx="219" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="219" y="82" text-anchor="middle">2</text>
+<text class="p" x="219" y="116" text-anchor="middle">Conectar número</text>
+<path class="ar" d="M242,76 L286,76"/>
+<circle cx="353" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="353" y="82" text-anchor="middle">3</text>
+<text class="p" x="353" y="116" text-anchor="middle">Copiar token</text>
+<path class="ar" d="M376,76 L420,76"/>
+<circle cx="487" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="487" y="82" text-anchor="middle">4</text>
+<text class="p" x="487" y="116" text-anchor="middle">Trocar URL</text>
+<path class="ar" d="M510,76 L554,76"/>
+<circle cx="621" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+<text class="h ok" x="621" y="82" text-anchor="middle">5</text>
+<text class="p" x="621" y="116" text-anchor="middle">Testar envio</text>
+<rect class="boxok" x="30" y="140" width="330" height="70" rx="8"/>
+<text class="h ok" x="46" y="164">O número continua seu</text>
+<text class="p" x="46" y="186">Ele está registrado na sua Business</text>
+<text class="p" x="46" y="202">Manager, não no provedor.</text>
+<rect class="box" x="380" y="140" width="310" height="70" rx="8"/>
+<text class="h" x="396" y="164">No codigo</text>
+<text class="p" x="396" y="186">Mudam duas coisas: a URL base</text>
+<text class="p" x="396" y="202">e o token. O payload é o mesmo.</text>
 </svg>

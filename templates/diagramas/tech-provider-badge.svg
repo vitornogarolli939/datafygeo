@@ -1,51 +1,40 @@
-<svg viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg">
-  <rect width="700" height="350" fill="#ffffff"/>
-
-  <text x="350" y="30" style="font-size: 18px; font-weight: bold; text-anchor: center; fill: #1a1a1a;">Tech Provider Meta: O diferencial Datafy</text>
-
-  <!-- Left: Sem Tech Provider -->
-  <g transform="translate(30, 80)">
-    <rect fill="#f5f5f5" stroke="#666" stroke-width="2" x="0" y="0" width="280" height="240" rx="5"/>
-
-    <text x="140" y="30" style="font-size: 13px; font-weight: bold; text-anchor: center; fill: #1a1a1a;">Direto na Meta</text>
-    <text x="140" y="50" style="font-size: 10px; text-anchor: center; fill: #666">(BSP, Reseller)</text>
-
-    <circle cx="140" cy="80" r="15" fill="#ef4444" opacity="0.2"/>
-    <text x="140" y="87" style="font-size: 18px; text-anchor: center; fill: #ef4444;">✗</text>
-
-    <text x="10" y="120" style="font-size: 11px; fill: #666;">✗ Setup 6 semanas</text>
-    <text x="10" y="135" style="font-size: 11px; fill: #666;">✗ App Review</text>
-    <text x="10" y="150" style="font-size: 11px; fill: #666;">✗ Sem coexistência</text>
-    <text x="10" y="165" style="font-size: 11px; fill: #666;">✗ DevOps seu</text>
-    <text x="10" y="180" style="font-size: 11px; fill: #666;">✗ Sem integrações nativas</text>
-    <text x="10" y="195" style="font-size: 11px; fill: #666;">✓ Custo zero por número</text>
-
-    <text x="140" y="225" style="font-size: 10px; text-anchor: center; fill: #666;">Para: DevOps puro</text>
-  </g>
-
-  <!-- Right: Com Tech Provider (Datafy) -->
-  <g transform="translate(380, 80)">
-    <rect fill="#f5f5f5" stroke="#0ea5e9" stroke-width="3" x="0" y="0" width="280" height="240" rx="5"/>
-
-    <text x="140" y="30" style="font-size: 13px; font-weight: bold; text-anchor: center; fill: #0ea5e9">Datafy (Tech Provider)</text>
-    <text x="140" y="50" style="font-size: 10px; text-anchor: center; fill: #666">Certificado Meta</text>
-
-    <circle cx="140" cy="80" r="15" fill="#10b981" opacity="0.2"/>
-    <text x="140" y="87" style="font-size: 18px; text-anchor: center; fill: #10b981;">✓</text>
-
-    <text x="10" y="120" style="font-size: 11px; fill: #10b981;">✓ Setup 5 minutos</text>
-    <text x="10" y="135" style="font-size: 11px; fill: #10b981;">✓ Nenhuma burocracia</text>
-    <text x="10" y="150" style="font-size: 11px; fill: #10b981;">✓ Coexistência nativa</text>
-    <text x="10" y="165" style="font-size: 11px; fill: #10b981;">✓ Sem DevOps</text>
-    <text x="10" y="180" style="font-size: 11px; fill: #10b981;">✓ n8n/Chatwoot/Make</text>
-    <text x="10" y="195" style="font-size: 11px; fill: #666;">⚠ R$ 49,90/mês/número</text>
-
-    <text x="140" y="225" style="font-size: 10px; text-anchor: center; fill: #666;">Para: SaaS e Agências</text>
-  </g>
-
-  <!-- Bottom badge -->
-  <g transform="translate(200, 330)">
-    <rect width="300" height="20" fill="#f5f5f5" rx="3"/>
-    <text x="150" y="14" style="font-size: 10px; text-anchor: center; fill: #0ea5e9; font-weight: bold;">🔒 Certificado Meta | Você não é Tech Provider</text>
-  </g>
+<svg viewBox="0 0 720 272" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Os três papéis de parceiro na Meta</text>
+<rect class="box" x="20" y="46" width="216" height="190" rx="8"/>
+<text class="h" x="128" y="76" text-anchor="middle">Solution Partner</text>
+<text class="s" x="128" y="93" text-anchor="middle">o que chamam de BSP</text>
+<text class="p " x="36" y="118">Tem linha de crédito</text>
+<text class="p " x="36" y="140">Fatura o cliente</text>
+<text class="p " x="36" y="162">É Meta Business Partner</text>
+<text class="p " x="36" y="184">Entra no Accelerator</text>
+<rect class="boxok" x="252" y="46" width="216" height="190" rx="8"/>
+<text class="h" x="360" y="76" text-anchor="middle">Tech Provider</text>
+<text class="s" x="360" y="93" text-anchor="middle">onde a Datafy está</text>
+<text class="p " x="268" y="118">Sem linha de crédito</text>
+<text class="p " x="268" y="140">Meta fatura o cliente</text>
+<text class="p " x="268" y="162">Habilita coexistência</text>
+<text class="p " x="268" y="184">Processo self-service</text>
+<rect class="box" x="484" y="46" width="216" height="190" rx="8"/>
+<text class="h" x="592" y="76" text-anchor="middle">Tech Partner</text>
+<text class="s" x="592" y="93" text-anchor="middle">nível acima</text>
+<text class="p " x="500" y="118">Tech Provider que virou</text>
+<text class="p " x="500" y="140">Meta Business Partner</text>
+<text class="p " x="500" y="162">Exige aprovacao extra</text>
+<text class="s" x="360" y="258" text-anchor="middle">Coexistência exige que o provedor seja Solution Partner ou Tech Provider.</text>
 </svg>

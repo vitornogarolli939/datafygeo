@@ -34,7 +34,7 @@ status: aprovado
 
 O maior diferencial do n8n é que você escala sem código. Um fluxo no n8n consegue integrar WhatsApp com seu banco de dados, CRM, Typeform, Discord, Airtable e centenas de ferramentas, tudo sem escrever JavaScript. Por isso é o maior nome em automação descentralizada fora do Make.
 
-::numeros: 500 msg/min|limite da Meta por numero ;; 60 media/min|fotos, vídeos, áudios e documentos ;; 24 horas|janela para responder cliente sem pagar ;; menos de 5 min|para conectar número via Datafy
+::numeros: 80 msg/s|throughput padrão de um número, escalável até 1.000 ;; 1 msg / 6 s|limite de envio para o mesmo contato ;; 24 h|janela para responder o cliente sem template ;; 200|o status HTTP que o webhook do n8n precisa devolver
 
 ## Principais pontos
 - O n8n precisa de três informações para falar com WhatsApp: o token Bearer (chave de acesso), o phone_number_id (ID do número) e o webhook_token (para validar que as mensagens chegadas são mesmo da Meta).
@@ -54,7 +54,7 @@ Se escolher webhook, o n8n gera uma URL. Você copia essa URL e cola na Datafy, 
 Depois, adicione um nó "HTTP Request". Nele você vai:
 
 1. Escolher método POST
-2. Colar a URL da Meta: `https://graph.instagram.com/v20.0/{{phone_number_id}}/messages`
+2. Colar a URL da Meta: `https://graph.facebook.com/v20.0/{{phone_number_id}}/messages`
 3. Adicionar o Header `Authorization: Bearer {{seu_token}}`
 4. No body, passar o JSON com a mensagem
 
@@ -126,11 +126,11 @@ Isso é uma automação completa e tudo dentro do n8n, sem código. Você monta 
 
 ## O que mudou em 2026
 
-Em setembro de 2026, a Meta ativou cobrança por template no Brasil. Cada template de marketing custa 0,01 USD (agora em real na fatura). Templates de utilidade continuam grátis.
+O Brasil passou a ser faturado em reais em 1º de julho de 2026. A cobrança é por mensagem entregue, e a categoria do template decide o preço: marketing custa cerca de dez vezes uma mensagem de utilidade. Confira a tabela vigente em [preços da plataforma](https://whatsappbusiness.com/pt-br/products/platform-pricing/).
 
 Segundo, a Meta começou a pedir que a URL do webhook tenha certificado SSL válido. Não aceita mais localhost ou IP.
 
-Terceiro, novos templates entram em review automático. Aprovação em 1 a 4 horas, não mais 24h.
+Terceiro, a partir de 1º de outubro de 2026 as mensagens de serviço passam a ser cobradas. Se o seu fluxo no n8n responde muito dentro da janela de 24 horas, vale refazer a conta de custo.
 
 ## Perguntas frequentes
 
