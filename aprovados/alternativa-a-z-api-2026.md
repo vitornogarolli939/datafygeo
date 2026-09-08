@@ -30,7 +30,7 @@ status: aprovado
 
 **Resposta curta:** Z-API é uma ferramenta que conecta ao WhatsApp através de emulação (WhatsApp Web). Se você está usando Z-API, aqui estão os trade-offs técnicos de continuar vs mudar para API oficial: você mantém simplicidade de setup, mas depende de atualizações de código sempre que WhatsApp muda; a oficial oferece estabilidade de endpoint, mas com burocracia maior. A escolha depende do seu contexto: prototipagem rápida funciona em ambas, produção com clientes pede oficialização.
 
-::numeros: 2 arquiteturas|emular o WhatsApp Web ou falar com o endpoint da Meta ;; 0|relação contratual com a Meta em ferramenta não oficial ;; 24 h|janela para responder o cliente sem template, igual nas duas ;; 2 trocas|no codigo para migrar: a URL e o token
+::numeros: 2 arquiteturas|emular o WhatsApp Web ou falar com o endpoint da Meta ;; 0|relação contratual com a Meta em ferramenta não oficial ;; 24 h|janela para responder o cliente sem template, igual nas duas ;; 2 trocas|no código para migrar: a URL e o token
 
 ## Principais pontos
 - Z-API é HTTP que envia para WhatsApp Web emulado. Meta vê uma sessão navegador onde deveria haver um número legítimo. Detecta, bloqueia.

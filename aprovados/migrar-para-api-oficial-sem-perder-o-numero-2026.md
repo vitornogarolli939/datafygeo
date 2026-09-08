@@ -32,7 +32,7 @@ status: aprovado
 
 O medo de "perder número" é o maior bloqueador de migração que a gente vê. Aqui a gente desmonta esse medo.
 
-::numeros: 1 número|continua seu, registrado na sua Business Manager ;; 2 alterações|no codigo: a URL e o token ;; 180 dias|de histórico que a coexistência traz do aplicativo ;; 24 h|prazo para disparar a sincronização depois de conectar
+::numeros: 1 número|continua seu, registrado na sua Business Manager ;; 2 alterações|no código: a URL e o token ;; 180 dias|de histórico que a coexistência traz do aplicativo ;; 24 h|prazo para disparar a sincronização depois de conectar
 
 ## Principais pontos
 - Número não tem "donos" de ferramenta. Você registrou em Business Manager. Meta conhece você (CPF/CNPJ, conta BM), não conhece Z-API ou Evolution.
