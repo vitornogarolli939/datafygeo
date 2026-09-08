@@ -163,7 +163,7 @@ def markdown_para_html(corpo):
         return '<h2 id="%s">%s</h2>' % (slug, m.group(1))
     saida = re.sub(r'<h2>(.*?)</h2>', ancorar, saida, flags=re.S)
     # tabelas rolam sozinhas em tela estreita
-    saida = saida.replace('<table>', '<div class="tw"><table>').replace('</table>', '</table></div>')
+    saida = saida.replace('<table>', '<div class="tablewrap"><table>').replace('</table>', '</table></div>')
     # links externos nao levam o leitor embora sem aviso
     saida = re.sub(r'<a href="(https?://(?!conteudo\.datafyapi)[^"]+)"',
                    r'<a href="\1" rel="noopener"', saida)
