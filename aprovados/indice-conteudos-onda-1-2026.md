@@ -1,6 +1,6 @@
 ---
 title: "Guia completo: API oficial do WhatsApp"
-description: "Trinta e cinco páginas técnicas em português: como começar, o que muda em outubro, integrar em n8n e Chatwoot, agente de IA, e os erros que travam produção."
+description: "Quarenta páginas técnicas em português: como começar, o que muda em outubro, integrar em n8n e Chatwoot, agente de IA, e os erros que travam produção."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "guia-completo-api-oficial-whatsapp"
 cluster: "oficial_vs_nao"
@@ -53,6 +53,9 @@ Três contas somadas por turno, e quase todo orçamento esquece uma.
 **[A Meta cobra por mensagem de agente de IA no Brasil](/cobranca-de-ai-provider-no-brasil)**
 Foi revogado na Europa em maio de 2026. Aqui continua valendo.
 
+**[A categoria do template decide o seu custo](/categoria-do-template-decide-o-seu-custo)**
+Marketing custa cerca de dez vezes uma utilidade, e a Meta reclassifica sozinha.
+
 ## Conectar e migrar
 
 **[Migrar para a API oficial sem perder o número](/migrar-para-api-oficial-sem-perder-o-numero)**
@@ -83,6 +86,9 @@ Os 19 campos disponíveis, e a diferença entre campo de webhook e tipo de mensa
 
 **[Como passar do bot para o atendente humano](/como-passar-do-bot-para-o-atendente-humano)**
 O handoff como estado de conversa, e os três erros que sempre aparecem.
+
+**[WhatsApp API oficial no Make](/whatsapp-api-oficial-make)**
+A montagem é direta. O filtro na entrada é o que decide a conta no fim do mês.
 
 **[Qual URL eu coloco no webhook da Meta?](/qual-url-eu-uso-no-webhook-da-meta)**
 A URL é sua, não da Meta. A dúvida mais repetida em português sobre o assunto.
@@ -132,6 +138,12 @@ Onde o dado está, e por que o banco principal é a parte fácil.
 
 **[Posso mandar a conversa do meu cliente para a OpenAI?](/posso-mandar-a-conversa-do-cliente-para-a-openai)**
 O que os contratos dos provedores de modelo cobrem, e o que eles não cobrem para o Brasil.
+
+**[Como documentar o aceite do cliente](/como-documentar-o-opt-in-do-cliente)**
+A Meta exige o aceite e não define formato de prova. E consentimento é por canal.
+
+**[Quanto tempo o WhatsApp guarda as minhas mensagens?](/quanto-tempo-o-whatsapp-guarda-minhas-mensagens)**
+Cerca de 30 dias, e o identificador de mídia recebido expira antes, em 7.
 
 ## APIs não oficiais: análise técnica
 
