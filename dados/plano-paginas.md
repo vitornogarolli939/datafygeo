@@ -376,3 +376,60 @@ onde perguntar.
 
 Só a tabela de erros já justifica uma página longa, e ela alimenta link interno para
 metade da onda 11.
+
+## Complemento à onda 14: o que só apareceu fora do Stack Overflow (9)
+
+Segundo levantamento, no mesmo dia, cobrindo GitHub (busca de issues com contagem de
+comentário e reação), fórum do n8n (com visualização real) e es.stackoverflow.
+
+**A descoberta metodológica mais importante:** o **pt.stackoverflow tem ZERO perguntas
+sobre Cloud API**. O desenvolvedor brasileiro não pergunta lá. Ele pergunta no fórum do
+n8n, no GitHub de fornecedor brasileiro (fazer-ai/chatwoot, megaapp977/stack,
+evolution-api) e provavelmente em Discord e grupo fechado. Isso reforça a tese do site:
+o conteúdo técnico em português não existe porque nem o canal de pergunta existe.
+
+`erro-131053-ao-enviar-midia-por-link` — **o melhor achado dos dois levantamentos.**
+Enviar mídia por `link` passa pelo proxy da Meta e toma 429 por ASN, de forma
+intermitente. Sete issues no GitHub só com esse código, uma delas com 20 comentários, e
+**ninguém explica a causa**. A solução (subir com `media_id` em vez de mandar link) não
+está escrita em lugar nenhum.
+
+`bsuid-e-usernames-o-que-quebra-na-sua-integracao` — **16 issues no GitHub em seis
+meses**, incluindo uma no Chatwoot com 41 comentários e 34 reações, e uma no Baileys
+perguntando se a biblioteca está preparada. É o tema mais quente de 2026 e ninguém
+escreveu em português.
+
+`nono-digito-e-contato-duplicado-na-coexistencia` — problema **brasileiro**: a
+coexistência com conversa iniciada no aparelho cria contato duplicado por causa do nono
+dígito. Issue própria no Chatwoot. Some com a pegadinha do 9 na Argentina e no México e
+vira uma página que só faz sentido escrita daqui.
+
+`webhook-de-status-comendo-execucao-do-n8n` — dor específica do nosso público, medida no
+fórum do n8n: uma thread com 2.516 visualizações e 26 respostas sobre execução
+duplicada, outra sobre status webhook consumindo execução à toa. Um nó de condição na
+entrada resolve, e ninguém escreveu isso direito.
+
+`webhook-atrasando-minutos-ou-horas` — 1.288 visualizações, 18 respostas e 44 curtidas
+no fórum do n8n, mais duas threads no Stack Overflow com mensagem levando 30 minutos
+para chegar. Nada conclusivo publicado.
+
+`typing-indicator-agora-e-endpoint-oficial` — caso raro de **conteúdo desatualizado
+sendo o que ranqueia**: as respostas que existem são anteriores ao endpoint oficial e
+ensinam gambiarra. Uma página correta desbanca.
+
+`bloquear-numero-pela-api` — o fórum do n8n tem thread com 1.401 visualizações e 13
+curtidas perguntando como banir número, e o Stack Overflow **não tem nada** sobre
+`block_users`. Demanda comprovada, cobertura zero.
+
+`ctwa-clid-de-onde-veio-esse-lead` — capturar a origem do anúncio Click-to-WhatsApp no
+payload. Issue no Typebot com 11 comentários. Assunto de quem faz tráfego pago, que é
+metade do nosso público.
+
+`messaging-limit-tier-foi-descontinuado` — o campo mudou para
+`whatsapp_business_manager_messaging_limit` e biblioteca popular quebrou por causa
+disso (issue no pywa). Quem lê o campo antigo recebe valor errado.
+
+**Nota de datação:** o repositório oficial de scripts da API On-Premises foi arquivado
+em **03/09/2026**, cinco dias antes deste levantamento. Ainda chega gente com
+documentação de on-premises. Reforça a página `on-premises-acabou-o-que-fazer` da
+onda 12.
