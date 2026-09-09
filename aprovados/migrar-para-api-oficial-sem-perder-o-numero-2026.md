@@ -131,7 +131,7 @@ O fluxo de conexão tem decisões que não dá para refazer depois sem desconect
 
 ::video: dIIkttPeBS0 | Em 02:12 a escolha entre as duas opções, em 03:17 a tela do celular perguntando sobre o histórico, em 04:11 o que fazer se você marcar errado, e em 04:46 onde fica a desconexão.
 
-E depois de conectar, dois passos que têm prazo e que quase todo roteiro de migração esquece: **assinar o evento de sincronização** e **fazer a chamada que pede contatos e histórico**, ambos dentro de 24 horas. [O processo tem três etapas e não é automático](/como-leio-o-historico-de-conversa-pela-api), e contatos chegam na hora enquanto conversas podem levar até meia hora.
+E depois de conectar, dois passos que têm prazo e que quase todo roteiro de migração esquece: **assinar o evento de sincronização** e **fazer a chamada que pede contatos e histórico**, ambos dentro de 24 horas. [O processo tem três etapas e não é automático](/sincronizar-contatos-api-oficial-whatsapp), e contatos chegam na hora enquanto conversas podem levar até meia hora.
 
 ## A regra nova que pega todo mundo
 

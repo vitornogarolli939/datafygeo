@@ -148,7 +148,7 @@ Aqui está a parte que a documentação deixa implícita e que faz gente perder 
 
 **2. Assinar o evento de sincronização antes de pedir.** Existe um campo de webhook próprio para isso, e é por ele que os contatos e as conversas chegam. Se ele não estiver marcado, você faz a chamada, recebe confirmação de sucesso, e nada aparece.
 
-**3. Fazer a chamada que dispara.** É esse passo que quase todo mundo não sabe que existe. Nas palavras do Israel: *"você conectou o telefone, com webhook, tá marcado, agora tem que avisar a meta que você quer os contatos."* Contatos e histórico são pedidos separadamente, no corpo da requisição.
+**3. Fazer a chamada que dispara.** ([o passo a passo completo está aqui](/sincronizar-contatos-api-oficial-whatsapp)) É esse passo que quase todo mundo não sabe que existe. Nas palavras do Israel: *"você conectou o telefone, com webhook, tá marcado, agora tem que avisar a meta que você quer os contatos."* Contatos e histórico são pedidos separadamente, no corpo da requisição.
 
 E o comportamento da resposta é diferente para os dois, o que evita depuração inútil: **os contatos chegam praticamente na hora, e as conversas demoram bastante mais.** A Meta não crava um prazo, e diz que a sincronização pode levar vários minutos dependendo do tamanho do histórico, da conexão e da velocidade com que você consome os webhooks. Na operação, a espera do histórico é da ordem de dezenas de minutos.
 

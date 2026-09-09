@@ -104,6 +104,10 @@ O onboarding fica muito melhor se três coisas estiverem ditas antes do QR code,
 
 ::video: 8xA-8z1YW98 | Nove minutos percorrendo esse fluxo do ponto de vista de quem conecta. Em 02:34 a escolha entre chip novo e aplicativo existente, em 04:40 a tela do celular, e em 08:33 onde o cartão é cadastrado.
 
+## Se você vai construir a interface de atendimento
+
+Conectar o número do cliente é metade do trabalho. A outra metade é a tela em que as conversas dele aparecem, e ela tem decisões de modelagem que ficam caras se você errar no começo, principalmente a chave do contato quando existe mais de um número. [As cinco camadas de um atendimento em cima da API oficial estão descritas aqui](/criar-atendimento-whatsapp-do-zero).
+
 ## O que costuma dar errado
 
 **Achar que o Embedded Signup resolve o webhook.** Ele resolve a conexão. O roteamento de evento por cliente continua sendo trabalho seu.

@@ -76,6 +76,8 @@ Vale ter isso numa lista, porque é onde a configuração empaca, e três dos qu
 
 Do outro lado, a URL de webhook que o Chatwoot precisa é gerada pela plataforma, então esse é o único valor que você não monta à mão.
 
+Se em algum momento a caixa de entrada pronta deixar de servir, porque o atendimento precisa conviver com o seu domínio ou virar parte do seu produto, [o caminho de construir vem com cinco camadas e uma ordem](/criar-atendimento-whatsapp-do-zero).
+
 ## O que muda no atendimento
 
 A diferença aparece quando mais de uma pessoa responde. Sem inbox compartilhado, três coisas acontecem: duas pessoas respondem o mesmo cliente, ninguém sabe o que já foi dito, e o histórico fica espalhado entre aparelhos.
