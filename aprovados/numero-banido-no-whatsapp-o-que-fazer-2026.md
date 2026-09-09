@@ -1,6 +1,6 @@
 ---
-title: "Número banido no WhatsApp: o que fazer agora e como recuperar"
-description: "Por que número é banido, sinais antes de cair, como recuperar com Meta, e as cinco condutas que causam ban mesmo com API oficial."
+title: "Número bloqueado no WhatsApp: o que fazer agora"
+description: "As cinco condutas que derrubam número mesmo com API oficial, o sinal que aparece antes, e como montar um recurso que tenha chance."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "numero-banido-no-whatsapp-o-que-fazer"
 cluster: "compliance"
@@ -9,209 +9,139 @@ intent: "problema-urgente"
 persona: "automacao, saas"
 competitors: []
 published: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-09
 sources:
   - https://business.whatsapp.com/policy
-  - https://developers.facebook.com/docs/whatsapp/quality
+  - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-quality
+  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits
   - https://www.youtube.com/watch?v=cZ_nyIUv5ic
   - https://app.datafyapi.com.br/docs
-  - https://www.youtube.com/watch?v=FcAwJqVHNoU
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
-  - /numero-novo-foi-banido-no-primeiro-disparo
+  - /posso-mandar-mensagem-para-qualquer-numero
+  - /minha-campanha-travou-no-meio
   - /coexistencia-whatsapp-api-oficial-app-celular
-  - /qualidade-do-numero-caiu-para-media
-  - /mensagem-de-erro-24-horas-passadas
+  - /quantas-mensagens-por-segundo-posso-enviar
 status: aprovado
+pendencias: ["[VERIFICAR] prazos de resposta da Meta a recurso não são publicados; não cravar número"]
 ---
 
-# Número banido no WhatsApp: o que fazer agora e como recuperar
+# Número bloqueado no WhatsApp: o que fazer agora
 
-**Última atualização: 06/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 09/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** quando número é banido, você vê mensagem "Esta conta não pode mais usar o WhatsApp" ao tentar enviar. Pode ser temporário (48h) ou permanente (impossível recuperar). Cinco condutas causam ban. A oficial não é blindagem: mesmo com API oficial, templates aprovados e dentro dos limites, você pode ser banido se infringir regras de conformidade.
+**Resposta curta:** primeiro, uma coisa que precisa ficar clara: **a API oficial não é blindagem**. O bloqueio acompanha a **conduta**, não a ferramenta. Migrar de uma ferramenta de QR code para a oficial elimina um tipo de risco, o de usar algo não autorizado, e não elimina os outros.
 
-Recuperação é possível, mas leva tempo, prova de conformidade e mudança real de conduta.
+Se o seu número acabou de cair, existem passos concretos. E se ainda não caiu, a parte mais útil deste texto é a do sinal que aparece antes: **ninguém é bloqueado do nada.**
 
-::numeros: 5 condutas|que derrubam número mesmo com API oficial ;; 24 h|janela em que você responde sem template ;; média|a qualidade cai de alta para media antes do bloqueio ;; 1 recurso|no suporte da Meta, com prova de conformidade
+::numeros: 5 condutas|que derrubam número mesmo com API oficial ;; média|a qualidade cai antes do bloqueio, e é o aviso ;; 1 recurso|por vez, com prova de que a causa foi corrigida ;; conduta|é o que decide, não a ferramenta
 
 ## Principais pontos
-- Ban é de conta, não é de ferramenta. Se você muda de Z-API para API oficial mas não muda conduta, ban continua ou volta.
-- Não há aviso. Um dia funciona, próximo dia mensagem "Esta conta não pode mais usar o WhatsApp".
-- Recuperação: você precisa enviar email a Meta (suporte WhatsApp Business), apresentar evidência de que você resolveu o problema, esperar 10 a 30 dias.
-- Cinco causas principais: 1) prospecção sem template (mandar para lista fria), 2) alto rejeitamento (cliente bloqueando), 3) spam (muitos bloqueios consecutivos), 4) comportamento suspeito (volume muito alto muito rápido), 5) conteúdo proibido (promocão de drogas, golpes).
-- Mesmo em oficial, mesmo com documento, sem conformidade você cai.
+- O bloqueio é **da conta e do número**, e acompanha o comportamento. Trocar de ferramenta sem trocar de conduta não resolve.
+- **A qualidade do número cai antes.** Esse é o aviso, e ele é visível no painel. Quem monitora consegue reagir; quem não monitora descobre quando já parou.
+- A causa número um é **prospectar quem nunca falou com você**, com ou sem template aprovado.
+- Recurso é possível, mas só funciona com **prova de que a causa foi corrigida**. Pedido sem mudança de conduta costuma voltar negado.
+- Existe um evento de webhook que avisa mudança na conta, incluindo restrição. Assinar esse evento é a diferença entre saber na hora e saber quando um cliente reclama.
 
 ::diagrama: numero-banido-visual
 
-## Os cinco motivos que derrubam número (mesmo em oficial)
+## As cinco condutas que derrubam número
 
-### 1. Prospecção sem template
+**1. Prospectar quem nunca falou com você.** É a causa mais comum, de longe. Comprar lista, raspar contato, mandar para quem não pediu. A [política](https://business.whatsapp.com/policy) é explícita: só se contata quem forneceu o número e deu o aceite. Ter template aprovado não é autorização para lista fria, e é aqui que muita gente se engana.
 
-Isso mata números mais rápido que tudo. Você conecta número novo, manda mensagem de "oi, qual seu interesse?" para 100 contatos que você achou do LinkedIn.
+**2. Engajamento baixo mesmo com template.** Mandar para muita gente e quase ninguém responder é lido como envio indesejado. Uma prática que ajuda: incluir um botão de "não tenho interesse" no template. O clique conta como interação e ainda entrega a lista de quem tirar da base.
 
-Meta detecta: muitos contatos, ninguém conhece você, ninguém marcou opt-in. Seu número perde qualidade, depois cai.
+**3. Número novo disparando volume.** Conta recém-conectada com volume alto no primeiro dia levanta suspeita. Não está escrito em termo nenhum, é observação de campo, e é consistente. Comece devagar e deixe o histórico se formar.
 
-Solução: só envie para quem já conversou com você (resposta anterior), ou use template aprovado de "first message" que Meta libera para alguns setores.
+**4. Categoria de template forçada.** Template de marketing escrito como se fosse utilidade é reclassificado pela Meta, e a conta pode mudar de preço sem aviso. Repetir isso tem escalada própria de punição, que vai de aviso até restrição no nível da conta.
 
-### 2. Alto rejeitamento
+**5. Nicho proibido.** Armas, álcool e tabaco, medicamentos, animais vivos, criptomoeda e day trade, apostas, cobrança de dívida. Vale a regra da plataforma, não a lei do país: aposta é legal no Brasil e bloqueia do mesmo jeito.
 
-Cliente recebe sua mensagem, bloqueia você. Você manda de novo, ele bloqueia de novo.
+## O sinal que aparece antes
 
-Meta vê: esse número está sendo bloqueado muito. Indicador de spam. Ban.
+Este é o trecho mais útil da página, e o menos usado.
 
-Solução: respeite bloqueio. Se cliente bloqueou, ele não quer. Retire da lista. Se tem 30% bloqueios, você está mandando para lista fria. Interrompe até melhorar.
+Antes do bloqueio, a **qualidade do número cai**. A avaliação é feita sobre uma janela recente, a partir de bloqueios, denúncias e outras reações de quem recebe. Ela aparece no painel, e existe um evento de webhook que avisa quando ela muda.
 
-### 3. Volume muito alto muito rápido
+Outros sinais que costumam aparecer junto:
 
-Você conecta número em 10 de setembro, manda 100 mil mensagens em 11 de setembro.
+- O **limite de envio** cai em vez de subir.
+- Um **template é pausado** por qualidade baixa, com escalada de 3 horas, 6 horas e desativação.
+- A **taxa de entrega** cai sem mudança de volume.
 
-Meta vê: padrão de spam. Ban em 48h.
+Quem assina o evento de qualidade do número e o de mudança na conta consegue agir enquanto ainda dá. Quem não assina descobre quando as mensagens param.
 
-Solução: escale devagar. Primeiras 48h, máximo 1.000 mensagens. Próximo dias, aumenta gradualmente.
+## Se o número já caiu
 
-### 4. Conteúdo proibido
+**1. Confirme o que aconteceu.** Bloqueio de conta, restrição temporária e limite de envio zerado são coisas diferentes, com saídas diferentes. O evento de mudança na conta traz a informação da restrição.
 
-Você manda mensagem com link de compra de medicamento controlado, ou convite para golpe.
+**2. Pare de enviar.** Insistir enquanto está restrito piora, especialmente se a causa foi tentativa em excesso.
 
-Meta detecta palavra-chave, conteúdo, ban imediato.
+**3. Ache a causa antes de recorrer.** Olhe o que mudou nos últimos dias: subiu volume, entrou lista nova, mudou template, caiu a qualidade? Recurso sem causa identificada é recurso negado.
 
-Solução: não mande conteúdo proibido. É óbvio, mas precisa falar.
+**4. Corrija de verdade.** Tire a lista fria, ajuste a categoria do template, reduza volume, revise o conteúdo. É isso que você vai apresentar.
 
-### 5. Comportamento suspeito
+**5. Abra o recurso pelo suporte.** Descreva o que aconteceu, o que foi corrigido e o que muda daqui para frente. Anexe o que sustentar: como o aceite é coletado, o que mudou no processo, e os números que mostram a correção.
 
-Você conecta número, 2h depois está rodando automação enviando para 10 mil contatos.
+**6. Espere.** Não há prazo publicado, e insistir com pedidos repetidos não acelera.
 
-Meta vê conta nova com volume anormal. Suspeita. Ban preventivo.
+## O que aumenta a chance do recurso
 
-Solução: aguarde 24h após conectar. Comece com pequeno volume. Deixe histórico natural desenvolver.
+O que costuma funcionar é mostrar **mudança de processo**, e não pedido de exceção:
 
-## Recuperar número banido
+- Como o aceite passou a ser coletado, com prova de onde e quando.
+- O que saiu da base, e por quê.
+- Qual template mudou de categoria e qual é o conteúdo novo.
+- Como o volume foi reduzido, e o plano de retomada gradual.
 
-### Passo 1: confirmar que é ban (não é outro erro)
+O que costuma não funcionar: dizer que foi engano sem mudar nada, prometer que não acontece de novo sem mostrar o quê mudou, ou abrir vários pedidos seguidos.
 
-Mensagem exata que aparece: "Esta conta não pode mais usar o WhatsApp" ou "This account can't be used to send messages on WhatsApp right now".
+## Se o número for irrecuperável
 
-Se é isso, é ban.
+Acontece. Nesse caso, três cuidados antes de seguir com um número novo:
 
-### Passo 2: espere 24 a 48 horas
+**Não repita a causa.** O número novo cai igual se a conduta for a mesma. Foi lista fria que derrubou? O número novo dura menos ainda, porque começa sem histórico.
 
-Às vezes é temporário. Aguarde dois dias, tenta de novo. Se levantou, ótimo. Se não...
+**Comece devagar.** Conta nova com volume alto é o item 3 da lista acima.
 
-### Passo 3: junte evidência
-
-Se seu número foi banido porque você estava mandando spam, agora você precisa de prova que você parou:
-
-- Documentação de cliente (contrato, comprovante que pessoa autorizou receber)
-- Relatório de conformidade (número de bloqueios caiu, qualidade subiu)
-- Carta de intenção (você vai mudar processo, usar templates, fazer opt-in)
-- Se mudou de ferramenta (de Z-API para oficial), screenshot da Nova integração
-
-### Passo 4: envie email ao suporte Meta
-
-Para: support@business.whatsapp.com
-
-Título: "Appeal for blocked WhatsApp account - [seu phone_number_id]"
-
-Corpo:
-
-```
-Olá, Time Meta.
-
-Meu número [CNPJ ou phone] foi bloqueado.
-
-Problema anterior: [breve resumo do que fez errado]
-
-O que mudei: [detalhe as ações] 
-
-Documentação anexa: [lista arquivos]
-
-Solicito reconsideração.
-
-Obrigado,
-[seu nome]
-[seu email]
-[seu telefone]
-```
-
-### Passo 5: aguarde resposta (10 a 30 dias)
-
-Meta leva dias para responder. Não é instantâneo. Paciência.
-
-Se negarem, você pode apelar novamente (1 vez).
-
-## Quando número é irrecuperável
-
-Alguns bans são permanentes:
-
-- Você estava com Z-API/UAZAPI/Evolution Baileys. Meta baniu. Você trocar de ferramenta não desbanir. Número está marcado como "problema".
-- Você foi pego com conteúdo muito illegal (tráfico, fraude). Ban permanente, sem apelo.
-- Você apelou 2 vezes e negaram. Final.
-
-Nessas situações, você precisa de número novo.
-
-## Evitar ban: pré-requisitos
-
-Se você está começando:
-
-1. **Opt-in documentado**: cliente autorizou por escrito
-2. **Template aprovado**: meta primeiro, depois enviar
-3. **Volume gradual**: começar baixo
-4. **Monitorar qualidade**: Datafy mostratela em real time
-5. **Responder cliente**: não ignore
-6. **Webhook funciona**: se cliente envia, você recebe
-
-Se você faz isso, chance de ban é praticamente zero.
-
-## Sinais de aviso (antes do ban completo)
-
-Às vezes Meta te avisa. Se você vê:
-
-- "Qualidade do número caiu para MÉDIA" (antes era ALTA)
-- Limite diário de mensagem caiu (era 1.000, agora 100)
-- Webhook começou a rejeitar mensagens intermitentemente
-- Taxa de entrega caiu de 95% para 50%
-
-Esses são aviso. Para tudo, identifica causa, corrige. Você evita o ban.
+**Monte o monitoramento antes.** Qualidade do número e mudança na conta assinados desde o primeiro dia. É barato e é a diferença entre reagir e descobrir depois.
 
 ## Perguntas frequentes
 
-### Se trocar de número, problema resolve?
+### Migrar para a API oficial resolve o bloqueio?
 
-Sim, mas se você tiver feito X (que causou ban), o novo número vai sofrer igual. Você precisa mudar de verdade.
+Resolve metade. Acaba com o risco de usar ferramenta não autorizada. Não muda nada se a conduta continuar: lista fria bloqueia número oficial do mesmo jeito.
 
-### Quanto tempo leva para Meta responder email?
+### Quanto tempo a Meta demora para responder?
 
-Média é 7 a 14 dias. Máximo visto foi 30 dias. Não há SLA.
+Não há prazo publicado, e por isso não vale cravar número aqui. O que ajuda é o pedido bem montado, não a insistência.
 
-### Posso usar número bloqueado em outra empresa?
+### Posso usar o mesmo número em outra empresa?
 
-Não. Ban é de número. Número continua marcado. Você precisaria de número novo.
+O bloqueio acompanha o número. Trocar a empresa em volta dele não muda isso.
 
-### Se foi Z-API que causou ban, como recupero?
+### Existe restrição temporária?
 
-Número foi banido porque Z-API é proibida. Mesmo que você migre para oficial agora, número está marcado. Você pode apelar à Meta (improvável que levanta) ou pega número novo.
+Existem restrições com prazo, aplicadas em algumas situações, e nesses casos o acesso volta sozinho ao fim do período. Por isso o primeiro passo é confirmar o que aconteceu antes de assumir o pior.
 
-### Tem número "de backup"?
+### Quantas vezes posso recorrer?
 
-Não. Você é limitado a 256 números por BM. A recomendação é: comece com 1, prove conformidade, depois expande.
+Vale tratar como poucas. Pedido repetido sem mudança de conduta não melhora a avaliação, e pode piorar.
 
-### Datafy me protege de ban?
+### Como sei se meu número está em risco hoje?
 
-Datafy oferece ferramentas para monitorar qualidade e entrega. Mas não protege você de fazer coisas erradas. Se você mandar spam, mesmo via Datafy, Meta detecta e bane.
+Olhe a qualidade no painel. Se ela saiu do nível mais alto, você já está no aviso. É a hora de reduzir volume e revisar a base, não a de aumentar disparo.
 
-## Como decidir: como prosseguir
+## Como decidir
 
-Se ban é temporário: aguarde 48h.
+Se o número caiu, resista à vontade de abrir recurso imediato: descubra a causa primeiro, porque é ela que faz o pedido ter chance. Se o número ainda está de pé, use os quinze minutos deste texto para assinar os dois eventos de webhook que avisam antes, e olhar a qualidade hoje.
 
-Se permanente: apele com evidência. Espere resposta.
+Bloqueio quase nunca é surpresa. É aviso que ninguém estava lendo.
 
-Se não levanta: novo número, e dessa vez faça certo (opt-in, templates, volume gradual).
-
-[Teste 7 dias grátis em Datafy, começar no caminho certo](https://app.datafyapi.com.br)
+::cta: Assine hoje os dois eventos que avisam antes | Qualidade do número e mudança na conta. Quinze minutos de configuração, e você passa a saber que algo está errado enquanto ainda dá para corrigir.
 
 ## Leia também
-- [API oficial vs não oficial](/api-oficial-vs-nao-oficial-whatsapp-2026)
-- [Número novo foi banido no primeiro disparo](/numero-novo-foi-banido-no-primeiro-disparo)
-- [Qualidade do número caiu para média](/qualidade-do-numero-caiu-para-media)
-- [Coexistência com app e API](/coexistencia-whatsapp-api-oficial-app-celular)
+- [API oficial vs não oficial do WhatsApp](/api-oficial-vs-nao-oficial-whatsapp-2026)
+- [Posso mandar mensagem para qualquer número?](/posso-mandar-mensagem-para-qualquer-numero)
+- [Disparei a campanha e ela travou no meio](/minha-campanha-travou-no-meio)
+- [Quantas mensagens por segundo posso enviar?](/quantas-mensagens-por-segundo-posso-enviar)

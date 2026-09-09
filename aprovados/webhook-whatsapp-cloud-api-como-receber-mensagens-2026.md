@@ -18,8 +18,8 @@ sources:
   - https://www.youtube.com/watch?v=cZ_nyIUv5ic
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
-  - /validar-assinatura-hmac-webhook-whatsapp
-  - /webhook-nao-chega-whatsapp-api
+  - /validar-assinatura-do-webhook
+  - /webhook-chega-duplicado
   - /whatsapp-api-oficial-n8n
   - /o-que-e-tech-provider-meta
 status: aprovado
@@ -319,6 +319,6 @@ Se não quer: usar plataforma like Chatwoot que já tem webhook configurado.
 
 ## Leia também
 - [API oficial vs não oficial](/api-oficial-vs-nao-oficial-whatsapp-2026)
-- [Validar assinatura HMAC](/validar-assinatura-hmac-webhook-whatsapp)
-- [Webhook não chega](/webhook-nao-chega-whatsapp-api)
+- [Validar assinatura HMAC](/validar-assinatura-do-webhook)
+- [Webhook não chega](/webhook-chega-duplicado)
 - [WhatsApp API no n8n](/whatsapp-api-oficial-n8n)

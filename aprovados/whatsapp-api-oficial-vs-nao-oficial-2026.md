@@ -23,7 +23,7 @@ sources:
 internal_links:
   - /o-que-e-tech-provider-meta
   - /quanto-custa-whatsapp-business-api-brasil-2026
-  - /migrar-evolution-z-api-para-api-oficial
+  - /migrar-para-api-oficial-sem-perder-o-numero
   - /whatsapp-api-oficial-n8n
   - /coexistencia-whatsapp-api-oficial-app-celular
 status: aprovado
@@ -190,6 +190,6 @@ E antes de migrar, olhe para a sua lista. Se ela é fria e ninguém responde, a 
 ## Leia também
 - [O que é Tech Provider da Meta](/o-que-e-tech-provider-meta)
 - [Quanto custa WhatsApp Business API no Brasil em 2026](/quanto-custa-whatsapp-business-api-brasil-2026)
-- [Como migrar de Evolution/Z-API para a API oficial sem perder o número](/migrar-evolution-z-api-para-api-oficial)
+- [Como migrar de Evolution/Z-API para a API oficial sem perder o número](/migrar-para-api-oficial-sem-perder-o-numero)
 - [WhatsApp API oficial no n8n em 15 minutos](/whatsapp-api-oficial-n8n)
 - [Coexistência: API oficial e app no celular no mesmo número](/coexistencia-whatsapp-api-oficial-app-celular)

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Guia completo: API oficial do WhatsApp</title>
-<meta name="description" content="9 páginas para developers: como começar, integrar em n8n/Chatwoot, migrar sem perder número, entender preço e webhooks.">
+<meta name="description" content="Trinta páginas técnicas em português: como começar, o que muda em outubro, integrar em n8n e Chatwoot, agente de IA, e os erros que travam produção.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/guia-completo-api-oficial-whatsapp">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -14,14 +14,14 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
 <meta property="og:title" content="Guia completo: API oficial do WhatsApp">
-<meta property="og:description" content="9 páginas para developers: como começar, integrar em n8n/Chatwoot, migrar sem perder número, entender preço e webhooks.">
+<meta property="og:description" content="Trinta páginas técnicas em português: como começar, o que muda em outubro, integrar em n8n e Chatwoot, agente de IA, e os erros que travam produção.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/guia-completo-api-oficial-whatsapp">
-<meta property="article:published_time" content="2026-09-07">
-<meta property="article:modified_time" content="2026-09-07">
+<meta property="article:published_time" content="2026-09-09">
+<meta property="article:modified_time" content="2026-09-09">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Guia completo: API oficial do WhatsApp">
-<meta name="twitter:description" content="9 páginas para developers: como começar, integrar em n8n/Chatwoot, migrar sem perder número, entender preço e webhooks.">
+<meta name="twitter:description" content="Trinta páginas técnicas em português: como começar, o que muda em outubro, integrar em n8n e Chatwoot, agente de IA, e os erros que travam produção.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -120,10 +120,10 @@
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/guia-completo-api-oficial-whatsapp#article",
       "headline": "Guia completo: API oficial do WhatsApp",
-      "description": "9 páginas para developers: como começar, integrar em n8n/Chatwoot, migrar sem perder número, entender preço e webhooks.",
+      "description": "Trinta páginas técnicas em português: como começar, o que muda em outubro, integrar em n8n e Chatwoot, agente de IA, e os erros que travam produção.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-07",
-      "dateModified": "2026-09-07",
+      "dateModified": "2026-09-09",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,7 +132,7 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/guia-completo-api-oficial-whatsapp",
       "citation": [
-        "https://developers.facebook.com/docs/whatsapp/cloud-api",
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing",
         "https://app.datafyapi.com.br/docs"
       ]
     }
@@ -481,7 +481,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-07">7 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -521,7 +521,7 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <h1>Guia completo: API oficial do WhatsApp</h1>
-<p>Você quer usar a API oficial do WhatsApp. Mas tem dúvida: por onde começo? Como integro em n8n? Qual é o risco real? Como migro sem perder número? Aqui estão as respostas: 9 páginas técnicas, sem achismo, cada uma respondendo uma pergunta específica que seus devs estão fazendo agora.</p>
+<p>Você quer usar a API oficial do WhatsApp. As dúvidas aparecem sempre na mesma ordem: quanto custa, o que preciso para começar, posso mandar mensagem para qualquer número, e o que acontece quando alguma coisa quebra. Aqui estão as respostas, uma página por pergunta, com a fonte de cada número.</p>
 <figure>
 <div class="diagram">
 <svg viewBox="0 0 720 166" xmlns="http://www.w3.org/2000/svg" class="d">
@@ -563,71 +563,80 @@ footer p{margin:0 0 .5rem}
 <figcaption></figcaption>
 </figure>
 
-<h2 id="1-funda-o-entender-a-api-oficial">1. Fundação: Entender a API oficial</h2>
-<p>Comece aqui para entender a diferença técnica:</p>
+<h2 id="comece-por-aqui">Comece por aqui</h2>
 <p><strong><a href="/api-oficial-vs-nao-oficial-whatsapp-2026">API oficial vs não oficial do WhatsApp</a></strong>
-- Diferença técnica: emulação vs integração contratada
-- Por que "oficial" não é blindagem contra ban
-- Todas as próximas páginas partem daqui</p>
-<h2 id="2-integra-es-como-usar">2. Integrações: Como usar</h2>
-<p>Você está pronto. Agora: qual ferramenta?</p>
+A diferença técnica entre emular o WhatsApp Web e falar com o endpoint da Meta. Todas as outras páginas partem desta.</p>
+<p><strong><a href="/o-que-preciso-para-comecar-na-api-oficial">O que eu preciso para começar?</a></strong>
+Business Manager, número livre, aparelho em mãos e forma de pagamento. E as três coisas que não são obrigatórias, ao contrário do que se diz.</p>
+<p><strong><a href="/posso-mandar-mensagem-para-qualquer-numero">Posso mandar mensagem para qualquer número?</a></strong>
+Não. A janela de 24 horas é a regra que mais quebra projeto depois de pronto.</p>
+<p><strong><a href="/a-api-oficial-manda-mensagem-para-grupo">A API oficial manda mensagem para grupo?</a></strong>
+Não como no aplicativo, e a página explica por que isso não cabe no desenho da plataforma.</p>
+<h2 id="quanto-custa">Quanto custa</h2>
+<p><strong><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Quanto custa a WhatsApp Business API no Brasil</a></strong>
+Cobrança por mensagem entregue, quatro categorias, e marketing custando dez vezes uma utilidade.</p>
+<p><strong><a href="/mensagem-de-servico-vai-ser-paga-outubro-2026">1º de outubro: responder o cliente deixa de ser grátis</a></strong>
+A mudança mais próxima. Mensagem de serviço e utilidade dentro da janela passam a ser cobradas.</p>
+<p><strong><a href="/quanto-custa-rodar-um-agente-de-ia-no-whatsapp">Quanto custa rodar um agente de IA no WhatsApp?</a></strong>
+Três contas somadas por turno, e quase todo orçamento esquece uma.</p>
+<p><strong><a href="/cobranca-de-ai-provider-no-brasil">A Meta cobra por mensagem de agente de IA no Brasil</a></strong>
+Foi revogado na Europa em maio de 2026. Aqui continua valendo.</p>
+<h2 id="conectar-e-migrar">Conectar e migrar</h2>
+<p><strong><a href="/migrar-para-api-oficial-sem-perder-o-numero">Migrar para a API oficial sem perder o número</a></strong>
+Quem vem de ferramenta de QR code não tem o número na Meta ainda. E a decisão sobre coexistência precisa ser tomada antes de conectar.</p>
+<p><strong><a href="/coexistencia-whatsapp-api-oficial-app-celular">Coexistência: API e aplicativo no mesmo número</a></strong>
+O que a sincronização traz, o que ela não traz, e o prazo de 24 horas que pega gente desprevenida.</p>
+<p><strong><a href="/cliente-conecta-o-whatsapp-dele-no-meu-saas">Meu cliente conecta o WhatsApp dele sozinho no meu SaaS?</a></strong>
+Embedded Signup, e as três perguntas que separam qualquer proposta de fornecedor.</p>
+<p><strong><a href="/o-que-e-tech-provider-meta">Tech Provider, Solution Partner e BSP</a></strong>
+O que cada papel significa de verdade, sem inflar o termo.</p>
+<h2 id="integrar">Integrar</h2>
 <p><strong><a href="/whatsapp-api-oficial-n8n">WhatsApp API oficial no n8n</a></strong>
-- Automação visual sem código
-- Webhook, condicional, integração com base de dados</p>
+Enviar, receber, e os três detalhes que quebram fluxo em produção.</p>
 <p><strong><a href="/whatsapp-api-oficial-chatwoot">WhatsApp API oficial no Chatwoot</a></strong>
-- Inbox compartilhado para equipe
-- Coexistência: app no celular + API rodando</p>
-<h2 id="3-operacional-o-caminho-at-l">3. Operacional: O caminho até lá</h2>
-<p>Tudo que você precisa para migrar:</p>
-<p><strong><a href="/migrar-para-api-oficial-sem-perder-o-numero">Migrar para API oficial sem perder número</a></strong>
-- 5 passos, menos de 1 hora
-- Número continua seu, histórico antigo fica onde estava</p>
-<p><strong><a href="/numero-banido-no-whatsapp-o-que-fazer">Número banido: o que fazer</a></strong>
-- 5 condutas que derram número (mesmo em oficial)
-- Como recuperar com Meta
-- Sinais de aviso antes do ban</p>
-<p><strong><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Quanto custa WhatsApp Business API Brasil 2026</a></strong>
-- Tabelas: Meta direto vs plataformas
-- Calculadora de ROI
-- O que muda em outubro</p>
-<h2 id="4-diferencial-tech-provider-datafy">4. Diferencial: Tech Provider Datafy</h2>
-<p>Por que é diferente:</p>
-<p><strong><a href="/coexistencia-whatsapp-api-oficial-app-celular">Coexistência: API + app no mesmo número</a></strong>
-- Seu número roda automação 24/7 e você usa app no celular
-- Sincronizado, zero conflito
-- Recurso que só Tech Provider oferece</p>
-<p><strong><a href="/o-que-e-tech-provider-meta">O que é Tech Provider Meta</a></strong>
-- Por que Datafy é certificada pela Meta
-- Diferença: Tech Provider vs BSP vs Reseller vs Direto
-- Embedded Signup (cliente conecta sozinho)</p>
-<h2 id="5-t-cnico-implementa-o">5. Técnico: Implementação</h2>
-<p>Pronto pra código:</p>
+Inbox compartilhado para a equipe, e o que a coexistência muda no atendimento.</p>
 <p><strong><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens em tempo real</a></strong>
-- 19 campos de webhook documentados
-- Validar assinatura HMAC
-- Exemplos de código
-- Troubleshooting</p>
-<hr />
-<h2 id="roteiros-de-leitura">Roteiros de leitura</h2>
-<p><strong>Novo no assunto?</strong>
-1. API oficial vs não oficial
-2. Escolha sua ferramenta (n8n ou Chatwoot)
-3. Webhook (se vai usar)</p>
-<p><strong>Vindo de outra solução?</strong>
-1. API oficial vs não oficial (entender trade-off)
-2. Migrar sem perder número (passo a passo)
-3. Quanto custa (comparar)</p>
-<hr />
-<h2 id="apis-n-o-oficiais-review-t-cnico">APIs Não Oficiais: Review técnico</h2>
-<p>Se está usando Z-API, UAZAPI ou Evolution, temos um análise técnica de trade-offs:</p>
+Os 19 campos disponíveis, e a diferença entre campo de webhook e tipo de mensagem.</p>
+<p><strong><a href="/como-passar-do-bot-para-o-atendente-humano">Como passar do bot para o atendente humano</a></strong>
+O handoff como estado de conversa, e os três erros que sempre aparecem.</p>
+<p><strong><a href="/como-leio-o-historico-de-conversa-pela-api">Como leio o histórico de conversa pela API?</a></strong>
+Não existe endpoint para isso. Se você não guardar, não tem.</p>
+<h2 id="quando-quebra">Quando quebra</h2>
+<p><strong><a href="/webhook-chega-duplicado">Meu webhook recebe a mesma mensagem várias vezes</a></strong>
+Responder 200 antes de processar, e ignorar identificador repetido.</p>
+<p><strong><a href="/validar-assinatura-do-webhook">Validar a assinatura do webhook</a></strong>
+Por que quebra com acento e com barra, e como fazer certo.</p>
+<p><strong><a href="/erro-131053-ao-enviar-midia">Erro 131053 ao enviar mídia</a></strong>
+Três causas no mesmo código, e só uma delas é intermitente.</p>
+<p><strong><a href="/audio-chega-mudo-no-celular-do-cliente">O áudio chega mudo no celular do cliente</a></strong>
+Formato errado mais a marcação que falta. O atendente ouve, o cliente não.</p>
+<p><strong><a href="/minha-campanha-travou-no-meio">Disparei a campanha e ela travou no meio</a></strong>
+Quatro causas diferentes, e reenviar piora três delas.</p>
+<p><strong><a href="/quantas-mensagens-por-segundo-posso-enviar">Quantas mensagens por segundo posso enviar?</a></strong>
+Três limites distintos, que pegam em momentos diferentes.</p>
+<p><strong><a href="/numero-banido-no-whatsapp-o-que-fazer">Número banido: o que fazer</a></strong>
+As cinco condutas que derrubam número mesmo com API oficial.</p>
+<p><strong><a href="/o-telefone-esta-sumindo-do-webhook">O telefone está sumindo do webhook</a></strong>
+O identificador por empresa, e a degradação silenciosa em quem usa telefone como chave.</p>
+<h2 id="dados-e-conformidade">Dados e conformidade</h2>
+<p><strong><a href="/o-cliente-pediu-para-apagar-os-dados-dele">O cliente pediu para apagar os dados dele</a></strong>
+Onde o dado está, e por que o banco principal é a parte fácil.</p>
+<p><strong><a href="/posso-mandar-a-conversa-do-cliente-para-a-openai">Posso mandar a conversa do meu cliente para a OpenAI?</a></strong>
+O que os contratos dos provedores de modelo cobrem, e o que eles não cobrem para o Brasil.</p>
+<h2 id="apis-n-o-oficiais-an-lise-t-cnica">APIs não oficiais: análise técnica</h2>
+<p>Se você usa Z-API, UAZAPI ou Evolution, estas páginas descrevem o trade-off sem dizer o que você deve fazer. Cada uma tem uma seção sobre onde a ferramenta é melhor que a API oficial, porque em vários casos ela é.</p>
 <ul>
-<li><a href="/alternativa-a-z-api">Z-API: trade-offs técnicos</a></li>
-<li><a href="/alternativa-a-uazapi">UAZAPI: emulação vs oficial</a></li>
-<li><a href="/alternativa-a-evolution-api">Evolution: 3 modos diferentes</a></li>
+<li><a href="/alternativa-a-z-api">Z-API e API oficial: trade-offs técnicos</a></li>
+<li><a href="/alternativa-a-uazapi">UAZAPI vs API oficial</a></li>
+<li><a href="/alternativa-a-evolution-api">Evolution API: Baileys ou Cloud API</a></li>
 </ul>
-<hr />
-<p><strong>Pronto pra começar?</strong></p>
-<p><a href="https://app.datafyapi.com.br" rel="noopener">Teste 7 dias grátis em Datafy</a></p>
+<h2 id="roteiros">Roteiros</h2>
+<p><strong>Nunca usei API oficial:</strong> comece pela diferença entre oficial e não oficial, depois o que preciso para começar, depois a janela de 24 horas. Nessa ordem.</p>
+<p><strong>Vou migrar de uma ferramenta de QR code:</strong> migrar sem perder o número, coexistência, e a janela de 24 horas. A terceira é a que muda o seu dia a dia.</p>
+<p><strong>Estou montando agente de IA:</strong> quanto custa rodar um agente, a cobrança de AI Provider no Brasil, o handoff para humano, e a conversa com a OpenAI.</p>
+<p><strong>Vou vender isso dentro do meu SaaS:</strong> o cliente conectar sozinho, Tech Provider, webhook, e o telefone que está sumindo.</p>
+<p><strong>Alguma coisa quebrou agora:</strong> vá direto para a seção "quando quebra". As páginas começam pelo sintoma, não pela teoria.</p>
+<div class="cta"><h3>Tudo aqui tem fonte</h3><p>Cada número desta biblioteca aponta para a documentação da Meta ou está marcado como não confirmado. Onde a fonte oficial não existe, a página diz isso em vez de estimar.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 </article>
 
 <aside class="rail" aria-label="Ações">
@@ -641,13 +650,14 @@ footer p{margin:0 0 .5rem}
     <nav class="rail-box" aria-label="Sumário lateral">
       <strong>Nesta página</strong>
       <ol>
-        <li><a href="#1-funda-o-entender-a-api-oficial">1. Fundação: Entender a API ofic...</a></li>
-        <li><a href="#2-integra-es-como-usar">2. Integrações: Como usar</a></li>
-        <li><a href="#3-operacional-o-caminho-at-l">3. Operacional: O caminho até lá</a></li>
-        <li><a href="#4-diferencial-tech-provider-datafy">4. Diferencial: Tech Provider Da...</a></li>
-        <li><a href="#5-t-cnico-implementa-o">5. Técnico: Implementação</a></li>
-        <li><a href="#roteiros-de-leitura">Roteiros de leitura</a></li>
-        <li><a href="#apis-n-o-oficiais-review-t-cnico">APIs Não Oficiais: Review técnico</a></li>
+        <li><a href="#comece-por-aqui">Comece por aqui</a></li>
+        <li><a href="#quanto-custa">Quanto custa</a></li>
+        <li><a href="#conectar-e-migrar">Conectar e migrar</a></li>
+        <li><a href="#integrar">Integrar</a></li>
+        <li><a href="#quando-quebra">Quando quebra</a></li>
+        <li><a href="#dados-e-conformidade">Dados e conformidade</a></li>
+        <li><a href="#apis-n-o-oficiais-an-lise-t-cnica">APIs não oficiais: análise técnica</a></li>
+        <li><a href="#roteiros">Roteiros</a></li>
       </ol>
     </nav>
     <div class="rail-box">
