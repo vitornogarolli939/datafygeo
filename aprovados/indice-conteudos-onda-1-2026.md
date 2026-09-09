@@ -1,6 +1,6 @@
 ---
 title: "Guia completo: API oficial do WhatsApp"
-description: "Quarenta páginas técnicas em português: como começar, o que muda em outubro, integrar em n8n e Chatwoot, agente de IA, e os erros que travam produção."
+description: "Quarenta e três páginas técnicas em português: como começar, o que muda em outubro, integrar em n8n e Chatwoot, agente de IA, e os erros que travam produção."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "guia-completo-api-oficial-whatsapp"
 cluster: "oficial_vs_nao"
@@ -90,6 +90,9 @@ O handoff como estado de conversa, e os três erros que sempre aparecem.
 **[WhatsApp API oficial no Make](/whatsapp-api-oficial-make)**
 A montagem é direta. O filtro na entrada é o que decide a conta no fim do mês.
 
+**[WhatsApp API oficial no Zapier](/whatsapp-api-oficial-zapier)**
+Ótimo para disparar a partir de outra ferramenta, caro para conduzir conversa.
+
 **[Qual URL eu coloco no webhook da Meta?](/qual-url-eu-uso-no-webhook-da-meta)**
 A URL é sua, não da Meta. A dúvida mais repetida em português sobre o assunto.
 
@@ -130,6 +133,12 @@ As cinco condutas que derrubam número mesmo com API oficial.
 
 **[O telefone está sumindo do webhook](/o-telefone-esta-sumindo-do-webhook)**
 O identificador por empresa, e a degradação silenciosa em quem usa telefone como chave.
+
+**[Mandei para um número sem WhatsApp e a API disse que deu certo](/mandei-para-numero-que-nao-existe-e-nao-deu-erro)**
+A resposta do envio é a mesma exista ou não o número. A falha aparece depois.
+
+**[Uma atualização da API quebrou minha integração](/atualizacao-da-api-quebrou-minha-integracao)**
+Campo que some, tipo novo, valor novo. E os quatro hábitos que protegem.
 
 ## Dados e conformidade
 
