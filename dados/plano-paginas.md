@@ -255,17 +255,106 @@ erro 139101) · `embedded-signup-v2-vai-ser-desligado` (15/10/2026, migrar para 
 `marketing-messages-api-a-antiga-mm-lite` (e o erro 131063, que quebra integração de
 Cloud API quando alguém liga uma opção no WhatsApp Manager)
 
-## ONDA 13: conformidade, sem juridiquês (6)
+## ONDA 13: conformidade para quem implementa (14)
 
-Hoje só existe material jurídico genérico. Falta a versão de quem implementa.
+Reescrita em 08/09/2026 depois de um levantamento jurídico-técnico que leu os contratos
+da Meta, os DPAs da OpenAI e da Anthropic, as resoluções da ANPD e a Nota Técnica
+58/2025 inteira. A conclusão do levantamento, textual: **não existe conteúdo técnico em
+português sobre LGPD e Cloud API voltado a quem escreve código.** O que existe é alerta
+de escritório parafraseando a norma, blog de plataforma vendendo conformidade como
+recurso, ou o documento oficial, que é bom e não foi escrito para quem vai desenhar um
+schema. Zero artigos com nome de campo, prazo por artefato ou endpoint.
 
-`lgpd-e-whatsapp-api-quem-e-controlador-e-quem-e-operador` ·
-`opt-in-por-canal-email-nao-cobre-whatsapp` (orientação da ANPD; é o item de
-conformidade mais acionável e quase ninguém aplica) ·
-`opt-out-e-o-webhook-user-preferences` · `nichos-proibidos-pela-politica-da-meta` ·
-`retencao-de-conversa-onde-o-dado-fica` ·
-`anatel-e-dlt-nao-se-aplicam-ao-whatsapp` (desmontar um mito que circula: a jurisdição
-da ANATEL é recurso de telecom, e o DLT indiano não alcança OTT)
+Isso faz desta a onda mais defensável do site inteiro.
+
+### Urgente
+
+`novos-termos-do-whatsapp-business-23-de-setembro` — **os Termos mudam em 23/09/2026.**
+Existe aviso oficial e link de prévia, mas a página de prévia é um índice: o texto das
+mudanças não está publicado. Vale monitorar e publicar no dia.
+
+### As que ninguém escreveu, e que mudam decisão de arquitetura
+
+`openai-e-anthropic-nao-tem-clausulas-da-anpd` — **o achado mais acionável.** Os dois
+DPAs foram lidos e nenhum menciona Brasil, LGPD ou ANPD: a OpenAI cobre EEE, Suíça,
+Reino Unido e CCPA; a Anthropic usa as cláusulas da UE e do Reino Unido. Como o prazo da
+Resolução 19/2024 encerrou em **23/08/2025**, quem manda conversa de titular brasileiro
+para `api.openai.com` ou `api.anthropic.com` está sem mecanismo de transferência.
+
+`rotear-o-llm-para-a-uniao-europeia` — a saída prática da página acima. A **Resolução
+32/2026** deu a primeira decisão de adequação da ANPD: União Europeia e EEE. Chamar o
+modelo por Azure, Bedrock ou Vertex em região da UE transforma a transferência em
+Brasil para UE, coberta por adequação. A documentação da Anthropic confirma que, no
+Bedrock e no Vertex, **o processador é o provedor de nuvem**.
+
+`usar-conversa-para-melhorar-o-produto-nao-e-execucao-de-contrato` — a **Determinação 2
+da Nota Técnica 58/2025** proíbe expressamente usar a hipótese de execução de contrato
+para melhoria de serviço. Quem usa conversa de cliente para ajustar prompt, avaliar
+qualidade ou treinar classificador precisa de legítimo interesse com teste de
+balanceamento documentado. A ANPD ainda registra que tratar a base inteira não é
+razoável quando existe opção menos intrusiva, como amostragem.
+
+`a-meta-e-operadora-do-conteudo-e-controladora-do-resto` — a distinção que **todo artigo
+em português erra**. O conteúdo da mensagem e o telefone caem no regime de operadora. Já
+os dados da conta comercial, os logs de uso e a telemetria são tratados pela Meta como
+controladora, para fins próprios, incluindo divulgação dos produtos dela.
+
+`vector-store-da-openai-guarda-para-sempre` — Assistants, Threads e Vector Stores ficam
+**fora do Zero Data Retention** e retêm até deleção manual. Quem faz RAG sobre conversa
+de WhatsApp tem dado pessoal parado lá sem prazo. Na Anthropic, o espelho disso são os
+Covered Models, que forçam 30 dias e devolvem `400` se a organização está em ZDR.
+
+`micro-saas-tem-prazo-em-dobro` — a **Resolução 2/2022** dá a agente de pequeno porte,
+incluindo startup, prazo em dobro para pedido de titular e para incidente, dispensa de
+indicar encarregado e registro simplificado. Ninguém conecta isso a micro-SaaS de
+WhatsApp.
+
+`double-opt-in-no-whatsapp-e-utility` — confirmar o aceite dentro do WhatsApp é caso de
+uso de **utilidade** reconhecido na documentação de categorização da Meta. Ou seja, sai
+mais barato que marketing, e quase ninguém sabe.
+
+### Implementação
+
+`schema-de-log-de-consentimento` — a página que falta no mundo: nome de campo, snapshot
+literal do texto exibido, `wamid` da confirmação e da resposta, base legal por mensagem
+enviada, e cadeia de hash para integridade. Registrar também o opt-out feito **fora** do
+WhatsApp, que a política da Meta exige respeitar.
+
+`apagar-o-dado-de-um-titular-em-todo-lugar` — o pedido de exclusão esbarra no que os
+artigos esquecem: vector store, fila e DLQ, log de APM e backup. A solução honesta para
+backup é destruir a chave de criptografia daquele titular, em vez de prometer restaurar
+backup de doze meses.
+
+`quanto-tempo-a-meta-guarda-cada-coisa` — mensagem e mídia por 30 dias; **o identificador
+de mídia que chega no webhook expira em 7 dias**, e não em 30, o que quebra quem só
+processa no dia seguinte; conteúdo da empresa por 90 dias após o encerramento.
+
+`residencia-de-dados-no-brasil` — o parâmetro `data_localization_region` no registro do
+número, e o efeito colateral que ninguém menciona: com armazenamento local ligado, a
+**AWS entra como suboperadora** no anexo do contrato da Meta.
+
+`categoria-do-template-tambem-define-base-legal` — utilidade se apoia em execução de
+contrato; marketing pede consentimento ou legítimo interesse. Como a Meta recategoriza
+sozinha, com um dia de aviso, **a base legal do seu envio muda sem você tocar em nada**.
+
+`quem-mais-esta-na-sua-cadeia-de-dados` — o Infobip lista **OpenAI e Google Vertex** como
+suboperadores próprios. Quem usa o AgentOS deles tem modelo de linguagem estrangeiro na
+cadeia sem ter chamado nenhuma API de modelo.
+
+### Correção a um erro que circula em português
+
+O caso **WhatsApp e Cielo, de 2020, não é caso de LGPD.** Foi Banco Central e CADE, por
+arranjo de pagamento e concorrência, e a ANPD sequer estava instalada. Vários materiais
+brasileiros classificam errado. Vale um parágrafo dentro de outra página, não uma página
+própria.
+
+### Ressalva de método, que vale repetir dentro das páginas
+
+O levantamento separou o que foi lido na fonte do que veio de terceiros. Ficou **não
+confirmado**: o conteúdo das mudanças de 23/09/2026, o prazo de comunicação de incidente
+da Resolução 15/2024 (o `in.gov.br` esteve fora), e as listas de suboperadores da OpenAI
+e da Anthropic, que respondem 403. **Nenhuma página deve cravar esses três pontos sem
+alguém abrir a fonte primária antes.**
 
 ## Conta da expansão
 
@@ -277,7 +366,7 @@ da ANATEL é recurso de telecom, e o DLT indiano não alcança OTT)
 | 10. Fim do telefone | 6 | 105 |
 | 11. Limites e punição | 8 | 113 |
 | 12. Recursos não documentados | 10 | 123 |
-| 13. Conformidade | 6 | 129 |
+| 13. Conformidade | 14 | 137 |
 
 ## O que NÃO vira pauta, e por quê
 
