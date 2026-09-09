@@ -354,25 +354,39 @@ tag `whatsapp-flows`)
 
 ## Temas sem NENHUMA thread, que continuam sendo dor real
 
-Estes não têm competição alguma, e vários são erro que trava produção. A ausência de
-pergunta aqui não significa ausência de dor: significa que quem apanhou não achou nem
-onde perguntar.
+Lista **revisada em 08/09/2026** depois de uma terceira busca, no GitHub. Vários itens
+que eu tinha dado como "sem evidência" na verdade têm, e saíram daqui. O que sobrou
+resistiu a três buscas independentes.
 
-- **Mídia expira**: 30 dias para o arquivo enviado, e a URL de download vale poucos
-  minutos. Zero threads perguntam isso diretamente, mas é a causa de metade dos "a URL
-  não funciona".
-- **Enviar áudio como PTT de verdade** (a bolha de mensagem de voz, não anexo de áudio).
-- **PIN de verificação em duas etapas** do número.
-- **Migrar número entre WABAs**, e **desregistrar número**.
 - **Endpoint de health status** do número.
-- **WABA banida e como recorrer.**
-- **Zero-tap e copy-code** em template de autenticação.
-- **Block Users API.**
-- **Tabela de códigos de erro**: `131051`, `131048`, `131056`, `132007`, `132012`,
-  `132015`, `133005`, `133016`, `135000`, `130429`, `470`, `368`, `1013`. Nenhum tem
-  thread dedicada, e ninguém publicou uma tabela em português.
-- **Solution Partner contra Tech Provider**: o termo aparece em 12 threads, mas a
-  comparação entre os dois programas não existe em lugar nenhum.
+- **WABA banida e como recorrer** (o "temporarily blocked" que aparece é limitação de
+  onboarding, não banimento).
+- **Tiers de mensagem** (250, 2 mil, 10 mil, 100 mil) e como subir de faixa.
+- **Verificação de empresa, aprovação de display name e App Review**: aparecem de raspão,
+  nunca como assunto.
+- **Linha de crédito, moeda da conta e cobrança.**
+- **Região do servidor e residência de dados.**
+- **Solution Partner contra Tech Provider**: o termo Tech Provider aparece em 12 threads,
+  mas a comparação entre os dois programas não existe em lugar nenhum.
+- **Tabela de códigos de erro**: `131051`, `131048`, `131056`, `132007`, `133005`,
+  `133016`, `135000`, `470`, `368`, `1013`. Ninguém publicou uma tabela canônica, em
+  idioma nenhum.
+
+**Corrigido:** os itens abaixo eu tinha listado como sem evidência, e têm. Viram pauta
+normal, não pauta de nicho.
+
+- **Botão copiar código** em template de autenticação: três issues.
+- **PIN de duas etapas**: uma issue concreta, no contexto do número de teste.
+- **Stickers pela Cloud API**: três issues, evidência fraca mas real.
+- **Migrar número entre WABAs**: uma issue.
+- **Mensagem agendada**: evidência **forte**, ao contrário do que eu tinha escrito. Uma
+  issue com 21 comentários e 21 reações.
+- **Parâmetro nomeado contra posicional** (`#132000`): evidência **forte**. Duas issues
+  literalmente idênticas, mais quatro relacionadas.
+
+**Removido:** *"a mídia expira"*. Três buscas independentes não acharam **nenhuma**
+pergunta sobre isso. A dor real é outra: rejeição no upload (`131053`) e 404 no
+download. O artigo deve ser reposicionado para essas duas, não para o prazo.
 
 Só a tabela de erros já justifica uma página longa, e ela alimenta link interno para
 metade da onda 11.
@@ -433,3 +447,119 @@ disso (issue no pywa). Quem lê o campo antigo recebe valor errado.
 em **03/09/2026**, cinco dias antes deste levantamento. Ainda chega gente com
 documentação de on-premises. Reforça a página `on-premises-acabou-o-que-fazer` da
 onda 12.
+
+## Terceiro levantamento (GitHub): seis pautas novas
+
+Busca na API de issues do GitHub, com contagem de comentário e reação. A fonte mais rica
+de dor real é o `chatwoot/chatwoot`, com 438 issues casando "whatsapp cloud", porque é
+consumidor de produção e os relatos citam o código de erro da Meta. Baileys,
+wppconnect-server e waha retornam **zero** issues de Cloud API: são bibliotecas de
+WhatsApp Web, não há o que minerar ali.
+
+`versao-da-graph-api-quebrou-meu-parser` — **11 issues em 5 repositórios.** O campo
+`username` sumiu na v24.0, apareceu categoria de conversa nova, apareceu tipo de mensagem
+`user_changed_number`, e o parser de quem fez `switch` fechado quebra.
+
+`o-status-webhook-esconde-o-erro-da-meta` — **14 issues em 7 repositórios**, incluindo um
+par literalmente idêntico. Quando a mensagem falha, a Meta manda o motivo em `errors[]` e
+quase toda biblioteca descarta. O desenvolvedor vê "falhou" sem saber por quê.
+
+`erro-131026-os-dois-numeros-sao-api-oficial` — gatilho nada óbvio: dois números que estão
+os dois na API oficial não conseguem conversar entre si. É a causa de muito teste que
+"não funciona" entre colegas.
+
+`erro-131030-numero-nao-esta-na-lista-permitida` — modo de desenvolvimento só entrega para
+número cadastrado. Quatro issues, uma específica de número argentino.
+
+`header-de-midia-em-template` — 9 issues, uma com 29 comentários.
+
+`listar-e-paginar-templates` — o endpoint devolve 25 por página e quem tem biblioteca
+grande não percebe a paginação.
+
+---
+
+# QUARTO LEVANTAMENTO: o que o brasileiro pergunta, em português
+
+Este é o mais importante dos quatro, porque é o único que mede demanda **no idioma do
+site**. Duas descobertas estruturais mudam a forma de escolher título e pauta.
+
+**1. O pt.stackoverflow não tem nem as tags.** `whatsapp`, `whatsapp-api` e
+`whatsapp-cloud-api` retornam vazio na API de tags. O que existe lá é de 2014 a 2019,
+sobre `wa.me` e `yowsup`. Serve como prova de demanda, não de tema: "Existe alguma API
+para enviar mensagem pelo WhatsApp usando PHP?" tem **32.564 visualizações**, e "Existe
+alguma API Whatsapp oficial" tem 8.646.
+
+**2. O desenvolvedor brasileiro pergunta sobre a Cloud API através de um intermediário.**
+Ele não pergunta "Cloud API": ele abre issue no Evolution, no Chatwoot, no Typebot ou no
+fórum do n8n dizendo "API Oficial". É lá que está o vocabulário real, e é esse vocabulário
+que deve estar nos títulos.
+
+## As duas veias com demanda em português e nenhuma resposta em português
+
+`template-com-header-de-midia-nao-envia` — **a mais densa.** O detalhe que fecha a página:
+a URL de exemplo que a Meta devolve no sync do template é uma armadilha. Um relato em
+português fez o teste A/B da mesma `image.link` via Graph API cru (aceita) contra o app
+(131053) e decodificou o `oe=` para provar que o `header_handle` não estava expirado. A
+solução é subir o arquivo e usar `media_id` em vez de mandar `link`. Verbatim para o
+título: *"quando o template tem alguma mídia no cabeçalho a mensagem não é enviada e acusa
+erro de parâmetros"*.
+
+`audio-chega-mudo-no-celular` — **a de melhor relação dor sobre cobertura.** O verbatim é
+esse mesmo: *"áudios mp3 enviados pelo anexo está ficando mudo para a pessoa que recebe no
+celular... o atendente consegue ouvir normal"*. A causa raiz está escrita do lado da
+engenharia, em outra issue: mimetype `.mp3` fixo no código quebra a entrega em silêncio, e
+falta `voice: true`. Ou seja, **áudio mudo é mp3 no lugar de OGG/Opus**. Ninguém explicou
+isso em português, e resolve de uma vez a bolha de PTT que os outros levantamentos
+apontaram como lacuna.
+
+## Outras pautas com verbatim em português
+
+`qual-url-uso-no-webhook-da-meta` — *"não achei um local documentado sobre qual URL eu uso
+na configuração de Webhook na meta"*. Quinze comentários, o maior sinal em português do
+repositório. Parece básico e não tem resposta boa.
+
+`enviei-template-para-numero-que-nao-existe-e-nao-deu-erro` — *"a resposta do endpoint é
+exatamente a mesma quer o número exista ou não"*. A falha só aparece depois, no webhook de
+`statuses`, como `failed`. Pergunta excelente e nada óbvia.
+
+`template-pt-br-ou-pt-pt` — **zero conteúdo em português**, apesar de ser dor quase certa
+aqui. Some com o `132001`, que tem 24 mil visualizações em inglês.
+
+`reclassificacao-de-template-utility-para-marketing` — aparece em fórum de fornecedor
+brasileiro, com impacto direto de cobrança.
+
+`receber-a-localizacao-do-cliente` — tipo de mensagem que não estava em lista nenhuma e
+tem demanda em português.
+
+## Ranking final, cruzando os quatro levantamentos
+
+1. `audio-chega-mudo-no-celular` — dor em português, causa raiz conhecida, zero cobertura
+2. `template-com-header-de-midia-nao-envia` — a veia mais densa em português
+3. `bsuid-e-usernames-o-que-quebra-na-sua-integracao` — 41 comentários e 34 reações, o
+   maior engajamento global do levantamento
+4. `erro-131053-ao-enviar-midia` — dividir em MIME e codec, tamanho, e link contra
+   `media_id` com o 429 por ASN no proxy
+5. `assinatura-hmac-nao-confere` — quebra com acento e com barra, porque o hash é feito
+   sobre o JSON re-serializado
+6. `o-status-webhook-esconde-o-erro-da-meta`
+7. `erro-132000-parametro-nomeado-ou-posicional`
+8. `webhook-chega-duplicado` (deduplicação por `wamid`)
+9. `versao-da-graph-api-quebrou-meu-parser`
+10. `qual-url-uso-no-webhook-da-meta`
+
+## Duas observações que valem para o site inteiro
+
+**Ninguém pergunta sobre validação de assinatura em português.** Nenhuma dúvida sobre
+`X-Hub-Signature-256` em fonte brasileira, enquanto em inglês são 6 threads com 13,7 mil
+visualizações e 5 issues com a mesma causa. A leitura provável é desconfortável: ou o
+desenvolvedor brasileiro acerta em silêncio, ou não valida. Vale escrever assumindo a
+segunda hipótese.
+
+**"Multi-device" em português quase sempre quer dizer `@lid` do Baileys**, não a Cloud API.
+Se o site tocar no assunto, precisa desfazer a ambiguidade logo no primeiro parágrafo.
+
+**Fonte inacessível, registrada para quem repetir o levantamento:** Reddit responde 403 a
+qualquer tentativa; a busca da comunidade de desenvolvedores da Meta é renderizada no
+cliente e devolve a mesma lista para qualquer consulta; Botpress e Dify só têm Discord;
+`forum.typebot.io` não expõe API. As três varreduras independentes bateram nos mesmos
+muros, então não há material a recuperar aí.
