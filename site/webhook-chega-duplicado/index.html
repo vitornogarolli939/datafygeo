@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Meu webhook recebe a mesma mensagem várias vezes</title>
+<meta name="description" content="A Meta reentrega quando você não responde 200 a tempo. A correção é responder primeiro, processar depois, e ignorar identificador repetido.">
+<link rel="canonical" href="https://conteudo.datafyapi.com.br/webhook-chega-duplicado">
+<meta name="author" content="Vitor Nogarolli">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Datafy API · Conteúdo">
+<meta property="og:title" content="Meu webhook recebe a mesma mensagem várias vezes">
+<meta property="og:description" content="A Meta reentrega quando você não responde 200 a tempo. A correção é responder primeiro, processar depois, e ignorar identificador repetido.">
+<meta property="og:url" content="https://conteudo.datafyapi.com.br/webhook-chega-duplicado">
+<meta property="article:published_time" content="2026-09-09">
+<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:author" content="Vitor Nogarolli">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Meu webhook recebe a mesma mensagem várias vezes">
+<meta name="twitter:description" content="A Meta reentrega quando você não responde 200 a tempo. A correção é responder primeiro, processar depois, e ignorar identificador repetido.">
+
+<link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://datafyapi.com.br/#organization",
+      "name": "Datafy API",
+      "alternateName": "DatafyAPI",
+      "url": "https://datafyapi.com.br/",
+      "description": "Plataforma brasileira que da acesso a API oficial do WhatsApp (Meta Cloud API) por meio de infraestrutura propria, como Tech Provider verificado pela Meta.",
+      "areaServed": "BR",
+      "legalName": "Agência Nexum Marketing e Performance Ltda",
+      "taxID": "41.756.486/0001-70",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Curitiba",
+        "addressRegion": "PR",
+        "addressCountry": "BR"
+      },
+      "founder": {
+        "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person",
+      "name": "Vitor Nogarolli",
+      "jobTitle": "Cofundador da Datafy API",
+      "url": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli",
+      "worksFor": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://conteudo.datafyapi.com.br/#website",
+      "url": "https://conteudo.datafyapi.com.br/",
+      "name": "Datafy API · Conteúdo",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://datafyapi.com.br/#software",
+      "name": "Datafy API",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://datafyapi.com.br/",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "featureList": [
+        "Embedded Signup",
+        "Coexistência com WhatsApp Business App",
+        "28 eventos de webhook",
+        "Disparo por template via CSV",
+        "Integração com n8n, Make, Zapier e Chatwoot"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "49.90",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock",
+        "description": "Por número conectado, por mês. R$ 39,90 de 10 a 49 números e R$ 29,90 a partir de 50."
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://conteudo.datafyapi.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Conteúdo",
+          "item": "https://conteudo.datafyapi.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Meu webhook recebe a mesma mensagem várias vezes"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://conteudo.datafyapi.com.br/webhook-chega-duplicado#article",
+      "headline": "Meu webhook recebe a mesma mensagem várias vezes",
+      "description": "A Meta reentrega quando você não responde 200 a tempo. A correção é responder primeiro, processar depois, e ignorar identificador repetido.",
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-09-09",
+      "dateModified": "2026-09-09",
+      "author": {
+        "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "mainEntityOfPage": "https://conteudo.datafyapi.com.br/webhook-chega-duplicado",
+      "citation": [
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/create-webhook-endpoint/",
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
+        "https://app.datafyapi.com.br/docs"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://conteudo.datafyapi.com.br/webhook-chega-duplicado#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qual o tempo limite para responder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Meta não publica um número. Por isso a orientação não é \"responda em X segundos\", e sim \"responda antes de processar\"."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Se eu responder 200 e falhar depois, perco a mensagem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Perde, se você não gravou. É por isso que gravar o payload cru vem antes de responder: assim você confirma o recebimento e ainda tem o dado para reprocessar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso usar o horário da mensagem como chave?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não é confiável. Duas mensagens podem ter o mesmo carimbo, e o carimbo não é único por evento. Use o wamid."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Isso também acontece com status de entrega?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, o mesmo mecanismo de reentrega vale. Se você registra status em banco, a mesma proteção de repetição se aplica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Meu fluxo em automação visual dispara várias execuções por mensagem. É o mesmo problema?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Costuma ser o segundo caso: o fluxo está sendo acionado por status de entrega, além da mensagem. Uma condição no início resolve."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vale a pena guardar todos os identificadores para sempre?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Como a reentrega tem prazo de sete dias, guardar alguns dias basta. Limpe o resto."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+<style>
+:root{
+  --bg:#fcfbf9; --surface:#ffffff; --fg:#17181a; --muted:#63666b; --line:#e6e3de;
+  --accent:#0b6e4f; --accent-2:#0d8a63; --accent-soft:#e9f4ef;
+  --danger:#a33a2a; --danger-soft:#fbeeeb;
+  --code-bg:#f2f1ed; --warn-bg:#fdf7e9; --warn-line:#e6d09a;
+  --shadow:0 1px 2px rgba(20,20,20,.05), 0 8px 24px -12px rgba(20,20,20,.12);
+  --max:46rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131416; --surface:#1a1c1f; --fg:#eceae6; --muted:#9ea3a9; --line:#2c2f33;
+    --accent:#4fc79b; --accent-2:#63d6ac; --accent-soft:#12251e;
+    --danger:#e08272; --danger-soft:#2a1a17;
+    --code-bg:#22252a; --warn-bg:#26210f; --warn-line:#5d5127;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131416; --surface:#1a1c1f; --fg:#eceae6; --muted:#9ea3a9; --line:#2c2f33;
+  --accent:#4fc79b; --accent-2:#63d6ac; --accent-soft:#12251e;
+  --danger:#e08272; --danger-soft:#2a1a17;
+  --code-bg:#22252a; --warn-bg:#26210f; --warn-line:#5d5127;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:"Iowan Old Style","Charter",Georgia,"Times New Roman",serif;
+  font-size:1.075rem; line-height:1.68; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 1.35rem}
+.sans{font-family:system-ui,-apple-system,"Segoe UI",Inter,sans-serif}
+a{color:var(--accent); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+img,svg{max-width:100%}
+
+/* topo */
+.topbar{border-bottom:1px solid var(--line); background:var(--surface); position:sticky; top:0; z-index:10}
+.topbar .wrap{display:flex; gap:1rem; align-items:center; justify-content:space-between; padding:.8rem 1.35rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.85rem}
+.brand{font-weight:700; letter-spacing:-.02em; text-decoration:none; color:var(--fg); font-size:.95rem}
+.brand span{color:var(--accent)}
+nav.crumbs{color:var(--muted); font-size:.8rem}
+nav.crumbs a{color:var(--muted); text-decoration:none}
+nav.crumbs a:hover{text-decoration:underline}
+
+/* hero */
+header.post{padding:3rem 0 0}
+.eyebrow{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.75rem; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--accent); margin-bottom:.85rem;
+}
+h1{
+  font-size:clamp(1.9rem,5.2vw,2.85rem); line-height:1.12; letter-spacing:-.025em;
+  margin:0 0 1.15rem; font-weight:700; text-wrap:balance;
+}
+.byline{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.85rem; color:var(--muted);
+  display:flex; flex-wrap:wrap; gap:.45rem .8rem; align-items:center;
+}
+.byline a{color:var(--fg)}
+.badge{
+  display:inline-flex; align-items:center; gap:.3rem;
+  background:var(--accent-soft); color:var(--accent); border-radius:99px;
+  padding:.2rem .65rem; font-weight:650; font-size:.76rem; border:1px solid transparent;
+}
+.stats{
+  margin-top:0;
+  display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  margin:2rem 0 .5rem;
+}
+@media (min-width:40rem){ .stats{grid-template-columns:repeat(4,1fr)} }
+.stat{background:var(--surface); padding:.95rem 1.05rem; font-family:system-ui,-apple-system,sans-serif}
+.stat b{display:block; font-size:1.22rem; letter-spacing:-.02em; line-height:1.2; color:var(--accent)}
+.stat span{display:block; font-size:.78rem; color:var(--muted); margin-top:.15rem; line-height:1.35}
+
+.lede{
+  font-size:1.22rem; line-height:1.55; margin:2rem 0;
+  padding:1.25rem 1.4rem; background:var(--surface); border:1px solid var(--line);
+  border-left:4px solid var(--accent); border-radius:0 12px 12px 0; box-shadow:var(--shadow);
+}
+.lede p{margin:0}
+
+/* sumário */
+.toc{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:1.05rem 1.3rem; margin:2rem 0; font-family:system-ui,-apple-system,sans-serif; font-size:.9rem;
+}
+.toc strong{display:block; font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:.6rem}
+.toc ol{margin:0; padding-left:1.15rem; columns:2; column-gap:1.5rem}
+@media (max-width:34rem){ .toc ol{columns:1} }
+.toc li{margin-bottom:.3rem; break-inside:avoid}
+.toc a{text-decoration:none}
+.toc a:hover{text-decoration:underline}
+
+h2{
+  font-size:clamp(1.35rem,3.6vw,1.75rem); line-height:1.22; letter-spacing:-.02em;
+  margin:3rem 0 .9rem; font-weight:700; text-wrap:balance; scroll-margin-top:4rem;
+}
+h3{
+  font-family:system-ui,-apple-system,sans-serif; font-size:1.03rem;
+  margin:2rem 0 .5rem; font-weight:650; letter-spacing:-.005em;
+}
+p{margin:0 0 1.15rem}
+ul,ol{margin:0 0 1.25rem; padding-left:1.35rem}
+li{margin-bottom:.55rem}
+li::marker{color:var(--muted)}
+strong{font-weight:650}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+
+blockquote{
+  margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
+  border-radius:12px; font-size:1.13rem; line-height:1.5; position:relative;
+}
+blockquote p{margin:0 0 .7rem; font-style:italic}
+blockquote cite{display:block; font-style:normal; font-size:.83rem; color:var(--muted);
+  font-family:system-ui,-apple-system,sans-serif}
+
+/* figuras / diagramas */
+figure{margin:2.25rem 0; padding:0}
+.diagram{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:1.4rem 1.2rem 1rem; box-shadow:var(--shadow);
+}
+figcaption{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; color:var(--muted);
+  margin-top:.85rem; line-height:1.45; text-align:left;
+}
+
+/* vídeo */
+.video{
+  display:block; text-decoration:none; color:inherit; border:1px solid var(--line);
+  border-radius:12px; overflow:hidden; background:var(--surface); box-shadow:var(--shadow);
+}
+.video:hover{text-decoration:none; border-color:var(--accent)}
+.video .thumb{position:relative; aspect-ratio:16/9; background:var(--code-bg); display:block}
+.video .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.video .play{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+}
+.video .play span{
+  width:60px; height:60px; border-radius:50%; background:rgba(0,0,0,.72);
+  display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(0,0,0,.35);
+}
+.video:hover .play span{background:#c00}
+.video .meta{padding:.85rem 1.05rem; font-family:system-ui,-apple-system,sans-serif}
+.video .meta b{display:block; font-size:.95rem; line-height:1.35; letter-spacing:-.01em}
+.video .meta span{display:block; font-size:.8rem; color:var(--muted); margin-top:.2rem}
+
+/* tabela */
+.tablewrap{overflow-x:auto; margin:1.75rem 0; border:1px solid var(--line);
+  border-radius:12px; background:var(--surface); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; min-width:38rem; font-size:.88rem;
+  font-family:system-ui,-apple-system,sans-serif}
+th,td{padding:.7rem .85rem; text-align:left; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{background:var(--code-bg); font-weight:650; font-size:.8rem; white-space:nowrap}
+thead th:last-child{color:var(--accent)}
+tbody tr:last-child td{border-bottom:0}
+tbody th{font-weight:600; background:transparent; white-space:nowrap}
+td.yes{color:var(--accent); font-weight:600}
+td.no{color:var(--danger)}
+caption{caption-side:bottom; padding:.7rem .85rem; text-align:left;
+  font-size:.78rem; color:var(--muted); font-family:system-ui,-apple-system,sans-serif}
+
+.callout{
+  background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:12px;
+  padding:1.1rem 1.3rem; margin:1.9rem 0; font-size:.98rem;
+}
+.callout p:last-child{margin-bottom:0}
+
+.cta{
+  border:1px solid var(--line); border-radius:14px; padding:1.6rem 1.75rem;
+  margin:2.75rem 0; background:var(--accent-soft); box-shadow:var(--shadow);
+}
+.cta h3{margin:0 0 .5rem; font-size:1.15rem; font-weight:700}
+.cta p{margin:0 0 1.1rem; font-size:.98rem}
+.cta p:last-child{margin-bottom:0}
+.btn{
+  display:inline-block; background:var(--accent); color:#fff; text-decoration:none;
+  padding:.72rem 1.3rem; border-radius:8px; font-weight:650; font-size:.95rem;
+  font-family:system-ui,-apple-system,sans-serif;
+}
+.btn:hover{background:var(--accent-2); text-decoration:none}
+.cta small{display:block; margin-top:.6rem; font-size:.8rem; color:var(--muted);
+  font-family:system-ui,-apple-system,sans-serif}
+
+.sources{font-size:.86rem; color:var(--muted)}
+.sources li{margin-bottom:.4rem}
+footer{
+  border-top:1px solid var(--line); margin-top:4rem; padding:2.25rem 0 3.5rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; color:var(--muted);
+  background:var(--surface);
+}
+footer a{color:var(--muted)}
+footer p{margin:0 0 .5rem}
+
+/* ===== MOLDURA DO SITE (fixa, igual em todas as páginas) ===== */
+.site-head{
+  position:sticky; top:0; z-index:30; background:color-mix(in srgb,var(--surface) 92%,transparent);
+  backdrop-filter:saturate(1.4) blur(8px); border-bottom:1px solid var(--line);
+}
+.site-head .row{
+  max-width:74rem; margin:0 auto; padding:.7rem 1.35rem;
+  display:flex; align-items:center; gap:1.25rem;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.logo{display:flex; align-items:center; gap:.5rem; text-decoration:none; color:var(--fg); font-weight:750;
+  letter-spacing:-.025em; font-size:1rem; flex:none}
+.logo .dot{width:22px;height:22px;border-radius:6px;background:var(--accent);display:grid;place-items:center;
+  color:#fff;font-size:.72rem;font-weight:800}
+.logo span{color:var(--accent)}
+.site-nav{display:flex; gap:1.1rem; font-size:.87rem; margin-left:.5rem}
+.site-nav a{color:var(--muted); text-decoration:none}
+.site-nav a:hover{color:var(--fg)}
+@media (max-width:52rem){ .site-nav{display:none} }
+.head-cta{margin-left:auto; display:flex; gap:.55rem; align-items:center; flex:none}
+.head-cta a{font-size:.85rem; text-decoration:none; white-space:nowrap}
+.head-cta .ghost{color:var(--muted); padding:.45rem .2rem}
+.head-cta .ghost:hover{color:var(--fg)}
+.head-cta .solid{background:var(--accent); color:#fff; padding:.5rem .95rem; border-radius:7px; font-weight:650}
+.head-cta .solid:hover{background:var(--accent-2)}
+@media (max-width:34rem){ .head-cta .ghost{display:none} }
+
+/* ===== FAIXA DE TOPO ===== */
+.hero-band{background:var(--accent-soft); border-bottom:1px solid var(--line)}
+.hero-grid{
+  max-width:74rem; margin:0 auto; padding:2.75rem 1.35rem 2.5rem;
+  display:grid; grid-template-columns:1fr; gap:2rem; align-items:center;
+}
+@media (min-width:56rem){ .hero-grid{grid-template-columns:1.15fr .85fr; gap:3rem} }
+.hero-art{order:-1}
+@media (min-width:56rem){ .hero-art{order:0} }
+.hero-band h1{margin:0 0 1rem}
+.hero-band .byline{padding-bottom:0; border-bottom:0}
+
+/* ===== CORPO EM DUAS COLUNAS ===== */
+.shell{max-width:74rem; margin:0 auto; padding:0 1.35rem; display:grid; grid-template-columns:1fr; gap:2.5rem}
+@media (min-width:62rem){ .shell{grid-template-columns:minmax(0,1fr) 19rem; gap:3.25rem} }
+.shell > article{min-width:0; padding-top:2.25rem}
+.rail{display:none}
+@media (min-width:62rem){
+  .rail{display:block; padding-top:2.25rem}
+  .rail-inner{position:sticky; top:4.5rem; display:flex; flex-direction:column; gap:1.1rem}
+}
+.rail-cta{
+  background:var(--accent); color:#fff; border-radius:14px; padding:1.35rem 1.4rem;
+  font-family:system-ui,-apple-system,sans-serif; box-shadow:var(--shadow);
+}
+.rail-cta b{display:block; font-size:1.05rem; font-weight:750; letter-spacing:-.015em; line-height:1.3; margin-bottom:.5rem}
+.rail-cta p{font-size:.87rem; line-height:1.5; margin:0 0 1rem; opacity:.92}
+.rail-cta a{
+  display:block; text-align:center; background:#fff; color:var(--accent);
+  padding:.6rem 1rem; border-radius:8px; font-weight:700; font-size:.9rem; text-decoration:none;
+}
+.rail-cta a:hover{opacity:.92; text-decoration:none}
+.rail-cta small{display:block; margin-top:.6rem; font-size:.75rem; opacity:.85; text-align:center}
+.rail-box{
+  background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:1.1rem 1.25rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.86rem;
+}
+.rail-box strong{display:block; font-size:.72rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:.6rem}
+.rail-box ol{margin:0; padding-left:1.1rem}
+.rail-box li{margin-bottom:.35rem; line-height:1.4}
+.rail-box a{text-decoration:none}
+.rail-box a:hover{text-decoration:underline}
+
+/* ===== RODAPÉ ===== */
+.site-foot{border-top:1px solid var(--line); background:var(--surface); margin-top:4rem}
+.foot-grid{
+  max-width:74rem; margin:0 auto; padding:2.75rem 1.35rem 1.75rem;
+  display:grid; grid-template-columns:1fr; gap:2rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.86rem;
+}
+@media (min-width:44rem){ .foot-grid{grid-template-columns:1.4fr 1fr 1fr} }
+.foot-grid h4{font-size:.74rem; letter-spacing:.09em; text-transform:uppercase; color:var(--muted);
+  margin:0 0 .7rem; font-weight:700}
+.foot-grid ul{list-style:none; margin:0; padding:0}
+.foot-grid li{margin-bottom:.4rem}
+.foot-grid a{color:var(--muted); text-decoration:none}
+.foot-grid a:hover{color:var(--fg)}
+.foot-about p{color:var(--muted); margin:0 0 .6rem; max-width:26rem; line-height:1.55}
+.foot-legal{
+  max-width:74rem; margin:0 auto; padding:1.1rem 1.35rem 2.5rem; border-top:1px solid var(--line);
+  font-family:system-ui,-apple-system,sans-serif; font-size:.78rem; color:var(--muted);
+}
+
+/* ===== home e pagina de autor ===== */
+.shell-solo{grid-template-columns:minmax(0,1fr) !important; max-width:52rem}
+.shell-solo > article{padding-top:3rem}
+.sub{font-size:1.15rem; color:var(--muted); margin:0 0 2rem}
+.cards{list-style:none; margin:1.5rem 0 0; padding:0; display:grid; gap:1rem}
+@media (min-width:44rem){ .cards{grid-template-columns:1fr 1fr} }
+.card a{display:block; text-decoration:none; color:inherit; height:100%;
+  background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  padding:1.25rem 1.35rem; box-shadow:var(--shadow)}
+.card a:hover{border-color:var(--accent); text-decoration:none}
+.card-tema{display:inline-block; font-family:system-ui,-apple-system,sans-serif;
+  font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent); background:var(--accent-soft); padding:.2rem .55rem;
+  border-radius:99px; margin-bottom:.65rem}
+.card b{display:block; font-size:1.08rem; line-height:1.3; letter-spacing:-.015em; margin-bottom:.4rem}
+.card p{font-size:.92rem; color:var(--muted); margin:0 0 .8rem; line-height:1.5}
+.card-data{font-family:system-ui,-apple-system,sans-serif; font-size:.78rem; color:var(--faint,var(--muted))}
+
+</style>
+</head>
+<body>
+
+
+
+<header class="site-head">
+  <div class="row">
+    <a class="logo" href="/"><span class="dot">D</span>Datafy<span>API</span></a>
+    <nav class="site-nav" aria-label="Temas">
+      <a href="/tema/oficial-vs-nao-oficial">Oficial vs não oficial</a>
+      <a href="/tema/custo">Custos</a>
+      <a href="/tema/coexistencia">Coexistência</a>
+      <a href="/tema/implementacao">Implementação</a>
+      <a href="/tema/compliance">Banimento e compliance</a>
+    </nav>
+    <div class="head-cta">
+      <a class="ghost" href="https://app.datafyapi.com.br/docs">Documentação</a>
+      <a class="solid" href="https://app.datafyapi.com.br">Teste 7 dias grátis</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero-band">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">Conteúdo</p>
+      <h1>Meu webhook recebe a mesma mensagem várias vezes</h1>
+      <div class="byline">
+        <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
+        <span class="badge">Tech Provider verificado pela Meta</span>
+        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
+  <title id="heroT">Servidor recebendo um POST assinado</title>
+  <desc id="heroD">Ilustração de uma requisição chegando a um servidor, com um selo indicando a validação da assinatura.</desc>
+  <rect x="18" y="112" width="80" height="56" rx="12" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
+  <text x="58" y="146" text-anchor="middle" style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg);fill:var(--muted)">Meta</text>
+  <path d="M106 140 H196" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
+  <path d="M188 133 l9 7 -9 7" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="122" y="112" width="56" height="20" rx="6" fill="var(--accent-soft)"/>
+  <text x="150" y="126" text-anchor="middle" style="font:700 10px ui-monospace,monospace;fill:var(--accent)">POST</text>
+  <rect x="204" y="98" width="118" height="84" rx="12" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
+  <rect x="220" y="116" width="86" height="6" rx="3" fill="var(--muted)" opacity=".45"/>
+  <rect x="220" y="130" width="62" height="6" rx="3" fill="var(--muted)" opacity=".45"/>
+  <rect x="220" y="152" width="46" height="16" rx="8" fill="var(--accent-soft)"/>
+  <text x="243" y="164" text-anchor="middle" style="font:700 9.5px ui-monospace,monospace;fill:var(--accent)">200</text>
+  <path d="M170 206 l26 10 v18 c0 16 -12 28 -26 32 c-14 -4 -26 -16 -26 -32 v-18 z"
+        fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+  <text x="170" y="248" text-anchor="middle" style="font:700 9px system-ui,sans-serif;fill:var(--accent)">HMAC</text>
+</svg>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+<article>
+
+<h1>Meu webhook recebe a mesma mensagem várias vezes</h1>
+<p><strong>Resposta curta:</strong> na quase totalidade dos casos, o seu endpoint <strong>está demorando para responder 200</strong>. A Meta trata isso como falha de entrega e reentrega a mesma mensagem, com frequência decrescente, por até 7 dias. O resultado é a mesma conversa chegando duas, três, cinco vezes, e o cliente recebendo resposta repetida.</p>
+<p>A correção tem duas partes, e as duas são simples: <strong>responder 200 antes de processar</strong>, e <strong>ignorar o que já foi processado</strong> usando o identificador da mensagem.</p>
+<div class="stats">
+  <div class="stat"><b>200</b><span>o status que a Meta espera, e rápido</span></div>
+  <div class="stat"><b>7 dias</b><span>por quanto tempo ela reentrega se você falhar</span></div>
+  <div class="stat"><b>wamid</b><span>o identificador que serve de chave para ignorar repetido</span></div>
+  <div class="stat"><b>2 partes</b><span>responder rápido, e ignorar repetido</span></div>
+</div>
+
+<h2 id="principais-pontos">Principais pontos</h2>
+<ul>
+<li>A Meta <strong>reentrega com frequência decrescente por até 7 dias</strong> quando não recebe confirmação (<a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/create-webhook-endpoint/" rel="noopener">documentação de webhook</a>).</li>
+<li>Ela <strong>não publica um tempo limite</strong> de resposta. O seguro é confirmar imediatamente e trabalhar de forma assíncrona.</li>
+<li>O erro mais comum de arquitetura: chamar banco, modelo de linguagem ou serviço externo <strong>antes</strong> de responder 200. Qualquer lentidão vira duplicata.</li>
+<li>A correção definitiva é <strong>ignorar identificador repetido</strong>, porque nem toda reentrega é culpa sua: rede falha, e a plataforma pode reentregar mesmo assim.</li>
+<li>O mesmo endpoint recebe <strong>status de entrega</strong>, e não só mensagem. Um fluxo que assume que todo evento é mensagem quebra ou responde duas vezes.</li>
+</ul>
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Como o webhook entrega a mensagem</text>
+<rect class="box" x="30" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="115" y="80" text-anchor="middle">Cliente</text>
+<text class="s" x="115" y="100" text-anchor="middle">escreve no WhatsApp</text>
+<rect class="box" x="275" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="360" y="80" text-anchor="middle">Meta</text>
+<text class="s" x="360" y="100" text-anchor="middle">faz POST no seu endpoint</text>
+<rect class="box" x="520" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="605" y="80" text-anchor="middle">Seu servidor</text>
+<text class="s" x="605" y="100" text-anchor="middle">responde 200 na hora</text>
+<path class="ar" d="M205,87 L268,87"/>
+<path class="ar" d="M450,87 L513,87"/>
+<rect class="box" x="30" y="146" width="330" height="76" rx="8"/>
+<text class="h" x="46" y="170">Se você falhar</text>
+<text class="p" x="46" y="192">A Meta reentrega com frequência</text>
+<text class="p" x="46" y="210">decrescente por até 7 dias.</text>
+<rect class="box" x="380" y="146" width="310" height="76" rx="8"/>
+<text class="h" x="396" y="170">Como validar</text>
+<text class="p" x="396" y="192">HMAC SHA-256 no header</text>
+<text class="p" x="396" y="210">X-Hub-Signature-256.</text>
+</svg>
+</div>
+<figcaption></figcaption>
+</figure>
+
+<h2 id="por-que-acontece">Por que acontece</h2>
+<p>A entrega de webhook funciona por confirmação: a Meta faz o <code>POST</code>, e espera um <code>200</code>. Se ela não recebe, assume que a mensagem se perdeu e tenta de novo mais tarde, com espaçamento crescente, por até sete dias.</p>
+<p>O problema é que a maioria dos handlers faz assim:</p>
+<ol>
+<li>Recebe o <code>POST</code></li>
+<li>Consulta o banco</li>
+<li>Chama um modelo de linguagem, ou um CRM, ou os dois</li>
+<li>Envia a resposta ao cliente</li>
+<li><strong>Só então</strong> devolve <code>200</code></li>
+</ol>
+<p>Se os passos 2 a 4 levam mais que o tolerável, a Meta desiste de esperar e reentrega. Só que o passo 4 <strong>já aconteceu</strong>: o cliente já recebeu. Na reentrega, tudo roda de novo, e ele recebe outra vez.</p>
+<p>Em fluxo com IA isso é quase garantido, porque o modelo demora segundos para responder. É por isso que o problema aparece muito em automação de agente.</p>
+<h2 id="a-corre-o-em-duas-partes">A correção, em duas partes</h2>
+<h3>Parte 1: responder antes de processar</h3>
+<p>Inverta a ordem. Confirme primeiro, trabalhe depois:</p>
+<ol>
+<li>Recebe o <code>POST</code></li>
+<li>Grava o payload cru</li>
+<li><strong>Devolve <code>200</code> imediatamente</strong></li>
+<li>Processa fora do ciclo da requisição, em fila ou em segundo plano</li>
+</ol>
+<p>Em automação visual, isso costuma ser a configuração de resposta imediata no nó de webhook, com o trabalho pesado no ramo seguinte. Se a ferramenta só responde no fim do fluxo, qualquer chamada lenta no meio vira mensagem duplicada.</p>
+<h3>Parte 2: ignorar o que já foi visto</h3>
+<p>Responder rápido reduz muito, mas não zera: rede falha, e reentrega pode acontecer mesmo com resposta correta. A garantia vem de tornar o processamento repetível sem efeito.</p>
+<p>Toda mensagem tem um identificador único, o <code>wamid</code>. Guarde-o e verifique antes de agir:</p>
+<p><code>sql
+CREATE TABLE mensagens_processadas (
+  wamid       text PRIMARY KEY,
+  recebido_em timestamptz NOT NULL DEFAULT now()
+);</code></p>
+<p>E no processamento, insira ignorando conflito. Se a linha já existia, aquela mensagem já foi tratada, e o trabalho para ali. Essa checagem tem que ficar <strong>antes</strong> de qualquer efeito externo: antes de enviar resposta, antes de abrir ticket, antes de cobrar.</p>
+<p>Uma limpeza periódica dos registros antigos mantém a tabela pequena, já que a reentrega tem prazo de sete dias.</p>
+<h2 id="a-outra-causa-tratar-status-como-mensage">A outra causa: tratar status como mensagem</h2>
+<p>Existe um segundo motivo para "chegar duas vezes" que não é reentrega, e é ainda mais comum em automação visual.</p>
+<p>O mesmo webhook entrega <strong>mensagens</strong> e <strong>status de entrega</strong>. Cada mensagem que você envia gera eventos de enviada, entregue e lida, e todos chegam no mesmo endpoint. Se o fluxo não separa os dois, cada envio dispara execuções extras, e um fluxo mal desenhado chega a responder ao próprio status.</p>
+<p>A separação é uma condição no início:</p>
+<p><code>$json.body.entry[0].changes[0].value.messages  →  existe?</code></p>
+<p>Se <code>messages</code> não existe, é status: registre e encerre. É a primeira coisa a colocar em qualquer fluxo, e resolve tanto o consumo desnecessário quanto o comportamento estranho de bot que responde sozinho.</p>
+<h2 id="como-diagnosticar-qual-o-seu-caso">Como diagnosticar qual é o seu caso</h2>
+<p><strong>Chega a mesma mensagem, com o mesmo <code>wamid</code>, em momentos diferentes:</strong> é reentrega. Vá para a parte 1 e a parte 2.</p>
+<p><strong>Chegam eventos diferentes, e o seu fluxo trata todos como mensagem:</strong> é o caso do status. Coloque a condição no início.</p>
+<p><strong>O cliente recebeu resposta repetida, mas seu log mostra uma execução só:</strong> provavelmente há mais de um consumidor lendo a mesma fila, ou duas instâncias do mesmo fluxo ativas. Vale conferir antes de mexer no código.</p>
+<h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+<h3>Qual o tempo limite para responder?</h3>
+<p>A Meta não publica um número. Por isso a orientação não é "responda em X segundos", e sim "responda antes de processar".</p>
+<h3>Se eu responder 200 e falhar depois, perco a mensagem?</h3>
+<p>Perde, se você não gravou. É por isso que gravar o payload cru vem <strong>antes</strong> de responder: assim você confirma o recebimento e ainda tem o dado para reprocessar.</p>
+<h3>Posso usar o horário da mensagem como chave?</h3>
+<p>Não é confiável. Duas mensagens podem ter o mesmo carimbo, e o carimbo não é único por evento. Use o <code>wamid</code>.</p>
+<h3>Isso também acontece com status de entrega?</h3>
+<p>Sim, o mesmo mecanismo de reentrega vale. Se você registra status em banco, a mesma proteção de repetição se aplica.</p>
+<h3>Meu fluxo em automação visual dispara várias execuções por mensagem. É o mesmo problema?</h3>
+<p>Costuma ser o segundo caso: o fluxo está sendo acionado por status de entrega, além da mensagem. Uma condição no início resolve.</p>
+<h3>Vale a pena guardar todos os identificadores para sempre?</h3>
+<p>Não. Como a reentrega tem prazo de sete dias, guardar alguns dias basta. Limpe o resto.</p>
+<h2 id="como-decidir">Como decidir</h2>
+<p>Se o seu fluxo é simples e rápido, responder antes de processar já resolve na prática. Se envolve modelo de linguagem, chamada externa ou qualquer coisa que demore, implemente as duas partes: sem a verificação de repetição, um dia de lentidão vira uma leva de clientes recebendo a mesma coisa duas vezes.</p>
+<p>E coloque a condição de status no início de tudo. Ela custa um nó e evita metade dos comportamentos estranhos.</p>
+<div class="cta"><h3>Três coisas para conferir no seu handler hoje</h3><p>Ele responde 200 antes de processar? Ele grava o payload cru antes de responder? Ele ignora wamid que já viu? Três respostas sim significam que reentrega deixou de ser problema seu.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+
+<h2 id="leia-tamb-m">Leia também</h2>
+<ul>
+<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens em tempo real</a></li>
+<li><a href="/whatsapp-api-oficial-n8n">WhatsApp API oficial no n8n</a></li>
+<li><a href="/como-leio-o-historico-de-conversa-pela-api">Como leio o histórico de conversa pela API</a></li>
+<li><a href="/quantas-mensagens-por-segundo-posso-enviar">Quantas mensagens por segundo posso enviar?</a></li>
+</ul>
+</article>
+
+<aside class="rail" aria-label="Ações">
+  <div class="rail-inner">
+    <div class="rail-cta">
+      <b>Teste com um número</b>
+      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
+      <small>7 dias · sem cartão · sem setup</small>
+    </div>
+    <nav class="rail-box" aria-label="Sumário lateral">
+      <strong>Nesta página</strong>
+      <ol>
+        <li><a href="#principais-pontos">Principais pontos</a></li>
+        <li><a href="#por-que-acontece">Por que acontece</a></li>
+        <li><a href="#a-corre-o-em-duas-partes">A correção, em duas partes</a></li>
+        <li><a href="#a-outra-causa-tratar-status-como-mensage">A outra causa: tratar status com...</a></li>
+        <li><a href="#como-diagnosticar-qual-o-seu-caso">Como diagnosticar qual é o seu c...</a></li>
+        <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+        <li><a href="#como-decidir">Como decidir</a></li>
+        <li><a href="#leia-tamb-m">Leia também</a></li>
+      </ol>
+    </nav>
+    <div class="rail-box">
+      <strong>Falar com a gente</strong>
+      <p style="margin:0;color:var(--muted);line-height:1.5">Dúvida antes de assinar?
+      <a href="https://wa.me/5541991338055" rel="noopener">Chame no WhatsApp</a>.</p>
+    </div>
+  </div>
+</aside>
+</div>
+
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div class="foot-about">
+      <a class="logo" href="/" style="margin-bottom:.8rem"><span class="dot">D</span>Datafy<span>API</span></a>
+      <p>A API oficial do WhatsApp para quem automatiza e constrói software. Tech Provider verificado pela Meta, com coexistência e espelho 1:1 da Cloud API.</p>
+      <p>Agência Nexum Marketing e Performance Ltda<br>CNPJ 41.756.486/0001-70 · Curitiba/PR</p>
+    </div>
+    <div>
+      <h4>Temas</h4>
+      <ul>
+        <li><a href="/tema/oficial-vs-nao-oficial">Oficial vs não oficial</a></li>
+        <li><a href="/tema/custo">Custos</a></li>
+        <li><a href="/tema/coexistencia">Coexistência</a></li>
+        <li><a href="/tema/implementacao">Implementação</a></li>
+        <li><a href="/tema/compliance">Banimento e compliance</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Datafy</h4>
+      <ul>
+        <li><a href="https://datafyapi.com.br/">Site</a></li>
+        <li><a href="https://app.datafyapi.com.br/docs">Documentação</a></li>
+        <li><a href="https://app.datafyapi.com.br">Painel</a></li>
+        <li><a href="/autor/vitor-nogarolli">Sobre o autor</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">© 2026 Datafy API. Conteúdo técnico em português sobre WhatsApp Business API.</div>
+</footer>
+
+</body>
+</html>
