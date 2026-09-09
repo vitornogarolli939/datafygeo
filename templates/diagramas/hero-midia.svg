@@ -1,0 +1,21 @@
+<svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
+  <title id="heroT">Arquivo de áudio e a bolha de mensagem de voz</title>
+  <desc id="heroD">Ilustração comparando um anexo de áudio comum com a bolha de mensagem de voz, que tem onda sonora.</desc>
+  <rect x="26" y="86" width="130" height="52" rx="12" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
+  <rect x="40" y="104" width="14" height="16" rx="2" fill="var(--muted)" opacity=".5"/>
+  <rect x="62" y="106" width="72" height="5" rx="2.5" fill="var(--muted)" opacity=".5"/>
+  <rect x="62" y="117" width="48" height="5" rx="2.5" fill="var(--muted)" opacity=".35"/>
+  <text x="91" y="158" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--muted)">anexo</text>
+  <rect x="184" y="86" width="130" height="52" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+  <circle cx="204" cy="112" r="10" fill="var(--accent)"/>
+  <path d="M201 107 l7 5 -7 5 z" fill="var(--surface)"/>
+  <g stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round">
+    <path d="M222 108 v8"/><path d="M230 103 v18"/><path d="M238 106 v12"/>
+    <path d="M246 100 v24"/><path d="M254 107 v10"/><path d="M262 104 v16"/>
+    <path d="M270 109 v6"/><path d="M278 105 v14"/><path d="M286 108 v8"/>
+  </g>
+  <text x="249" y="158" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--accent)">mensagem de voz</text>
+  <rect x="60" y="188" width="220" height="56" rx="10" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
+  <text x="170" y="211" text-anchor="middle" style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg)">O formato decide qual dos dois</text>
+  <text x="170" y="231" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--muted)">OGG com Opus vira bolha. MP3 vira anexo.</text>
+</svg>

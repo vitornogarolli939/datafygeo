@@ -4,7 +4,7 @@ description: "Campo que some, tipo de evento novo, categoria que não existia. A
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "atualizacao-da-api-quebrou-minha-integracao"
 cluster: "implementacao"
-hero: "webhook"
+hero: "erro"
 intent: "problema-urgente"
 persona: "saas, automacao"
 competitors: []

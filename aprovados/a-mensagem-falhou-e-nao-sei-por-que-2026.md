@@ -4,7 +4,7 @@ description: "A Meta manda o motivo da falha no webhook de status. Quase toda bi
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "a-mensagem-falhou-e-nao-sei-por-que"
 cluster: "problemas"
-hero: "webhook"
+hero: "erro"
 intent: "problema-urgente"
 persona: "saas, automacao"
 competitors: []

@@ -4,7 +4,7 @@ description: "São 80 por segundo por número, 20 se ele estiver em coexistênci
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "quantas-mensagens-por-segundo-posso-enviar"
 cluster: "implementacao"
-hero: "fluxo"
+hero: "limite"
 intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []

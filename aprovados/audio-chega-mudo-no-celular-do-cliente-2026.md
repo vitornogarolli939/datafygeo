@@ -4,7 +4,7 @@ description: "O atendente ouve, o cliente não. Quase sempre é mp3 no lugar de 
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "audio-chega-mudo-no-celular-do-cliente"
 cluster: "problemas"
-hero: "webhook"
+hero: "midia"
 intent: "problema-urgente"
 persona: "saas, automacao"
 competitors: []
@@ -41,6 +41,8 @@ status: aprovado
 - Falta quase sempre a marcação que diz à API que aquilo é mensagem de voz, e não anexo de som.
 - **Passando de 512 KB**, o ícone de tocar não aparece e o arquivo vira download, mesmo com o formato certo.
 - Muita biblioteca e muito conector deixam o tipo de mídia fixo no código como mp3, e aí o problema não está no seu áudio: está na camada que envia.
+
+::diagrama: webhook-fluxo
 
 ## Por que o mp3 causa isso
 

@@ -4,7 +4,7 @@ description: "A resposta do envio é a mesma exista ou não o número. A falha s
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "mandei-para-numero-que-nao-existe-e-nao-deu-erro"
 cluster: "problemas"
-hero: "webhook"
+hero: "erro"
 intent: "problema-urgente"
 persona: "saas, automacao"
 competitors: []

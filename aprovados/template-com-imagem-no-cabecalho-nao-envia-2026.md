@@ -4,7 +4,7 @@ description: "A URL de exemplo que a Meta devolve ao sincronizar o template é u
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "template-com-imagem-no-cabecalho-nao-envia"
 cluster: "problemas"
-hero: "webhook"
+hero: "midia"
 intent: "problema-urgente"
 persona: "saas, automacao"
 competitors: []

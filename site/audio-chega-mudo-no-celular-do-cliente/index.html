@@ -544,22 +544,25 @@ footer p{margin:0 0 .5rem}
 
     <div class="hero-art">
       <svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
-  <title id="heroT">Servidor recebendo um POST assinado</title>
-  <desc id="heroD">Ilustração de uma requisição chegando a um servidor, com um selo indicando a validação da assinatura.</desc>
-  <rect x="18" y="112" width="80" height="56" rx="12" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
-  <text x="58" y="146" text-anchor="middle" style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg);fill:var(--muted)">Meta</text>
-  <path d="M106 140 H196" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
-  <path d="M188 133 l9 7 -9 7" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
-  <rect x="122" y="112" width="56" height="20" rx="6" fill="var(--accent-soft)"/>
-  <text x="150" y="126" text-anchor="middle" style="font:700 10px ui-monospace,monospace;fill:var(--accent)">POST</text>
-  <rect x="204" y="98" width="118" height="84" rx="12" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
-  <rect x="220" y="116" width="86" height="6" rx="3" fill="var(--muted)" opacity=".45"/>
-  <rect x="220" y="130" width="62" height="6" rx="3" fill="var(--muted)" opacity=".45"/>
-  <rect x="220" y="152" width="46" height="16" rx="8" fill="var(--accent-soft)"/>
-  <text x="243" y="164" text-anchor="middle" style="font:700 9.5px ui-monospace,monospace;fill:var(--accent)">200</text>
-  <path d="M170 206 l26 10 v18 c0 16 -12 28 -26 32 c-14 -4 -26 -16 -26 -32 v-18 z"
-        fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
-  <text x="170" y="248" text-anchor="middle" style="font:700 9px system-ui,sans-serif;fill:var(--accent)">HMAC</text>
+  <title id="heroT">Arquivo de áudio e a bolha de mensagem de voz</title>
+  <desc id="heroD">Ilustração comparando um anexo de áudio comum com a bolha de mensagem de voz, que tem onda sonora.</desc>
+  <rect x="26" y="86" width="130" height="52" rx="12" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
+  <rect x="40" y="104" width="14" height="16" rx="2" fill="var(--muted)" opacity=".5"/>
+  <rect x="62" y="106" width="72" height="5" rx="2.5" fill="var(--muted)" opacity=".5"/>
+  <rect x="62" y="117" width="48" height="5" rx="2.5" fill="var(--muted)" opacity=".35"/>
+  <text x="91" y="158" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--muted)">anexo</text>
+  <rect x="184" y="86" width="130" height="52" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+  <circle cx="204" cy="112" r="10" fill="var(--accent)"/>
+  <path d="M201 107 l7 5 -7 5 z" fill="var(--surface)"/>
+  <g stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round">
+    <path d="M222 108 v8"/><path d="M230 103 v18"/><path d="M238 106 v12"/>
+    <path d="M246 100 v24"/><path d="M254 107 v10"/><path d="M262 104 v16"/>
+    <path d="M270 109 v6"/><path d="M278 105 v14"/><path d="M286 108 v8"/>
+  </g>
+  <text x="249" y="158" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--accent)">mensagem de voz</text>
+  <rect x="60" y="188" width="220" height="56" rx="10" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
+  <text x="170" y="211" text-anchor="middle" style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg)">O formato decide qual dos dois</text>
+  <text x="170" y="231" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--muted)">OGG com Opus vira bolha. MP3 vira anexo.</text>
 </svg>
     </div>
   </div>
@@ -586,6 +589,50 @@ footer p{margin:0 0 .5rem}
 <li><strong>Passando de 512 KB</strong>, o ícone de tocar não aparece e o arquivo vira download, mesmo com o formato certo.</li>
 <li>Muita biblioteca e muito conector deixam o tipo de mídia fixo no código como mp3, e aí o problema não está no seu áudio: está na camada que envia.</li>
 </ul>
+<figure>
+<div class="diagram">
+<svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" class="d">
+  <style>
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Como o webhook entrega a mensagem</text>
+<rect class="box" x="30" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="115" y="80" text-anchor="middle">Cliente</text>
+<text class="s" x="115" y="100" text-anchor="middle">escreve no WhatsApp</text>
+<rect class="box" x="275" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="360" y="80" text-anchor="middle">Meta</text>
+<text class="s" x="360" y="100" text-anchor="middle">faz POST no seu endpoint</text>
+<rect class="box" x="520" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="605" y="80" text-anchor="middle">Seu servidor</text>
+<text class="s" x="605" y="100" text-anchor="middle">responde 200 na hora</text>
+<path class="ar" d="M205,87 L268,87"/>
+<path class="ar" d="M450,87 L513,87"/>
+<rect class="box" x="30" y="146" width="330" height="76" rx="8"/>
+<text class="h" x="46" y="170">Se você falhar</text>
+<text class="p" x="46" y="192">A Meta reentrega com frequência</text>
+<text class="p" x="46" y="210">decrescente por até 7 dias.</text>
+<rect class="box" x="380" y="146" width="310" height="76" rx="8"/>
+<text class="h" x="396" y="170">Como validar</text>
+<text class="p" x="396" y="192">HMAC SHA-256 no header</text>
+<text class="p" x="396" y="210">X-Hub-Signature-256.</text>
+</svg>
+</div>
+<figcaption></figcaption>
+</figure>
+
 <h2 id="por-que-o-mp3-causa-isso">Por que o mp3 causa isso</h2>
 <p>O WhatsApp trata mensagem de voz como um tipo próprio de conteúdo, com onda sonora, duração e reprodução contínua. Esse tratamento depende do formato: o aplicativo espera OGG com Opus, que é o que ele mesmo grava quando você segura o microfone.</p>
 <p>Mandar mp3 não gera erro. A API aceita, devolve sucesso, e a mensagem é entregue. O que acontece é que o cliente recebe algo que o aplicativo dele não consegue reproduzir como voz. Do lado de quem enviou, tudo parece certo, e é essa assimetria que faz o problema demorar tanto para ser diagnosticado.</p>

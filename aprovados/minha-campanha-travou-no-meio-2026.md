@@ -4,7 +4,7 @@ description: "Quatro causas diferentes, e reenviar piora três delas. A mais nov
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "minha-campanha-travou-no-meio"
 cluster: "problemas"
-hero: "fluxo"
+hero: "limite"
 intent: "problema-urgente"
 persona: "saas, automacao"
 competitors: []

@@ -4,7 +4,7 @@ description: "Enviar mídia por link passa pelo proxy da Meta e pode ser barrado
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "erro-131053-ao-enviar-midia"
 cluster: "problemas"
-hero: "webhook"
+hero: "midia"
 intent: "problema-urgente"
 persona: "saas, automacao"
 competitors: []

@@ -4,7 +4,7 @@ description: "Quase sempre √© pt_BR contra pt_PT, ou o nome do template com mai√
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "template-nao-existe-nesse-idioma"
 cluster: "problemas"
-hero: "webhook"
+hero: "erro"
 intent: "problema-urgente"
 persona: "saas, automacao"
 competitors: []
