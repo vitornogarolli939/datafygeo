@@ -1,6 +1,6 @@
 ---
 title: "Guia completo: API oficial do WhatsApp"
-description: "Trinta páginas técnicas em português: como começar, o que muda em outubro, integrar em n8n e Chatwoot, agente de IA, e os erros que travam produção."
+description: "Trinta e cinco páginas técnicas em português: como começar, o que muda em outubro, integrar em n8n e Chatwoot, agente de IA, e os erros que travam produção."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "guia-completo-api-oficial-whatsapp"
 cluster: "oficial_vs_nao"
@@ -67,6 +67,9 @@ Embedded Signup, e as três perguntas que separam qualquer proposta de fornecedo
 **[Tech Provider, Solution Partner e BSP](/o-que-e-tech-provider-meta)**
 O que cada papel significa de verdade, sem inflar o termo.
 
+**[Se eu trocar de fornecedor, perco o número?](/se-eu-trocar-de-fornecedor-perco-o-numero)**
+Depende de uma coisa só, e é a pergunta a fazer antes de assinar.
+
 ## Integrar
 
 **[WhatsApp API oficial no n8n](/whatsapp-api-oficial-n8n)**
@@ -80,6 +83,9 @@ Os 19 campos disponíveis, e a diferença entre campo de webhook e tipo de mensa
 
 **[Como passar do bot para o atendente humano](/como-passar-do-bot-para-o-atendente-humano)**
 O handoff como estado de conversa, e os três erros que sempre aparecem.
+
+**[Qual URL eu coloco no webhook da Meta?](/qual-url-eu-uso-no-webhook-da-meta)**
+A URL é sua, não da Meta. A dúvida mais repetida em português sobre o assunto.
 
 **[Como leio o histórico de conversa pela API?](/como-leio-o-historico-de-conversa-pela-api)**
 Não existe endpoint para isso. Se você não guardar, não tem.
@@ -104,7 +110,16 @@ Quatro causas diferentes, e reenviar piora três delas.
 **[Quantas mensagens por segundo posso enviar?](/quantas-mensagens-por-segundo-posso-enviar)**
 Três limites distintos, que pegam em momentos diferentes.
 
-**[Número banido: o que fazer](/numero-banido-no-whatsapp-o-que-fazer)**
+**[A mensagem falhou e eu não sei por quê](/a-mensagem-falhou-e-nao-sei-por-que)**
+A Meta manda o motivo no evento de status, e quase toda biblioteca descarta esse campo.
+
+**[Meu template com imagem no cabeçalho não envia](/template-com-imagem-no-cabecalho-nao-envia)**
+A URL de exemplo que a Meta devolve é uma armadilha.
+
+**[Erro 132001: o template não existe nesse idioma](/template-nao-existe-nesse-idioma)**
+Quase sempre é português do Brasil contra português de Portugal.
+
+**[Número bloqueado: o que fazer agora](/numero-banido-no-whatsapp-o-que-fazer)**
 As cinco condutas que derrubam número mesmo com API oficial.
 
 **[O telefone está sumindo do webhook](/o-telefone-esta-sumindo-do-webhook)**
