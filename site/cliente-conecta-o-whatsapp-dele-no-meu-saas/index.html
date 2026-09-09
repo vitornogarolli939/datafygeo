@@ -136,7 +136,9 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/solution-providers/get-started-for-tech-providers",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
         "https://developers.facebook.com/docs/whatsapp/throughput",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=dIIkttPeBS0",
+        "https://www.youtube.com/watch?v=8xA-8z1YW98"
       ]
     },
     {
@@ -192,6 +194,44 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/cliente-conecta-o-whatsapp-dele-no-meu-saas#video-dIIkttPeBS0",
+      "name": "Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia",
+      "description": "Conexao em coexistencia por QR code, cadastro de webhook, primeiro envio e a falha real fora da janela de 24 horas",
+      "thumbnailUrl": "https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=dIIkttPeBS0",
+      "embedUrl": "https://www.youtube.com/embed/dIIkttPeBS0",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/cliente-conecta-o-whatsapp-dele-no-meu-saas#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/cliente-conecta-o-whatsapp-dele-no-meu-saas#video-8xA-8z1YW98",
+      "name": "A forma mais fácil e simples de usar a API oficial do WhatsApp",
+      "description": "Numero conectado do zero, chip novo contra aplicativo existente, e onde entra a forma de pagamento",
+      "thumbnailUrl": "https://i.ytimg.com/vi/8xA-8z1YW98/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=8xA-8z1YW98",
+      "embedUrl": "https://www.youtube.com/embed/8xA-8z1YW98",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/cliente-conecta-o-whatsapp-dele-no-meu-saas#article"
+      }
     }
   ]
 }
@@ -650,6 +690,39 @@ footer p{margin:0 0 .5rem}
 <li><strong>Existe markup na mensagem, ou eu pago a tabela da Meta?</strong> É o que decide o custo quando você tiver cem clientes, não dois.</li>
 <li><strong>Embedded Signup e coexistência estão incluídos?</strong> Os dois dependem do papel do fornecedor na Meta, não do plano que ele te vende.</li>
 </ol>
+<h2 id="o-desligamento-que-voc-n-o-controla">O desligamento que você não controla</h2>
+<p>Um item de produto que não aparece em nenhuma proposta comercial e que você vai descobrir no primeiro cancelamento: <strong>não existe chamada de API para desconectar um número em coexistência.</strong> O botão está nas configurações do WhatsApp Business, no celular do seu cliente.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 04:46 ele mostra onde fica esse botão no aparelho, e diz a frase que resume o problema: não tem como desconectar via API, somente através do celular.</figcaption>
+</figure>
+
+<p>Três consequências para o desenho do seu SaaS:</p>
+<p><strong>O seu fluxo de cancelamento tem uma etapa fora do seu produto.</strong> Você pode interromper o acesso do lado de cá, e o número do cliente continua tecnicamente conectado até que ele mesmo desconecte. A tela de cancelamento precisa explicar como ele faz, com o caminho exato, e não "procure nas configurações".</p>
+<p><strong>Reconectar não é gratuito para ele.</strong> Se o cliente desconectar por engano e reconectar, ele passa de novo pelo fluxo inteiro, e a janela de 24 horas para pedir histórico volta a contar. Se o seu produto depende de histórico, isso precisa estar no seu suporte.</p>
+<p><strong>Você não resolve por ele.</strong> Em suporte, isso significa instrução com captura de tela, e não acesso remoto. Vale ter esse material pronto antes do primeiro pedido.</p>
+<h2 id="o-que-dizer-ao-cliente-antes-de-ele-cone">O que dizer ao cliente antes de ele conectar</h2>
+<p>O onboarding fica muito melhor se três coisas estiverem ditas antes do QR code, porque as três geram chamado quando aparecem de surpresa:</p>
+<p><strong>Ele precisa de um portfólio empresarial na Meta, e ele não precisa estar verificado.</strong> Só precisa existir, e dá para criar na hora, dentro do próprio fluxo.</p>
+<p><strong>O cartão fica na Meta, não com você.</strong> As mensagens são cobradas pela Meta direto no cartão do portfólio dele. Você cobra a sua assinatura, e é bom que essa separação esteja clara na proposta, senão a primeira fatura da Meta vira uma conversa desagradável.</p>
+<p><strong>Ele vai ser perguntado, no celular, se quer compartilhar o histórico.</strong> Se ele disser não sem entender, o histórico não vem, e a correção é refazer tudo.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=8xA-8z1YW98" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/8xA-8z1YW98/maxresdefault.jpg" alt="Miniatura do vídeo: A forma mais fácil e simples de usar a API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>A forma mais fácil e simples de usar a API oficial do WhatsApp</b><span>Canal DATA7 · 9 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Nove minutos percorrendo esse fluxo do ponto de vista de quem conecta. Em 02:34 a escolha entre chip novo e aplicativo existente, em 04:40 a tela do celular, e em 08:33 onde o cartão é cadastrado.</figcaption>
+</figure>
+
 <h2 id="o-que-costuma-dar-errado">O que costuma dar errado</h2>
 <p><strong>Achar que o Embedded Signup resolve o webhook.</strong> Ele resolve a conexão. O roteamento de evento por cliente continua sendo trabalho seu.</p>
 <p><strong>Não decidir a coexistência.</strong> Se o cliente atende pelo celular e o número for conectado sem coexistência, ele <strong>perde o aplicativo</strong>. Isso gera cancelamento no primeiro dia, e desfazer exige refazer a conexão.</p>
@@ -697,6 +770,8 @@ footer p{margin:0 0 .5rem}
         <li><a href="#o-que-o-cliente-v">O que o cliente vê</a></li>
         <li><a href="#o-que-voc-precisa-ter-do-seu-lado">O que você precisa ter do seu lado</a></li>
         <li><a href="#as-tr-s-perguntas-que-decidem-a-proposta">As três perguntas que decidem a...</a></li>
+        <li><a href="#o-desligamento-que-voc-n-o-controla">O desligamento que você não cont...</a></li>
+        <li><a href="#o-que-dizer-ao-cliente-antes-de-ele-cone">O que dizer ao cliente antes de...</a></li>
         <li><a href="#o-que-costuma-dar-errado">O que costuma dar errado</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>

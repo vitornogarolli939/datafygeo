@@ -136,7 +136,9 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/marketing-templates/per-user-limits",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=ly5nOHFpXcI",
+        "https://www.youtube.com/watch?v=vGovcR8W5g8"
       ]
     },
     {
@@ -192,6 +194,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/a-mensagem-falhou-e-nao-sei-por-que#video-vGovcR8W5g8",
+      "name": "Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens",
+      "description": "Webhook de teste e de producao, envio pelo no de HTTP, e o laco de status que derruba numero",
+      "thumbnailUrl": "https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=vGovcR8W5g8",
+      "embedUrl": "https://www.youtube.com/embed/vGovcR8W5g8",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/a-mensagem-falhou-e-nao-sei-por-que#article"
+      }
     }
   ]
 }
@@ -718,6 +739,25 @@ footer p{margin:0 0 .5rem}
 <h2 id="o-outro-problema-do-mesmo-evento">O outro problema do mesmo evento</h2>
 <p>Já que o assunto é o webhook de status, vale lembrar do efeito colateral mais comum dele em automação visual: <strong>cada mensagem que você envia gera vários eventos</strong>, de enviada, entregue e lida. Se o seu fluxo não separa isso de mensagem recebida, cada envio dispara execuções extras, consome cota e, em alguns casos, faz o robô responder ao próprio status.</p>
 <p>A separação é uma condição no início do fluxo, checando se o campo de mensagens existe. Se não existe, é status: registre e encerre. É a mesma linha que resolve <a href="/webhook-chega-duplicado">boa parte das duplicações</a>.</p>
+<h2 id="quantos-eventos-esperar-por-mensagem">Quantos eventos esperar por mensagem</h2>
+<p>Saber a contagem esperada ajuda a diagnosticar, porque a ausência de um evento também é informação.</p>
+<p><strong>Mensagem que dá certo gera três eventos</strong>, em sequência: enviada, entregue e lida. O terceiro só vem se a pessoa tiver a confirmação de leitura habilitada, então mensagem sem o evento de leitura não é sinal de problema.</p>
+<p><strong>Mensagem que falha gera um evento só</strong>, com o motivo dentro. Não vem entregue depois, não vem nada: aquele é o desfecho.</p>
+<p>Duas consequências práticas disso:</p>
+<p><strong>Se você não recebeu nenhum evento</strong>, o problema não é a mensagem, é o webhook. Confira se o campo de mensagens está assinado e se o seu endpoint responde.</p>
+<p><strong>Se você recebeu só enviada e nada mais</strong>, a mensagem saiu e a entrega ficou pendente. Acontece com aparelho desligado, e o evento de entrega pode chegar bem depois.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg" alt="Miniatura do vídeo: Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 18:05 os três eventos aparecem em sequência no n8n, um a um, e ele explica a correspondência com os riscos que aparecem no WhatsApp. Em 19:05 aparece o cuidado que evita responder esses eventos por engano.</figcaption>
+</figure>
+
+<p>E existe uma recusa que não tem código para procurar: a mensagem que volta dizendo que não foi entregue para manter a saúde do ecossistema, que é a plataforma julgando que aquela pessoa não quer receber você. <a href="/minha-campanha-travou-no-meio">Ela pede uma ação diferente</a>: tirar o contato da lista, não reenviar.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Por que meu painel não mostra o motivo?</h3>
 <p>Porque o processador descartou o campo. É o comportamento padrão de muita biblioteca, e a correção é do seu lado: gravar o campo inteiro quando o status chega.</p>
@@ -762,6 +802,7 @@ footer p{margin:0 0 .5rem}
         <li><a href="#os-dois-que-mais-causam-dano-quando-conf">Os dois que mais causam dano qua...</a></li>
         <li><a href="#como-montar-o-tratamento">Como montar o tratamento</a></li>
         <li><a href="#o-outro-problema-do-mesmo-evento">O outro problema do mesmo evento</a></li>
+        <li><a href="#quantos-eventos-esperar-por-mensagem">Quantos eventos esperar por mens...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

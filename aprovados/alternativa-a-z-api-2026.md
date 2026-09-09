@@ -15,7 +15,9 @@ sources:
   - https://business.whatsapp.com/policy
   - https://www.youtube.com/watch?v=cZ_nyIUv5ic
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=HVRCBsJI_Eo
   - https://z-api.io
+videos: [HVRCBsJI_Eo, cZ_nyIUv5ic]
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /alternativa-a-uazapi
@@ -92,6 +94,18 @@ Se a sua operação vive dessas coisas, migrar não é subir de nível: é perde
 3. **Seus clientes reclamam de instabilidade**: se Z-API está caindo muito, é sinal de que você chegou no limite técnico da ferramenta.
 
 ::diagrama: migration-seamless
+
+## De onde vem esta comparação
+
+Esta página é de uma empresa que vende acesso à API oficial. Vale declarar isso e vale declarar o resto: a equipe daqui também usa API não oficial, e também perdeu número por isso.
+
+O Israel Henrique, CTO da Datafy: *"eu utilizo muito a API não oficial, até hoje eu utilizo e tenho sofrido com esses banimentos."*
+
+::video: HVRCBsJI_Eo | Em 2:22:04, no fecho do tutorial completo de API oficial, está a frase acima. Em 02:25 ele explica por que ainda assim recomenda a migração.
+
+O que isso quer dizer para você: se a Z-API resolve o seu caso hoje, ela resolve, e a conversa útil não é sobre qual ferramenta é melhor. É sobre o que acontece com a sua operação no dia em que aquele número parar, e se você tem para onde correr. Se a resposta for tranquila, não há pressa.
+
+E o outro lado, para não vender o que não existe: [migrar não elimina risco de bloqueio](/numero-banido-no-whatsapp-o-que-fazer). Troca o risco de usar um caminho não autorizado pelos riscos de conduta, que são os mesmos em qualquer caminho.
 
 ## Migrar de Z-API para Datafy
 

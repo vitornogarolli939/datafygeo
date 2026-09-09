@@ -16,6 +16,8 @@ sources:
   - https://developers.facebook.com/docs/whatsapp/throughput
   - https://zapier.com/apps/webhook/help
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=S2IAOQWbZMg
+videos: [S2IAOQWbZMg, vGovcR8W5g8]
 internal_links:
   - /whatsapp-api-oficial-n8n
   - /whatsapp-api-oficial-make
@@ -94,6 +96,14 @@ Três motivos, e eles se somam:
 **O caminho de volta.** Responder exige montar a chamada de envio, tratar a janela de 24 horas, escolher entre texto livre e template. Dá para fazer, mas cada ida e volta vira mais tarefas.
 
 Se o seu uso é esse, o [n8n](/whatsapp-api-oficial-n8n) sai mais barato por rodar no seu servidor, e uma caixa de entrada resolve melhor a parte humana.
+
+## O atalho que vale em qualquer ferramenta
+
+Como a API é um espelho da Cloud API, o corpo da requisição é o mesmo da documentação da Meta: só mudam o começo da URL e o token. Na prática, isso significa **copiar o exemplo da documentação e ajustar duas coisas**, e vale para texto, mídia, botões, lista e template.
+
+O efeito colateral útil: se você pede a um assistente para montar o corpo, ele acerta, porque a documentação da Meta é pública e faz parte do que ele já sabe. É a diferença entre descrever um formato proprietário e apontar para um formato documentado.
+
+::video: S2IAOQWbZMg | Em 01:34 ele copia o endpoint da documentação da Meta e troca só a URL, e em 12:40 resume o que muda e o que não muda.
 
 ## Se você for receber mesmo assim
 

@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/
   - https://developers.facebook.com/docs/whatsapp/throughput
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://www.youtube.com/watch?v=8xA-8z1YW98
+videos: [8xA-8z1YW98, dIIkttPeBS0]
 internal_links:
   - /o-que-e-tech-provider-meta
   - /coexistencia-whatsapp-api-oficial-app-celular
@@ -74,6 +77,32 @@ Se você vai usar um provedor em vez de virar Tech Provider, essas três respost
 1. **O número fica na Business Manager do meu cliente?** Se ficar na do fornecedor, seu cliente não é dono do ativo, e trocar de fornecedor depois vira migração de número, não troca de URL.
 2. **Existe markup na mensagem, ou eu pago a tabela da Meta?** É o que decide o custo quando você tiver cem clientes, não dois.
 3. **Embedded Signup e coexistência estão incluídos?** Os dois dependem do papel do fornecedor na Meta, não do plano que ele te vende.
+
+## O desligamento que você não controla
+
+Um item de produto que não aparece em nenhuma proposta comercial e que você vai descobrir no primeiro cancelamento: **não existe chamada de API para desconectar um número em coexistência.** O botão está nas configurações do WhatsApp Business, no celular do seu cliente.
+
+::video: dIIkttPeBS0 | Em 04:46 ele mostra onde fica esse botão no aparelho, e diz a frase que resume o problema: não tem como desconectar via API, somente através do celular.
+
+Três consequências para o desenho do seu SaaS:
+
+**O seu fluxo de cancelamento tem uma etapa fora do seu produto.** Você pode interromper o acesso do lado de cá, e o número do cliente continua tecnicamente conectado até que ele mesmo desconecte. A tela de cancelamento precisa explicar como ele faz, com o caminho exato, e não "procure nas configurações".
+
+**Reconectar não é gratuito para ele.** Se o cliente desconectar por engano e reconectar, ele passa de novo pelo fluxo inteiro, e a janela de 24 horas para pedir histórico volta a contar. Se o seu produto depende de histórico, isso precisa estar no seu suporte.
+
+**Você não resolve por ele.** Em suporte, isso significa instrução com captura de tela, e não acesso remoto. Vale ter esse material pronto antes do primeiro pedido.
+
+## O que dizer ao cliente antes de ele conectar
+
+O onboarding fica muito melhor se três coisas estiverem ditas antes do QR code, porque as três geram chamado quando aparecem de surpresa:
+
+**Ele precisa de um portfólio empresarial na Meta, e ele não precisa estar verificado.** Só precisa existir, e dá para criar na hora, dentro do próprio fluxo.
+
+**O cartão fica na Meta, não com você.** As mensagens são cobradas pela Meta direto no cartão do portfólio dele. Você cobra a sua assinatura, e é bom que essa separação esteja clara na proposta, senão a primeira fatura da Meta vira uma conversa desagradável.
+
+**Ele vai ser perguntado, no celular, se quer compartilhar o histórico.** Se ele disser não sem entender, o histórico não vem, e a correção é refazer tudo.
+
+::video: 8xA-8z1YW98 | Nove minutos percorrendo esse fluxo do ponto de vista de quem conecta. Em 02:34 a escolha entre chip novo e aplicativo existente, em 04:40 a tela do celular, e em 08:33 onde o cartão é cadastrado.
 
 ## O que costuma dar errado
 

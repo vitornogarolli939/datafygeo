@@ -1,6 +1,6 @@
 ---
-title: "1º de outubro: responder o cliente deixa de ser grátis"
-description: "A partir de 1º de outubro de 2026 a Meta cobra as mensagens de serviço e as de utilidade enviadas dentro da janela de 24 horas. Quem faz atendimento sente primeiro."
+title: "1º de outubro: responder o cliente deixa de ser grátis (e a Meta voltou atrás em parte)"
+description: "A partir de 1º de outubro de 2026 a Meta cobra as mensagens de serviço enviadas dentro da janela de 24 horas. Depois do anúncio ela recuou em parte, com uma franquia mensal por número."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "mensagem-de-servico-vai-ser-paga-outubro-2026"
 cluster: "custo"
@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
   - https://whatsappbusiness.com/pt-br/products/platform-pricing/
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=Bev4VxTJ5Cg
+  - https://www.youtube.com/watch?v=JL9Qzw3oS5A
+videos: [Bev4VxTJ5Cg, JL9Qzw3oS5A]
 internal_links:
   - /quanto-custa-whatsapp-business-api-brasil-2026
   - /cobranca-de-ai-provider-no-brasil
@@ -23,18 +26,20 @@ internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /whatsapp-api-oficial-n8n
 status: aprovado
-pendencias: ["[VERIFICAR] conferir a tabela vigente da Meta (Brasil, BRL) depois de 01/10/2026, quando os novos valores entram"]
+pendencias: ["[VERIFICAR] conferir a tabela vigente da Meta (Brasil, BRL) depois de 01/10/2026, quando os novos valores entram", "[VERIFICAR] a franquia de 1.000 mensagens de serviço por número veio de comunicado a parceiros lido em vídeo; em 09/09/2026 não localizamos o trecho na documentação pública. Reconferir e, se aparecer, promover a fato documentado"]
 ---
 
-# 1º de outubro: responder o cliente deixa de ser grátis
+# 1º de outubro: responder o cliente deixa de ser grátis (e a Meta voltou atrás em parte)
 
 **Última atualização: 09/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** a partir de **1º de outubro de 2026** a Meta passa a cobrar duas coisas que hoje são gratuitas: as **mensagens de serviço**, que são as respostas em texto livre a quem escreveu para você, e as **mensagens de utilidade enviadas dentro de uma janela de atendimento aberta**. O preço será o mesmo de utilidade e autenticação, variando por mercado.
+**Resposta curta:** a partir de **1º de outubro de 2026** a Meta passa a cobrar duas coisas que hoje são gratuitas: as **mensagens de serviço**, que são as respostas em texto livre a quem escreveu para você, e as **mensagens de utilidade enviadas dentro de uma janela de atendimento aberta**. O preço será o mesmo de utilidade e autenticação, variando por mercado. Isso está na documentação: a linha da mensagem de serviço aparece como gratuita **até** 1º de outubro de 2026.
 
-Quem sente primeiro é quem atende muito e dispara pouco. Se hoje a sua fatura é próxima de zero porque quase tudo acontece dentro das 24 horas, ela deixa de ser.
+O que mudou depois do anúncio: a Meta **recuou em parte**. Em comunicado a parceiros, ela anunciou uma **franquia mensal de 1.000 mensagens de serviço gratuitas por número de telefone**, com a cobrança começando na milésima primeira. Isso não desfaz a mudança, mas muda quem sente.
 
-::numeros: 1 out 2026|quando a cobrança começa ;; 1 nov 2024|desde quando a mensagem de serviço era gratuita ;; 72 h|a janela de entrada por anúncio, que continua gratuita ;; 24 h|a janela de atendimento, que agora tem custo dentro dela
+::numeros: 1 out 2026|quando a cobrança começa ;; 1.000|a franquia mensal por número, anunciada a parceiros ;; 72 h|a janela de entrada por anúncio, que continua gratuita ;; 24 h|a janela de atendimento, que agora tem custo dentro dela
+
+::aviso: <strong>O que é documentado e o que não é.</strong> A cobrança a partir de 01/10/2026 está na documentação pública de preços. <strong>A franquia de 1.000 mensagens não estava</strong>: em 09/09/2026 procuramos e não localizamos o trecho na página pública, nem em português nem em inglês. A fonte dela é um comunicado da Meta a parceiros de tecnologia, lido na íntegra no vídeo abaixo. Trate como forte indicação, não como linha de orçamento, até aparecer na página oficial.
 
 ## Principais pontos
 - **Mensagem de serviço passa a ser cobrada.** É a resposta livre a quem te escreveu, gratuita desde novembro de 2024. O preço será o mesmo de utilidade e autenticação, por mercado ([documentação](https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing/non-template-messages)).
@@ -42,6 +47,7 @@ Quem sente primeiro é quem atende muito e dispara pouco. Se hoje a sua fatura �
 - **O Free Entry Point de 72 horas continua gratuito.** Quem chega por anúncio Click-to-WhatsApp ou botão da Página, e é respondido em até 24 horas, abre uma janela de 72 horas sem custo. Esse não muda.
 - A mensagem que o **cliente envia para você continua sem custo**. A Meta cobra o que sai e é entregue.
 - A conta que mais muda é a de **atendimento humano e agente de IA**, porque os dois vivem de responder dentro da janela.
+- **Existe uma franquia de 1.000 mensagens de serviço por número, por mês**, anunciada em comunicado a parceiros e ainda não localizada na documentação pública. Ela não acumula e reinicia todo dia 1º.
 
 ::diagrama: preço-comparacao
 
@@ -58,6 +64,7 @@ Vale separar, porque as três categorias se comportam de forma diferente e a mud
 | **Autenticação** | Cobrado | Sem mudança |
 | **Free Entry Point, 72 h** | Gratuito | Continua gratuito |
 | **Mensagem recebida do cliente** | Gratuita | Continua gratuita |
+| **Franquia mensal por número** | Não existe | **1.000 mensagens de serviço**, anunciada a parceiros |
 
 O preço da mensagem de serviço será alinhado ao de utilidade e autenticação, por mercado. Como referência de ordem de grandeza no Brasil, utilidade e autenticação vinham na faixa de R$ 0,03 a R$ 0,04 por mensagem em setembro de 2026, contra R$ 0,32 a R$ 0,40 de marketing.
 
@@ -75,7 +82,13 @@ Dá para estimar com o que você já tem, e leva menos de uma hora.
 
 **4. Some a isso o que você já paga de marketing**, que não muda.
 
-Uma operação que responde 3.000 mensagens por mês dentro da janela, e que hoje paga zero por isso, passa a ver essa linha na conta. Refaça o cálculo com a tabela oficial antes de decidir qualquer coisa.
+Uma operação que responde 3.000 mensagens por mês dentro da janela, e que hoje paga zero por isso, passa a ver essa linha na conta. Com a franquia, as primeiras 1.000 por número saem dela. Refaça o cálculo com a tabela oficial antes de decidir qualquer coisa.
+
+Para dar ordem de grandeza a isso, vale a conta que o Israel faz olhando a própria base: *"eu tenho clientes, por exemplo, que pagam cerca de R$ 500 por mês para ter o serviço. Com as mensagens pagas, vão ter um custo ali adicional de R$ 50, R$ 60. Então, nesse caso, dá para absorver bem."* E a ressalva que ele mesmo faz na sequência é a que separa os dois grupos: *"se for muitos clientes, muitas mensagens com valor de produto pouco agregado, esse custo pode impactar."*
+
+É um número de operação, não uma média de mercado. O que ele diz é onde o problema mora: não no valor por mensagem, que é baixo, e sim na relação entre esse valor e o ticket do que você vende. Quem cobra R$ 500 por mês absorve. Quem cobra R$ 29 por mês e conversa muito, não.
+
+::video: JL9Qzw3oS5A | Dezesseis minutos sobre preço, categoria por categoria. Em 13:13 está a conta do cliente de R$ 500, e em 12:18 o custo por mensagem do agente da própria Meta, que é outra ordem de grandeza.
 
 ## O que dá para fazer com o resultado
 
@@ -89,7 +102,21 @@ Nenhuma dessas é mágica, e nenhuma delas contorna a regra. São ajustes de ope
 
 **Medir por conversa, não por mensagem.** Depois de outubro, o custo por conversa resolvida vira a métrica que importa. Quem só olha volume total não enxerga onde está gastando.
 
-::aviso: <strong>Sobre a franquia de mensagens gratuitas:</strong> circula no mercado brasileiro que haverá uma franquia mensal de 1.000 mensagens de serviço por número. Isso apareceu em comunicado a parceiros, mas <strong>até 09/09/2026 não constava na documentação pública de preços</strong>. Não monte orçamento contando com ela até aparecer na página oficial.
+## A franquia de 1.000, e de onde ela vem
+
+Essa parte merece detalhe, porque é a informação mais nova do assunto e a mais mal contada por aí.
+
+Depois de anunciar a cobrança, a Meta mandou um comunicado a parceiros de tecnologia com um item novo: a partir de 1º de outubro de 2026, **cada número de telefone recebe 1.000 mensagens de serviço gratuitas por mês**, e a cobrança só começa a partir da milésima primeira. A franquia **não acumula**: o que sobrou no mês não passa para o mês seguinte, e o contador reinicia todo dia 1º. E ela é **por número**, não por conta.
+
+::video: Bev4VxTJ5Cg | Nove minutos em que o Israel Henrique, CTO da Datafy, abre o e-mail que a Meta mandou aos parceiros e lê o trecho. Em 03:53 aparece a redação do item novo, e em 04:32 o resumo das datas.
+
+Duas ressalvas honestas sobre isso, porque elas mudam o que você deve fazer com a informação:
+
+**Não localizamos o trecho na documentação pública.** Procuramos em 09/09/2026, e a página de preços continua trazendo a mensagem de serviço como gratuita até 1º de outubro, sem mencionar franquia. A explicação provável é que comunicado a parceiro sai antes da atualização da página, e a informação nova costuma aparecer primeiro na versão em inglês. Mas "provável" não é "confirmado", e é assim que está aqui.
+
+**Ninguém, nem a Meta, disse como você divide atendimento entre números.** A saída óbvia que a franquia sugere é operar com mais números, porque 1.000 é por número: três números seriam 3.000 mensagens gratuitas por mês. É a leitura correta da regra, e é a que o próprio Israel faz no vídeo, com a parte difícil declarada em voz alta: *"como que vai fazer isso? Eu não sei. Aí cada um tem que pensar ali em uma forma de como fazer."*
+
+Vale dizer o que isso implica de verdade, porque parece mais fácil do que é. Dividir atendimento entre números significa **rotear a mesma pessoa sempre para o mesmo número**, senão o cliente recebe resposta de um número diferente a cada conversa, e você quebra o histórico dele. Significa também que cada número tem qualidade e limite próprios, e que [o limite de envio da conta é do portfólio inteiro](/quantas-mensagens-por-segundo-posso-enviar), então mais número resolve franquia e não resolve limite. Não é um interruptor: é uma decisão de arquitetura, e vale tomar com calma antes de outubro.
 
 ## Quem sente mais, e quem quase não sente
 
@@ -115,7 +142,15 @@ Não. A janela de 72 horas aberta por anúncio Click-to-WhatsApp ou botão da P�
 
 ### Vale distribuir o atendimento entre mais números?
 
-Só faria sentido se a franquia de mensagens gratuitas se confirmasse, porque ela seria por número. Enquanto isso não aparece na documentação da Meta, não é base para decidir arquitetura.
+Pela franquia, sim: ela é por número, então três números somam 3.000 mensagens gratuitas por mês. Mas resolve só essa linha. O limite de envio da conta é do portfólio inteiro, cada número tem qualidade própria, e você passa a precisar de roteamento fixo para não responder o mesmo cliente de números diferentes. Vale calcular a economia antes de assumir esse trabalho.
+
+### A franquia de 1.000 é oficial?
+
+Ela veio em comunicado da Meta a parceiros de tecnologia, e o texto foi lido na íntegra no vídeo citado nesta página. Em 09/09/2026 não localizamos o trecho na documentação pública. É informação de primeira mão, e ainda não é informação documentada.
+
+### A franquia acumula se eu não usar?
+
+Não. Segundo o comunicado, o saldo não passa para o mês seguinte, e o contador reinicia todo dia 1º.
 
 ### O preço é o mesmo para todo mundo?
 

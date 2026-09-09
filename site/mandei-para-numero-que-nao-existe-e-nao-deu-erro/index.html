@@ -135,7 +135,9 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=dIIkttPeBS0",
+        "https://www.youtube.com/watch?v=ly5nOHFpXcI"
       ]
     },
     {
@@ -191,6 +193,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/mandei-para-numero-que-nao-existe-e-nao-deu-erro#video-ly5nOHFpXcI",
+      "name": "Disparo em massa de mensagens na API oficial do WhatsApp",
+      "description": "Planilha CSV, mapeamento de variaveis, agendamento e as falhas de entrega aparecendo no log",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ly5nOHFpXcI/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=ly5nOHFpXcI",
+      "embedUrl": "https://www.youtube.com/embed/ly5nOHFpXcI",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/mandei-para-numero-que-nao-existe-e-nao-deu-erro#article"
+      }
     }
   ]
 }
@@ -654,6 +675,21 @@ footer p{margin:0 0 .5rem}
 <p><strong>Valide o formato.</strong> Código do país, DDD, quantidade de dígitos. Número malformado é descarte fácil.</p>
 <p><strong>Cuidado com o nono dígito.</strong> Números brasileiros antigos, salvos sem o nono dígito, viram destinatário inválido. E há uma pegadinha parecida com números da Argentina e do México, que têm regra própria de prefixo.</p>
 <p><strong>Limpe pelo histórico.</strong> Se um número falhou por não existir, marque. Não adianta tentar de novo daqui a um mês.</p>
+<h2 id="vendo-acontecer-com-um-n-mero-inventado">Vendo acontecer, com um número inventado</h2>
+<p>O jeito mais rápido de entender isso é ver alguém fazer de propósito. Num disparo por planilha, o Israel inclui de propósito um número que não existe entre três destinatários. O resultado: <strong>o disparo processa os três normalmente</strong>, sem reclamar, e só no detalhe de cada envio aparece que um falhou.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=ly5nOHFpXcI" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/ly5nOHFpXcI/maxresdefault.jpg" alt="Miniatura do vídeo: Disparo em massa de mensagens na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Disparo em massa de mensagens na API oficial do WhatsApp</b><span>Canal DATA7 · 10 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 03:22 ele monta a planilha e avisa que colocou um número inexistente, e em 06:29 abre o resultado: dois enviados, um com erro. Em 08:52 abre o motivo de uma recusa diferente, que vale conhecer junto.</figcaption>
+</figure>
+
+<p>O mesmo comportamento aparece com a regra da janela de 24 horas: a chamada devolve sucesso e identificador, e a falha chega minutos depois pelo webhook, <a href="/posso-mandar-mensagem-para-qualquer-numero">com o motivo escrito</a>.</p>
+<p>A conclusão é a mesma nos dois casos, e é a razão desta página: <strong>o retorno do envio não é o resultado do envio.</strong> Ele é o recibo de que a sua requisição foi aceita.</p>
 <h2 id="o-efeito-disso-numa-campanha">O efeito disso numa campanha</h2>
 <p>Um caso comum: você dispara para dez mil contatos, o painel mostra dez mil enviados, e a equipe comemora. Dias depois, alguém pergunta por que ninguém respondeu.</p>
 <p>Se o status estivesse sendo escutado, o quadro apareceria em minutos: uma parte entregue, uma parte falhada por número inexistente, e talvez uma parte falhada por limite. Cada fatia dessa pede uma ação diferente, e todas elas ficam invisíveis se só o momento 1 é registrado.</p>
@@ -700,6 +736,7 @@ footer p{margin:0 0 .5rem}
         <li><a href="#por-que-a-api-responde-sucesso">Por que a API responde sucesso</a></li>
         <li><a href="#o-que-fazer">O que fazer</a></li>
         <li><a href="#n-o-d-para-checar-antes">Não dá para checar antes?</a></li>
+        <li><a href="#vendo-acontecer-com-um-n-mero-inventado">Vendo acontecer, com um número i...</a></li>
         <li><a href="#o-efeito-disso-numa-campanha">O efeito disso numa campanha</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>

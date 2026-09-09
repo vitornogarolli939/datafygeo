@@ -136,7 +136,9 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=dIIkttPeBS0",
+        "https://www.youtube.com/watch?v=8xA-8z1YW98"
       ]
     },
     {
@@ -192,6 +194,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/o-que-preciso-para-comecar-na-api-oficial#video-8xA-8z1YW98",
+      "name": "A forma mais fácil e simples de usar a API oficial do WhatsApp",
+      "description": "Numero conectado do zero, chip novo contra aplicativo existente, e onde entra a forma de pagamento",
+      "thumbnailUrl": "https://i.ytimg.com/vi/8xA-8z1YW98/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=8xA-8z1YW98",
+      "embedUrl": "https://www.youtube.com/embed/8xA-8z1YW98",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/o-que-preciso-para-comecar-na-api-oficial#article"
+      }
     }
   ]
 }
@@ -688,11 +709,31 @@ footer p{margin:0 0 .5rem}
 </table></div>
 <p>A conta das <strong>mensagens é a mesma nos dois casos</strong>, e é boa parte do custo. O que muda é quanto você paga para chegar até ela, e quanto tempo leva.</p>
 <p>Ir direto faz sentido quando existe time de engenharia e o volume justifica. Por um provedor faz sentido quando o seu time é de produto, ou quando você precisa começar esta semana.</p>
+<h2 id="a-decis-o-que-aparece-na-tela-e-que-defi">A decisão que aparece na tela, e que define tudo</h2>
+<p>No meio da conexão você escolhe entre duas opções, e essa escolha define o resto da sua operação. Vale saber o que cada uma quer dizer antes de clicar, porque voltar atrás significa desconectar e refazer.</p>
+<p><strong>Criar uma conta do WhatsApp Business.</strong> É para quando você tem um chip e aquele número <strong>não está</strong> em nenhum WhatsApp. Só o chip. O número nasce direto na API, e não existe aplicativo no celular para ele.</p>
+<p><strong>Conectar um app do WhatsApp Business.</strong> É para quando o número <strong>já está</strong> em uso no aplicativo, no celular de alguém. É a coexistência: o atendente continua respondendo pelo celular, e a API passa a ver e a enviar no mesmo número.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=8xA-8z1YW98" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/8xA-8z1YW98/maxresdefault.jpg" alt="Miniatura do vídeo: A forma mais fácil e simples de usar a API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>A forma mais fácil e simples de usar a API oficial do WhatsApp</b><span>Canal DATA7 · 9 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Nove minutos do zero até o número conectado. A escolha entre as duas opções está em 02:34, o QR code em 05:03, e em 08:33 onde fica a configuração de pagamento.</figcaption>
+</figure>
+
+<p>A diferença prática vai além do começo. Coexistência dá ao atendente humano uma ferramenta que ele já sabe usar, e cobra por isso um teto de vazão menor. Número que nasce na API não tem aplicativo, então tudo passa pelo seu sistema, o que é mais limpo para produto e exige que você construa a interface de atendimento.</p>
 <h2 id="o-que-n-o-obrigat-rio-para-come-ar">O que não é obrigatório para começar</h2>
 <p>Vale desfazer três confusões comuns, porque elas fazem gente adiar o começo sem motivo:</p>
 <p><strong>Verificação de empresa não é pré-requisito para enviar.</strong> Ela existe para subir o limite de conversas iniciadas por dia. Dá para começar sem, com limite menor, e verificar depois.</p>
 <p><strong>Site próprio não é exigido</strong> para conectar. Uma política de privacidade publicada é boa prática e ajuda em outros pontos do processo, mas não é o que trava a primeira mensagem.</p>
 <p><strong>Não é preciso ser Tech Provider.</strong> Esse papel serve para quem oferece a plataforma a terceiros. Para usar no próprio negócio, basta conectar o seu número.</p>
+<h2 id="o-item-que-falta-na-maioria-das-listas-c">O item que falta na maioria das listas: cartão no portfólio</h2>
+<p>Um passo que não aparece nos tutoriais e trava o primeiro disparo: <strong>a forma de pagamento fica na Meta, no portfólio empresarial, e não no provedor.</strong></p>
+<p>Quem cobra as mensagens é a Meta, direto nesse cartão. O provedor cobra o acesso à infraestrutura. Sem cartão cadastrado no portfólio, a conexão funciona, a mensagem de serviço funciona, <strong>e o template não sai</strong>, o que produz aquele diagnóstico errado de "a API não está funcionando" quando na verdade falta meio de pagamento.</p>
+<p>Vale resolver isso no mesmo dia da conexão, e não na véspera da campanha.</p>
 <h2 id="depois-de-conectar-o-que-muda-no-dia-a-d">Depois de conectar, o que muda no dia a dia</h2>
 <p>Três coisas surpreendem quem vem de ferramenta de QR code, e é melhor saber antes:</p>
 <p><strong>A janela de 24 horas.</strong> Fora dela, <a href="/posso-mandar-mensagem-para-qualquer-numero">só sai template aprovado</a>. Isso muda todo fluxo de reativação e de follow-up.</p>
@@ -740,7 +781,9 @@ footer p{margin:0 0 .5rem}
         <li><a href="#principais-pontos">Principais pontos</a></li>
         <li><a href="#os-quatro-itens-em-detalhe">Os quatro itens, em detalhe</a></li>
         <li><a href="#o-que-muda-entre-os-dois-caminhos">O que muda entre os dois caminhos</a></li>
+        <li><a href="#a-decis-o-que-aparece-na-tela-e-que-defi">A decisão que aparece na tela, e...</a></li>
         <li><a href="#o-que-n-o-obrigat-rio-para-come-ar">O que não é obrigatório para com...</a></li>
+        <li><a href="#o-item-que-falta-na-maioria-das-listas-c">O item que falta na maioria das...</a></li>
         <li><a href="#depois-de-conectar-o-que-muda-no-dia-a-d">Depois de conectar, o que muda n...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>

@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
   - https://github.com/chatwoot/chatwoot/issues/13837
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=vGovcR8W5g8
+  - https://www.youtube.com/watch?v=fhz6n2s91-g
+videos: [fhz6n2s91-g, vGovcR8W5g8]
 internal_links:
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
   - /como-leio-o-historico-de-conversa-pela-api
@@ -80,6 +83,28 @@ O modelo mental antigo era simples: telefone é a pessoa. Quase todo sistema de 
 Com a janela de 30 dias, esse modelo falha em silêncio. O cliente some por dois meses e volta: agora ele chega sem telefone, só com identificador. Seu sistema não encontra ninguém com aquele telefone, porque não veio telefone, e cria um contato novo. O histórico fica órfão, o atendente não vê o que aconteceu antes, e nada nos logs indica erro.
 
 O sintoma é esse: **contato duplicado e histórico que se perde**, sem exceção lançada em lugar nenhum. É por isso que vale tratar antes, e não quando aparecer.
+
+## O detalhe que muda a modelagem: o identificador é da relação, não da pessoa
+
+Se você lê uma coisa só desta página, leia esta. O identificador **não é global**. Ele identifica o par entre uma pessoa e uma empresa.
+
+Na explicação do Israel: *"eu tenho o meu WhatsApp Business, o João entrou em contato comigo, o user ID do João vai ser um entre eu e ele. Se o João entrar em contato com outro WhatsApp Business, uma outra empresa, o user ID do João vai ser outro."*
+
+::video: fhz6n2s91-g | Cinco minutos direto ao ponto. Em 01:27 ele explica que o identificador é da relação, e em 02:30 mostra o campo que muda no envio para responder por ele.
+
+As consequências disso na modelagem são grandes, e todas contraintuitivas se você estava tratando telefone como chave:
+
+**A chave do seu contato é composta.** É o identificador **mais** o número da sua conta que o recebeu. Guardar só o identificador funciona enquanto você opera um número e quebra no dia em que opera dois, porque a mesma pessoa aparece com identificadores diferentes em cada um.
+
+**Se você é SaaS multicliente, isso é ainda mais forte.** O mesmo consumidor final falando com dois dos seus clientes tem dois identificadores. Deduplicar contato entre clientes por esse campo é impossível, e é bom que seja: são relações separadas, e tratá-las como uma só seria misturar base de clientes diferentes.
+
+**Não dá para usar como identidade universal.** Ele não serve para casar a pessoa com o cadastro que você já tem no seu banco, nem para reconhecer o mesmo usuário em outro canal.
+
+**Mudar de fornecedor não preserva nada disso automaticamente.** A relação continua sendo com a sua conta, e é ela que precisa continuar a mesma.
+
+## Como responder por ele
+
+A mudança no envio é pequena e não é óbvia: em vez do campo de destinatário por telefone, você usa o campo de destinatário por identificador. E o valor tem que vir **de dentro do objeto de mensagem**, não do topo do payload, [pelo mesmo motivo que evita laço de status](/webhook-chega-duplicado).
 
 ## O que fazer, em ordem
 

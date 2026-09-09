@@ -136,7 +136,9 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
         "https://github.com/chatwoot/chatwoot/issues/13837",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=vGovcR8W5g8",
+        "https://www.youtube.com/watch?v=fhz6n2s91-g"
       ]
     },
     {
@@ -192,6 +194,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/o-telefone-esta-sumindo-do-webhook#video-fhz6n2s91-g",
+      "name": "Como usar user name (user id) na API oficial do WhatsApp",
+      "description": "O identificador que substitui o telefone, por que ele muda de empresa para empresa, e como responder por ele",
+      "thumbnailUrl": "https://i.ytimg.com/vi/fhz6n2s91-g/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=fhz6n2s91-g",
+      "embedUrl": "https://www.youtube.com/embed/fhz6n2s91-g",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/o-telefone-esta-sumindo-do-webhook#article"
+      }
     }
   ]
 }
@@ -666,6 +687,27 @@ footer p{margin:0 0 .5rem}
 <p>O modelo mental antigo era simples: telefone é a pessoa. Quase todo sistema de atendimento foi construído assim, com o número como chave.</p>
 <p>Com a janela de 30 dias, esse modelo falha em silêncio. O cliente some por dois meses e volta: agora ele chega sem telefone, só com identificador. Seu sistema não encontra ninguém com aquele telefone, porque não veio telefone, e cria um contato novo. O histórico fica órfão, o atendente não vê o que aconteceu antes, e nada nos logs indica erro.</p>
 <p>O sintoma é esse: <strong>contato duplicado e histórico que se perde</strong>, sem exceção lançada em lugar nenhum. É por isso que vale tratar antes, e não quando aparecer.</p>
+<h2 id="o-detalhe-que-muda-a-modelagem-o-identif">O detalhe que muda a modelagem: o identificador é da relação, não da pessoa</h2>
+<p>Se você lê uma coisa só desta página, leia esta. O identificador <strong>não é global</strong>. Ele identifica o par entre uma pessoa e uma empresa.</p>
+<p>Na explicação do Israel: <em>"eu tenho o meu WhatsApp Business, o João entrou em contato comigo, o user ID do João vai ser um entre eu e ele. Se o João entrar em contato com outro WhatsApp Business, uma outra empresa, o user ID do João vai ser outro."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=fhz6n2s91-g" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/fhz6n2s91-g/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar user name (user id) na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como usar user name (user id) na API oficial do WhatsApp</b><span>Canal DATA7 · 5 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Cinco minutos direto ao ponto. Em 01:27 ele explica que o identificador é da relação, e em 02:30 mostra o campo que muda no envio para responder por ele.</figcaption>
+</figure>
+
+<p>As consequências disso na modelagem são grandes, e todas contraintuitivas se você estava tratando telefone como chave:</p>
+<p><strong>A chave do seu contato é composta.</strong> É o identificador <strong>mais</strong> o número da sua conta que o recebeu. Guardar só o identificador funciona enquanto você opera um número e quebra no dia em que opera dois, porque a mesma pessoa aparece com identificadores diferentes em cada um.</p>
+<p><strong>Se você é SaaS multicliente, isso é ainda mais forte.</strong> O mesmo consumidor final falando com dois dos seus clientes tem dois identificadores. Deduplicar contato entre clientes por esse campo é impossível, e é bom que seja: são relações separadas, e tratá-las como uma só seria misturar base de clientes diferentes.</p>
+<p><strong>Não dá para usar como identidade universal.</strong> Ele não serve para casar a pessoa com o cadastro que você já tem no seu banco, nem para reconhecer o mesmo usuário em outro canal.</p>
+<p><strong>Mudar de fornecedor não preserva nada disso automaticamente.</strong> A relação continua sendo com a sua conta, e é ela que precisa continuar a mesma.</p>
+<h2 id="como-responder-por-ele">Como responder por ele</h2>
+<p>A mudança no envio é pequena e não é óbvia: em vez do campo de destinatário por telefone, você usa o campo de destinatário por identificador. E o valor tem que vir <strong>de dentro do objeto de mensagem</strong>, não do topo do payload, <a href="/webhook-chega-duplicado">pelo mesmo motivo que evita laço de status</a>.</p>
 <h2 id="o-que-fazer-em-ordem">O que fazer, em ordem</h2>
 <p><strong>1. Guarde o identificador desde já.</strong> Adicione a coluna, preencha com o que chega, e crie índice. Isso é reversível e barato.</p>
 <p><strong>2. Passe a casar contato pelo identificador primeiro.</strong> A ordem certa é: procurar por identificador; se não achar, procurar por telefone; se achar por telefone, gravar o identificador naquele registro. Assim o sistema vai aprendendo a chave nova sem quebrar a antiga.</p>
@@ -721,6 +763,8 @@ footer p{margin:0 0 .5rem}
         <li><a href="#como-o-identificador-se-parece">Como o identificador se parece</a></li>
         <li><a href="#o-que-muda-no-payload">O que muda no payload</a></li>
         <li><a href="#por-que-isso-quebra-sistema-que-hoje-fun">Por que isso quebra sistema que...</a></li>
+        <li><a href="#o-detalhe-que-muda-a-modelagem-o-identif">O detalhe que muda a modelagem:...</a></li>
+        <li><a href="#como-responder-por-ele">Como responder por ele</a></li>
         <li><a href="#o-que-fazer-em-ordem">O que fazer, em ordem</a></li>
         <li><a href="#o-caso-que-ainda-exige-telefone">O caso que ainda exige telefone</a></li>
         <li><a href="#por-que-isso-urgente-agora">Por que isso é urgente agora</a></li>

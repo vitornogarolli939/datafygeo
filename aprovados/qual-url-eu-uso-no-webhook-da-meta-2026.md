@@ -15,6 +15,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
   - https://developers.facebook.com/docs/graph-api/webhooks/getting-started
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=HVRCBsJI_Eo
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+videos: [HVRCBsJI_Eo, dIIkttPeBS0]
 internal_links:
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
   - /validar-assinatura-do-webhook
@@ -95,6 +98,20 @@ Depois, conforme a necessidade: qualidade do número e mudança na conta para sa
 
 **Campo não assinado.** A URL está certa, a verificação passou, e mesmo assim não chega mensagem. Confira se `messages` está marcado.
 
+## Desenvolver na sua máquina, sem publicar nada
+
+A pergunta que vem logo depois de "qual URL eu uso" é como testar sem ter servidor. A resposta é túnel: uma ferramenta expõe a porta local com um endereço público temporário, você cadastra esse endereço como webhook, e a mensagem cai no seu terminal.
+
+Três coisas que costumam morder nessa etapa, e todas apareceram na gravação abaixo:
+
+**O framework pode recusar o domínio do túnel.** O sintoma é um `403` sem explicação, com o payload aparecendo no painel do túnel mas nunca chegando na aplicação. Vários frameworks têm lista de hosts permitidos em desenvolvimento, e o endereço do túnel precisa entrar nela. Depois de mexer nisso, reinicie o servidor: a mudança não costuma pegar quente.
+
+**O endereço do túnel muda.** Cada vez que ele sobe, é outro endereço, e o webhook cadastrado aponta para o anterior. É a causa boba mais comum de "parou de funcionar do nada".
+
+**Trocar para produção é um passo manual que dá para esquecer.** Publicou a aplicação? O webhook continua apontando para o túnel da sua máquina. Enquanto o túnel estiver ligado, funciona, e você não percebe. Quando desligar, para.
+
+::video: HVRCBsJI_Eo | O tutorial completo, de duas horas, e em 1:38:16 está exatamente esse erro: o `403` acontecendo, o diagnóstico de host bloqueado, e o `200` depois do ajuste. Em 2:19:25 ele troca o endereço do túnel pelo de produção e mostra a mensagem parando de chegar até fazer isso.
+
 ## Perguntas frequentes
 
 ### Posso usar um endereço com IP?
@@ -108,6 +125,10 @@ Pode, e é o formato comum em multi-cliente. Cada evento traz o identificador do
 ### Posso mudar a URL depois?
 
 Pode, e o processo é o mesmo: a Meta refaz a verificação com o novo endereço.
+
+### Como testo na minha máquina, sem servidor?
+
+Com um túnel que dá um endereço público temporário para a sua porta local. Cuide de três coisas: liberar o domínio do túnel na lista de hosts do framework, saber que o endereço muda a cada vez que o túnel sobe, e trocar para a URL de produção quando publicar.
 
 ### Preciso de servidor rodando o tempo todo?
 

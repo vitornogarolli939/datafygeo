@@ -136,7 +136,9 @@
         "https://business.whatsapp.com/policy",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-categorization",
         "https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=YF9hTHDAw6E",
+        "https://www.youtube.com/watch?v=cZ_nyIUv5ic"
       ]
     },
     {
@@ -192,6 +194,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/como-documentar-o-opt-in-do-cliente#video-cZ_nyIUv5ic",
+      "name": "Porque você é bloqueado no WhatsApp Business",
+      "description": "As causas de bloqueio observadas na base de clientes, os nichos proibidos e o respaldo de quem esta no oficial",
+      "thumbnailUrl": "https://i.ytimg.com/vi/cZ_nyIUv5ic/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=cZ_nyIUv5ic",
+      "embedUrl": "https://www.youtube.com/embed/cZ_nyIUv5ic",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/como-documentar-o-opt-in-do-cliente#article"
+      }
     }
   ]
 }
@@ -665,6 +686,24 @@ CREATE TABLE consentimentos (
 <h2 id="como-usar-isso-no-envio">Como usar isso no envio</h2>
 <p>A regra prática: <strong>antes de mandar marketing, consulte o último evento</strong> daquele contato para aquela finalidade. Se o último foi revogação, não envia.</p>
 <p>E coloque essa checagem no ponto de saída, e não espalhada pela aplicação. Se cada fluxo verifica por conta própria, um dia alguém vai esquecer, e a mensagem vai sair.</p>
+<h2 id="o-opt-out-que-protege-o-seu-n-mero">O opt-out que protege o seu número</h2>
+<p>Quase todo texto sobre consentimento fala de como coletar o sim. A parte que evita bloqueio é a outra: <strong>dar à pessoa um jeito fácil de dizer não, dentro da própria mensagem.</strong></p>
+<p>O mecanismo é um botão no template. Duas versões funcionam, e a segunda é mais forte do que parece:</p>
+<p><strong>"Não tenho interesse".</strong> Quem clica está respondendo, e resposta é o que a plataforma mede. Você recebe o clique como interação e ganha, de graça, a lista exata de quem tirar da base.</p>
+<p><strong>"Bloquear".</strong> Parece agressivo e é o oposto disso. A pessoa clica achando que está te bloqueando, e o que ela fez foi interagir com você em vez de te denunciar. A diferença entre as duas coisas, para a saúde do seu número, é enorme.</p>
+<p>E aí vem a parte que não é opcional: <strong>o clique tem que virar remoção da lista.</strong> Se a automação não tira aquela pessoa, você transformou um aviso barato num bloqueio de verdade. O Israel descreve exatamente isso do lado de quem recebe, sobre uma empresa que insistiu depois de ele clicar em bloquear: <em>"passou um tempo, continuo recebendo mensagem. Que que eu fiz? Eu tive que bloquear a empresa literalmente ali no WhatsApp."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=cZ_nyIUv5ic" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/cZ_nyIUv5ic/maxresdefault.jpg" alt="Miniatura do vídeo: Porque você é bloqueado no WhatsApp Business" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Porque você é bloqueado no WhatsApp Business</b><span>Canal DATA7 · 26 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 11:49 ele mostra o botão de não tenho interesse num template real, em 13:08 explica o de bloquear, e em 13:32 conta como ele mesmo reage a mensagem de empresa que não conhece.</figcaption>
+</figure>
+
+<p>E o motivo pelo qual vale insistir nisso: quem tem consentimento e não tem engajamento cai do mesmo jeito. O caso da advogada, <a href="/numero-banido-no-whatsapp-o-que-fazer">na página sobre bloqueio</a>, é de uma base própria, com template aprovado, derrubada por três dias de silêncio. Consentimento é o que te autoriza; resposta é o que te mantém no ar.</p>
 <h2 id="o-double-opt-in-que-sai-barato">O double opt-in que sai barato</h2>
 <p>Um detalhe útil e pouco conhecido: a documentação de categorias da Meta reconhece, como caso de uso de <strong>utilidade</strong>, confirmar dentro do WhatsApp um aceite coletado em outro canal.</p>
 <p>Isso significa que a mensagem de "confirme que você quer receber nossos avisos por aqui" pode ser um template de utilidade, que custa uma fração de um de marketing.</p>
@@ -713,6 +752,7 @@ CREATE TABLE consentimentos (
         <li><a href="#o-ponto-que-quase-ningu-m-aplica-consent">O ponto que quase ninguém aplica...</a></li>
         <li><a href="#o-registro-que-sustenta-prova">O registro que sustenta prova</a></li>
         <li><a href="#como-usar-isso-no-envio">Como usar isso no envio</a></li>
+        <li><a href="#o-opt-out-que-protege-o-seu-n-mero">O opt-out que protege o seu número</a></li>
         <li><a href="#o-double-opt-in-que-sai-barato">O double opt-in que sai barato</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>

@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/audio-messages
   - https://github.com/chatwoot/chatwoot/issues/13540
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=xoldQJMTu50
+  - https://www.youtube.com/watch?v=ZHYNjpu5ReE
+videos: [ZHYNjpu5ReE, xoldQJMTu50]
 internal_links:
   - /audio-chega-mudo-no-celular-do-cliente
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
@@ -93,6 +96,23 @@ A resposta traz um `id`. Esse é o identificador de mídia, e ele fica disponív
 ```
 
 Duas chamadas em vez de uma, e some a causa mais difícil de diagnosticar. Para arquivo que você reenvia várias vezes, como um catálogo ou um material padrão, dá para **subir uma vez e reaproveitar o identificador** durante os 30 dias, o que na prática fica mais rápido que mandar link.
+
+## O caminho de subir, e o que ele resolve de graça
+
+Vale reforçar por que o identificador é mais previsível, porque isso explica o problema de recebimento também: **mídia na Cloud API não é um link, é um objeto guardado pela Meta e cifrado.**
+
+Isso fica evidente no sentido contrário. Quando o cliente te manda uma imagem, o webhook traz uma URL, e **essa URL não abre**: dá erro de autenticação no navegador e no `curl` sem cabeçalho. Você precisa pegar o identificador, pedir o endereço por ele, e baixar com o cabeçalho de autorização. Quem está atrás de uma plataforma como a Datafy recebe esse endereço já resolvido numa chamada, sem montar a etapa de decodificação, o que é o mesmo trabalho que você economiza usando identificador no envio.
+
+::video: ZHYNjpu5ReE | Quatro minutos com o problema inteiro na tela: em 01:23 a URL do webhook falhando, em 02:34 a chamada com o identificador devolvendo o endereço que abre, e em 03:53 o mesmo com áudio.
+
+E os prazos, que são **diferentes nos dois sentidos** e é onde quase todo mundo se confunde:
+
+| O que | Prazo |
+|---|---|
+| Arquivo que **você subiu**, para reusar no envio | **30 dias** |
+| Identificador de mídia que **chega no webhook** | **7 dias** |
+
+Sete dias para buscar o que o cliente mandou, trinta para reaproveitar o que você subiu. Quem inverte os dois monta processamento em lote mensal e descobre que metade dos arquivos não está mais ao alcance.
 
 ## Se o seu template tem imagem no cabeçalho
 

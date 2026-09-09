@@ -15,7 +15,10 @@ sources:
   - https://developers.facebook.com/docs/whatsapp/webhooks
   - https://developers.facebook.com/docs/whatsapp/cloud-api/reference/webhook-payload
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://www.youtube.com/watch?v=LIT4FxgqHhE
   - https://www.youtube.com/watch?v=cZ_nyIUv5ic
+videos: [dIIkttPeBS0, LIT4FxgqHhE]
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /validar-assinatura-do-webhook
@@ -80,6 +83,20 @@ def webhook_verify():
     else:
         return 'Forbidden', 403
 ```
+
+## Testar antes de existir tráfego
+
+Um detalhe de ordem prática que economiza a primeira hora: dá para **disparar um evento falso** para a sua URL, escolhendo o tipo, antes de qualquer cliente mandar mensagem. É o jeito de separar "meu endpoint está errado" de "o evento não está chegando", que são problemas diferentes e se confundem no começo.
+
+E depois que o tráfego existe, o que mais ajuda é conseguir ver o **payload cru** de cada mensagem que entrou e saiu, sem depender de log do seu servidor. Vale saber os limites disso: no painel da Datafy esse log guarda **7 dias e no máximo 100 mensagens por conversa**, e mídia não aparece, só o aviso de que chegou. O próprio Israel é explícito no que ele não é: *"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."*
+
+::video: dIIkttPeBS0 | Em 05:31 ele cadastra o webhook e escolhe os eventos, em 07:41 usa o testador para mandar um evento falso antes de existir mensagem real, e em 08:15 abre o payload que chegou, campo por campo.
+
+## Um evento que quase todo mundo esquece de marcar
+
+Se o número está em coexistência, existe um evento separado para **as mensagens que você mesmo envia pelo celular**: sem ele, o atendente responde pelo aplicativo e o seu sistema não fica sabendo, o que produz aquele histórico furado em que só metade da conversa aparece.
+
+A pegadinha: esse evento **não** cobre mensagem enviada pela API. Essa você já sabe que enviou, e o que volta dela é status. São dois caminhos diferentes para duas origens diferentes, e quem espera ver o próprio envio pela API nesse evento fica procurando defeito onde não tem.
 
 ## Receber mensagem de verdade
 

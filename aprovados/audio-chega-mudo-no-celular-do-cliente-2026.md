@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/media
   - https://github.com/chatwoot/chatwoot/issues/7291
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=xoldQJMTu50
+  - https://www.youtube.com/watch?v=ZHYNjpu5ReE
+videos: [xoldQJMTu50, ZHYNjpu5ReE]
 internal_links:
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
   - /whatsapp-api-oficial-chatwoot
@@ -64,9 +67,15 @@ Mono, 48 kHz e taxa baixa dão arquivo pequeno e voz limpa. É o suficiente para
 
 **Suba o arquivo e use o identificador de mídia.** Envie primeiro para a API de mídia e use o identificador retornado no envio, em vez de apontar para uma URL pública. Além de mais confiável, evita um problema separado que atinge envio por link.
 
-**Marque como mensagem de voz.** É essa marcação que transforma o anexo em bolha. Sem ela, mesmo com o formato certo, o resultado costuma ser um arquivo anexado.
+**Marque como mensagem de voz.** É essa marcação que transforma o anexo em bolha. Sem ela, mesmo com o formato certo, o resultado costuma ser um arquivo anexado. No corpo do envio, é um campo a mais ao lado do link:
 
-**Fique abaixo de 512 KB.** Acima disso o ícone de tocar não aparece, e o cliente precisa baixar para ouvir. Com Opus a 32 kbps, isso dá vários minutos de fala.
+```json
+"audio": { "link": "https://.../audio.ogg", "voice": true }
+```
+
+::video: xoldQJMTu50 | Em 05:02 o Israel acrescenta esse campo ao vivo e o áudio chega como bolha de voz. Em 06:43 ele testa um arquivo de 630 KB, acima do limite documentado de 512 KB, e a onda sonora ainda aparece: é o ícone de tocar que muda, não a bolha.
+
+**Fique abaixo de 512 KB.** O número é documentado, com essas palavras: o ícone de tocar só aparece se o arquivo tiver 512 KB ou menos, e acima disso ele vira um ícone de download. Com Opus a 32 kbps, 512 KB dão vários minutos de fala, então isso não aperta quem manda voz, só quem manda áudio longo em qualidade alta.
 
 ## Se você usa uma ferramenta no meio
 
@@ -78,11 +87,31 @@ Como identificar: **teste o mesmo áudio pela API direta**, com `curl`, e compar
 
 ## Do outro lado: baixar o áudio que o cliente mandou
 
-O espelho desse problema é receber. Quando o cliente manda um áudio, o webhook traz um identificador de mídia, não o arquivo. Você faz uma chamada para obter a URL, e outra para baixar o conteúdo.
+O espelho desse problema é receber, e ele é mais traiçoeiro do que parece. Quando o cliente manda um áudio, o webhook traz um identificador de mídia, não o arquivo. Traz também uma URL, e é aí que começa a confusão: **essa URL não abre.**
 
-O erro clássico aqui é esquecer que **a URL de download também exige o cabeçalho de autorização**. Sem ele, a resposta vem vazia ou com erro, e a causa não é óbvia. É o problema mais repetido da comunidade nesse assunto: aparece em cerca de oito discussões independentes, sempre com a mesma raiz.
+Ela não abre no navegador, não abre no `curl` sem cabeçalho, e o erro que ela devolve é de autenticação, o que faz muita gente achar que o token está errado. Não está. A mídia da Cloud API **vem criptografada**, e o caminho é fazer uma segunda chamada com o identificador para obter o endereço real, e uma terceira para baixar o conteúdo, **sempre com o cabeçalho de autorização**.
+
+Esquecer o cabeçalho na última etapa é o problema mais repetido da comunidade nesse assunto: aparece em cerca de oito discussões independentes, sempre com a mesma raiz.
 
 O áudio que chega do cliente vem em OGG com Opus, que é o formato nativo. Se você vai transcrever com algum serviço, quase todos aceitam esse formato direto, sem conversão.
+
+## O que muda com a Datafy
+
+Vale separar o que é problema de todo mundo do que é trabalho que dá para não fazer.
+
+**Do lado do envio, nada muda, e é bom que fique claro:** formato, marcação de voz e tamanho são regra da Meta. Converter para OGG com Opus é trabalho seu em qualquer caminho que você escolher, e nenhum fornecedor transforma mp3 em bolha de voz por você.
+
+**Do lado do recebimento, muda a parte chata.** A descriptografia da mídia já está feita: você manda o identificador que veio no webhook e recebe de volta uma URL pronta para usar, sem montar a etapa de decodificação. Na explicação do próprio Israel Henrique, CTO da Datafy: *"quando a API do WhatsApp, a oficial, envia para você uma mídia, ela vem criptografada e você precisa descriptografar. Aqui a gente já fez esse trabalho para você."*
+
+::video: ZHYNjpu5ReE | Quatro minutos, e o vídeo que mais economiza tempo de quem está começando: em 01:23 ele mostra a URL do webhook falhando, em 02:34 faz a chamada com o identificador e abre a imagem, e em 03:53 recebe um áudio e repete o processo.
+
+Dois detalhes operacionais que saem daí e valem para o seu desenho, sem depender de fornecedor:
+
+**Baixe o áudio do cliente no dia em que ele chega.** E aqui vale a correção que economiza dor de cabeça, porque os dois prazos são diferentes e quase todo mundo troca um pelo outro: o arquivo que **você sobe** persiste 30 dias, mas **o identificador de mídia que chega no webhook expira em 7 dias** ([documentação](https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/media)). Sete, não trinta.
+
+Se o seu produto precisa do áudio do cliente para auditoria, treinamento ou histórico, você tem uma semana para buscar. Fluxo que processa em lote no fim do mês não acha mais nada.
+
+**Para enviar, existe o caminho de subir antes.** Em vez de apontar para uma URL sua e depender de a Meta conseguir buscar o arquivo, você sobe o áudio uma vez e usa o identificador, o que [remove uma classe inteira de falha intermitente](/erro-131053-ao-enviar-midia).
 
 ## Perguntas frequentes
 
@@ -109,6 +138,14 @@ Mesma regra. Peça ao serviço de síntese o formato OGG com Opus, ou converta a
 ### Existe webhook para saber se o cliente ouviu?
 
 Sim. Desde março de 2026 existe um status que avisa quando o usuário toca uma mensagem de voz enviada pela empresa, na primeira reprodução.
+
+### Por que a URL de áudio que vem no webhook não abre?
+
+Porque a mídia vem criptografada, e aquela URL não é um endereço público. O caminho é pegar o identificador da mídia, pedir a URL por ele, e baixar com o cabeçalho de autorização. Quem está atrás de uma plataforma como a Datafy recebe a URL já resolvida numa chamada.
+
+### Quanto tempo o áudio do cliente fica disponível?
+
+Cerca de 30 dias. Depois disso, só existe se você tiver baixado. Se o áudio faz parte do seu registro de atendimento, guarde no seu armazenamento no momento em que ele chega, e não quando alguém pedir.
 
 ## Como decidir
 

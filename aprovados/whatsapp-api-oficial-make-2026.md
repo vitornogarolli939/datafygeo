@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/docs/whatsapp/throughput
   - https://www.make.com/en/help/tools/webhooks
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=vGovcR8W5g8
+  - https://www.youtube.com/watch?v=S2IAOQWbZMg
+videos: [S2IAOQWbZMg, vGovcR8W5g8]
 internal_links:
   - /whatsapp-api-oficial-n8n
   - /webhook-chega-duplicado
@@ -107,6 +110,14 @@ E para template, que é o que sai fora da janela:
 
 Guarde o token numa **conexão ou variável**, e não escrito no módulo. Além de segurança, isso evita ter que editar dez cenários quando ele mudar.
 
+## Por que copiar da documentação da Meta funciona
+
+Um atalho que economiza tempo em qualquer ferramenta de fluxo, e que existe porque a API é um espelho da Cloud API: **pegue o exemplo da documentação da Meta, troque o começo da URL, e funciona.** O resto do corpo é idêntico, e o token é o único outro item que muda.
+
+Isso vale para mensagem de texto, de mídia, interativa com botões, de lista e de template. E tem um efeito colateral útil quando você usa IA para montar o corpo: o modelo já conhece a documentação pública da Meta, então acerta o payload sem que você precise ensinar formato nenhum. Na formulação do Israel: *"as inteligências artificiais, qualquer uma que você for utilizar, elas já vão saber usar a ferramenta, porque ela já tem todo o conhecimento herdado da documentação da meta."*
+
+::video: S2IAOQWbZMg | Catorze minutos mostrando isso na prática: em 01:34 ele copia o endpoint da documentação da Meta e troca só a URL, e em 08:18 monta uma mensagem interativa com botão de link pelo mesmo caminho.
+
 ## O que costuma dar errado
 
 **Consumo de operação maior que o esperado.** É o filtro faltando. Cada envio seu volta como três eventos, e sem filtro cada um roda o cenário.
@@ -118,6 +129,16 @@ Guarde o token numa **conexão ou variável**, e não escrito no módulo. Além 
 **Erro de parâmetro no template.** Cabeçalho e corpo são componentes separados, cada um com os próprios parâmetros. Misturar dá erro de contagem.
 
 **Disparo travando.** Ao percorrer uma lista, o Make manda rápido. Use processamento em lote com espera entre eles, senão você [bate no limite de envio](/quantas-mensagens-por-segundo-posso-enviar).
+
+## O laço que derruba número, e como o filtro evita
+
+Vale ligar isso ao filtro da seção de recebimento, porque o motivo dele é maior que economia de operação.
+
+Cada mensagem que você envia gera **três eventos de volta**: enviada, entregue e lida. Se o seu cenário responde tudo que entra, cada resposta sua gera três eventos, e cada um deles gera outra resposta. Três, nove, vinte e sete. O aviso do Israel sobre isso é direto: *"vai bloquear o teu número."*
+
+O filtro que economiza operação é o mesmo que protege: só siga quando o objeto de mensagem existir no payload. Ele não existe no evento de status, então status para no filtro em vez de virar resposta.
+
+::video: vGovcR8W5g8 | Em 14:47 ele interrompe a montagem do fluxo para avisar disso antes de executar, e em 19:05 mostra os três eventos de status chegando.
 
 ## Onde o Make é melhor que o n8n
 

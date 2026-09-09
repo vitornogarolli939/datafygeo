@@ -136,7 +136,9 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
         "https://developers.facebook.com/docs/whatsapp/throughput",
         "https://www.make.com/en/help/tools/webhooks",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=vGovcR8W5g8",
+        "https://www.youtube.com/watch?v=S2IAOQWbZMg"
       ]
     },
     {
@@ -192,6 +194,44 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-make#video-S2IAOQWbZMg",
+      "name": "Como funciona a Datafy API",
+      "description": "A API como espelho da Cloud API: o que muda e o que nao muda em relacao a Meta, texto, botoes e lista",
+      "thumbnailUrl": "https://i.ytimg.com/vi/S2IAOQWbZMg/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=S2IAOQWbZMg",
+      "embedUrl": "https://www.youtube.com/embed/S2IAOQWbZMg",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-make#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-make#video-vGovcR8W5g8",
+      "name": "Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens",
+      "description": "Webhook de teste e de producao, envio pelo no de HTTP, e o laco de status que derruba numero",
+      "thumbnailUrl": "https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=vGovcR8W5g8",
+      "embedUrl": "https://www.youtube.com/embed/vGovcR8W5g8",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-make#article"
+      }
     }
   ]
 }
@@ -669,12 +709,41 @@ Headers: Authorization: Bearer {token}
   }
 }</code></p>
 <p>Guarde o token numa <strong>conexão ou variável</strong>, e não escrito no módulo. Além de segurança, isso evita ter que editar dez cenários quando ele mudar.</p>
+<h2 id="por-que-copiar-da-documenta-o-da-meta-fu">Por que copiar da documentação da Meta funciona</h2>
+<p>Um atalho que economiza tempo em qualquer ferramenta de fluxo, e que existe porque a API é um espelho da Cloud API: <strong>pegue o exemplo da documentação da Meta, troque o começo da URL, e funciona.</strong> O resto do corpo é idêntico, e o token é o único outro item que muda.</p>
+<p>Isso vale para mensagem de texto, de mídia, interativa com botões, de lista e de template. E tem um efeito colateral útil quando você usa IA para montar o corpo: o modelo já conhece a documentação pública da Meta, então acerta o payload sem que você precise ensinar formato nenhum. Na formulação do Israel: <em>"as inteligências artificiais, qualquer uma que você for utilizar, elas já vão saber usar a ferramenta, porque ela já tem todo o conhecimento herdado da documentação da meta."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=S2IAOQWbZMg" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/S2IAOQWbZMg/maxresdefault.jpg" alt="Miniatura do vídeo: Como funciona a Datafy API" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como funciona a Datafy API</b><span>Canal DATA7 · 14 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Catorze minutos mostrando isso na prática: em 01:34 ele copia o endpoint da documentação da Meta e troca só a URL, e em 08:18 monta uma mensagem interativa com botão de link pelo mesmo caminho.</figcaption>
+</figure>
+
 <h2 id="o-que-costuma-dar-errado">O que costuma dar errado</h2>
 <p><strong>Consumo de operação maior que o esperado.</strong> É o filtro faltando. Cada envio seu volta como três eventos, e sem filtro cada um roda o cenário.</p>
 <p><strong>Mensagem processada duas vezes.</strong> O cenário demora, a Meta reentrega. Se o seu fluxo faz chamada lenta, considere responder ao webhook cedo e mandar o trabalho para outro cenário, ou guardar o identificador da mensagem e ignorar repetido.</p>
 <p><strong>Texto livre recusado.</strong> A janela de 24 horas fechou. É comportamento esperado, e a saída é template aprovado.</p>
 <p><strong>Erro de parâmetro no template.</strong> Cabeçalho e corpo são componentes separados, cada um com os próprios parâmetros. Misturar dá erro de contagem.</p>
 <p><strong>Disparo travando.</strong> Ao percorrer uma lista, o Make manda rápido. Use processamento em lote com espera entre eles, senão você <a href="/quantas-mensagens-por-segundo-posso-enviar">bate no limite de envio</a>.</p>
+<h2 id="o-la-o-que-derruba-n-mero-e-como-o-filtr">O laço que derruba número, e como o filtro evita</h2>
+<p>Vale ligar isso ao filtro da seção de recebimento, porque o motivo dele é maior que economia de operação.</p>
+<p>Cada mensagem que você envia gera <strong>três eventos de volta</strong>: enviada, entregue e lida. Se o seu cenário responde tudo que entra, cada resposta sua gera três eventos, e cada um deles gera outra resposta. Três, nove, vinte e sete. O aviso do Israel sobre isso é direto: <em>"vai bloquear o teu número."</em></p>
+<p>O filtro que economiza operação é o mesmo que protege: só siga quando o objeto de mensagem existir no payload. Ele não existe no evento de status, então status para no filtro em vez de virar resposta.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg" alt="Miniatura do vídeo: Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 14:47 ele interrompe a montagem do fluxo para avisar disso antes de executar, e em 19:05 mostra os três eventos de status chegando.</figcaption>
+</figure>
+
 <h2 id="onde-o-make-melhor-que-o-n8n">Onde o Make é melhor que o n8n</h2>
 <p>Vale dizer, porque a escolha depende do time, e não da ferramenta ser melhor em abstrato:</p>
 <p><strong>A curva é mais suave.</strong> Para quem não é técnico, a montagem visual do Make é mais guiada, e os módulos prontos escondem mais complexidade.</p>
@@ -723,7 +792,9 @@ Headers: Authorization: Bearer {token}
         <li><a href="#principais-pontos">Principais pontos</a></li>
         <li><a href="#receber-o-filtro-que-economiza-opera-o">Receber: o filtro que economiza...</a></li>
         <li><a href="#enviar-o-m-dulo-de-requisi-o">Enviar: o módulo de requisição</a></li>
+        <li><a href="#por-que-copiar-da-documenta-o-da-meta-fu">Por que copiar da documentação d...</a></li>
         <li><a href="#o-que-costuma-dar-errado">O que costuma dar errado</a></li>
+        <li><a href="#o-la-o-que-derruba-n-mero-e-como-o-filtr">O laço que derruba número, e com...</a></li>
         <li><a href="#onde-o-make-melhor-que-o-n8n">Onde o Make é melhor que o n8n</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>

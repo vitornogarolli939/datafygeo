@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/docs/whatsapp/pricing/updates-to-pricing/
   - https://whatsappbusiness.com/pt-br/products/platform-pricing/
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=Bev4VxTJ5Cg
+  - https://www.youtube.com/watch?v=JL9Qzw3oS5A
+videos: [JL9Qzw3oS5A, Bev4VxTJ5Cg]
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /migrar-para-api-oficial-sem-perder-o-numero
@@ -105,6 +108,24 @@ Na Datafy o modelo é assinatura por número, sem markup: as conversas você pag
 | 10 a 49 | R$ 39,90 |
 | 50 ou mais | R$ 29,90 |
 
+## O detalhe que quase todo comparativo esquece
+
+Se o seu número está em coexistência, existe uma assimetria que muda a conta e raramente aparece escrita: **mensagem enviada pelo aplicativo do celular não é cobrada. Só é cobrada a que sai pela API.**
+
+Isso tem consequência prática imediata. Uma operação em que o atendente responde pelo celular e a automação só dispara notificação paga menos que uma em que tudo passa pela API, para o mesmo volume de conversa. Não é brecha, é como a cobrança funciona: a Meta cobra o que a plataforma entrega.
+
+E o espelho disso: **mensagem que o cliente manda para você nunca é cobrada**, em nenhum caminho.
+
+::video: JL9Qzw3oS5A | Dezesseis minutos abrindo a cobrança categoria por categoria. Em 00:21 está a distinção entre enviar pelo celular e enviar pela API, em 05:20 a diferença entre utilidade e marketing com exemplo real de template, e em 12:18 o preço da IA da própria Meta.
+
+## Quanto isso pesa de verdade, com número de operação
+
+Preço por mensagem é fácil de achar e difícil de interpretar. O que decide se dói é a relação entre esse valor e o seu ticket.
+
+Uma referência da nossa base, na fala do Israel Henrique, CTO da Datafy: *"eu tenho clientes, por exemplo, que pagam cerca de R$ 500 por mês para ter o serviço. Com as mensagens pagas, vão ter um custo ali adicional de R$ 50, R$ 60. Então, nesse caso, dá para absorver bem."* E a ressalva, que é a parte útil: *"se for muitos clientes, muitas mensagens com valor de produto pouco agregado, esse custo pode impactar."*
+
+É um caso, não uma média. Serve para você fazer a divisão certa: pegue o custo de mensagem estimado e divida pela receita mensal daquele cliente ou daquele produto. Abaixo de uns poucos por cento, você absorve e segue. Acima de dez, o WhatsApp deixa de ser canal de custo marginal e passa a ser linha de custo do produto, e aí vale mexer no desenho antes de mexer no preço.
+
 ## Como calcular o seu caso
 
 Some três coisas:
@@ -114,6 +135,12 @@ Some três coisas:
 3. **A camada do provedor**, se você usar um. Na Datafy, o número de números conectados vezes a faixa da tabela acima.
 
 Uma leitura de exemplo, com as faixas aproximadas: uma operação que dispara 2.000 mensagens de marketing por mês fica na ordem de R$ 640 a R$ 800 só de Meta. A mesma operação, se trocar metade desses disparos por utilidade bem categorizada, derruba bastante essa conta. Refaça o cálculo com a tabela oficial antes de decidir.
+
+## O agente da própria Meta é outra faixa de preço
+
+Vale saber que existe, porque o nome confunde: além das categorias acima, a Meta tem uma oferta de agente de IA própria, cobrada por uso e não por mensagem de template. A ordem de grandeza que o Israel relata é de **20 a 30 centavos por mensagem**, e ele mesmo delimita o que sabe: *"que eu ainda não sei direito como funciona, não fui atrás disso."*
+
+Fica registrado com essa ressalva. O ponto que importa para decidir é a ordem de grandeza: é dez vezes uma mensagem de utilidade, na mesma faixa de uma de marketing. Se você já tem agente próprio rodando, [a conta a fazer é outra](/quanto-custa-rodar-um-agente-de-ia-no-whatsapp), e no Brasil ela tem [uma linha extra que a Europa não tem](/cobranca-de-ai-provider-no-brasil).
 
 ## Perguntas frequentes
 

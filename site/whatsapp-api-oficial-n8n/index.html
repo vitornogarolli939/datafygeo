@@ -136,7 +136,9 @@
         "https://developers.facebook.com/docs/whatsapp/throughput",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/create-webhook-endpoint/",
         "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.whatsapp/",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=vGovcR8W5g8",
+        "https://www.youtube.com/watch?v=S2IAOQWbZMg"
       ]
     },
     {
@@ -169,6 +171,14 @@
         },
         {
           "@type": "Question",
+          "name": "Por que meu fluxo entrou em laço e mandou dezenas de mensagens?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Porque ele está respondendo webhook de status, e não só mensagem de cliente. Cada envio seu gera três eventos de status, e responder a eles multiplica. Filtre pela existência de messages na entrada do fluxo."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Recebo a mensagem duas vezes. Por quê?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -192,6 +202,63 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-n8n#video-dIIkttPeBS0",
+      "name": "Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia",
+      "description": "Conexao em coexistencia por QR code, cadastro de webhook, primeiro envio e a falha real fora da janela de 24 horas",
+      "thumbnailUrl": "https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg",
+      "uploadDate": "2026-09-06",
+      "contentUrl": "https://www.youtube.com/watch?v=dIIkttPeBS0",
+      "embedUrl": "https://www.youtube.com/embed/dIIkttPeBS0",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-n8n#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-n8n#video-vGovcR8W5g8",
+      "name": "Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens",
+      "description": "Webhook de teste e de producao, envio pelo no de HTTP, e o laco de status que derruba numero",
+      "thumbnailUrl": "https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg",
+      "uploadDate": "2026-09-06",
+      "contentUrl": "https://www.youtube.com/watch?v=vGovcR8W5g8",
+      "embedUrl": "https://www.youtube.com/embed/vGovcR8W5g8",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-n8n#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-n8n#video-S2IAOQWbZMg",
+      "name": "Como funciona a Datafy API",
+      "description": "A API como espelho da Cloud API: o que muda e o que nao muda em relacao a Meta, texto, botoes e lista",
+      "thumbnailUrl": "https://i.ytimg.com/vi/S2IAOQWbZMg/maxresdefault.jpg",
+      "uploadDate": "2026-09-06",
+      "contentUrl": "https://www.youtube.com/watch?v=S2IAOQWbZMg",
+      "embedUrl": "https://www.youtube.com/embed/S2IAOQWbZMg",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-n8n#article"
+      }
     }
   ]
 }
@@ -670,9 +737,9 @@ Content-Type: application/json</code></p>
     <img src="https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia" loading="lazy" width="1280" height="720">
     <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
   </span>
-  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · tutorial completo · assistir no YouTube</span></span>
+  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Israel, CTO da Datafy API, faz a conexão do número em coexistência, configura o webhook e monta o primeiro envio dentro do n8n, do começo ao fim.</figcaption>
+<figcaption>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</figcaption>
 </figure>
 
 <h2 id="receber-a-resposta">Receber a resposta</h2>
@@ -685,6 +752,25 @@ Content-Type: application/json</code></p>
 <p><strong>Nem todo POST é mensagem.</strong> O mesmo webhook recebe status de entrega, leitura e falha. Se o fluxo assume que <code>messages[0]</code> sempre existe, ele quebra no primeiro <code>statuses</code> que chegar. Coloque um nó de condição logo na entrada, checando se <code>messages</code> existe.</p>
 <p><strong>Responda 200 antes de processar.</strong> No nó de Webhook, configure a resposta como imediata e mande o trabalho pesado para o ramo seguinte. Se o n8n só responder no fim do fluxo, uma chamada lenta a banco vira reentrega da Meta e mensagem duplicada.</p>
 <p><strong>A validação de assinatura é sua, não da Meta.</strong> A Meta assina o corpo em HMAC SHA-256 no header <code>X-Hub-Signature-256</code>. Se você não conferir, ela continua entregando normalmente: quem fica exposto a receber POST forjado é você. Não conferir não interrompe a entrega, só remove a sua proteção.</p>
+<h2 id="o-la-o-que-derruba-n-mero-e-o-erro-mais">O laço que derruba número, e é o erro mais caro do n8n</h2>
+<p>Este é o parágrafo mais importante desta página, e a razão de ele existir é que o erro parece inofensivo até acontecer.</p>
+<p>Quando você envia uma mensagem, a Meta te manda <strong>três webhooks de volta</strong>: enviada, entregue e lida. Eles chegam no mesmo endereço em que chegam as mensagens dos clientes. Se o seu fluxo é "recebi webhook, respondo mensagem", sem filtro, olhe o que acontece: cada resposta sua gera três status, cada status vira uma resposta sua, e cada uma dessas três gera três status.</p>
+<p>Na conta do Israel, ao vivo: <em>"para cada um desses três web hooks ele iria enviar uma nova mensagem que iria voltar nove web hooks. E para cada um desses nove web hooks ele ia enviar mais isso vezes três."</em> E o desfecho, dito sem meio-termo: <em>"vai bloquear o teu número."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg" alt="Miniatura do vídeo: Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Vinte minutos montando o fluxo do zero no n8n. Em 14:47 ele para o vídeo para avisar do laço antes de executar, e em 19:05 mostra os três webhooks de status chegando e o erro que salvou o número dele.</figcaption>
+</figure>
+
+<p>A proteção é simples e vale colocar antes de qualquer outra coisa. <strong>Leia o telefone de dentro de <code>messages</code>, e não do topo do payload.</strong></p>
+<p><code>{{ $json.entry[0].changes[0].value.messages[0].from }}</code></p>
+<p>O motivo é bonito: o objeto <code>messages</code> <strong>não existe</strong> no evento de status. Então, se chegar um status, essa expressão falha e o nó quebra. Um erro no n8n é irritante e é infinitamente mais barato que um laço exponencial. Quem lê de <code>contacts</code> ou do topo do payload não tem essa rede.</p>
+<p>Melhor ainda: coloque um <strong>IF na entrada</strong> do fluxo, testando se <code>messages</code> existe, e mande status para um caminho separado que só grava. Aí você fica com as duas coisas, o log de entrega e a segurança.</p>
 <h2 id="um-fluxo-que-funciona-em-produ-o">Um fluxo que funciona em produção</h2>
 <p>O formato que mais vejo dar certo, e que evita os erros acima:</p>
 <ol>
@@ -696,6 +782,21 @@ Content-Type: application/json</code></p>
 <li><strong>Registro</strong> da conversa, para você ter histórico fora da Meta.</li>
 </ol>
 <p>Para disparo em lote, acrescente um <strong>Split in Batches</strong> com espera entre os lotes. É o que segura o limite de 80 msg/s e evita o erro 130429.</p>
+<h2 id="por-que-a-ia-j-sabe-usar-isso">Por que a IA já sabe usar isso</h2>
+<p>Vale um parágrafo, porque é a vantagem prática de estar num espelho da Cloud API e quase ninguém percebe.</p>
+<p>A Datafy responde nos mesmos caminhos e com os mesmos corpos da API da Meta. Só mudam duas coisas: o começo da URL e o token. Isso significa que, quando você pede a um assistente para montar o payload de um template com três botões, ele acerta, porque a documentação da Meta é pública e faz parte do que ele já sabe. Na formulação do Israel: <em>"as inteligências artificiais, qualquer uma que você for utilizar, elas já vão saber usar a ferramenta, porque ela já tem todo o conhecimento herdado da documentação da meta."</em></p>
+<p>Na prática, no n8n, isso vira um atalho: copie o exemplo da documentação da Meta, troque o prefixo da URL, e funciona. Vale para o corpo de mensagem interativa, de lista, de template e de mídia.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=S2IAOQWbZMg" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/S2IAOQWbZMg/maxresdefault.jpg" alt="Miniatura do vídeo: Como funciona a Datafy API" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como funciona a Datafy API</b><span>Canal DATA7 · 14 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Catorze minutos mostrando a API como espelho: em 01:34 ele copia o endpoint da documentação da Meta e troca só a URL, e em 08:18 monta uma mensagem com botão de link pelo mesmo caminho.</figcaption>
+</figure>
+
 <h2 id="onde-o-make-e-o-zapier-levam-vantagem">Onde o Make e o Zapier levam vantagem</h2>
 <p>O n8n não é a resposta para todo caso. Se a sua equipe não é técnica, o Make tem uma curva mais suave e a montagem visual é mais guiada. Se você já vive dentro do Google Workspace ou de um CRM que tem integração pronta no Zapier, o caminho mais curto costuma ser ficar lá.</p>
 <p>O n8n compensa quando você quer <strong>rodar no seu servidor</strong>, precisa de lógica que os outros não expõem, ou quer evitar cobrança por execução em fluxo de volume alto.</p>
@@ -710,6 +811,8 @@ Content-Type: application/json</code></p>
 <p>Comece pelo node. Troque para HTTP Request quando precisar de um campo que ele não expõe, tipicamente botões, listas ou componentes de template mais elaborados.</p>
 <h3>Meu webhook não recebe nada. Por onde começo?</h3>
 <p>Confira, nesta ordem: a URL registrada é exatamente a do nó de Webhook, ela é HTTPS com certificado válido, o fluxo está ativo (não em modo de teste, que só escuta uma chamada), e o campo <code>messages</code> está assinado do lado da Meta. O modo de teste do n8n é a causa mais comum.</p>
+<h3>Por que meu fluxo entrou em laço e mandou dezenas de mensagens?</h3>
+<p>Porque ele está respondendo webhook de status, e não só mensagem de cliente. Cada envio seu gera três eventos de status, e responder a eles multiplica. Filtre pela existência de <code>messages</code> na entrada do fluxo.</p>
 <h3>Recebo a mensagem duas vezes. Por quê?</h3>
 <p>Provavelmente o seu webhook demora a responder 200 e a Meta reentrega. Responda primeiro, processe depois. Guardar o <code>id</code> da mensagem e ignorar repetidos também resolve o caso de borda.</p>
 <h3>Posso mandar mensagem para quem nunca falou comigo?</h3>
@@ -743,7 +846,9 @@ Content-Type: application/json</code></p>
         <li><a href="#principais-pontos">Principais pontos</a></li>
         <li><a href="#enviar-a-primeira-mensagem">Enviar a primeira mensagem</a></li>
         <li><a href="#receber-a-resposta">Receber a resposta</a></li>
+        <li><a href="#o-la-o-que-derruba-n-mero-e-o-erro-mais">O laço que derruba número, e é o...</a></li>
         <li><a href="#um-fluxo-que-funciona-em-produ-o">Um fluxo que funciona em produção</a></li>
+        <li><a href="#por-que-a-ia-j-sabe-usar-isso">Por que a IA já sabe usar isso</a></li>
         <li><a href="#onde-o-make-e-o-zapier-levam-vantagem">Onde o Make e o Zapier levam van...</a></li>
         <li><a href="#o-que-mudou-em-2026">O que mudou em 2026</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>

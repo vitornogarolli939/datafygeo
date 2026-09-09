@@ -136,7 +136,9 @@
         "https://developers.facebook.com/docs/whatsapp/throughput",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/marketing-templates/per-user-limits",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-pausing/",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=cZ_nyIUv5ic",
+        "https://www.youtube.com/watch?v=ly5nOHFpXcI"
       ]
     },
     {
@@ -192,6 +194,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/minha-campanha-travou-no-meio#video-ly5nOHFpXcI",
+      "name": "Disparo em massa de mensagens na API oficial do WhatsApp",
+      "description": "Planilha CSV, mapeamento de variaveis, agendamento e as falhas de entrega aparecendo no log",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ly5nOHFpXcI/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=ly5nOHFpXcI",
+      "embedUrl": "https://www.youtube.com/embed/ly5nOHFpXcI",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/minha-campanha-travou-no-meio#article"
+      }
     }
   ]
 }
@@ -677,12 +698,36 @@ footer p{margin:0 0 .5rem}
 <li><strong>Reenviar piora.</strong> Tentativa em excesso tem penalidade própria, aplicada no nível da conta.</li>
 </ul>
 <p>O que ajuda de verdade é do outro lado: mandar menos e melhor, para quem realmente quer receber. É chato ouvir isso quando a campanha está parada, mas é a única alavanca que existe.</p>
+<h2 id="a-quinta-causa-que-a-meta-escreve-com-es">A quinta causa, que a Meta escreve com essas palavras</h2>
+<p>Existe uma recusa que não é limite, não é erro seu, e vem com uma redação tão vaga que quem lê fica sem saber o que fazer. O status volta dizendo, em resumo, que <strong>a mensagem não foi entregue para manter a saúde do ecossistema.</strong></p>
+<p>Não há código para procurar nem ajuste de vazão que resolva. O que a frase quer dizer, na prática, é que a plataforma julgou que aquela pessoa provavelmente não quer receber você.</p>
+<p>O diagnóstico mais útil que já vi disso é o do Israel, olhando um número da própria base que recebia essa recusa sempre: <em>"porque esse número aqui eu não respondo ele. Quando a API envia mensagens, eu não costumo responder. Então, por isso que ele não entregou."</em></p>
+<p>É a mesma lógica do limite por pessoa, aplicada na entrega individual: o destinatário nunca respondeu, então a mensagem seguinte para ele deixa de passar. Se você vê essa recusa concentrada em parte da base, você não tem um problema de campanha, tem uma lista com gente que não interage. Marcar esses contatos e pará-los é melhor que insistir, porque insistir alimenta o indicador que causou a recusa.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=ly5nOHFpXcI" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/ly5nOHFpXcI/maxresdefault.jpg" alt="Miniatura do vídeo: Disparo em massa de mensagens na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Disparo em massa de mensagens na API oficial do WhatsApp</b><span>Canal DATA7 · 10 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Dez minutos de disparo real por planilha. Em 06:29 aparece a mensagem falhando, em 08:52 ele abre o log e lê a recusa palavra por palavra, e em 09:55 explica por que só aquele número recebe isso.</figcaption>
+</figure>
+
+<p>E vale a versão honesta do resumo dele sobre o assunto, porque ela evita horas procurando defeito onde não tem: <em>"às vezes a meta simplesmente não entrega porque ela não quer. Isso acontece."</em> Outras possibilidades banais da mesma família: cartão de crédito do portfólio com problema, ou saldo indisponível.</p>
 <h2 id="como-disparar-sem-travar">Como disparar sem travar</h2>
 <p><strong>Controle a vazão.</strong> Não mande do laço direto. Fila com liberação em taxa constante, abaixo do teto.</p>
 <p><strong>Mande em blocos, e observe.</strong> Em vez de dez mil de uma vez, mande mil, veja entrega e reação, e continue. Isso reduz o risco de qualidade e evita o susto.</p>
 <p><strong>Separe erro de limite de erro comum.</strong> Um <code>130429</code> pede espera crescente. Um <code>131049</code> pede parar com aquela pessoa. Um erro de número inválido pede limpar a base. Tratar tudo como "falha, tenta de novo" é o que causa o dano maior.</p>
 <p><strong>Olhe a qualidade antes.</strong> Se o número está com a qualidade em queda, campanha grande é o pior momento para descobrir.</p>
 <p><strong>Limpe a base.</strong> Número inválido consome tentativa e piora indicador. Se a sua lista tem contato de anos atrás sem interação, ela vai custar mais que render.</p>
+<h2 id="se-voc-dispara-por-planilha">Se você dispara por planilha</h2>
+<p>Vale um bloco à parte, porque a maior parte dos disparos no Brasil sai de uma planilha e não de código, e os erros de campanha nascem aí.</p>
+<p><strong>A coluna do telefone é obrigatória e o formato é rígido.</strong> Código do país, DDD e número, tudo junto, sem símbolo: 55 mais DDD mais o número. Número salvo em formato antigo, sem o nono dígito, <a href="/mandei-para-numero-que-nao-existe-e-nao-deu-erro">vira destinatário inválido</a>, e você só descobre no relatório.</p>
+<p><strong>Qualquer outra coluna vira variável do template.</strong> É o que permite personalizar nome, data e valor. O nome da coluna não precisa ser igual ao da variável, mas o mapeamento precisa estar certo, e uma variável mapeada para a coluna errada gera mil mensagens com o dado trocado sem dar erro nenhum.</p>
+<p><strong>Confira as três primeiras linhas antes de disparar.</strong> É o único momento barato de descobrir que a planilha tem cabeçalho na linha errada ou telefone com espaço.</p>
+<p><strong>Agende no fuso certo.</strong> O agendamento usa o fuso local de quem agenda, e não o do destinatário. Para base inteira no Brasil dá na mesma; para base espalhada, não.</p>
+<p>E o teste que evita o susto: coloque <strong>o seu próprio número</strong> na primeira linha da planilha e dispare para uma lista de três antes de disparar para dez mil. Você vê a mensagem que o cliente vai ver, com a variável já preenchida, e é a forma mais rápida de pegar erro de mapeamento.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Reenviar o que falhou é seguro?</h3>
 <p>Depende do erro. Para estouro de throughput, sim, com espera crescente. Para <code>131049</code>, não: espere pelo menos 24 horas para aquela pessoa. Para <code>131050</code>, nunca.</p>
@@ -725,7 +770,9 @@ footer p{margin:0 0 .5rem}
         <li><a href="#como-identificar-a-sua-causa">Como identificar a sua causa</a></li>
         <li><a href="#os-dois-erros-que-parecem-iguais-e-pedem">Os dois erros que parecem iguais...</a></li>
         <li><a href="#por-que-o-limite-por-pessoa-n-o-se-conto">Por que o limite por pessoa não...</a></li>
+        <li><a href="#a-quinta-causa-que-a-meta-escreve-com-es">A quinta causa, que a Meta escre...</a></li>
         <li><a href="#como-disparar-sem-travar">Como disparar sem travar</a></li>
+        <li><a href="#se-voc-dispara-por-planilha">Se você dispara por planilha</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

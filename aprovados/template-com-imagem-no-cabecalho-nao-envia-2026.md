@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-categorization
   - https://github.com/fazer-ai/chatwoot/issues/349
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=YF9hTHDAw6E
+  - https://www.youtube.com/watch?v=62oSY66J3s4
+videos: [62oSY66J3s4, YF9hTHDAw6E]
 internal_links:
   - /erro-131053-ao-enviar-midia
   - /audio-chega-mudo-no-celular-do-cliente
@@ -97,6 +100,26 @@ A resposta traz um `id`, que vale por 30 dias.
 ```
 
 Repare que o cabeçalho e o corpo são **componentes separados**, cada um com os próprios parâmetros. Misturar os dois num só é outro erro comum, e ele dá um erro diferente, de contagem de parâmetros.
+
+## A confusão de origem: a imagem do template é só exemplo
+
+Antes da parte técnica, vale desfazer o mal-entendido que produz esse erro em quem está começando, porque ele não é de código, é de expectativa.
+
+Quando você cria o template no painel, você escolhe uma imagem. É natural entender que aquela é **a** imagem do template, e que os envios seguintes vão usá-la. Não é: ela serve para a Meta revisar e para você ver o resultado. **No envio, você manda a imagem de novo, sempre.** Na frase do Israel: *"essa imagem que a gente colocou aqui, ela só é para criar o template, ela seria um exemplo. Na hora você vai ter que enviar outra."*
+
+E vale contar como isso aparece na prática, porque é o caminho que todo mundo percorre. No vídeo de envio de templates, ele pede a um assistente para montar o payload da mensagem, e o assistente responde que, como o cabeçalho é uma imagem fixa, não é preciso informar imagem no envio. Ele desconfia da resposta, testa, e dá erro. A conclusão dele é a mesma desta página: precisa informar a imagem.
+
+::video: 62oSY66J3s4 | Oito minutos enviando templates. Em 04:41 ele tenta o template com imagem, em 05:31 aparece a resposta errada do assistente, em 06:11 o erro acontece de verdade, e em 06:43 ele corrige mandando a imagem.
+
+Isso explica por que o erro é tão comum em fluxo montado com ajuda de IA: o modelo raciocina que uma imagem cadastrada no template não precisaria ser reenviada, o que é uma boa intuição e não é como a plataforma funciona.
+
+## O requisito de proporção, que reprova antes de enviar
+
+Um detalhe que morde mais cedo: **o editor de templates é exigente com a proporção da imagem de exemplo.** Na criação de templates gravada no canal, a imagem que passou foi quadrada, de 500 por 500, e a orientação foi que fora dessa proporção o editor recusa.
+
+Não localizamos esse requisito escrito na documentação pública da Meta, então trate como comportamento observado do editor e não como especificação: o que vale é testar a sua arte antes do dia da campanha. [VERIFICAR]
+
+Vale planejar isso na origem do material. Se o seu banner de campanha é retangular, ele não serve para cabeçalho de template sem recorte, e recorte feito na pressa corta texto e logo. É o tipo de coisa que custa uma hora no dia do disparo e cinco minutos quando a arte é feita.
 
 ## Suba uma vez, use por 30 dias
 

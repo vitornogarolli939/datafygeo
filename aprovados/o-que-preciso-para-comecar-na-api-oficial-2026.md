@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://www.youtube.com/watch?v=8xA-8z1YW98
+videos: [8xA-8z1YW98, dIIkttPeBS0]
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /migrar-para-api-oficial-sem-perder-o-numero
@@ -69,6 +72,18 @@ A conta das **mensagens é a mesma nos dois casos**, e é boa parte do custo. O 
 
 Ir direto faz sentido quando existe time de engenharia e o volume justifica. Por um provedor faz sentido quando o seu time é de produto, ou quando você precisa começar esta semana.
 
+## A decisão que aparece na tela, e que define tudo
+
+No meio da conexão você escolhe entre duas opções, e essa escolha define o resto da sua operação. Vale saber o que cada uma quer dizer antes de clicar, porque voltar atrás significa desconectar e refazer.
+
+**Criar uma conta do WhatsApp Business.** É para quando você tem um chip e aquele número **não está** em nenhum WhatsApp. Só o chip. O número nasce direto na API, e não existe aplicativo no celular para ele.
+
+**Conectar um app do WhatsApp Business.** É para quando o número **já está** em uso no aplicativo, no celular de alguém. É a coexistência: o atendente continua respondendo pelo celular, e a API passa a ver e a enviar no mesmo número.
+
+::video: 8xA-8z1YW98 | Nove minutos do zero até o número conectado. A escolha entre as duas opções está em 02:34, o QR code em 05:03, e em 08:33 onde fica a configuração de pagamento.
+
+A diferença prática vai além do começo. Coexistência dá ao atendente humano uma ferramenta que ele já sabe usar, e cobra por isso um teto de vazão menor. Número que nasce na API não tem aplicativo, então tudo passa pelo seu sistema, o que é mais limpo para produto e exige que você construa a interface de atendimento.
+
 ## O que não é obrigatório para começar
 
 Vale desfazer três confusões comuns, porque elas fazem gente adiar o começo sem motivo:
@@ -78,6 +93,14 @@ Vale desfazer três confusões comuns, porque elas fazem gente adiar o começo s
 **Site próprio não é exigido** para conectar. Uma política de privacidade publicada é boa prática e ajuda em outros pontos do processo, mas não é o que trava a primeira mensagem.
 
 **Não é preciso ser Tech Provider.** Esse papel serve para quem oferece a plataforma a terceiros. Para usar no próprio negócio, basta conectar o seu número.
+
+## O item que falta na maioria das listas: cartão no portfólio
+
+Um passo que não aparece nos tutoriais e trava o primeiro disparo: **a forma de pagamento fica na Meta, no portfólio empresarial, e não no provedor.**
+
+Quem cobra as mensagens é a Meta, direto nesse cartão. O provedor cobra o acesso à infraestrutura. Sem cartão cadastrado no portfólio, a conexão funciona, a mensagem de serviço funciona, **e o template não sai**, o que produz aquele diagnóstico errado de "a API não está funcionando" quando na verdade falta meio de pagamento.
+
+Vale resolver isso no mesmo dia da conexão, e não na véspera da campanha.
 
 ## Depois de conectar, o que muda no dia a dia
 

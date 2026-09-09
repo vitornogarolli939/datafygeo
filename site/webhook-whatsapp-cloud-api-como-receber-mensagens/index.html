@@ -136,6 +136,8 @@
         "https://developers.facebook.com/docs/whatsapp/webhooks",
         "https://developers.facebook.com/docs/whatsapp/cloud-api/reference/webhook-payload",
         "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=dIIkttPeBS0",
+        "https://www.youtube.com/watch?v=LIT4FxgqHhE",
         "https://www.youtube.com/watch?v=cZ_nyIUv5ic"
       ]
     },
@@ -184,6 +186,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/webhook-whatsapp-cloud-api-como-receber-mensagens#video-dIIkttPeBS0",
+      "name": "Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia",
+      "description": "Conexao em coexistencia por QR code, cadastro de webhook, primeiro envio e a falha real fora da janela de 24 horas",
+      "thumbnailUrl": "https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg",
+      "uploadDate": "2026-09-06",
+      "contentUrl": "https://www.youtube.com/watch?v=dIIkttPeBS0",
+      "embedUrl": "https://www.youtube.com/embed/dIIkttPeBS0",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/webhook-whatsapp-cloud-api-como-receber-mensagens#article"
+      }
     }
   ]
 }
@@ -611,6 +632,23 @@ else:
     return 'Forbidden', 403
 </code></pre>
 <p>```</p>
+<h2 id="testar-antes-de-existir-tr-fego">Testar antes de existir tráfego</h2>
+<p>Um detalhe de ordem prática que economiza a primeira hora: dá para <strong>disparar um evento falso</strong> para a sua URL, escolhendo o tipo, antes de qualquer cliente mandar mensagem. É o jeito de separar "meu endpoint está errado" de "o evento não está chegando", que são problemas diferentes e se confundem no começo.</p>
+<p>E depois que o tráfego existe, o que mais ajuda é conseguir ver o <strong>payload cru</strong> de cada mensagem que entrou e saiu, sem depender de log do seu servidor. Vale saber os limites disso: no painel da Datafy esse log guarda <strong>7 dias e no máximo 100 mensagens por conversa</strong>, e mídia não aparece, só o aviso de que chegou. O próprio Israel é explícito no que ele não é: <em>"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 05:31 ele cadastra o webhook e escolhe os eventos, em 07:41 usa o testador para mandar um evento falso antes de existir mensagem real, e em 08:15 abre o payload que chegou, campo por campo.</figcaption>
+</figure>
+
+<h2 id="um-evento-que-quase-todo-mundo-esquece-d">Um evento que quase todo mundo esquece de marcar</h2>
+<p>Se o número está em coexistência, existe um evento separado para <strong>as mensagens que você mesmo envia pelo celular</strong>: sem ele, o atendente responde pelo aplicativo e o seu sistema não fica sabendo, o que produz aquele histórico furado em que só metade da conversa aparece.</p>
+<p>A pegadinha: esse evento <strong>não</strong> cobre mensagem enviada pela API. Essa você já sabe que enviou, e o que volta dela é status. São dois caminhos diferentes para duas origens diferentes, e quem espera ver o próprio envio pela API nesse evento fica procurando defeito onde não tem.</p>
 <h2 id="receber-mensagem-de-verdade">Receber mensagem de verdade</h2>
 <p>Depois que webhook validado, Meta faz POST toda vez que chega mensagem:</p>
 <p><code>json
@@ -921,6 +959,8 @@ return response.json()
         <li><a href="#configurar-webhook-no-datafy">Configurar webhook no Datafy</a></li>
         <li><a href="#configurar-webhook-direto-na-meta">Configurar webhook direto na Meta</a></li>
         <li><a href="#responder-a-post-de-teste-da-meta">Responder a POST de teste da Meta</a></li>
+        <li><a href="#testar-antes-de-existir-tr-fego">Testar antes de existir tráfego</a></li>
+        <li><a href="#um-evento-que-quase-todo-mundo-esquece-d">Um evento que quase todo mundo e...</a></li>
         <li><a href="#receber-mensagem-de-verdade">Receber mensagem de verdade</a></li>
         <li><a href="#estrutura-json-de-mensagem-todos-os-tipo">Estrutura JSON de mensagem (todo...</a></li>
         <li><a href="#os-campos-de-webhook-que-a-meta-disponib">Os campos de webhook que a Meta...</a></li>

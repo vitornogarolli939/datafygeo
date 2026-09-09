@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
   - https://www.chatwoot.com/docs/product/channels/api/create-channel
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=T_ai6IvLzZE
+  - https://www.youtube.com/watch?v=LIT4FxgqHhE
+videos: [LIT4FxgqHhE, T_ai6IvLzZE]
 internal_links:
   - /whatsapp-api-oficial-chatwoot
   - /whatsapp-api-oficial-n8n
@@ -105,6 +108,18 @@ Se a sua operação usa **coexistência**, existe um caminho a mais: alguém pod
 Isso gera um evento próprio no webhook, avisando que uma mensagem saiu pelo aparelho. É esse evento que deve **colocar a conversa em estado humano automaticamente**, senão o bot continua respondendo em paralelo com o gerente que resolveu ajudar de dentro de uma reunião.
 
 É um dos casos em que o handoff acontece sem ninguém apertar botão nenhum, e o sistema precisa perceber sozinho.
+
+## Onde não fazer a transferência acontecer
+
+Um alerta de arquitetura, porque a tentação é grande quando a plataforma já mostra as mensagens numa tela: **painel de log não é ferramenta de atendimento.**
+
+Muitas plataformas de infraestrutura, a Datafy inclusive, oferecem uma visão das mensagens em tempo real, com o payload de cada uma. Isso é excelente para depurar e péssimo como destino de transferência. No caso da Datafy, o próprio Israel delimita: *"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."* E os limites confirmam: **7 dias de retenção e no máximo 100 mensagens por conversa**, com mídia não aparecendo, só o aviso de que chegou.
+
+Ou seja, se o seu plano for "quando o cliente pedir humano, alguém olha o painel", você vai perder conversa, perder mídia e perder histórico depois de uma semana.
+
+::video: LIT4FxgqHhE | Três minutos mostrando o log ao vivo e, em 02:26 e 02:57, o que ele não é e por quanto tempo guarda.
+
+O destino da transferência precisa ser uma caixa de entrada de verdade, com fila, atribuição e histórico. [O Chatwoot resolve isso com pouca coisa](/whatsapp-api-oficial-chatwoot), e a vantagem de fazer isso em coexistência é que o atendente também pode responder pelo celular, com a mensagem dele aparecendo no sistema, desde que você tenha assinado o evento de mensagem enviada pelo aplicativo.
 
 ## Perguntas frequentes
 

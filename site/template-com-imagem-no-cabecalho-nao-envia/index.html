@@ -136,7 +136,9 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-categorization",
         "https://github.com/fazer-ai/chatwoot/issues/349",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=YF9hTHDAw6E",
+        "https://www.youtube.com/watch?v=62oSY66J3s4"
       ]
     },
     {
@@ -192,6 +194,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/template-com-imagem-no-cabecalho-nao-envia#video-62oSY66J3s4",
+      "name": "Como enviar mensagens de templates pela API oficial",
+      "description": "Listar templates, montar o payload e o erro de imagem no cabecalho acontecendo ao vivo",
+      "thumbnailUrl": "https://i.ytimg.com/vi/62oSY66J3s4/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=62oSY66J3s4",
+      "embedUrl": "https://www.youtube.com/embed/62oSY66J3s4",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/template-com-imagem-no-cabecalho-nao-envia#article"
+      }
     }
   ]
 }
@@ -674,6 +695,26 @@ file=@banner.jpg
   }
 }</code></p>
 <p>Repare que o cabeçalho e o corpo são <strong>componentes separados</strong>, cada um com os próprios parâmetros. Misturar os dois num só é outro erro comum, e ele dá um erro diferente, de contagem de parâmetros.</p>
+<h2 id="a-confus-o-de-origem-a-imagem-do-templat">A confusão de origem: a imagem do template é só exemplo</h2>
+<p>Antes da parte técnica, vale desfazer o mal-entendido que produz esse erro em quem está começando, porque ele não é de código, é de expectativa.</p>
+<p>Quando você cria o template no painel, você escolhe uma imagem. É natural entender que aquela é <strong>a</strong> imagem do template, e que os envios seguintes vão usá-la. Não é: ela serve para a Meta revisar e para você ver o resultado. <strong>No envio, você manda a imagem de novo, sempre.</strong> Na frase do Israel: <em>"essa imagem que a gente colocou aqui, ela só é para criar o template, ela seria um exemplo. Na hora você vai ter que enviar outra."</em></p>
+<p>E vale contar como isso aparece na prática, porque é o caminho que todo mundo percorre. No vídeo de envio de templates, ele pede a um assistente para montar o payload da mensagem, e o assistente responde que, como o cabeçalho é uma imagem fixa, não é preciso informar imagem no envio. Ele desconfia da resposta, testa, e dá erro. A conclusão dele é a mesma desta página: precisa informar a imagem.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=62oSY66J3s4" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/62oSY66J3s4/maxresdefault.jpg" alt="Miniatura do vídeo: Como enviar mensagens de templates pela API oficial" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como enviar mensagens de templates pela API oficial</b><span>Canal DATA7 · 8 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Oito minutos enviando templates. Em 04:41 ele tenta o template com imagem, em 05:31 aparece a resposta errada do assistente, em 06:11 o erro acontece de verdade, e em 06:43 ele corrige mandando a imagem.</figcaption>
+</figure>
+
+<p>Isso explica por que o erro é tão comum em fluxo montado com ajuda de IA: o modelo raciocina que uma imagem cadastrada no template não precisaria ser reenviada, o que é uma boa intuição e não é como a plataforma funciona.</p>
+<h2 id="o-requisito-de-propor-o-que-reprova-ante">O requisito de proporção, que reprova antes de enviar</h2>
+<p>Um detalhe que morde mais cedo: <strong>o editor de templates é exigente com a proporção da imagem de exemplo.</strong> Na criação de templates gravada no canal, a imagem que passou foi quadrada, de 500 por 500, e a orientação foi que fora dessa proporção o editor recusa.</p>
+<p>Não localizamos esse requisito escrito na documentação pública da Meta, então trate como comportamento observado do editor e não como especificação: o que vale é testar a sua arte antes do dia da campanha. [VERIFICAR]</p>
+<p>Vale planejar isso na origem do material. Se o seu banner de campanha é retangular, ele não serve para cabeçalho de template sem recorte, e recorte feito na pressa corta texto e logo. É o tipo de coisa que custa uma hora no dia do disparo e cinco minutos quando a arte é feita.</p>
 <h2 id="suba-uma-vez-use-por-30-dias">Suba uma vez, use por 30 dias</h2>
 <p>Se a imagem é fixa, e na maioria das campanhas ela é, não faz sentido subir a cada envio.</p>
 <p>O padrão que funciona: suba a imagem quando a campanha é criada, guarde o identificador junto com o template no seu banco, e use nos envios. Renove quando estiver perto dos 30 dias.</p>
@@ -724,6 +765,8 @@ file=@banner.jpg
         <li><a href="#principais-pontos">Principais pontos</a></li>
         <li><a href="#o-erro-que-quase-todo-mundo-comete">O erro que quase todo mundo comete</a></li>
         <li><a href="#como-fazer-certo">Como fazer certo</a></li>
+        <li><a href="#a-confus-o-de-origem-a-imagem-do-templat">A confusão de origem: a imagem d...</a></li>
+        <li><a href="#o-requisito-de-propor-o-que-reprova-ante">O requisito de proporção, que re...</a></li>
         <li><a href="#suba-uma-vez-use-por-30-dias">Suba uma vez, use por 30 dias</a></li>
         <li><a href="#outros-erros-que-aparecem-no-mesmo-lugar">Outros erros que aparecem no mes...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>

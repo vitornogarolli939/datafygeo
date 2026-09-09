@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-categorization
   - https://business.whatsapp.com/policy
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=cZ_nyIUv5ic
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+videos: [dIIkttPeBS0, cZ_nyIUv5ic]
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /migrar-para-api-oficial-sem-perder-o-numero
@@ -64,6 +67,14 @@ Quatro casos aparecem sempre, e é melhor descobrir antes de migrar do que depoi
 
 **Follow-up automático.** "Mandar uma mensagem três dias depois perguntando se deu certo." Está fora da janela por definição. Precisa de template.
 
+## Como a recusa aparece na tela
+
+Vale ver o formato exato da falha, porque ela engana: **a chamada de envio responde sucesso.** Você recebe um identificador de mensagem, e nada indica problema. A recusa chega depois, no webhook de status, dizendo que a mensagem falhou porque passaram mais de 24 horas desde o último contato daquela pessoa.
+
+Ou seja: se você só olha a resposta do envio, a sua operação parece funcionar. Quem [não escuta o evento de status](/mandei-para-numero-que-nao-existe-e-nao-deu-erro) fica com um relatório cheio de mensagem marcada como enviada que nunca saiu.
+
+::video: dIIkttPeBS0 | Em 11:23 ele envia dentro da janela e a mensagem chega. Em 12:57 escolhe de propósito um número que não falou com ele nas últimas 24 horas, o envio responde sucesso do mesmo jeito, e em 14:15 a falha aparece no webhook com o motivo. São dois minutos que explicam a regra melhor que qualquer parágrafo.
+
 ## Como se organizar para isso
 
 **Tenha templates de retomada aprovados antes de precisar.** Pelo menos um genérico de "vimos que sua conversa ficou em aberto", e um por fluxo importante. Aprovação não é instantânea, e template reprovado no dia da campanha é o pior momento para descobrir.
@@ -79,6 +90,16 @@ Quatro casos aparecem sempre, e é melhor descobrir antes de migrar do que depoi
 Uma coisa que hoje é gratuita deixa de ser: responder dentro da janela. A partir de **1º de outubro de 2026** a mensagem de serviço passa a ser cobrada, e a de utilidade dentro da janela também.
 
 A regra da janela não muda, o custo dela muda. Quem faz muito atendimento deve [refazer a conta](/mensagem-de-servico-vai-ser-paga-outubro-2026) antes da data.
+
+## Ter template aprovado não é permissão para lista fria
+
+Essa distinção precisa ficar clara, porque é a fonte do erro mais caro do assunto.
+
+O template resolve o **impedimento técnico**: sem ele, a API recusa a mensagem para quem não falou com você nas últimas 24 horas. Com ele, a API aceita. O que o template não faz é transformar uma lista comprada em base autorizada, e é aí que muita gente lê "aceitou" como "pode".
+
+A prova de que são coisas separadas é o caso que aparece na página sobre bloqueio: uma advogada com template aprovado, orientada, disparando para a própria lista, e bloqueada em dois dias porque **ninguém respondeu**. Não faltava autorização técnica. Faltava gente do outro lado querendo receber.
+
+O que a plataforma olha, além da regra da janela, é a reação: quem responde, quem ignora, quem denuncia. Antes do próximo disparo, vale medir a taxa de resposta do último. Se ela foi baixa, o problema não é a quantidade, é a lista.
 
 ## Perguntas frequentes
 

@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=HVRCBsJI_Eo
+  - https://www.youtube.com/watch?v=fhz6n2s91-g
+videos: [fhz6n2s91-g, HVRCBsJI_Eo]
 internal_links:
   - /o-telefone-esta-sumindo-do-webhook
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
@@ -53,6 +56,18 @@ A proteção é uma postura de código: **tratar campo como opcional, tratar val
 **Valor novo num campo conhecido.** O campo continua lá, mas com um valor que não estava na sua lista. Uma categoria de conversa nova, uma situação de template que não existia. Se você converte esse texto para um tipo fechado, a conversão falha.
 
 Os três têm a mesma raiz: assumir que o payload de hoje é o payload de sempre.
+
+## O caso vivo, e por que ele é pior que um campo que some
+
+O exemplo em andamento hoje merece detalhe, porque ele não quebra só o código: quebra a **modelagem**.
+
+O identificador que substitui o telefone não é um novo formato do telefone. Ele identifica **a relação entre uma pessoa e a sua conta**, e não a pessoa. A mesma pessoa falando com duas empresas tem dois identificadores diferentes. Na explicação do Israel: *"se o João entrar em contato com outro WhatsApp Business, uma outra empresa, o user ID do João vai ser outro."*
+
+::video: fhz6n2s91-g | Cinco minutos: em 00:38 ele diz que a mudança é progressiva, em 01:27 explica que o identificador é da relação, e em 02:30 mostra o campo que muda no envio.
+
+Isso significa que a proteção não é só ler o campo com cuidado. É **guardar a chave como um par**, identificador mais o número da sua conta que recebeu. Quem tem um número só e guarda o identificador solto tem um código que funciona e uma modelagem que quebra no dia em que entra o segundo número, e essa quebra não dá exceção: ela produz contato duplicado silenciosamente.
+
+Sobre o prazo: a mudança é progressiva e não tem data pública. O Israel arrisca uma expectativa, e marca como expectativa: *"eu digo lá, acho que pro final de 2026 parece que tá previsto."* Trate como aviso para começar a se adaptar, não como cronograma.
 
 ## Como escrever para aguentar
 

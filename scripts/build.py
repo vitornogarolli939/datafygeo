@@ -76,6 +76,13 @@ def ler_pagina(caminho):
 
 DIAGRAMAS = os.path.join(RAIZ, 'templates', 'diagramas')
 
+# Catalogo dos videos do canal DATA7. Titulo e duracao vivem em um lugar so,
+# para o atalho ::video: e o VideoObject do JSON-LD nunca discordarem.
+_CAM_VIDEOS = os.path.join(RAIZ, 'dados', 'videos.json')
+VIDEOS = dict((k, v) for k, v in
+              json.load(io.open(_CAM_VIDEOS, encoding='utf-8')).items()
+              if not k.startswith('_'))
+
 
 def expandir_atalhos(corpo):
     """
@@ -85,7 +92,8 @@ def expandir_atalhos(corpo):
 
       ::numeros: 49,90|texto ;; 24 h|texto ;; ...
       ::diagrama: nome-do-arquivo
-      ::video: ID_DO_YOUTUBE | titulo | duracao | frase de contexto
+      ::video: ID_DO_YOUTUBE | frase de contexto
+               (titulo e duracao vem de dados/videos.json)
       ::aviso: texto em destaque
       ::cta: titulo | texto
     """
@@ -112,9 +120,13 @@ def expandir_atalhos(corpo):
 
     def video(m):
         partes = [p.strip() for p in m.group(1).split('|')]
-        while len(partes) < 4:
-            partes.append('')
-        vid, titulo, duracao, contexto = partes[:4]
+        vid = partes[0]
+        contexto = partes[1] if len(partes) > 1 else ''
+        if vid not in VIDEOS:
+            raise SystemExit('ERRO: video "%s" nao esta em dados/videos.json' % vid)
+        titulo = VIDEOS[vid]['titulo']
+        duracao = VIDEOS[vid].get('duracao', '')
+        canal = VIDEOS[vid].get('canal', 'Canal DATA7')
         return ('<figure>\n'
                 '<a class="video" href="https://www.youtube.com/watch?v=%s" rel="noopener">\n'
                 '  <span class="thumb">\n'
@@ -124,9 +136,9 @@ def expandir_atalhos(corpo):
                 '<svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">'
                 '<path d="M8 5v14l11-7z"/></svg></span></span>\n'
                 '  </span>\n'
-                '  <span class="meta"><b>%s</b><span>Canal DATA7 · %s · assistir no YouTube</span></span>\n'
+                '  <span class="meta"><b>%s</b><span>%s · %s · assistir no YouTube</span></span>\n'
                 '</a>\n<figcaption>%s</figcaption>\n</figure>'
-                % (vid, vid, titulo, titulo, duracao, contexto))
+                % (vid, vid, titulo, titulo, canal, duracao, contexto))
 
     def aviso(m):
         return '<div class="callout"><p>%s</p></div>' % m.group(1).strip()
@@ -259,17 +271,24 @@ def dados_estruturados(meta, corpo_md, url):
     if faq:
         grafo.append({'@type': 'FAQPage', '@id': url + '#faq', 'mainEntity': faq})
 
-    # vídeos citados no corpo
-    for vid in dict.fromkeys(re.findall(r'youtube\.com/watch\?v=([\w-]{11})', corpo_md)):
+    # vídeos do canal DATA7 citados no corpo, pelo atalho ::video: ou por link
+    citados = re.findall(r'^::video:\s*([\w-]{11})', corpo_md, re.M)
+    citados += re.findall(r'youtube\.com/watch\?v=([\w-]{11})', corpo_md)
+    for vid in dict.fromkeys(citados):
+        if vid not in VIDEOS:
+            continue
+        v = VIDEOS[vid]
         grafo.append({
-            '@type': 'VideoObject',
-            'name': 'Vídeo citado neste artigo',
-            'description': meta['description'],
+            '@type': 'VideoObject', '@id': url + '#video-' + vid,
+            'name': v['titulo'],
+            'description': v.get('assunto', meta['description']),
             'thumbnailUrl': 'https://i.ytimg.com/vi/%s/maxresdefault.jpg' % vid,
             'uploadDate': str(meta.get('published', '')),
             'contentUrl': 'https://www.youtube.com/watch?v=%s' % vid,
             'embedUrl': 'https://www.youtube.com/embed/%s' % vid,
+            'creator': {'@id': 'https://datafyapi.com.br/#organization'},
             'publisher': {'@id': 'https://datafyapi.com.br/#organization'},
+            'isPartOf': {'@id': url + '#article'},
         })
     return {'@context': 'https://schema.org', '@graph': grafo}
 

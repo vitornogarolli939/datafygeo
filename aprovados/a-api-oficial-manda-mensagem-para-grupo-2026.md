@@ -16,6 +16,8 @@ sources:
   - https://business.whatsapp.com/policy
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+videos: [dIIkttPeBS0, S2IAOQWbZMg]
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /posso-mandar-mensagem-para-qualquer-numero
@@ -68,6 +70,16 @@ Uma ferramenta que conecta por QR code opera como se fosse um celular. Por isso 
 Se o seu negócio é grupo de avisos, comunidade de alunos, condomínio ou time de campo que se coordena por grupo, a API oficial não substitui isso. Fingir o contrário só adia a descoberta.
 
 O que você precisa pesar do outro lado: essa capacidade vem junto com uma arquitetura que a Meta classifica como uso não autorizado, e portanto sem canal de recurso caso a conta seja restringida. É um trade-off real, e ele é seu para decidir.
+
+## O grupo também não vem na sincronização
+
+Um detalhe que fecha o assunto e costuma aparecer só depois da migração: quando você conecta um número em coexistência e recupera o histórico, **as conversas de grupo não vêm.**
+
+Ou seja, não é só que a API não envia para grupo: ela também não te entrega o que já existia em grupo naquele número. Aquele conteúdo continua existindo apenas no aparelho.
+
+Isso importa em dois momentos. Se o seu atendimento usa grupos hoje, a migração não copia esse histórico para lugar nenhum, e vale exportar o que for necessário antes. E se você conta com o grupo como registro de alguma coisa, ele não vai virar dado consultável no seu sistema.
+
+::video: dIIkttPeBS0 | Em 03:17 aparece a tela em que se decide compartilhar o histórico, e em 04:11 o que fazer se você marcar errado. É a única chance de recuperar histórico, e ela não inclui grupo.
 
 ## O que fazer se você precisa dos dois
 

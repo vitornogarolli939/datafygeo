@@ -1,0 +1,96 @@
+{
+  "_leia": "Catalogo dos videos do canal DATA7 (@data7apps). Usado por scripts/build.py: o atalho '::video: ID | frase de contexto' puxa titulo e duracao daqui e gera o VideoObject do JSON-LD. Duracao vem do ultimo marcador do transcrito, arredondado. Para acrescentar video: coloque o ID de 11 caracteres como chave.",
+
+  "FcAwJqVHNoU": {
+    "titulo": "API oficial do WhatsApp: jeito simples e fácil de utilizar",
+    "duracao": "13 min",
+    "canal": "Canal Nine Labs",
+    "assunto": "Video organico, nao patrocinado, da comunidade n8n: conexao do numero e integracao no n8n do comeco ao fim"
+  },
+
+  "dIIkttPeBS0": {
+    "titulo": "Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia",
+    "duracao": "16 min",
+    "assunto": "Conexao em coexistencia por QR code, cadastro de webhook, primeiro envio e a falha real fora da janela de 24 horas"
+  },
+  "S2IAOQWbZMg": {
+    "titulo": "Como funciona a Datafy API",
+    "duracao": "14 min",
+    "assunto": "A API como espelho da Cloud API: o que muda e o que nao muda em relacao a Meta, texto, botoes e lista"
+  },
+  "ZHYNjpu5ReE": {
+    "titulo": "Como receber mídias na API oficial do WhatsApp",
+    "duracao": "4 min",
+    "assunto": "A midia chega criptografada da Meta, e o caminho para obter a URL pronta para uso"
+  },
+  "HQm5UuW50bM": {
+    "titulo": "Sincronizar contatos na API oficial do WhatsApp",
+    "duracao": "4 min",
+    "assunto": "O evento de sincronizacao, a janela de 24 horas para pedir os contatos e o tempo do historico"
+  },
+  "xoldQJMTu50": {
+    "titulo": "Como enviar mídias pela API oficial do WhatsApp",
+    "duracao": "7 min",
+    "assunto": "Imagem, documento e audio por link, e a marcacao que faz o audio virar bolha de voz"
+  },
+  "YF9hTHDAw6E": {
+    "titulo": "Criar modelos de mensagens (templates) na API oficial",
+    "duracao": "16 min",
+    "assunto": "Categoria, preco, variaveis, imagem de cabecalho e a reclassificacao silenciosa da Meta"
+  },
+  "62oSY66J3s4": {
+    "titulo": "Como enviar mensagens de templates pela API oficial",
+    "duracao": "8 min",
+    "assunto": "Listar templates, montar o payload e o erro de imagem no cabecalho acontecendo ao vivo"
+  },
+  "ly5nOHFpXcI": {
+    "titulo": "Disparo em massa de mensagens na API oficial do WhatsApp",
+    "duracao": "10 min",
+    "assunto": "Planilha CSV, mapeamento de variaveis, agendamento e as falhas de entrega aparecendo no log"
+  },
+  "LIT4FxgqHhE": {
+    "titulo": "Logs de mensagens em tempo real na API oficial do WhatsApp",
+    "duracao": "3 min",
+    "assunto": "Ver o payload cru de cada mensagem que entra e sai, e por quanto tempo esse log fica"
+  },
+  "T_ai6IvLzZE": {
+    "titulo": "Como usar a API oficial do WhatsApp no Chatwoot",
+    "duracao": "5 min",
+    "assunto": "Canal de API no Chatwoot, webhook, e o teste de texto, imagem e documento nos dois sentidos"
+  },
+  "HVRCBsJI_Eo": {
+    "titulo": "Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)",
+    "duracao": "2 h 22 min",
+    "assunto": "Projeto inteiro: payloads reais, modelagem do banco, webhook por tunel, midia, tempo real e publicacao"
+  },
+  "cZ_nyIUv5ic": {
+    "titulo": "Porque você é bloqueado no WhatsApp Business",
+    "duracao": "26 min",
+    "assunto": "As causas de bloqueio observadas na base de clientes, os nichos proibidos e o respaldo de quem esta no oficial"
+  },
+  "JL9Qzw3oS5A": {
+    "titulo": "Quanto custa a API oficial do WhatsApp",
+    "duracao": "16 min",
+    "assunto": "Quem cobra o que, categoria por categoria, e o impacto real disso na conta de um cliente"
+  },
+  "8xA-8z1YW98": {
+    "titulo": "A forma mais fácil e simples de usar a API oficial do WhatsApp",
+    "duracao": "9 min",
+    "assunto": "Numero conectado do zero, chip novo contra aplicativo existente, e onde entra a forma de pagamento"
+  },
+  "vGovcR8W5g8": {
+    "titulo": "Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens",
+    "duracao": "20 min",
+    "assunto": "Webhook de teste e de producao, envio pelo no de HTTP, e o laco de status que derruba numero"
+  },
+  "fhz6n2s91-g": {
+    "titulo": "Como usar user name (user id) na API oficial do WhatsApp",
+    "duracao": "5 min",
+    "assunto": "O identificador que substitui o telefone, por que ele muda de empresa para empresa, e como responder por ele"
+  },
+  "Bev4VxTJ5Cg": {
+    "titulo": "Meta volta atrás na cobrança da API oficial",
+    "duracao": "9 min",
+    "assunto": "O e-mail da Meta aos parceiros e a franquia mensal gratuita de mensagem de servico"
+  }
+}

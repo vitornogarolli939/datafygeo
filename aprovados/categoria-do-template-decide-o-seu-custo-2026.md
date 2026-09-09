@@ -16,6 +16,8 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-pausing/
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=YF9hTHDAw6E
+videos: [YF9hTHDAw6E, JL9Qzw3oS5A]
 internal_links:
   - /quanto-custa-whatsapp-business-api-brasil-2026
   - /mensagem-de-servico-vai-ser-paga-outubro-2026
@@ -79,6 +81,16 @@ O jeito de saber é assinar o evento de webhook que avisa mudança de categoria.
 
 **Vale mais que isso:** derive o custo do envio **no momento de enviar**, consultando a categoria atual, e não no momento em que o template foi criado. Quem guarda "este template é utilidade" no banco e nunca revisita passa a orçar errado a partir do dia da reclassificação.
 
+Vale ouvir isso de quem atende quem levou o susto, porque a frase resume o problema inteiro: *"às vezes a meta percebe isso e ela muda automaticamente a categoria. E aí acontece que você acha que vai pagar um valor, você acaba pagando 10 vezes mais porque você não é avisado, ela simplesmente muda."*
+
+O que faz a reclassificação acontecer é mais literal do que parece: **a Meta lê o texto do template.** Não é auditoria de intenção, é leitura de conteúdo. Uma palavra de outra categoria no meio de um template muda a classificação dele.
+
+Isso tem um lado que dá para usar a seu favor. Se a mensagem é de verdade uma notificação, **escreva as palavras que dizem isso**: pagamento, pedido, conta, agendamento, entrega. Um template de cobrança de assinatura que diz "houve um problema no pagamento da sua assinatura" está descrevendo uma transação, e é isso que sustenta a categoria de utilidade. O mesmo aviso escrito como "não perca seu acesso, aproveite e renove" está descrevendo uma oferta.
+
+::video: YF9hTHDAw6E | Dezesseis minutos criando templates, primeiro pelo painel e depois pela API. Em 01:42 ele compara os preços das categorias, e em 02:08 explica a reclassificação silenciosa, que é a parte que custa dinheiro.
+
+E vale registrar onde ele se posiciona, porque a prática oposta é ensinada por aí: forçar marketing disfarçado de utilidade, enchendo variável com texto grande, é técnica que circula em conteúdo brasileiro. A avaliação dele é curta: *"inclusive essa é uma prática que até ensinam na internet, eu sou contra isso."* Além de ter escalada de punição própria, ela para de funcionar assim que a Meta lê o conteúdo, e aí você fica com o custo alto e o histórico ruim.
+
 ## A escalada, se acontecer de novo
 
 Categorizar errado uma vez é erro. Repetir tem consequência crescente, e vale conhecer a sequência:
@@ -89,6 +101,22 @@ Categorizar errado uma vez é erro. Repetir tem consequência crescente, e vale 
 4. **Restrição no nível da conta.**
 
 Do terceiro passo em diante, o custo da operação inteira muda. Não é uma multa: é o seu envio de rotina passando a custar dez vezes mais.
+
+## Onde criar o template, e por que não pela API
+
+Uma recomendação contraintuitiva, vinda de quem vende acesso a API: **crie o template pelo painel da Meta**, não pela API, a menos que você esteja montando um produto em que o cliente final cria os próprios templates.
+
+O motivo é prático. No painel você vê o pré-visualizado enquanto escreve, o editor recusa na hora o que está fora de regra, e a categoria aparece antes de você enviar para análise. Pela API, o mesmo erro volta como código de erro depois. É o tipo de tarefa que se faz poucas vezes e em que a interface ganha da automação. A recomendação, na fala dele: *"recomendo que sempre você crie pelo painel Facebook, mais fácil, mais seguro."*
+
+Três regras do editor que economizam retrabalho, e que valem para os dois caminhos:
+
+**Nome não repete e não tem espaço.** O nome é a identidade do template no envio, e por isso é imutável na prática.
+
+**Toda variável precisa de exemplo.** É obrigatório, e é o que a Meta usa para revisar. Variável com nome tem que ser minúscula e sem acento.
+
+**O editor é exigente com a proporção da imagem de cabeçalho.** Na criação gravada no canal, a imagem aceita foi quadrada, de 500 por 500. Não achamos esse requisito na documentação pública, então teste a sua arte antes, e não no dia da campanha. E cuidado com a confusão que isso gera depois: [a imagem que você põe no template é só exemplo, e no envio você manda outra](/template-com-imagem-no-cabecalho-nao-envia).
+
+**Aprovação não tem prazo fixo.** Às vezes sai na hora, às vezes leva cerca de um dia. Isso significa que template de campanha se cria antes da campanha, não no dia.
 
 ## Como não cair nisso
 

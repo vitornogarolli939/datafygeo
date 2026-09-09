@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://www.youtube.com/watch?v=HQm5UuW50bM
+videos: [HQm5UuW50bM, dIIkttPeBS0]
 internal_links:
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
   - /coexistencia-whatsapp-api-oficial-app-celular
@@ -77,6 +80,27 @@ Ao conectar um número pelo fluxo de **coexistência**, a Meta sincroniza o hist
 | Quantas vezes | **Uma só**, no onboarding |
 
 O prazo de 24 horas é o que mais pega gente desprevenida. Conectou o número e deixou para sincronizar depois? Perdeu a janela, e refazer exige desconectar e passar por todo o onboarding de novo.
+
+## Os três passos da exceção, na ordem
+
+Como o prazo é curto e o processo não é automático, vale a sequência exata. Errar a ordem custa a janela inteira.
+
+**1. No celular, durante a conexão, aceitar compartilhar as conversas.** É uma pergunta que aparece no aplicativo, no meio do fluxo. Quem não marca não recupera nada, e não existe segunda chance sem desconectar e reconectar o número.
+
+**2. Assinar o evento de sincronização no webhook, antes de pedir.** É por ele que os dados chegam. Sem ele, a chamada do passo 3 responde sucesso e nada aparece, o que é a forma mais frustrante de perder o prazo.
+
+**3. Fazer a chamada que dispara a sincronização.** Esse passo é o que quase ninguém sabe que existe. Na frase do Israel: *"você conectou o telefone, com webhook, tá marcado, agora tem que avisar a meta que você quer os contatos."* Contatos e histórico se pedem separadamente.
+
+E o comportamento da resposta é diferente para cada um, o que evita meia hora de depuração inútil:
+
+| O que você pede | Quando chega |
+|---|---|
+| Contatos da agenda | Praticamente na hora |
+| Histórico de conversas | **Bem mais devagar**, e pode levar bastante |
+
+::video: HQm5UuW50bM | Quatro minutos e o único material em português que mostra isso funcionando: em 00:30 o evento sendo marcado, em 01:05 o prazo de 24 horas, em 02:38 a chamada e os contatos chegando no webhook, e em 03:40 a diferença de tempo do histórico.
+
+Uma dica que sai daí: **guarde o identificador que a chamada devolve.** Se a sincronização não vier, é com ele que se abre suporte com a Meta.
 
 ## Perguntas frequentes
 

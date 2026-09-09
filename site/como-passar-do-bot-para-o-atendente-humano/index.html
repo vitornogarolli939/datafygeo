@@ -136,7 +136,9 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
         "https://www.chatwoot.com/docs/product/channels/api/create-channel",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=T_ai6IvLzZE",
+        "https://www.youtube.com/watch?v=LIT4FxgqHhE"
       ]
     },
     {
@@ -192,6 +194,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/como-passar-do-bot-para-o-atendente-humano#video-LIT4FxgqHhE",
+      "name": "Logs de mensagens em tempo real na API oficial do WhatsApp",
+      "description": "Ver o payload cru de cada mensagem que entra e sai, e por quanto tempo esse log fica",
+      "thumbnailUrl": "https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+      "embedUrl": "https://www.youtube.com/embed/LIT4FxgqHhE",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/como-passar-do-bot-para-o-atendente-humano#article"
+      }
     }
   ]
 }
@@ -669,6 +690,22 @@ CREATE TABLE conversas (
 <p>Se a sua operação usa <strong>coexistência</strong>, existe um caminho a mais: alguém pode responder pelo aplicativo do celular, sem passar pelo seu sistema.</p>
 <p>Isso gera um evento próprio no webhook, avisando que uma mensagem saiu pelo aparelho. É esse evento que deve <strong>colocar a conversa em estado humano automaticamente</strong>, senão o bot continua respondendo em paralelo com o gerente que resolveu ajudar de dentro de uma reunião.</p>
 <p>É um dos casos em que o handoff acontece sem ninguém apertar botão nenhum, e o sistema precisa perceber sozinho.</p>
+<h2 id="onde-n-o-fazer-a-transfer-ncia-acontecer">Onde não fazer a transferência acontecer</h2>
+<p>Um alerta de arquitetura, porque a tentação é grande quando a plataforma já mostra as mensagens numa tela: <strong>painel de log não é ferramenta de atendimento.</strong></p>
+<p>Muitas plataformas de infraestrutura, a Datafy inclusive, oferecem uma visão das mensagens em tempo real, com o payload de cada uma. Isso é excelente para depurar e péssimo como destino de transferência. No caso da Datafy, o próprio Israel delimita: <em>"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."</em> E os limites confirmam: <strong>7 dias de retenção e no máximo 100 mensagens por conversa</strong>, com mídia não aparecendo, só o aviso de que chegou.</p>
+<p>Ou seja, se o seu plano for "quando o cliente pedir humano, alguém olha o painel", você vai perder conversa, perder mídia e perder histórico depois de uma semana.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=LIT4FxgqHhE" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg" alt="Miniatura do vídeo: Logs de mensagens em tempo real na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Logs de mensagens em tempo real na API oficial do WhatsApp</b><span>Canal DATA7 · 3 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Três minutos mostrando o log ao vivo e, em 02:26 e 02:57, o que ele não é e por quanto tempo guarda.</figcaption>
+</figure>
+
+<p>O destino da transferência precisa ser uma caixa de entrada de verdade, com fila, atribuição e histórico. <a href="/whatsapp-api-oficial-chatwoot">O Chatwoot resolve isso com pouca coisa</a>, e a vantagem de fazer isso em coexistência é que o atendente também pode responder pelo celular, com a mensagem dele aparecendo no sistema, desde que você tenha assinado o evento de mensagem enviada pelo aplicativo.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Onde guardo esse estado?</h3>
 <p>Na sua base, por conversa. Se você usa uma central de atendimento, ela provavelmente já tem esse conceito, e aí vale usar o dela como fonte de verdade em vez de manter duas.</p>
@@ -713,6 +750,7 @@ CREATE TABLE conversas (
         <li><a href="#o-que-passar-junto">O que passar junto</a></li>
         <li><a href="#os-tr-s-erros-mais-comuns">Os três erros mais comuns</a></li>
         <li><a href="#quem-responde-pelo-celular">Quem responde pelo celular</a></li>
+        <li><a href="#onde-n-o-fazer-a-transfer-ncia-acontecer">Onde não fazer a transferência a...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

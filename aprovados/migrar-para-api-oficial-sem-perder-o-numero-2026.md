@@ -16,6 +16,8 @@ sources:
   - https://developers.facebook.com/docs/whatsapp/throughput
   - https://www.youtube.com/watch?v=8xA-8z1YW98
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+videos: [dIIkttPeBS0, 8xA-8z1YW98]
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /coexistencia-whatsapp-api-oficial-app-celular
@@ -116,6 +118,20 @@ Body:   {
 Se você usar um provedor, o corpo é idêntico ao da Meta e muda só o domínio, porque os provedores espelham os endpoints. Entre dois destinos que falam Cloud API, a troca é de fato só URL e token.
 
 Do lado do recebimento, o webhook também muda de formato. O payload da Meta é aninhado em `entry[0].changes[0].value.messages[0]`, e o mesmo endpoint recebe status de entrega além de mensagens. Vale reler a [página de webhook](/webhook-whatsapp-cloud-api-como-receber-mensagens) antes de portar o código.
+
+## Três coisas para decidir antes de escanear o QR code
+
+O fluxo de conexão tem decisões que não dá para refazer depois sem desconectar e começar de novo. Vale abrir as três antes de marcar a data.
+
+**1. Chip novo ou aplicativo existente.** A tela oferece duas opções, e elas não são intercambiáveis. Criar conta do WhatsApp Business é para número que existe só como chip, sem aplicativo. Conectar app do WhatsApp Business é a coexistência, para número que já está no celular de alguém. Se o seu objetivo é manter o atendente respondendo pelo celular, é a segunda.
+
+**2. Compartilhar o histórico.** A pergunta aparece **no celular**, no meio do fluxo, e passa rápido. Quem não marca não recupera nada, e a única correção é desconectar e refazer o processo inteiro.
+
+**3. Quem vai estar com o telefone na mão.** Não é detalhe de logística: o QR code é escaneado pelo aparelho, a decisão do item 2 é tomada nele, e a desconexão, se precisar, também. Migração sem a pessoa do telefone disponível não acontece.
+
+::video: dIIkttPeBS0 | Em 02:12 a escolha entre as duas opções, em 03:17 a tela do celular perguntando sobre o histórico, em 04:11 o que fazer se você marcar errado, e em 04:46 onde fica a desconexão.
+
+E depois de conectar, dois passos que têm prazo e que quase todo roteiro de migração esquece: **assinar o evento de sincronização** e **fazer a chamada que pede contatos e histórico**, ambos dentro de 24 horas. [O processo tem três etapas e não é automático](/como-leio-o-historico-de-conversa-pela-api), e contatos chegam na hora enquanto conversas podem levar até meia hora.
 
 ## A regra nova que pega todo mundo
 

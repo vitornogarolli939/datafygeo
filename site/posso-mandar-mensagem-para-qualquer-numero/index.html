@@ -136,7 +136,9 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-categorization",
         "https://business.whatsapp.com/policy",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=cZ_nyIUv5ic",
+        "https://www.youtube.com/watch?v=dIIkttPeBS0"
       ]
     },
     {
@@ -200,6 +202,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/posso-mandar-mensagem-para-qualquer-numero#video-dIIkttPeBS0",
+      "name": "Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia",
+      "description": "Conexao em coexistencia por QR code, cadastro de webhook, primeiro envio e a falha real fora da janela de 24 horas",
+      "thumbnailUrl": "https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=dIIkttPeBS0",
+      "embedUrl": "https://www.youtube.com/embed/dIIkttPeBS0",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/posso-mandar-mensagem-para-qualquer-numero#article"
+      }
     }
   ]
 }
@@ -643,6 +664,20 @@ footer p{margin:0 0 .5rem}
 <p><strong>Disparo para lista comprada ou raspada.</strong> Não é caso de contornar tecnicamente: além de exigir template, <a href="https://business.whatsapp.com/policy" rel="noopener">viola a política</a>, que só permite contatar quem deu o número e o aceite. E é o caminho mais rápido para o número cair.</p>
 <p><strong>Resposta que demorou.</strong> O cliente escreveu ontem à noite, ninguém respondeu, e hoje de manhã passou das 24 horas. O atendente digita, a API recusa. A saída é um template de retomada, aprovado com antecedência.</p>
 <p><strong>Follow-up automático.</strong> "Mandar uma mensagem três dias depois perguntando se deu certo." Está fora da janela por definição. Precisa de template.</p>
+<h2 id="como-a-recusa-aparece-na-tela">Como a recusa aparece na tela</h2>
+<p>Vale ver o formato exato da falha, porque ela engana: <strong>a chamada de envio responde sucesso.</strong> Você recebe um identificador de mensagem, e nada indica problema. A recusa chega depois, no webhook de status, dizendo que a mensagem falhou porque passaram mais de 24 horas desde o último contato daquela pessoa.</p>
+<p>Ou seja: se você só olha a resposta do envio, a sua operação parece funcionar. Quem <a href="/mandei-para-numero-que-nao-existe-e-nao-deu-erro">não escuta o evento de status</a> fica com um relatório cheio de mensagem marcada como enviada que nunca saiu.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 11:23 ele envia dentro da janela e a mensagem chega. Em 12:57 escolhe de propósito um número que não falou com ele nas últimas 24 horas, o envio responde sucesso do mesmo jeito, e em 14:15 a falha aparece no webhook com o motivo. São dois minutos que explicam a regra melhor que qualquer parágrafo.</figcaption>
+</figure>
+
 <h2 id="como-se-organizar-para-isso">Como se organizar para isso</h2>
 <p><strong>Tenha templates de retomada aprovados antes de precisar.</strong> Pelo menos um genérico de "vimos que sua conversa ficou em aberto", e um por fluxo importante. Aprovação não é instantânea, e template reprovado no dia da campanha é o pior momento para descobrir.</p>
 <p><strong>Ensine a equipe a ler a janela.</strong> Se a interface de atendimento mostra que a janela fechou, o atendente precisa saber que aquilo não é um erro do sistema, e qual template usar no lugar.</p>
@@ -651,6 +686,11 @@ footer p{margin:0 0 .5rem}
 <h2 id="o-que-muda-em-1-de-outubro-de-2026">O que muda em 1º de outubro de 2026</h2>
 <p>Uma coisa que hoje é gratuita deixa de ser: responder dentro da janela. A partir de <strong>1º de outubro de 2026</strong> a mensagem de serviço passa a ser cobrada, e a de utilidade dentro da janela também.</p>
 <p>A regra da janela não muda, o custo dela muda. Quem faz muito atendimento deve <a href="/mensagem-de-servico-vai-ser-paga-outubro-2026">refazer a conta</a> antes da data.</p>
+<h2 id="ter-template-aprovado-n-o-permiss-o-para">Ter template aprovado não é permissão para lista fria</h2>
+<p>Essa distinção precisa ficar clara, porque é a fonte do erro mais caro do assunto.</p>
+<p>O template resolve o <strong>impedimento técnico</strong>: sem ele, a API recusa a mensagem para quem não falou com você nas últimas 24 horas. Com ele, a API aceita. O que o template não faz é transformar uma lista comprada em base autorizada, e é aí que muita gente lê "aceitou" como "pode".</p>
+<p>A prova de que são coisas separadas é o caso que aparece na página sobre bloqueio: uma advogada com template aprovado, orientada, disparando para a própria lista, e bloqueada em dois dias porque <strong>ninguém respondeu</strong>. Não faltava autorização técnica. Faltava gente do outro lado querendo receber.</p>
+<p>O que a plataforma olha, além da regra da janela, é a reação: quem responde, quem ignora, quem denuncia. Antes do próximo disparo, vale medir a taxa de resposta do último. Se ela foi baixa, o problema não é a quantidade, é a lista.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Como sei se a janela está aberta para um contato?</h3>
 <p>Pelo horário da última mensagem que ele te mandou. Se passou de 24 horas, fechou. Guarde esse carimbo de tempo no seu banco: é ele que decide se o envio pode ser texto livre ou precisa de template.</p>
@@ -694,8 +734,10 @@ footer p{margin:0 0 .5rem}
         <li><a href="#principais-pontos">Principais pontos</a></li>
         <li><a href="#por-que-a-regra-existe">Por que a regra existe</a></li>
         <li><a href="#o-que-isso-quebra-na-pr-tica">O que isso quebra na prática</a></li>
+        <li><a href="#como-a-recusa-aparece-na-tela">Como a recusa aparece na tela</a></li>
         <li><a href="#como-se-organizar-para-isso">Como se organizar para isso</a></li>
         <li><a href="#o-que-muda-em-1-de-outubro-de-2026">O que muda em 1º de outubro de 2...</a></li>
+        <li><a href="#ter-template-aprovado-n-o-permiss-o-para">Ter template aprovado não é perm...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

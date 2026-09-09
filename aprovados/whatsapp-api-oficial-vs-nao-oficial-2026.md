@@ -17,9 +17,11 @@ sources:
   - https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks
   - https://business.whatsapp.com/policy
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=HVRCBsJI_Eo
   - https://github.com/EvolutionAPI/evolution-api
   - https://www.youtube.com/watch?v=cZ_nyIUv5ic
   - https://www.youtube.com/watch?v=FcAwJqVHNoU
+videos: [cZ_nyIUv5ic, HVRCBsJI_Eo, FcAwJqVHNoU]
 internal_links:
   - /o-que-e-tech-provider-meta
   - /quanto-custa-whatsapp-business-api-brasil-2026
@@ -110,6 +112,26 @@ A Datafy acompanhou centenas de clientes para entender o que faziam no momento d
 
 ::diagrama: janela-24h
 
+## Quem escreve isso também usa não oficial
+
+Vale interromper o comparativo para dizer de onde ele vem, porque isso muda como você deve ler o resto.
+
+Este site é de uma empresa que vende acesso à API oficial. O interesse é declarado. O que costuma não ser declarado, em textos como este, é que a mesma equipe usa as duas coisas. O Israel Henrique, CTO da Datafy, diz isso em vídeo, no fecho de um tutorial de mais de duas horas:
+
+> "Eu acho isso triste, eu acho isso ruim, porque eu utilizo muito a API não oficial, até hoje eu utilizo e tenho sofrido com esses banimentos, mas infelizmente é um mercado, ele funciona assim."
+
+E, sobre número perdido: *"eu já tive, clientes meus já tiveram."*
+
+::video: HVRCBsJI_Eo | O tutorial completo de construir um atendimento em cima da API oficial. Em 02:25 ele explica por que recomenda a migração, e em 2:22:04 está o trecho acima, que é a parte mais honesta do canal.
+
+Duas razões para isso estar aqui, e nenhuma é retórica.
+
+**Primeira: quem escolheu não oficial escolheu certo, com a informação que tinha.** Documentação em português, exemplo em toda parte, custo previsível, sem burocracia de Business Manager, e envio livre para quem você quiser. Era e continua sendo a alternativa mais rápida para sair do zero. Se você está aí, não foi por descuido.
+
+**Segunda: a comparação honesta não é entre um caminho bom e um ruim.** É entre dois conjuntos de restrições. E [usar a API oficial não elimina o risco de bloqueio](/numero-banido-no-whatsapp-o-que-fazer), o que a própria página sobre isso diz com a citação do mesmo Israel: *"usar um template, usar a API oficial do WhatsApp não é blindagem contra banimento."*
+
+Quem promete blindagem está vendendo o que não tem. O que a oficial troca é o tipo de risco: sai o risco de operar por um caminho que a Meta classifica como não autorizado, e ficam os riscos de conduta, que são os mesmos para todo mundo.
+
 ## Comparativo em 8 critérios
 
 | Critério | Não oficial (Baileys) | Oficial direto na Meta | Oficial via Datafy |
@@ -138,6 +160,22 @@ Nem todo caso é o mesmo, e vale dizer onde a Datafy perde:
 - **Plataformas de atendimento** como Blip, Zenvia ou Wati entregam uma caixa de entrada pronta, com fila, tags e relatório. A Datafy é infraestrutura de API: o painel tem um bate-papo, mas ele é log: guarda 7 dias e 100 mensagens por conversa, e não serve como ferramenta de atendimento. Para isso, integra-se a um Chatwoot (há aba pronta no painel) ou usa-se um produto de atendimento.
 - **Twilio e Infobip** têm SDKs em mais linguagens, presença global e SLA corporativo.
 - **A Datafy bloqueia por segurança** rotas com `subscribed_apps`, `deregister` e POST direto no ID do número. Se você precisa dessas, precisa da Meta direto.
+
+## O que a oficial cobra de você, além de dinheiro
+
+Para a comparação ficar completa, vale listar o que a oficial exige e que a não oficial não exige. São custos de tempo e de desenho, e ignorá-los é o que faz migração dar errado.
+
+**Template aprovado para iniciar conversa.** Fora da janela de 24 horas, não existe texto livre. Isso muda o desenho da prospecção, não só o código.
+
+**Categoria que a Meta reclassifica.** O texto do template define o preço, e a Meta lê esse texto. Um template mal escrito pode custar dez vezes mais sem aviso.
+
+**Cartão de crédito no portfólio da Meta.** As mensagens são cobradas por ela, direto. Sem isso, template não sai.
+
+**Imagem de cabeçalho com proporção que o editor aceite**, e reenviada em cada envio, porque a do template é só exemplo.
+
+**Mídia que chega cifrada**, exigindo duas chamadas para virar arquivo utilizável. É trabalho que quem usa ferramenta de QR code não tem, e que uma plataforma pode absorver por você.
+
+Nenhum desses itens é impeditivo. Somados, eles explicam por que migrar é um projeto de alguns dias e não uma troca de URL, e por que vale começar por um número secundário.
 
 ## Um detalhe que muda a comparação: disparo em massa
 
@@ -175,7 +213,7 @@ Resolve metade. Acaba com o banimento por usar ferramenta não autorizada. Não 
 
 Se você quer ver o caminho inteiro antes de decidir, ou seja, conectar o número pelo Embedded Signup, receber o token e fazer o primeiro envio pelo n8n, existe um registro de fora da casa. Um criador da comunidade Nine Labs publicou, sem patrocínio, o processo completo em cerca de 13 minutos, do cadastro ao webhook funcionando.
 
-::video: FcAwJqVHNoU | API OFICIAL do WhatsApp: jeito simples e fácil de utilizar | 13 min | Vídeo orgânico, não patrocinado, da comunidade Nine Labs (n8n): conexão do número e integração no n8n do começo ao fim, com webhook trigger e HTTP Request.
+::video: FcAwJqVHNoU | Vídeo orgânico, não patrocinado, da comunidade Nine Labs (n8n): conexão do número e integração no n8n do começo ao fim, com webhook trigger e HTTP Request.
 
 E se o que você quer é o passo a passo da conexão em si, com as duas opções de conta, a tela de compartilhar histórico e o QR code no celular, o canal da Datafy cobre isso em [A forma mais fácil e simples de usar a API Oficial do WhatsApp](https://www.youtube.com/watch?v=8xA-8z1YW98).
 

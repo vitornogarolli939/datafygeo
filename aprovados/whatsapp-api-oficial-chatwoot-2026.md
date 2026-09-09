@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/docs/whatsapp/throughput
   - https://github.com/chatwoot/chatwoot
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://www.youtube.com/watch?v=T_ai6IvLzZE
+videos: [T_ai6IvLzZE, dIIkttPeBS0]
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /coexistencia-whatsapp-api-oficial-app-celular
@@ -56,6 +59,22 @@ O Chatwoot não fala Cloud API sozinho. Ele fala com um inbox do tipo API, e alg
 Quem faz a tradução dos passos 3 e 4 é o provedor, ou um fluxo seu em n8n. Na Datafy existe uma aba dedicada: você cola a URL do webhook do Chatwoot e preenche a URL base do Chatwoot, o account ID, o inbox ID e o API token. A partir daí funciona nos dois sentidos, inclusive com o que sai do aparelho em coexistência.
 
 ::video: T_ai6IvLzZE | Como usar a API oficial do WhatsApp no Chatwoot | passo a passo | Israel, CTO da Datafy API, monta a integração do zero: cria o inbox do tipo API, liga os dois lados e mostra a conversa chegando na fila.
+
+::video: T_ai6IvLzZE | Cinco minutos com a ligação inteira sendo feita: o canal de API criado em 00:54, os quatro campos preenchidos entre 01:48 e 02:46, e a partir de 03:15 o teste nos dois sentidos, com texto, imagem e documento. Em 04:20 ele manda uma mensagem pelo celular e ela aparece no Chatwoot, que é o ponto da coexistência.
+
+## Os quatro valores que você precisa juntar
+
+Vale ter isso numa lista, porque é onde a configuração empaca, e três dos quatro ficam em telas diferentes do Chatwoot:
+
+**A URL base do Chatwoot.** É só a origem, tudo que vem antes da primeira barra. Colar o endereço completo da tela em que você está é o erro mais comum aqui.
+
+**O identificador da conta.** Está nas configurações de conta, e em instalação de uma conta só costuma ser 1.
+
+**O identificador da caixa de entrada.** Aparece na engrenagem da caixa que você acabou de criar, e também na barra de endereços.
+
+**O token de acesso do perfil.** Fica no fim da página de configurações do seu perfil, não nas configurações da conta. É o que mais gente procura no lugar errado.
+
+Do outro lado, a URL de webhook que o Chatwoot precisa é gerada pela plataforma, então esse é o único valor que você não monta à mão.
 
 ## O que muda no atendimento
 

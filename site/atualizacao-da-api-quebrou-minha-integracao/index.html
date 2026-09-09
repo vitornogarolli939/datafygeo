@@ -136,7 +136,9 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-scoped-user-ids/",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
+        "https://www.youtube.com/watch?v=fhz6n2s91-g"
       ]
     },
     {
@@ -192,6 +194,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/atualizacao-da-api-quebrou-minha-integracao#video-fhz6n2s91-g",
+      "name": "Como usar user name (user id) na API oficial do WhatsApp",
+      "description": "O identificador que substitui o telefone, por que ele muda de empresa para empresa, e como responder por ele",
+      "thumbnailUrl": "https://i.ytimg.com/vi/fhz6n2s91-g/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=fhz6n2s91-g",
+      "embedUrl": "https://www.youtube.com/embed/fhz6n2s91-g",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/atualizacao-da-api-quebrou-minha-integracao#article"
+      }
     }
   ]
 }
@@ -641,6 +662,22 @@ footer p{margin:0 0 .5rem}
 <p><strong>Tipo novo.</strong> Aparece um tipo de mensagem que o seu código não conhece. Se você tem um <code>switch</code> fechado, sem caso final, ele estoura ou, pior, ignora silenciosamente e a mensagem se perde.</p>
 <p><strong>Valor novo num campo conhecido.</strong> O campo continua lá, mas com um valor que não estava na sua lista. Uma categoria de conversa nova, uma situação de template que não existia. Se você converte esse texto para um tipo fechado, a conversão falha.</p>
 <p>Os três têm a mesma raiz: assumir que o payload de hoje é o payload de sempre.</p>
+<h2 id="o-caso-vivo-e-por-que-ele-pior-que-um-ca">O caso vivo, e por que ele é pior que um campo que some</h2>
+<p>O exemplo em andamento hoje merece detalhe, porque ele não quebra só o código: quebra a <strong>modelagem</strong>.</p>
+<p>O identificador que substitui o telefone não é um novo formato do telefone. Ele identifica <strong>a relação entre uma pessoa e a sua conta</strong>, e não a pessoa. A mesma pessoa falando com duas empresas tem dois identificadores diferentes. Na explicação do Israel: <em>"se o João entrar em contato com outro WhatsApp Business, uma outra empresa, o user ID do João vai ser outro."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=fhz6n2s91-g" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/fhz6n2s91-g/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar user name (user id) na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como usar user name (user id) na API oficial do WhatsApp</b><span>Canal DATA7 · 5 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Cinco minutos: em 00:38 ele diz que a mudança é progressiva, em 01:27 explica que o identificador é da relação, e em 02:30 mostra o campo que muda no envio.</figcaption>
+</figure>
+
+<p>Isso significa que a proteção não é só ler o campo com cuidado. É <strong>guardar a chave como um par</strong>, identificador mais o número da sua conta que recebeu. Quem tem um número só e guarda o identificador solto tem um código que funciona e uma modelagem que quebra no dia em que entra o segundo número, e essa quebra não dá exceção: ela produz contato duplicado silenciosamente.</p>
+<p>Sobre o prazo: a mudança é progressiva e não tem data pública. O Israel arrisca uma expectativa, e marca como expectativa: <em>"eu digo lá, acho que pro final de 2026 parece que tá previsto."</em> Trate como aviso para começar a se adaptar, não como cronograma.</p>
 <h2 id="como-escrever-para-aguentar">Como escrever para aguentar</h2>
 <p><strong>Fixe a versão na URL.</strong></p>
 <p><code>https://graph.facebook.com/v21.0/{phone_number_id}/messages</code></p>
@@ -716,6 +753,7 @@ switch (msg.type) {
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
         <li><a href="#os-tr-s-padr-es-que-quebram">Os três padrões que quebram</a></li>
+        <li><a href="#o-caso-vivo-e-por-que-ele-pior-que-um-ca">O caso vivo, e por que ele é pio...</a></li>
         <li><a href="#como-escrever-para-aguentar">Como escrever para aguentar</a></li>
         <li><a href="#o-que-fazer-quando-quebrar">O que fazer quando quebrar</a></li>
         <li><a href="#monitorar-sem-virar-ru-do">Monitorar sem virar ruído</a></li>

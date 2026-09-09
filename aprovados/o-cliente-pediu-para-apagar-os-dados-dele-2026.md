@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
   - https://platform.claude.com/docs/en/manage-claude/api-and-data-retention
   - https://developers.openai.com/api/docs/guides/your-data
+  - https://www.youtube.com/watch?v=LIT4FxgqHhE
+  - https://www.youtube.com/watch?v=ZHYNjpu5ReE
+videos: [LIT4FxgqHhE, ZHYNjpu5ReE]
 internal_links:
   - /como-leio-o-historico-de-conversa-pela-api
   - /posso-mandar-a-conversa-do-cliente-para-a-openai
@@ -98,6 +101,24 @@ CREATE TABLE pedidos_de_exclusao (
 ```
 
 Sem isso, "apagamos tudo" é uma afirmação que ninguém consegue sustentar seis meses depois, quando quem executou já saiu da empresa.
+
+## Os prazos que trabalham a seu favor
+
+Uma parte do inventário se resolve pelo tempo, e conhecer os prazos evita prometer o que você não controla e evita procurar dado onde ele já não está.
+
+| Onde | Prazo |
+|---|---|
+| Mensagem em trânsito na Meta | Não é armazenada para consulta posterior pela API |
+| Mídia recebida, pelo identificador do webhook | **7 dias** |
+| Mídia que você subiu para enviar | **30 dias** |
+| Log de mensagens do painel da Datafy | **7 dias**, e no máximo **100 mensagens por conversa** |
+| Seu banco de dados | O que você definir, e é o único que você controla de verdade |
+
+A leitura prática disso: **quase todo o dado que você precisa apagar está no seu lado.** A cópia que a plataforma tem é curta e rotativa, e a Meta não é um arquivo que você consulte.
+
+E o inverso também vale, e é o erro mais comum na direção oposta: se você **não** baixou a mídia, o identificador expira em **7 dias** e o arquivo sai do seu alcance, e aí um pedido de acesso aos próprios dados não tem o que entregar. Retenção curta ajuda no apagamento e atrapalha no acesso, e é você que decide qual dos dois quer, por tipo de dado.
+
+::video: LIT4FxgqHhE | Três minutos mostrando o log ao vivo, e em 02:57 os prazos de retenção ditos com clareza. Vale ver junto com o vídeo de mídias, que em 03:53 dá o prazo do arquivo recebido.
 
 ## Três coisas que costumam ser confundidas
 

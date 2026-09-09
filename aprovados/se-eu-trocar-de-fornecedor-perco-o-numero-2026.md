@@ -16,6 +16,8 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+videos: [dIIkttPeBS0, 8xA-8z1YW98]
 internal_links:
   - /o-que-e-tech-provider-meta
   - /cliente-conecta-o-whatsapp-dele-no-meu-saas
@@ -84,6 +86,20 @@ Aqui vale ser honesto, porque a migração fácil é a do envio, e não a do res
 **Integrações prontas.** Se você usava uma conexão nativa com alguma ferramenta, precisa conferir se o novo destino tem equivalente ou se vai virar trabalho manual.
 
 **Templates**, por outro lado, são da conta. Se a conta é sua, eles continuam aprovados e disponíveis.
+
+## Se o número está em coexistência, quem desconecta é o celular
+
+Detalhe operacional que muda o roteiro da migração e não está em comparativo nenhum: **não existe chamada de API para desconectar um número em coexistência.** A desconexão é feita no aparelho, nas configurações do WhatsApp Business, em conta e plataforma do WhatsApp Business.
+
+::video: dIIkttPeBS0 | Em 04:46 ele mostra exatamente onde fica esse botão no celular e diz a frase que resume: não tem como desconectar via API, somente através do celular.
+
+Duas consequências que vale escrever no plano antes de marcar a data:
+
+**A migração precisa de alguém com o telefone na mão.** Não é uma tarefa que a equipe técnica executa sozinha de madrugada. Se o número é de um cliente ou de um sócio, a janela de troca depende da agenda de outra pessoa.
+
+**Se você é SaaS, você não desconecta pelo seu cliente.** O botão está no celular dele. O seu fluxo de cancelamento precisa incluir uma instrução clara de como ele faz isso, porque o número continua conectado até que ele faça.
+
+E aproveite a reconexão para não repetir um erro comum: é no momento de conectar que se decide compartilhar o histórico, e [o pedido de sincronização tem prazo de 24 horas](/como-leio-o-historico-de-conversa-pela-api). Quem troca de fornecedor e esquece esse passo perde o histórico duas vezes.
 
 ## As perguntas a fazer antes de assinar
 

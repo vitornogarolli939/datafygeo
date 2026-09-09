@@ -15,6 +15,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://www.youtube.com/watch?v=ly5nOHFpXcI
+videos: [ly5nOHFpXcI, dIIkttPeBS0]
 internal_links:
   - /a-mensagem-falhou-e-nao-sei-por-que
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
@@ -80,6 +83,16 @@ O que dá para fazer é reduzir o desperdício antes do envio:
 **Cuidado com o nono dígito.** Números brasileiros antigos, salvos sem o nono dígito, viram destinatário inválido. E há uma pegadinha parecida com números da Argentina e do México, que têm regra própria de prefixo.
 
 **Limpe pelo histórico.** Se um número falhou por não existir, marque. Não adianta tentar de novo daqui a um mês.
+
+## Vendo acontecer, com um número inventado
+
+O jeito mais rápido de entender isso é ver alguém fazer de propósito. Num disparo por planilha, o Israel inclui de propósito um número que não existe entre três destinatários. O resultado: **o disparo processa os três normalmente**, sem reclamar, e só no detalhe de cada envio aparece que um falhou.
+
+::video: ly5nOHFpXcI | Em 03:22 ele monta a planilha e avisa que colocou um número inexistente, e em 06:29 abre o resultado: dois enviados, um com erro. Em 08:52 abre o motivo de uma recusa diferente, que vale conhecer junto.
+
+O mesmo comportamento aparece com a regra da janela de 24 horas: a chamada devolve sucesso e identificador, e a falha chega minutos depois pelo webhook, [com o motivo escrito](/posso-mandar-mensagem-para-qualquer-numero).
+
+A conclusão é a mesma nos dois casos, e é a razão desta página: **o retorno do envio não é o resultado do envio.** Ele é o recibo de que a sua requisição foi aceita.
 
 ## O efeito disso numa campanha
 

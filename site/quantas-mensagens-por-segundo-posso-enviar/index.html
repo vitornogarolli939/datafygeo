@@ -136,7 +136,8 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/marketing-templates/per-user-limits",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=vGovcR8W5g8"
       ]
     },
     {
@@ -192,6 +193,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/quantas-mensagens-por-segundo-posso-enviar#video-vGovcR8W5g8",
+      "name": "Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens",
+      "description": "Webhook de teste e de producao, envio pelo no de HTTP, e o laco de status que derruba numero",
+      "thumbnailUrl": "https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=vGovcR8W5g8",
+      "embedUrl": "https://www.youtube.com/embed/vGovcR8W5g8",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/quantas-mensagens-por-segundo-posso-enviar#article"
+      }
     }
   ]
 }
@@ -669,6 +689,21 @@ footer p{margin:0 0 .5rem}
 </tbody>
 </table></div>
 <p>Os dois falham parecido e pedem tratamento oposto. Um laço de reenvio automático que não distingue os dois é o caminho mais rápido para limitar a conta inteira.</p>
+<h2 id="o-jeito-mais-r-pido-de-estourar-tudo-de">O jeito mais rápido de estourar tudo de uma vez</h2>
+<p>Antes de projetar vazão, vale conhecer o erro que ignora qualquer planejamento: <strong>responder webhook de status como se fosse mensagem.</strong></p>
+<p>Cada mensagem que você envia gera três eventos de volta, enviada, entregue e lida. Se o seu fluxo responde o que chega sem filtrar, cada resposta gera três status, e cada status gera outra resposta. Três, nove, vinte e sete. Você não encosta no teto de 80 por segundo: você o atravessa em segundos, com mensagens que ninguém pediu, e o risco deixa de ser erro de vazão e passa a ser o número.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg" alt="Miniatura do vídeo: Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 14:47 o Israel para a montagem do fluxo no n8n para avisar disso antes de executar, e em 19:05 mostra a proteção funcionando. O aviso dele é literal: "vai bloquear o teu número".</figcaption>
+</figure>
+
+<p>A proteção não é limitar vazão, é filtrar entrada: <strong>leia o remetente de dentro de <code>messages</code></strong>, que é um objeto que não existe no evento de status. Assim, se chegar um status, o passo falha em vez de responder. Melhor ainda, uma condição no início do fluxo que separa mensagem de status e manda status só para o registro.</p>
 <h2 id="como-projetar-para-n-o-encostar">Como projetar para não encostar</h2>
 <p><strong>Fila com vazão controlada.</strong> Não mande direto do laço. Coloque na fila e libere numa taxa que você escolhe, abaixo do teto. Em automação visual, isso costuma ser um nó de lote com espera entre eles.</p>
 <p><strong>Espera crescente no reenvio.</strong> Erro de throughput pede espera que aumenta a cada tentativa, com limite de tentativas. Reenvio imediato é o que transforma um pico em incidente.</p>
@@ -716,6 +751,7 @@ footer p{margin:0 0 .5rem}
         <li><a href="#os-tr-s-limites-e-quando-cada-um-aparece">Os três limites, e quando cada u...</a></li>
         <li><a href="#o-que-fazer-quando-trava">O que fazer quando trava</a></li>
         <li><a href="#os-dois-erros-que-parecem-iguais-e-pedem">Os dois erros que parecem iguais...</a></li>
+        <li><a href="#o-jeito-mais-r-pido-de-estourar-tudo-de">O jeito mais rápido de estourar...</a></li>
         <li><a href="#como-projetar-para-n-o-encostar">Como projetar para não encostar</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>

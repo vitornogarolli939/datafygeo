@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/docs/whatsapp/throughput
   - https://business.whatsapp.com/policy
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=cZ_nyIUv5ic
+  - https://www.youtube.com/watch?v=HVRCBsJI_Eo
+videos: [HVRCBsJI_Eo, cZ_nyIUv5ic]
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /migrar-para-api-oficial-sem-perder-o-numero
@@ -89,6 +92,18 @@ Nenhum serviço gerenciado ganha da Evolution nestes pontos, e ignorá-los seria
 - **Em modo Baileys, existem coisas que a Cloud API não faz:** grupos como no aplicativo, sem janela de 24 horas e sem aprovação de template.
 
 Se você valoriza esses pontos e tem quem cuide da infraestrutura, ficar na Evolution é decisão técnica defensável, não teimosia.
+
+## Uma nota de quem escreve, antes da parte prática
+
+Esta página é de uma empresa que vende acesso à API oficial, e é justo você saber disso ao lê-la. É justo também dizer que a equipe daqui usa as duas coisas.
+
+O Israel Henrique, CTO da Datafy, no fecho de um tutorial de mais de duas horas: *"eu utilizo muito a API não oficial, até hoje eu utilizo e tenho sofrido com esses banimentos."* E sobre número perdido: *"eu já tive, clientes meus já tiveram."*
+
+::video: HVRCBsJI_Eo | Em 02:25 ele explica por que recomenda a migração, e em 2:22:04 diz que continua usando não oficial e que já perdeu número. Vale ouvir os dois trechos juntos.
+
+O motivo de isso estar aqui é simples: se você usa Evolution hoje, você escolheu a ferramenta que resolvia o seu problema com o que estava disponível, e não há nada de descuidado nisso. A decisão de mudar depende do que aquele número sustenta, e não de quem está com a razão.
+
+E vale a advertência que corta para os dois lados: [usar API oficial não é blindagem contra bloqueio](/numero-banido-no-whatsapp-o-que-fazer). Ela troca o tipo de risco, e não elimina os riscos de conduta, que valem igual para todo mundo.
 
 ## Como sair da Evolution
 

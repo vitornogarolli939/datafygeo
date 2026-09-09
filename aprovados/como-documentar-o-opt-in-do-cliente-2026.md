@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-categorization
   - https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=YF9hTHDAw6E
+  - https://www.youtube.com/watch?v=cZ_nyIUv5ic
+videos: [cZ_nyIUv5ic, YF9hTHDAw6E]
 internal_links:
   - /posso-mandar-mensagem-para-qualquer-numero
   - /numero-banido-no-whatsapp-o-que-fazer
@@ -104,6 +107,22 @@ Três decisões importam mais que o resto:
 A regra prática: **antes de mandar marketing, consulte o último evento** daquele contato para aquela finalidade. Se o último foi revogação, não envia.
 
 E coloque essa checagem no ponto de saída, e não espalhada pela aplicação. Se cada fluxo verifica por conta própria, um dia alguém vai esquecer, e a mensagem vai sair.
+
+## O opt-out que protege o seu número
+
+Quase todo texto sobre consentimento fala de como coletar o sim. A parte que evita bloqueio é a outra: **dar à pessoa um jeito fácil de dizer não, dentro da própria mensagem.**
+
+O mecanismo é um botão no template. Duas versões funcionam, e a segunda é mais forte do que parece:
+
+**"Não tenho interesse".** Quem clica está respondendo, e resposta é o que a plataforma mede. Você recebe o clique como interação e ganha, de graça, a lista exata de quem tirar da base.
+
+**"Bloquear".** Parece agressivo e é o oposto disso. A pessoa clica achando que está te bloqueando, e o que ela fez foi interagir com você em vez de te denunciar. A diferença entre as duas coisas, para a saúde do seu número, é enorme.
+
+E aí vem a parte que não é opcional: **o clique tem que virar remoção da lista.** Se a automação não tira aquela pessoa, você transformou um aviso barato num bloqueio de verdade. O Israel descreve exatamente isso do lado de quem recebe, sobre uma empresa que insistiu depois de ele clicar em bloquear: *"passou um tempo, continuo recebendo mensagem. Que que eu fiz? Eu tive que bloquear a empresa literalmente ali no WhatsApp."*
+
+::video: cZ_nyIUv5ic | Em 11:49 ele mostra o botão de não tenho interesse num template real, em 13:08 explica o de bloquear, e em 13:32 conta como ele mesmo reage a mensagem de empresa que não conhece.
+
+E o motivo pelo qual vale insistir nisso: quem tem consentimento e não tem engajamento cai do mesmo jeito. O caso da advogada, [na página sobre bloqueio](/numero-banido-no-whatsapp-o-que-fazer), é de uma base própria, com template aprovado, derrubada por três dias de silêncio. Consentimento é o que te autoriza; resposta é o que te mantém no ar.
 
 ## O double opt-in que sai barato
 

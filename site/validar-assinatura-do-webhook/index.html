@@ -135,7 +135,8 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/create-webhook-endpoint/",
         "https://developers.facebook.com/docs/graph-api/webhooks/getting-started",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=HVRCBsJI_Eo"
       ]
     },
     {
@@ -168,6 +169,14 @@
         },
         {
           "@type": "Question",
+          "name": "Recebo por uma plataforma intermediária. Valido do mesmo jeito?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. A assinatura é calculada com o segredo do aplicativo Meta, e quem recebe da Meta nesse desenho é a plataforma. No caso da Datafy, hoje não há cabeçalho de assinatura no repasse, então a proteção passa a ser caminho secreto, segredo próprio na requisição e nunca tratar o telefone recebido como identidade comprovada."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Meu framework já interpretou o JSON. Como pego o bruto?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -191,6 +200,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/validar-assinatura-do-webhook#video-HVRCBsJI_Eo",
+      "name": "Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)",
+      "description": "Projeto inteiro: payloads reais, modelagem do banco, webhook por tunel, midia, tempo real e publicacao",
+      "thumbnailUrl": "https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
+      "embedUrl": "https://www.youtube.com/embed/HVRCBsJI_Eo",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/validar-assinatura-do-webhook#article"
+      }
     }
   ]
 }
@@ -669,6 +697,27 @@ const crypto = require('crypto')</p>
 <p><strong>Ver se a ferramenta expõe o bruto.</strong> Algumas oferecem, com nome de campo próprio. Se existir, use.</p>
 <p><strong>Colocar um passo antes.</strong> Uma função pequena que recebe o webhook, valida com o bruto e só então repassa para o fluxo.</p>
 <p><strong>Aceitar o risco de forma consciente.</strong> Se o endpoint tem uma URL longa e imprevisível, e o dano de uma mensagem forjada é baixo, dá para conviver. Mas isso é uma decisão, não um esquecimento: escreva num lugar visível que aquele endpoint não valida assinatura.</p>
+<h2 id="se-voc-recebe-por-uma-plataforma-e-n-o-d">Se você recebe por uma plataforma, e não direto da Meta</h2>
+<p>Essa parte precisa estar aqui, porque é onde a maioria dos leitores brasileiros está, e ignorá-la deixaria a página bonita e inútil para eles.</p>
+<p>A assinatura <code>X-Hub-Signature-256</code> é um mecanismo da Meta, calculado com o segredo do <strong>aplicativo Meta</strong>. Quando você recebe o webhook direto da Cloud API, com o seu próprio aplicativo, tudo acima se aplica.</p>
+<p>Quando o webhook chega por uma plataforma intermediária, quem recebe da Meta é ela, e quem faz o <code>POST</code> no seu endereço é ela. Aí a pergunta muda de "como valido a assinatura da Meta" para "<strong>o que essa plataforma me dá para eu confirmar que o <code>POST</code> veio dela</strong>". E a resposta honesta, no caso da Datafy hoje, é que <strong>não há cabeçalho de assinatura</strong>: perguntado exatamente isso durante a gravação do tutorial, o Israel responde que o endpoint "fica aberto" e que a Datafy "não manda header de assinatura por enquanto".</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg" alt="Miniatura do vídeo: Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 1:30:22 a pergunta aparece na tela, durante a montagem do webhook do projeto, e a resposta é essa. É um exemplo de por que vale ler a documentação do intermediário em vez de assumir que ele repassa o que a Meta manda.</figcaption>
+</figure>
+
+<p>Então, se é o seu caso, o que fazer, em ordem de esforço:</p>
+<p><strong>Use um caminho impossível de adivinhar.</strong> Não <code>/webhook</code>. Um caminho com um componente aleatório longo, tratado como segredo, é a proteção mais barata que existe e resolve varredura automatizada.</p>
+<p><strong>Exija um segredo seu na requisição.</strong> Se o cadastro do webhook aceita um parâmetro na URL, coloque um valor secreto ali e recuse tudo que chegar sem ele. É bem mais fraco que HMAC, porque o segredo viaja na requisição, e é bem melhor que nada.</p>
+<p><strong>Restrinja por origem, se conseguir a lista.</strong> Só faz sentido com endereços de saída documentados e estáveis. Confirme com o fornecedor antes de depender disso, porque bloquear a origem errada te deixa sem receber nada.</p>
+<p><strong>Nunca confie no conteúdo para decidir coisa sensível.</strong> É o mais importante e não depende de fornecedor: trate o telefone que chega no payload como <strong>alegação</strong>, não como identidade comprovada. Se um agente consulta pedido pelo telefone recebido, ele entrega dado de cliente para quem descobrir a URL. Peça um dado que só a pessoa sabe antes de devolver informação, e a assinatura deixa de ser a sua única linha de defesa.</p>
+<p><strong>Registre a decisão.</strong> Se você aceitou operar sem validação, escreva isso onde o próximo desenvolvedor vá ler. A diferença entre risco assumido e risco esquecido é essa linha.</p>
 <h2 id="o-que-acontece-se-voc-n-o-validar">O que acontece se você não validar</h2>
 <p>A Meta continua entregando. Não há penalidade, não há aviso, nada muda no seu tráfego.</p>
 <p>O que muda é que <strong>qualquer um que descubra a sua URL pode mandar um <code>POST</code> fingindo ser a Meta</strong>. Dependendo do que o seu fluxo faz, isso vai de irrelevante a sério: um agente que consulta pedido pelo telefone recebido pode entregar informação de cliente para quem forjar o payload.</p>
@@ -680,6 +729,8 @@ const crypto = require('crypto')</p>
 <p>O segredo do aplicativo, encontrado no painel do app. Não é o token de acesso, e não é o token de verificação usado quando o webhook é registrado.</p>
 <h3>Funciona no teste e falha em produção. Por quê?</h3>
 <p>Quase certamente é o corpo reconstruído. Teste com uma mensagem que tenha acento: se essa falha e "oi" passa, está confirmado.</p>
+<h3>Recebo por uma plataforma intermediária. Valido do mesmo jeito?</h3>
+<p>Não. A assinatura é calculada com o segredo do aplicativo Meta, e quem recebe da Meta nesse desenho é a plataforma. No caso da Datafy, hoje não há cabeçalho de assinatura no repasse, então a proteção passa a ser caminho secreto, segredo próprio na requisição e nunca tratar o telefone recebido como identidade comprovada.</p>
 <h3>Meu framework já interpretou o JSON. Como pego o bruto?</h3>
 <p>Todo framework oferece um jeito de preservar o corpo original, geralmente uma opção no interpretador ou um acessório antes dele. É a única alteração necessária.</p>
 <h3>Posso validar depois, de forma assíncrona?</h3>
@@ -715,6 +766,7 @@ const crypto = require('crypto')</p>
         <li><a href="#por-que-reconstruir-o-json-quebra">Por que reconstruir o JSON quebra</a></li>
         <li><a href="#como-fazer-certo">Como fazer certo</a></li>
         <li><a href="#se-voc-usa-automa-o-visual">Se você usa automação visual</a></li>
+        <li><a href="#se-voc-recebe-por-uma-plataforma-e-n-o-d">Se você recebe por uma plataform...</a></li>
         <li><a href="#o-que-acontece-se-voc-n-o-validar">O que acontece se você não validar</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>

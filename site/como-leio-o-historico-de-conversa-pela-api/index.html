@@ -136,7 +136,9 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/data-privacy-and-security/",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=dIIkttPeBS0",
+        "https://www.youtube.com/watch?v=HQm5UuW50bM"
       ]
     },
     {
@@ -192,6 +194,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/como-leio-o-historico-de-conversa-pela-api#video-HQm5UuW50bM",
+      "name": "Sincronizar contatos na API oficial do WhatsApp",
+      "description": "O evento de sincronizacao, a janela de 24 horas para pedir os contatos e o tempo do historico",
+      "thumbnailUrl": "https://i.ytimg.com/vi/HQm5UuW50bM/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=HQm5UuW50bM",
+      "embedUrl": "https://www.youtube.com/embed/HQm5UuW50bM",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/como-leio-o-historico-de-conversa-pela-api#article"
+      }
     }
   ]
 }
@@ -673,6 +694,42 @@ footer p{margin:0 0 .5rem}
 </tbody>
 </table></div>
 <p>O prazo de 24 horas é o que mais pega gente desprevenida. Conectou o número e deixou para sincronizar depois? Perdeu a janela, e refazer exige desconectar e passar por todo o onboarding de novo.</p>
+<h2 id="os-tr-s-passos-da-exce-o-na-ordem">Os três passos da exceção, na ordem</h2>
+<p>Como o prazo é curto e o processo não é automático, vale a sequência exata. Errar a ordem custa a janela inteira.</p>
+<p><strong>1. No celular, durante a conexão, aceitar compartilhar as conversas.</strong> É uma pergunta que aparece no aplicativo, no meio do fluxo. Quem não marca não recupera nada, e não existe segunda chance sem desconectar e reconectar o número.</p>
+<p><strong>2. Assinar o evento de sincronização no webhook, antes de pedir.</strong> É por ele que os dados chegam. Sem ele, a chamada do passo 3 responde sucesso e nada aparece, o que é a forma mais frustrante de perder o prazo.</p>
+<p><strong>3. Fazer a chamada que dispara a sincronização.</strong> Esse passo é o que quase ninguém sabe que existe. Na frase do Israel: <em>"você conectou o telefone, com webhook, tá marcado, agora tem que avisar a meta que você quer os contatos."</em> Contatos e histórico se pedem separadamente.</p>
+<p>E o comportamento da resposta é diferente para cada um, o que evita meia hora de depuração inútil:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>O que você pede</th>
+<th>Quando chega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contatos da agenda</td>
+<td>Praticamente na hora</td>
+</tr>
+<tr>
+<td>Histórico de conversas</td>
+<td><strong>Bem mais devagar</strong>, e pode levar bastante</td>
+</tr>
+</tbody>
+</table></div>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=HQm5UuW50bM" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/HQm5UuW50bM/maxresdefault.jpg" alt="Miniatura do vídeo: Sincronizar contatos na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Sincronizar contatos na API oficial do WhatsApp</b><span>Canal DATA7 · 4 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Quatro minutos e o único material em português que mostra isso funcionando: em 00:30 o evento sendo marcado, em 01:05 o prazo de 24 horas, em 02:38 a chamada e os contatos chegando no webhook, e em 03:40 a diferença de tempo do histórico.</figcaption>
+</figure>
+
+<p>Uma dica que sai daí: <strong>guarde o identificador que a chamada devolve.</strong> Se a sincronização não vier, é com ele que se abre suporte com a Meta.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>E se eu perder uma mensagem porque meu servidor caiu?</h3>
 <p>A Meta reentrega com frequência decrescente por até 7 dias. Se o seu endpoint voltar dentro desse período, as mensagens chegam. Passou disso, não há como recuperar: não existe consulta.</p>
@@ -715,6 +772,7 @@ footer p{margin:0 0 .5rem}
         <li><a href="#por-que-n-o-existe">Por que não existe</a></li>
         <li><a href="#o-que-fazer-ent-o">O que fazer, então</a></li>
         <li><a href="#a-nica-exce-o-e-o-prazo-dela">A única exceção, e o prazo dela</a></li>
+        <li><a href="#os-tr-s-passos-da-exce-o-na-ordem">Os três passos da exceção, na or...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

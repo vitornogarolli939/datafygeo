@@ -16,6 +16,8 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/marketing-templates/per-user-limits
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=vGovcR8W5g8
+videos: [vGovcR8W5g8, ly5nOHFpXcI]
 internal_links:
   - /whatsapp-api-oficial-n8n
   - /posso-mandar-mensagem-para-qualquer-numero
@@ -74,6 +76,16 @@ Vale separar, porque tratar um como o outro causa dano real:
 | O que NÃO fazer | **Reenviar na hora.** Escala para bloqueio da conta | Tentar de novo por outro caminho |
 
 Os dois falham parecido e pedem tratamento oposto. Um laço de reenvio automático que não distingue os dois é o caminho mais rápido para limitar a conta inteira.
+
+## O jeito mais rápido de estourar tudo de uma vez
+
+Antes de projetar vazão, vale conhecer o erro que ignora qualquer planejamento: **responder webhook de status como se fosse mensagem.**
+
+Cada mensagem que você envia gera três eventos de volta, enviada, entregue e lida. Se o seu fluxo responde o que chega sem filtrar, cada resposta gera três status, e cada status gera outra resposta. Três, nove, vinte e sete. Você não encosta no teto de 80 por segundo: você o atravessa em segundos, com mensagens que ninguém pediu, e o risco deixa de ser erro de vazão e passa a ser o número.
+
+::video: vGovcR8W5g8 | Em 14:47 o Israel para a montagem do fluxo no n8n para avisar disso antes de executar, e em 19:05 mostra a proteção funcionando. O aviso dele é literal: "vai bloquear o teu número".
+
+A proteção não é limitar vazão, é filtrar entrada: **leia o remetente de dentro de `messages`**, que é um objeto que não existe no evento de status. Assim, se chegar um status, o passo falha em vez de responder. Melhor ainda, uma condição no início do fluxo que separa mensagem de status e manda status só para o registro.
 
 ## Como projetar para não encostar
 

@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/solution-providers/upgrade-to-tech-partner/
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/
   - https://app.datafyapi.com.br/
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://www.youtube.com/watch?v=JL9Qzw3oS5A
+videos: [dIIkttPeBS0, JL9Qzw3oS5A]
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /coexistencia-whatsapp-api-oficial-app-celular
@@ -82,6 +85,24 @@ Mesma coisa do ponto de vista técnico, com uma diferença comercial: ele fatura
 **A favor:** uma fatura só, e suporte comercial estruturado.
 **Contra:** é onde costuma aparecer markup na mensagem. Pergunte isso explicitamente.
 **Para quem:** empresa que prefere fornecedor único e nota fiscal local.
+
+## O que você deixa de fazer, item por item
+
+A parte abstrata desses papéis fica concreta quando você lista o que sai da sua frente. Conectando um número em coexistência por um parceiro, você não faz:
+
+**Criar aplicativo na Meta.** Nem escolher permissões, nem gerar segredo de aplicativo.
+
+**Passar por App Review.** É a etapa que mais trava projeto, porque depende de análise e de material de demonstração.
+
+**Montar a infraestrutura de verificação do webhook.** O endpoint que responde ao desafio de verificação, com token, é do intermediário.
+
+**Virar Tech Provider você mesmo.** É o requisito para oferecer coexistência a terceiros, e é a etapa mais longa.
+
+O que continua sendo seu: o portfólio empresarial, que precisa existir e **não precisa ser verificado**, e o cartão de crédito nele, porque as mensagens são cobradas pela Meta direto e não pelo intermediário.
+
+::video: dIIkttPeBS0 | Em 00:00 ele enumera exatamente o que a coexistência por parceiro dispensa, e a partir de 01:41 mostra a tela do portfólio, incluindo a parte de que ele não precisa estar verificado.
+
+E vale a nota de honestidade: nada disso muda quem responde pelo tratamento de dados. A escolha do intermediário tira trabalho de configuração da sua frente, e não transfere responsabilidade de LGPD, que continua [dividida entre você e ele por contrato](/posso-mandar-a-conversa-do-cliente-para-a-openai), com papéis próprios.
 
 ## A pergunta que separa as propostas
 

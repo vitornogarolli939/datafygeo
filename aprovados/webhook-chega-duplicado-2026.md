@@ -15,6 +15,8 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=vGovcR8W5g8
+videos: [vGovcR8W5g8, LIT4FxgqHhE]
 internal_links:
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
   - /whatsapp-api-oficial-n8n
@@ -102,6 +104,16 @@ $json.body.entry[0].changes[0].value.messages  →  existe?
 ```
 
 Se `messages` não existe, é status: registre e encerre. É a primeira coisa a colocar em qualquer fluxo, e resolve tanto o consumo desnecessário quanto o comportamento estranho de bot que responde sozinho.
+
+## O caso extremo: quando não é duplicação, é laço
+
+Existe uma versão desse problema que não é duplicação e sim multiplicação, e ela merece aviso separado porque o custo é o número.
+
+Se o seu fluxo **responde** o que chega, sem distinguir mensagem de status, cada resposta sua gera três novos eventos de status, e cada um deles gera outra resposta. Três viram nove, nove viram vinte e sete. Não é webhook duplicado: é o seu próprio código conversando com as notificações da Meta.
+
+::video: vGovcR8W5g8 | Em 14:47 o Israel interrompe a montagem do fluxo para avisar disso antes de executar, e em 19:05 mostra a proteção funcionando: o nó quebra ao receber status, em vez de responder.
+
+A proteção que funciona é a mesma da seção anterior, com uma vantagem escondida: ler o remetente **de dentro de `messages`** faz o fluxo falhar em cima de um status, porque esse objeto não existe no evento de status. Falha ruidosa é o resultado desejado aqui.
 
 ## Como diagnosticar qual é o seu caso
 

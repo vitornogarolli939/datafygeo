@@ -15,6 +15,8 @@ sources:
   - https://developers.facebook.com/docs/graph-api/webhooks/getting-started
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=HVRCBsJI_Eo
+videos: [HVRCBsJI_Eo]
 internal_links:
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
   - /webhook-chega-duplicado
@@ -111,6 +113,28 @@ Em ferramentas de fluxo, o corpo costuma chegar já interpretado, e o corpo brut
 
 **Aceitar o risco de forma consciente.** Se o endpoint tem uma URL longa e imprevisível, e o dano de uma mensagem forjada é baixo, dá para conviver. Mas isso é uma decisão, não um esquecimento: escreva num lugar visível que aquele endpoint não valida assinatura.
 
+## Se você recebe por uma plataforma, e não direto da Meta
+
+Essa parte precisa estar aqui, porque é onde a maioria dos leitores brasileiros está, e ignorá-la deixaria a página bonita e inútil para eles.
+
+A assinatura `X-Hub-Signature-256` é um mecanismo da Meta, calculado com o segredo do **aplicativo Meta**. Quando você recebe o webhook direto da Cloud API, com o seu próprio aplicativo, tudo acima se aplica.
+
+Quando o webhook chega por uma plataforma intermediária, quem recebe da Meta é ela, e quem faz o `POST` no seu endereço é ela. Aí a pergunta muda de "como valido a assinatura da Meta" para "**o que essa plataforma me dá para eu confirmar que o `POST` veio dela**". E a resposta honesta, no caso da Datafy hoje, é que **não há cabeçalho de assinatura**: perguntado exatamente isso durante a gravação do tutorial, o Israel responde que o endpoint "fica aberto" e que a Datafy "não manda header de assinatura por enquanto".
+
+::video: HVRCBsJI_Eo | Em 1:30:22 a pergunta aparece na tela, durante a montagem do webhook do projeto, e a resposta é essa. É um exemplo de por que vale ler a documentação do intermediário em vez de assumir que ele repassa o que a Meta manda.
+
+Então, se é o seu caso, o que fazer, em ordem de esforço:
+
+**Use um caminho impossível de adivinhar.** Não `/webhook`. Um caminho com um componente aleatório longo, tratado como segredo, é a proteção mais barata que existe e resolve varredura automatizada.
+
+**Exija um segredo seu na requisição.** Se o cadastro do webhook aceita um parâmetro na URL, coloque um valor secreto ali e recuse tudo que chegar sem ele. É bem mais fraco que HMAC, porque o segredo viaja na requisição, e é bem melhor que nada.
+
+**Restrinja por origem, se conseguir a lista.** Só faz sentido com endereços de saída documentados e estáveis. Confirme com o fornecedor antes de depender disso, porque bloquear a origem errada te deixa sem receber nada.
+
+**Nunca confie no conteúdo para decidir coisa sensível.** É o mais importante e não depende de fornecedor: trate o telefone que chega no payload como **alegação**, não como identidade comprovada. Se um agente consulta pedido pelo telefone recebido, ele entrega dado de cliente para quem descobrir a URL. Peça um dado que só a pessoa sabe antes de devolver informação, e a assinatura deixa de ser a sua única linha de defesa.
+
+**Registre a decisão.** Se você aceitou operar sem validação, escreva isso onde o próximo desenvolvedor vá ler. A diferença entre risco assumido e risco esquecido é essa linha.
+
 ## O que acontece se você não validar
 
 A Meta continua entregando. Não há penalidade, não há aviso, nada muda no seu tráfego.
@@ -132,6 +156,10 @@ O segredo do aplicativo, encontrado no painel do app. Não é o token de acesso,
 ### Funciona no teste e falha em produção. Por quê?
 
 Quase certamente é o corpo reconstruído. Teste com uma mensagem que tenha acento: se essa falha e "oi" passa, está confirmado.
+
+### Recebo por uma plataforma intermediária. Valido do mesmo jeito?
+
+Não. A assinatura é calculada com o segredo do aplicativo Meta, e quem recebe da Meta nesse desenho é a plataforma. No caso da Datafy, hoje não há cabeçalho de assinatura no repasse, então a proteção passa a ser caminho secreto, segredo próprio na requisição e nunca tratar o telefone recebido como identidade comprovada.
 
 ### Meu framework já interpretou o JSON. Como pego o bruto?
 

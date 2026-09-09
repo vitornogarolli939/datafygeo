@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=LIT4FxgqHhE
+  - https://www.youtube.com/watch?v=ZHYNjpu5ReE
+videos: [ZHYNjpu5ReE, LIT4FxgqHhE]
 internal_links:
   - /como-leio-o-historico-de-conversa-pela-api
   - /o-cliente-pediu-para-apagar-os-dados-dele
@@ -82,6 +85,31 @@ A correção é simples e vale a pena: **baixe na hora**. Quando o webhook chega
 **Mídia precisa de armazenamento seu.** Guardar só o identificador é guardar uma referência que expira em uma semana.
 
 **Do lado da privacidade, isso ajuda.** A plataforma guarda pouco, e quem decide quanto tempo o dado vive é você. O outro lado da mesma moeda: quando um cliente [pede a exclusão dos dados](/o-cliente-pediu-para-apagar-os-dados-dele), o trabalho é seu, porque o dado é seu.
+
+## A mídia tem prazo próprio, e é maior do que a mensagem
+
+Um detalhe que quebra suposição: **os dois sentidos da mídia têm prazos diferentes**, e trocar um pelo outro é o erro mais caro desta página.
+
+| O que | Prazo |
+|---|---|
+| Arquivo que **você subiu** para enviar | **30 dias** |
+| Identificador de mídia que **chega no webhook** | **7 dias** |
+
+Ou seja, você tem **uma semana** para buscar o que o cliente mandou, e não um mês. É a diferença entre um processamento diário que funciona e um processamento mensal que encontra metade dos arquivos vencidos.
+
+O princípio geral, na formulação do Israel, continua valendo, e é o que importa na prática: *"se você quiser mais dias, aí você precisa você mesmo baixar e salvar no teu próprio storage."* A regra segura é baixar no momento em que a mídia chega, e não depois.
+
+::video: ZHYNjpu5ReE | Em 03:53 ele diz o prazo e a consequência dele em uma frase, depois de mostrar como se chega no arquivo.
+
+## O log da plataforma não é arquivo
+
+Vale separar isso porque gera falsa segurança: painel que mostra as mensagens em tempo real **não é onde o seu histórico mora.**
+
+No caso da Datafy, esse log guarda **7 dias e no máximo 100 mensagens por conversa**, e a partir daí vai descartando as mais antigas. Mídia não aparece nele, só o aviso de que chegou. E o próprio Israel é explícito no que ele não é: *"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."*
+
+Ele serve muito bem para o que é: ver o payload cru de uma mensagem específica quando algo deu errado, sem depender do log do seu servidor. Como registro de atendimento, não serve, e nenhuma plataforma de infraestrutura deveria ser usada assim.
+
+::video: LIT4FxgqHhE | Três minutos mostrando o log ao vivo, o payload de cada mensagem, e em 02:57 os limites de retenção ditos com clareza.
 
 ## Onde o dado fica, além da Meta
 

@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/marketing-templates/per-user-limits
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=ly5nOHFpXcI
+  - https://www.youtube.com/watch?v=vGovcR8W5g8
+videos: [vGovcR8W5g8, ly5nOHFpXcI]
 internal_links:
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
   - /minha-campanha-travou-no-meio
@@ -110,6 +113,24 @@ Um sistema que trata os dois como "falha temporária, tenta de novo" está const
 Já que o assunto é o webhook de status, vale lembrar do efeito colateral mais comum dele em automação visual: **cada mensagem que você envia gera vários eventos**, de enviada, entregue e lida. Se o seu fluxo não separa isso de mensagem recebida, cada envio dispara execuções extras, consome cota e, em alguns casos, faz o robô responder ao próprio status.
 
 A separação é uma condição no início do fluxo, checando se o campo de mensagens existe. Se não existe, é status: registre e encerre. É a mesma linha que resolve [boa parte das duplicações](/webhook-chega-duplicado).
+
+## Quantos eventos esperar por mensagem
+
+Saber a contagem esperada ajuda a diagnosticar, porque a ausência de um evento também é informação.
+
+**Mensagem que dá certo gera três eventos**, em sequência: enviada, entregue e lida. O terceiro só vem se a pessoa tiver a confirmação de leitura habilitada, então mensagem sem o evento de leitura não é sinal de problema.
+
+**Mensagem que falha gera um evento só**, com o motivo dentro. Não vem entregue depois, não vem nada: aquele é o desfecho.
+
+Duas consequências práticas disso:
+
+**Se você não recebeu nenhum evento**, o problema não é a mensagem, é o webhook. Confira se o campo de mensagens está assinado e se o seu endpoint responde.
+
+**Se você recebeu só enviada e nada mais**, a mensagem saiu e a entrega ficou pendente. Acontece com aparelho desligado, e o evento de entrega pode chegar bem depois.
+
+::video: vGovcR8W5g8 | Em 18:05 os três eventos aparecem em sequência no n8n, um a um, e ele explica a correspondência com os riscos que aparecem no WhatsApp. Em 19:05 aparece o cuidado que evita responder esses eventos por engano.
+
+E existe uma recusa que não tem código para procurar: a mensagem que volta dizendo que não foi entregue para manter a saúde do ecossistema, que é a plataforma julgando que aquela pessoa não quer receber você. [Ela pede uma ação diferente](/minha-campanha-travou-no-meio): tirar o contato da lista, não reenviar.
 
 ## Perguntas frequentes
 

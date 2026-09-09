@@ -136,7 +136,8 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-pausing/",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=YF9hTHDAw6E"
       ]
     },
     {
@@ -192,6 +193,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/categoria-do-template-decide-o-seu-custo#video-YF9hTHDAw6E",
+      "name": "Criar modelos de mensagens (templates) na API oficial",
+      "description": "Categoria, preco, variaveis, imagem de cabecalho e a reclassificacao silenciosa da Meta",
+      "thumbnailUrl": "https://i.ytimg.com/vi/YF9hTHDAw6E/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=YF9hTHDAw6E",
+      "embedUrl": "https://www.youtube.com/embed/YF9hTHDAw6E",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/categoria-do-template-decide-o-seu-custo#article"
+      }
     }
   ]
 }
@@ -667,6 +687,21 @@ footer p{margin:0 0 .5rem}
 <p>Em qualquer um dos dois casos, o template continua aprovado e funcionando. O que muda é o preço, silenciosamente.</p>
 <p>O jeito de saber é assinar o evento de webhook que avisa mudança de categoria. Ele existe, chega no mesmo endereço dos outros, e é a diferença entre saber no dia e descobrir no fechamento do mês.</p>
 <p><strong>Vale mais que isso:</strong> derive o custo do envio <strong>no momento de enviar</strong>, consultando a categoria atual, e não no momento em que o template foi criado. Quem guarda "este template é utilidade" no banco e nunca revisita passa a orçar errado a partir do dia da reclassificação.</p>
+<p>Vale ouvir isso de quem atende quem levou o susto, porque a frase resume o problema inteiro: <em>"às vezes a meta percebe isso e ela muda automaticamente a categoria. E aí acontece que você acha que vai pagar um valor, você acaba pagando 10 vezes mais porque você não é avisado, ela simplesmente muda."</em></p>
+<p>O que faz a reclassificação acontecer é mais literal do que parece: <strong>a Meta lê o texto do template.</strong> Não é auditoria de intenção, é leitura de conteúdo. Uma palavra de outra categoria no meio de um template muda a classificação dele.</p>
+<p>Isso tem um lado que dá para usar a seu favor. Se a mensagem é de verdade uma notificação, <strong>escreva as palavras que dizem isso</strong>: pagamento, pedido, conta, agendamento, entrega. Um template de cobrança de assinatura que diz "houve um problema no pagamento da sua assinatura" está descrevendo uma transação, e é isso que sustenta a categoria de utilidade. O mesmo aviso escrito como "não perca seu acesso, aproveite e renove" está descrevendo uma oferta.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=YF9hTHDAw6E" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/YF9hTHDAw6E/maxresdefault.jpg" alt="Miniatura do vídeo: Criar modelos de mensagens (templates) na API oficial" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Criar modelos de mensagens (templates) na API oficial</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Dezesseis minutos criando templates, primeiro pelo painel e depois pela API. Em 01:42 ele compara os preços das categorias, e em 02:08 explica a reclassificação silenciosa, que é a parte que custa dinheiro.</figcaption>
+</figure>
+
+<p>E vale registrar onde ele se posiciona, porque a prática oposta é ensinada por aí: forçar marketing disfarçado de utilidade, enchendo variável com texto grande, é técnica que circula em conteúdo brasileiro. A avaliação dele é curta: <em>"inclusive essa é uma prática que até ensinam na internet, eu sou contra isso."</em> Além de ter escalada de punição própria, ela para de funcionar assim que a Meta lê o conteúdo, e aí você fica com o custo alto e o histórico ruim.</p>
 <h2 id="a-escalada-se-acontecer-de-novo">A escalada, se acontecer de novo</h2>
 <p>Categorizar errado uma vez é erro. Repetir tem consequência crescente, e vale conhecer a sequência:</p>
 <ol>
@@ -676,6 +711,14 @@ footer p{margin:0 0 .5rem}
 <li><strong>Restrição no nível da conta.</strong></li>
 </ol>
 <p>Do terceiro passo em diante, o custo da operação inteira muda. Não é uma multa: é o seu envio de rotina passando a custar dez vezes mais.</p>
+<h2 id="onde-criar-o-template-e-por-que-n-o-pela">Onde criar o template, e por que não pela API</h2>
+<p>Uma recomendação contraintuitiva, vinda de quem vende acesso a API: <strong>crie o template pelo painel da Meta</strong>, não pela API, a menos que você esteja montando um produto em que o cliente final cria os próprios templates.</p>
+<p>O motivo é prático. No painel você vê o pré-visualizado enquanto escreve, o editor recusa na hora o que está fora de regra, e a categoria aparece antes de você enviar para análise. Pela API, o mesmo erro volta como código de erro depois. É o tipo de tarefa que se faz poucas vezes e em que a interface ganha da automação. A recomendação, na fala dele: <em>"recomendo que sempre você crie pelo painel Facebook, mais fácil, mais seguro."</em></p>
+<p>Três regras do editor que economizam retrabalho, e que valem para os dois caminhos:</p>
+<p><strong>Nome não repete e não tem espaço.</strong> O nome é a identidade do template no envio, e por isso é imutável na prática.</p>
+<p><strong>Toda variável precisa de exemplo.</strong> É obrigatório, e é o que a Meta usa para revisar. Variável com nome tem que ser minúscula e sem acento.</p>
+<p><strong>O editor é exigente com a proporção da imagem de cabeçalho.</strong> Na criação gravada no canal, a imagem aceita foi quadrada, de 500 por 500. Não achamos esse requisito na documentação pública, então teste a sua arte antes, e não no dia da campanha. E cuidado com a confusão que isso gera depois: <a href="/template-com-imagem-no-cabecalho-nao-envia">a imagem que você põe no template é só exemplo, e no envio você manda outra</a>.</p>
+<p><strong>Aprovação não tem prazo fixo.</strong> Às vezes sai na hora, às vezes leva cerca de um dia. Isso significa que template de campanha se cria antes da campanha, não no dia.</p>
 <h2 id="como-n-o-cair-nisso">Como não cair nisso</h2>
 <p><strong>Escreva o template pelo que ele é.</strong> Se tem oferta, é marketing, e tudo bem: use marketing e pague por isso onde faz sentido.</p>
 <p><strong>Separe em dois.</strong> A confirmação de pedido vira utilidade, limpa. A oferta vira um template de marketing próprio, enviado a quem faz sentido. Você paga marketing só onde há intenção comercial, e não em toda confirmação.</p>
@@ -730,6 +773,7 @@ footer p{margin:0 0 .5rem}
         <li><a href="#onde-a-linha-costuma-ser-cruzada">Onde a linha costuma ser cruzada</a></li>
         <li><a href="#a-reclassifica-o-e-o-aviso-que-quase-nin">A reclassificação, e o aviso que...</a></li>
         <li><a href="#a-escalada-se-acontecer-de-novo">A escalada, se acontecer de novo</a></li>
+        <li><a href="#onde-criar-o-template-e-por-que-n-o-pela">Onde criar o template, e por que...</a></li>
         <li><a href="#como-n-o-cair-nisso">Como não cair nisso</a></li>
         <li><a href="#e-a-categoria-tamb-m-define-a-base-legal">E a categoria também define a ba...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>

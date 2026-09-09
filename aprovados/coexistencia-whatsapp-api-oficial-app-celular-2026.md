@@ -17,6 +17,10 @@ sources:
   - https://business.whatsapp.com/
   - https://www.youtube.com/watch?v=FcAwJqVHNoU
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=HQm5UuW50bM
+  - https://www.youtube.com/watch?v=8xA-8z1YW98
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+videos: [dIIkttPeBS0, 8xA-8z1YW98, HQm5UuW50bM]
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
@@ -136,12 +140,46 @@ Conversa de grupo não vir é o segundo. Se a sua operação usa grupos, essa pa
 
 Depois que o número está conectado, o tráfego novo flui nos dois sentidos sem esses limites: o que chega no aplicativo aparece no webhook, o que sai pela API aparece no celular.
 
+### A sincronização não acontece sozinha
+
+Aqui está a parte que a documentação deixa implícita e que faz gente perder a janela de 24 horas achando que estava tudo automático. São três passos, e eles têm ordem:
+
+**1. Marcar a opção no celular, durante a conexão.** No meio do fluxo, o aplicativo pergunta se você quer compartilhar o histórico de conversas. Se você não marcar, não tem como voltar atrás: *"se você por acidente marcar que não quer compartilhar, é só fazer o processo novamente"*, ou seja, desconectar e reconectar o número.
+
+**2. Assinar o evento de sincronização antes de pedir.** Existe um campo de webhook próprio para isso, e é por ele que os contatos e as conversas chegam. Se ele não estiver marcado, você faz a chamada, recebe confirmação de sucesso, e nada aparece.
+
+**3. Fazer a chamada que dispara.** É esse passo que quase todo mundo não sabe que existe. Nas palavras do Israel: *"você conectou o telefone, com webhook, tá marcado, agora tem que avisar a meta que você quer os contatos."* Contatos e histórico são pedidos separadamente, no corpo da requisição.
+
+E o comportamento da resposta é diferente para os dois, o que evita depuração inútil: **os contatos chegam praticamente na hora, e as conversas demoram bastante mais.** A Meta não crava um prazo, e diz que a sincronização pode levar vários minutos dependendo do tamanho do histórico, da conexão e da velocidade com que você consome os webhooks. Na operação, a espera do histórico é da ordem de dezenas de minutos.
+
+Isso importa por um motivo: quem pede o histórico, não vê nada em dois minutos e conclui que falhou, refaz o processo sem necessidade e às vezes queima a janela de 24 horas fazendo isso.
+
+::video: HQm5UuW50bM | Quatro minutos exatos sobre isso: em 00:30 ele marca o evento, em 01:05 explica o prazo de 24 horas, em 02:38 dispara a sincronização e os contatos aparecem no webhook na hora, e em 03:40 mostra a diferença de tempo do histórico.
+
+Uma dica que sai daí e vale guardar: **salve o identificador que a chamada de sincronização devolve.** Se algo der errado, é com ele que você abre suporte com a Meta.
+
 ## Outros detalhes de comportamento
 
 1. **Duplicidade**: se você enviar a mesma mensagem duas vezes pela API, ela aparece duas vezes no aplicativo. Não existe deduplicação automática, o controle é seu.
 2. **Resposta a mensagem específica**: funciona nos dois sentidos. O que você responde no aplicativo chega ao webhook como resposta, e vice-versa.
 3. **Status de entrega**: enviado, entregue e lido ficam iguais nos dois lados.
 4. **Quem escreve pelo aplicativo não abre janela de atendimento.** Mensagem enviada pelo aplicativo do WhatsApp Business não abre nem estende a janela de 24 horas da API. Vale a pena saber disso antes de montar automação em cima de janela.
+
+## Desconectar só dá pelo celular
+
+Detalhe operacional pequeno e de consequência grande, que não aparece em comparativo nenhum: **não existe endpoint para desconectar o número da API.** A desconexão é feita no aparelho, nas configurações do WhatsApp Business, em conta e plataforma do WhatsApp Business.
+
+Isso importa em dois momentos. Se você constrói produto e o seu cliente conecta o número dele, **você não consegue desconectar por ele**: o botão está no celular dele, e o seu fluxo de cancelamento precisa levar isso em conta. E se você precisa refazer a conexão para recuperar a janela de sincronização, o passo depende de alguém com o telefone na mão.
+
+## O que a conexão exige, e o que não exige
+
+Vale desfazer duas expectativas erradas que aparecem sempre, porque as duas fazem gente desistir antes de tentar.
+
+**Precisa de portfólio empresarial, e ele não precisa ser verificado.** Basta existir. Verificado é melhor e não é requisito para conectar: *"não precisa ser verificado, se for verificado é melhor, mas apenas criar o portfólio já é suficiente."*
+
+**A forma de pagamento fica na Meta, não no provedor.** As mensagens são cobradas pela Meta, direto no cartão cadastrado no portfólio, e é isso que você precisa configurar antes de enviar template. O provedor cobra o acesso, não a mensagem. Sem cartão no portfólio, a mensagem de serviço funciona e o template não sai.
+
+::video: 8xA-8z1YW98 | Nove minutos do zero: em 02:34 aparece a escolha entre chip novo e aplicativo existente, que é a decisão que define se você está em coexistência, e em 08:33 ele mostra onde fica a configuração de pagamento dentro do portfólio.
 
 ## O requisito do lado do provedor
 

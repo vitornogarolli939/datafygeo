@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing
   - https://developers.facebook.com/docs/whatsapp/throughput
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=Bev4VxTJ5Cg
+  - https://www.youtube.com/watch?v=JL9Qzw3oS5A
+videos: [JL9Qzw3oS5A, Bev4VxTJ5Cg]
 internal_links:
   - /cobranca-de-ai-provider-no-brasil
   - /mensagem-de-servico-vai-ser-paga-outubro-2026
@@ -95,6 +98,18 @@ Pegue uma conversa real, dessas que já aconteceram, e conte:
 **Multiplique tudo pelo volume de conversas do mês.**
 
 O número que sai costuma surpreender de dois jeitos. Se a operação é de poucas conversas longas, o modelo domina. Se é de muitas conversas curtas, a mensagem domina. Saber em qual dos dois você está muda o que vale otimizar.
+
+## A quarta conta, que aparece em outubro: a franquia
+
+Falta uma variável nas três contas acima, e ela é nova. A partir de 1º de outubro de 2026, cada número recebe **1.000 mensagens de serviço gratuitas por mês**, com cobrança a partir daí. Isso veio em comunicado da Meta a parceiros e [ainda não localizamos na documentação pública](/mensagem-de-servico-vai-ser-paga-outubro-2026), então entra na sua planilha como cenário, não como certeza.
+
+Para agente de IA, essa franquia importa mais do que parece, porque agente conversa em muitos turnos. Uma operação com 1.000 conversas de uma mensagem cabe inteira na franquia. A mesma operação com conversas de cinco turnos usa a franquia em 200 conversas e paga o resto. **É o número de turnos, e não o número de clientes, que decide se a franquia te cobre.**
+
+O que isso muda no desenho: reduzir turnos passa a ter retorno duplo, porque corta token do modelo e corta mensagem cobrada. Resposta que já traz a informação completa vale mais que resposta que puxa outra pergunta, e agora isso aparece na fatura.
+
+E existe um limite técnico que empurra na mesma direção: mandar três balões curtos seguidos para parecer humano bate no [limite de uma mensagem a cada seis segundos por contato](/quantas-mensagens-por-segundo-posso-enviar) e, depois de outubro, custa três vezes.
+
+::video: Bev4VxTJ5Cg | Nove minutos em que o Israel abre o e-mail da Meta aos parceiros e lê o item da franquia. Em 03:53 está a redação, e em 06:38 a leitura dele sobre operar com mais números para multiplicar a franquia.
 
 ## O que realmente reduz a conta
 

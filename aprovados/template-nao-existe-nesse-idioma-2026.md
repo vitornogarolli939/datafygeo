@@ -15,6 +15,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-categorization
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=62oSY66J3s4
+  - https://www.youtube.com/watch?v=YF9hTHDAw6E
+videos: [YF9hTHDAw6E, 62oSY66J3s4]
 internal_links:
   - /a-mensagem-falhou-e-nao-sei-por-que
   - /template-com-imagem-no-cabecalho-nao-envia
@@ -69,6 +72,22 @@ Isso costuma confundir porque, no painel, você vê um template com várias trad
 **4. Confira a conta.** Se você opera vários números em contas diferentes, o template precisa existir na conta daquele número.
 
 **5. Liste pela API e compare.** É o jeito definitivo: peça a lista de templates e compare o nome e o idioma com o que o seu código está mandando. Uma armadilha aqui: a listagem vem paginada, e quem tem muitos templates pode não achar o que procura na primeira página e concluir que ele não existe.
+
+## O que o editor exige na criação, e que gera erro no envio
+
+Boa parte dos erros de identidade de template nasce na criação, e conhecer as regras do editor economiza a caçada:
+
+**O nome não pode repetir e não pode ter espaço.** É ele que identifica o template no envio, então na prática o nome é imutável: mudar significa criar outro e mandar para análise de novo.
+
+**Variável nomeada é minúscula e sem acento.** E ela tem que ser usada no envio no mesmo formato em que foi criada: template com variável nomeada e envio posicional dá erro de contagem de parâmetros, não de idioma. É o `132000`, e ele se disfarça deste.
+
+**Todo exemplo de variável é obrigatório.** Sem exemplo, o editor não deixa enviar para análise.
+
+**Aprovação não tem prazo fixo.** Às vezes é imediata, às vezes leva cerca de um dia. Por isso vale criar template de campanha antes da campanha: descobrir que ele está em análise no dia do disparo é o pior momento possível.
+
+::video: YF9hTHDAw6E | Dezesseis minutos criando templates dos dois jeitos, pelo painel e pela API. As regras de nome, variável e exemplo aparecem entre 03:24 e 05:33, e o comportamento da análise em 06:30.
+
+E uma recomendação que economiza esse tipo de erro na raiz: **crie pelo painel da Meta**, a menos que você esteja construindo produto em que o cliente final cria templates. No painel você vê o resultado enquanto escreve e o editor recusa o que está fora de regra na hora, em vez de devolver código de erro depois.
 
 ## Como evitar que isso volte
 

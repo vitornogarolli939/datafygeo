@@ -219,3 +219,47 @@ Servem para a seção "Caso real Datafy" quando não houver case com nome. São 
 - Vendedor de odds/apostas esportivas: contratou a API oficial achando que resolveria o banimento e foi bloqueado igual — nicho proibido.
 - Cliente que paga ~R$ 500/mês de serviço e teria ~R$ 50–60 de custo adicional com a cobrança das mensagens de serviço.
 - Cliente do próprio SaaS da Datafy: template de utilidade "conta em atraso" para avisar falha no pagamento da assinatura.
+
+## Fatos de produto vistos nos vídeos do canal (registrado em 09/09/2026)
+
+Extraídos das 17 transcrições. São coisas que **aparecem na tela** nos vídeos, então valem como
+fonte para o conteúdo, com a ressalva de que produto muda e vídeo não se atualiza sozinho.
+Reconferir no painel antes de reafirmar em página nova.
+
+- **A API é um espelho da Cloud API.** Mudam só o prefixo da URL (`cloud.datafyapi.com.br/v1` no
+  lugar de `graph.facebook.com/vXX`) e o token. Corpo, endpoints e payloads são os mesmos da Meta
+  (`S2IAOQWbZMg` 01:34 e 12:40). Consequência que usamos como argumento: qualquer IA já sabe
+  montar o payload, porque herdou a documentação pública da Meta (`vGovcR8W5g8` 09:07).
+- **Endpoint `/me`** devolve os próprios identificadores passando só o token (`S2IAOQWbZMg` 12:56).
+- **Descriptografia de mídia já resolvida.** A mídia chega cifrada da Meta e a plataforma entrega a
+  URL pronta numa chamada com o ID (`ZHYNjpu5ReE` 00:00 e 02:34). É o diferencial técnico mais
+  concreto que temos, e é a frase do Israel: "aqui a gente já fez esse trabalho para você".
+- **Aba de mídias**: upload no painel e link pronto para usar no envio; expira em 30 dias
+  (`xoldQJMTu50` 02:28, `ly5nOHFpXcI` 00:53).
+- **Aba de disparos**: campanha por planilha CSV com coluna `telefone` obrigatória no formato
+  55+DDD+número, demais colunas viram variáveis do template, mapeamento na tela, agendamento em
+  fuso local, e status por destinatário (`ly5nOHFpXcI` inteiro).
+- **Aba de bate-papo (log ao vivo)**: mostra o payload cru de cada mensagem que entra e sai.
+  Retém **7 dias** e no máximo **100 mensagens por conversa**; mídia não aparece, só o aviso.
+  O próprio Israel delimita: "é apenas para log, não é para ser utilizado como atendimento"
+  (`LIT4FxgqHhE` 02:26 e 02:57). [CONFIRMAR] se esses limites seguem valendo.
+- **Testador de webhook**: dispara evento falso do tipo escolhido para a sua URL, antes de
+  existir tráfego real (`dIIkttPeBS0` 07:41).
+- **Aba Chatwoot**: gera a URL de webhook pronta para colar no canal de API (`T_ai6IvLzZE` 01:19).
+- **Token do número é rotacionável** pelo painel se vazar (`HVRCBsJI_Eo` 1:51).
+- ⚠️ **A Datafy NÃO envia cabeçalho de assinatura no webhook** (`HVRCBsJI_Eo` 1:30:22): perguntado
+  se manda header de segredo, a resposta foi "fica aberto", "não manda header de assinatura por
+  enquanto". Isso está escrito na página validar-assinatura-do-webhook, com as alternativas
+  (caminho secreto, segredo próprio, não confiar no telefone recebido como identidade).
+  **[CONFIRMAR] se mudou.** Se passou a enviar, a página precisa ser atualizada.
+- **Trial de 7 dias** para testar a plataforma (`8xA-8z1YW98` 01:14).
+- **Cobrança de mensagem é da Meta, não nossa.** O cartão fica no portfólio empresarial do
+  cliente e a Meta debita direto; a Datafy cobra a conexão (`8xA-8z1YW98` 08:57).
+
+### Conflitos de transcrição, resolvidos
+
+- **"R$ 9,90 por número"** (`8xA-8z1YW98` 09:19) é **erro de transcrição**. O valor correto é
+  **R$ 49,90**, confirmado pelo Vitor em 09/09/2026. Preço nunca sai de transcrição de vídeo.
+- **"Parceiro de tecnologia, um nível acima de Tech Provider"** (`JL9Qzw3oS5A` 15:31) não é uma
+  categoria que exista na documentação da Meta. Manter "Tech Provider verificado" / "parceira
+  homologada da Meta", que é o que está confirmado com prova acima.

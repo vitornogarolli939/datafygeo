@@ -136,7 +136,8 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=dIIkttPeBS0"
       ]
     },
     {
@@ -192,6 +193,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/se-eu-trocar-de-fornecedor-perco-o-numero#video-dIIkttPeBS0",
+      "name": "Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia",
+      "description": "Conexao em coexistencia por QR code, cadastro de webhook, primeiro envio e a falha real fora da janela de 24 horas",
+      "thumbnailUrl": "https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=dIIkttPeBS0",
+      "embedUrl": "https://www.youtube.com/embed/dIIkttPeBS0",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/se-eu-trocar-de-fornecedor-perco-o-numero#article"
+      }
     }
   ]
 }
@@ -659,6 +679,23 @@ Depois: https://provedor-b.exemplo.com/v1/{phone_number_id}/messages</code></p>
 <p><strong>Automação e configuração do painel.</strong> Regras, respostas prontas, etiquetas e fluxos montados na ferramenta dele ficam lá. Isso pode ser mais trabalho que a troca técnica.</p>
 <p><strong>Integrações prontas.</strong> Se você usava uma conexão nativa com alguma ferramenta, precisa conferir se o novo destino tem equivalente ou se vai virar trabalho manual.</p>
 <p><strong>Templates</strong>, por outro lado, são da conta. Se a conta é sua, eles continuam aprovados e disponíveis.</p>
+<h2 id="se-o-n-mero-est-em-coexist-ncia-quem-des">Se o número está em coexistência, quem desconecta é o celular</h2>
+<p>Detalhe operacional que muda o roteiro da migração e não está em comparativo nenhum: <strong>não existe chamada de API para desconectar um número em coexistência.</strong> A desconexão é feita no aparelho, nas configurações do WhatsApp Business, em conta e plataforma do WhatsApp Business.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 04:46 ele mostra exatamente onde fica esse botão no celular e diz a frase que resume: não tem como desconectar via API, somente através do celular.</figcaption>
+</figure>
+
+<p>Duas consequências que vale escrever no plano antes de marcar a data:</p>
+<p><strong>A migração precisa de alguém com o telefone na mão.</strong> Não é uma tarefa que a equipe técnica executa sozinha de madrugada. Se o número é de um cliente ou de um sócio, a janela de troca depende da agenda de outra pessoa.</p>
+<p><strong>Se você é SaaS, você não desconecta pelo seu cliente.</strong> O botão está no celular dele. O seu fluxo de cancelamento precisa incluir uma instrução clara de como ele faz isso, porque o número continua conectado até que ele faça.</p>
+<p>E aproveite a reconexão para não repetir um erro comum: é no momento de conectar que se decide compartilhar o histórico, e <a href="/como-leio-o-historico-de-conversa-pela-api">o pedido de sincronização tem prazo de 24 horas</a>. Quem troca de fornecedor e esquece esse passo perde o histórico duas vezes.</p>
 <h2 id="as-perguntas-a-fazer-antes-de-assinar">As perguntas a fazer antes de assinar</h2>
 <p>Três, e elas separam qualquer proposta:</p>
 <p><strong>1. O número fica na minha Business Manager?</strong> Se a resposta for não, ou for confusa, peça para explicarem exatamente onde ele fica e como é a saída. Uma resposta clara aqui vale mais que desconto.</p>
@@ -707,6 +744,7 @@ Depois: https://provedor-b.exemplo.com/v1/{phone_number_id}/messages</code></p>
         <li><a href="#por-que-a-business-manager-decide-tudo">Por que a Business Manager decid...</a></li>
         <li><a href="#o-que-muda-no-c-digo-quando-o-n-mero-seu">O que muda no código, quando o n...</a></li>
         <li><a href="#o-que-n-o-vai-junto">O que não vai junto</a></li>
+        <li><a href="#se-o-n-mero-est-em-coexist-ncia-quem-des">Se o número está em coexistência...</a></li>
         <li><a href="#as-perguntas-a-fazer-antes-de-assinar">As perguntas a fazer antes de as...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>

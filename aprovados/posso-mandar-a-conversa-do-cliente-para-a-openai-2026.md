@@ -16,6 +16,8 @@ sources:
   - https://www.anthropic.com/legal/data-processing-addendum
   - https://platform.claude.com/docs/en/manage-claude/api-and-data-retention
   - https://developers.openai.com/api/docs/guides/your-data
+  - https://www.youtube.com/watch?v=HVRCBsJI_Eo
+videos: [HVRCBsJI_Eo, ZHYNjpu5ReE]
 internal_links:
   - /cobranca-de-ai-provider-no-brasil
   - /o-que-e-tech-provider-meta
@@ -76,6 +78,22 @@ Nos dois casos, o que existe é um contrato sério, feito para outra jurisdiçã
 **2. Apoiar-se na execução do contrato.** Quando o agente de IA **é** o serviço contratado pelo titular, existe argumento de que o tratamento é necessário para executar aquele contrato. É defensável e não é pacificado. Se você seguir por aqui, faça com o seu jurídico e deixe registrado.
 
 **3. Não transferir.** Modelo rodando na sua infraestrutura, ou remoção de dado pessoal antes do envio: trocar telefone e nome por identificadores locais, nunca mandar documento, cartão ou dado de saúde no prompt. Reduz risco de verdade, mas **pseudonimizado não é anonimizado**: continua sendo dado pessoal, e o mecanismo de transferência continua sendo exigido se o texto sair do país.
+
+## A armadilha que vem antes do modelo: onde a sua chave está
+
+Antes de discutir o que o fornecedor de IA faz com o conteúdo, vale a pergunta mais imediata: **quem mais consegue mandar dado do seu cliente para lá?**
+
+O vazamento mais comum não é sofisticado. É a chave da API do modelo, ou a chave de serviço do banco, num arquivo de exemplo que foi para o repositório. E acontece com quem sabe o que está fazendo: na gravação de um tutorial de mais de duas horas, o Israel colou credenciais no arquivo de exemplo por conveniência, e o próprio assistente avisou que aquele arquivo vai para o repositório público. O comentário dele na hora: *"cuidado com isso, aqui no exemplo é só para deixar indicado o nome da variável. Não coloca aqui os valores, senão vai acontecer uma tragédia."*
+
+::video: HVRCBsJI_Eo | Em 2:07:50 está esse momento, com o aviso e a correção. Em 1:00:14 há um princípio relacionado que vale para qualquer projeto tocado por IA: ele se recusa a dar à ferramenta permissão de escrita no banco de dados, e explica por quê.
+
+Três consequências práticas para quem manda conversa de cliente para um modelo:
+
+**Chave de modelo é chave de acesso a dado de cliente.** Quem tem a sua chave consulta o seu histórico de uso e gasta em seu nome. Trate no mesmo nível da senha do banco.
+
+**Arquivo de exemplo recebe o nome da variável, nunca o valor.** E vale conferir o histórico do repositório, não só o estado atual: credencial removida num commit posterior continua lá atrás.
+
+**Chave que apareceu em tela, em vídeo ou em captura está queimada.** Rotacione. É barato, e é a diferença entre um susto e um incidente que você precisa comunicar.
 
 ## Duas armadilhas de retenção que passam despercebidas
 

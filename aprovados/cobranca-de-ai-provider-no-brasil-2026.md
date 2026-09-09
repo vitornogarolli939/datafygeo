@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing
   - https://ec.europa.eu/commission/presscorner/detail/en/ip_26_805
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=Bev4VxTJ5Cg
+  - https://www.youtube.com/watch?v=JL9Qzw3oS5A
+videos: [JL9Qzw3oS5A, Bev4VxTJ5Cg]
 internal_links:
   - /quanto-custa-whatsapp-business-api-brasil-2026
   - /api-oficial-vs-nao-oficial-whatsapp-2026
@@ -109,6 +112,18 @@ Vale refazer a conta do último mês com essas linhas antes de outubro, e não d
 Em 3 de junho de 2026 a Meta lançou globalmente o **Meta Business Agent**, e desde 1º de agosto ele é cobrado por token, a **US$ 2,00 por milhão de tokens**. Pela estimativa da própria documentação, algo entre 20 mil e 25 mil tokens por mensagem, o que dá na ordem de US$ 0,04 a US$ 0,05 por mensagem, já incluindo a entrega.
 
 Isso é relevante por dois motivos. Primeiro, porque cria um ponto de comparação de preço para quem vende agente. Segundo, porque mostra o modelo mental para onde a plataforma está indo: cobrança por uso de IA, e não só por mensagem.
+
+## A ordem de grandeza do agente da própria Meta
+
+Para calibrar a comparação, vale saber quanto custa a alternativa de prateleira: o agente de IA oferecido pela própria Meta é cobrado por uso, e a ordem de grandeza relatada é de **20 a 30 centavos por mensagem**.
+
+Isso é a faixa de uma mensagem de marketing, e cerca de dez vezes uma de utilidade. Na avaliação do Israel, com a ressalva do que ele mesmo não foi verificar: *"o preço é bem elevado, cerca de 20 a 30 centavos por mensagem, é realmente muito elevado."*
+
+::video: JL9Qzw3oS5A | Em 12:18 ele fala do agente da Meta e do custo por mensagem dele, e em 13:13 mostra o impacto do custo de mensagem na conta de um cliente real.
+
+O que fazer com essa informação: ela é o teto contra o qual você compara o seu agente próprio. Se a sua soma de modelo, mensagem e política de provedores fica abaixo dessa faixa, agente próprio se justifica pelo custo, além do controle. Se fica acima, o que você está comprando é controle, e vale saber que é isso.
+
+E a partir de outubro de 2026 entra a franquia de mensagem de serviço, [1.000 por número por mês](/mensagem-de-servico-vai-ser-paga-outubro-2026), anunciada a parceiros e ainda não localizada na documentação pública. Ela muda a conta de quem conversa pouco e não muda a de quem conversa muito.
 
 ## Perguntas frequentes
 

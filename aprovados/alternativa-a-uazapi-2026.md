@@ -15,7 +15,9 @@ sources:
   - https://business.whatsapp.com/policy
   - https://www.youtube.com/watch?v=cZ_nyIUv5ic
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=HVRCBsJI_Eo
   - https://github.com/UAZAPI/UAZAPI
+videos: [HVRCBsJI_Eo, cZ_nyIUv5ic]
 internal_links:
   - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /alternativa-a-z-api
@@ -94,6 +96,16 @@ Vale dizer com todas as letras, porque é verdade e porque decide caso de uso re
 - **Custo previsível.** Você paga a mensalidade da ferramenta e o servidor, sem tarifa por mensagem entregue.
 
 Se o seu caso vive dessas quatro coisas, migrar não é upgrade: é perder recurso. A conversa honesta não é "saia da UAZAPI", é entender o que você usa hoje e se o oficial cobre.
+
+## Quem escreve isso também usa não oficial
+
+Declarando o óbvio: esta página é de uma empresa que vende acesso à API oficial. E declarando o que costuma ficar de fora dessas páginas: a equipe daqui usa as duas coisas, e já perdeu número na não oficial.
+
+O Israel Henrique, CTO da Datafy: *"eu utilizo muito a API não oficial, até hoje eu utilizo e tenho sofrido com esses banimentos."* E sobre número perdido: *"eu já tive, clientes meus já tiveram."*
+
+::video: HVRCBsJI_Eo | Em 2:22:04 está o trecho acima, no fecho do tutorial completo. Em 02:25 ele explica por que recomenda a migração mesmo assim.
+
+Se você usa UAZAPI hoje, a decisão não é sobre ferramenta certa ou errada. É sobre quanto da sua operação depende daquele número e o que acontece se ele parar amanhã. E vale saber que [a oficial não é blindagem contra bloqueio](/numero-banido-no-whatsapp-o-que-fazer): ela troca um tipo de risco pelos riscos de conduta, que continuam valendo.
 
 ## Migrar de UAZAPI para Datafy
 

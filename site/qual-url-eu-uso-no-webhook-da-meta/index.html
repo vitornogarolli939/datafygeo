@@ -135,7 +135,9 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/create-webhook-endpoint/",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
         "https://developers.facebook.com/docs/graph-api/webhooks/getting-started",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
+        "https://www.youtube.com/watch?v=dIIkttPeBS0"
       ]
     },
     {
@@ -168,6 +170,14 @@
         },
         {
           "@type": "Question",
+          "name": "Como testo na minha máquina, sem servidor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Com um túnel que dá um endereço público temporário para a sua porta local. Cuide de três coisas: liberar o domínio do túnel na lista de hosts do framework, saber que o endereço muda a cada vez que o túnel sobe, e trocar para a URL de produção quando publicar."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Preciso de servidor rodando o tempo todo?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -191,6 +201,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/qual-url-eu-uso-no-webhook-da-meta#video-HVRCBsJI_Eo",
+      "name": "Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)",
+      "description": "Projeto inteiro: payloads reais, modelagem do banco, webhook por tunel, midia, tempo real e publicacao",
+      "thumbnailUrl": "https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
+      "embedUrl": "https://www.youtube.com/embed/HVRCBsJI_Eo",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/qual-url-eu-uso-no-webhook-da-meta#article"
+      }
     }
   ]
 }
@@ -657,6 +686,23 @@ def verificar():
 <p><strong>Retorno errado na verificação.</strong> Devolver o desafio dentro de um JSON, em vez de texto puro, falha. É preciso devolver exatamente o valor recebido.</p>
 <p><strong>Modo de teste ligado.</strong> Em ferramenta visual, o endereço de teste escuta uma vez. Ative o fluxo e use o endereço de produção.</p>
 <p><strong>Campo não assinado.</strong> A URL está certa, a verificação passou, e mesmo assim não chega mensagem. Confira se <code>messages</code> está marcado.</p>
+<h2 id="desenvolver-na-sua-m-quina-sem-publicar">Desenvolver na sua máquina, sem publicar nada</h2>
+<p>A pergunta que vem logo depois de "qual URL eu uso" é como testar sem ter servidor. A resposta é túnel: uma ferramenta expõe a porta local com um endereço público temporário, você cadastra esse endereço como webhook, e a mensagem cai no seu terminal.</p>
+<p>Três coisas que costumam morder nessa etapa, e todas apareceram na gravação abaixo:</p>
+<p><strong>O framework pode recusar o domínio do túnel.</strong> O sintoma é um <code>403</code> sem explicação, com o payload aparecendo no painel do túnel mas nunca chegando na aplicação. Vários frameworks têm lista de hosts permitidos em desenvolvimento, e o endereço do túnel precisa entrar nela. Depois de mexer nisso, reinicie o servidor: a mudança não costuma pegar quente.</p>
+<p><strong>O endereço do túnel muda.</strong> Cada vez que ele sobe, é outro endereço, e o webhook cadastrado aponta para o anterior. É a causa boba mais comum de "parou de funcionar do nada".</p>
+<p><strong>Trocar para produção é um passo manual que dá para esquecer.</strong> Publicou a aplicação? O webhook continua apontando para o túnel da sua máquina. Enquanto o túnel estiver ligado, funciona, e você não percebe. Quando desligar, para.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg" alt="Miniatura do vídeo: Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
+</a>
+<figcaption>O tutorial completo, de duas horas, e em 1:38:16 está exatamente esse erro: o `403` acontecendo, o diagnóstico de host bloqueado, e o `200` depois do ajuste. Em 2:19:25 ele troca o endereço do túnel pelo de produção e mostra a mensagem parando de chegar até fazer isso.</figcaption>
+</figure>
+
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Posso usar um endereço com IP?</h3>
 <p>Não. Precisa ser um domínio com HTTPS e certificado válido.</p>
@@ -664,6 +710,8 @@ def verificar():
 <p>Pode, e é o formato comum em multi-cliente. Cada evento traz o identificador do número, e você roteia a partir dele.</p>
 <h3>Posso mudar a URL depois?</h3>
 <p>Pode, e o processo é o mesmo: a Meta refaz a verificação com o novo endereço.</p>
+<h3>Como testo na minha máquina, sem servidor?</h3>
+<p>Com um túnel que dá um endereço público temporário para a sua porta local. Cuide de três coisas: liberar o domínio do túnel na lista de hosts do framework, saber que o endereço muda a cada vez que o túnel sobe, e trocar para a URL de produção quando publicar.</p>
 <h3>Preciso de servidor rodando o tempo todo?</h3>
 <p>Precisa. Se ele estiver fora do ar, a Meta reentrega por um período, mas passado isso a mensagem se perde, e <a href="/como-leio-o-historico-de-conversa-pela-api">não existe consulta para recuperar</a>.</p>
 <h3>O que é o token de verificação?</h3>
@@ -700,6 +748,7 @@ def verificar():
         <li><a href="#onde-a-url-entra-dependendo-do-caminho">Onde a URL entra, dependendo do...</a></li>
         <li><a href="#escolha-os-eventos-com-cuidado">Escolha os eventos com cuidado</a></li>
         <li><a href="#os-erros-que-fazem-parecer-que-n-o-funci">Os erros que fazem parecer que n...</a></li>
+        <li><a href="#desenvolver-na-sua-m-quina-sem-publicar">Desenvolver na sua máquina, sem...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

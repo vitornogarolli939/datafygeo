@@ -136,7 +136,9 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/media",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+        "https://www.youtube.com/watch?v=ZHYNjpu5ReE"
       ]
     },
     {
@@ -192,6 +194,44 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/quanto-tempo-o-whatsapp-guarda-minhas-mensagens#video-ZHYNjpu5ReE",
+      "name": "Como receber mídias na API oficial do WhatsApp",
+      "description": "A midia chega criptografada da Meta, e o caminho para obter a URL pronta para uso",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ZHYNjpu5ReE/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=ZHYNjpu5ReE",
+      "embedUrl": "https://www.youtube.com/embed/ZHYNjpu5ReE",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/quanto-tempo-o-whatsapp-guarda-minhas-mensagens#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/quanto-tempo-o-whatsapp-guarda-minhas-mensagens#video-LIT4FxgqHhE",
+      "name": "Logs de mensagens em tempo real na API oficial do WhatsApp",
+      "description": "Ver o payload cru de cada mensagem que entra e sai, e por quanto tempo esse log fica",
+      "thumbnailUrl": "https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+      "embedUrl": "https://www.youtube.com/embed/LIT4FxgqHhE",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/quanto-tempo-o-whatsapp-guarda-minhas-mensagens#article"
+      }
     }
   ]
 }
@@ -676,6 +716,54 @@ footer p{margin:0 0 .5rem}
 <p><strong>Servidor fora do ar tem custo permanente.</strong> A Meta reentrega por até sete dias, e depois disso a mensagem se perde de vez. Não há como recuperar por consulta.</p>
 <p><strong>Mídia precisa de armazenamento seu.</strong> Guardar só o identificador é guardar uma referência que expira em uma semana.</p>
 <p><strong>Do lado da privacidade, isso ajuda.</strong> A plataforma guarda pouco, e quem decide quanto tempo o dado vive é você. O outro lado da mesma moeda: quando um cliente <a href="/o-cliente-pediu-para-apagar-os-dados-dele">pede a exclusão dos dados</a>, o trabalho é seu, porque o dado é seu.</p>
+<h2 id="a-m-dia-tem-prazo-pr-prio-e-maior-do-que">A mídia tem prazo próprio, e é maior do que a mensagem</h2>
+<p>Um detalhe que quebra suposição: <strong>os dois sentidos da mídia têm prazos diferentes</strong>, e trocar um pelo outro é o erro mais caro desta página.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>O que</th>
+<th>Prazo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arquivo que <strong>você subiu</strong> para enviar</td>
+<td><strong>30 dias</strong></td>
+</tr>
+<tr>
+<td>Identificador de mídia que <strong>chega no webhook</strong></td>
+<td><strong>7 dias</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Ou seja, você tem <strong>uma semana</strong> para buscar o que o cliente mandou, e não um mês. É a diferença entre um processamento diário que funciona e um processamento mensal que encontra metade dos arquivos vencidos.</p>
+<p>O princípio geral, na formulação do Israel, continua valendo, e é o que importa na prática: <em>"se você quiser mais dias, aí você precisa você mesmo baixar e salvar no teu próprio storage."</em> A regra segura é baixar no momento em que a mídia chega, e não depois.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=ZHYNjpu5ReE" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/ZHYNjpu5ReE/maxresdefault.jpg" alt="Miniatura do vídeo: Como receber mídias na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como receber mídias na API oficial do WhatsApp</b><span>Canal DATA7 · 4 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 03:53 ele diz o prazo e a consequência dele em uma frase, depois de mostrar como se chega no arquivo.</figcaption>
+</figure>
+
+<h2 id="o-log-da-plataforma-n-o-arquivo">O log da plataforma não é arquivo</h2>
+<p>Vale separar isso porque gera falsa segurança: painel que mostra as mensagens em tempo real <strong>não é onde o seu histórico mora.</strong></p>
+<p>No caso da Datafy, esse log guarda <strong>7 dias e no máximo 100 mensagens por conversa</strong>, e a partir daí vai descartando as mais antigas. Mídia não aparece nele, só o aviso de que chegou. E o próprio Israel é explícito no que ele não é: <em>"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."</em></p>
+<p>Ele serve muito bem para o que é: ver o payload cru de uma mensagem específica quando algo deu errado, sem depender do log do seu servidor. Como registro de atendimento, não serve, e nenhuma plataforma de infraestrutura deveria ser usada assim.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=LIT4FxgqHhE" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg" alt="Miniatura do vídeo: Logs de mensagens em tempo real na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Logs de mensagens em tempo real na API oficial do WhatsApp</b><span>Canal DATA7 · 3 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Três minutos mostrando o log ao vivo, o payload de cada mensagem, e em 02:57 os limites de retenção ditos com clareza.</figcaption>
+</figure>
+
 <h2 id="onde-o-dado-fica-al-m-da-meta">Onde o dado fica, além da Meta</h2>
 <p>Vale lembrar que a pergunta "quanto tempo o WhatsApp guarda" costuma esconder outra: <strong>quanto tempo eu guardo</strong>. E aí a lista é maior do que parece: seu banco, o índice de busca se você tem, a fila, o log de monitoramento, o backup, e o provedor de modelo se você usa IA.</p>
 <p>Cada um desses tem um prazo próprio, quase sempre não definido por ninguém. Se você nunca escreveu uma política de retenção, o prazo real do seu sistema é "para sempre", que é a pior resposta possível numa auditoria.</p>
@@ -721,6 +809,8 @@ footer p{margin:0 0 .5rem}
         <li><a href="#os-prazos-em-um-lugar-s">Os prazos, em um lugar só</a></li>
         <li><a href="#o-prazo-de-7-dias-e-por-que-ele-morde">O prazo de 7 dias, e por que ele...</a></li>
         <li><a href="#o-que-isso-significa-para-a-sua-opera-o">O que isso significa para a sua...</a></li>
+        <li><a href="#a-m-dia-tem-prazo-pr-prio-e-maior-do-que">A mídia tem prazo próprio, e é m...</a></li>
+        <li><a href="#o-log-da-plataforma-n-o-arquivo">O log da plataforma não é arquivo</a></li>
         <li><a href="#onde-o-dado-fica-al-m-da-meta">Onde o dado fica, além da Meta</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>

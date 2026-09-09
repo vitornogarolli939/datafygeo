@@ -16,6 +16,9 @@ sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/marketing-templates/per-user-limits
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-pausing/
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=cZ_nyIUv5ic
+  - https://www.youtube.com/watch?v=ly5nOHFpXcI
+videos: [ly5nOHFpXcI, cZ_nyIUv5ic]
 internal_links:
   - /quantas-mensagens-por-segundo-posso-enviar
   - /numero-banido-no-whatsapp-o-que-fazer
@@ -84,6 +87,20 @@ Isso significa que:
 
 O que ajuda de verdade é do outro lado: mandar menos e melhor, para quem realmente quer receber. É chato ouvir isso quando a campanha está parada, mas é a única alavanca que existe.
 
+## A quinta causa, que a Meta escreve com essas palavras
+
+Existe uma recusa que não é limite, não é erro seu, e vem com uma redação tão vaga que quem lê fica sem saber o que fazer. O status volta dizendo, em resumo, que **a mensagem não foi entregue para manter a saúde do ecossistema.**
+
+Não há código para procurar nem ajuste de vazão que resolva. O que a frase quer dizer, na prática, é que a plataforma julgou que aquela pessoa provavelmente não quer receber você.
+
+O diagnóstico mais útil que já vi disso é o do Israel, olhando um número da própria base que recebia essa recusa sempre: *"porque esse número aqui eu não respondo ele. Quando a API envia mensagens, eu não costumo responder. Então, por isso que ele não entregou."*
+
+É a mesma lógica do limite por pessoa, aplicada na entrega individual: o destinatário nunca respondeu, então a mensagem seguinte para ele deixa de passar. Se você vê essa recusa concentrada em parte da base, você não tem um problema de campanha, tem uma lista com gente que não interage. Marcar esses contatos e pará-los é melhor que insistir, porque insistir alimenta o indicador que causou a recusa.
+
+::video: ly5nOHFpXcI | Dez minutos de disparo real por planilha. Em 06:29 aparece a mensagem falhando, em 08:52 ele abre o log e lê a recusa palavra por palavra, e em 09:55 explica por que só aquele número recebe isso.
+
+E vale a versão honesta do resumo dele sobre o assunto, porque ela evita horas procurando defeito onde não tem: *"às vezes a meta simplesmente não entrega porque ela não quer. Isso acontece."* Outras possibilidades banais da mesma família: cartão de crédito do portfólio com problema, ou saldo indisponível.
+
 ## Como disparar sem travar
 
 **Controle a vazão.** Não mande do laço direto. Fila com liberação em taxa constante, abaixo do teto.
@@ -95,6 +112,20 @@ O que ajuda de verdade é do outro lado: mandar menos e melhor, para quem realme
 **Olhe a qualidade antes.** Se o número está com a qualidade em queda, campanha grande é o pior momento para descobrir.
 
 **Limpe a base.** Número inválido consome tentativa e piora indicador. Se a sua lista tem contato de anos atrás sem interação, ela vai custar mais que render.
+
+## Se você dispara por planilha
+
+Vale um bloco à parte, porque a maior parte dos disparos no Brasil sai de uma planilha e não de código, e os erros de campanha nascem aí.
+
+**A coluna do telefone é obrigatória e o formato é rígido.** Código do país, DDD e número, tudo junto, sem símbolo: 55 mais DDD mais o número. Número salvo em formato antigo, sem o nono dígito, [vira destinatário inválido](/mandei-para-numero-que-nao-existe-e-nao-deu-erro), e você só descobre no relatório.
+
+**Qualquer outra coluna vira variável do template.** É o que permite personalizar nome, data e valor. O nome da coluna não precisa ser igual ao da variável, mas o mapeamento precisa estar certo, e uma variável mapeada para a coluna errada gera mil mensagens com o dado trocado sem dar erro nenhum.
+
+**Confira as três primeiras linhas antes de disparar.** É o único momento barato de descobrir que a planilha tem cabeçalho na linha errada ou telefone com espaço.
+
+**Agende no fuso certo.** O agendamento usa o fuso local de quem agenda, e não o do destinatário. Para base inteira no Brasil dá na mesma; para base espalhada, não.
+
+E o teste que evita o susto: coloque **o seu próprio número** na primeira linha da planilha e dispare para uma lista de três antes de disparar para dez mil. Você vê a mensagem que o cliente vai ver, com a variável já preenchida, e é a forma mais rápida de pegar erro de mapeamento.
 
 ## Perguntas frequentes
 

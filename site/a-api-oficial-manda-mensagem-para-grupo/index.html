@@ -136,7 +136,8 @@
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
         "https://business.whatsapp.com/policy",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
-        "https://app.datafyapi.com.br/docs"
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=dIIkttPeBS0"
       ]
     },
     {
@@ -192,6 +193,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/a-api-oficial-manda-mensagem-para-grupo#video-dIIkttPeBS0",
+      "name": "Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia",
+      "description": "Conexao em coexistencia por QR code, cadastro de webhook, primeiro envio e a falha real fora da janela de 24 horas",
+      "thumbnailUrl": "https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=dIIkttPeBS0",
+      "embedUrl": "https://www.youtube.com/embed/dIIkttPeBS0",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/a-api-oficial-manda-mensagem-para-grupo#article"
+      }
     }
   ]
 }
@@ -640,6 +660,21 @@ footer p{margin:0 0 .5rem}
 <p>Uma ferramenta que conecta por QR code opera como se fosse um celular. Por isso ela faz o que um celular faz: entra em grupo, manda mensagem para grupo, lê o que é dito ali. Para quem opera em comunidade, isso não é detalhe, é a operação inteira.</p>
 <p>Se o seu negócio é grupo de avisos, comunidade de alunos, condomínio ou time de campo que se coordena por grupo, a API oficial não substitui isso. Fingir o contrário só adia a descoberta.</p>
 <p>O que você precisa pesar do outro lado: essa capacidade vem junto com uma arquitetura que a Meta classifica como uso não autorizado, e portanto sem canal de recurso caso a conta seja restringida. É um trade-off real, e ele é seu para decidir.</p>
+<h2 id="o-grupo-tamb-m-n-o-vem-na-sincroniza-o">O grupo também não vem na sincronização</h2>
+<p>Um detalhe que fecha o assunto e costuma aparecer só depois da migração: quando você conecta um número em coexistência e recupera o histórico, <strong>as conversas de grupo não vêm.</strong></p>
+<p>Ou seja, não é só que a API não envia para grupo: ela também não te entrega o que já existia em grupo naquele número. Aquele conteúdo continua existindo apenas no aparelho.</p>
+<p>Isso importa em dois momentos. Se o seu atendimento usa grupos hoje, a migração não copia esse histórico para lugar nenhum, e vale exportar o que for necessário antes. E se você conta com o grupo como registro de alguma coisa, ele não vai virar dado consultável no seu sistema.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 03:17 aparece a tela em que se decide compartilhar o histórico, e em 04:11 o que fazer se você marcar errado. É a única chance de recuperar histórico, e ela não inclui grupo.</figcaption>
+</figure>
+
 <h2 id="o-que-fazer-se-voc-precisa-dos-dois">O que fazer se você precisa dos dois</h2>
 <p>Três desenhos aparecem na prática, e nenhum é perfeito.</p>
 <p><strong>Separar por finalidade.</strong> O número oficial cuida de atendimento e notificação individual, que é onde a API é forte. O grupo continua existindo no celular, operado por gente. Funciona, mas os dois mundos não conversam: o que acontece no grupo não chega ao seu sistema.</p>
@@ -687,6 +722,7 @@ footer p{margin:0 0 .5rem}
         <li><a href="#principais-pontos">Principais pontos</a></li>
         <li><a href="#por-que-o-desenho-assim">Por que o desenho é assim</a></li>
         <li><a href="#onde-a-ferramenta-de-qr-code-ganha">Onde a ferramenta de QR code ganha</a></li>
+        <li><a href="#o-grupo-tamb-m-n-o-vem-na-sincroniza-o">O grupo também não vem na sincro...</a></li>
         <li><a href="#o-que-fazer-se-voc-precisa-dos-dois">O que fazer se você precisa dos...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>

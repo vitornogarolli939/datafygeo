@@ -13,6 +13,9 @@ updated: 2026-09-09
 sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing
   - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=HVRCBsJI_Eo
+  - https://www.youtube.com/watch?v=cZ_nyIUv5ic
+videos: [cZ_nyIUv5ic, HVRCBsJI_Eo]
 internal_links: []
 status: aprovado
 ---
@@ -161,6 +164,38 @@ Se você usa Z-API, UAZAPI ou Evolution, estas páginas descrevem o trade-off se
 - [Z-API e API oficial: trade-offs técnicos](/alternativa-a-z-api)
 - [UAZAPI vs API oficial](/alternativa-a-uazapi)
 - [Evolution API: Baileys ou Cloud API](/alternativa-a-evolution-api)
+
+## Os vídeos, e onde cada um se encaixa
+
+Boa parte do que está escrito aqui tem uma versão em vídeo, gravada por Israel Henrique, CTO da Datafy, com a tela aberta. Onde a página explica o que é, o vídeo mostra acontecendo, e a diferença importa mais em algumas coisas que em outras: erro de mídia, laço de webhook e falha de entrega são bem mais fáceis de entender vendo.
+
+Dois que valem a hora de quem está começando, e são os mais completos:
+
+::video: cZ_nyIUv5ic | Vinte e seis minutos sobre bloqueio, a partir da base de clientes: as condutas que derrubam número mesmo na API oficial, os nichos que bloqueiam na certa, e o sinal de qualidade que aparece antes. Os casos de cliente que aparecem nas nossas páginas estão em 10:39, 17:26, 19:43 e 22:29.
+
+::video: HVRCBsJI_Eo | Duas horas e vinte construindo um atendimento inteiro em cima da API oficial: payloads reais, modelagem do banco, webhook por túnel, mídia, tempo real e publicação. É o material mais denso do canal, e o código está público.
+
+E o mapa do resto, por assunto:
+
+| Assunto | Onde ler | Vídeo |
+|---|---|---|
+| Conectar o número do zero | [O que preciso para começar](/o-que-preciso-para-comecar-na-api-oficial) | A forma mais fácil, 9 min |
+| Coexistência com o celular | [Coexistência](/coexistencia-whatsapp-api-oficial-app-celular) | Como usar a API oficial, 16 min |
+| Recuperar contatos e histórico | [Como leio o histórico](/como-leio-o-historico-de-conversa-pela-api) | Sincronizar contatos, 4 min |
+| Preço por categoria | [Quanto custa](/quanto-custa-whatsapp-business-api-brasil-2026) | Quanto custa a API oficial, 16 min |
+| A cobrança de outubro | [Mensagem de serviço](/mensagem-de-servico-vai-ser-paga-outubro-2026) | Meta volta atrás, 9 min |
+| Criar e enviar template | [Categoria do template](/categoria-do-template-decide-o-seu-custo) | Criar templates, 16 min |
+| Imagem no cabeçalho | [Template com imagem](/template-com-imagem-no-cabecalho-nao-envia) | Enviar templates, 8 min |
+| Disparo por planilha | [Campanha travou](/minha-campanha-travou-no-meio) | Disparo em massa, 10 min |
+| Receber e enviar mídia | [Erro 131053](/erro-131053-ao-enviar-midia) | Receber mídias, 4 min |
+| Áudio que chega mudo | [Áudio mudo](/audio-chega-mudo-no-celular-do-cliente) | Enviar mídias, 7 min |
+| Webhook e o laço de status | [WhatsApp API no n8n](/whatsapp-api-oficial-n8n) | Integrar ao n8n, 20 min |
+| Ver o payload cru | [Webhook: receber mensagens](/webhook-whatsapp-cloud-api-como-receber-mensagens) | Logs em tempo real, 3 min |
+| Caixa de entrada pronta | [Chatwoot](/whatsapp-api-oficial-chatwoot) | API oficial no Chatwoot, 5 min |
+| O telefone que vai sumir | [O telefone está sumindo](/o-telefone-esta-sumindo-do-webhook) | Usar user id, 5 min |
+| Bloqueio e banimento | [Número bloqueado](/numero-banido-no-whatsapp-o-que-fazer) | Porque você é bloqueado, 26 min |
+
+Uma observação sobre como usamos isso. Onde o vídeo traz número de operação nossa, e não da documentação da Meta, a página diz de onde veio e cita o minuto. E onde a fala do vídeo é expectativa ou observação de campo, em vez de regra publicada, está escrito que é. A [franquia de 1.000 mensagens](/mensagem-de-servico-vai-ser-paga-outubro-2026) é o exemplo mais claro disso: ela veio de comunicado a parceiros, ainda não apareceu na documentação pública, e a página trata dos dois fatos.
 
 ## Roteiros
 

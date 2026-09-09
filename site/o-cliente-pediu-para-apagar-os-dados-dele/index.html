@@ -136,7 +136,9 @@
         "https://www.gov.br/anpd/pt-br/acesso-a-informacao/institucional/atos-normativos/regulamentacoes_anpd/resolucao-cd-anpd-no-2-de-27-de-janeiro-de-2022",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
         "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention",
-        "https://developers.openai.com/api/docs/guides/your-data"
+        "https://developers.openai.com/api/docs/guides/your-data",
+        "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+        "https://www.youtube.com/watch?v=ZHYNjpu5ReE"
       ]
     },
     {
@@ -192,6 +194,25 @@
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/o-cliente-pediu-para-apagar-os-dados-dele#video-LIT4FxgqHhE",
+      "name": "Logs de mensagens em tempo real na API oficial do WhatsApp",
+      "description": "Ver o payload cru de cada mensagem que entra e sai, e por quanto tempo esse log fica",
+      "thumbnailUrl": "https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+      "embedUrl": "https://www.youtube.com/embed/LIT4FxgqHhE",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/o-cliente-pediu-para-apagar-os-dados-dele#article"
+      }
     }
   ]
 }
@@ -698,6 +719,51 @@ CREATE TABLE pedidos_de_exclusao (
   concluido_em  timestamptz
 );</code></p>
 <p>Sem isso, "apagamos tudo" é uma afirmação que ninguém consegue sustentar seis meses depois, quando quem executou já saiu da empresa.</p>
+<h2 id="os-prazos-que-trabalham-a-seu-favor">Os prazos que trabalham a seu favor</h2>
+<p>Uma parte do inventário se resolve pelo tempo, e conhecer os prazos evita prometer o que você não controla e evita procurar dado onde ele já não está.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Onde</th>
+<th>Prazo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mensagem em trânsito na Meta</td>
+<td>Não é armazenada para consulta posterior pela API</td>
+</tr>
+<tr>
+<td>Mídia recebida, pelo identificador do webhook</td>
+<td><strong>7 dias</strong></td>
+</tr>
+<tr>
+<td>Mídia que você subiu para enviar</td>
+<td><strong>30 dias</strong></td>
+</tr>
+<tr>
+<td>Log de mensagens do painel da Datafy</td>
+<td><strong>7 dias</strong>, e no máximo <strong>100 mensagens por conversa</strong></td>
+</tr>
+<tr>
+<td>Seu banco de dados</td>
+<td>O que você definir, e é o único que você controla de verdade</td>
+</tr>
+</tbody>
+</table></div>
+<p>A leitura prática disso: <strong>quase todo o dado que você precisa apagar está no seu lado.</strong> A cópia que a plataforma tem é curta e rotativa, e a Meta não é um arquivo que você consulte.</p>
+<p>E o inverso também vale, e é o erro mais comum na direção oposta: se você <strong>não</strong> baixou a mídia, o identificador expira em <strong>7 dias</strong> e o arquivo sai do seu alcance, e aí um pedido de acesso aos próprios dados não tem o que entregar. Retenção curta ajuda no apagamento e atrapalha no acesso, e é você que decide qual dos dois quer, por tipo de dado.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=LIT4FxgqHhE" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg" alt="Miniatura do vídeo: Logs de mensagens em tempo real na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Logs de mensagens em tempo real na API oficial do WhatsApp</b><span>Canal DATA7 · 3 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Três minutos mostrando o log ao vivo, e em 02:57 os prazos de retenção ditos com clareza. Vale ver junto com o vídeo de mídias, que em 03:53 dá o prazo do arquivo recebido.</figcaption>
+</figure>
+
 <h2 id="tr-s-coisas-que-costumam-ser-confundidas">Três coisas que costumam ser confundidas</h2>
 <p><strong>Apagar não é a única opção.</strong> O pedido pode ser de anonimização ou de bloqueio, que são coisas diferentes com efeitos diferentes. Vale ter campos separados no seu modelo, e não tratar tudo como exclusão.</p>
 <p><strong>Nem todo dado é apagável a pedido.</strong> Existem hipóteses em que a guarda é exigida ou legítima, e a decisão sobre isso é jurídica, não de engenharia. O que cabe a você é saber onde o dado está e conseguir apagar quando a decisão for essa.</p>
@@ -745,6 +811,7 @@ CREATE TABLE pedidos_de_exclusao (
         <li><a href="#a-pe-a-que-faz-isso-funcionar-uma-chave">A peça que faz isso funcionar: u...</a></li>
         <li><a href="#cada-lugar-pede-uma-t-cnica">Cada lugar pede uma técnica</a></li>
         <li><a href="#deixe-registro">Deixe registro</a></li>
+        <li><a href="#os-prazos-que-trabalham-a-seu-favor">Os prazos que trabalham a seu fa...</a></li>
         <li><a href="#tr-s-coisas-que-costumam-ser-confundidas">Três coisas que costumam ser con...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
