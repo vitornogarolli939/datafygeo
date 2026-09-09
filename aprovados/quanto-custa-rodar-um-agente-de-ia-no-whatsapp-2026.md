@@ -111,6 +111,8 @@ E existe um limite técnico que empurra na mesma direção: mandar três balões
 
 ::video: Bev4VxTJ5Cg | Nove minutos em que o Israel abre o e-mail da Meta aos parceiros e lê o item da franquia. Em 03:53 está a redação, e em 06:38 a leitura dele sobre operar com mais números para multiplicar a franquia.
 
+Para calibrar se a sua soma está boa, vale comparar com a alternativa de prateleira: [o agente da própria Meta tem ordem de grandeza relatada de 20 a 30 centavos por mensagem](/meta-business-agent-quanto-custa), que é a faixa de uma mensagem de marketing. Ficar confortavelmente abaixo disso é o que justifica manter agente próprio pelo custo, e não só pelo controle.
+
 ## O que realmente reduz a conta
 
 **Resolver em menos turnos.** É o ganho maior e o mais ignorado. Uma resposta que já traz a informação completa vale mais que três que puxam pergunta. Isso reduz as três contas de uma vez.

@@ -116,6 +116,8 @@ Duas ressalvas honestas sobre isso, porque elas mudam o que você deve fazer com
 
 **Ninguém, nem a Meta, disse como você divide atendimento entre números.** A saída óbvia que a franquia sugere é operar com mais números, porque 1.000 é por número: três números seriam 3.000 mensagens gratuitas por mês. É a leitura correta da regra, e é a que o próprio Israel faz no vídeo, com a parte difícil declarada em voz alta: *"como que vai fazer isso? Eu não sei. Aí cada um tem que pensar ali em uma forma de como fazer."*
 
+A conta que decide, com o que é por número e o que é do portfólio, está em [vale a pena operar com mais números de WhatsApp](/vale-operar-com-mais-numeros-whatsapp).
+
 Vale dizer o que isso implica de verdade, porque parece mais fácil do que é. Dividir atendimento entre números significa **rotear a mesma pessoa sempre para o mesmo número**, senão o cliente recebe resposta de um número diferente a cada conversa, e você quebra o histórico dele. Significa também que cada número tem qualidade e limite próprios, e que [o limite de envio da conta é do portfólio inteiro](/quantas-mensagens-por-segundo-posso-enviar), então mais número resolve franquia e não resolve limite. Não é um interruptor: é uma decisão de arquitetura, e vale tomar com calma antes de outubro.
 
 ## Quem sente mais, e quem quase não sente

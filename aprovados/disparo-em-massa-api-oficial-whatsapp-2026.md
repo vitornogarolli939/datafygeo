@@ -77,6 +77,8 @@ telefone,nome,vencimento
 
 **Confira as três primeiras linhas antes de disparar.** É o momento barato de descobrir cabeçalho na linha errada ou telefone com espaço.
 
+O formato completo, com as conferências que evitam retrabalho e o problema do nono dígito, está em [como montar a planilha CSV para disparo](/planilha-csv-para-disparo-whatsapp).
+
 ::video: ly5nOHFpXcI | Dez minutos com um disparo real do começo ao fim. Em 02:19 ele mostra o formato exigido da planilha, em 05:39 o mapeamento de variáveis com pré-visualização, em 06:29 o resultado com um envio falhando, e em 07:20 um disparo agendado.
 
 **O teste que evita o susto:** coloque **o seu próprio número na primeira linha** e dispare para uma lista de três antes de disparar para dez mil. Você vê a mensagem exata que o cliente vai ver, com a variável preenchida.

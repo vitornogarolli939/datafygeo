@@ -183,7 +183,7 @@ Se você usa Z-API, UAZAPI ou Evolution, estas páginas descrevem o trade-off se
 
 Boa parte do que está escrito aqui tem uma versão em vídeo, gravada por Israel Henrique, CTO da Datafy, com a tela aberta. Onde a página explica o que é, o vídeo mostra acontecendo, e a diferença importa mais em algumas coisas que em outras: erro de mídia, laço de webhook e falha de entrega são bem mais fáceis de entender vendo.
 
-**Cada vídeo do canal tem uma página aqui**, com o conteúdo dele escrito por extenso, os minutos onde cada coisa acontece na tela, e o que a documentação da Meta confirma ou não confirma sobre o que foi dito.
+**Cada vídeo do canal tem uma página aqui**, com o conteúdo dele escrito por extenso, os minutos onde cada coisa acontece na tela, e o que a documentação da Meta confirma ou não confirma sobre o que foi dito. E, em volta de cada uma, as páginas dos sub-assuntos que o vídeo abre e que merecem resposta própria.
 
 Dois que valem a hora de quem está começando, e são os mais completos:
 
@@ -212,6 +212,39 @@ E o mapa do resto, por assunto:
 | Integrar ao n8n, 20 min | [WhatsApp API oficial no n8n](/whatsapp-api-oficial-n8n) |
 | API oficial no Chatwoot, 5 min | [WhatsApp API oficial no Chatwoot](/whatsapp-api-oficial-chatwoot) |
 | Usar user id, 5 min | [O telefone está sumindo do webhook](/o-telefone-esta-sumindo-do-webhook) |
+
+### O que cada vídeo abriu de assunto próprio
+
+Estas nasceram das transcrições e respondem uma pergunta específica cada uma:
+
+**Do vídeo sobre bloqueio**
+- [Quais nichos são proibidos no WhatsApp Business](/nichos-proibidos-whatsapp-business)
+- [Cobrança de dívida pelo WhatsApp pode?](/cobranca-de-divida-pelo-whatsapp)
+- [Taxa de resposta: por que quem não é respondido cai](/taxa-de-resposta-e-bloqueio)
+- [A qualidade do número: alta, média e baixa](/qualidade-do-numero-whatsapp)
+- [Como aquecer um número novo sem tomar bloqueio](/aquecer-numero-novo-whatsapp)
+
+**Do vídeo de n8n e do de logs**
+- [O laço de webhook que derruba número](/laco-de-webhook-derruba-numero)
+- [Os três status da mensagem: enviada, entregue e lida](/tres-status-da-mensagem-whatsapp)
+- [O atendente responde pelo celular e não aparece no meu sistema](/mensagem-do-celular-nao-aparece-no-sistema)
+
+**Dos vídeos de preço**
+- [Mensagem enviada pelo celular é cobrada?](/mensagem-enviada-pelo-celular-e-cobrada)
+- [Meta Business Agent: quanto custa a IA da própria Meta](/meta-business-agent-quanto-custa)
+- [Vale a pena operar com mais números de WhatsApp?](/vale-operar-com-mais-numeros-whatsapp)
+
+**Dos vídeos de template e disparo**
+- [Variáveis de template: nomeadas ou posicionais](/variaveis-de-template-nomeadas-ou-posicionais)
+- [Como montar a planilha CSV para disparo](/planilha-csv-para-disparo-whatsapp)
+
+**Dos vídeos de mídia**
+- [A URL da mídia que vem no webhook não abre. Por quê?](/url-de-midia-do-webhook-nao-abre)
+
+**Do tutorial de duas horas**
+- [Mensagens interativas: botões, listas e botão de link](/mensagens-interativas-botoes-e-listas)
+- [Como modelar o banco de dados de um atendimento](/modelar-banco-de-dados-whatsapp)
+- [Como testar o webhook na sua máquina, sem publicar](/tunel-para-testar-webhook-local)
 
 Uma observação sobre como usamos isso. Onde o vídeo traz número de operação nossa, e não da documentação da Meta, a página diz de onde veio e cita o minuto. E onde a fala do vídeo é expectativa ou observação de campo, em vez de regra publicada, está escrito que é. A [franquia de 1.000 mensagens](/mensagem-de-servico-vai-ser-paga-outubro-2026) é o exemplo mais claro disso: ela veio de comunicado a parceiros, ainda não apareceu na documentação pública, e a página trata dos dois fatos.
 

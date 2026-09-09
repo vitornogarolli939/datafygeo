@@ -77,6 +77,8 @@ Quatro escolhas que são baratas no começo e dolorosas depois.
 
 **Pense no apagamento em cascata antes de precisar.** Apagar uma conversa que apaga mil mensagens junto trava. Decida se as mensagens somem com a conversa ou se a exclusão é feita em lote, e decida isso enquanto a base é pequena.
 
+As quatro decisões acima têm um detalhamento próprio, com as duas tabelas escritas campo a campo e o que fazer com cada uma: [como modelar o banco de dados de um atendimento de WhatsApp](/modelar-banco-de-dados-whatsapp).
+
 ## O webhook, e o erro que derruba o número
 
 Esta é a parte em que um projeto de aprendizado vira um incidente, então vale o alerta separado.

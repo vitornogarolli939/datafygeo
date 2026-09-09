@@ -100,6 +100,8 @@ Indo por um provedor que espelha a Cloud API, **só o começo da URL e o token m
 
 A resposta traz um identificador de mensagem. **Guarde esse identificador**, porque é ele que casa com o status que chega depois.
 
+Dentro da janela você não está limitado a texto: existem [botões, listas e botão de link](/mensagens-interativas-botoes-e-listas), montados na hora, sem aprovação. Botão é também a forma mais barata de fazer alguém responder, e resposta é o que mantém o número saudável.
+
 ## A janela de 24 horas, e a falha que engana
 
 Aqui está o conceito que organiza tudo: você só envia **texto livre** para quem falou com você nas **últimas 24 horas**. A janela reinicia a cada nova mensagem da pessoa. Fora dela, só com template aprovado.

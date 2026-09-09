@@ -110,6 +110,8 @@ Três coisas que costumam morder nessa etapa, e todas apareceram na gravação a
 
 **Trocar para produção é um passo manual que dá para esquecer.** Publicou a aplicação? O webhook continua apontando para o túnel da sua máquina. Enquanto o túnel estiver ligado, funciona, e você não percebe. Quando desligar, para.
 
+As três armadilhas estão detalhadas em [como testar o webhook na sua máquina](/tunel-para-testar-webhook-local).
+
 ::video: HVRCBsJI_Eo | O tutorial completo, de duas horas, e em 1:38:16 está exatamente esse erro: o `403` acontecendo, o diagnóstico de host bloqueado, e o `200` depois do ajuste. Em 2:19:25 ele troca o endereço do túnel pelo de produção e mostra a mensagem parando de chegar até fazer isso.
 
 ## Perguntas frequentes

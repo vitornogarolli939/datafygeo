@@ -692,6 +692,7 @@ def verificar():
 <p><strong>O framework pode recusar o domínio do túnel.</strong> O sintoma é um <code>403</code> sem explicação, com o payload aparecendo no painel do túnel mas nunca chegando na aplicação. Vários frameworks têm lista de hosts permitidos em desenvolvimento, e o endereço do túnel precisa entrar nela. Depois de mexer nisso, reinicie o servidor: a mudança não costuma pegar quente.</p>
 <p><strong>O endereço do túnel muda.</strong> Cada vez que ele sobe, é outro endereço, e o webhook cadastrado aponta para o anterior. É a causa boba mais comum de "parou de funcionar do nada".</p>
 <p><strong>Trocar para produção é um passo manual que dá para esquecer.</strong> Publicou a aplicação? O webhook continua apontando para o túnel da sua máquina. Enquanto o túnel estiver ligado, funciona, e você não percebe. Quando desligar, para.</p>
+<p>As três armadilhas estão detalhadas em <a href="/tunel-para-testar-webhook-local">como testar o webhook na sua máquina</a>.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
   <span class="thumb">

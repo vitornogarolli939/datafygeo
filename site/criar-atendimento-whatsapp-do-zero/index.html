@@ -704,6 +704,7 @@ footer p{margin:0 0 .5rem}
 <p><strong>Guarde o payload cru.</strong> Uma coluna com o evento inteiro, ao lado dos campos que você extraiu. Quando aparecer um campo novo que você quer, dá para reprocessar. Sem isso, o histórico daquele período não tem como ser recuperado.</p>
 <p><strong>Separe enviada de entregue.</strong> São estados diferentes, e juntar os dois é o que faz relatório mentir. Cada mensagem enviada gera três eventos de status, e o painel precisa refletir isso.</p>
 <p><strong>Pense no apagamento em cascata antes de precisar.</strong> Apagar uma conversa que apaga mil mensagens junto trava. Decida se as mensagens somem com a conversa ou se a exclusão é feita em lote, e decida isso enquanto a base é pequena.</p>
+<p>As quatro decisões acima têm um detalhamento próprio, com as duas tabelas escritas campo a campo e o que fazer com cada uma: <a href="/modelar-banco-de-dados-whatsapp">como modelar o banco de dados de um atendimento de WhatsApp</a>.</p>
 <h2 id="o-webhook-e-o-erro-que-derruba-o-n-mero">O webhook, e o erro que derruba o número</h2>
 <p>Esta é a parte em que um projeto de aprendizado vira um incidente, então vale o alerta separado.</p>
 <p>Cada mensagem que você envia gera <strong>três eventos de volta</strong>: enviada, entregue e lida. Eles chegam no <strong>mesmo endereço</strong> das mensagens de cliente. Se o seu código responde tudo que chega, cada resposta gera três status, cada status vira outra resposta, e isso multiplica exponencialmente.</p>
