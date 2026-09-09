@@ -652,3 +652,133 @@ qualquer tentativa; a busca da comunidade de desenvolvedores da Meta é renderiz
 cliente e devolve a mesma lista para qualquer consulta; Botpress e Dify só têm Discord;
 `forum.typebot.io` não expõe API. As três varreduras independentes bateram nos mesmos
 muros, então não há material a recuperar aí.
+
+
+---
+---
+
+# AS PERGUNTAS QUE O PÚBLICO FAZ (traduzido de todos os levantamentos)
+
+Os quatro levantamentos anteriores mediram dor de quem **já está com o problema na
+mão**, e o vocabulário é de quem depura. Esta lista é a tradução para a pergunta que o
+dono de SaaS e o gestor de automação fazem **antes** de ter o problema. É esta lista que
+deve virar título de página, porque é assim que a pergunta é digitada e é assim que a
+pessoa fala com uma IA.
+
+Ordem: pela sequência em que a dúvida aparece na vida do leitor, não por volume.
+
+## Antes de decidir
+
+**"Quanto isso vai me custar por mês?"**
+Não tem taxa de acesso: paga-se por mensagem entregue. Marketing custa cerca de dez vezes
+uma mensagem de utilidade, e é aí que a conta estoura. **Em 1º de outubro de 2026 a
+resposta muda**: mensagem de atendimento passa a ser cobrada.
+
+**"Preciso de CNPJ e Business Manager?"**
+Para a API oficial, sim. É justamente o que as ferramentas de QR code dispensam, e é a
+razão pela qual elas parecem mais fáceis no primeiro dia.
+
+**"Em quanto tempo eu começo a mandar mensagem?"**
+Minutos por um provedor, semanas indo direto na Meta, porque tem App Review com vídeo.
+
+**"Posso mandar mensagem para qualquer número?"**
+Não. Fora da janela de 24 horas desde a última mensagem do cliente, só sai template
+aprovado, e a aprovação leva tempo. **É a pergunta que mais quebra expectativa de quem
+vem de ferramenta de QR code**, e a que mais mata projeto depois de pronto.
+
+**"E para grupo, dá?"**
+Não como no aplicativo. Dez discussões com respostas contraditórias no Stack Overflow. Se
+a operação vive de grupo, isso decide a escolha inteira.
+
+**"Vou tomar ban?"**
+API oficial não é blindagem. Cinco condutas derrubam número mesmo com template aprovado,
+e a primeira é prospectar lista fria.
+
+## Na hora de conectar
+
+**"Vou perder meu número?"**
+Não, a linha é sua. Mas tem uma escolha na conexão que quase ninguém explica: **sem
+coexistência, o número sai do aplicativo do celular.** E não dá para mudar de ideia
+depois sem refazer tudo.
+
+**"Meus atendentes continuam respondendo pelo celular?"**
+Só com coexistência. E ela traz 180 dias de histórico, sem grupos, com prazo de 24 horas
+para disparar a sincronização.
+
+**"Meu cliente consegue conectar o WhatsApp dele sozinho, dentro do meu produto?"**
+Consegue, com Embedded Signup, e isso depende do papel do seu fornecedor na Meta.
+**É a pergunta central de quem vende SaaS** e a que decide se o produto escala ou se
+alguém vai pedir acesso à conta de cada cliente.
+
+**"Se eu trocar de fornecedor depois, perco alguma coisa?"**
+Depende de uma coisa só: se o número está na **sua** Business Manager ou na do
+fornecedor. É a pergunta a fazer antes de assinar qualquer contrato.
+
+## Quando entra IA
+
+**"Posso colocar um agente de IA respondendo no WhatsApp?"**
+Pode. Mas o Brasil é hoje **o único mercado grande em que a Meta cobra por mensagem livre
+de quem ela classifica como provedor de IA**. Começou em março de 2026, foi revogado para
+a Europa em maio, e aqui continua.
+
+**"Quanto custa rodar esse agente?"**
+São três contas somadas, e quase todo orçamento esquece uma: o token do modelo, a
+mensagem da Meta, e a possível cobrança de provedor de IA.
+
+**"A Meta não lançou o agente dela? Isso me atrapalha?"**
+Lançou, em junho de 2026, cobrado por token. Quem vende agente precisa saber comparar.
+
+**"Posso mandar a conversa do meu cliente para a OpenAI?"**
+Aqui mora a exposição que ninguém escreveu: **nem a OpenAI nem a Anthropic oferecem as
+cláusulas contratuais padrão da ANPD**, e o prazo para adotá-las venceu em agosto de 2025.
+Existe saída, e ela é técnica: rotear o modelo por uma região da União Europeia, que a
+ANPD reconheceu como adequada em 2026.
+
+**"Posso usar as conversas para melhorar meu produto?"**
+Não sob a justificativa de execução de contrato. A ANPD fechou essa porta em 2025, e vale
+para quem ajusta prompt, avalia qualidade ou treina classificador com conversa de cliente.
+
+## Quando escala
+
+**"Quantas mensagens por segundo eu consigo mandar?"**
+Oitenta por número, e vinte se o número estiver em coexistência. Existe limite separado
+por contato: uma mensagem a cada seis segundos para a mesma pessoa.
+
+**"Disparei a campanha e ela travou no meio. O que houve?"**
+Provavelmente o mecanismo que a Meta usa para segurar entrega e medir reação, ou o limite
+por pessoa, que é somado entre todas as empresas e **não se contorna com mais número nem
+trocando de fornecedor**.
+
+**"Recebi 200, a API disse que enviou, e o cliente não recebeu."**
+O maior grupo de perguntas sem resposta boa em toda a comunidade técnica.
+
+## Quando dá problema
+
+**"Dá para ler o histórico de conversa pela API?"**
+Não existe endpoint para isso, e quase todo mundo assume que existe. Se você não guardar,
+não tem.
+
+**"Por quanto tempo o WhatsApp guarda minhas mensagens?"**
+Trinta dias. O histórico da sua operação é responsabilidade sua desde o primeiro dia.
+
+**"O áudio que eu mando chega mudo no celular do cliente."**
+Verbatim de relato em português. É mp3 no lugar de OGG/Opus, e sem a marcação de mensagem
+de voz. Ninguém explicou isso em português.
+
+**"Meu template com imagem no cabeçalho não envia."**
+A URL de exemplo que a Meta devolve é uma armadilha: o caminho é subir o arquivo e usar o
+identificador de mídia.
+
+**"O cliente pediu para apagar os dados dele. Como eu faço?"**
+A resposta honesta inclui o que os artigos esquecem: banco de vetores, fila, log de
+monitoramento e backup.
+
+## Por que essa lista é diferente das anteriores
+
+As listas 14 e complementos são **pautas de solução**, escritas no vocabulário de quem
+depura. Esta é a **lista de entrada**, no vocabulário de quem decide. As duas se ligam: a
+pergunta simples é o título e a primeira dobra, o conteúdo técnico é o corpo, e quem chega
+pela pergunta técnica cai na mesma página.
+
+Regra prática ao escrever: **o título é a pergunta desta lista; a prova é o achado das
+outras.**
