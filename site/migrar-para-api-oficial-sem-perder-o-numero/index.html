@@ -755,8 +755,8 @@ footer p{margin:0 0 .5rem}
 Header: Client-Token: {token}
 Body:   { "phone": "5511999999999", "message": "Olá" }</code></p>
 <p>Depois, na Cloud API:</p>
-<p><code>POST https://graph.facebook.com/v21.0/{phone_number_id}/messages
-Header: Authorization: Bearer {token}
+<p><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+Header: Authorization: Bearer sk_live_xxx
 Body:   {
           "messaging_product": "whatsapp",
           "to": "5511999999999",

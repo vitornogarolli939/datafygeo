@@ -15,8 +15,8 @@ sources:
   - https://developers.facebook.com/docs/graph-api/webhooks/getting-started
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
   - https://app.datafyapi.com.br/docs
-  - https://www.youtube.com/watch?v=HVRCBsJI_Eo
-videos: [HVRCBsJI_Eo]
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+videos: [dIIkttPeBS0]
 internal_links:
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
   - /webhook-chega-duplicado
@@ -113,27 +113,94 @@ Em ferramentas de fluxo, o corpo costuma chegar já interpretado, e o corpo brut
 
 **Aceitar o risco de forma consciente.** Se o endpoint tem uma URL longa e imprevisível, e o dano de uma mensagem forjada é baixo, dá para conviver. Mas isso é uma decisão, não um esquecimento: escreva num lugar visível que aquele endpoint não valida assinatura.
 
-## Se você recebe por uma plataforma, e não direto da Meta
+## Se você recebe pela Datafy: a assinatura é outra, e é melhor
 
-Essa parte precisa estar aqui, porque é onde a maioria dos leitores brasileiros está, e ignorá-la deixaria a página bonita e inútil para eles.
+Esta parte precisa estar aqui, porque é onde a maioria dos leitores brasileiros está.
 
-A assinatura `X-Hub-Signature-256` é um mecanismo da Meta, calculado com o segredo do **aplicativo Meta**. Quando você recebe o webhook direto da Cloud API, com o seu próprio aplicativo, tudo acima se aplica.
+O `X-Hub-Signature-256` é um mecanismo da Meta, calculado com o segredo do **aplicativo Meta**. Quando o webhook chega por um intermediário, quem recebe da Meta é ele, e quem faz o `POST` no seu endereço também. Então a pergunta muda: **o que esse intermediário me dá para eu confirmar que o `POST` veio dele?**
 
-Quando o webhook chega por uma plataforma intermediária, quem recebe da Meta é ela, e quem faz o `POST` no seu endereço é ela. Aí a pergunta muda de "como valido a assinatura da Meta" para "**o que essa plataforma me dá para eu confirmar que o `POST` veio dela**". E a resposta honesta, no caso da Datafy hoje, é que **não há cabeçalho de assinatura**: perguntado exatamente isso durante a gravação do tutorial, o Israel responde que o endpoint "fica aberto" e que a Datafy "não manda header de assinatura por enquanto".
+No caso da Datafy, a resposta é um esquema próprio, com três cabeçalhos em toda entrega:
 
-::video: HVRCBsJI_Eo | Em 1:30:22 a pergunta aparece na tela, durante a montagem do webhook do projeto, e a resposta é essa. É um exemplo de por que vale ler a documentação do intermediário em vez de assumir que ele repassa o que a Meta manda.
+| Cabeçalho | Para que serve |
+|---|---|
+| `x-datafy-delivery-id` | UUID único da entrega. **Use como chave de idempotência** |
+| `x-datafy-timestamp` | Unix timestamp de quando a entrega foi assinada |
+| `x-datafy-signature-256` | HMAC-SHA256 no formato `sha256=<hex>` |
 
-Então, se é o seu caso, o que fazer, em ordem de esforço:
+Os dois últimos só aparecem **quando a assinatura está ativada** para aquele número, na aba Webhooks do painel. Ao ativar, você recebe um secret (`whsec_...`), e o mesmo secret vale para todas as URLs daquele número.
 
-**Use um caminho impossível de adivinhar.** Não `/webhook`. Um caminho com um componente aleatório longo, tratado como segredo, é a proteção mais barata que existe e resolve varredura automatizada.
+Duas diferenças em relação ao esquema da Meta, e as duas são a favor:
 
-**Exija um segredo seu na requisição.** Se o cadastro do webhook aceita um parâmetro na URL, coloque um valor secreto ali e recuse tudo que chegar sem ele. É bem mais fraco que HMAC, porque o segredo viaja na requisição, e é bem melhor que nada.
+**O timestamp entra na assinatura.** O HMAC é calculado sobre `{timestamp}.{corpo}`, e não sobre o corpo sozinho. Isso permite **rejeitar entregas antigas**, o que protege contra alguém capturar uma requisição válida e reenviar depois. O esquema da Meta não tem esse componente.
 
-**Restrinja por origem, se conseguir a lista.** Só faz sentido com endereços de saída documentados e estáveis. Confirme com o fornecedor antes de depender disso, porque bloquear a origem errada te deixa sem receber nada.
+**Existe um identificador de entrega.** O `x-datafy-delivery-id` resolve de graça o problema de [webhook processado duas vezes](/webhook-chega-duplicado): guarde o identificador e ignore o que já viu.
 
-**Nunca confie no conteúdo para decidir coisa sensível.** É o mais importante e não depende de fornecedor: trate o telefone que chega no payload como **alegação**, não como identidade comprovada. Se um agente consulta pedido pelo telefone recebido, ele entrega dado de cliente para quem descobrir a URL. Peça um dado que só a pessoa sabe antes de devolver informação, e a assinatura deixa de ser a sua única linha de defesa.
+### Validando, com o corpo cru
 
-**Registre a decisão.** Se você aceitou operar sem validação, escreva isso onde o próximo desenvolvedor vá ler. A diferença entre risco assumido e risco esquecido é essa linha.
+A regra número um continua sendo a mesma, e continua sendo o erro mais comum: **use o corpo exatamente como ele chegou**, antes de qualquer interpretação. Interpretar e reserializar muda os bytes e a assinatura não bate.
+
+```js
+import express from 'express'
+import crypto from 'node:crypto'
+
+const app = express()
+
+// express.raw preserva o corpo original. express.json() destruiria a verificação
+app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) => {
+  const assinatura = req.get('x-datafy-signature-256') ?? ''
+  const timestamp  = req.get('x-datafy-timestamp') ?? ''
+  const corpo      = req.body.toString('utf8')
+
+  const esperada = 'sha256=' + crypto
+    .createHmac('sha256', process.env.DATAFY_WEBHOOK_SECRET)
+    .update(`${timestamp}.${corpo}`)
+    .digest('hex')
+
+  const a = Buffer.from(assinatura)
+  const b = Buffer.from(esperada)
+  if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
+    return res.sendStatus(401)
+  }
+
+  // Rejeita entregas antigas: protege contra reenvio de requisição capturada
+  if (Math.abs(Math.floor(Date.now() / 1000) - Number(timestamp)) > 300) {
+    return res.sendStatus(401)
+  }
+
+  res.sendStatus(200)          // responda primeiro
+  processarEmBackground(JSON.parse(corpo))
+})
+```
+
+Em PHP, o corpo cru vem de `php://input`, e o resto é o mesmo:
+
+```php
+$corpo      = file_get_contents('php://input');   // corpo cru
+$assinatura = $_SERVER['HTTP_X_DATAFY_SIGNATURE_256'] ?? '';
+$timestamp  = $_SERVER['HTTP_X_DATAFY_TIMESTAMP'] ?? '';
+
+$esperada = 'sha256=' . hash_hmac('sha256', $timestamp . '.' . $corpo, getenv('DATAFY_WEBHOOK_SECRET'));
+
+if (!hash_equals($esperada, $assinatura)) {
+    http_response_code(401);
+    exit;
+}
+
+if (abs(time() - (int) $timestamp) > 300) {
+    http_response_code(401);
+    exit;
+}
+
+http_response_code(200);
+```
+
+Repare na ordem nos dois exemplos: **responda 200 primeiro, processe depois.** O prazo de resposta é de **20 segundos**, e processamento síncrono longo estoura esse tempo e conta como falha na entrega.
+
+### Trocando o secret
+
+Regenerar o secret pelo painel **invalida o anterior imediatamente**: a próxima entrega já sai assinada com o novo valor. Não existe janela de transição, então atualize o secret no seu servidor junto com a troca, ou as entregas passam a ser recusadas por ele.
+
+E desativar a assinatura faz as entregas voltarem a sair sem os dois cabeçalhos. Os webhooks continuam funcionando normalmente, só sem verificação de origem.
 
 ## O que acontece se você não validar
 
@@ -157,9 +224,13 @@ O segredo do aplicativo, encontrado no painel do app. Não é o token de acesso,
 
 Quase certamente é o corpo reconstruído. Teste com uma mensagem que tenha acento: se essa falha e "oi" passa, está confirmado.
 
-### Recebo por uma plataforma intermediária. Valido do mesmo jeito?
+### Recebo pela Datafy. Valido do mesmo jeito?
 
-Não. A assinatura é calculada com o segredo do aplicativo Meta, e quem recebe da Meta nesse desenho é a plataforma. No caso da Datafy, hoje não há cabeçalho de assinatura no repasse, então a proteção passa a ser caminho secreto, segredo próprio na requisição e nunca tratar o telefone recebido como identidade comprovada.
+O princípio é o mesmo, e os cabeçalhos são outros. A Datafy assina com `x-datafy-signature-256`, sobre `{timestamp}.{corpo}`, usando o secret `whsec_...` que você ativa na aba Webhooks do número. O `X-Hub-Signature-256` da Meta não se aplica nesse desenho, porque quem recebe da Meta é o intermediário.
+
+### O que é o `x-datafy-delivery-id`?
+
+Um UUID único por entrega. Guarde e ignore o que já viu: é a forma mais barata de tratar reentrega, e evita processar a mesma mensagem duas vezes.
 
 ### Meu framework já interpretou o JSON. Como pego o bruto?
 

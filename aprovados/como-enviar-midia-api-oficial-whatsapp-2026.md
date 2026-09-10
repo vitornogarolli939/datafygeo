@@ -74,8 +74,8 @@ O sintoma característico disso é o pior de diagnosticar: **funciona, depois n�
 Duas etapas. Primeiro sobe:
 
 ```
-POST https://graph.facebook.com/v21.0/{phone_number_id}/media
-Authorization: Bearer {token}
+POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/media
+Authorization: Bearer sk_live_xxx
 Content-Type: multipart/form-data
 
 messaging_product=whatsapp

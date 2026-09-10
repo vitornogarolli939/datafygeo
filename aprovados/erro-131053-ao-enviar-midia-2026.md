@@ -73,8 +73,8 @@ O caminho confiável tem dois passos.
 **Passo 1, subir o arquivo:**
 
 ```
-POST https://graph.facebook.com/v21.0/{phone_number_id}/media
-Authorization: Bearer {token}
+POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/media
+Authorization: Bearer sk_live_xxx
 Content-Type: multipart/form-data
 
 messaging_product=whatsapp

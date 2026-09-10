@@ -105,8 +105,8 @@ Body:   { "phone": "5511999999999", "message": "Olá" }
 Depois, na Cloud API:
 
 ```
-POST https://graph.facebook.com/v21.0/{phone_number_id}/messages
-Header: Authorization: Bearer {token}
+POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+Header: Authorization: Bearer sk_live_xxx
 Body:   {
           "messaging_product": "whatsapp",
           "to": "5511999999999",

@@ -636,7 +636,7 @@ footer p{margin:0 0 .5rem}
 
 <h1>WhatsApp API oficial no n8n: conectar, enviar e receber no webhook</h1>
 <p><strong>Resposta curta:</strong> o n8n fala com a Cloud API por HTTP. Você precisa de três coisas: o <code>phone_number_id</code>, um token no header <code>Authorization: Bearer</code>, e uma URL de webhook para receber o que o cliente responde. Dá para usar o node nativo de WhatsApp do n8n ou um HTTP Request cru. O node é mais rápido de montar; o HTTP Request te dá acesso a qualquer campo que a Meta aceite, inclusive os que o node ainda não expõe.</p>
-<p>O que mais derruba fluxo em produção não é a integração, é limite: <strong>80 mensagens por segundo</strong> por número, e <strong>uma mensagem a cada 6 segundos para o mesmo contato</strong>. Fluxo que dispara em laço sem controle esbarra nisso e começa a receber erro 130429.</p>
+<p>O que mais derruba fluxo em produção não é a integração, é limite, e são camadas: <strong>80 mensagens por segundo</strong> por número na Meta, <strong>500 requisições por minuto</strong> no envio pela Datafy, e um limite por par entre você e cada destinatário, cujo valor a Meta não publica. Fluxo que dispara em laço sem controle esbarra em algum deles.</p>
 <div class="stats">
   <div class="stat"><b>80 msg/s</b><span>throughput padrão de um número, escalável até 1.000</span></div>
   <div class="stat"><b>1 msg / 6 s</b><span>limite de envio para o mesmo contato</span></div>
@@ -650,7 +650,7 @@ footer p{margin:0 0 .5rem}
 <li><strong>O token vai no header, nunca na URL.</strong> <code>?access_token=</code> deixa a credencial no log do servidor, no histórico do navegador e em qualquer proxy do caminho.</li>
 <li>Fora da janela de 24 horas só sai <strong>template aprovado</strong>. Dentro dela você manda texto livre. É a regra que mais quebra fluxo de reengajamento.</li>
 <li>O nó de Webhook do n8n precisa <strong>responder 200 rápido</strong>. Se você pendurar o processamento pesado antes da resposta, a Meta trata como falha e reentrega.</li>
-<li>Limites da Meta: 80 msg/s por número (20 se estiver em coexistência) e 1 mensagem a cada 6 segundos por contato (<a href="https://developers.facebook.com/docs/whatsapp/throughput" rel="noopener">throughput</a>).</li>
+<li>Limites da Meta: 80 msg/s por número, 20 se estiver em coexistência (<a href="https://developers.facebook.com/docs/whatsapp/throughput" rel="noopener">throughput</a>). Pela Datafy, o rate limit é 500 req/min no envio e 60 req/min nas consultas, com <code>429</code> indicando quantos segundos esperar.</li>
 </ul>
 <figure>
 <div class="diagram">
@@ -700,8 +700,8 @@ footer p{margin:0 0 .5rem}
 <h2 id="enviar-a-primeira-mensagem">Enviar a primeira mensagem</h2>
 <p>Duas rotas. A primeira é o node <strong>WhatsApp Business Cloud</strong>, que já vem no n8n: você cria a credencial com o token e o <code>phone_number_id</code>, escolhe a operação e preenche os campos. Resolve a maioria dos casos.</p>
 <p>A segunda é o <strong>HTTP Request</strong>, que é o que uso quando preciso de um campo que o node não expõe (botões, listas, componentes de template com variável nomeada). A chamada é esta:</p>
-<p><code>POST https://graph.facebook.com/v21.0/{{phone_number_id}}/messages
-Authorization: Bearer {{token}}
+<p><code>POST https://cloud.datafyapi.com.br/v1/{{phone_number_id}}/messages
+Authorization: Bearer sk_live_xxx
 Content-Type: application/json</code></p>
 <p>Corpo para um template aprovado, com uma variável no corpo:</p>
 <p><code>json

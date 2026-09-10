@@ -68,23 +68,30 @@ Na descrição do Israel Henrique, CTO da Datafy: *"só que essa URL aqui não a
 
 ## As duas chamadas
 
-**Primeira: trocar o identificador pelo endereço.**
+**Pelo caminho simplificado, é uma chamada só:**
 
 ```
-GET https://graph.facebook.com/v21.0/{media_id}
-Authorization: Bearer {token}
+GET https://cloud.datafyapi.com.br/media/{id}
+Authorization: Bearer sk_live_xxx
 ```
 
-Volta a URL real, o tipo, o tamanho e o hash.
+Devolve uma URL hospedada em `files.datafyapi.com.br`, **válida por 30 dias**, que abre normalmente. Resolve o problema desta página inteira numa requisição.
 
-**Segunda: baixar.**
+**Pelo espelho da Cloud API, são duas.** Primeiro, trocar o identificador pelo endereço:
+
+```
+GET https://cloud.datafyapi.com.br/v1/{media_id}
+Authorization: Bearer sk_live_xxx
+```
+
+Volta a URL da Meta, o tipo, o tamanho e o hash. Depois, baixar:
 
 ```
 GET {url_devolvida}
-Authorization: Bearer {token}
+Authorization: Bearer sk_live_xxx
 ```
 
-**A segunda chamada também precisa do cabeçalho.** Esse é o ponto. A URL devolvida parece um endereço qualquer, e não é: ela continua exigindo autenticação.
+**A segunda chamada também precisa do cabeçalho.** Esse é o ponto. A URL devolvida parece um endereço qualquer, e não é: ela continua exigindo autenticação. E ela **vale 5 minutos**, então pedir agora para baixar depois não funciona.
 
 É o erro mais repetido da comunidade nesse assunto, aparecendo em cerca de oito discussões independentes, sempre com a mesma raiz. E o que torna ele traiçoeiro é que **o passo anterior funcionou**, então a suspeita recai sobre qualquer outra coisa.
 

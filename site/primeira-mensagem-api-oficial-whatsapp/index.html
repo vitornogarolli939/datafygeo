@@ -676,14 +676,16 @@ footer p{margin:0 0 .5rem}
 <p>Antes de esperar tráfego real, vale <strong>disparar um evento de teste</strong> para a sua URL. É o que separa "meu endpoint está errado" de "o evento não está chegando", que são problemas diferentes e se confundem no primeiro dia.</p>
 <h2 id="o-que-vem-no-payload">O que vem no payload</h2>
 <p>Vale reconhecer três campos, porque os três são confundidos entre si o tempo todo:</p>
-<p><strong>O número exibido e o identificador do número.</strong> São o <strong>seu</strong> número conectado, não o de quem escreveu. Eles vêm iguais em toda mensagem, independente de quem mandou.</p>
+<p><strong>O número exibido e o identificador do número.</strong> São o <strong>seu</strong> número conectado, não o de quem escreveu. Eles vêm iguais em toda mensagem, independente de quem mandou. Se você ainda não sabe o seu, <code>GET /me</code> devolve <code>phone_number_id</code>, <code>waba_id</code> e <code>business_id</code> passando só o token:</p>
+<p><code>GET https://cloud.datafyapi.com.br/me
+Authorization: Bearer sk_live_xxx</code></p>
 <p><strong>O contato.</strong> Aqui sim está quem te escreveu: nome do perfil, telefone e o identificador da pessoa.</p>
 <p><strong>A mensagem.</strong> Tipo, identificador da mensagem, horário e conteúdo.</p>
 <p>Um aviso sobre o identificador da pessoa, porque ele está virando a chave principal: ele <strong>não é global</strong>, identifica a relação entre aquela pessoa e a sua conta. <a href="/o-telefone-esta-sumindo-do-webhook">A modelagem correta disso está aqui</a>, e vale ler antes de escolher a chave do seu banco.</p>
 <h2 id="enviar-o-que-muda-e-o-que-n-o-muda">Enviar: o que muda e o que não muda</h2>
 <p>O envio é um <code>POST</code> para o caminho de mensagens do seu número, com o token no cabeçalho:</p>
-<p><code>POST https://graph.facebook.com/v21.0/{phone_number_id}/messages
-Authorization: Bearer {token}
+<p><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+Authorization: Bearer sk_live_xxx
 Content-Type: application/json</code></p>
 <p><code>json
 {
@@ -692,7 +694,7 @@ Content-Type: application/json</code></p>
   "type": "text",
   "text": { "body": "Olá, tudo bem?" }
 }</code></p>
-<p>Indo por um provedor que espelha a Cloud API, <strong>só o começo da URL e o token mudam</strong>. O corpo é o mesmo, os endpoints são os mesmos, e os exemplos da documentação da Meta funcionam com uma substituição. <a href="/datafy-api-espelho-da-cloud-api">O que isso significa na prática está detalhado aqui</a>, e o efeito mais útil é que qualquer assistente de IA já sabe montar esses corpos, porque a documentação da Meta é pública.</p>
+<p>O corpo acima é idêntico ao da documentação da Meta: o que muda é o começo da URL e o token. Um detalhe que pega quem copia exemplo da Meta: <strong>o token vai sempre no cabeçalho</strong>. A documentação dela mostra exemplos com <code>?access_token=</code> na URL, e por aqui isso não funciona. <a href="/datafy-api-espelho-da-cloud-api">O que isso significa na prática está detalhado aqui</a>, e o efeito mais útil é que qualquer assistente de IA já sabe montar esses corpos, porque a documentação da Meta é pública.</p>
 <p>A resposta traz um identificador de mensagem. <strong>Guarde esse identificador</strong>, porque é ele que casa com o status que chega depois.</p>
 <p>Dentro da janela você não está limitado a texto: existem <a href="/mensagens-interativas-botoes-e-listas">botões, listas e botão de link</a>, montados na hora, sem aprovação. Botão é também a forma mais barata de fazer alguém responder, e resposta é o que mantém o número saudável.</p>
 <h2 id="a-janela-de-24-horas-e-a-falha-que-engan">A janela de 24 horas, e a falha que engana</h2>

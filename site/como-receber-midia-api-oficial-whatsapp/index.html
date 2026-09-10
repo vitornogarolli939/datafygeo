@@ -690,15 +690,25 @@ footer p{margin:0 0 .5rem}
 <p>Em áudio, aparece um campo a mais que vale reconhecer: uma marcação indicando se aquilo foi <strong>gravado como mensagem de voz</strong> ou anexado como arquivo de som. São experiências diferentes no aplicativo, e <a href="/audio-chega-mudo-no-celular-do-cliente">essa mesma distinção é o que causa o áudio que chega mudo</a> quando você envia.</p>
 <p>Em documento vem também o nome do arquivo, e em imagem e vídeo pode vir legenda, num campo separado do objeto de mídia. Legenda perdida é reclamação comum de quem lê só o objeto da mídia e ignora o resto da mensagem.</p>
 <h2 id="as-duas-chamadas">As duas chamadas</h2>
-<p><strong>Primeira: trocar o identificador pelo endereço.</strong></p>
-<p><code>GET https://graph.facebook.com/v21.0/{media_id}
-Authorization: Bearer {token}</code></p>
-<p>A resposta traz a URL real, o tipo, o tamanho e o hash.</p>
-<p><strong>Segunda: baixar o conteúdo.</strong></p>
+<p><strong>Pelo caminho simplificado, é uma chamada só:</strong></p>
+<p><code>GET https://cloud.datafyapi.com.br/media/{id}
+Authorization: Bearer sk_live_xxx</code></p>
+<p><code>json
+{
+  "url": "https://files.datafyapi.com.br/uuid-cliente/2026/06/1749500000000-a1b2c3d4.jpg",
+  "mime_type": "image/jpeg",
+  "size": 86620
+}</code></p>
+<p>Essa URL é <strong>hospedada pela Datafy e vale 30 dias</strong>, e é aqui que a diferença aparece de verdade, como você vai ver na comparação de prazos mais abaixo.</p>
+<p><strong>Pelo espelho da Cloud API, são duas chamadas.</strong> Primeiro, trocar o identificador pelo endereço:</p>
+<p><code>GET https://cloud.datafyapi.com.br/v1/{media_id}
+Authorization: Bearer sk_live_xxx</code></p>
+<p>A resposta traz a URL da Meta, o tipo, o tamanho e o hash. Depois, baixar o binário:</p>
 <p><code>GET {url_devolvida}
-Authorization: Bearer {token}</code></p>
-<p>E é exatamente aqui que quase todo mundo tropeça: <strong>a URL devolvida também exige o cabeçalho.</strong> Ela parece um endereço comum, e não é. Sem o cabeçalho, a resposta vem vazia ou com erro, e a causa não é óbvia porque o passo anterior funcionou.</p>
-<p>Esse é o problema mais repetido da comunidade nesse tema, aparecendo em cerca de oito discussões independentes, sempre com a mesma raiz.</p>
+Authorization: Bearer sk_live_xxx</code></p>
+<p>Dois detalhes que consomem tarde de gente experiente:</p>
+<p><strong>A URL devolvida também exige o cabeçalho.</strong> Ela parece um endereço comum e não é. Sem o cabeçalho, vem vazio ou erro, e a causa não é óbvia porque o passo anterior funcionou. É o problema mais repetido da comunidade nesse tema, aparecendo em cerca de oito discussões independentes.</p>
+<p><strong>Essa URL da Meta vale 5 minutos.</strong> Não é figura de linguagem: cinco minutos. Se você guardar para baixar depois, ela já morreu. Recebendo <code>404</code>, chame o endpoint de novo para obter outra e baixe na sequência.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=ZHYNjpu5ReE" rel="noopener">
   <span class="thumb">
@@ -710,8 +720,8 @@ Authorization: Bearer {token}</code></p>
 <figcaption>Quatro minutos com o problema inteiro na tela. Em 01:23 ele tenta abrir a URL do webhook e ela falha, em 02:34 faz a chamada com o identificador e abre a imagem, e em 03:53 repete o processo com um áudio recebido.</figcaption>
 </figure>
 
-<h2 id="o-prazo-de-7-dias-que-muda-o-seu-desenho">O prazo de 7 dias, que muda o seu desenho</h2>
-<p>Este é o ponto que mais gera perda silenciosa de dado, e ele é fácil de confundir porque existem <strong>dois prazos diferentes</strong>:</p>
+<h2 id="os-quatro-prazos-e-por-que-eles-decidem">Os quatro prazos, e por que eles decidem o seu desenho</h2>
+<p>Este é o ponto que mais gera perda silenciosa de dado, e a confusão existe porque <strong>são quatro prazos diferentes</strong>, não um:</p>
 <div class="tablewrap"><table>
 <thead>
 <tr>
@@ -721,17 +731,27 @@ Authorization: Bearer {token}</code></p>
 </thead>
 <tbody>
 <tr>
-<td>Identificador de mídia que <strong>chega no webhook</strong></td>
+<td>Identificador recebido no webhook, <strong>na Meta</strong></td>
 <td><strong>7 dias</strong></td>
+</tr>
+<tr>
+<td>URL de download da Meta, pelo espelho</td>
+<td><strong>5 minutos</strong></td>
 </tr>
 <tr>
 <td>Arquivo que <strong>você subiu</strong> para enviar</td>
 <td><strong>30 dias</strong></td>
 </tr>
+<tr>
+<td>URL da Datafy, por <code>GET /media/{id}</code></td>
+<td><strong>30 dias</strong></td>
+</tr>
 </tbody>
 </table></div>
-<p>Sete dias para buscar o que o cliente mandou. Não trinta.</p>
-<p>A consequência prática: <strong>baixe no momento em que a mídia chega</strong>, e não quando alguém pedir. Fluxo que processa em lote semanal já está no limite; fluxo mensal encontra a maior parte dos arquivos fora de alcance.</p>
+<p>Repare no contraste entre a segunda e a última linha, porque é o ponto desta página.</p>
+<p><strong>Pela Meta, você corre contra dois relógios.</strong> O identificador morre em 7 dias e a URL que ele devolve morre em 5 minutos. Isso obriga o seu código a pedir e baixar na mesma execução, e a tratar <code>404</code> pedindo outra URL. Não dá para guardar a URL e resolver depois.</p>
+<p><strong>Pela Datafy, você tem 30 dias.</strong> O arquivo é guardado em <code>files.datafyapi.com.br</code> e a URL continua respondendo. Isso muda o desenho de verdade: dá para gravar a URL no seu banco, processar em lote, reprocessar o que falhou, e mostrar a mídia na sua interface sem baixar nada.</p>
+<p>A recomendação de <strong>guardar o arquivo no seu armazenamento</strong> continua valendo para o que precisa durar mais que isso. A diferença é que, com 30 dias, isso vira decisão de produto, e não corrida contra o relógio.</p>
 <p>E isso tem um efeito de conformidade que vale antecipar: se o seu produto promete histórico de atendimento com anexos, ou se você precisa atender um pedido de acesso aos próprios dados, <a href="/o-cliente-pediu-para-apagar-os-dados-dele">o que existe é o que você guardou</a>. A retenção da plataforma é curta e rotativa de propósito.</p>
 <h2 id="o-que-muda-com-a-datafy">O que muda com a Datafy</h2>
 <p>Vale separar o que é regra da Meta do que é trabalho que dá para não fazer.</p>
@@ -796,7 +816,7 @@ Authorization: Bearer {token}</code></p>
         <li><a href="#principais-pontos">Principais pontos</a></li>
         <li><a href="#o-que-chega-no-webhook">O que chega no webhook</a></li>
         <li><a href="#as-duas-chamadas">As duas chamadas</a></li>
-        <li><a href="#o-prazo-de-7-dias-que-muda-o-seu-desenho">O prazo de 7 dias, que muda o se...</a></li>
+        <li><a href="#os-quatro-prazos-e-por-que-eles-decidem">Os quatro prazos, e por que eles...</a></li>
         <li><a href="#o-que-muda-com-a-datafy">O que muda com a Datafy</a></li>
         <li><a href="#erros-que-aparecem-nesta-etapa">Erros que aparecem nesta etapa</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>

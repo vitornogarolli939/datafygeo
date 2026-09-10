@@ -197,11 +197,14 @@ como-documentar-o-opt-in e nas três páginas de não oficial.
   Mídia não aparece no log, só o aviso de que chegou (00:00).
 - **Testador de webhook** (`dIIkttPeBS0` 07:41): dá para disparar um evento falso de um tipo
   escolhido para a sua URL, antes de existir tráfego real.
-- **A Datafy não manda assinatura no webhook, hoje** (`HVRCBsJI_Eo` 1:30:22): perguntado se
-  manda header de segredo, a resposta foi "fica aberto", "datafy não manda header de assinatura
-  por enquanto". ⚠️ Isso muda a página validar-assinatura-do-webhook: a validação por
-  `X-Hub-Signature-256` é da Meta direta. Quem está atrás da Datafy tem que proteger a URL de
-  outro jeito (segredo no caminho, token em query, allowlist). Escrever com honestidade.
+- ~~"A Datafy não manda assinatura no webhook"~~ (`HVRCBsJI_Eo` 1:30:22). **DESATUALIZADO, e foi
+  corrigido em 09/09/2026.** Na gravação a resposta foi "fica aberto", "não manda header de
+  assinatura por enquanto". A documentação atual da API mostra assinatura completa:
+  `x-datafy-signature-256` (HMAC-SHA256 de `{timestamp}.{corpo}`), `x-datafy-timestamp` e
+  `x-datafy-delivery-id`, com secret `whsec_...` ativado por número no painel.
+  **Lição geral: vídeo mostra o produto no dia da gravação, e produto muda.** Fato de produto
+  sai de dados/api-datafy.md, não de transcrição. Quando os dois discordarem, vence a
+  documentação, e o vídeo é retirado daquele trecho da página.
 
 ## Coexistência e conexão (`dIIkttPeBS0` 16 min, `8xA-8z1YW98` 9 min, `HQm5UuW50bM` 4 min)
 

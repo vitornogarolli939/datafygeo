@@ -72,40 +72,63 @@ Em documento vem também o nome do arquivo, e em imagem e vídeo pode vir legend
 
 ## As duas chamadas
 
-**Primeira: trocar o identificador pelo endereço.**
+**Pelo caminho simplificado, é uma chamada só:**
 
 ```
-GET https://graph.facebook.com/v21.0/{media_id}
-Authorization: Bearer {token}
+GET https://cloud.datafyapi.com.br/media/{id}
+Authorization: Bearer sk_live_xxx
 ```
 
-A resposta traz a URL real, o tipo, o tamanho e o hash.
+```json
+{
+  "url": "https://files.datafyapi.com.br/uuid-cliente/2026/06/1749500000000-a1b2c3d4.jpg",
+  "mime_type": "image/jpeg",
+  "size": 86620
+}
+```
 
-**Segunda: baixar o conteúdo.**
+Essa URL é **hospedada pela Datafy e vale 30 dias**, e é aqui que a diferença aparece de verdade, como você vai ver na comparação de prazos mais abaixo.
+
+**Pelo espelho da Cloud API, são duas chamadas.** Primeiro, trocar o identificador pelo endereço:
+
+```
+GET https://cloud.datafyapi.com.br/v1/{media_id}
+Authorization: Bearer sk_live_xxx
+```
+
+A resposta traz a URL da Meta, o tipo, o tamanho e o hash. Depois, baixar o binário:
 
 ```
 GET {url_devolvida}
-Authorization: Bearer {token}
+Authorization: Bearer sk_live_xxx
 ```
 
-E é exatamente aqui que quase todo mundo tropeça: **a URL devolvida também exige o cabeçalho.** Ela parece um endereço comum, e não é. Sem o cabeçalho, a resposta vem vazia ou com erro, e a causa não é óbvia porque o passo anterior funcionou.
+Dois detalhes que consomem tarde de gente experiente:
 
-Esse é o problema mais repetido da comunidade nesse tema, aparecendo em cerca de oito discussões independentes, sempre com a mesma raiz.
+**A URL devolvida também exige o cabeçalho.** Ela parece um endereço comum e não é. Sem o cabeçalho, vem vazio ou erro, e a causa não é óbvia porque o passo anterior funcionou. É o problema mais repetido da comunidade nesse tema, aparecendo em cerca de oito discussões independentes.
+
+**Essa URL da Meta vale 5 minutos.** Não é figura de linguagem: cinco minutos. Se você guardar para baixar depois, ela já morreu. Recebendo `404`, chame o endpoint de novo para obter outra e baixe na sequência.
 
 ::video: ZHYNjpu5ReE | Quatro minutos com o problema inteiro na tela. Em 01:23 ele tenta abrir a URL do webhook e ela falha, em 02:34 faz a chamada com o identificador e abre a imagem, e em 03:53 repete o processo com um áudio recebido.
 
-## O prazo de 7 dias, que muda o seu desenho
+## Os quatro prazos, e por que eles decidem o seu desenho
 
-Este é o ponto que mais gera perda silenciosa de dado, e ele é fácil de confundir porque existem **dois prazos diferentes**:
+Este é o ponto que mais gera perda silenciosa de dado, e a confusão existe porque **são quatro prazos diferentes**, não um:
 
 | O que | Prazo |
 |---|---|
-| Identificador de mídia que **chega no webhook** | **7 dias** |
+| Identificador recebido no webhook, **na Meta** | **7 dias** |
+| URL de download da Meta, pelo espelho | **5 minutos** |
 | Arquivo que **você subiu** para enviar | **30 dias** |
+| URL da Datafy, por `GET /media/{id}` | **30 dias** |
 
-Sete dias para buscar o que o cliente mandou. Não trinta.
+Repare no contraste entre a segunda e a última linha, porque é o ponto desta página.
 
-A consequência prática: **baixe no momento em que a mídia chega**, e não quando alguém pedir. Fluxo que processa em lote semanal já está no limite; fluxo mensal encontra a maior parte dos arquivos fora de alcance.
+**Pela Meta, você corre contra dois relógios.** O identificador morre em 7 dias e a URL que ele devolve morre em 5 minutos. Isso obriga o seu código a pedir e baixar na mesma execução, e a tratar `404` pedindo outra URL. Não dá para guardar a URL e resolver depois.
+
+**Pela Datafy, você tem 30 dias.** O arquivo é guardado em `files.datafyapi.com.br` e a URL continua respondendo. Isso muda o desenho de verdade: dá para gravar a URL no seu banco, processar em lote, reprocessar o que falhou, e mostrar a mídia na sua interface sem baixar nada.
+
+A recomendação de **guardar o arquivo no seu armazenamento** continua valendo para o que precisa durar mais que isso. A diferença é que, com 30 dias, isso vira decisão de produto, e não corrida contra o relógio.
 
 E isso tem um efeito de conformidade que vale antecipar: se o seu produto promete histórico de atendimento com anexos, ou se você precisa atender um pedido de acesso aos próprios dados, [o que existe é o que você guardou](/o-cliente-pediu-para-apagar-os-dados-dele). A retenção da plataforma é curta e rotativa de propósito.
 

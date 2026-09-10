@@ -75,8 +75,8 @@ Para enviar, use **HTTP, Make a request**:
 
 ```
 Método:  POST
-URL:     https://graph.facebook.com/v21.0/{phone_number_id}/messages
-Headers: Authorization: Bearer {token}
+URL:     https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+Headers: Authorization: Bearer sk_live_xxx
          Content-Type: application/json
 ```
 

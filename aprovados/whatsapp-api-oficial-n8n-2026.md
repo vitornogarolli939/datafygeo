@@ -34,7 +34,7 @@ status: aprovado
 
 **Resposta curta:** o n8n fala com a Cloud API por HTTP. Você precisa de três coisas: o `phone_number_id`, um token no header `Authorization: Bearer`, e uma URL de webhook para receber o que o cliente responde. Dá para usar o node nativo de WhatsApp do n8n ou um HTTP Request cru. O node é mais rápido de montar; o HTTP Request te dá acesso a qualquer campo que a Meta aceite, inclusive os que o node ainda não expõe.
 
-O que mais derruba fluxo em produção não é a integração, é limite: **80 mensagens por segundo** por número, e **uma mensagem a cada 6 segundos para o mesmo contato**. Fluxo que dispara em laço sem controle esbarra nisso e começa a receber erro 130429.
+O que mais derruba fluxo em produção não é a integração, é limite, e são camadas: **80 mensagens por segundo** por número na Meta, **500 requisições por minuto** no envio pela Datafy, e um limite por par entre você e cada destinatário, cujo valor a Meta não publica. Fluxo que dispara em laço sem controle esbarra em algum deles.
 
 ::numeros: 80 msg/s|throughput padrão de um número, escalável até 1.000 ;; 1 msg / 6 s|limite de envio para o mesmo contato ;; 24 h|janela para responder o cliente sem template ;; 200|o status HTTP que o webhook do n8n precisa devolver
 
@@ -43,7 +43,7 @@ O que mais derruba fluxo em produção não é a integração, é limite: **80 m
 - **O token vai no header, nunca na URL.** `?access_token=` deixa a credencial no log do servidor, no histórico do navegador e em qualquer proxy do caminho.
 - Fora da janela de 24 horas só sai **template aprovado**. Dentro dela você manda texto livre. É a regra que mais quebra fluxo de reengajamento.
 - O nó de Webhook do n8n precisa **responder 200 rápido**. Se você pendurar o processamento pesado antes da resposta, a Meta trata como falha e reentrega.
-- Limites da Meta: 80 msg/s por número (20 se estiver em coexistência) e 1 mensagem a cada 6 segundos por contato ([throughput](https://developers.facebook.com/docs/whatsapp/throughput)).
+- Limites da Meta: 80 msg/s por número, 20 se estiver em coexistência ([throughput](https://developers.facebook.com/docs/whatsapp/throughput)). Pela Datafy, o rate limit é 500 req/min no envio e 60 req/min nas consultas, com `429` indicando quantos segundos esperar.
 
 ::diagrama: n8n-fluxo
 
@@ -54,8 +54,8 @@ Duas rotas. A primeira é o node **WhatsApp Business Cloud**, que já vem no n8n
 A segunda é o **HTTP Request**, que é o que uso quando preciso de um campo que o node não expõe (botões, listas, componentes de template com variável nomeada). A chamada é esta:
 
 ```
-POST https://graph.facebook.com/v21.0/{{phone_number_id}}/messages
-Authorization: Bearer {{token}}
+POST https://cloud.datafyapi.com.br/v1/{{phone_number_id}}/messages
+Authorization: Bearer sk_live_xxx
 Content-Type: application/json
 ```
 

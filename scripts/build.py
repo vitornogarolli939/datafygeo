@@ -84,6 +84,29 @@ VIDEOS = dict((k, v) for k, v in
               if not k.startswith('_'))
 
 
+PERMITE_META = ('datafy-api-espelho-da-cloud-api',)
+
+
+def conferir_endpoints(meta, corpo):
+    """Regra 13: exemplo de codigo usa a NOSSA API, nunca graph.facebook.com.
+
+    A URL da Meta so pode aparecer em texto corrido, e a pagina do espelho e a
+    unica que pode mostrar as duas lado a lado.
+    """
+    if meta['slug'] in PERMITE_META:
+        return
+    for bloco in re.findall(r'```.*?```', corpo, re.S):
+        if 'graph.facebook.com' in bloco:
+            raise SystemExit(
+                'ERRO regra 13: %s tem graph.facebook.com em bloco de codigo.\n'
+                'Use https://cloud.datafyapi.com.br/v1/... com Bearer sk_live_xxx.\n'
+                'Fonte: dados/api-datafy.md' % meta['slug'])
+        if 'access_token=' in bloco:
+            raise SystemExit(
+                'ERRO regra 13: %s usa ?access_token= em bloco de codigo. '
+                'Na Datafy o token vai sempre no header.' % meta['slug'])
+
+
 def expandir_atalhos(corpo):
     """
     Atalhos que o modelo escreve em uma linha no Markdown e a moldura
@@ -355,6 +378,7 @@ def main():
         if not nome.endswith('.md'):
             continue
         meta, corpo = ler_pagina(os.path.join(ORIGEM, nome))
+        conferir_endpoints(meta, corpo)
         escrever('%s/index.html' % meta['slug'], montar(meta, corpo, css, moldura))
         paginas.append(meta)
         print('  ok  /%s' % meta['slug'])

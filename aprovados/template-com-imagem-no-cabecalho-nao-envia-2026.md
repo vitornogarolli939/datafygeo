@@ -60,8 +60,8 @@ Um relato técnico em português documentou isso com cuidado: o autor comparou a
 **Passo 1, subir a imagem:**
 
 ```
-POST https://graph.facebook.com/v21.0/{phone_number_id}/media
-Authorization: Bearer {token}
+POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/media
+Authorization: Bearer sk_live_xxx
 Content-Type: multipart/form-data
 
 messaging_product=whatsapp

@@ -679,14 +679,17 @@ footer p{margin:0 0 .5rem}
 </figure>
 
 <h2 id="as-duas-chamadas">As duas chamadas</h2>
-<p><strong>Primeira: trocar o identificador pelo endereço.</strong></p>
-<p><code>GET https://graph.facebook.com/v21.0/{media_id}
-Authorization: Bearer {token}</code></p>
-<p>Volta a URL real, o tipo, o tamanho e o hash.</p>
-<p><strong>Segunda: baixar.</strong></p>
+<p><strong>Pelo caminho simplificado, é uma chamada só:</strong></p>
+<p><code>GET https://cloud.datafyapi.com.br/media/{id}
+Authorization: Bearer sk_live_xxx</code></p>
+<p>Devolve uma URL hospedada em <code>files.datafyapi.com.br</code>, <strong>válida por 30 dias</strong>, que abre normalmente. Resolve o problema desta página inteira numa requisição.</p>
+<p><strong>Pelo espelho da Cloud API, são duas.</strong> Primeiro, trocar o identificador pelo endereço:</p>
+<p><code>GET https://cloud.datafyapi.com.br/v1/{media_id}
+Authorization: Bearer sk_live_xxx</code></p>
+<p>Volta a URL da Meta, o tipo, o tamanho e o hash. Depois, baixar:</p>
 <p><code>GET {url_devolvida}
-Authorization: Bearer {token}</code></p>
-<p><strong>A segunda chamada também precisa do cabeçalho.</strong> Esse é o ponto. A URL devolvida parece um endereço qualquer, e não é: ela continua exigindo autenticação.</p>
+Authorization: Bearer sk_live_xxx</code></p>
+<p><strong>A segunda chamada também precisa do cabeçalho.</strong> Esse é o ponto. A URL devolvida parece um endereço qualquer, e não é: ela continua exigindo autenticação. E ela <strong>vale 5 minutos</strong>, então pedir agora para baixar depois não funciona.</p>
 <p>É o erro mais repetido da comunidade nesse assunto, aparecendo em cerca de oito discussões independentes, sempre com a mesma raiz. E o que torna ele traiçoeiro é que <strong>o passo anterior funcionou</strong>, então a suspeita recai sobre qualquer outra coisa.</p>
 <h2 id="os-sintomas-e-o-que-cada-um-quer-dizer">Os sintomas, e o que cada um quer dizer</h2>
 <div class="tablewrap"><table>

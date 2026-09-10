@@ -112,7 +112,7 @@ Duas práticas com retorno direto:
 
 **Resposta completa em vez de resposta que puxa pergunta.** Cada ida e volta a menos é dinheiro.
 
-**Uma mensagem por resposta.** Resistir à tentação de mandar três balões curtos para parecer humano. Além do custo triplicado, isso esbarra no limite de uma mensagem a cada seis segundos por contato.
+**Uma mensagem por resposta.** Resistir à tentação de mandar três balões curtos para parecer humano. Além do custo triplicado, isso se aproxima do limite por par entre a sua empresa e aquele destinatário.
 
 ## Perguntas frequentes
 

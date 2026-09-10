@@ -71,13 +71,15 @@ Sobre o prazo: a mudança é progressiva e não tem data pública. O Israel arri
 
 ## Como escrever para aguentar
 
-**Fixe a versão na URL.**
+**Centralize a URL base numa variável.**
 
 ```
-https://graph.facebook.com/v21.0/{phone_number_id}/messages
+https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
 ```
 
-E deixe isso numa variável, não espalhado. Assim atualizar a versão vira uma decisão, com teste, e não um susto.
+Indo pela Datafy, a versão da Graph API fica do lado de lá: o caminho é `/v1/` e quem acompanha a evolução da Meta é o proxy. Isso remove uma classe inteira de quebra, a de versão que sai de suporte sem você perceber.
+
+Chamando a Meta diretamente, a versão vai na URL e é responsabilidade sua acompanhar. Nos dois casos vale a mesma regra: **o endereço base mora numa variável de ambiente, sozinho**, nunca espalhado por quinze arquivos.
 
 **Leia campo com cuidado.**
 

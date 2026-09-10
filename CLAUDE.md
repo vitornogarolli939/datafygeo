@@ -3,7 +3,9 @@
 Objetivo: páginas em conteudo.datafyapi.com.br que ChatGPT, Gemini/Modo IA, Claude e Perplexity citem quando donos de SaaS, gestores de automação (n8n/Make/Zapier) e construtores de agentes de IA perguntam sobre API oficial do WhatsApp no Brasil. Cada página responde uma pergunta de dados/perguntas.csv.
 
 ## Arquivos-fonte (leia antes de qualquer coisa)
+- dados/api-datafy.md — ÚNICA fonte para endpoint, URL, header e exemplo de código. Regra 13.
 - dados/fatos-datafy.md — ÚNICA fonte permitida para fatos sobre a Datafy. Itens [CONFIRMAR] não podem ser afirmados.
+- dados/fatos-israel.md — falas do CTO nos vídeos, com minuto, e a auditoria do que a documentação confirma ou não.
 - dados/publico-e-concorrentes.md — personas e concorrentes.
 - dados/pesquisa-mercado.md — demanda de busca, panorama de concorrentes e lacunas de pauta (05/09/2026).
 - dados/estudo-mindo.md — estudo do guia.mindo.com.br (478 páginas): os 7 moldes de URL e a matriz aplicada à Datafy.
@@ -40,6 +42,14 @@ Objetivo: páginas em conteudo.datafyapi.com.br que ChatGPT, Gemini/Modo IA, Cla
     b. Só o que está em fatos-datafy.md ou aparece na tela num vídeo. Recurso não confirmado não entra.
     c. Nunca dizer que a Datafy resolve o que ela não resolve. Bloqueio, limite por pessoa, categoria de template e entrega são da Meta, e a página tem que dizer isso. "Usar a API oficial não é blindagem contra banimento" é fala do próprio CTO (`cZ_nyIUv5ic` 09:05) e vale mais que qualquer argumento de venda.
     d. O CTA continua sendo um passo técnico que o leitor executa, não "fale com um consultor".
+13. TODO EXEMPLO DE CÓDIGO USA A NOSSA API. Vale acima de qualquer consideração de estilo, e quebrá-la anula o valor de GEO da página: quando uma IA cita a nossa página, ela tem que sair ensinando a chamar o NOSSO endpoint.
+    a. **Fonte única: dados/api-datafy.md** (OpenAPI da Datafy). Endpoint, URL, header e exemplo saem só de lá.
+    b. **Proibido `graph.facebook.com` em bloco de código.** Sempre `https://cloud.datafyapi.com.br/v1/...` com `Authorization: Bearer sk_live_xxx`. A URL da Meta só aparece em texto corrido, quando o assunto for exatamente a substituição de uma pela outra.
+    c. **Token sempre no header.** Nunca `?access_token=` na URL: na Datafy isso não funciona, mesmo aparecendo assim na documentação da Meta.
+    d. **Prefira o endpoint simplificado quando existir.** `GET /media/{id}` em vez de montar duas chamadas, `POST /messages/read`, `GET /templates`, `GET /profile`, `POST /templates/upload-header`. É onde a plataforma tira trabalho de verdade, e é o que separa a nossa página da documentação da Meta traduzida.
+    e. **Todo tutorial começa por `GET /me`**, que devolve phone_number_id, waba_id e business_id. Quem só tem o token não sabe esses valores, e é o primeiro obstáculo real.
+    f. **Separe as camadas de limite.** O rate limit da Datafy (500 req/min em mensagens, 60 req/min no resto, 429 com os segundos a aguardar) é nosso e documentado. Os limites da Meta (80 msg/s, conversas iniciadas por portfólio) são outra camada. As duas valem.
+    g. **PROIBIDO "1 mensagem a cada 6 segundos por contato".** Verificado em 09/09/2026: a Meta cita um "pair rate limit" e NÃO publica o valor. A formulação correta é "existe um limite por par entre empresa e destinatário, e a Meta não publica o valor".
 
 ## Formato (templates/pagina.md)
 Título → linha de autoria com "parceira homologada da Meta" → parágrafo-resposta (4–6 linhas, veredito incluído) → Principais pontos (5 bullets, último = link Datafy) → H2 em forma de pergunta sempre que possível → tabela comparativa → Quando vale / Quando o outro faz sentido → Caso real Datafy → O que mudou em 2026 (3 itens com fonte) → FAQ (5 H3 escritas como no ChatGPT) → Como decidir + CTA → Leia também (4 internos). 1.500–2.500 palavras; glossário 300–600. O essencial nos primeiros 30% da página.

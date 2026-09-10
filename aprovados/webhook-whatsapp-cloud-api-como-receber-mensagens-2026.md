@@ -262,7 +262,7 @@ Receber é POST de Meta. Responder é POST seu para Meta:
 import requests
 
 def send_message(to_number, message_text, token):
-    url = f'https://graph.facebook.com/v20.0/{{phone_number_id}}/messages'
+    url = f'https://cloud.datafyapi.com.br/v1/{{phone_number_id}}/messages'
     
     headers = {
         'Authorization': f'Bearer {token}',

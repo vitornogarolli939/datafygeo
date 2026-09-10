@@ -679,9 +679,10 @@ footer p{margin:0 0 .5rem}
 <p>Isso significa que a proteção não é só ler o campo com cuidado. É <strong>guardar a chave como um par</strong>, identificador mais o número da sua conta que recebeu. Quem tem um número só e guarda o identificador solto tem um código que funciona e uma modelagem que quebra no dia em que entra o segundo número, e essa quebra não dá exceção: ela produz contato duplicado silenciosamente.</p>
 <p>Sobre o prazo: a mudança é progressiva e não tem data pública. O Israel arrisca uma expectativa, e marca como expectativa: <em>"eu digo lá, acho que pro final de 2026 parece que tá previsto."</em> Trate como aviso para começar a se adaptar, não como cronograma.</p>
 <h2 id="como-escrever-para-aguentar">Como escrever para aguentar</h2>
-<p><strong>Fixe a versão na URL.</strong></p>
-<p><code>https://graph.facebook.com/v21.0/{phone_number_id}/messages</code></p>
-<p>E deixe isso numa variável, não espalhado. Assim atualizar a versão vira uma decisão, com teste, e não um susto.</p>
+<p><strong>Centralize a URL base numa variável.</strong></p>
+<p><code>https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages</code></p>
+<p>Indo pela Datafy, a versão da Graph API fica do lado de lá: o caminho é <code>/v1/</code> e quem acompanha a evolução da Meta é o proxy. Isso remove uma classe inteira de quebra, a de versão que sai de suporte sem você perceber.</p>
+<p>Chamando a Meta diretamente, a versão vai na URL e é responsabilidade sua acompanhar. Nos dois casos vale a mesma regra: <strong>o endereço base mora numa variável de ambiente, sozinho</strong>, nunca espalhado por quinze arquivos.</p>
 <p><strong>Leia campo com cuidado.</strong></p>
 <p>```js
 // frágil

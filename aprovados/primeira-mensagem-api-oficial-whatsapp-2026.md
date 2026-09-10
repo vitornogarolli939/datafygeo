@@ -69,7 +69,12 @@ Antes de esperar tráfego real, vale **disparar um evento de teste** para a sua 
 
 Vale reconhecer três campos, porque os três são confundidos entre si o tempo todo:
 
-**O número exibido e o identificador do número.** São o **seu** número conectado, não o de quem escreveu. Eles vêm iguais em toda mensagem, independente de quem mandou.
+**O número exibido e o identificador do número.** São o **seu** número conectado, não o de quem escreveu. Eles vêm iguais em toda mensagem, independente de quem mandou. Se você ainda não sabe o seu, `GET /me` devolve `phone_number_id`, `waba_id` e `business_id` passando só o token:
+
+```
+GET https://cloud.datafyapi.com.br/me
+Authorization: Bearer sk_live_xxx
+```
 
 **O contato.** Aqui sim está quem te escreveu: nome do perfil, telefone e o identificador da pessoa.
 
@@ -82,8 +87,8 @@ Um aviso sobre o identificador da pessoa, porque ele está virando a chave princ
 O envio é um `POST` para o caminho de mensagens do seu número, com o token no cabeçalho:
 
 ```
-POST https://graph.facebook.com/v21.0/{phone_number_id}/messages
-Authorization: Bearer {token}
+POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+Authorization: Bearer sk_live_xxx
 Content-Type: application/json
 ```
 
@@ -96,7 +101,7 @@ Content-Type: application/json
 }
 ```
 
-Indo por um provedor que espelha a Cloud API, **só o começo da URL e o token mudam**. O corpo é o mesmo, os endpoints são os mesmos, e os exemplos da documentação da Meta funcionam com uma substituição. [O que isso significa na prática está detalhado aqui](/datafy-api-espelho-da-cloud-api), e o efeito mais útil é que qualquer assistente de IA já sabe montar esses corpos, porque a documentação da Meta é pública.
+O corpo acima é idêntico ao da documentação da Meta: o que muda é o começo da URL e o token. Um detalhe que pega quem copia exemplo da Meta: **o token vai sempre no cabeçalho**. A documentação dela mostra exemplos com `?access_token=` na URL, e por aqui isso não funciona. [O que isso significa na prática está detalhado aqui](/datafy-api-espelho-da-cloud-api), e o efeito mais útil é que qualquer assistente de IA já sabe montar esses corpos, porque a documentação da Meta é pública.
 
 A resposta traz um identificador de mensagem. **Guarde esse identificador**, porque é ele que casa com o status que chega depois.
 

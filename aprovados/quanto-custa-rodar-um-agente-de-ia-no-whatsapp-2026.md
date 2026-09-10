@@ -43,7 +43,7 @@ E tem uma data no meio: a partir de **1º de outubro de 2026** responder dentro 
 - **Conta 1, o modelo.** Cresce com o histórico que você manda junto: contexto que só aumenta é a causa mais comum de custo que sobe sem o uso subir.
 - **Conta 2, a mensagem.** Hoje a resposta dentro da janela é gratuita. A partir de outubro, não.
 - **Conta 3, a política de provedores de IA.** No Brasil ela continua valendo, depois de ter sido revogada na Europa em maio de 2026. Se ela se aplica ao seu caso, cada mensagem livre tem custo próprio.
-- **Quebrar a resposta em vários balões multiplica a conta 2 e a 3**, e ainda esbarra no limite de uma mensagem a cada 6 segundos por contato.
+- **Quebrar a resposta em vários balões multiplica a conta 2 e a 3**, e ainda se aproxima do limite por par entre você e aquele destinatário.
 
 ::diagrama: preço-comparacao
 
@@ -107,7 +107,7 @@ Para agente de IA, essa franquia importa mais do que parece, porque agente conve
 
 O que isso muda no desenho: reduzir turnos passa a ter retorno duplo, porque corta token do modelo e corta mensagem cobrada. Resposta que já traz a informação completa vale mais que resposta que puxa outra pergunta, e agora isso aparece na fatura.
 
-E existe um limite técnico que empurra na mesma direção: mandar três balões curtos seguidos para parecer humano bate no [limite de uma mensagem a cada seis segundos por contato](/quantas-mensagens-por-segundo-posso-enviar) e, depois de outubro, custa três vezes.
+E existe um limite técnico que empurra na mesma direção: mandar três balões curtos seguidos para parecer humano se aproxima do [limite por par entre a sua empresa e aquele destinatário](/quantas-mensagens-por-segundo-posso-enviar) e, depois de outubro, custa três vezes.
 
 ::video: Bev4VxTJ5Cg | Nove minutos em que o Israel abre o e-mail da Meta aos parceiros e lê o item da franquia. Em 03:53 está a redação, e em 06:38 a leitura dele sobre operar com mais números para multiplicar a franquia.
 
@@ -117,7 +117,7 @@ Para calibrar se a sua soma está boa, vale comparar com a alternativa de pratel
 
 **Resolver em menos turnos.** É o ganho maior e o mais ignorado. Uma resposta que já traz a informação completa vale mais que três que puxam pergunta. Isso reduz as três contas de uma vez.
 
-**Uma mensagem por resposta.** A tentação de quebrar em três balões para parecer humano multiplica a conta 2 e a 3, e ainda esbarra no limite de uma mensagem a cada 6 segundos por contato.
+**Uma mensagem por resposta.** A tentação de quebrar em três balões para parecer humano multiplica a conta 2 e a 3, e ainda se aproxima do limite por par.
 
 **Filtrar antes do modelo.** Nem toda mensagem precisa de IA. "Oi", "obrigado" e "ok" podem ser tratados por regra simples. Isso corta a conta 1 sem afetar a experiência.
 
