@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa</title>
-<meta name="description" content="Cloud API da Meta ou Evolution/Z-API? A diferença técnica, por que a oficial não é blindagem contra banimento, o custo por número e o que muda em outubro de 2026.">
+<title>API oficial ou não oficial do WhatsApp: o que muda, segundo quem usa as duas</title>
+<meta name="description" content="A oficial exige template para iniciar conversa e cobra por mensagem enviada. A não oficial conecta pelo WhatsApp Web. O CTO da Datafy trabalha com as duas e conta o que observa.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -13,15 +13,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
-<meta property="og:title" content="API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa">
-<meta property="og:description" content="Cloud API da Meta ou Evolution/Z-API? A diferença técnica, por que a oficial não é blindagem contra banimento, o custo por número e o que muda em outubro de 2026.">
+<meta property="og:title" content="API oficial ou não oficial do WhatsApp: o que muda, segundo quem usa as duas">
+<meta property="og:description" content="A oficial exige template para iniciar conversa e cobra por mensagem enviada. A não oficial conecta pelo WhatsApp Web. O CTO da Datafy trabalha com as duas e conta o que observa.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026">
-<meta property="article:published_time" content="2026-09-06">
-<meta property="article:modified_time" content="2026-09-06">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa">
-<meta name="twitter:description" content="Cloud API da Meta ou Evolution/Z-API? A diferença técnica, por que a oficial não é blindagem contra banimento, o custo por número e o que muda em outubro de 2026.">
+<meta name="twitter:title" content="API oficial ou não oficial do WhatsApp: o que muda, segundo quem usa as duas">
+<meta name="twitter:description" content="A oficial exige template para iniciar conversa e cobra por mensagem enviada. A não oficial conecta pelo WhatsApp Web. O CTO da Datafy trabalha com as duas e conta o que observa.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -112,18 +113,18 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa"
+          "name": "API oficial ou não oficial do WhatsApp: o que muda, segundo quem usa as duas"
         }
       ]
     },
     {
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026#article",
-      "headline": "API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa",
-      "description": "Cloud API da Meta ou Evolution/Z-API? A diferença técnica, por que a oficial não é blindagem contra banimento, o custo por número e o que muda em outubro de 2026.",
+      "headline": "API oficial ou não oficial do WhatsApp: o que muda, segundo quem usa as duas",
+      "description": "A oficial exige template para iniciar conversa e cobra por mensagem enviada. A não oficial conecta pelo WhatsApp Web. O CTO da Datafy trabalha com as duas e conta o que observa.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-06",
-      "dateModified": "2026-09-06",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,16 +133,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026",
       "citation": [
-        "https://developers.facebook.com/docs/whatsapp/cloud-api",
-        "https://developers.facebook.com/docs/whatsapp/pricing",
-        "https://developers.facebook.com/docs/whatsapp/embedded-signup",
-        "https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks",
-        "https://business.whatsapp.com/policy",
-        "https://app.datafyapi.com.br/docs",
-        "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
-        "https://github.com/EvolutionAPI/evolution-api",
+        "https://whatsappbusiness.com/policy/",
         "https://www.youtube.com/watch?v=cZ_nyIUv5ic",
-        "https://www.youtube.com/watch?v=FcAwJqVHNoU"
+        "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
+        "https://www.youtube.com/watch?v=JL9Qzw3oS5A",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -150,53 +146,64 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Evolution API vai banir meu número?",
+          "name": "A API oficial impede o bloqueio?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A Evolution API não é oficial: é um software de código aberto que você instala no seu servidor, e não é parceira da Meta. Ela consegue conectar por Baileys, que emula o WhatsApp Web e traz risco alto de banimento sem recurso, ou apontando para a Cloud API da Meta. Mas apontar para a API oficial não torna a Evolution oficial, e nesse modo ela não te dá acesso: você continua tendo que passar sozinho por Business Manager verificada, App Review e Tech Provider."
+            "text": "Não. A conduta continua decidindo."
           }
         },
         {
           "@type": "Question",
-          "name": "Preciso de Business Manager verificada para usar a API oficial?",
+          "name": "Na oficial posso mandar mensagem livre para qualquer número?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Para começar, não. Basta ter um Business Manager, verificado ou não, e um número elegível. A verificação aumenta os limites diários de envio de template, então vale fazer depois, mas não é pré-requisito para a primeira mensagem."
+            "text": "Não. Iniciar conversa exige template aprovado, e contatar exige opt-in, pela política."
           }
         },
         {
           "@type": "Question",
-          "name": "Posso continuar usando o WhatsApp Business no celular?",
+          "name": "A oficial é cobrada?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim, com coexistência. O número segue no app para atendimento manual e responde também pela API para automações, no mesmo histórico. Para trazer histórico e contatos, é preciso disparar a sincronização em até 24 h após a conexão. É uma vez só por tipo, e perder o prazo significa refazer o onboarding."
+            "text": "A Meta cobra por mensagem enviada pela API, pela categoria. Mensagem recebida não é cobrada."
           }
         },
         {
           "@type": "Question",
-          "name": "Quanto custa usar a API oficial pela Datafy?",
+          "name": "Quem usa não oficial é mais bloqueado?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "R$ 49,90 por número/mês de 1 a 9 números, R$ 39,90 de 10 a 49 e R$ 29,90 a partir de 50, sem taxa de setup. As conversas são pagas diretamente à Meta, pela tabela oficial, sem markup. A Datafy não cobra por mensagem. Trial de 7 dias, sem cartão."
+            "text": "É o que o CTO da Datafy relata observar, trabalhando com as duas."
           }
         },
         {
           "@type": "Question",
-          "name": "Meus fluxos no n8n vão continuar funcionando se eu migrar?",
+          "name": "Migrar para a oficial muda o meu código?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Se eles já falam com a Cloud API, sim: a Datafy espelha os endpoints da Meta. Muda o domínio e o token, que vai sempre no header Authorization, e nunca como ?access_token= na URL. Se falam com Evolution em modo QR ou Z-API, o formato do payload é diferente e precisa ser adaptado."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Migrar para a oficial resolve meu problema de banimento?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Resolve metade. Acaba com o banimento por usar ferramenta não autorizada. Não muda nada se a conduta continuar a mesma: lista fria, ninguém respondendo e nicho proibido bloqueiam número oficial do mesmo jeito."
+            "text": "Se você for pela Datafy API, os endpoints são os da Cloud API, trocando domínio e token. Como funciona."
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026#video-JL9Qzw3oS5A",
+      "name": "Quanto custa a API oficial do WhatsApp",
+      "description": "Quem cobra o que, categoria por categoria, e o impacto real disso na conta de um cliente",
+      "thumbnailUrl": "https://i.ytimg.com/vi/JL9Qzw3oS5A/maxresdefault.jpg",
+      "uploadDate": "2026-09-06",
+      "contentUrl": "https://www.youtube.com/watch?v=JL9Qzw3oS5A",
+      "embedUrl": "https://www.youtube.com/embed/JL9Qzw3oS5A",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026#article"
+      }
     },
     {
       "@type": "VideoObject",
@@ -226,44 +233,6 @@
       "uploadDate": "2026-09-06",
       "contentUrl": "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
       "embedUrl": "https://www.youtube.com/embed/HVRCBsJI_Eo",
-      "creator": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "publisher": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "isPartOf": {
-        "@id": "https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026#article"
-      }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026#video-FcAwJqVHNoU",
-      "name": "API oficial do WhatsApp: jeito simples e fácil de utilizar",
-      "description": "Video organico, nao patrocinado, da comunidade n8n: conexao do numero e integracao no n8n do comeco ao fim",
-      "thumbnailUrl": "https://i.ytimg.com/vi/FcAwJqVHNoU/maxresdefault.jpg",
-      "uploadDate": "2026-09-06",
-      "contentUrl": "https://www.youtube.com/watch?v=FcAwJqVHNoU",
-      "embedUrl": "https://www.youtube.com/embed/FcAwJqVHNoU",
-      "creator": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "publisher": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "isPartOf": {
-        "@id": "https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026#article"
-      }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026#video-8xA-8z1YW98",
-      "name": "A forma mais fácil e simples de usar a API oficial do WhatsApp",
-      "description": "Numero conectado do zero, chip novo contra aplicativo existente, e onde entra a forma de pagamento",
-      "thumbnailUrl": "https://i.ytimg.com/vi/8xA-8z1YW98/maxresdefault.jpg",
-      "uploadDate": "2026-09-06",
-      "contentUrl": "https://www.youtube.com/watch?v=8xA-8z1YW98",
-      "embedUrl": "https://www.youtube.com/embed/8xA-8z1YW98",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -615,11 +584,11 @@ footer p{margin:0 0 .5rem}
   <div class="hero-grid">
     <div>
       <p class="eyebrow">Oficial vs não oficial</p>
-      <h1>API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa</h1>
+      <h1>API oficial ou não oficial do WhatsApp: o que muda, segundo quem usa as duas</h1>
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-06">6 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -649,24 +618,23 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>API oficial vs não oficial do WhatsApp em 2026: a diferença real, o risco de ban e quanto custa</h1>
-<p><strong>Resposta curta:</strong> a API oficial é a da própria Meta. Você fala com um endereço autorizado, com o número registrado no nome da sua empresa e regras que estão publicadas. A não oficial (Evolution em modo Baileys, Z-API, UAZAPI, WPPConnect, Baileys, entre outras) opera simulando o WhatsApp Web: um servidor mantém a sessão aberta e envia no seu lugar. A Meta classifica isso como uso não autorizado nos <a href="https://business.whatsapp.com/policy" rel="noopener">Termos do WhatsApp Business</a>. Como não existe relação contratual, também não existe canal de recurso caso a conta seja restringida.</p>
-<p>O que quase ninguém fala: <strong>migrar para a oficial não acaba com o risco de banimento.</strong> Acaba com <em>um</em> tipo, o de ser pego usando ferramenta proibida. Todos os outros continuam. Quem dispara para lista fria e ninguém responde é bloqueado do mesmo jeito, com API oficial e template aprovado.</p>
-<p>Por isso a pergunta certa em 2026 não é "oficial ou clandestina". É oficial, e depois <strong>como</strong> você usa.</p>
+<h1>API oficial ou não oficial do WhatsApp: o que muda, segundo quem usa as duas</h1>
+<p><strong>Resposta curta:</strong> na <strong>API oficial</strong>, o número é conectado pela Meta, a política exige template aprovado para iniciar conversa e opt-in de quem recebe, e a Meta cobra por mensagem enviada pela API. Na <strong>API não oficial</strong>, a conexão é feita pelo WhatsApp Web, sem template e sem cobrança da Meta por mensagem.</p>
+<p>Esta página é de uma empresa que vende acesso à API oficial. E o Israel Henrique, CTO da Datafy, diz em vídeo que trabalha com as duas: <em>"eu utilizo muito a API não oficial, até hoje eu utilizo e tenho sofrido com esses banimentos."</em></p>
 <div class="stats">
-  <div class="stat"><b>24 horas</b><span>é a janela para responder o cliente sem template</span></div>
-  <div class="stat"><b>80 msg/s</b><span>throughput padrão de um número na Cloud API</span></div>
-  <div class="stat"><b>menos de 5 min</b><span>para conectar um número, se você já tem Business Manager</span></div>
-  <div class="stat"><b>1 out 2026</b><span>quando a Meta passa a cobrar as mensagens de serviço</span></div>
+  <div class="stat"><b>2</b><span>tipos de API, e o CTO da Datafy usa os dois</span></div>
+  <div class="stat"><b>1 template</b><span>aprovado, exigido na oficial para iniciar conversa</span></div>
+  <div class="stat"><b>0</b><span>blindagem contra bloqueio na oficial</span></div>
+  <div class="stat"><b>24 h</b><span>a janela de resposta livre na oficial</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li>Não oficial emula o WhatsApp Web: qualquer atualização do app derruba a sessão, e automação por app não autorizado viola os <a href="https://business.whatsapp.com/policy" rel="noopener">Termos do WhatsApp Business</a>.</li>
-<li>API oficial <strong>não é blindagem</strong>. Num levantamento com centenas de clientes, a Datafy identificou cinco condutas que derrubam número mesmo em conta oficial, com template aprovado. A primeira delas é prospectar sem template.</li>
-<li>Ir direto na Meta exige até 6 etapas antes da primeira mensagem: Business Manager verificada, verificação de empresa, App Review com vídeo, ser Tech Provider para coexistência, webhooks próprios e app publicado (<a href="https://developers.facebook.com/docs/whatsapp/embedded-signup" rel="noopener">Embedded Signup</a>).</li>
-<li>Via parceiro homologado essas etapas somem: com uma BM já criada, o número conecta e envia em menos de 5 minutos, e os endpoints são os mesmos da Meta. Muda só o domínio e o token.</li>
-<li>Custo na Datafy: R$ 49,90 por número/mês (1 a 9), R$ 39,90 (10 a 49) e R$ 29,90 (50+), sem markup nas conversas. <a href="https://app.datafyapi.com.br" rel="noopener">7 dias grátis, sem cartão</a>.</li>
+<li><strong>Oficial:</strong> template aprovado para iniciar conversa e opt-in, pela política da Meta.</li>
+<li><strong>Oficial:</strong> cobrança da Meta por mensagem enviada pela API, pela categoria.</li>
+<li><strong>Oficial não é blindagem:</strong> a conduta continua decidindo o bloqueio.</li>
+<li><strong>Não oficial:</strong> o observado pelo canal é mais bloqueio, e, bloqueado, <em>"não adianta muito tentar reclamar"</em>.</li>
+<li><strong>Não oficial:</strong> existe muito conteúdo e curso sobre ela, então muita gente já sabe usar.</li>
 </ul>
 <figure>
 <div class="diagram">
@@ -677,129 +645,58 @@ footer p{margin:0 0 .5rem}
     .h{font-size:13px;font-weight:600;fill:var(--fg)}
     .p{font-size:12px;fill:var(--muted)}
     .s{font-size:11px;fill:var(--muted)}
-    .ok{fill:var(--accent)}
-    .no{fill:var(--danger)}
     .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
     .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
-    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
   </style>
-  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
-    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Duas arquiteturas para o mesmo WhatsApp</text>
+<text class="t" x="360" y="26" text-anchor="middle">O que muda na prática, segundo o canal DATA7</text>
 <rect class="boxok" x="20" y="46" width="320" height="210" rx="8"/>
 <text class="h" x="180" y="76" text-anchor="middle">API oficial</text>
-<text class="s" x="180" y="93" text-anchor="middle">endpoint da Meta</text>
-<text class="p ok" x="36" y="118">✓ Número registrado no seu CNPJ</text>
-<text class="p ok" x="36" y="140">✓ Contrato e canal de recurso</text>
-<text class="p ok" x="36" y="162">✓ Endpoint estável, versionado</text>
-<text class="p ok" x="36" y="184">✓ 80 msg/s de throughput</text>
-<text class="p " x="36" y="206">• Exige Business Manager</text>
-<rect class="boxno" x="380" y="46" width="320" height="210" rx="8"/>
-<text class="h" x="540" y="76" text-anchor="middle">Não oficial</text>
-<text class="s" x="540" y="93" text-anchor="middle">emula o WhatsApp Web</text>
-<text class="p no" x="396" y="118">✗ Sem relação contratual</text>
-<text class="p no" x="396" y="140">✗ Sem canal de recurso</text>
-<text class="p no" x="396" y="162">✗ Quebra quando o app muda</text>
-<text class="p no" x="396" y="184">✗ Viola os Termos do WhatsApp</text>
-<text class="p " x="396" y="206">• Conecta por QR code</text>
-<text class="s" x="360" y="278" text-anchor="middle">O risco vem da arquitetura, não da marca: a mesma ferramenta pode rodar nos dois modos.</text>
+<text class="s" x="180" y="93" text-anchor="middle">conexão pela Meta</text>
+<text class="p" x="36" y="120">• Inicia conversa só com template aprovado</text>
+<text class="p" x="36" y="144">• Cobra por mensagem enviada pela API</text>
+<text class="p" x="36" y="168">• Mostra a qualidade do número antes</text>
+<text class="p" x="36" y="192">• Não é blindagem contra bloqueio</text>
+<text class="p" x="36" y="216">• Dá respaldo para reclamar de bloqueio</text>
+<rect class="box" x="380" y="46" width="320" height="210" rx="8"/>
+<text class="h" x="540" y="76" text-anchor="middle">API não oficial</text>
+<text class="s" x="540" y="93" text-anchor="middle">conexão por QR code do WhatsApp Web</text>
+<text class="p" x="396" y="120">• Manda mensagem livre para qualquer um</text>
+<text class="p" x="396" y="144">• Não cobra por mensagem da Meta</text>
+<text class="p" x="396" y="168">• A Meta proíbe iniciar sem template</text>
+<text class="p" x="396" y="192">• Quem usa relata mais bloqueio</text>
+<text class="p" x="396" y="216">• Bloqueado, "não adianta muito reclamar"</text>
+<text class="s" x="360" y="278" text-anchor="middle">O próprio CTO da Datafy usa as duas, e diz isso em vídeo.</text>
 </svg>
 </div>
 <figcaption></figcaption>
 </figure>
 
-<h2 id="qual-a-diferen-a-t-cnica-entre-a-api-ofi">Qual é a diferença técnica entre a API oficial e a não oficial?</h2>
-<p>A oficial é uma interface hospedada pela Meta. A não oficial é um robô operando um WhatsApp Web.</p>
-<p><strong>API oficial (Cloud API):</strong>
-- Envio por <code>POST /{phone_number_id}/messages</code> com JSON. Aceita texto, mídia, template, botões, listas, localização, contato, reação e figurinha (<a href="https://developers.facebook.com/docs/whatsapp/cloud-api" rel="noopener">documentação</a>).
-- Recebimento por <a href="https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks" rel="noopener">webhooks</a> HTTPS: mensagens, status de entrega, alertas de conta, qualidade do número, templates, Flows e chamadas.
-- Número com nome de exibição, qualidade monitorada pela Meta e limites diários de template que sobem conforme essa qualidade.
-- Janela de 24 h: depois que o cliente escreve, você responde livremente; fora dela, só template aprovado.</p>
-<p><strong>API não oficial:</strong>
-- Depende do protocolo do WhatsApp Web. Quando o app muda, a biblioteca quebra até alguém corrigir.
-- Não há template, selo, nem tier, mas também não há aprovação: qualquer número entra na hora.
-- Não existe canal de recurso, porque não existe relação contratual.</p>
-<h3>Quais são as APIs não oficiais mais usadas no Brasil</h3>
-<p>Vale separar por natureza, porque o risco é o mesmo mas o que você contrata é diferente.</p>
-<ul>
-<li><strong>Bibliotecas de código aberto</strong>, que você mesmo instala e mantém: <strong>Baileys</strong>, <strong>WPPConnect</strong> e <strong>Venom</strong>. São a base sobre a qual muita ferramenta comercial é construída.</li>
-<li><strong>Serviços e plataformas</strong> que empacotam isso com painel, suporte e cobrança mensal: <strong>Evolution API</strong> em modo Baileys, <strong>Z-API</strong>, <strong>UAZAPI</strong>, <strong>WAHA</strong> e <strong>Zapster</strong>, entre outras.</li>
-</ul>
-<blockquote>
-<p><strong>Cuidado ao julgar pela marca.</strong> Assim como a Evolution, várias dessas ferramentas oferecem tanto a conexão por QR code quanto a chamada para a Cloud API oficial. Antes de concluir qualquer coisa sobre a sua, confira <strong>em que modo ela está rodando</strong>. É o modo que define o risco de banimento, não o nome no contrato.</p>
-</blockquote>
+<h2 id="o-que-exige-a-oficial">O que exige a oficial</h2>
+<p>A <a href="https://whatsappbusiness.com/policy/" rel="noopener">política comercial do WhatsApp</a> só permite contatar quem forneceu o número e deu opt-in, e só permite iniciar conversa com template aprovado. Dentro das 24 horas depois da última mensagem da pessoa, a resposta é livre. <a href="/posso-mandar-mensagem-para-qualquer-numero">A regra completa</a>.</p>
+<p>E a Meta cobra por mensagem enviada pela API, pela categoria do template. <a href="/quanto-custa-whatsapp-business-api-brasil-2026">Os preços</a>.</p>
+<p>Indo direto na Meta, o acesso passa por conta de desenvolvedor, aplicativo, infraestrutura de webhooks e aprovação. Pela Datafy API, a conexão é por QR code. <a href="/como-conectar-numero-api-oficial-whatsapp">Como conectar</a>.</p>
+<h2 id="onde-a-n-o-oficial-leva-vantagem">Onde a não oficial leva vantagem</h2>
+<p>Vale dizer, porque é por isso que tanta gente usa.</p>
+<p><strong>Já existe muito conteúdo.</strong> No tutorial de atendimento, o Israel explica por que gravou sobre a oficial: <em>"a gente encontra na internet muito conteúdo falando sobre APIs não oficiais. Tem bastante conteúdo no YouTube, tem cursos sobre as APIs, então o pessoal já sabe utilizar."</em></p>
+<p><strong>Não exige template para começar conversa</strong>, nem a aprovação de modelos pela Meta.</p>
+<p><strong>Não tem a cobrança da Meta por mensagem</strong>, que existe na oficial para o que é enviado pela API.</p>
+<h2 id="o-que-o-canal-observa-sobre-bloqueio">O que o canal observa sobre bloqueio</h2>
+<p>No mesmo tutorial: <em>"o problema das APIs não oficiais é a questão de banimentos. Infelizmente nos últimos meses, a meta, o Facebook tá fechando o cerco contra as APIs não oficiais e muitas pessoas estão sendo banidas, tendo números banidos. Eu já tive, clientes meus já tiveram, por isso está havendo essa migração."</em></p>
+<p>No vídeo sobre preço: <em>"nós temos aplicativos no mercado que utilizam tanto API oficial quanto API não oficial. Então eu não tô aqui criticando uma outra. Eu trabalho com as duas, mas a gente tem observado que de fato os usuários que usam a API não oficial tão sofrendo muito mais do que aqueles que usam a API oficial."</em></p>
 <figure>
-<div class="diagram">
-<svg viewBox="0 0 680 260" role="img" aria-labelledby="d1t d1d" style="width:100%;height:auto">
-  <title id="d1t">Como a API não oficial e a API oficial se conectam ao WhatsApp</title>
-  <desc id="d1d">Na API não oficial, o seu servidor fala com uma sessão emulada de WhatsApp Web, que se conecta ao WhatsApp por um elo frágil que quebra a cada atualização do aplicativo. Na API oficial, o seu servidor fala com um endpoint autorizado da Meta, que se conecta ao WhatsApp por um caminho contratual estável.</desc>
-  <style>
-    .bx{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
-    .bx-r{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .bx-g{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .lb{font:600 12px system-ui,-apple-system,sans-serif;fill:var(--fg)}
-    .sm{font:11px system-ui,-apple-system,sans-serif;fill:var(--muted)}
-    .hd{font:700 11px system-ui,-apple-system,sans-serif;letter-spacing:.06em}
-    .ln{stroke:var(--muted);stroke-width:1.5;fill:none}
-    .ln-r{stroke:var(--danger);stroke-width:1.5;fill:none;stroke-dasharray:5 4}
-    .ln-g{stroke:var(--accent);stroke-width:2;fill:none}
-  </style>
-  <defs>
-    <marker id="a1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-      <path d="M0,0 L7,3.5 L0,7 z" fill="var(--muted)"/></marker>
-    <marker id="a2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-      <path d="M0,0 L7,3.5 L0,7 z" fill="var(--accent)"/></marker>
-  </defs>
-
-  <text x="0" y="14" class="hd" fill="var(--danger)">NÃO OFICIAL (MODO BAILEYS)</text>
-  <rect x="0" y="26" width="140" height="46" rx="8" class="bx"/>
-  <text x="70" y="46" class="lb" text-anchor="middle">Seu servidor</text>
-  <text x="70" y="61" class="sm" text-anchor="middle">n8n, código</text>
-  <path class="ln" d="M144 49 H196" marker-end="url(#a1)"/>
-  <rect x="200" y="26" width="170" height="46" rx="8" class="bx-r"/>
-  <text x="285" y="45" class="lb" text-anchor="middle">Sessão WhatsApp Web</text>
-  <text x="285" y="60" class="sm" text-anchor="middle">emulada num servidor</text>
-  <path class="ln-r" d="M374 49 H466"/>
-  <text x="420" y="40" class="sm" text-anchor="middle" fill="var(--danger)">frágil</text>
-  <path d="M416 43 l8 12 M424 43 l-8 12" stroke="var(--danger)" stroke-width="2"/>
-  <rect x="470" y="26" width="130" height="46" rx="8" class="bx"/>
-  <text x="535" y="53" class="lb" text-anchor="middle">WhatsApp</text>
-  <text x="0" y="94" class="sm">App atualizou, a sessão cai. Detectou automação, o número é banido, sem recurso.</text>
-
-  <line x1="0" y1="118" x2="680" y2="118" stroke="var(--line)" stroke-width="1"/>
-
-  <text x="0" y="146" class="hd" fill="var(--accent)">OFICIAL (CLOUD API)</text>
-  <rect x="0" y="158" width="140" height="46" rx="8" class="bx"/>
-  <text x="70" y="178" class="lb" text-anchor="middle">Seu servidor</text>
-  <text x="70" y="193" class="sm" text-anchor="middle">n8n, código</text>
-  <path class="ln-g" d="M144 181 H196" marker-end="url(#a2)"/>
-  <rect x="200" y="158" width="170" height="46" rx="8" class="bx-g"/>
-  <text x="285" y="177" class="lb" text-anchor="middle">Endpoint autorizado</text>
-  <text x="285" y="192" class="sm" text-anchor="middle">Meta Cloud API</text>
-  <path class="ln-g" d="M374 181 H466" marker-end="url(#a2)"/>
-  <text x="420" y="172" class="sm" text-anchor="middle" fill="var(--accent)">contratual</text>
-  <rect x="470" y="158" width="130" height="46" rx="8" class="bx"/>
-  <text x="535" y="185" class="lb" text-anchor="middle">WhatsApp</text>
-  <text x="0" y="226" class="sm">Regras públicas, template aprovado, qualidade monitorada. O elo não quebra sozinho.</text>
-</svg>
-</div>
-<figcaption><strong>As duas arquiteturas.</strong> A não oficial põe um intermediário frágil no meio do caminho. É ele que quebra e é ele que a Meta detecta. A oficial fala direto com um endpoint autorizado.</figcaption>
+<a class="video" href="https://www.youtube.com/watch?v=JL9Qzw3oS5A" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/JL9Qzw3oS5A/maxresdefault.jpg" alt="Miniatura do vídeo: Quanto custa a API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Quanto custa a API oficial do WhatsApp</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 14:12 ele diz que trabalha com as duas e conta o que tem observado sobre bloqueio.</figcaption>
 </figure>
 
-<h2 id="evolution-api-vai-banir-meu-n-mero">Evolution API vai banir meu número?</h2>
-<p>Antes de tudo, o principal: <strong>a Evolution API não é oficial.</strong> É um software de código aberto que você instala no seu próprio servidor. Não é parceira da Meta, não é BSP e não é Tech Provider.</p>
-<p>O que confunde é que ela consegue conectar de duas formas, e o <a href="https://github.com/EvolutionAPI/evolution-api" rel="noopener">repositório oficial dela</a> lista as duas: por <strong>Baileys</strong>, que emula o WhatsApp Web e é o modo que fica fora dos <a href="https://business.whatsapp.com/policy" rel="noopener">Termos do WhatsApp Business</a>, ou apontando para a <strong>Cloud API</strong> da Meta.</p>
-<p>Só que apontar para a API oficial não torna a Evolution oficial, do mesmo jeito que o <code>curl</code> não vira oficial por fazer uma chamada para a Meta. Oficial é o endereço da Meta do outro lado da linha, não o programa que disca.</p>
-<p>E aqui está o que realmente decide: <strong>mesmo no modo Cloud API, a Evolution não te dá acesso à API oficial.</strong> Ela só faz a chamada. Para ter o acesso, você continua tendo que passar sozinho pela Business Manager verificada, pelo App Review e por virar Tech Provider se quiser coexistência. A burocracia fica inteira no seu colo.</p>
-<p>Resumindo a escolha real de quem usa Evolution hoje: em Baileys, risco de banimento. Em Cloud API, todo o processo da Meta para resolver por conta própria. É por isso que a maioria acaba ficando no Baileys.</p>
-<h2 id="api-oficial-protege-contra-banimento">API oficial protege contra banimento?</h2>
-<p>Não. E esse é o ponto que mais separa quem entende de quem está vendendo.</p>
-<blockquote>
-<p>"Usar um template, usar a API oficial do WhatsApp não é blindagem contra banimento."
-Israel, CTO da Datafy API, em <a href="https://www.youtube.com/watch?v=cZ_nyIUv5ic" rel="noopener">Porque você é bloqueado no WhatsApp Business</a></p>
-</blockquote>
+<h2 id="a-oficial-n-o-blindagem">A oficial não é blindagem</h2>
+<p>No vídeo sobre bloqueio, a primeira causa observada, iniciar conversa sem template, vale para qualquer ferramenta. E mesmo com template: <em>"usar um template, usar a API oficial do WhatsApp não é blindagem contra banimento."</em></p>
+<p>A diferença que ele aponta é depois do bloqueio. Quem estava no oficial, com empresa registrada, seguindo as regras e com qualidade alta, tem respaldo para recorrer. <em>"Agora se você foi bloqueado, mas estava utilizando uma API clandestina, uma API não oficial, aí não adianta muito tentar reclamar."</em></p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=cZ_nyIUv5ic" rel="noopener">
   <span class="thumb">
@@ -808,65 +705,13 @@ Israel, CTO da Datafy API, em <a href="https://www.youtube.com/watch?v=cZ_nyIUv5
   </span>
   <span class="meta"><b>Porque você é bloqueado no WhatsApp Business</b><span>Canal DATA7 · 26 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Porque você é bloqueado no WhatsApp Business</figcaption>
+<figcaption>Em 09:05 ele explica que a oficial não é blindagem, e em 24:59 fala do respaldo de quem está no oficial.</figcaption>
 </figure>
 
-<p>A Datafy acompanhou centenas de clientes para entender o que faziam no momento do bloqueio. As causas, em ordem:</p>
-<ol>
-<li><strong>Prospecção sem template.</strong> Iniciar conversa com quem não falou com você nas últimas 24 h, seja pelo celular, pelo WhatsApp Web, por CRM ou por API não oficial. É a causa número um, e está nos próprios termos: só se inicia conversa por modelo aprovado.</li>
-<li><strong>Engajamento baixo, mesmo com template.</strong> Enviar para muita gente e quase ninguém responder é lido como spam. A recomendação prática é incluir um botão "Não tenho interesse" no template: o clique conta como interação e ainda entrega a lista de quem remover.</li>
-<li><strong>Número novo disparando.</strong> Chip recém-comprado que começa em volume alto cai quase sempre. Não está escrito em termo nenhum. É observação de campo.</li>
-<li><strong>Categoria falsificada.</strong> Template de marketing disfarçado de utilidade é reclassificado pela Meta, e a conta chega a custar 10× mais sem aviso.</li>
-<li><strong>Nicho proibido.</strong> Armas, álcool e tabaco, medicamentos, animais vivos, criptomoeda e day trade, apostas, cobrança de dívida. Vale a regra da Meta, não a lei do país: aposta é legal no Brasil e bloqueia igual.</li>
-</ol>
-<div class="callout"><p><strong>O aviso que quase ninguém olha:</strong> antes do bloqueio, o indicador de <strong>qualidade do número</strong> no Gerenciador do WhatsApp cai de alta para média. Ninguém é bloqueado do nada.</p></div>
-
-<figure>
-<div class="diagram">
-<svg viewBox="0 0 680 210" role="img" aria-labelledby="d2t d2d" style="width:100%;height:auto">
-  <title id="d2t">A janela de 24 horas do WhatsApp</title>
-  <desc id="d2d">Quando o cliente envia uma mensagem, abre-se uma janela de 24 horas na qual a empresa responde livremente, sem precisar de template. Cada nova mensagem do cliente reinicia a janela. Depois que ela fecha, a empresa só pode voltar a falar por meio de um template aprovado pela Meta, que é pago.</desc>
-  <style>
-    .lb2{font:600 12px system-ui,-apple-system,sans-serif;fill:var(--fg)}
-    .sm2{font:11px system-ui,-apple-system,sans-serif;fill:var(--muted)}
-  </style>
-  <rect x="0" y="56" width="680" height="4" rx="2" fill="var(--line)"/>
-  <rect x="90" y="56" width="330" height="4" rx="2" fill="var(--accent)"/>
-
-  <circle cx="90" cy="58" r="9" fill="var(--accent)"/>
-  <path d="M85 58 l4 4 l7 -8" stroke="var(--surface)" stroke-width="2" fill="none"/>
-  <text x="90" y="36" class="lb2" text-anchor="middle">Cliente escreve</text>
-  <text x="90" y="88" class="sm2" text-anchor="middle">abre a janela</text>
-
-  <rect x="150" y="100" width="215" height="58" rx="9" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
-  <text x="257" y="121" class="lb2" text-anchor="middle" fill="var(--accent)">Janela de 24 horas</text>
-  <text x="257" y="138" class="sm2" text-anchor="middle">Mensagem de serviço: resposta livre,</text>
-  <text x="257" y="151" class="sm2" text-anchor="middle">sem template. Grátis até 1º/out/2026.</text>
-  <path d="M257 100 L257 62" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 3"/>
-
-  <circle cx="420" cy="58" r="6" fill="var(--muted)"/>
-  <text x="420" y="36" class="lb2" text-anchor="middle">Janela fecha</text>
-
-  <rect x="440" y="100" width="240" height="58" rx="9" fill="var(--warn-bg)" stroke="var(--warn-line)" stroke-width="1.5"/>
-  <text x="560" y="121" class="lb2" text-anchor="middle">Só template aprovado</text>
-  <text x="560" y="138" class="sm2" text-anchor="middle">Marketing, utilidade ou autenticação.</text>
-  <text x="560" y="151" class="sm2" text-anchor="middle">Sempre pago, pela tabela da Meta.</text>
-  <path d="M560 100 L560 62" stroke="var(--warn-line)" stroke-width="1.5" stroke-dasharray="4 3"/>
-
-  <path d="M110 178 Q 255 200 400 178" stroke="var(--accent)" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
-  <text x="255" y="200" class="sm2" text-anchor="middle" fill="var(--accent)">cada nova mensagem do cliente reinicia a janela</text>
-</svg>
-</div>
-<figcaption><strong>A regra que explica quase tudo.</strong> Custo, banimento e estratégia de disparo saem todos daqui: fora da janela de 24 h, só template aprovado, e template é pago.</figcaption>
-</figure>
-
-<h2 id="quem-escreve-isso-tamb-m-usa-n-o-oficial">Quem escreve isso também usa não oficial</h2>
-<p>Vale interromper o comparativo para dizer de onde ele vem, porque isso muda como você deve ler o resto.</p>
-<p>Este site é de uma empresa que vende acesso à API oficial. O interesse é declarado. O que costuma não ser declarado, em textos como este, é que a mesma equipe usa as duas coisas. O Israel Henrique, CTO da Datafy, diz isso em vídeo, no fecho de um tutorial de mais de duas horas:</p>
-<blockquote>
-<p>"Eu acho isso triste, eu acho isso ruim, porque eu utilizo muito a API não oficial, até hoje eu utilizo e tenho sofrido com esses banimentos, mas infelizmente é um mercado, ele funciona assim."</p>
-</blockquote>
-<p>E, sobre número perdido: <em>"eu já tive, clientes meus já tiveram."</em></p>
+<p><a href="/numero-banido-no-whatsapp-o-que-fazer">As causas de bloqueio</a>.</p>
+<h2 id="a-recomenda-o-dele-e-a-confiss-o">A recomendação dele, e a confissão</h2>
+<p>No tutorial: <em>"eu recomendo fortemente que você faça a migração das APIs não oficiais para a API oficial, justamente para evitar passar por esses problemas, esses transtornos de banimentos, restrições, perca de números."</em></p>
+<p>E no fim do mesmo vídeo, a parte que vale ouvir junto: <em>"eu acho isso triste, eu acho isso ruim, porque eu utilizo muito a API não oficial, até hoje eu utilizo e tenho sofrido com esses banimentos, mas infelizmente é um mercado, ele funciona assim, a gente tem sempre que estar atento e se adaptar ao que está acontecendo."</em></p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
   <span class="thumb">
@@ -875,145 +720,30 @@ Israel, CTO da Datafy API, em <a href="https://www.youtube.com/watch?v=cZ_nyIUv5
   </span>
   <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
 </a>
-<figcaption>O tutorial completo de construir um atendimento em cima da API oficial. Em 02:25 ele explica por que recomenda a migração, e em 2:22:04 está o trecho acima, que é a parte mais honesta do canal.</figcaption>
+<figcaption>Em 02:25 ele fala dos bloqueios e recomenda a migração, e em 2:22:04 conta que continua usando a não oficial.</figcaption>
 </figure>
 
-<p>Duas razões para isso estar aqui, e nenhuma é retórica.</p>
-<p><strong>Primeira: quem escolheu não oficial escolheu certo, com a informação que tinha.</strong> Documentação em português, exemplo em toda parte, custo previsível, sem burocracia de Business Manager, e envio livre para quem você quiser. Era e continua sendo a alternativa mais rápida para sair do zero. Se você está aí, não foi por descuido.</p>
-<p><strong>Segunda: a comparação honesta não é entre um caminho bom e um ruim.</strong> É entre dois conjuntos de restrições. E <a href="/numero-banido-no-whatsapp-o-que-fazer">usar a API oficial não elimina o risco de bloqueio</a>, o que a própria página sobre isso diz com a citação do mesmo Israel: <em>"usar um template, usar a API oficial do WhatsApp não é blindagem contra banimento."</em></p>
-<p>Quem promete blindagem está vendendo o que não tem. O que a oficial troca é o tipo de risco: sai o risco de operar por um caminho que a Meta classifica como não autorizado, e ficam os riscos de conduta, que são os mesmos para todo mundo.</p>
-<h2 id="comparativo-em-8-crit-rios">Comparativo em 8 critérios</h2>
-<div class="tablewrap"><table>
-<thead>
-<tr>
-<th>Critério</th>
-<th>Não oficial (Baileys)</th>
-<th>Oficial direto na Meta</th>
-<th>Oficial via Datafy</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Reconhecimento pela Meta</td>
-<td>Nenhum; viola os termos</td>
-<td>Total</td>
-<td>Total (Tech Provider verificado)</td>
-</tr>
-<tr>
-<td>Risco de banimento por ferramenta</td>
-<td>Alto, sem recurso</td>
-<td>Nenhum</td>
-<td>Nenhum</td>
-</tr>
-<tr>
-<td>Risco de banimento por conduta</td>
-<td>Alto</td>
-<td>Igual para todos</td>
-<td>Igual para todos</td>
-</tr>
-<tr>
-<td>Tempo até a 1ª mensagem</td>
-<td>Minutos</td>
-<td>Dias a semanas</td>
-<td>Minutos, com BM já criada</td>
-</tr>
-<tr>
-<td>Coexistência com o app no celular</td>
-<td>Não existe</td>
-<td>Só para Tech Providers</td>
-<td>Incluída</td>
-</tr>
-<tr>
-<td>Custo fixo</td>
-<td>VPS + licença</td>
-<td>R$ 0</td>
-<td>R$ 29,90 a R$ 49,90 por número/mês</td>
-</tr>
-<tr>
-<td>Custo por conversa</td>
-<td>Não há</td>
-<td>Tabela da Meta</td>
-<td>Tabela da Meta, sem markup</td>
-</tr>
-<tr>
-<td>Webhooks</td>
-<td>Você mantém</td>
-<td>Você configura e mantém</td>
-<td>Painel: múltiplas URLs, filtro de eventos, teste em um clique, assinatura HMAC</td>
-</tr>
-</tbody>
-</table></div>
-<h2 id="quando-vale-a-oficial-via-parceiro-homol">Quando vale a oficial via parceiro homologado</h2>
-<ol>
-<li><strong>Você opera mais de um número.</strong> SaaS, agência ou franquia: cada cliente conecta o próprio número pelo Embedded Signup sem você virar BSP, e o preço por número cai com o volume.</li>
-<li><strong>Você roda agentes de IA e precisa de handoff humano.</strong> A coexistência, também escrita <em>Coexistence</em>, <em>Coexist</em> ou <em>CoEx</em>, mantém o número no app do celular para atendimento manual enquanto a API responde as automações, no mesmo histórico. O evento <code>smb_message_echoes</code> avisa quando um humano assumiu pelo celular.</li>
-<li><strong>Você já tem fluxos em n8n, Make ou Zapier.</strong> Se eles falam com a Cloud API, a migração é trocar <code>graph.facebook.com/v21.0/</code> por <code>cloud.datafyapi.com.br/v1/</code> e o token pelo <code>sk_live_…</code>. O payload é idêntico (<a href="https://app.datafyapi.com.br/docs" rel="noopener">documentação</a>).</li>
-<li><strong>Você quer evitar o App Review.</strong> As permissões <code>whatsapp_business_messaging</code> e <code>whatsapp_business_management</code> já estão aprovadas do lado do parceiro.</li>
-</ol>
-<h2 id="onde-as-outras-op-es-s-o-melhores">Onde as outras opções são melhores</h2>
-<p>Nem todo caso é o mesmo, e vale dizer onde a Datafy perde:</p>
-<ul>
-<li><strong>Direto na Meta</strong> é melhor se você tem time de engenharia dedicado, quer custo fixo zero por número e aceita passar pelas aprovações. Também é o caminho de quem quer virar BSP ou Tech Provider por estratégia. Nesse cenário o parceiro é concorrente, não fornecedor.</li>
-<li><strong>Plataformas de atendimento</strong> como Blip, Zenvia ou Wati entregam uma caixa de entrada pronta, com fila, tags e relatório. A Datafy é infraestrutura de API: o painel tem um bate-papo, mas ele é log: guarda 7 dias e 100 mensagens por conversa, e não serve como ferramenta de atendimento. Para isso, integra-se a um Chatwoot (há aba pronta no painel) ou usa-se um produto de atendimento.</li>
-<li><strong>Twilio e Infobip</strong> têm SDKs em mais linguagens, presença global e SLA corporativo.</li>
-<li><strong>A Datafy bloqueia por segurança</strong> rotas com <code>subscribed_apps</code>, <code>deregister</code> e POST direto no ID do número. Se você precisa dessas, precisa da Meta direto.</li>
-</ul>
-<h2 id="o-que-a-oficial-cobra-de-voc-al-m-de-din">O que a oficial cobra de você, além de dinheiro</h2>
-<p>Para a comparação ficar completa, vale listar o que a oficial exige e que a não oficial não exige. São custos de tempo e de desenho, e ignorá-los é o que faz migração dar errado.</p>
-<p><strong>Template aprovado para iniciar conversa.</strong> Fora da janela de 24 horas, não existe texto livre. Isso muda o desenho da prospecção, não só o código.</p>
-<p><strong>Categoria que a Meta reclassifica.</strong> O texto do template define o preço, e a Meta lê esse texto. Um template mal escrito pode custar dez vezes mais sem aviso.</p>
-<p><strong>Cartão de crédito no portfólio da Meta.</strong> As mensagens são cobradas por ela, direto. Sem isso, template não sai.</p>
-<p><strong>Imagem de cabeçalho com proporção que o editor aceite</strong>, e reenviada em cada envio, porque a do template é só exemplo.</p>
-<p><strong>Mídia que chega cifrada</strong>, exigindo duas chamadas para virar arquivo utilizável. É trabalho que quem usa ferramenta de QR code não tem, e que uma plataforma pode absorver por você.</p>
-<p>Nenhum desses itens é impeditivo. Somados, eles explicam por que migrar é um projeto de alguns dias e não uma troca de URL, e por que vale começar por um número secundário.</p>
-<h2 id="um-detalhe-que-muda-a-compara-o-disparo">Um detalhe que muda a comparação: disparo em massa</h2>
-<p>Circula no mercado a ideia de que API oficial não serve para disparo. Serve, e é a única forma permitida de fazê-lo. Na Datafy existe uma aba de campanhas: sobe-se um CSV com uma coluna <code>telefone</code> (formato <code>55</code> + DDD + número), escolhe-se um template já aprovado, mapeiam-se as variáveis e envia-se na hora ou agendado, com status por contato.</p>
-<p>A diferença em relação ao disparo clandestino não é a mecânica. É que cada mensagem passa por um template que a Meta aprovou, e é exatamente isso que mantém o número vivo.</p>
-<h2 id="o-que-mudou-em-2026">O que mudou em 2026</h2>
-<ul>
-<li><strong>Mensagens de serviço deixam de ser gratuitas em 1º de outubro de 2026.</strong> Segundo comunicado da Meta a parceiros de tecnologia, a que a Datafy teve acesso, a resposta dentro da janela de 24 h passa a ser cobrada ao mesmo preço de utilidade e autenticação, Circula também a informação de uma franquia mensal de 1.000 mensagens de serviço gratuitas por número, mas até 08/09/2026 ela <strong>não constava na documentação pública de preços</strong>, então não sirva de base para orçamento. Confirme a tabela vigente em <a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing" rel="noopener">preços da Meta</a>.</li>
-<li><strong>O Brasil passou a ser faturado em reais desde 1º de julho de 2026.</strong> A Meta abriu a localização de cobrança em BRL para o país, e a migração é obrigatória até 30 de junho de 2027 (<a href="https://developers.facebook.com/docs/whatsapp/pricing" rel="noopener">documentação oficial</a>). Quem orça em dólar precisa refazer a conta.</li>
-<li><strong>O telefone está sendo substituído pelo <code>user_id</code>.</strong> A Meta migra progressivamente para um identificador que não expõe o número. Atenção: o <code>user_id</code> não é universal. Ele é a relação entre aquele usuário e aquela empresa. O mesmo cliente tem <code>user_id</code> diferente em cada conta com que fala, então ele serve como chave única por conta, nunca como identidade global de pessoa.</li>
-</ul>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Evolution API vai banir meu número?</h3>
-<p>A Evolution API não é oficial: é um software de código aberto que você instala no seu servidor, e não é parceira da Meta. Ela consegue conectar por Baileys, que emula o WhatsApp Web e traz risco alto de banimento sem recurso, ou apontando para a Cloud API da Meta. Mas apontar para a API oficial não torna a Evolution oficial, e nesse modo ela não te dá acesso: você continua tendo que passar sozinho por Business Manager verificada, App Review e Tech Provider.</p>
-<h3>Preciso de Business Manager verificada para usar a API oficial?</h3>
-<p>Para começar, não. Basta ter um Business Manager, verificado ou não, e um número elegível. A verificação aumenta os limites diários de envio de template, então vale fazer depois, mas não é pré-requisito para a primeira mensagem.</p>
-<h3>Posso continuar usando o WhatsApp Business no celular?</h3>
-<p>Sim, com coexistência. O número segue no app para atendimento manual e responde também pela API para automações, no mesmo histórico. Para trazer histórico e contatos, é preciso disparar a sincronização em até 24 h após a conexão. É uma vez só por tipo, e perder o prazo significa refazer o onboarding.</p>
-<h3>Quanto custa usar a API oficial pela Datafy?</h3>
-<p>R$ 49,90 por número/mês de 1 a 9 números, R$ 39,90 de 10 a 49 e R$ 29,90 a partir de 50, sem taxa de setup. As conversas são pagas diretamente à Meta, pela tabela oficial, sem markup. A Datafy não cobra por mensagem. Trial de 7 dias, sem cartão.</p>
-<h3>Meus fluxos no n8n vão continuar funcionando se eu migrar?</h3>
-<p>Se eles já falam com a Cloud API, sim: a Datafy espelha os endpoints da Meta. Muda o domínio e o token, que vai sempre no header <code>Authorization</code>, e nunca como <code>?access_token=</code> na URL. Se falam com Evolution em modo QR ou Z-API, o formato do payload é diferente e precisa ser adaptado.</p>
-<h3>Migrar para a oficial resolve meu problema de banimento?</h3>
-<p>Resolve metade. Acaba com o banimento por usar ferramenta não autorizada. Não muda nada se a conduta continuar a mesma: lista fria, ninguém respondendo e nicho proibido bloqueiam número oficial do mesmo jeito.</p>
-<h2 id="como-isso-funciona-na-pr-tica">Como isso funciona na prática</h2>
-<p>Se você quer ver o caminho inteiro antes de decidir, ou seja, conectar o número pelo Embedded Signup, receber o token e fazer o primeiro envio pelo n8n, existe um registro de fora da casa. Um criador da comunidade Nine Labs publicou, sem patrocínio, o processo completo em cerca de 13 minutos, do cadastro ao webhook funcionando.</p>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=FcAwJqVHNoU" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/FcAwJqVHNoU/maxresdefault.jpg" alt="Miniatura do vídeo: API oficial do WhatsApp: jeito simples e fácil de utilizar" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>API oficial do WhatsApp: jeito simples e fácil de utilizar</b><span>Canal Nine Labs · 13 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Vídeo orgânico, não patrocinado, da comunidade Nine Labs (n8n): conexão do número e integração no n8n do começo ao fim, com webhook trigger e HTTP Request.</figcaption>
-</figure>
-
-<p>E se o que você quer é o passo a passo da conexão em si, com as duas opções de conta, a tela de compartilhar histórico e o QR code no celular, o canal da Datafy cobre isso em <a href="https://www.youtube.com/watch?v=8xA-8z1YW98" rel="noopener">A forma mais fácil e simples de usar a API Oficial do WhatsApp</a>.</p>
+<h3>A API oficial impede o bloqueio?</h3>
+<p>Não. A conduta continua decidindo.</p>
+<h3>Na oficial posso mandar mensagem livre para qualquer número?</h3>
+<p>Não. Iniciar conversa exige template aprovado, e contatar exige opt-in, pela política.</p>
+<h3>A oficial é cobrada?</h3>
+<p>A Meta cobra por mensagem enviada pela API, pela categoria. Mensagem recebida não é cobrada.</p>
+<h3>Quem usa não oficial é mais bloqueado?</h3>
+<p>É o que o CTO da Datafy relata observar, trabalhando com as duas.</p>
+<h3>Migrar para a oficial muda o meu código?</h3>
+<p>Se você for pela Datafy API, os endpoints são os da Cloud API, trocando domínio e token. <a href="/datafy-api-espelho-da-cloud-api">Como funciona</a>.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Três perguntas. <strong>O número é seu ou do seu cliente?</strong> <strong>Você aguenta ficar uma semana sem ele?</strong> <strong>Você tem gente para passar pelo App Review da Meta?</strong> Se as respostas forem "do cliente", "não" e "não", a oficial via parceiro homologado é a única opção que sobra.</p>
-<p>E antes de migrar, olhe para a sua lista. Se ela é fria e ninguém responde, a migração vai adiar o bloqueio, não evitá-lo.</p>
-<div class="cta"><h3>Teste com um número antes de mover o resto</h3><p>Conecte pelo Embedded Signup, copie o token `sk_live_...`, cole no n8n e envie a primeira mensagem. Se você já tem um Business Manager, isso leva menos de 5 minutos.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Se o seu uso depende de iniciar conversa sem template com quem não deu opt-in, a oficial não permite. Se o número é importante para o negócio e você quer ter onde reclamar de um bloqueio, o canal recomenda a oficial, sabendo que ela exige template, opt-in e pagamento por mensagem, e que a conduta continua valendo.</p>
+<div class="cta"><h3>Conecte um número de teste na oficial</h3><p>Faça a conexão por QR code, mande uma mensagem do seu celular, responda pela API dentro da janela e compare com o que você faz hoje.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/o-que-e-tech-provider-meta">O que é Tech Provider da Meta</a></li>
-<li><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Quanto custa WhatsApp Business API no Brasil em 2026</a></li>
-<li><a href="/migrar-para-api-oficial-sem-perder-o-numero">Como migrar de Evolution/Z-API para a API oficial sem perder o número</a></li>
-<li><a href="/whatsapp-api-oficial-n8n">WhatsApp API oficial no n8n em 15 minutos</a></li>
-<li><a href="/coexistencia-whatsapp-api-oficial-app-celular">Coexistência: API oficial e app no celular no mesmo número</a></li>
+<li><a href="/numero-banido-no-whatsapp-o-que-fazer">Por que o número é bloqueado</a></li>
+<li><a href="/posso-mandar-mensagem-para-qualquer-numero">Posso mandar mensagem para qualquer número?</a></li>
+<li><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Quanto custa a API oficial do WhatsApp</a></li>
+<li><a href="/como-conectar-numero-api-oficial-whatsapp">Como conectar seu número</a></li>
 </ul>
 </article>
 
@@ -1029,18 +759,12 @@ Israel, CTO da Datafy API, em <a href="https://www.youtube.com/watch?v=cZ_nyIUv5
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#qual-a-diferen-a-t-cnica-entre-a-api-ofi">Qual é a diferença técnica entre...</a></li>
-        <li><a href="#evolution-api-vai-banir-meu-n-mero">Evolution API vai banir meu núme...</a></li>
-        <li><a href="#api-oficial-protege-contra-banimento">API oficial protege contra banim...</a></li>
-        <li><a href="#quem-escreve-isso-tamb-m-usa-n-o-oficial">Quem escreve isso também usa não...</a></li>
-        <li><a href="#comparativo-em-8-crit-rios">Comparativo em 8 critérios</a></li>
-        <li><a href="#quando-vale-a-oficial-via-parceiro-homol">Quando vale a oficial via parcei...</a></li>
-        <li><a href="#onde-as-outras-op-es-s-o-melhores">Onde as outras opções são melhores</a></li>
-        <li><a href="#o-que-a-oficial-cobra-de-voc-al-m-de-din">O que a oficial cobra de você, a...</a></li>
-        <li><a href="#um-detalhe-que-muda-a-compara-o-disparo">Um detalhe que muda a comparação...</a></li>
-        <li><a href="#o-que-mudou-em-2026">O que mudou em 2026</a></li>
+        <li><a href="#o-que-exige-a-oficial">O que exige a oficial</a></li>
+        <li><a href="#onde-a-n-o-oficial-leva-vantagem">Onde a não oficial leva vantagem</a></li>
+        <li><a href="#o-que-o-canal-observa-sobre-bloqueio">O que o canal observa sobre bloq...</a></li>
+        <li><a href="#a-oficial-n-o-blindagem">A oficial não é blindagem</a></li>
+        <li><a href="#a-recomenda-o-dele-e-a-confiss-o">A recomendação dele, e a confissão</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
-        <li><a href="#como-isso-funciona-na-pr-tica">Como isso funciona na prática</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>
       </ol>

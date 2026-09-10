@@ -1,6 +1,6 @@
 ---
-title: "Como criar um template de mensagem no WhatsApp, passo a passo"
-description: "Cabeçalho, corpo, rodapé e botões, e a decisão que define o preço. Mais as regras do editor que só aparecem quando ele recusa o que você escreveu."
+title: "Como criar um template de mensagem no WhatsApp, pelo painel ou pela API"
+description: "Categoria, cabeçalho, corpo com variáveis, rodapé e botões. Pelo gerenciador da Meta, ou por POST /v1/{waba_id}/message_templates na Datafy API, com o upload do cabeçalho resolvido."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "como-criar-template-whatsapp-passo-a-passo"
 cluster: "implementacao"
@@ -9,172 +9,190 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-10
 sources:
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-categorization
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-pausing/
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing
-  - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=YF9hTHDAw6E
-  - https://www.youtube.com/watch?v=62oSY66J3s4
-videos: [YF9hTHDAw6E, 62oSY66J3s4]
+  - https://www.youtube.com/watch?v=JL9Qzw3oS5A
+  - https://www.youtube.com/watch?v=cZ_nyIUv5ic
+  - https://whatsappbusiness.com/policy/
+  - https://app.datafyapi.com.br/docs
+videos: [YF9hTHDAw6E, JL9Qzw3oS5A]
 internal_links:
   - /como-enviar-template-pela-api
-  - /categoria-do-template-decide-o-seu-custo
-  - /template-nao-existe-nesse-idioma
-  - /template-com-imagem-no-cabecalho-nao-envia
+  - /quanto-custa-whatsapp-business-api-brasil-2026
   - /posso-mandar-mensagem-para-qualquer-numero
+  - /disparo-em-massa-api-oficial-whatsapp
+  - /numero-banido-no-whatsapp-o-que-fazer
 status: aprovado
 ---
 
-# Como criar um template de mensagem no WhatsApp, passo a passo
+# Como criar um template de mensagem no WhatsApp, pelo painel ou pela API
 
-**Última atualização: 09/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** template é o modelo aprovado pela Meta que te permite **iniciar** uma conversa, ou seja, falar com quem não escreveu para você nas últimas 24 horas. Ele tem quatro partes, cabeçalho, corpo, rodapé e botões, e uma decisão que pesa mais que todas as outras juntas: **a categoria**, que define quanto você paga por mensagem.
+**Resposta curta:** template é o modelo de mensagem que a Meta aprova e que permite **iniciar** conversa, ou seja, falar com quem não mandou mensagem nas últimas 24 horas. Dá para criar pelo **gerenciador do WhatsApp**, no portfólio empresarial, ou pela API, com `POST https://cloud.datafyapi.com.br/v1/{waba_id}/message_templates`.
 
-E existe uma recomendação contraintuitiva que vale abrir logo: **crie pelo painel da Meta, não pela API**, a menos que você esteja montando um produto em que o cliente final cria os próprios templates.
+A recomendação do Israel Henrique, CTO da Datafy, é criar pelo painel, *"a menos que você esteja criando aí um sistema e precisa de usar API"*. E a decisão que mais pesa é a **categoria**, porque é ela que define o preço.
 
-::numeros: 4 partes|cabeçalho, corpo, rodapé e botões ;; 3 categorias|marketing, utilidade e autenticação ;; 10x|a diferença de preço entre marketing e utilidade ;; 1 exemplo|obrigatório para cada variável
+::numeros: 3 categorias|marketing, utilidade e autenticação ;; 10x|a diferença de preço entre marketing e utilidade ;; 1 dia|o prazo de aprovação que ele cita como máximo ;; PENDING|o status de todo template recém-criado
 
 ## Principais pontos
-- **A categoria define o preço**, e a diferença entre marketing e utilidade é de cerca de dez vezes por mensagem.
-- **A Meta lê o texto do template** e reclassifica a categoria se o conteúdo não corresponder. Você não é avisado, e a conta muda.
-- **Nome não se repete e não aceita espaço.** Ele identifica o template no envio, então na prática é imutável.
-- **Toda variável precisa de um exemplo**, e variável nomeada é minúscula e sem acento.
-- **Aprovação não tem prazo fixo.** Às vezes sai na hora, às vezes leva cerca de um dia. Template de campanha se cria antes da campanha.
+- **Categoria define o preço:** no vídeo, marketing entre 30 e 40 centavos e utilidade ou autenticação entre 3 e 4 centavos, variando com o dólar.
+- **A Meta pode mudar a categoria** se o conteúdo não bater, e você não é avisado.
+- **Toda variável precisa de exemplo.** O Israel prefere variáveis com nome, em vez de numeradas.
+- **Botão que faz a pessoa responder** ajuda a Meta a não entender o envio como spam.
+- **Pela API:** nome sem espaço e sem repetir, token e `waba_id`. Para cabeçalho de mídia, `POST /templates/upload-header` gera o handle.
 
-::diagrama: janela-24h
+## Antes: forma de pagamento
 
-## Primeiro: por que criar pelo painel
+Template é pago. No vídeo: *"para enviar mensagem de template você precisa adicionar aqui um meio de pagamento, porque essas mensagens elas são pagas."* O cartão fica no portfólio empresarial da Meta, e a cobrança é feita por ela. [Os preços estão aqui](/quanto-custa-whatsapp-business-api-brasil-2026).
 
-Vindo de quem vende acesso a API, a recomendação soa estranha, e o motivo é prático.
+## A categoria, e por que ela importa
 
-No painel você vê o pré-visualizado enquanto escreve, o editor recusa na hora o que está fora de regra, e a categoria aparece antes de você enviar para análise. Pela API, o mesmo erro volta como código depois, e você descobre o problema de proporção de imagem ou de exemplo faltando no momento errado.
+No vídeo, a comparação: *"marketing custa entre 30 e 40 centavos por mensagem. Utilidade e autenticação custam entre 3 e 4 centavos por mensagem. Eu falo entre um valor e outro porque esse preço ele é cobrado em dólar."*
 
-É uma tarefa que se faz poucas vezes e em que a interface ganha da automação. Na formulação do Israel Henrique, CTO da Datafy: *"recomendo que sempre você crie pelo painel Facebook, mais fácil, mais seguro."*
+E o risco de escolher errado de propósito: *"algumas pessoas elas criam mensagens de marketing e elas categorizam como utilidade para pagar menos. O problema é que às vezes a meta percebe isso e ela muda automaticamente a categoria. E aí acontece que você acha que vai pagar um valor, você acaba pagando 10 vezes mais porque você não é avisado."*
 
-**Quando a API compensa:** quando criar template faz parte do seu produto, e o seu cliente precisa criar o dele sem entrar no painel da Meta. Aí não é escolha, é requisito. [O caminho pela API está descrito adiante](#criar-pela-api-quando-e-o-caso).
+No vídeo sobre preço, a regra para utilidade: mensagem que tem como objetivo **notificar sobre uma transação**, como pedido que saiu para entrega. E um exemplo do próprio uso da Datafy, um template de utilidade para avisar falha no pagamento da assinatura: *"é muito importante colocar essas palavras pagamento, conta no template, porque a inteligência artificial da meta, ela lê o conteúdo."*
 
-## A categoria, que é a decisão cara
+::video: YF9hTHDAw6E | Em 01:42 ele compara o preço das categorias, e em 02:08 explica a reclassificação sem aviso.
 
-Três opções, e elas não são intercambiáveis:
+## Pelo painel: passo a passo
 
-| Categoria | Para que serve | Ordem de grandeza no Brasil |
-|---|---|---|
-| **Utilidade** | Notificar sobre uma transação em curso: pedido confirmado, saiu para entrega, consulta amanhã | Faixa de centavos |
-| **Autenticação** | Código de verificação, e nada além disso | Mesma faixa de utilidade |
-| **Marketing** | Oferta, promoção, retomada de contato, pesquisa, qualquer coisa que busque venda ou conversa | Cerca de dez vezes utilidade |
+**1.** No portfólio empresarial: configurações, contas do WhatsApp, a conta, **gerenciador do WhatsApp**, **gerenciar modelos**, **criar modelo**.
 
-**Confirme os valores na tabela oficial da Meta**, escolhendo Brasil e a moeda, porque os números circulam desatualizados por toda parte.
+**2. Categoria.** Marketing, utilidade ou autenticação.
 
-O critério que resolve a maioria das dúvidas: utilidade **notifica sobre algo que já está acontecendo** entre você e aquela pessoa. Se a mensagem existe porque houve uma transação, é utilidade. Se ela existe porque você quer que haja uma transação, é marketing.
+**3. Nome e idioma.**
 
-Um exemplo real de utilidade que ajuda a calibrar: um cliente que opera frota manda WhatsApp quando o motorista ultrapassa a velocidade máxima. Não vende nada, não busca conversa, notifica um evento. É utilidade sem discussão.
+**4. Cabeçalho.** Texto, que pode ter variável, ou mídia, como imagem. No vídeo, a imagem de exemplo do segundo template precisa ser quadrada: *"a foto tem que ser 500 por 500, tem que ser nessa proporção aqui."* E a imagem colocada aqui é só exemplo: *"na hora você vai ter que enviar outra."*
 
-## A reclassificação silenciosa
+**5. Corpo com variáveis.** Ao adicionar variável, você escolhe o tipo. Ele prefere nome: *"eu prefiro o nome, né? É mais fácil de você visualizar."* Todo exemplo é obrigatório: *"aqui embaixo você precisa colocar um exemplo para essa variável. É obrigatório."*
 
-Aqui está o que custa dinheiro de verdade, e o que faz esta seção existir.
+**6. Rodapé.** Texto curto, como o nome da empresa.
 
-**A Meta lê o conteúdo do template.** Se você cadastrar como utilidade algo que ela entende como marketing, a categoria é trocada, e **você não é avisado**. Na descrição do Israel: *"às vezes a meta percebe isso e ela muda automaticamente a categoria. E aí acontece que você acha que vai pagar um valor, você acaba pagando 10 vezes mais porque você não é avisado, ela simplesmente muda."*
+**7. Botões.** Personalizados, de URL e outros.
 
-Isso tem um lado que dá para usar a seu favor. Se a mensagem é mesmo uma notificação, **escreva as palavras que dizem isso**: pagamento, pedido, conta, agendamento, entrega, protocolo. Um template que diz "houve um problema no pagamento da sua assinatura" está descrevendo uma transação. O mesmo aviso escrito como "não perca seu acesso, aproveite e renove" está descrevendo uma oferta, e vai ser lido assim.
+**8. Enviar para análise.** *"Às vezes aprova rápido, aprova na hora, às vezes pode levar até um dia para aprovar."*
 
-E vale registrar a posição sobre a prática oposta, que circula em conteúdo brasileiro: cadastrar marketing disfarçado de utilidade, enchendo variáveis com texto grande para o conteúdo promocional entrar no envio. *"Inclusive essa é uma prática que até ensinam na internet, eu sou contra isso."* Além de ter [escalada de punição própria](/categoria-do-template-decide-o-seu-custo), ela para de funcionar assim que a leitura do conteúdo pega, e aí você fica com o custo alto e o histórico ruim.
+::video: YF9hTHDAw6E | Em 00:44 ele abre o gerenciador, em 04:23 cria a variável com nome, em 05:33 adiciona rodapé e botões, e em 07:42 monta o template com imagem no cabeçalho.
 
-## Montando o template
+## Botões que fazem a pessoa responder
 
-**Cabeçalho.** Opcional. Aceita texto curto, ou uma mídia: imagem, vídeo ou documento. Pode ter variável, o que permite personalizar o título.
+No mesmo vídeo, o conselho sobre os botões: *"é sempre importante você fazer com que o usuário responda a você, mesmo que você coloque aqui uma opção assim, não quero mais receber mensagens. Aí ele vai clicar e vai responder. Porque se ele não responder você, a meta pode entender que você está fazendo spam."*
 
-Sobre imagem no cabeçalho, dois pontos que geram retrabalho. O editor é exigente com a proporção: na criação gravada no canal, a imagem aceita foi quadrada, de 500 por 500, e a orientação foi que fora disso ele recusa. Não localizamos esse requisito na documentação pública, então teste a sua arte antes do dia da campanha. E o segundo ponto, mais importante: [a imagem que você põe aqui é só exemplo](/template-com-imagem-no-cabecalho-nao-envia), e no envio você manda outra, sempre.
+No vídeo sobre bloqueio, o mesmo raciocínio aparece com o botão de não ter interesse, e com a regra de tirar da lista quem clicar. [Isso está na página sobre bloqueio](/numero-banido-no-whatsapp-o-que-fazer).
 
-**Corpo.** É o texto da mensagem, e é onde ficam as variáveis. Duas formas de nomear:
+## Pela API
+
+Duas regras do vídeo: o nome não pode repetir e não pode ter espaço, e você precisa do token e do identificador da conta do WhatsApp Business. Se não sabe o `waba_id`:
 
 ```
-Olá {{nome_cliente}}, sua consulta é amanhã. Deseja confirmar?
+GET https://cloud.datafyapi.com.br/me
+Authorization: Bearer sk_live_xxx
 ```
 
-Escolhendo variável **nomeada**, ela precisa ser minúscula e sem acento. Escolhendo **posicional**, elas viram números. As duas funcionam, e o que não funciona é criar de um jeito e enviar do outro: isso dá erro de contagem de parâmetros, que [se disfarça de outro erro](/template-nao-existe-nesse-idioma).
+**Cabeçalho de mídia: gerar o handle.** Para criar template com imagem, vídeo ou documento no cabeçalho, a Meta pede um handle de exemplo. A Datafy tem uma rota que gera esse handle a partir de uma URL pública:
 
-**Todo exemplo é obrigatório.** O editor não deixa enviar para análise sem um valor de exemplo para cada variável, porque é com ele que a Meta revisa.
+```
+POST https://cloud.datafyapi.com.br/templates/upload-header
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json
 
-**Rodapé.** Opcional, texto curto, sem variável. Serve para assinar: nome da clínica, da loja, do sistema.
+{ "url": "https://example.com/imagem.png" }
+```
 
-**Botões.** É aqui que mora a parte que protege o seu número, e ela merece seção própria.
+```json
+{ "handle": "4::aW1hZ2UvcG5n:ARYpf5zqqUjggw..." }
+```
 
-::video: YF9hTHDAw6E | Dezesseis minutos criando templates dos dois jeitos. Em 01:42 a comparação de preço das categorias, em 02:08 a reclassificação silenciosa, entre 03:24 e 05:33 as regras de nome, variável e exemplo, e em 07:03 um template com imagem de cabeçalho do começo ao fim.
+**Criar o template.** Exemplo da documentação da Datafy, de utilidade com documento no cabeçalho, variáveis no corpo e dois botões:
 
-## Os botões, e por que eles não são enfeite
+```
+POST https://cloud.datafyapi.com.br/v1/{waba_id}/message_templates
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json
 
-O botão parece detalhe de interface e é uma das poucas alavancas que você tem sobre a saúde do número.
+{
+  "name": "confirmacao_pedido",
+  "language": "pt_BR",
+  "category": "UTILITY",
+  "components": [
+    {
+      "type": "HEADER",
+      "format": "DOCUMENT",
+      "example": { "header_handle": ["4::YXBwbGljYXRpb24vcGRm:ARZVv4zu..."] }
+    },
+    {
+      "type": "BODY",
+      "text": "Obrigado pelo seu pedido, {{1}}! Seu número de pedido é {{2}}. Toque no PDF acima para visualizar seu recibo.",
+      "example": { "body_text": [["Maria", "860198-230332"]] }
+    },
+    {
+      "type": "BUTTONS",
+      "buttons": [
+        { "type": "PHONE_NUMBER", "text": "Ligar", "phone_number": "5511999999999" },
+        { "type": "URL", "text": "Falar com suporte", "url": "https://www.exemplo.com.br/suporte" }
+      ]
+    }
+  ]
+}
+```
 
-O motivo: mandar para muita gente e **quase ninguém responder** é lido como envio indesejado. Não importa que a lista seja sua e o template esteja aprovado. Botão é o caminho mais barato de transformar leitura passiva em resposta.
+A resposta traz o identificador e o status `PENDING`, até a Meta analisar.
 
-Dois que funcionam, e o segundo surpreende:
+::video: YF9hTHDAw6E | Em 13:46 ele usa uma IA para montar o JSON a partir da documentação da Meta, em 14:09 avisa das regras do nome, e em 14:39 cria o template pela API.
 
-**"Não tenho interesse".** Quem clica está respondendo, e ainda entrega a lista exata de quem tirar da base.
+## Listar, editar e apagar
 
-**"Bloquear".** Parece agressivo e é o contrário. A pessoa clica achando que está te bloqueando, e o que ela fez foi interagir com você em vez de te denunciar. A diferença entre essas duas coisas, para a qualidade do número, é enorme.
+**Listar**, pela rota simplificada, sem `waba_id`:
 
-E a parte que não é opcional: **o clique tem que virar remoção da lista.** Se a automação não tira aquela pessoa, você transformou um aviso barato num bloqueio de verdade.
+```
+GET https://cloud.datafyapi.com.br/templates
+Authorization: Bearer sk_live_xxx
+```
 
-Na formulação dele sobre por que isso importa: *"é sempre importante você fazer com que o usuário responda a você, mesmo que você coloque aqui uma opção assim, não quero mais receber mensagens. Porque se ele não responder você, a meta pode entender que você está fazendo spam."*
+**Editar**, com `POST https://cloud.datafyapi.com.br/v1/{id}` e os campos que mudam. Segundo a documentação da Datafy, só templates `REJECTED` ou `PAUSED` podem ser editados sem reaprovação; nos `APPROVED`, dá para alterar componentes de texto.
 
-## Criar pela API, quando é o caso
+**Apagar**, pela rota simplificada:
 
-O endpoint recebe o template inteiro no corpo: nome, idioma, categoria e os componentes, cada um com seu tipo.
+```
+DELETE https://cloud.datafyapi.com.br/templates/{name}
+Authorization: Bearer sk_live_xxx
+```
 
-Duas coisas para ter em mãos: o identificador da **conta do WhatsApp Business**, que não é o identificador do número, e o token. E um cuidado que vale para o corpo inteiro: peça a estrutura a partir da documentação da Meta, porque o formato é o mesmo do lado do provedor, e qualquer assistente monta esse JSON corretamente por conhecer essa documentação.
-
-O que muda em relação ao painel é o momento em que você descobre o erro. Pelo painel, o editor recusa enquanto você escreve. Pela API, volta um código depois, e aí vale ler o erro em vez de tentar de novo com um ajuste no escuro.
-
-## Depois de enviar para análise
-
-**Não existe prazo fixo.** Às vezes aprova na hora, às vezes leva cerca de um dia. É por isso que template de campanha se cria com antecedência, e não na véspera.
-
-**Assine o evento que avisa mudança de situação.** Existe um evento de webhook que notifica aprovação, reprovação e mudança de categoria, com o motivo. Assinar isso é o que evita descobrir uma reprovação na hora do disparo, e é também como você fica sabendo de uma reclassificação de categoria que mudaria o seu custo.
-
-**Alteração de conteúdo passa por revisão de novo.** E lembre que o nome é imutável na prática: mudar o nome significa criar outro template.
+No espelho, `DELETE /v1/{waba_id}/message_templates?name=...` apaga o template em todos os idiomas, e acrescentando `&hsm_id=...` apaga só aquele idioma.
 
 ## Perguntas frequentes
 
-### Posso criar o mesmo template em vários idiomas?
+### Pelo painel ou pela API?
 
-Pode, e é o uso normal. Cada tradução vira uma entrada própria, e o envio escolhe pelo código do idioma. Atenção: `pt_BR` e `pt_PT` são templates diferentes para a API.
+O Israel recomenda o painel, a não ser que você esteja construindo um sistema que precise criar templates.
 
-### Quanto tempo demora para aprovar?
+### Quanto tempo leva a aprovação?
 
-Não há prazo publicado. Pode ser imediato ou levar cerca de um dia. Planeje com folga.
+No vídeo: às vezes na hora, às vezes até um dia.
 
-### Meu template foi reprovado. Consigo saber por quê?
+### Posso cadastrar marketing como utilidade para pagar menos?
 
-O painel mostra a situação, e o evento de webhook traz o motivo. As causas mais comuns são conteúdo que não corresponde à categoria e falta de contexto no texto.
+A Meta pode reclassificar sem avisar, e você passa a pagar o preço de marketing.
 
-### Posso mudar a categoria depois?
+### A variável precisa de exemplo?
 
-A categoria é definida na criação e pode ser alterada **pela Meta** conforme o conteúdo. O caminho confiável é escrever o template de acordo com o que ele realmente é.
+Precisa. É obrigatório.
 
-### Preciso de template para responder alguém?
+### Como crio template com imagem no cabeçalho pela API?
 
-Não. Dentro da janela de 24 horas você responde em texto livre. Template é para **iniciar** conversa. [A regra completa está aqui](/posso-mandar-mensagem-para-qualquer-numero).
-
-### Template aprovado me autoriza a mandar para lista comprada?
-
-Não. Ele resolve o impedimento técnico, e não substitui consentimento. Base sem interação derruba número mesmo com template aprovado, e esse é o erro mais caro do assunto.
+Gere o handle com `POST /templates/upload-header` e use no `example.header_handle`.
 
 ## Como decidir
 
-Se você tem poucos templates e eles mudam pouco, crie pelo painel e pare por aí. É mais rápido, e você vê o resultado enquanto escreve.
+Escreva o template pelo que ele é: se notifica uma transação, é utilidade, e use as palavras da transação no texto. Coloque um botão que permita à pessoa responder. Crie pelo painel se for um template ou outro; pela API se o seu sistema cria templates.
 
-Se criar template faz parte do produto, use a API e invista no que evita suporte: sincronize a lista de templates da conta para o seu banco, guarde nome e idioma juntos, e assine o evento de mudança de situação. Esses três hábitos eliminam a maior parte dos erros de envio que aparecem depois.
-
-E, nos dois casos, escreva o template pelo que ele é. Categoria forçada não economiza: ela é corrigida, e a correção vem sem aviso.
-
-::cta: Crie um template de utilidade hoje, antes de precisar | Um lembrete ou uma confirmação, com uma variável e um botão de resposta. Você passa pelo fluxo inteiro sem pressa, descobre o tempo real de aprovação da sua conta, e fica com um template pronto para quando a campanha aparecer.
+::cta: Crie um template de utilidade hoje | Um aviso de pedido ou de pagamento, com uma variável com nome e exemplo e um botão de resposta. Envie para análise e acompanhe o status em GET /templates.
 
 ## Leia também
-- [Como enviar uma mensagem de template pela API](/como-enviar-template-pela-api)
-- [A categoria do template decide o seu custo](/categoria-do-template-decide-o-seu-custo)
-- [Erro 132001: o template não existe nesse idioma](/template-nao-existe-nesse-idioma)
-- [Meu template com imagem no cabeçalho não envia](/template-com-imagem-no-cabecalho-nao-envia)
+- [Como enviar template pela API](/como-enviar-template-pela-api)
+- [Quanto custa a API oficial do WhatsApp](/quanto-custa-whatsapp-business-api-brasil-2026)
+- [Posso mandar mensagem para qualquer número?](/posso-mandar-mensagem-para-qualquer-numero)
+- [Como fazer disparo em massa](/disparo-em-massa-api-oficial-whatsapp)

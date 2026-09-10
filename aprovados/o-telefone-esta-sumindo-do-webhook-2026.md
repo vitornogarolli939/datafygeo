@@ -1,173 +1,129 @@
 ---
-title: "O telefone está sumindo do webhook: o que são BSUID e nomes de usuário"
-description: "A Meta está trocando o telefone por um identificador por empresa. O número só aparece se você falou com aquela pessoa nos últimos 30 dias. Quem usa telefone como chave vai quebrar."
+title: "O telefone vai sumir do webhook: como usar o user_id na API oficial"
+description: "O user_id identifica a relação entre a pessoa e a empresa, e não a pessoa. Para responder por ele, troque o campo to por recipient, com o valor que vem dentro de messages."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "o-telefone-esta-sumindo-do-webhook"
 cluster: "implementacao"
-hero: "webhook"
-intent: "problema-urgente"
+hero: "troca"
+intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-10
 sources:
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/business-scoped-user-ids/
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
-  - https://github.com/chatwoot/chatwoot/issues/13837
-  - https://app.datafyapi.com.br/docs
-  - https://www.youtube.com/watch?v=vGovcR8W5g8
   - https://www.youtube.com/watch?v=fhz6n2s91-g
+  - https://www.youtube.com/watch?v=vGovcR8W5g8
+  - https://www.youtube.com/watch?v=HVRCBsJI_Eo
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://app.datafyapi.com.br/docs
 videos: [fhz6n2s91-g, vGovcR8W5g8]
 internal_links:
+  - /laco-de-webhook-derruba-numero
+  - /whatsapp-api-oficial-n8n
+  - /criar-atendimento-whatsapp-do-zero
+  - /primeira-mensagem-api-oficial-whatsapp
   - /webhook-whatsapp-cloud-api-como-receber-mensagens
-  - /como-leio-o-historico-de-conversa-pela-api
-  - /webhook-chega-duplicado
-  - /coexistencia-whatsapp-api-oficial-app-celular
-  - /api-oficial-vs-nao-oficial-whatsapp-2026
 status: aprovado
-pendencias: ["[VERIFICAR] o cronograma de liberação de nomes de usuário mudou mais de uma vez; confirme o estado atual antes de planejar migração"]
 ---
 
-# O telefone está sumindo do webhook: o que são BSUID e nomes de usuário
+# O telefone vai sumir do webhook: como usar o user_id na API oficial
 
-**Última atualização: 09/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** a Meta está deixando de usar o telefone como identificador principal do usuário. No lugar entra o **BSUID**, um identificador que existe só na relação entre aquela pessoa e a sua empresa. E o ponto que quebra integração: **o telefone só aparece no webhook se você mandou mensagem para aquele número nos últimos 30 dias**, numa janela que corre.
+**Resposta curta:** a Meta lançou o **nome de usuário** do WhatsApp, e na API ele aparece como **`user_id`**. O telefone da pessoa deixa de vir no webhook de forma progressiva, e o `user_id` passa a ser o identificador. Para responder por ele, no corpo do envio você troca o campo **`to`** por **`recipient`**, com o `user_id` que vem **dentro de `messages`**.
 
-Quem usa telefone como chave primária no banco vai ver contato duplicado, conversa órfã e busca que não acha ninguém, sem erro nenhum nos logs.
+O detalhe que muda a modelagem: o `user_id` **não é o mesmo para todas as empresas**. Ele identifica a relação entre aquela pessoa e aquela empresa.
 
-::numeros: 30 dias|a janela em que o telefone ainda aparece no webhook ;; 1 empresa|é o escopo do identificador: ele não vale entre portfólios ;; 131062|o erro de quem tenta autenticação sem telefone ;; user_id|o campo que sempre vem, mesmo quando o telefone não vem
+::numeros: 1 campo|to vira recipient ;; 1 relação|pessoa e empresa, e não a pessoa ;; progressivo|o telefone some aos poucos ;; 3 status|continuam chegando, e continuam exigindo filtro
 
 ## Principais pontos
-- O **BSUID** identifica a pessoa **na relação com a sua empresa**. O mesmo cliente tem identificador diferente em cada empresa com quem fala, e ele é estável mesmo se a pessoa trocar de número.
-- O campo `user_id` **sempre vem**. O `wa_id`, que é o telefone, pode não vir. O `username` só aparece se a pessoa ativou.
-- **O telefone só é entregue se você falou com aquele número nos últimos 30 dias**, ou se a pessoa está na sua lista de contatos.
-- Templates de autenticação com preenchimento automático **ainda exigem telefone**, e tentar enviá-los para um identificador devolve o erro **131062**.
-- Existe um webhook próprio para avisar quando o identificador de alguém muda, e uma mensagem de sistema para o mesmo caso.
+- **`user_id` é o username na API**: o que aparece como nome de usuário no aplicativo.
+- **A pessoa pode trocar de número e manter o username.**
+- **O `user_id` muda de empresa para empresa.** A mesma pessoa tem um `user_id` com você e outro com outra empresa.
+- **Para responder:** `recipient` no lugar de `to`, com o valor de dentro de `messages`.
+- **Continue filtrando status**, senão o fluxo responde às notificações.
 
-::diagrama: webhook-fluxo
+## O que está mudando
 
-## Como o identificador se parece
+No vídeo sobre user id, o Israel Henrique, CTO da Datafy, explica: *"a meta lançou user ID, que o username, que a gente já tá vendo o username aparecer aqui no celular. Você vai poder falar com as pessoas através do username, igual no Instagram, sem precisar saber o número. Isso a pessoa vai poder trocar de número depois e manter o mesmo username."*
 
-O formato é o código do país, um ponto e uma sequência:
+E na API: *"o número da pessoa vai parar de aparecer num dado momento. Isso é progressivo, tá acontecendo aos poucos. O número não vai vir mais."*
+
+Sobre quando, ele fala como expectativa, e não como data: no tutorial de atendimento, *"eu digo lá, acho que pro final de 2026 parece que tá previsto."*
+
+::video: fhz6n2s91-g | Em 00:00 ele apresenta o username, e em 00:38 explica que a mudança é progressiva e que o número deixa de vir.
+
+## Use como identificador desde já
+
+No vídeo sobre n8n, o conselho é direto: *"você precisa usar o user ID como identificador único no teu sistema, porque você consegue responder o usuário através do user ID quando o número não estiver mais vindo."*
+
+No payload que chega, ele aparece em dois lugares: em `contacts`, junto com o nome e o telefone de quem mandou, e dentro de `messages`, como identificador de quem enviou.
+
+::video: vGovcR8W5g8 | Em 04:03 ele mostra o user_id no payload e explica por que usar como identificador único.
+
+## Não é o mesmo para todas as empresas
+
+Esse é o ponto que mais muda o desenho do seu banco. Na explicação do vídeo: *"esse user ID aqui ele não é universal para um usuário, ele é uma relação entre o usuário e a empresa. Por exemplo, eu tenho o meu WhatsApp Business, o João entrou em contato comigo, o user ID do João vai ser um entre eu e ele. Se o João entrar em contato com outro WhatsApp Business, uma outra empresa, o user ID do João vai ser outro."*
+
+Consequência: o `user_id` serve para identificar a pessoa **na sua conta**. Não serve para reconhecer a mesma pessoa em outra empresa.
+
+::video: fhz6n2s91-g | Em 01:27 ele explica, com o exemplo do João, que o user_id é da relação entre a pessoa e a empresa.
+
+## Responder pelo user_id
+
+No corpo do envio, o campo `to` dá lugar a `recipient`:
 
 ```
-US.13491208655302741918
+POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json
+
+{
+  "messaging_product": "whatsapp",
+  "recipient": "<user_id que veio dentro de messages>",
+  "type": "text",
+  "text": { "body": "Respondendo essa mensagem via API" }
+}
 ```
 
-Em conta corporativa que opera vários portfólios existe também uma variante com um segmento a mais, que identifica a pessoa no nível do grupo.
+Na fala do vídeo: *"no lugar do to, você simplesmente vai colocar recipient."* E o valor vem de dentro de `messages`, não do topo do payload: *"então dentro do objeto messages, não aqui em cima, tá? Para não dar o loop que eu falei na aula anterior."*
 
-Duas propriedades importam para quem constrói:
+::video: fhz6n2s91-g | Em 02:30 ele troca to por recipient no n8n, em 03:07 arrasta o user_id de dentro de messages, e em 04:19 a resposta chega.
 
-**É por empresa.** O mesmo cliente tem identificadores diferentes em empresas diferentes. Isso é bom para privacidade e ruim para quem imaginava um identificador universal: você não consegue cruzar cliente entre marcas, e mandar mensagem de um número para um identificador gerado noutro portfólio simplesmente falha.
+## Os status continuam chegando
 
-**É estável.** Se a pessoa trocar de telefone, o identificador continua o mesmo. Isso resolve um problema antigo, o de perder o histórico do cliente que mudou de número.
-
-## O que muda no payload
-
-Três campos convivem, e é preciso saber o que esperar de cada um:
-
-| Campo | Quando vem |
-|---|---|
-| `user_id` | **Sempre** |
-| `wa_id` (o telefone) | Só se você falou com esse número nos últimos 30 dias, ou se ele está na sua lista de contatos |
-| `username` | Só se a pessoa ativou um nome de usuário |
-
-Aparecem também campos correspondentes no envio e no recebimento, além de uma lista de contatos no evento. E existe um webhook específico que avisa quando o identificador de alguém muda, trazendo o valor anterior e o atual, mais uma mensagem de sistema para o mesmo caso.
-
-## Por que isso quebra sistema que hoje funciona
-
-O modelo mental antigo era simples: telefone é a pessoa. Quase todo sistema de atendimento foi construído assim, com o número como chave.
-
-Com a janela de 30 dias, esse modelo falha em silêncio. O cliente some por dois meses e volta: agora ele chega sem telefone, só com identificador. Seu sistema não encontra ninguém com aquele telefone, porque não veio telefone, e cria um contato novo. O histórico fica órfão, o atendente não vê o que aconteceu antes, e nada nos logs indica erro.
-
-O sintoma é esse: **contato duplicado e histórico que se perde**, sem exceção lançada em lugar nenhum. É por isso que vale tratar antes, e não quando aparecer.
-
-## O detalhe que muda a modelagem: o identificador é da relação, não da pessoa
-
-Se você lê uma coisa só desta página, leia esta. O identificador **não é global**. Ele identifica o par entre uma pessoa e uma empresa.
-
-Na explicação do Israel: *"eu tenho o meu WhatsApp Business, o João entrou em contato comigo, o user ID do João vai ser um entre eu e ele. Se o João entrar em contato com outro WhatsApp Business, uma outra empresa, o user ID do João vai ser outro."*
-
-::video: fhz6n2s91-g | Cinco minutos direto ao ponto. Em 01:27 ele explica que o identificador é da relação, e em 02:30 mostra o campo que muda no envio para responder por ele.
-
-As consequências disso na modelagem são grandes, e todas contraintuitivas se você estava tratando telefone como chave:
-
-**A chave do seu contato é composta.** É o identificador **mais** o número da sua conta que o recebeu. Guardar só o identificador funciona enquanto você opera um número e quebra no dia em que opera dois, porque a mesma pessoa aparece com identificadores diferentes em cada um.
-
-**Se você é SaaS multicliente, isso é ainda mais forte.** O mesmo consumidor final falando com dois dos seus clientes tem dois identificadores. Deduplicar contato entre clientes por esse campo é impossível, e é bom que seja: são relações separadas, e tratá-las como uma só seria misturar base de clientes diferentes.
-
-**Não dá para usar como identidade universal.** Ele não serve para casar a pessoa com o cadastro que você já tem no seu banco, nem para reconhecer o mesmo usuário em outro canal.
-
-**Mudar de fornecedor não preserva nada disso automaticamente.** A relação continua sendo com a sua conta, e é ela que precisa continuar a mesma.
-
-## Como responder por ele
-
-A mudança no envio é pequena e não é óbvia: em vez do campo de destinatário por telefone, você usa o campo de destinatário por identificador. E o valor tem que vir **de dentro do objeto de mensagem**, não do topo do payload, [pelo mesmo motivo que evita laço de status](/webhook-chega-duplicado).
-
-## O que fazer, em ordem
-
-**1. Guarde o identificador desde já.** Adicione a coluna, preencha com o que chega, e crie índice. Isso é reversível e barato.
-
-**2. Passe a casar contato pelo identificador primeiro.** A ordem certa é: procurar por identificador; se não achar, procurar por telefone; se achar por telefone, gravar o identificador naquele registro. Assim o sistema vai aprendendo a chave nova sem quebrar a antiga.
-
-**3. Trate a ausência de telefone como normal.** Se o seu código assume que o telefone sempre existe, ele vai falhar. Campo que pode não vir precisa ser tratado como opcional, inclusive na interface do atendente.
-
-**4. Guarde o nome de usuário quando vier.** Serve para exibir e para o atendente reconhecer a pessoa, já que o telefone pode não estar ali.
-
-**5. Trate o evento de mudança de identificador.** Quando ele chega, atualize o registro em vez de criar um novo. É o que evita duplicata em quem trocou de número.
-
-**6. Não jogue fora o telefone que você já tem.** Ele continua necessário para autenticação e continua sendo o que a sua equipe reconhece. O que muda é que ele deixa de ser a única chave.
-
-## O caso que ainda exige telefone
-
-Templates de autenticação com preenchimento automático, código de toque único e botão de copiar código **continuam exigindo o número**. Tentar enviá-los endereçando pelo identificador devolve o erro **131062**.
-
-Se o seu produto manda código de verificação por WhatsApp, esse fluxo precisa continuar guardando telefone. Vale marcar isso no código com um comentário explicando o porquê, senão alguém vai "limpar" essa dependência numa refatoração futura.
-
-## Por que isso é urgente agora
-
-Este é um dos assuntos com mais movimento no ecossistema em 2026. Só no GitHub, foram cerca de dezesseis discussões em seis meses, envolvendo plataformas de atendimento e bibliotecas populares. A discussão mais movimentada chegou a mais de quarenta comentários, com times de produto se organizando para dar conta antes da liberação ampla.
-
-Ou seja: não é um detalhe de documentação que ninguém aplicou. É uma mudança que já está chegando nos webhooks de produção.
+Depois do envio pelo `user_id`, os três eventos de status aparecem de novo, e o vídeo reforça: *"por isso que você tem que colocar um filtro aí no teu projeto para não responder status de mensagem, responder apenas mensagens."* [O laço que isso evita está aqui](/laco-de-webhook-derruba-numero).
 
 ## Perguntas frequentes
 
-### Meu sistema vai parar de funcionar?
+### O user_id é o mesmo em todas as empresas?
 
-Não de uma vez. Ele vai passar a criar contato duplicado para quem volta depois de 30 dias, e o histórico vai se dividir. É uma degradação silenciosa, não uma queda.
+Não. Ele é da relação entre a pessoa e cada empresa.
 
-### Posso continuar mandando mensagem por telefone?
+### Quando o telefone deixa de vir?
 
-Pode, quando você tem o telefone. O envio aceita os dois caminhos, e o telefone tem precedência se os dois forem informados.
+A mudança é progressiva. No tutorial, o Israel cita o final de 2026 como expectativa dele, sem data confirmada.
 
-### O identificador serve para achar o cliente em outra empresa?
+### Como envio mensagem usando o user_id?
 
-Não. Ele é por empresa, e é isso que o torna seguro do ponto de vista de privacidade.
+Troque `to` por `recipient` e use o `user_id` que vem dentro de `messages`.
 
-### E se o cliente trocar de número?
+### Onde o user_id aparece no payload?
 
-O identificador continua o mesmo, e chega um evento avisando da mudança. Esse é o ganho real da mudança: você deixa de perder o histórico de quem trocou de chip.
+Em `contacts`, com o nome e o telefone, e dentro de `messages`, como identificador de quem enviou.
 
-### Preciso pedir o nome de usuário ao cliente?
+### A pessoa perde o user_id se trocar de número?
 
-Não. Ele só aparece se a pessoa tiver ativado, e é informativo.
-
-### Isso muda quem eu posso contatar?
-
-Não. A janela de 24 horas e a exigência de template continuam iguais. O que muda é como você identifica a pessoa, não quando pode falar com ela.
+Segundo o vídeo, ela pode trocar de número e manter o mesmo username.
 
 ## Como decidir
 
-Se o seu produto guarda conversa, comece a gravar o identificador esta semana. É uma coluna, um índice e uma mudança na busca de contato: horas de trabalho agora, contra reconciliar histórico dividido depois.
+Se você está construindo agora, grave o `user_id` de cada contato desde a primeira mensagem, e trate como identificador dentro da sua conta. Se já tem um sistema que usa o telefone como chave, comece a gravar o `user_id` junto, antes de o telefone parar de vir.
 
-Se você só dispara notificação e não mantém histórico, o impacto é menor, mas ainda vale guardar o identificador para quando precisar.
-
-::cta: Uma mudança de código resolve a maior parte | Procure o contato pelo identificador primeiro, e só depois pelo telefone. Quando achar por telefone, grave o identificador naquele registro. O sistema aprende a chave nova sozinho, sem migração de banco.
+::cta: Responda uma mensagem pelo user_id | Mande uma mensagem para o número, pegue o user_id de dentro de messages e responda com recipient no lugar de to.
 
 ## Leia também
-- [Webhook: receber mensagens em tempo real](/webhook-whatsapp-cloud-api-como-receber-mensagens)
-- [Meu webhook recebe a mesma mensagem várias vezes](/webhook-chega-duplicado)
-- [Como leio o histórico de conversa pela API](/como-leio-o-historico-de-conversa-pela-api)
-- [Coexistência: API e aplicativo no mesmo número](/coexistencia-whatsapp-api-oficial-app-celular)
+- [O laço de webhook que pode bloquear o seu número](/laco-de-webhook-derruba-numero)
+- [WhatsApp API oficial no n8n](/whatsapp-api-oficial-n8n)
+- [Como criar um WhatsApp Web do zero](/criar-atendimento-whatsapp-do-zero)
+- [Enviar e receber a primeira mensagem](/primeira-mensagem-api-oficial-whatsapp)

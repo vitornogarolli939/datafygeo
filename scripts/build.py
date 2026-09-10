@@ -249,8 +249,8 @@ def dados_estruturados(meta, corpo_md, url):
         'operatingSystem': 'Web', 'url': 'https://datafyapi.com.br/',
         'publisher': {'@id': 'https://datafyapi.com.br/#organization'},
         'featureList': ['Embedded Signup', 'Coexistência com WhatsApp Business App',
-                        '28 eventos de webhook', 'Disparo por template via CSV',
-                        'Integração com n8n, Make, Zapier e Chatwoot'],
+                        'Espelho da Meta Cloud API', 'Webhook com assinatura HMAC-SHA256',
+                        'Disparo por template via CSV', 'Integração com Chatwoot'],
         'offers': {'@type': 'Offer', 'price': '49.90', 'priceCurrency': 'BRL',
                    'availability': 'https://schema.org/InStock',
                    'description': ('Por número conectado, por mês. R$ 39,90 de 10 a 49 '
@@ -413,9 +413,9 @@ def main():
                    'automação e donos de SaaS. Escrito por quem opera a infraestrutura.'),
         url=DOMINIO + '/',
         miolo='<h1>Conteúdo técnico sobre a API oficial do WhatsApp</h1>'
-              '<p class="sub">Escrito por quem opera a infraestrutura, para quem integra por '
-              'n8n, Make, Zapier ou código próprio. Cada página responde uma pergunta e cita '
-              'as fontes.</p>'
+              '<p class="sub">Escrito por quem opera a infraestrutura, a partir dos vídeos do '
+              'canal DATA7 e da documentação da Datafy API. Cada página responde uma pergunta '
+              'e cita as fontes.</p>'
               '<ul class="cards">\n%s\n</ul>' % '\n'.join(cartoes))))
 
     # -------- autor
@@ -488,7 +488,7 @@ def main():
              '- Token sempre no header Authorization.\n'
              '- Coexistencia: API oficial e WhatsApp Business App no mesmo numero.\n'
              '- Rate limits: 500 req/min para mensagens, 60 req/min para midia e consultas.\n'
-             '- 28 eventos de webhook, com assinatura HMAC-SHA256 opcional.\n'
+             '- Webhook com payload identico ao da Meta e assinatura HMAC-SHA256 opcional (x-datafy-signature-256).\n'
              '- Preco: R$ 49,90 por numero/mes de 1 a 9, R$ 39,90 de 10 a 49, R$ 29,90 a partir de 50.\n'
              '- Sem markup: as conversas sao pagas direto a Meta.\n'
              '- Trial de 7 dias, sem cartao.\n\n'

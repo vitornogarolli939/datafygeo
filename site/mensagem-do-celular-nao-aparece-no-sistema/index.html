@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>O atendente responde pelo celular e não aparece no meu sistema</title>
-<meta name="description" content="Falta assinar um evento específico. Sem ele, o histórico fica com metade da conversa, e nada indica erro: só o que a automação escreveu aparece.">
+<meta name="description" content="Em coexistência, a mensagem enviada pelo aplicativo chega por um evento separado, o smb_message_echoes. Sem ele assinado, o que o atendente escreve não chega no webhook.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/mensagem-do-celular-nao-aparece-no-sistema">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -14,14 +14,14 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
 <meta property="og:title" content="O atendente responde pelo celular e não aparece no meu sistema">
-<meta property="og:description" content="Falta assinar um evento específico. Sem ele, o histórico fica com metade da conversa, e nada indica erro: só o que a automação escreveu aparece.">
+<meta property="og:description" content="Em coexistência, a mensagem enviada pelo aplicativo chega por um evento separado, o smb_message_echoes. Sem ele assinado, o que o atendente escreve não chega no webhook.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/mensagem-do-celular-nao-aparece-no-sistema">
-<meta property="article:published_time" content="2026-09-09">
-<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="O atendente responde pelo celular e não aparece no meu sistema">
-<meta name="twitter:description" content="Falta assinar um evento específico. Sem ele, o histórico fica com metade da conversa, e nada indica erro: só o que a automação escreveu aparece.">
+<meta name="twitter:description" content="Em coexistência, a mensagem enviada pelo aplicativo chega por um evento separado, o smb_message_echoes. Sem ele assinado, o que o atendente escreve não chega no webhook.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -120,10 +121,10 @@
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/mensagem-do-celular-nao-aparece-no-sistema#article",
       "headline": "O atendente responde pelo celular e não aparece no meu sistema",
-      "description": "Falta assinar um evento específico. Sem ele, o histórico fica com metade da conversa, e nada indica erro: só o que a automação escreveu aparece.",
+      "description": "Em coexistência, a mensagem enviada pelo aplicativo chega por um evento separado, o smb_message_echoes. Sem ele assinado, o que o atendente escreve não chega no webhook.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,13 +133,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/mensagem-do-celular-nao-aparece-no-sistema",
       "citation": [
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing",
-        "https://app.datafyapi.com.br/docs",
         "https://www.youtube.com/watch?v=dIIkttPeBS0",
-        "https://www.youtube.com/watch?v=T_ai6IvLzZE"
+        "https://www.youtube.com/watch?v=vGovcR8W5g8",
+        "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+        "https://www.youtube.com/watch?v=T_ai6IvLzZE",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -147,53 +146,56 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Isso vale se o número nasceu na API?",
+          "name": "Isso vale para número que não está em coexistência?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. Sem aplicativo no celular, não existe esse segundo caminho. O evento só faz sentido em coexistência."
+            "text": "Não. Se o número não está no aplicativo do celular, não existe mensagem enviada pelo celular para chegar."
           }
         },
         {
           "@type": "Question",
-          "name": "Vou ver também o que eu envio pela API?",
+          "name": "As mensagens enviadas pelo celular antes de eu assinar o evento chegam depois?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não por esse evento. Dessas voltam os status, enviada, entregue e lida."
+            "text": "Não. O evento passa a entregar a partir de quando está assinado. O histórico anterior só vem pela sincronização, dentro das 24 horas depois da conexão."
           }
         },
         {
           "@type": "Question",
-          "name": "Preciso assinar mais algum evento?",
+          "name": "Mensagem enviada pelo celular é cobrada?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vale assinar também os de qualidade do número e de mudança na conta, que são os que avisam antes de uma restrição. Os dois de mensagem cobrem o histórico."
+            "text": "Não. A Meta cobra por mensagem enviada pela API."
           }
         },
         {
           "@type": "Question",
-          "name": "O evento traz mídia enviada pelo celular?",
+          "name": "Como sei se o evento está chegando?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Traz a referência da mídia, como acontece com mensagem recebida. O arquivo é buscado pelo identificador, com as duas chamadas."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Como sei se está funcionando agora?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Mande uma mensagem pelo celular do número conectado e olhe o seu endpoint. Se chegou, está resolvido, e o teste leva um minuto."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "E se eu não quero que apareça?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Vale pensar duas vezes. Histórico incompleto atrapalha atendimento, relatório e qualquer coisa que dependa de contexto, inclusive agente de IA."
+            "text": "Mande uma mensagem pelo celular do número e olhe o seu endpoint, ou o log de mensagens do painel da Datafy."
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/mensagem-do-celular-nao-aparece-no-sistema#video-vGovcR8W5g8",
+      "name": "Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens",
+      "description": "Webhook de teste e de producao, envio pelo no de HTTP, e o laco de status que derruba numero",
+      "thumbnailUrl": "https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=vGovcR8W5g8",
+      "embedUrl": "https://www.youtube.com/embed/vGovcR8W5g8",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/mensagem-do-celular-nao-aparece-no-sistema#article"
+      }
     },
     {
       "@type": "VideoObject",
@@ -204,6 +206,25 @@
       "uploadDate": "2026-09-09",
       "contentUrl": "https://www.youtube.com/watch?v=dIIkttPeBS0",
       "embedUrl": "https://www.youtube.com/embed/dIIkttPeBS0",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/mensagem-do-celular-nao-aparece-no-sistema#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/mensagem-do-celular-nao-aparece-no-sistema#video-LIT4FxgqHhE",
+      "name": "Logs de mensagens em tempo real na API oficial do WhatsApp",
+      "description": "Ver o payload cru de cada mensagem que entra e sai, e por quanto tempo esse log fica",
+      "thumbnailUrl": "https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+      "embedUrl": "https://www.youtube.com/embed/LIT4FxgqHhE",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -578,7 +599,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -621,74 +642,63 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <h1>O atendente responde pelo celular e não aparece no meu sistema</h1>
-<p><strong>Resposta curta:</strong> falta assinar um evento. Em coexistência, a mensagem que sai <strong>do aplicativo do celular</strong> chega por um campo de webhook <strong>separado</strong> do de mensagens recebidas. Se você não marcou esse campo, ela não chega em lugar nenhum.</p>
-<p>O sintoma é característico e demora a ser notado porque nada falha: o cliente escreve e aparece, a automação responde e aparece, e <strong>o que o atendente digitou no celular some</strong>. O histórico fica com metade da conversa, e o relatório mostra uma operação que parece funcionar.</p>
+<p><strong>Resposta curta:</strong> falta assinar o evento <strong><code>smb_message_echoes</code></strong> no webhook do número. Em coexistência, a mensagem que sai do aplicativo do celular não chega pelo evento <code>messages</code>: ela chega por esse evento separado. Sem ele marcado, o que o atendente escreve não chega no seu webhook.</p>
+<p>Na explicação do Israel Henrique, CTO da Datafy, no vídeo sobre n8n: <em>"se você não marcar essa opção, as mensagens que você enviar no celular não vão chegar no web hook."</em></p>
 <div class="stats">
-  <div class="stat"><b>2 eventos</b><span>mensagens recebidas e mensagens enviadas pelo aplicativo</span></div>
-  <div class="stat"><b>1 marcação</b><span>resolve, e ela é retroativa a nada</span></div>
-  <div class="stat"><b>0</b><span>erros gerados quando falta</span></div>
-  <div class="stat"><b>metade</b><span>da conversa é o que você perde</span></div>
+  <div class="stat"><b>2 eventos</b><span>messages e smb_message_echoes</span></div>
+  <div class="stat"><b>1 minuto</b><span>para testar se está funcionando</span></div>
+  <div class="stat"><b>0</b><span>mensagens da API nesse evento</span></div>
+  <div class="stat"><b>3 status</b><span>voltam de cada envio pela API</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li><strong>São dois campos diferentes.</strong> Um traz o que o cliente manda, outro traz o que o atendente manda pelo aplicativo.</li>
-<li><strong>Mensagem enviada pela API não vem por esse evento.</strong> Dela volta <a href="/tres-status-da-mensagem-whatsapp">status</a>, que é outra coisa.</li>
-<li><strong>Nada falha quando o evento não está assinado.</strong> É por isso que o problema é descoberto tarde.</li>
-<li><strong>Não é retroativo.</strong> O que passou enquanto o evento estava desmarcado não é recuperado.</li>
-<li>Isso só existe em <strong>coexistência</strong>. Número que nasceu na API não tem aplicativo, então não há esse caminho.</li>
+<li><strong><code>messages</code></strong> traz o que o cliente manda para você e os status do que você envia pela API.</li>
+<li><strong><code>smb_message_echoes</code></strong> traz o que você envia <strong>pelo celular</strong> do número conectado.</li>
+<li><strong>Mensagem enviada pela API não aparece em <code>smb_message_echoes</code>.</strong> Dela voltam status.</li>
+<li>O payload que a Datafy entrega é <strong>idêntico ao da Meta</strong>, sem alteração.</li>
+<li>O teste é simples: mande uma mensagem pelo celular do número e veja se ela chega no webhook.</li>
 </ul>
+<h2 id="como-resolver">Como resolver</h2>
+<p><strong>1.</strong> No painel da Datafy, abra a aba de webhooks do número.</p>
+<p><strong>2.</strong> Edite o webhook e marque os dois eventos: <code>messages</code> e <code>smb_message_echoes</code>.</p>
+<p><strong>3.</strong> Salve e teste: pegue o celular do número conectado, mande uma mensagem para qualquer contato, e confira se o evento chegou.</p>
 <figure>
-<div class="diagram">
-<svg viewBox="0 0 720 262" xmlns="http://www.w3.org/2000/svg" class="d">
-  <style>
-    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-    .t{font-size:15px;font-weight:600;fill:var(--fg)}
-    .h{font-size:13px;font-weight:600;fill:var(--fg)}
-    .p{font-size:12px;fill:var(--muted)}
-    .s{font-size:11px;fill:var(--muted)}
-    .ok{fill:var(--accent)}
-    .no{fill:var(--danger)}
-    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
-    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
-    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
-  </style>
-  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
-    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Coexistência: o mesmo número nos dois lugares</text>
-<rect class="box" x="60" y="52" width="200" height="72" rx="8"/>
-<text class="h" x="160" y="80" text-anchor="middle">Aplicativo no celular</text>
-<text class="s" x="160" y="100" text-anchor="middle">atendimento humano</text>
-<rect class="box" x="460" y="52" width="200" height="72" rx="8"/>
-<text class="h" x="560" y="80" text-anchor="middle">Cloud API</text>
-<text class="s" x="560" y="100" text-anchor="middle">automacao e disparo</text>
-<rect class="boxok" x="290" y="60" width="140" height="56" rx="8"/>
-<text class="h ok" x="360" y="84" text-anchor="middle">1 número</text>
-<text class="s" x="360" y="102" text-anchor="middle">mesmo histórico</text>
-<path class="ar" d="M265,88 L283,88"/>
-<path class="ar" d="M437,88 L455,88"/>
-<rect class="box" x="30" y="146" width="660" height="100" rx="8"/>
-<text class="h" x="46" y="170">Limites reais da sincronização de histórico</text>
-<text class="p" x="46" y="196">• 180 dias de conversa</text>
-<text class="p" x="266" y="196">• grupos não sincronizam</text>
-<text class="p" x="486" y="196">• mídia só dos últimos 14 dias</text>
-<text class="p" x="46" y="218">• 24 h para disparar a sync</text>
-<text class="p" x="266" y="218">• 20 msg/s de throughput</text>
-<text class="p" x="486" y="218">• uma vez só, no onboarding</text>
-</svg>
-</div>
-<figcaption></figcaption>
+<a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg" alt="Miniatura do vídeo: Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 01:57 ele seleciona os dois eventos no cadastro do webhook e explica: o primeiro traz as mensagens recebidas e os status, o segundo traz as mensagens enviadas pelo celular.</figcaption>
 </figure>
 
-<h2 id="por-que-existem-dois-eventos">Por que existem dois eventos</h2>
-<p>Coexistência significa que o mesmo número funciona nos dois lugares: o atendente responde pelo aplicativo, a automação responde pela API.</p>
-<p>Do ponto de vista da plataforma, são origens diferentes:</p>
-<p><strong>Mensagem que entra</strong>, vinda do cliente, chega pelo campo de mensagens. É o evento que todo mundo assina primeiro.</p>
-<p><strong>Mensagem que sai pelo aplicativo</strong> é uma notificação de eco: a plataforma avisa que aquele número enviou algo, para o seu sistema poder acompanhar. Campo separado.</p>
-<p><strong>Mensagem que sai pela API</strong> você já sabe que enviou, então não faz sentido devolver o conteúdo. O que volta é status.</p>
-<p>A confusão nasce da terceira linha. Muita gente assina o evento de eco esperando ver ali as próprias mensagens enviadas por API, não vê, e conclui que o evento não funciona. Na explicação do Israel Henrique, CTO da Datafy: <em>"esse SMB Messages Echoes, ele vai te notificar sempre que você enviar uma mensagem do celular. Quando você envia mensagens direto pela API, não aparece."</em></p>
+<h2 id="a-confus-o-que-faz-parecer-defeito">A confusão que faz parecer defeito</h2>
+<p>Quem assina <code>smb_message_echoes</code> esperando ver as próprias mensagens enviadas <strong>pela API</strong> fica procurando erro onde não tem. No vídeo de conexão, a regra aparece com essas palavras: <em>"esse SMB Messages Echoes, ele vai te notificar sempre que você enviar uma mensagem do celular, tá? Quando você envia mensagens direto pela API, não aparece."</em></p>
+<p>Da mensagem enviada pela API voltam <strong>status</strong>: enviada, entregue e lida, pelo evento <code>messages</code>. <a href="/tres-status-da-mensagem-whatsapp">Os três status estão explicados aqui</a>.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>De onde a mensagem saiu</th>
+<th>Por qual evento chega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cliente mandou para você</td>
+<td><code>messages</code></td>
+</tr>
+<tr>
+<td>Você mandou pela API</td>
+<td><code>messages</code>, como status</td>
+</tr>
+<tr>
+<td>Você mandou pelo celular do número</td>
+<td><code>smb_message_echoes</code></td>
+</tr>
+</tbody>
+</table></div>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
   <span class="thumb">
@@ -697,15 +707,25 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 06:40 ele cadastra os dois eventos e explica a diferença entre eles, incluindo por que a mensagem enviada pela API não vem por esse caminho.</figcaption>
+<figcaption>Em 06:40 ele cadastra os dois eventos e explica que a mensagem enviada pela API não aparece em smb_message_echoes.</figcaption>
 </figure>
 
-<h2 id="os-sintomas-e-como-reconhecer">Os sintomas, e como reconhecer</h2>
-<p><strong>O histórico tem buracos.</strong> A conversa mostra pergunta do cliente, resposta da automação, pergunta do cliente de novo, e no meio falta o que o atendente escreveu. As perguntas do cliente parecem responder a mensagens que não existem.</p>
-<p><strong>O agente de IA perde contexto.</strong> Se o modelo lê a conversa para responder, ele está lendo uma versão incompleta, e às vezes repete algo que o humano já falou.</p>
-<p><strong>O relatório subestima o atendimento.</strong> Volume de mensagens enviadas conta só o que saiu pela API, então o trabalho do time no celular fica invisível.</p>
-<p><strong>A caixa de entrada não sincroniza.</strong> Se você usa uma ferramenta de atendimento, a resposta dada pelo celular não aparece nela, e dois atendentes acabam respondendo a mesma pessoa.</p>
-<p>Esse último é o mais visível, e é o que costuma fazer alguém finalmente procurar a causa.</p>
+<h2 id="vendo-acontecer-no-log-da-datafy">Vendo acontecer no log da Datafy</h2>
+<p>No painel da Datafy existe um log em tempo real das mensagens, que mostra o payload de cada evento. No vídeo, o Israel responde pelo WhatsApp Web do número e abre o evento que chegou: <em>"isso aqui é o messages echoes e é quando eu, proprietário, envio a mensagem."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=LIT4FxgqHhE" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg" alt="Miniatura do vídeo: Logs de mensagens em tempo real na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Logs de mensagens em tempo real na API oficial do WhatsApp</b><span>Canal DATA7 · 3 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 01:26 a resposta dada fora da API aparece no log como smb_message_echoes, com o payload visível.</figcaption>
+</figure>
+
+<p><a href="/ver-payload-das-mensagens-em-tempo-real">Como usar esse log está aqui</a>.</p>
+<h2 id="numa-caixa-de-entrada">Numa caixa de entrada</h2>
+<p>Com o evento funcionando, a resposta do celular aparece também numa caixa de entrada integrada. No vídeo sobre o Chatwoot, ele manda uma mensagem pelo celular e ela aparece na conversa: <em>"então essa aqui foi enviada diretamente do celular que está conectado na API. Então tá sincronizado."</em></p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=T_ai6IvLzZE" rel="noopener">
   <span class="thumb">
@@ -714,47 +734,29 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como usar a API oficial do WhatsApp no Chatwoot</b><span>Canal DATA7 · 5 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 04:20 ele manda uma mensagem pelo celular do número conectado e ela aparece no Chatwoot. É a prova visual de que o evento está funcionando, e o teste que vale repetir na sua configuração.</figcaption>
+<figcaption>Em 04:20 a mensagem enviada pelo celular aparece no Chatwoot.</figcaption>
 </figure>
 
-<h2 id="como-resolver">Como resolver</h2>
-<p><strong>1. Abra a configuração do seu webhook.</strong> Onde você escolheu os eventos.</p>
-<p><strong>2. Marque o campo de mensagens enviadas pelo aplicativo</strong>, além do de mensagens.</p>
-<p><strong>3. Salve e teste.</strong> Pegue o celular do número conectado, mande uma mensagem para qualquer contato, e veja se ela chega no seu endpoint.</p>
-<p><strong>4. Trate no seu código.</strong> O evento vem com estrutura própria, e o ponto importante é o <strong>sentido</strong>: essa mensagem é de saída, não de entrada. Se o seu processamento assume que tudo que chega é do cliente, ele vai gravar a mensagem do atendente como se fosse dele.</p>
-<p>Esse quarto passo é o que mais gera bug depois de resolver o primeiro. Grave a direção da mensagem explicitamente, e não deduza pela origem do evento.</p>
-<h2 id="o-que-n-o-recuperado">O que não é recuperado</h2>
-<p>Vale ser claro: <strong>não é retroativo.</strong> As mensagens enviadas pelo celular enquanto o evento estava desmarcado não são reenviadas quando você assina.</p>
-<p>Elas continuam existindo no aparelho, e não no seu banco. Se o histórico importa, o que dá para fazer é exportar a conversa pelo próprio aplicativo, o que é manual e serve para poucos casos.</p>
-<p>E existe uma exceção que vale conhecer: no momento da conexão, existe uma janela de 24 horas para <a href="/sincronizar-contatos-api-oficial-whatsapp">sincronizar contatos e histórico</a>, que traz até 180 dias de conversa. Essa é a única recuperação em massa que existe, e ela acontece uma vez só, na entrada.</p>
-<h2 id="o-outro-lado-o-que-isso-n-o-resolve">O outro lado: o que isso não resolve</h2>
-<p>Duas coisas que continuam diferentes mesmo com o evento assinado:</p>
-<p><strong>Mensagem enviada pelo aplicativo não abre nem estende a janela de 24 horas da API.</strong> Se a sua automação depende de a janela estar aberta, o atendente respondendo pelo celular não ajuda nisso.</p>
-<p><strong>Mensagem enviada pelo aplicativo não é cobrada.</strong> Isso é uma vantagem, e <a href="/mensagem-enviada-pelo-celular-e-cobrada">muda a conta de quem tem atendimento humano</a>, principalmente a partir de outubro de 2026.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Isso vale se o número nasceu na API?</h3>
-<p>Não. Sem aplicativo no celular, não existe esse segundo caminho. O evento só faz sentido em coexistência.</p>
-<h3>Vou ver também o que eu envio pela API?</h3>
-<p>Não por esse evento. Dessas voltam os status, enviada, entregue e lida.</p>
-<h3>Preciso assinar mais algum evento?</h3>
-<p>Vale assinar também os de qualidade do número e de mudança na conta, que são os que avisam antes de uma restrição. Os dois de mensagem cobrem o histórico.</p>
-<h3>O evento traz mídia enviada pelo celular?</h3>
-<p>Traz a referência da mídia, como acontece com mensagem recebida. O arquivo é buscado pelo identificador, com as duas chamadas.</p>
-<h3>Como sei se está funcionando agora?</h3>
-<p>Mande uma mensagem pelo celular do número conectado e olhe o seu endpoint. Se chegou, está resolvido, e o teste leva um minuto.</p>
-<h3>E se eu não quero que apareça?</h3>
-<p>Vale pensar duas vezes. Histórico incompleto atrapalha atendimento, relatório e qualquer coisa que dependa de contexto, inclusive agente de IA.</p>
+<h3>Isso vale para número que não está em coexistência?</h3>
+<p>Não. Se o número não está no aplicativo do celular, não existe mensagem enviada pelo celular para chegar.</p>
+<h3>As mensagens enviadas pelo celular antes de eu assinar o evento chegam depois?</h3>
+<p>Não. O evento passa a entregar a partir de quando está assinado. O histórico anterior só vem pela <a href="/sincronizar-contatos-api-oficial-whatsapp">sincronização</a>, dentro das 24 horas depois da conexão.</p>
+<h3>Mensagem enviada pelo celular é cobrada?</h3>
+<p>Não. A Meta cobra por mensagem enviada pela API.</p>
+<h3>Como sei se o evento está chegando?</h3>
+<p>Mande uma mensagem pelo celular do número e olhe o seu endpoint, ou o log de mensagens do painel da Datafy.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Não há muito o que decidir: se o número está em coexistência e o time responde pelo celular, esse evento precisa estar assinado. Ele é a diferença entre ter o histórico da conversa e ter metade dele.</p>
-<p>O que vale planejar é o passo 4: garantir que o seu código grave a direção da mensagem. Sem isso, você resolve o buraco no histórico e cria um problema novo, com mensagens do atendente aparecendo como se fossem do cliente.</p>
-<div class="cta"><h3>Faça o teste de um minuto, agora</h3><p>Pegue o celular do número conectado, mande uma mensagem para qualquer contato, e olhe o seu webhook. Se ela não chegou, o seu histórico está com metade da conversa faltando desde o dia em que você conectou.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Se o número está em coexistência e alguém responde pelo celular, assine <code>smb_message_echoes</code>. Sem ele, o seu sistema só vê metade da conversa.</p>
+<p>No seu código, grave a direção de cada mensagem pelo evento de origem: o que chega por <code>smb_message_echoes</code> foi enviado pela empresa, não pelo cliente.</p>
+<div class="cta"><h3>Teste agora, com o celular do número</h3><p>Mande uma mensagem pelo aplicativo para qualquer contato e confira se o evento smb_message_echoes chegou no seu webhook. Se não chegou, falta marcar o evento.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
 <li><a href="/coexistencia-whatsapp-api-oficial-app-celular">Coexistência: API e aplicativo no mesmo número</a></li>
 <li><a href="/tres-status-da-mensagem-whatsapp">Os três status da mensagem no WhatsApp</a></li>
-<li><a href="/mensagem-enviada-pelo-celular-e-cobrada">Mensagem enviada pelo celular é cobrada?</a></li>
-<li><a href="/como-passar-do-bot-para-o-atendente-humano">Como passar do bot para o atendente humano</a></li>
+<li><a href="/ver-payload-das-mensagens-em-tempo-real">Ver o payload das mensagens em tempo real</a></li>
+<li><a href="/whatsapp-api-oficial-chatwoot">WhatsApp API oficial no Chatwoot</a></li>
 </ul>
 </article>
 
@@ -770,11 +772,10 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#por-que-existem-dois-eventos">Por que existem dois eventos</a></li>
-        <li><a href="#os-sintomas-e-como-reconhecer">Os sintomas, e como reconhecer</a></li>
         <li><a href="#como-resolver">Como resolver</a></li>
-        <li><a href="#o-que-n-o-recuperado">O que não é recuperado</a></li>
-        <li><a href="#o-outro-lado-o-que-isso-n-o-resolve">O outro lado: o que isso não res...</a></li>
+        <li><a href="#a-confus-o-que-faz-parecer-defeito">A confusão que faz parecer defeito</a></li>
+        <li><a href="#vendo-acontecer-no-log-da-datafy">Vendo acontecer no log da Datafy</a></li>
+        <li><a href="#numa-caixa-de-entrada">Numa caixa de entrada</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

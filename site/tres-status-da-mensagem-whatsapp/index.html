@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Os três status da mensagem no WhatsApp: enviada, entregue e lida</title>
-<meta name="description" content="Um risco, dois riscos, dois azuis. Cada envio devolve três eventos, e a ausência de cada um deles significa uma coisa diferente no seu diagnóstico.">
+<meta name="description" content="A resposta do envio só diz que a Meta aceitou. O que aconteceu com a mensagem chega depois, no webhook: enviada, entregue, lida, ou um evento de falha com o motivo.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/tres-status-da-mensagem-whatsapp">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -14,14 +14,14 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
 <meta property="og:title" content="Os três status da mensagem no WhatsApp: enviada, entregue e lida">
-<meta property="og:description" content="Um risco, dois riscos, dois azuis. Cada envio devolve três eventos, e a ausência de cada um deles significa uma coisa diferente no seu diagnóstico.">
+<meta property="og:description" content="A resposta do envio só diz que a Meta aceitou. O que aconteceu com a mensagem chega depois, no webhook: enviada, entregue, lida, ou um evento de falha com o motivo.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/tres-status-da-mensagem-whatsapp">
-<meta property="article:published_time" content="2026-09-09">
-<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Os três status da mensagem no WhatsApp: enviada, entregue e lida">
-<meta name="twitter:description" content="Um risco, dois riscos, dois azuis. Cada envio devolve três eventos, e a ausência de cada um deles significa uma coisa diferente no seu diagnóstico.">
+<meta name="twitter:description" content="A resposta do envio só diz que a Meta aceitou. O que aconteceu com a mensagem chega depois, no webhook: enviada, entregue, lida, ou um evento de falha com o motivo.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -120,10 +121,10 @@
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/tres-status-da-mensagem-whatsapp#article",
       "headline": "Os três status da mensagem no WhatsApp: enviada, entregue e lida",
-      "description": "Um risco, dois riscos, dois azuis. Cada envio devolve três eventos, e a ausência de cada um deles significa uma coisa diferente no seu diagnóstico.",
+      "description": "A resposta do envio só diz que a Meta aceitou. O que aconteceu com a mensagem chega depois, no webhook: enviada, entregue, lida, ou um evento de falha com o motivo.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,13 +133,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/tres-status-da-mensagem-whatsapp",
       "citation": [
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing",
-        "https://app.datafyapi.com.br/docs",
         "https://www.youtube.com/watch?v=vGovcR8W5g8",
-        "https://www.youtube.com/watch?v=LIT4FxgqHhE"
+        "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+        "https://www.youtube.com/watch?v=dIIkttPeBS0",
+        "https://www.youtube.com/watch?v=ly5nOHFpXcI",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -147,50 +146,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Recebo três eventos por mensagem. Está duplicando?",
+          "name": "A chamada devolveu um id. A mensagem chegou?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. São enviada, entregue e lida. Duplicação é quando o mesmo status chega duas vezes, o que é outra coisa e se resolve com idempotência."
+            "text": "Não necessariamente. O id significa que a Meta aceitou. A entrega ou a falha chega pelo webhook."
           }
         },
         {
           "@type": "Question",
-          "name": "Por que a mensagem que eu envio não volta como mensagem?",
+          "name": "Por que não recebi o status read?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Porque você já sabe que a enviou. O que volta dela é status. Em coexistência, mensagem enviada pelo celular volta por um evento próprio, que é outro caso."
+            "text": "Porque ele só chega se a pessoa tiver a confirmação de leitura ativada."
           }
         },
         {
           "@type": "Question",
-          "name": "Dá para saber se a pessoa leu, sempre?",
+          "name": "Quantos eventos chegam quando a mensagem falha?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. Se ela desativou a confirmação de leitura, esse status não chega. E não dá para distinguir isso de não ter lido."
+            "text": "Um, explicando a falha."
           }
         },
         {
           "@type": "Question",
-          "name": "Quanto tempo demora entre enviada e entregue?",
+          "name": "O status traz o texto que eu enviei?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Costuma ser rápido, e não é garantido. Aparelho desligado atrasa indefinidamente. Trate como assíncrono."
+            "text": "Não. Traz o identificador da mensagem e a situação."
           }
         },
         {
           "@type": "Question",
-          "name": "O que faço com o status de falha?",
+          "name": "Onde vejo os status de uma mensagem específica?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Grave o motivo e trate por tipo. Reenviar sem olhar o motivo é o que transforma problema de entrega em problema de conta."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Preciso guardar todos os status?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Guarde a situação atual de cada mensagem, e o histórico se você quiser medir tempo de entrega. O mínimo útil é ter enviada e entregue como estados separados."
+            "text": "No seu webhook, pelo identificador, ou no log em tempo real do painel da Datafy."
           }
         }
       ]
@@ -204,6 +195,44 @@
       "uploadDate": "2026-09-09",
       "contentUrl": "https://www.youtube.com/watch?v=vGovcR8W5g8",
       "embedUrl": "https://www.youtube.com/embed/vGovcR8W5g8",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/tres-status-da-mensagem-whatsapp#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/tres-status-da-mensagem-whatsapp#video-LIT4FxgqHhE",
+      "name": "Logs de mensagens em tempo real na API oficial do WhatsApp",
+      "description": "Ver o payload cru de cada mensagem que entra e sai, e por quanto tempo esse log fica",
+      "thumbnailUrl": "https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+      "embedUrl": "https://www.youtube.com/embed/LIT4FxgqHhE",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/tres-status-da-mensagem-whatsapp#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/tres-status-da-mensagem-whatsapp#video-dIIkttPeBS0",
+      "name": "Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia",
+      "description": "Conexao em coexistencia por QR code, cadastro de webhook, primeiro envio e a falha real fora da janela de 24 horas",
+      "thumbnailUrl": "https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=dIIkttPeBS0",
+      "embedUrl": "https://www.youtube.com/embed/dIIkttPeBS0",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -559,27 +588,33 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
     <div class="hero-art">
       <svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
-  <title id="heroT">Fluxo de automação com nós conectados</title>
-  <desc id="heroD">Diagrama de um fluxo de automação em que um evento passa por uma condição e chega a uma ação.</desc>
-  <path d="M78 92 H140" stroke="var(--accent)" stroke-width="2" fill="none"/>
-  <path d="M200 92 H262" stroke="var(--accent)" stroke-width="2" fill="none"/>
-  <path d="M170 122 V186" stroke="var(--accent)" stroke-width="2" fill="none" stroke-dasharray="4 4"/>
-  <rect x="18" y="68" width="60" height="48" rx="10" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
-  <circle cx="48" cy="92" r="9" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
-  <rect x="140" y="62" width="60" height="60" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
-  <path d="M170 78 l14 14 -14 14 -14 -14 z" fill="none" stroke="var(--accent)" stroke-width="2"/>
-  <rect x="262" y="68" width="60" height="48" rx="10" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
-  <rect x="278" y="84" width="28" height="4" rx="2" fill="var(--muted)" opacity=".5"/>
-  <rect x="278" y="94" width="20" height="4" rx="2" fill="var(--muted)" opacity=".5"/>
-  <rect x="120" y="186" width="100" height="52" rx="10" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
-  <text x="170" y="208" text-anchor="middle" style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg)">WhatsApp</text>
-  <text x="170" y="226" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--muted)">API oficial</text>
+  <title id="heroT">Registro de status com uma falha destacada</title>
+  <desc id="heroD">Ilustração de uma lista de status de mensagens em que uma linha aparece marcada como falha.</desc>
+  <rect x="30" y="52" width="280" height="196" rx="14" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
+  <rect x="30" y="52" width="280" height="32" rx="14" fill="var(--code-bg)"/>
+  <rect x="30" y="74" width="280" height="10" fill="var(--code-bg)"/>
+  <text x="48" y="74" style="font:700 10px ui-monospace,monospace;fill:var(--muted)">statuses</text>
+  <g opacity=".55">
+    <rect x="48" y="100" width="150" height="6" rx="3" fill="var(--muted)"/>
+    <text x="294" y="107" text-anchor="end" style="font:700 9px ui-monospace,monospace;fill:var(--accent)">delivered</text>
+  </g>
+  <g opacity=".55">
+    <rect x="48" y="126" width="120" height="6" rx="3" fill="var(--muted)"/>
+    <text x="294" y="133" text-anchor="end" style="font:700 9px ui-monospace,monospace;fill:var(--accent)">read</text>
+  </g>
+  <rect x="40" y="146" width="260" height="40" rx="8" fill="var(--danger-soft)" stroke="var(--danger)" stroke-width="1.5"/>
+  <text x="52" y="162" style="font:700 10px ui-monospace,monospace;fill:var(--danger)">failed</text>
+  <text x="52" y="178" style="font:600 10px ui-monospace,monospace;fill:var(--danger)">o motivo vem aqui dentro</text>
+  <g opacity=".35">
+    <rect x="48" y="202" width="140" height="6" rx="3" fill="var(--muted)"/>
+    <rect x="48" y="220" width="100" height="6" rx="3" fill="var(--muted)"/>
+  </g>
 </svg>
     </div>
   </div>
@@ -589,23 +624,21 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <h1>Os três status da mensagem no WhatsApp: enviada, entregue e lida</h1>
-<p><strong>Resposta curta:</strong> cada mensagem que você envia com sucesso devolve <strong>três eventos</strong>, em sequência, e eles correspondem exatamente ao que o usuário vê no aplicativo: <strong>um risco</strong> quando saiu, <strong>dois riscos</strong> quando chegou no aparelho, <strong>dois riscos azuis</strong> quando foi aberta.</p>
-<p>Mensagem que falha devolve <strong>um evento só</strong>, com o motivo dentro.</p>
-<p>Saber isso muda o diagnóstico, porque <strong>a ausência de um status também é informação</strong>. Recebeu só o primeiro? A mensagem saiu e não chegou. Não recebeu nenhum? O problema não é a mensagem, é o webhook.</p>
+<p><strong>Resposta curta:</strong> quando você envia uma mensagem pela API, a resposta traz um identificador e só significa que a Meta <strong>aceitou</strong> a mensagem. O que aconteceu com ela chega depois, no webhook, como status: <strong><code>sent</code></strong> (enviada, um tique), <strong><code>delivered</code></strong> (entregue, dois tiques) e <strong><code>read</code></strong> (lida, azul), este último só se a pessoa tiver a confirmação de leitura ativada. Se deu errado, chega <strong>um evento de falha</strong>, com o motivo.</p>
 <div class="stats">
-  <div class="stat"><b>3 eventos</b><span>para cada mensagem entregue</span></div>
-  <div class="stat"><b>1 evento</b><span>quando ela falha, com o motivo</span></div>
-  <div class="stat"><b>1 chave</b><span>o identificador que liga tudo</span></div>
-  <div class="stat"><b>0</b><span>conteúdo da mensagem dentro do status</span></div>
+  <div class="stat"><b>1 tique</b><span>sent, enviada</span></div>
+  <div class="stat"><b>2 tiques</b><span>delivered, entregue</span></div>
+  <div class="stat"><b>azul</b><span>read, lida, se a pessoa permitir</span></div>
+  <div class="stat"><b>1 evento</b><span>de falha, com o motivo</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li><strong>Enviada, entregue e lida</strong>, nessa ordem, correspondem aos riscos que o cliente vê.</li>
-<li><strong>O status não traz o conteúdo da mensagem</strong>, só o identificador e a situação. O conteúdo é você que guarda.</li>
-<li><strong>O terceiro status é opcional na prática</strong>: só chega se a pessoa tiver a confirmação de leitura habilitada.</li>
-<li><strong>Falha vem como evento único</strong>, com o código e o motivo, e é o campo que mais some no caminho.</li>
-<li>Esses eventos chegam no <strong>mesmo webhook</strong> das mensagens, e responder a eles <a href="/laco-de-webhook-derruba-numero">derruba número</a>.</li>
+<li><strong>A resposta do envio não é a entrega.</strong> Ela volta com identificador mesmo quando a mensagem vai falhar.</li>
+<li><strong>Enviar é diferente de entregar.</strong> São dois status separados.</li>
+<li><strong><code>read</code> depende da pessoa</strong> ter a confirmação de leitura ativada.</li>
+<li><strong>Falha vem num único evento</strong>, que explica o motivo.</li>
+<li><strong>O status não traz o conteúdo da mensagem</strong>, só o identificador e a situação.</li>
 </ul>
 <figure>
 <div class="diagram">
@@ -626,59 +659,59 @@ footer p{margin:0 0 .5rem}
   </style>
   <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
     <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Como o webhook entrega a mensagem</text>
+<text class="t" x="360" y="26" text-anchor="middle">Como o webhook chega no seu servidor</text>
 <rect class="box" x="30" y="52" width="170" height="70" rx="8"/>
 <text class="h" x="115" y="80" text-anchor="middle">Cliente</text>
 <text class="s" x="115" y="100" text-anchor="middle">escreve no WhatsApp</text>
-<rect class="box" x="275" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="360" y="80" text-anchor="middle">Meta</text>
-<text class="s" x="360" y="100" text-anchor="middle">faz POST no seu endpoint</text>
+<rect class="boxok" x="275" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="360" y="80" text-anchor="middle">Datafy API</text>
+<text class="s" x="360" y="100" text-anchor="middle">POST com o payload da Meta</text>
 <rect class="box" x="520" y="52" width="170" height="70" rx="8"/>
 <text class="h" x="605" y="80" text-anchor="middle">Seu servidor</text>
-<text class="s" x="605" y="100" text-anchor="middle">responde 200 na hora</text>
+<text class="s" x="605" y="100" text-anchor="middle">responde 200 em até 20 s</text>
 <path class="ar" d="M205,87 L268,87"/>
 <path class="ar" d="M450,87 L513,87"/>
 <rect class="box" x="30" y="146" width="330" height="76" rx="8"/>
-<text class="h" x="46" y="170">Se você falhar</text>
-<text class="p" x="46" y="192">A Meta reentrega com frequência</text>
-<text class="p" x="46" y="210">decrescente por até 7 dias.</text>
+<text class="h" x="46" y="170">Idempotência</text>
+<text class="p" x="46" y="192">Guarde o x-datafy-delivery-id</text>
+<text class="p" x="46" y="210">e ignore a entrega que já viu.</text>
 <rect class="box" x="380" y="146" width="310" height="76" rx="8"/>
 <text class="h" x="396" y="170">Como validar</text>
-<text class="p" x="396" y="192">HMAC SHA-256 no header</text>
-<text class="p" x="396" y="210">X-Hub-Signature-256.</text>
+<text class="p" x="396" y="192">x-datafy-signature-256, HMAC</text>
+<text class="p" x="396" y="210">de {timestamp}.{corpo cru}</text>
 </svg>
 </div>
 <figcaption></figcaption>
 </figure>
 
-<h2 id="os-tr-s-e-o-que-cada-um-significa">Os três, e o que cada um significa</h2>
+<h2 id="os-tr-s-na-ordem">Os três, na ordem</h2>
+<p>No vídeo sobre n8n, o Israel Henrique, CTO da Datafy, faz a correspondência com o que o usuário vê: <em>"o primeiro, sent, quer dizer que ela foi enviado. É quando fica aquele risquinho, sabe? Um risquinho. Depois ela te envia o delivered, que é quando aparece dois risquinhos, que foi entregue. E se a pessoa ler a mensagem e tiver habilitado para visualizar, ela vai te enviar um terceiro web hook de read."</em></p>
 <div class="tablewrap"><table>
 <thead>
 <tr>
 <th>Status</th>
 <th>No aplicativo</th>
-<th>O que significa de verdade</th>
+<th>Quando chega</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Enviada</strong></td>
-<td>Um risco</td>
-<td>A plataforma aceitou e despachou. Não diz nada sobre o aparelho do destinatário</td>
+<td><code>sent</code></td>
+<td>Um tique</td>
+<td>A mensagem foi enviada</td>
 </tr>
 <tr>
-<td><strong>Entregue</strong></td>
-<td>Dois riscos</td>
-<td>Chegou no aparelho. Ainda não foi vista</td>
+<td><code>delivered</code></td>
+<td>Dois tiques</td>
+<td>A mensagem chegou no aparelho</td>
 </tr>
 <tr>
-<td><strong>Lida</strong></td>
-<td>Dois riscos azuis</td>
-<td>A conversa foi aberta. Só chega se a confirmação de leitura estiver ativa</td>
+<td><code>read</code></td>
+<td>Tiques azuis</td>
+<td>A pessoa leu, se tiver a confirmação de leitura ativada</td>
 </tr>
 </tbody>
 </table></div>
-<p>Existe ainda um quarto, mais recente, para <strong>mensagem de voz tocada</strong>, que avisa na primeira reprodução. Ele é útil para quem manda áudio e quer saber se foi ouvido, não só recebido.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
   <span class="thumb">
@@ -687,59 +720,72 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 18:05 os três eventos aparecem em sequência no fluxo, um a um, e ele faz a correspondência com os riscos do WhatsApp. Em 15:11 explica por que responder a eles é perigoso.</figcaption>
+<figcaption>Em 18:05 ele abre os três eventos de status de uma mensagem e explica cada um. Em 18:37 fala do evento de falha.</figcaption>
 </figure>
 
-<h2 id="a-aus-ncia-como-diagn-stico">A ausência como diagnóstico</h2>
-<p>Esta é a parte que economiza tempo, e quase ninguém usa.</p>
-<p><strong>Nenhum evento chegou.</strong> O problema não é a mensagem, é o webhook. Confira se o campo de mensagens está assinado e se o seu endpoint responde. A mensagem pode ter sido entregue perfeitamente sem você saber.</p>
-<p><strong>Só o primeiro chegou.</strong> A mensagem saiu e a entrega ficou pendente. Acontece com aparelho desligado ou sem rede, e o segundo evento pode chegar bem depois, quando a pessoa reconectar. Não trate como falha.</p>
-<p><strong>Chegaram o primeiro e o segundo, e o terceiro nunca vem.</strong> Comportamento normal. A pessoa provavelmente tem a confirmação de leitura desativada. Não dá para distinguir isso de "não leu", e é por isso que <strong>leitura não serve como métrica de negócio</strong>.</p>
-<p><strong>Chegou um evento de falha.</strong> É o desfecho: não vem entrega depois. O motivo está dentro, e <a href="/a-mensagem-falhou-e-nao-sei-por-que">é o campo que mais se perde no caminho</a>.</p>
-<h2 id="o-identificador-a-chave-de-tudo">O identificador é a chave de tudo</h2>
-<p>O status não traz o conteúdo da mensagem. Traz o identificador dela e a situação.</p>
-<p>Isso significa que, sem guardar o identificador que a chamada de envio devolveu, <strong>você recebe um evento e não sabe a que ele se refere.</strong> É a informação mais barata de guardar e a mais sentida quando falta.</p>
-<p>O padrão que funciona:</p>
-<p><strong>No envio</strong>, grave o identificador junto com o destinatário, o conteúdo e o horário.</p>
-<p><strong>No status</strong>, ache a mensagem por esse identificador e atualize a situação dela.</p>
-<p><strong>Separe os estados no seu painel.</strong> Enviada e entregue precisam ser colunas diferentes. Juntar as duas é o que faz relatório mentir, porque <a href="/mandei-para-numero-que-nao-existe-e-nao-deu-erro">o envio responde sucesso mesmo quando vai falhar</a>.</p>
-<h2 id="a-m-trica-que-muda-a-conversa">A métrica que muda a conversa</h2>
-<p>Com os status guardados, você consegue calcular o número que importa: <strong>taxa de entrega</strong>, e não taxa de envio.</p>
-<p>A diferença aparece na hora de uma campanha. Dez mil enviados, no sentido de "dez mil requisições aceitas", não diz nada. Dez mil entregues é outro assunto. E a fatia que falhou se divide em causas diferentes, cada uma pedindo uma ação: número inexistente pede limpar base, limite por pessoa pede esperar, e <a href="/minha-campanha-travou-no-meio">a recusa por saúde do ecossistema pede parar com aquele contato</a>.</p>
-<p>Sem status, todas essas fatias ficam invisíveis e o relatório mostra sucesso.</p>
-<h2 id="cuidado-ao-processar">Cuidado ao processar</h2>
-<p><strong>Eles chegam fora de ordem, às vezes.</strong> Não assuma sequência. Guarde a situação mais avançada que você viu, e não sobrescreva "lida" com "entregue" porque o segundo chegou depois.</p>
-<p><strong>Eles podem repetir.</strong> Reentrega acontece. Processar duas vezes o mesmo status é inofensivo se a sua atualização for idempotente, e vira problema se você conta eventos em vez de estados.</p>
-<p><strong>Eles chegam em lote.</strong> Um payload pode trazer vários status juntos. Percorra o vetor inteiro, e não leia só o primeiro. É um erro comum e silencioso.</p>
-<p><strong>Nunca responda a eles.</strong> É a regra que vale mais que todas as outras desta página. <a href="/laco-de-webhook-derruba-numero">Um fluxo que responde status multiplica</a>.</p>
-<h2 id="quanto-isso-custa">Quanto isso custa</h2>
-<p>Nada. <strong>Status não é cobrado</strong>, e webhook recebido não gera custo.</p>
-<p>O que é cobrado é a mensagem que você envia, e só quando ela é entregue. Isso tem uma consequência prática boa: <strong>mensagem que falha não entra na fatura</strong>. Se a sua conta veio maior que o esperado, o lugar de olhar é a categoria dos templates, não o volume de status.</p>
+<p>No vídeo sobre logs, a diferença entre os dois primeiros aparece com essas palavras: <em>"porque enviar é diferente de entregar."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=LIT4FxgqHhE" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg" alt="Miniatura do vídeo: Logs de mensagens em tempo real na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Logs de mensagens em tempo real na API oficial do WhatsApp</b><span>Canal DATA7 · 3 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 01:59 ele envia pela API e abre, um por um, os eventos sent, delivered e read da mesma mensagem.</figcaption>
+</figure>
+
+<h2 id="a-falha">A falha</h2>
+<p>Quando a mensagem não pode ser entregue, o webhook traz um único evento, com o motivo. No vídeo sobre n8n: <em>"se a mensagem que você enviou ocorreu algum erro que não pôde ser entregue, a meta te envia um único web hook de falha, explicando qual foi a falha."</em></p>
+<p>Dois exemplos que aparecem nos vídeos do canal:</p>
+<p><strong>Destinatário fora da janela de 24 horas.</strong> No vídeo de primeiros passos, a falha chega com o mesmo identificador do envio, dizendo que se passaram mais de 24 horas desde o último contato daquele usuário.</p>
+<p><strong>Número que não existe.</strong> No vídeo de disparo em massa, uma planilha com um número inventado de propósito resulta num envio com erro: <em>"aqui deu um erro porque é aquele número que eu falei para vocês que não existe."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 13:36 ele envia para quem não falou com ele, a chamada devolve identificador normalmente, e em 14:15 a falha chega no webhook com o motivo.</figcaption>
+</figure>
+
+<h2 id="a-resposta-do-envio-s-diz-que-a-meta-ace">A resposta do envio só diz que a Meta aceitou</h2>
+<p>A documentação da Datafy descreve a resposta padrão de envio assim: ela indica que a Meta aceitou a mensagem, não que foi entregue, e o status real chega pelo webhook.</p>
+<p><code>json
+{
+  "messaging_product": "whatsapp",
+  "contacts": [{ "input": "5511999999999", "wa_id": "5511999999999" }],
+  "messages": [{ "id": "wamid.HBgLMTY0Nj..." }]
+}</code></p>
+<p>Guarde o <code>id</code>. É ele que aparece nos eventos de status e liga cada evento à mensagem enviada.</p>
+<h2 id="o-status-n-o-traz-o-conte-do">O status não traz o conteúdo</h2>
+<p>No tutorial de atendimento do canal, ao olhar os payloads, o Israel destaca: <em>"quando você envia a mensagem pela API, a meta ela vai retornar para você apenas o status da mensagem. Ele não vai trazer para você o conteúdo da mensagem. Ele vai trazer apenas o ID da mensagem com o status."</em></p>
+<p>Ou seja, o conteúdo do que você enviou é você que guarda, no momento do envio.</p>
+<h2 id="status-chegam-no-mesmo-webhook-das-mensa">Status chegam no mesmo webhook das mensagens</h2>
+<p>Os status vêm pelo evento <code>messages</code>, junto com as mensagens dos clientes. Um fluxo que responde a tudo que chega responde aos status, e isso gera um laço. <a href="/laco-de-webhook-derruba-numero">Como evitar está aqui</a>.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Recebo três eventos por mensagem. Está duplicando?</h3>
-<p>Não. São enviada, entregue e lida. Duplicação é quando o <strong>mesmo</strong> status chega duas vezes, o que é outra coisa e se resolve com idempotência.</p>
-<h3>Por que a mensagem que eu envio não volta como mensagem?</h3>
-<p>Porque você já sabe que a enviou. O que volta dela é status. Em coexistência, mensagem enviada <strong>pelo celular</strong> volta por um evento próprio, que é outro caso.</p>
-<h3>Dá para saber se a pessoa leu, sempre?</h3>
-<p>Não. Se ela desativou a confirmação de leitura, esse status não chega. E não dá para distinguir isso de não ter lido.</p>
-<h3>Quanto tempo demora entre enviada e entregue?</h3>
-<p>Costuma ser rápido, e não é garantido. Aparelho desligado atrasa indefinidamente. Trate como assíncrono.</p>
-<h3>O que faço com o status de falha?</h3>
-<p>Grave o motivo e trate por tipo. Reenviar sem olhar o motivo é o que transforma problema de entrega em problema de conta.</p>
-<h3>Preciso guardar todos os status?</h3>
-<p>Guarde a situação atual de cada mensagem, e o histórico se você quiser medir tempo de entrega. O mínimo útil é ter enviada e entregue como estados separados.</p>
+<h3>A chamada devolveu um id. A mensagem chegou?</h3>
+<p>Não necessariamente. O id significa que a Meta aceitou. A entrega ou a falha chega pelo webhook.</p>
+<h3>Por que não recebi o status read?</h3>
+<p>Porque ele só chega se a pessoa tiver a confirmação de leitura ativada.</p>
+<h3>Quantos eventos chegam quando a mensagem falha?</h3>
+<p>Um, explicando a falha.</p>
+<h3>O status traz o texto que eu enviei?</h3>
+<p>Não. Traz o identificador da mensagem e a situação.</p>
+<h3>Onde vejo os status de uma mensagem específica?</h3>
+<p>No seu webhook, pelo identificador, ou no log em tempo real do painel da Datafy.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Se você faz atendimento, os status importam pouco no dia a dia e continuam valendo para diagnóstico: quando alguém disser que não recebeu, é neles que está a resposta.</p>
-<p>Se você dispara, eles são a única fonte de verdade sobre a sua operação. Sem guardar, o seu relatório conta quantas requisições foram aceitas, o que não é a mesma coisa que quantas mensagens chegaram.</p>
-<p>Comece pelo mínimo: guarde o identificador no envio, e atualize a situação quando o status chegar. Duas colunas, e você passa a saber o que está acontecendo.</p>
-<div class="cta"><h3>Olhe uma métrica no seu painel agora</h3><p>Você tem taxa de entrega ou só taxa de envio? Se as duas forem o mesmo número, você não está guardando status, e o seu relatório está contando requisições aceitas em vez de mensagens entregues.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Guarde o <code>id</code> de cada envio e atualize a situação da mensagem conforme os status chegam. Trate <code>sent</code> e <code>delivered</code> como coisas diferentes e não conte <code>read</code> como garantido. E filtre os status antes de qualquer lógica que responde.</p>
+<div class="cta"><h3>Veja os três chegando</h3><p>Envie uma mensagem para o seu próprio número pela API, abra o log em tempo real do painel e acompanhe sent, delivered e read da mesma mensagem.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/laco-de-webhook-derruba-numero">O laço de webhook que derruba número</a></li>
-<li><a href="/a-mensagem-falhou-e-nao-sei-por-que">A mensagem falhou e eu não sei por quê</a></li>
-<li><a href="/mandei-para-numero-que-nao-existe-e-nao-deu-erro">Mandei para um número que não existe e não deu erro</a></li>
-<li><a href="/ver-payload-das-mensagens-em-tempo-real">Ver o payload cru das mensagens em tempo real</a></li>
+<li><a href="/laco-de-webhook-derruba-numero">O laço de webhook que pode bloquear o seu número</a></li>
+<li><a href="/primeira-mensagem-api-oficial-whatsapp">Enviar e receber a primeira mensagem</a></li>
+<li><a href="/disparo-em-massa-api-oficial-whatsapp">Como fazer disparo em massa</a></li>
+<li><a href="/ver-payload-das-mensagens-em-tempo-real">Ver o payload das mensagens em tempo real</a></li>
 </ul>
 </article>
 
@@ -755,12 +801,11 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#os-tr-s-e-o-que-cada-um-significa">Os três, e o que cada um significa</a></li>
-        <li><a href="#a-aus-ncia-como-diagn-stico">A ausência como diagnóstico</a></li>
-        <li><a href="#o-identificador-a-chave-de-tudo">O identificador é a chave de tudo</a></li>
-        <li><a href="#a-m-trica-que-muda-a-conversa">A métrica que muda a conversa</a></li>
-        <li><a href="#cuidado-ao-processar">Cuidado ao processar</a></li>
-        <li><a href="#quanto-isso-custa">Quanto isso custa</a></li>
+        <li><a href="#os-tr-s-na-ordem">Os três, na ordem</a></li>
+        <li><a href="#a-falha">A falha</a></li>
+        <li><a href="#a-resposta-do-envio-s-diz-que-a-meta-ace">A resposta do envio só diz que a...</a></li>
+        <li><a href="#o-status-n-o-traz-o-conte-do">O status não traz o conteúdo</a></li>
+        <li><a href="#status-chegam-no-mesmo-webhook-das-mensa">Status chegam no mesmo webhook d...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

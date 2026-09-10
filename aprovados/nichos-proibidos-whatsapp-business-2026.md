@@ -1,6 +1,6 @@
 ---
 title: "Quais nichos são proibidos no WhatsApp Business"
-description: "Arma, álcool, medicamento, animal vivo, cripto, aposta e cobrança de dívida. Vale a regra da plataforma, não a lei do país, e não existe fornecedor que contorne isso."
+description: "Armas, álcool e tabaco, drogas, produtos médicos, animais vivos, moeda virtual, apostas, partes do corpo e cobrança de dívida. Vale a política da Meta, não a lei do país."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "nichos-proibidos-whatsapp-business"
 cluster: "compliance"
@@ -9,159 +9,115 @@ intent: "decidindo"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-10
 sources:
-  - https://business.whatsapp.com/policy
-  - https://www.whatsapp.com/legal/commerce-policy
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-categorization
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits
-  - https://app.datafyapi.com.br/docs
+  - https://whatsappbusiness.com/policy/
   - https://www.youtube.com/watch?v=cZ_nyIUv5ic
+  - https://www.youtube.com/watch?v=JL9Qzw3oS5A
+  - https://app.datafyapi.com.br/docs
+  - https://datafyapi.com.br/
 videos: [cZ_nyIUv5ic]
 internal_links:
   - /numero-banido-no-whatsapp-o-que-fazer
-  - /cobranca-de-divida-pelo-whatsapp
-  - /qualidade-do-numero-whatsapp
   - /posso-mandar-mensagem-para-qualquer-numero
+  - /opt-in-por-link-whatsapp
+  - /como-criar-template-whatsapp-passo-a-passo
   - /api-oficial-vs-nao-oficial-whatsapp-2026
 status: aprovado
 ---
 
 # Quais nichos são proibidos no WhatsApp Business
 
-**Última atualização: 09/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** existe uma lista de categorias que a política de comércio da Meta proíbe, e ela vale **independente da lei do seu país**. Aposta é legal no Brasil e continua proibida no WhatsApp. Bebida é vendida em qualquer mercado e continua proibida no WhatsApp.
+**Resposta curta:** a seção 4 da [política comercial do WhatsApp](https://whatsappbusiness.com/policy/) lista o que não pode ser comercializado: **armas de fogo**, **álcool e tabaco**, **drogas**, **produtos médicos e de saúde**, **animais vivos**, **moeda real, virtual ou falsa**, incluindo ICOs e opções binárias, **jogos e apostas com dinheiro real**, **partes ou fluidos corporais**, e, na mesma linha, empréstimo de curto prazo, adiantamento salarial, empréstimo entre pessoas, **cobrança de dívida** e fiança. E uma cláusula aberta: modelos de negócio que a Meta **determine** que possam ser fraudulentos, enganosos, ofensivos ou ilusórios.
 
-E existe uma segunda camada, mais perigosa que a lista: um trecho que autoriza a Meta a agir contra o que **ela concluir** que é enganoso ou inadequado. Ou seja, além do que está escrito, existe o que ela interpreta.
+No vídeo sobre bloqueio do canal DATA7, o Israel Henrique, CTO da Datafy, resume a regra: *"não importa se isso aqui é proibido ou legalizado no teu país. Se a meta proíbe, tá proibido e você vai ser bloqueado."*
 
-Se o seu negócio cai em qualquer um desses casos, **nenhuma escolha de fornecedor muda o resultado**, porque a decisão é da plataforma.
-
-::numeros: 1 lista|que vale acima da lei local ;; 0|fornecedores que contornam isso ;; 2 camadas|o que está escrito e o que a Meta conclui ;; conteúdo|é o que ela lê, não o seu CNAE
+::numeros: 1 política|a da Meta, acima da lei local ;; 1 cláusula|aberta, sobre o que a Meta determinar ;; 0|fornecedores que mudam essa regra ;; bloqueio|na certa, segundo o vídeo
 
 ## Principais pontos
-- **A regra é da plataforma, não do país.** Legalizado no Brasil não significa permitido no WhatsApp.
-- **A leitura é sobre o conteúdo da mensagem**, e não sobre a atividade registrada da empresa. Serviço legítimo com palavra proibida na descrição também cai.
-- Existe um trecho aberto na política sobre o que a Meta **concluir** ser enganoso, e é onde mora a maior parte da subjetividade.
-- **Migrar para a API oficial não resolve nicho proibido.** Ela troca um tipo de risco, e não a categoria do que você vende.
-- Descobrir isso **antes** de montar a operação em cima do WhatsApp é a diferença entre uma decisão e um prejuízo.
+- **A lista está na seção 4 da política comercial** do WhatsApp.
+- **Cobrança de dívida está na lista**, junto com crédito de curto prazo e fiança.
+- **A cláusula aberta** permite à Meta agir contra o que ela determinar que é enganoso.
+- **Vale a política, não a lei do país.** Aposta é legal no Brasil e é proibida no WhatsApp.
+- **API oficial não muda isso.** A regra é da Meta.
 
-::diagrama: numero-banido-visual
+## A lista da política
 
-## A lista
+| Categoria na política | Observação |
+|---|---|
+| Armas de fogo | |
+| Álcool e tabaco | |
+| Drogas | Com receita, recreativas ou outras |
+| Produtos médicos e de saúde | |
+| Animais vivos | Não ameaçados, com exceção de gado |
+| Moeda real, virtual ou falsa | Incluindo ICOs e opções binárias |
+| Jogos e apostas com dinheiro real | |
+| Partes ou fluidos corporais | |
+| Crédito de curto prazo, adiantamento salarial, empréstimo entre pessoas, cobrança de dívida e fiança | Na mesma linha da política |
+| Modelos de negócio que a Meta determine ser fraudulentos, enganosos, ofensivos ou ilusórios | Cláusula aberta |
 
-As categorias que aparecem de forma explícita, e que na prática significam bloqueio quando identificadas:
+Confira sempre na [política vigente](https://whatsappbusiness.com/policy/).
 
-**Armas de fogo, munição e explosivos.** Sem margem.
+## Os casos do vídeo
 
-**Álcool e tabaco.** Inclui produtos derivados e acessórios.
+No vídeo, o Israel passa pela lista com exemplos, e dois casos são de clientes da Datafy.
 
-**Medicamentos e produtos de saúde.** Aqui a fronteira é mais borrada do que parece: suplemento, produto para emagrecer e item "para academia" caem dependendo de como são descritos.
+**A empresa de eventos.** *"Eu tinha um cliente, contratou a API, ele tinha uma empresa de eventos. Então ele vendia festa de 15 anos, casamento, organizava isso. Aí tinha lá, que que vai ter na festa? E cerveja, vinho, sempre acabava tendo. E ele sempre era bloqueado por causa disso. Não tem o que fazer."*
 
-**Animais vivos.** Não importa se é criação legalizada e cuidada. Venda de animal por essa via não passa.
+**O vendedor de odds.** Um cliente contratou a API achando que deixaria de ser bloqueado, foi bloqueado e reclamou. Na conversa, ele contou que mandava cotações de apostas para uma lista. *"Aí eu falei: cara, isso é aposta. Aposta é proibido explicitamente pela meta. Então não tem o que fazer. Não tem nem como reclamar."*
 
-**Moeda virtual e ativos financeiros especulativos.** Criptomoeda, day trade, opções binárias.
+::video: cZ_nyIUv5ic | Em 19:43 ele começa a lista de nichos e conta o caso da empresa de eventos, em 22:29 o do vendedor de odds, e em 23:39 fala da cobrança de dívida.
 
-**Jogos de azar e apostas com dinheiro real.** É o caso mais comum no Brasil desde a regulamentação, e continua proibido pela plataforma.
+**Medicamentos e saúde.** *"Ele vende proteína, é pra academia, não sei. Dependendo do caso, vai ser bloqueado."*
 
-**Partes ou fluidos corporais.**
+**Animais vivos.** *"A gente sabe que você não vai, ninguém vai maltratar o animal, não é nada clandestino. Mas não pode."*
 
-**Cobrança de dívida.** O mais contraintuitivo da lista, porque parece atividade comum de banco e financeira. [Merece página própria](/cobranca-de-divida-pelo-whatsapp), porque tem nuance.
+**Moeda virtual.** *"Tá falando de Bitcoin, tá falando ali de day trade, opção binária, não pode."*
 
-**Conteúdo adulto e serviços sexuais.**
+**Cobrança de dívida.** *"Uma coisa interessante também, que é contraintuitivo, cobrança de dívidas. Não pode fazer cobrança de dívida. Então, banco, financeira, pessoal que envia mensagem cobrando conta, cobrando dívida, não pode também."*
 
-**Produtos falsificados e itens que violam propriedade intelectual.**
+## A cláusula aberta
 
-Confirme sempre na [política de comércio](https://www.whatsapp.com/legal/commerce-policy) e na [política de mensagens](https://business.whatsapp.com/policy), que são os documentos vigentes e mudam.
+Sobre o trecho que permite à Meta agir contra o que ela concluir ser enganoso, o comentário do vídeo: *"aqui tem um mar gigantesco de subjetividade, só nesse termo aqui."* E o exemplo dele: *"uma ação aqui que vai render 30% ao mês."* O ponto: *"não é você que decide, não, isso aqui não é enganoso, isso aqui é legítimo, mas se a meta entender que é enganoso, vai ser bloqueado."*
 
-## A segunda camada, que é a que pega gente de boa-fé
+::video: cZ_nyIUv5ic | Em 21:21 ele lê a cláusula sobre o que a Meta conclui ser fraudulento ou enganoso, e em 24:01 explica que vale a regra da Meta, e não a lei do país.
 
-Além da lista, a política reserva à Meta agir contra modelos de negócio, bens ou serviços que **ela conclua** que possam ser fraudulentos, enganosos, ofensivos ou exploratórios.
+## A API oficial não muda a lista
 
-Leia de novo com atenção: **quem conclui é ela.** Não é você que decide que a sua oferta é legítima. Se a leitura automatizada entender que aquilo soa enganoso, o resultado é o mesmo de estar na lista.
-
-Onde isso costuma pegar:
-
-**Promessa de retorno financeiro.** "Renda extra", "30% ao mês", "método que multiplica" caem nessa faixa mesmo quando o produto é um curso legítimo.
-
-**Saúde e resultado.** "Emagreça sem dieta", "cura", "tratamento" atraem a mesma leitura.
-
-**Urgência artificial e oferta boa demais.** Não é proibido, e aumenta a chance de a mensagem ser lida como enganosa, principalmente se as pessoas não estiverem respondendo.
-
-## O caso que mostra como isso acontece
-
-Duas situações reais, e em nenhuma das duas o cliente estava tentando burlar nada.
-
-**A empresa de eventos.** Organizava festa de 15 anos e casamento. O pacote descrevia o que ia ter na festa, e o que ia ter na festa incluía cerveja e vinho. Na descrição do Israel Henrique, CTO da Datafy: *"e ele sempre era bloqueado por causa disso. Não tem o que fazer."*
-
-Repare no que aconteceu: a empresa não vendia bebida. Vendia organização de evento, que é atividade permitida. O que caiu foi **a palavra na mensagem**. A leitura é sobre conteúdo, não sobre atividade registrada.
-
-**O vendedor de cotações esportivas.** Contratou a API oficial justamente porque vinha sendo bloqueado, foi bloqueado de novo e reclamou. Aí apareceu o que ele fazia: mandava cotação de aposta para uma lista. *"Cara, isso é aposta. Aposta é proibido explicitamente pela meta. Então não tem o que fazer. Não tem nem como reclamar."*
-
-::video: cZ_nyIUv5ic | Vinte e seis minutos sobre as causas de bloqueio observadas na base de clientes. A lista de nichos aparece entre 19:43 e 23:39, o caso da empresa de eventos em 19:43, o de apostas em 22:29, e em 21:21 o trecho da política sobre o que a Meta conclui ser enganoso.
-
-E o fecho que resume a lógica inteira, na fala dele: *"não importa se isso aqui é proibido ou legalizado no teu país. Se a meta proíbe, tá proibido e você vai ser bloqueado."*
-
-## O que fazer se o seu negócio está na lista
-
-Ser direto aqui vale mais que dar esperança.
-
-**Não existe fornecedor que resolva.** Nem API oficial, nem ferramenta de QR code, nem intermediário. A regra é da plataforma, e ela se aplica ao número, não ao caminho técnico.
-
-**Contornar a palavra não é estratégia.** Dá para tentar não escrever "cerveja" na descrição do pacote, e isso funciona por um tempo. A leitura de conteúdo evolui, e o custo de ser pego é o número, não um aviso.
-
-**Existe uma diferença entre vender e atender.** Nichos proibidos são sobre **comercializar** aquilo por ali. Uma clínica que agenda consulta está numa posição diferente de quem anuncia medicamento. Vale desenhar a comunicação em torno de agendamento, confirmação e atendimento, e manter a oferta do produto restrito fora do canal.
-
-**Outro canal pode ser o caminho.** Para alguns setores, Telegram, e-mail ou SMS não têm essa restrição. É frustrante e é melhor do que perder número atrás de número.
-
-## O que isso não quer dizer
-
-Vale delimitar, porque a lista assusta mais do que deveria.
-
-**Farmácia, clínica e pet shop existem no WhatsApp.** O que não pode é a mensagem comercializar o item restrito. Confirmação de pedido, lembrete de consulta e atendimento seguem sendo os usos mais comuns da plataforma.
-
-**A lista não é a causa mais comum de bloqueio.** De longe, a causa número um é [mandar para quem não pediu e não responder](/posso-mandar-mensagem-para-qualquer-numero). Nicho proibido é a causa mais **definitiva**, e não a mais frequente.
-
-**Não é sobre o seu CNAE.** É sobre o que a mensagem diz. Uma empresa de eventos pode operar; a descrição com bebida é que não passa.
+A política é da Meta e vale para o número em qualquer caminho de conexão. O caso do vendedor de odds mostra isso: ele trocou para a API oficial e foi bloqueado igual. [As outras causas de bloqueio estão aqui](/numero-banido-no-whatsapp-o-que-fazer).
 
 ## Perguntas frequentes
 
-### Aposta é legalizada no Brasil. Por que bloqueia?
+### Aposta é legal no Brasil. Posso usar o WhatsApp?
 
-Porque a regra é da plataforma. A Meta define o que aceita na própria rede, e essa definição não acompanha a legislação de cada país.
+Não para comercializar. A política da Meta proíbe jogos e apostas com dinheiro real, independente da lei do país.
 
-### Vendo suplemento para academia. Isso conta?
+### Cobrança de dívida é proibida?
 
-Depende de como você descreve. Produto de saúde e itens com promessa de resultado caem na faixa restrita. Quanto mais a mensagem se parecer com promessa de efeito, maior o risco.
+Está na seção 4 da política, na mesma linha de crédito de curto prazo, adiantamento salarial, empréstimo entre pessoas e fiança.
 
-### E se eu não escrever a palavra proibida?
+### Vendo suplemento. Conta como produto de saúde?
 
-Reduz a chance de ser identificado e não muda a regra. A leitura de conteúdo evolui, e o custo de ser pego é o número.
+No vídeo, o Israel diz que depende do caso. A política lista produtos médicos e de saúde.
 
-### A API oficial protege se eu estou num nicho desses?
+### Minha empresa não vende bebida, mas o pacote inclui. Tem risco?
 
-Não. Ela elimina o risco de usar um caminho não autorizado, e não muda a categoria do que você vende.
+Foi o caso da empresa de eventos do vídeo, bloqueada porque os pacotes tinham cerveja e vinho.
 
-### Posso atender clientes sem vender o produto restrito ali?
+### Trocar para a API oficial resolve?
 
-Essa é a saída viável na maioria dos casos. Agendamento, suporte e confirmação são usos permitidos. O que não passa é a mensagem comercializando o item restrito.
-
-### Fui bloqueado por nicho. Adianta recorrer?
-
-Se a causa é mesmo nicho proibido, o recurso tende a não prosperar, porque não houve engano. Recurso funciona quando você consegue mostrar mudança de conduta, e mudar de nicho não é uma conduta que você ajusta.
+Não. A política é a mesma.
 
 ## Como decidir
 
-Se o seu produto está claramente na lista, a decisão honesta é não montar a operação de vendas em cima do WhatsApp. Vale usar o canal para atendimento e relacionamento, com a comunicação desenhada em torno disso, e vender por outro caminho.
+Leia a seção 4 da política antes de montar a operação no WhatsApp. Se o seu produto está na lista, o WhatsApp não é canal para vendê-lo. Se está na zona da cláusula aberta, a pergunta do vídeo ajuda: a Meta pode entender a sua oferta como enganosa?
 
-Se você está na zona cinzenta, promessa de resultado, saúde, renda, o critério prático é: **a sua mensagem soaria enganosa para alguém que não te conhece?** Se soar, ela vai ser lida assim.
-
-E, em qualquer caso, descubra isso agora e não depois. Perder o número principal de uma operação já madura custa muito mais que refazer o plano de canal no começo.
-
-::cta: Leia a política de comércio antes de escalar | São dez minutos, e é o único jeito de saber se o seu produto tem futuro nesse canal. Descobrir pela lista é barato; descobrir por bloqueio custa o número e o histórico dele.
+::cta: Leia a seção 4 da política hoje | Confira se o que você vende, ou o que aparece nas suas mensagens, está na lista antes do próximo disparo.
 
 ## Leia também
-- [Número bloqueado no WhatsApp: o que fazer](/numero-banido-no-whatsapp-o-que-fazer)
-- [Cobrança de dívida pelo WhatsApp pode?](/cobranca-de-divida-pelo-whatsapp)
-- [A qualidade do número: alta, média e baixa](/qualidade-do-numero-whatsapp)
+- [Por que o número é bloqueado no WhatsApp Business](/numero-banido-no-whatsapp-o-que-fazer)
 - [Posso mandar mensagem para qualquer número?](/posso-mandar-mensagem-para-qualquer-numero)
+- [Opt-in no WhatsApp com link de cadastro](/opt-in-por-link-whatsapp)
+- [API oficial ou não oficial](/api-oficial-vs-nao-oficial-whatsapp-2026)

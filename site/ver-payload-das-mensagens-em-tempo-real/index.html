@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Como ver o payload cru das mensagens do WhatsApp em tempo real</title>
-<meta name="description" content="Depurar integração sem log de servidor: o que entra, o que sai, e os três eventos de status de cada envio. Com os limites de retenção que isso tem.">
+<title>Como ver o payload das mensagens do WhatsApp em tempo real</title>
+<meta name="description" content="O bate-papo do painel da Datafy mostra, ao vivo, cada mensagem enviada e recebida e o webhook exato de cada uma. Guarda 7 dias e até 100 mensagens por conversa.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/ver-payload-das-mensagens-em-tempo-real">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -13,15 +13,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
-<meta property="og:title" content="Como ver o payload cru das mensagens do WhatsApp em tempo real">
-<meta property="og:description" content="Depurar integração sem log de servidor: o que entra, o que sai, e os três eventos de status de cada envio. Com os limites de retenção que isso tem.">
+<meta property="og:title" content="Como ver o payload das mensagens do WhatsApp em tempo real">
+<meta property="og:description" content="O bate-papo do painel da Datafy mostra, ao vivo, cada mensagem enviada e recebida e o webhook exato de cada uma. Guarda 7 dias e até 100 mensagens por conversa.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/ver-payload-das-mensagens-em-tempo-real">
-<meta property="article:published_time" content="2026-09-09">
-<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Como ver o payload cru das mensagens do WhatsApp em tempo real">
-<meta name="twitter:description" content="Depurar integração sem log de servidor: o que entra, o que sai, e os três eventos de status de cada envio. Com os limites de retenção que isso tem.">
+<meta name="twitter:title" content="Como ver o payload das mensagens do WhatsApp em tempo real">
+<meta name="twitter:description" content="O bate-papo do painel da Datafy mostra, ao vivo, cada mensagem enviada e recebida e o webhook exato de cada uma. Guarda 7 dias e até 100 mensagens por conversa.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -112,18 +113,18 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Como ver o payload cru das mensagens do WhatsApp em tempo real"
+          "name": "Como ver o payload das mensagens do WhatsApp em tempo real"
         }
       ]
     },
     {
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/ver-payload-das-mensagens-em-tempo-real#article",
-      "headline": "Como ver o payload cru das mensagens do WhatsApp em tempo real",
-      "description": "Depurar integração sem log de servidor: o que entra, o que sai, e os três eventos de status de cada envio. Com os limites de retenção que isso tem.",
+      "headline": "Como ver o payload das mensagens do WhatsApp em tempo real",
+      "description": "O bate-papo do painel da Datafy mostra, ao vivo, cada mensagem enviada e recebida e o webhook exato de cada uma. Guarda 7 dias e até 100 mensagens por conversa.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,13 +133,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/ver-payload-das-mensagens-em-tempo-real",
       "citation": [
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/create-webhook-endpoint/",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/media",
-        "https://app.datafyapi.com.br/docs",
         "https://www.youtube.com/watch?v=LIT4FxgqHhE",
-        "https://www.youtube.com/watch?v=vGovcR8W5g8"
+        "https://www.youtube.com/watch?v=dIIkttPeBS0",
+        "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
+        "https://www.youtube.com/watch?v=ly5nOHFpXcI",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -147,50 +146,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Por que minha mensagem enviada pela API não aparece como mensagem?",
+          "name": "O log mostra o mesmo payload que chega no meu webhook?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Porque ela volta como status, não como mensagem. É o comportamento esperado, e não indica problema."
+            "text": "Sim. Clicando na mensagem, aparece o webhook que foi enviado."
           }
         },
         {
           "@type": "Question",
-          "name": "Recebo três eventos por envio. Está duplicando?",
+          "name": "Por quanto tempo as mensagens ficam?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. São enviada, entregue e lida. O terceiro só vem se a pessoa tiver confirmação de leitura habilitada."
+            "text": "7 dias, com no máximo 100 mensagens por conversa."
           }
         },
         {
           "@type": "Question",
-          "name": "O log mostra a imagem que o cliente mandou?",
+          "name": "Consigo ver a imagem que o cliente mandou?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não mostra a mídia, só indica que chegou. Para o arquivo, é preciso fazer as duas chamadas de mídia, e o identificador expira em 7 dias."
+            "text": "Não pelo log. Ele só indica que chegou uma imagem. Para o arquivo, use a rota de mídia."
           }
         },
         {
           "@type": "Question",
-          "name": "Posso usar esse log como histórico de atendimento?",
+          "name": "Dá para responder pelo log?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. São 7 dias e 100 mensagens por conversa. Histórico é responsabilidade do seu banco."
+            "text": "Dá, e ele não é feito para atendimento. É log."
           }
         },
         {
           "@type": "Question",
-          "name": "Como vejo o que aconteceu com uma mensagem específica?",
+          "name": "Aparecem os status das mensagens enviadas pela API?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pelo identificador que a chamada de envio devolveu. Ele é a chave que liga o envio aos status que chegaram depois, e por isso vale guardá-lo sempre."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Meu webhook não recebe nada. O log ajuda?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ajuda, e por eliminação: se o log da plataforma mostra a mensagem chegando e o seu endpoint não recebe, o problema está entre os dois, na URL ou na sua aplicação, e não na Meta."
+            "text": "Aparecem, como vários eventos para a mesma mensagem."
           }
         }
       ]
@@ -216,13 +207,13 @@
     },
     {
       "@type": "VideoObject",
-      "@id": "https://conteudo.datafyapi.com.br/ver-payload-das-mensagens-em-tempo-real#video-vGovcR8W5g8",
-      "name": "Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens",
-      "description": "Webhook de teste e de producao, envio pelo no de HTTP, e o laco de status que derruba numero",
-      "thumbnailUrl": "https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg",
+      "@id": "https://conteudo.datafyapi.com.br/ver-payload-das-mensagens-em-tempo-real#video-HVRCBsJI_Eo",
+      "name": "Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)",
+      "description": "Projeto inteiro: payloads reais, modelagem do banco, webhook por tunel, midia, tempo real e publicacao",
+      "thumbnailUrl": "https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg",
       "uploadDate": "2026-09-09",
-      "contentUrl": "https://www.youtube.com/watch?v=vGovcR8W5g8",
-      "embedUrl": "https://www.youtube.com/embed/vGovcR8W5g8",
+      "contentUrl": "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
+      "embedUrl": "https://www.youtube.com/embed/HVRCBsJI_Eo",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -574,11 +565,11 @@ footer p{margin:0 0 .5rem}
   <div class="hero-grid">
     <div>
       <p class="eyebrow">Implementação</p>
-      <h1>Como ver o payload cru das mensagens do WhatsApp em tempo real</h1>
+      <h1>Como ver o payload das mensagens do WhatsApp em tempo real</h1>
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -608,79 +599,26 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como ver o payload cru das mensagens do WhatsApp em tempo real</h1>
-<p><strong>Resposta curta:</strong> quando a integração não funciona, existe uma pergunta que resolve metade dos casos e que quase ninguém consegue responder rápido: <strong>o que exatamente chegou?</strong></p>
-<p>Ver o payload cru, campo por campo, no momento em que ele passa, separa três problemas que se confundem: o evento não está chegando, o evento chega e o seu código lê o campo errado, ou o evento chega e é de um tipo que você não esperava. Sem isso, o time passa horas depurando o problema errado.</p>
+<h1>Como ver o payload das mensagens do WhatsApp em tempo real</h1>
+<p><strong>Resposta curta:</strong> no painel da Datafy API, o botão <strong>bate-papo</strong> abre um log ao vivo das mensagens enviadas e recebidas pelo número. Clicando numa mensagem, você vê o <strong>webhook exato</strong> que foi entregue para ela. É a forma mais rápida de responder "o que chegou?" sem abrir o log do seu servidor.</p>
+<p>Ele tem limites, e o próprio Israel Henrique, CTO da Datafy, diz: <em>"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."</em> Guarda <strong>7 dias</strong> e no máximo <strong>100 mensagens por conversa</strong>.</p>
 <div class="stats">
-  <div class="stat"><b>3 problemas</b><span>que o payload cru separa em segundos</span></div>
-  <div class="stat"><b>3 status</b><span>voltam para cada mensagem que você envia</span></div>
-  <div class="stat"><b>7 dias</b><span>de retenção do log, no painel da Datafy</span></div>
-  <div class="stat"><b>100</b><span>mensagens por conversa, o teto do log</span></div>
+  <div class="stat"><b>7 dias</b><span>de retenção no log</span></div>
+  <div class="stat"><b>100</b><span>mensagens por conversa no máximo</span></div>
+  <div class="stat"><b>ao vivo</b><span>as mensagens aparecem em tempo real</span></div>
+  <div class="stat"><b>0</b><span>imagens e vídeos exibidos, só o aviso</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li><strong>A pergunta é sempre a mesma:</strong> chegou? Se chegou, com quais campos? O payload cru responde as duas de uma vez.</li>
-<li><strong>Mensagem enviada pela API não volta como mensagem.</strong> Dela voltam <strong>status</strong>, e confundir isso é a causa de metade dos diagnósticos errados.</li>
-<li><strong>Cada envio gera três eventos</strong>, enviada, entregue e lida. Falha gera um só, com o motivo.</li>
-<li><strong>Log de plataforma não é arquivo.</strong> No painel da Datafy, ele guarda 7 dias e no máximo 100 mensagens por conversa, e mídia não aparece.</li>
-<li>Para o que precisa durar, o único lugar confiável é <strong>o seu banco</strong>, gravando o payload cru antes de interpretar.</li>
+<li><strong>O log mostra, por mensagem, o payload do webhook</strong> que foi entregue.</li>
+<li><strong>Mensagens recebidas, enviadas pelo celular e enviadas pela API</strong> aparecem, cada uma com seu evento.</li>
+<li><strong>Para mensagens enviadas pela API, dá para ver os vários eventos de status.</strong></li>
+<li><strong>Mídia não é exibida:</strong> o log só indica que chegou uma imagem ou um vídeo.</li>
+<li><strong>Retenção:</strong> 7 dias e até 100 mensagens por conversa, apagando as mais antigas.</li>
 </ul>
-<figure>
-<div class="diagram">
-<svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" class="d">
-  <style>
-    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-    .t{font-size:15px;font-weight:600;fill:var(--fg)}
-    .h{font-size:13px;font-weight:600;fill:var(--fg)}
-    .p{font-size:12px;fill:var(--muted)}
-    .s{font-size:11px;fill:var(--muted)}
-    .ok{fill:var(--accent)}
-    .no{fill:var(--danger)}
-    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
-    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
-    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
-  </style>
-  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
-    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Como o webhook entrega a mensagem</text>
-<rect class="box" x="30" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="115" y="80" text-anchor="middle">Cliente</text>
-<text class="s" x="115" y="100" text-anchor="middle">escreve no WhatsApp</text>
-<rect class="box" x="275" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="360" y="80" text-anchor="middle">Meta</text>
-<text class="s" x="360" y="100" text-anchor="middle">faz POST no seu endpoint</text>
-<rect class="box" x="520" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="605" y="80" text-anchor="middle">Seu servidor</text>
-<text class="s" x="605" y="100" text-anchor="middle">responde 200 na hora</text>
-<path class="ar" d="M205,87 L268,87"/>
-<path class="ar" d="M450,87 L513,87"/>
-<rect class="box" x="30" y="146" width="330" height="76" rx="8"/>
-<text class="h" x="46" y="170">Se você falhar</text>
-<text class="p" x="46" y="192">A Meta reentrega com frequência</text>
-<text class="p" x="46" y="210">decrescente por até 7 dias.</text>
-<rect class="box" x="380" y="146" width="310" height="76" rx="8"/>
-<text class="h" x="396" y="170">Como validar</text>
-<text class="p" x="396" y="192">HMAC SHA-256 no header</text>
-<text class="p" x="396" y="210">X-Hub-Signature-256.</text>
-</svg>
-</div>
-<figcaption></figcaption>
-</figure>
-
-<h2 id="os-tr-s-problemas-que-se-parecem">Os três problemas que se parecem</h2>
-<p>Antes de qualquer ferramenta, vale nomear o que você está tentando distinguir, porque os três produzem o mesmo sintoma de "não funciona":</p>
-<p><strong>O evento não chega.</strong> A URL está errada, o campo não foi assinado, ou o seu endpoint não responde. Aqui o payload cru é vazio, e isso já é a resposta.</p>
-<p><strong>O evento chega e o seu código lê errado.</strong> É o mais comum, e o mais frustrante. O telefone está em <code>contacts</code>, você está lendo do topo. A legenda está fora do objeto da mídia, você está lendo dentro. O payload cru mostra a estrutura real e o erro fica óbvio.</p>
-<p><strong>O evento chega e é de um tipo que você não esperava.</strong> Um status, um evento de conta, um tipo de mensagem novo. O seu código estoura ou ignora em silêncio, e o payload cru mostra o que era.</p>
-<h2 id="o-que-voc-deveria-conseguir-ver">O que você deveria conseguir ver</h2>
-<p>Um bom diagnóstico responde quatro coisas:</p>
-<p><strong>A mensagem que entrou</strong>, com os campos separados: quem enviou, o identificador dela, o horário, o tipo e o conteúdo.</p>
-<p><strong>A mensagem que saiu</strong>, e por qual caminho: pela API ou pelo celular, em coexistência. São eventos diferentes.</p>
-<p><strong>Os status</strong>, um por um, com o identificador da mensagem que eles referenciam.</p>
-<p><strong>O motivo da falha</strong>, quando houver, que é o campo que mais some no caminho porque muita biblioteca descarta.</p>
+<h2 id="como-abrir">Como abrir</h2>
+<p>No painel do número, clique em bate-papo. As conversas aparecem com as mensagens chegando ao vivo. Na descrição do vídeo: <em>"você consegue ver os logs das mensagens que estão sendo enviadas e recebidas."</em></p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=LIT4FxgqHhE" rel="noopener">
   <span class="thumb">
@@ -689,70 +627,54 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Logs de mensagens em tempo real na API oficial do WhatsApp</b><span>Canal DATA7 · 3 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Três minutos com o log ao vivo funcionando. Em 00:52 ele clica numa mensagem recebida e abre o payload exato que foi entregue, em 01:26 responde e mostra o evento de mensagem enviada pelo celular, e em 01:59 envia pela API e aparecem os três status em sequência.</figcaption>
+<figcaption>Três minutos com o log funcionando: em 00:52 ele abre o payload de uma mensagem recebida, em 01:26 o de uma resposta enviada fora da API, e em 01:59 os status de uma mensagem enviada pela API.</figcaption>
 </figure>
 
-<h2 id="a-confus-o-que-esse-log-resolve-na-prime">A confusão que esse log resolve na primeira olhada</h2>
-<p>Existe um mal-entendido tão comum que vale isolar, e ele fica evidente assim que você vê os eventos lado a lado.</p>
-<p><strong>Você manda mensagem pela API. Ela não volta como mensagem.</strong> O que volta é status: enviada, depois entregue, depois lida. O conteúdo não vem junto, só o identificador e a situação.</p>
-<p><strong>O atendente responde pelo celular. Isso sim volta como um evento próprio</strong>, o de mensagem enviada pelo aplicativo, e só se você tiver assinado esse campo. Sem ele, metade da conversa não existe no seu sistema.</p>
-<p>Quem espera ver o próprio envio pela API no evento de mensagens fica procurando defeito onde não tem. São dois caminhos diferentes para duas origens diferentes.</p>
-<h2 id="o-outro-uso-descobrir-o-la-o-antes-que-e">O outro uso: descobrir o laço antes que ele aconteça</h2>
-<p>Ver os três status chegando tem um segundo valor, e ele é sobre segurança.</p>
-<p>Como esses eventos chegam no <strong>mesmo webhook</strong> das mensagens de cliente, um fluxo que responde tudo que entra vira um multiplicador: cada resposta sua gera três status, cada status vira outra resposta. Três, nove, vinte e sete.</p>
+<h2 id="o-que-d-para-ver">O que dá para ver</h2>
+<p><strong>Mensagem recebida.</strong> Clicando nela, aparece o webhook: <em>"o mesmo web hook que é enviado para você."</em></p>
+<p><strong>Mensagem enviada fora da API.</strong> No vídeo, ele responde pelo WhatsApp Web do número e o evento que aparece é outro: <em>"isso aqui é o messages echoes e é quando eu, proprietário, envio a mensagem."</em> <a href="/mensagem-do-celular-nao-aparece-no-sistema">O que fazer quando esse evento não chega no seu sistema</a>.</p>
+<p><strong>Mensagem enviada pela API.</strong> Aqui aparecem vários eventos para a mesma mensagem: <em>"quando eu envio a mensagem pela API, eu vou receber vários web hooks."</em> Enviada, entregue e lida, esta última se a pessoa tiver a confirmação de leitura ativada, ou um evento de erro. <a href="/tres-status-da-mensagem-whatsapp">Os status estão explicados aqui</a>.</p>
+<h2 id="o-que-n-o-d-para-ver">O que não dá para ver</h2>
+<p><strong>O conteúdo de mídia.</strong> <em>"Quando você envia imagem, vídeo, ele não mostra. Ele apenas diz que você recebeu uma imagem ou que você recebeu um vídeo."</em></p>
+<p><strong>Mais de 7 dias ou mais de 100 mensagens por conversa.</strong> <em>"As mensagens que ficam salvas aqui, 7 dias, depois elas são deletadas, e no máximo 100 mensagens por conversa. Se chegar mais uma, ele vai excluindo as anteriores."</em></p>
+<h2 id="para-que-ele-serve-de-verdade">Para que ele serve de verdade</h2>
+<p><strong>Depurar.</strong> Ver o campo exato que chegou antes de escrever a expressão que lê esse campo.</p>
+<p><strong>Coletar payloads reais.</strong> No tutorial de atendimento do canal, o Israel usa o log para copiar os payloads de texto, áudio, imagem, mensagem enviada pelo celular e status, e passa esses exemplos para a IA modelar as tabelas do banco. Na fala dele: <em>"isso aqui é o que o WhatsApp enviou para mim. Exatamente esse payload."</em></p>
 <figure>
-<a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
+<a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
   <span class="thumb">
-    <img src="https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg" alt="Miniatura do vídeo: Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens" loading="lazy" width="1280" height="720">
+    <img src="https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg" alt="Miniatura do vídeo: Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)" loading="lazy" width="1280" height="720">
     <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
   </span>
-  <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
+  <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 14:47 o aviso aparece antes da execução, e em 19:05 os três status chegam e a proteção funciona. O alerta dele é direto: um fluxo assim bloqueia o número.</figcaption>
+<figcaption>Em 44:21 ele abre o bate-papo, envia mensagens de tipos diferentes e copia o payload de cada uma para usar no projeto.</figcaption>
 </figure>
 
-<p>A proteção é filtrar na entrada: leia o remetente <strong>de dentro do objeto de mensagem</strong>, que não existe no evento de status. Assim o passo falha ao receber status, em vez de responder. <a href="/webhook-chega-duplicado">O tratamento completo está aqui</a>.</p>
-<h2 id="os-limites-ditos-com-clareza">Os limites, ditos com clareza</h2>
-<p>Painel de log é ferramenta de diagnóstico, e não repositório. Vale saber onde ele acaba antes de construir algo em cima.</p>
-<p>No painel da Datafy, ele guarda <strong>7 dias</strong> e no máximo <strong>100 mensagens por conversa</strong>, descartando as mais antigas quando passa disso. <strong>Mídia não aparece</strong>, só o aviso de que chegou. E o próprio Israel Henrique, CTO da Datafy, delimita o uso: <em>"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."</em></p>
-<p>Isso significa três coisas na prática:</p>
-<p><strong>Não use como destino de transferência para humano.</strong> Você perde mídia e perde histórico depois de uma semana. O destino precisa ser uma caixa de entrada de verdade, <a href="/como-passar-do-bot-para-o-atendente-humano">com fila e atribuição</a>.</p>
-<p><strong>Não use como registro de atendimento.</strong> Para conformidade, o que vale é <a href="/o-cliente-pediu-para-apagar-os-dados-dele">o que você guardou no seu banco</a>.</p>
-<p><strong>Use para o que ele é bom:</strong> olhar o payload de uma mensagem específica quando algo deu errado, sem precisar acessar o log do servidor nem esperar deploy.</p>
-<h2 id="o-que-fazer-no-seu-lado-para-n-o-depende">O que fazer no seu lado, para não depender disso</h2>
-<p>O log da plataforma resolve o problema de hoje. O que resolve o de daqui a três meses é um hábito:</p>
-<p><strong>Grave o payload cru antes de interpretar.</strong> É a rede de segurança de tudo. Quando um campo novo aparecer e você precisar dele, só quem guardou o bruto consegue reprocessar. Sem ele, o dado daquele período não existe.</p>
-<p><strong>Guarde o identificador de cada mensagem enviada.</strong> É a chave que casa com o status que chega depois. Sem ela, chega o evento e você não sabe a que se refere.</p>
-<p><strong>Guarde o motivo da falha.</strong> Ele vem junto do status e é o que distingue número inexistente de bloqueio por limite. <a href="/a-mensagem-falhou-e-nao-sei-por-que">Muita biblioteca descarta esse campo</a>.</p>
-<p><strong>Registre tipos desconhecidos em vez de estourar.</strong> Um caso final que anota e segue transforma uma quebra em uma linha de log.</p>
-<h2 id="e-enquanto-voc-desenvolve-na-sua-m-quina">E enquanto você desenvolve, na sua máquina</h2>
-<p>Antes de existir tráfego real, duas coisas ajudam:</p>
-<p><strong>Disparar um evento de teste</strong> do tipo que você quer, para a sua URL. Separa "meu endpoint está errado" de "o evento não está chegando" sem depender de alguém mandar mensagem.</p>
-<p><strong>Um túnel para a sua porta local</strong>, que dá um endereço público temporário. Três coisas mordem aqui: o framework pode recusar o domínio do túnel com um erro de proibido, o endereço muda a cada vez que ele sobe, e trocar para a URL de produção quando publicar é um passo manual fácil de esquecer. <a href="/qual-url-eu-uso-no-webhook-da-meta">Os detalhes estão aqui</a>.</p>
+<p><strong>Acompanhar um disparo.</strong> No vídeo de disparo em massa, é pelo bate-papo que ele vê o motivo de uma mensagem não ter sido entregue.</p>
+<h2 id="para-que-ele-n-o-serve">Para que ele não serve</h2>
+<p>Para atendimento. O log mostra e deixa responder, mas não é caixa de entrada: tem retenção curta, não exibe mídia e descarta mensagens antigas. Para atender com equipe, <a href="/whatsapp-api-oficial-chatwoot">o Chatwoot se conecta à Datafy</a>; para construir o seu, <a href="/criar-atendimento-whatsapp-do-zero">o tutorial completo está aqui</a>.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Por que minha mensagem enviada pela API não aparece como mensagem?</h3>
-<p>Porque ela volta como status, não como mensagem. É o comportamento esperado, e não indica problema.</p>
-<h3>Recebo três eventos por envio. Está duplicando?</h3>
-<p>Não. São enviada, entregue e lida. O terceiro só vem se a pessoa tiver confirmação de leitura habilitada.</p>
-<h3>O log mostra a imagem que o cliente mandou?</h3>
-<p>Não mostra a mídia, só indica que chegou. Para o arquivo, é preciso <a href="/como-receber-midia-api-oficial-whatsapp">fazer as duas chamadas de mídia</a>, e o identificador expira em 7 dias.</p>
-<h3>Posso usar esse log como histórico de atendimento?</h3>
-<p>Não. São 7 dias e 100 mensagens por conversa. Histórico é responsabilidade do seu banco.</p>
-<h3>Como vejo o que aconteceu com uma mensagem específica?</h3>
-<p>Pelo identificador que a chamada de envio devolveu. Ele é a chave que liga o envio aos status que chegaram depois, e por isso vale guardá-lo sempre.</p>
-<h3>Meu webhook não recebe nada. O log ajuda?</h3>
-<p>Ajuda, e por eliminação: se o log da plataforma mostra a mensagem chegando e o seu endpoint não recebe, o problema está entre os dois, na URL ou na sua aplicação, e não na Meta.</p>
+<h3>O log mostra o mesmo payload que chega no meu webhook?</h3>
+<p>Sim. Clicando na mensagem, aparece o webhook que foi enviado.</p>
+<h3>Por quanto tempo as mensagens ficam?</h3>
+<p>7 dias, com no máximo 100 mensagens por conversa.</p>
+<h3>Consigo ver a imagem que o cliente mandou?</h3>
+<p>Não pelo log. Ele só indica que chegou uma imagem. Para o arquivo, use a rota de mídia.</p>
+<h3>Dá para responder pelo log?</h3>
+<p>Dá, e ele não é feito para atendimento. É log.</p>
+<h3>Aparecem os status das mensagens enviadas pela API?</h3>
+<p>Aparecem, como vários eventos para a mesma mensagem.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Se você está montando a integração agora, use o log da plataforma sem culpa: ele encurta o primeiro dia de trabalho, que é justamente quando você ainda não tem observabilidade nenhuma.</p>
-<p>Assim que a coisa for para produção, monte o seu: guarde o payload cru, o identificador e o motivo da falha. O log da plataforma continua útil para o caso pontual, e ele nunca vai ser o lugar onde o seu histórico mora.</p>
-<div class="cta"><h3>Olhe um payload cru hoje, antes de precisar</h3><p>Mande uma mensagem para o seu número conectado e abra o evento inteiro, campo por campo. Você descobre em cinco minutos onde estão o telefone, o identificador da pessoa e a legenda, e para de adivinhar caminho de campo no meio de um incidente.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Use o bate-papo sempre que precisar saber exatamente o que chegou, antes de mexer no seu código. Para guardar histórico, use o seu banco; para atender, use uma caixa de entrada.</p>
+<div class="cta"><h3>Abra o log e mande uma mensagem</h3><p>Clique em bate-papo no painel do número, mande uma mensagem do seu celular, e abra o payload que chegou para conhecer os campos antes de escrever qualquer expressão.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens em tempo real</a></li>
-<li><a href="/a-mensagem-falhou-e-nao-sei-por-que">A mensagem falhou e eu não sei por quê</a></li>
-<li><a href="/webhook-chega-duplicado">Meu webhook chega duplicado</a></li>
-<li><a href="/qual-url-eu-uso-no-webhook-da-meta">Qual URL eu uso no webhook da Meta</a></li>
+<li><a href="/tres-status-da-mensagem-whatsapp">Os três status da mensagem no WhatsApp</a></li>
+<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens no seu servidor</a></li>
+<li><a href="/mensagem-do-celular-nao-aparece-no-sistema">O atendente responde pelo celular e não aparece no sistema</a></li>
+<li><a href="/criar-atendimento-whatsapp-do-zero">Como criar um atendimento do zero</a></li>
 </ul>
 </article>
 
@@ -768,13 +690,11 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#os-tr-s-problemas-que-se-parecem">Os três problemas que se parecem</a></li>
-        <li><a href="#o-que-voc-deveria-conseguir-ver">O que você deveria conseguir ver</a></li>
-        <li><a href="#a-confus-o-que-esse-log-resolve-na-prime">A confusão que esse log resolve...</a></li>
-        <li><a href="#o-outro-uso-descobrir-o-la-o-antes-que-e">O outro uso: descobrir o laço an...</a></li>
-        <li><a href="#os-limites-ditos-com-clareza">Os limites, ditos com clareza</a></li>
-        <li><a href="#o-que-fazer-no-seu-lado-para-n-o-depende">O que fazer no seu lado, para nã...</a></li>
-        <li><a href="#e-enquanto-voc-desenvolve-na-sua-m-quina">E enquanto você desenvolve, na s...</a></li>
+        <li><a href="#como-abrir">Como abrir</a></li>
+        <li><a href="#o-que-d-para-ver">O que dá para ver</a></li>
+        <li><a href="#o-que-n-o-d-para-ver">O que não dá para ver</a></li>
+        <li><a href="#para-que-ele-serve-de-verdade">Para que ele serve de verdade</a></li>
+        <li><a href="#para-que-ele-n-o-serve">Para que ele não serve</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

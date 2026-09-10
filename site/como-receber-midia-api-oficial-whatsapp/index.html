@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Como receber imagem, áudio e documento pela API oficial do WhatsApp</title>
-<meta name="description" content="A mídia chega cifrada e a URL do webhook não abre. São duas chamadas para transformar o identificador em arquivo, e o prazo para fazer isso é de 7 dias.">
+<meta name="description" content="A mídia chega criptografada e a URL do webhook não abre. Pela Datafy API, GET /media/{id} devolve uma URL pronta, válida por 30 dias.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/como-receber-midia-api-oficial-whatsapp">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -14,14 +14,14 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
 <meta property="og:title" content="Como receber imagem, áudio e documento pela API oficial do WhatsApp">
-<meta property="og:description" content="A mídia chega cifrada e a URL do webhook não abre. São duas chamadas para transformar o identificador em arquivo, e o prazo para fazer isso é de 7 dias.">
+<meta property="og:description" content="A mídia chega criptografada e a URL do webhook não abre. Pela Datafy API, GET /media/{id} devolve uma URL pronta, válida por 30 dias.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/como-receber-midia-api-oficial-whatsapp">
-<meta property="article:published_time" content="2026-09-09">
-<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Como receber imagem, áudio e documento pela API oficial do WhatsApp">
-<meta name="twitter:description" content="A mídia chega cifrada e a URL do webhook não abre. São duas chamadas para transformar o identificador em arquivo, e o prazo para fazer isso é de 7 dias.">
+<meta name="twitter:description" content="A mídia chega criptografada e a URL do webhook não abre. Pela Datafy API, GET /media/{id} devolve uma URL pronta, válida por 30 dias.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -120,10 +121,10 @@
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/como-receber-midia-api-oficial-whatsapp#article",
       "headline": "Como receber imagem, áudio e documento pela API oficial do WhatsApp",
-      "description": "A mídia chega cifrada e a URL do webhook não abre. São duas chamadas para transformar o identificador em arquivo, e o prazo para fazer isso é de 7 dias.",
+      "description": "A mídia chega criptografada e a URL do webhook não abre. Pela Datafy API, GET /media/{id} devolve uma URL pronta, válida por 30 dias.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,13 +133,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/como-receber-midia-api-oficial-whatsapp",
       "citation": [
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/media",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/audio-messages",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
-        "https://app.datafyapi.com.br/docs",
         "https://www.youtube.com/watch?v=ZHYNjpu5ReE",
-        "https://www.youtube.com/watch?v=LIT4FxgqHhE"
+        "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
+        "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/media",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -147,50 +146,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Por que a Meta não manda o arquivo direto no webhook?",
+          "name": "Por que a URL do webhook dá erro de autenticação?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Porque o payload ficaria enorme e o webhook precisa ser rápido. O desenho por identificador mantém a entrega leve e deixa o download sob seu controle."
+            "text": "Porque a mídia vem criptografada e o acesso exige autenticação. Use o identificador para pedir a URL."
           }
         },
         {
           "@type": "Question",
-          "name": "Preciso baixar toda mídia que chega?",
+          "name": "Quanto tempo vale a URL da Datafy?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Só a que você vai usar depois. Mas decida no momento em que ela chega, porque o identificador vale 7 dias. A regra segura, para quem tem produto, é baixar sempre e limpar depois pela sua política de retenção."
+            "text": "30 dias."
           }
         },
         {
           "@type": "Question",
-          "name": "Qual o formato do áudio que o cliente manda?",
+          "name": "E se eu precisar do arquivo por mais tempo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "OGG com codec Opus, que é o formato nativo do WhatsApp. Quase todo serviço de transcrição aceita direto, sem conversão."
+            "text": "Baixe pela URL e salve no seu armazenamento."
           }
         },
         {
           "@type": "Question",
-          "name": "A legenda da imagem vem junto?",
+          "name": "Quanto tempo vale a URL de download da Meta?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vem, num campo separado do objeto de mídia. Quem lê só o objeto da mídia perde a legenda."
+            "text": "5 minutos. Baixe logo depois de consultar."
           }
         },
         {
           "@type": "Question",
-          "name": "Dá para saber o tamanho antes de baixar?",
+          "name": "O identificador da mídia expira?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Dá. A primeira chamada devolve o tamanho junto com o endereço, e isso permite recusar arquivo acima do que o seu fluxo aguenta."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "E se eu usar automação visual?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "O mesmo caminho vale, com um cuidado: configure o nó de download para tratar a resposta como binário e lembre do cabeçalho de autorização na segunda chamada. É o passo que mais falha em ferramenta de fluxo."
+            "text": "Segundo a documentação da Meta, o identificador que chega no webhook expira em 7 dias."
           }
         }
       ]
@@ -216,13 +207,13 @@
     },
     {
       "@type": "VideoObject",
-      "@id": "https://conteudo.datafyapi.com.br/como-receber-midia-api-oficial-whatsapp#video-LIT4FxgqHhE",
-      "name": "Logs de mensagens em tempo real na API oficial do WhatsApp",
-      "description": "Ver o payload cru de cada mensagem que entra e sai, e por quanto tempo esse log fica",
-      "thumbnailUrl": "https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg",
+      "@id": "https://conteudo.datafyapi.com.br/como-receber-midia-api-oficial-whatsapp#video-HVRCBsJI_Eo",
+      "name": "Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)",
+      "description": "Projeto inteiro: payloads reais, modelagem do banco, webhook por tunel, midia, tempo real e publicacao",
+      "thumbnailUrl": "https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg",
       "uploadDate": "2026-09-09",
-      "contentUrl": "https://www.youtube.com/watch?v=LIT4FxgqHhE",
-      "embedUrl": "https://www.youtube.com/embed/LIT4FxgqHhE",
+      "contentUrl": "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
+      "embedUrl": "https://www.youtube.com/embed/HVRCBsJI_Eo",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -578,7 +569,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -612,22 +603,22 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <h1>Como receber imagem, áudio e documento pela API oficial do WhatsApp</h1>
-<p><strong>Resposta curta:</strong> quando o cliente manda uma foto, o webhook <strong>não traz o arquivo</strong>. Traz um identificador de mídia e uma URL. E aí vem a parte que consome a primeira tarde de todo mundo: <strong>essa URL não abre.</strong> Ela devolve erro de autenticação no navegador, o que faz parecer que o token está errado.</p>
-<p>Não está. A mídia da Cloud API <strong>vem cifrada</strong>, e o caminho é: pegar o identificador, pedir o endereço real por ele, e baixar <strong>com o cabeçalho de autorização</strong>. E existe um prazo que quase ninguém sabe: <strong>o identificador expira em 7 dias.</strong></p>
+<p><strong>Resposta curta:</strong> quando o cliente manda uma foto, um áudio ou um documento, o webhook não traz o arquivo. Traz um <strong>identificador da mídia</strong> e uma URL que <strong>não abre</strong>: ela dá erro de autenticação. A mídia da API oficial vem criptografada.</p>
+<p>Pela Datafy API, uma chamada resolve: <code>GET https://cloud.datafyapi.com.br/media/{id}</code>, com o identificador que veio no webhook, devolve uma URL pronta para usar, <strong>válida por 30 dias</strong>. Na fala do Israel Henrique, CTO da Datafy: <em>"ela vem criptografada e você precisa descriptografar. Aqui a gente já fez esse trabalho para você."</em></p>
 <div class="stats">
-  <div class="stat"><b>2 chamadas</b><span>para transformar identificador em arquivo</span></div>
-  <div class="stat"><b>7 dias</b><span>até o identificador do webhook expirar</span></div>
-  <div class="stat"><b>401</b><span>o erro de quem baixa sem o cabeçalho</span></div>
-  <div class="stat"><b>0</b><span>arquivos que vêm dentro do webhook</span></div>
+  <div class="stat"><b>1 chamada</b><span>GET /media/{id}</span></div>
+  <div class="stat"><b>30 dias</b><span>de validade da URL da Datafy</span></div>
+  <div class="stat"><b>7 dias</b><span>até o identificador da Meta expirar</span></div>
+  <div class="stat"><b>5 min</b><span>de validade da URL de download da Meta</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li>O webhook traz <strong>identificador</strong>, não arquivo. Nenhum tipo de mídia chega embutido no payload.</li>
-<li><strong>A URL que vem no webhook não é pública.</strong> Abrir no navegador dá erro, e isso não indica problema no seu token.</li>
-<li>São duas chamadas: uma para obter o endereço, outra para baixar. <strong>As duas exigem o cabeçalho de autorização</strong>, e esquecer na segunda é o erro mais repetido do assunto.</li>
-<li><strong>O identificador expira em 7 dias.</strong> Quem processa em lote no fim do mês não encontra mais nada.</li>
-<li>Áudio do cliente chega em <strong>OGG com codec Opus</strong>, que é aceito direto por quase todo serviço de transcrição.</li>
+<li><strong>O webhook traz o identificador</strong>, o tipo e o hash, e não o arquivo.</li>
+<li><strong>A URL que aparece no payload não abre no navegador.</strong> Dá erro de autenticação.</li>
+<li><strong><code>GET /media/{id}</code></strong> devolve uma URL da Datafy, válida por 30 dias.</li>
+<li><strong>Para guardar por mais tempo</strong>, baixe o arquivo por essa URL e salve no seu armazenamento.</li>
+<li><strong>O identificador que chega no webhook expira em 7 dias</strong>, segundo a documentação da Meta. Peça a URL quando a mensagem chegar.</li>
 </ul>
 <figure>
 <div class="diagram">
@@ -648,67 +639,34 @@ footer p{margin:0 0 .5rem}
   </style>
   <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
     <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Como o webhook entrega a mensagem</text>
+<text class="t" x="360" y="26" text-anchor="middle">Como o webhook chega no seu servidor</text>
 <rect class="box" x="30" y="52" width="170" height="70" rx="8"/>
 <text class="h" x="115" y="80" text-anchor="middle">Cliente</text>
 <text class="s" x="115" y="100" text-anchor="middle">escreve no WhatsApp</text>
-<rect class="box" x="275" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="360" y="80" text-anchor="middle">Meta</text>
-<text class="s" x="360" y="100" text-anchor="middle">faz POST no seu endpoint</text>
+<rect class="boxok" x="275" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="360" y="80" text-anchor="middle">Datafy API</text>
+<text class="s" x="360" y="100" text-anchor="middle">POST com o payload da Meta</text>
 <rect class="box" x="520" y="52" width="170" height="70" rx="8"/>
 <text class="h" x="605" y="80" text-anchor="middle">Seu servidor</text>
-<text class="s" x="605" y="100" text-anchor="middle">responde 200 na hora</text>
+<text class="s" x="605" y="100" text-anchor="middle">responde 200 em até 20 s</text>
 <path class="ar" d="M205,87 L268,87"/>
 <path class="ar" d="M450,87 L513,87"/>
 <rect class="box" x="30" y="146" width="330" height="76" rx="8"/>
-<text class="h" x="46" y="170">Se você falhar</text>
-<text class="p" x="46" y="192">A Meta reentrega com frequência</text>
-<text class="p" x="46" y="210">decrescente por até 7 dias.</text>
+<text class="h" x="46" y="170">Idempotência</text>
+<text class="p" x="46" y="192">Guarde o x-datafy-delivery-id</text>
+<text class="p" x="46" y="210">e ignore a entrega que já viu.</text>
 <rect class="box" x="380" y="146" width="310" height="76" rx="8"/>
 <text class="h" x="396" y="170">Como validar</text>
-<text class="p" x="396" y="192">HMAC SHA-256 no header</text>
-<text class="p" x="396" y="210">X-Hub-Signature-256.</text>
+<text class="p" x="396" y="192">x-datafy-signature-256, HMAC</text>
+<text class="p" x="396" y="210">de {timestamp}.{corpo cru}</text>
 </svg>
 </div>
 <figcaption></figcaption>
 </figure>
 
 <h2 id="o-que-chega-no-webhook">O que chega no webhook</h2>
-<p>Independente do tipo, a estrutura é a mesma: um objeto com o tipo da mensagem e, dentro dele, os dados da mídia.</p>
-<p><code>json
-"messages": [{
-  "from": "5511999999999",
-  "id": "wamid...",
-  "type": "image",
-  "image": {
-    "mime_type": "image/jpeg",
-    "sha256": "...",
-    "id": "1234567890"
-  }
-}]</code></p>
-<p>O campo que importa é o <strong><code>id</code></strong>. É com ele que você busca o arquivo. O <code>sha256</code> serve para verificar integridade depois de baixar, e o <code>mime_type</code> diz o que esperar.</p>
-<p>Em áudio, aparece um campo a mais que vale reconhecer: uma marcação indicando se aquilo foi <strong>gravado como mensagem de voz</strong> ou anexado como arquivo de som. São experiências diferentes no aplicativo, e <a href="/audio-chega-mudo-no-celular-do-cliente">essa mesma distinção é o que causa o áudio que chega mudo</a> quando você envia.</p>
-<p>Em documento vem também o nome do arquivo, e em imagem e vídeo pode vir legenda, num campo separado do objeto de mídia. Legenda perdida é reclamação comum de quem lê só o objeto da mídia e ignora o resto da mensagem.</p>
-<h2 id="as-duas-chamadas">As duas chamadas</h2>
-<p><strong>Pelo caminho simplificado, é uma chamada só:</strong></p>
-<p><code>GET https://cloud.datafyapi.com.br/media/{id}
-Authorization: Bearer sk_live_xxx</code></p>
-<p><code>json
-{
-  "url": "https://files.datafyapi.com.br/uuid-cliente/2026/06/1749500000000-a1b2c3d4.jpg",
-  "mime_type": "image/jpeg",
-  "size": 86620
-}</code></p>
-<p>Essa URL é <strong>hospedada pela Datafy e vale 30 dias</strong>, e é aqui que a diferença aparece de verdade, como você vai ver na comparação de prazos mais abaixo.</p>
-<p><strong>Pelo espelho da Cloud API, são duas chamadas.</strong> Primeiro, trocar o identificador pelo endereço:</p>
-<p><code>GET https://cloud.datafyapi.com.br/v1/{media_id}
-Authorization: Bearer sk_live_xxx</code></p>
-<p>A resposta traz a URL da Meta, o tipo, o tamanho e o hash. Depois, baixar o binário:</p>
-<p><code>GET {url_devolvida}
-Authorization: Bearer sk_live_xxx</code></p>
-<p>Dois detalhes que consomem tarde de gente experiente:</p>
-<p><strong>A URL devolvida também exige o cabeçalho.</strong> Ela parece um endereço comum e não é. Sem o cabeçalho, vem vazio ou erro, e a causa não é óbvia porque o passo anterior funcionou. É o problema mais repetido da comunidade nesse tema, aparecendo em cerca de oito discussões independentes.</p>
-<p><strong>Essa URL da Meta vale 5 minutos.</strong> Não é figura de linguagem: cinco minutos. Se você guardar para baixar depois, ela já morreu. Recebendo <code>404</code>, chame o endpoint de novo para obter outra e baixe na sequência.</p>
+<p>No vídeo, o Israel tira uma foto pelo celular e manda para o número. No payload aparece o tipo <code>image</code> e um objeto <code>image</code> com o tipo do arquivo, um código de verificação e um identificador. E uma URL: <em>"só que essa URL aqui não abre. Você for tentar abrir aqui, ela não vai abrir, dá erro de autenticação."</em></p>
+<p>Com áudio é igual, com tipo <code>audio</code>. Se foi gravado como mensagem de voz, o objeto indica isso.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=ZHYNjpu5ReE" rel="noopener">
   <span class="thumb">
@@ -717,88 +675,107 @@ Authorization: Bearer sk_live_xxx</code></p>
   </span>
   <span class="meta"><b>Como receber mídias na API oficial do WhatsApp</b><span>Canal DATA7 · 4 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Quatro minutos com o problema inteiro na tela. Em 01:23 ele tenta abrir a URL do webhook e ela falha, em 02:34 faz a chamada com o identificador e abre a imagem, e em 03:53 repete o processo com um áudio recebido.</figcaption>
+<figcaption>Em 01:23 ele abre o payload da foto e mostra que a URL não abre, em 01:55 copia o identificador e faz a chamada, em 02:34 a imagem abre, e em 03:14 repete com um áudio.</figcaption>
 </figure>
 
-<h2 id="os-quatro-prazos-e-por-que-eles-decidem">Os quatro prazos, e por que eles decidem o seu desenho</h2>
-<p>Este é o ponto que mais gera perda silenciosa de dado, e a confusão existe porque <strong>são quatro prazos diferentes</strong>, não um:</p>
+<h2 id="pela-datafy-uma-chamada">Pela Datafy: uma chamada</h2>
+<p><code>GET https://cloud.datafyapi.com.br/media/{id}
+Authorization: Bearer sk_live_xxx</code></p>
+<p>O <code>{id}</code> é o identificador que veio no payload: <code>image.id</code>, <code>audio.id</code>, <code>video.id</code> ou <code>document.id</code>.</p>
+<p><code>json
+{
+  "url": "https://files.datafyapi.com.br/uuid-cliente/2026/06/1749500000000-a1b2c3d4.jpg",
+  "mime_type": "image/jpeg",
+  "size": 86620
+}</code></p>
+<p>A URL devolvida vale <strong>30 dias</strong>. Na fala do vídeo: <em>"ele fica salvo durante 30 dias no storage. Se você quiser mais dias, aí você precisa você mesmo baixar esse áudio e salvar no teu próprio storage."</em></p>
+<p>Se a resposta for <code>404</code>, o identificador é inválido ou a mídia expirou.</p>
+<h2 id="pelo-espelho-duas-chamadas-e-o-bin-rio">Pelo espelho: duas chamadas e o binário</h2>
+<p>Se você quer baixar o arquivo direto da Meta, a documentação da Datafy indica o caminho espelhado.</p>
+<p><strong>1. Pedir a URL de download:</strong></p>
+<p><code>GET https://cloud.datafyapi.com.br/v1/{media_id}
+Authorization: Bearer sk_live_xxx</code></p>
+<p><code>json
+{
+  "url": "https://lookaside.fbsbx.com/whatsapp_business/attachments/?mid=1037543291543636",
+  "mime_type": "image/jpeg",
+  "sha256": "f20c6c7c34d56b...",
+  "file_size": 23418,
+  "id": "1037543291543636",
+  "messaging_product": "whatsapp"
+}</code></p>
+<p><strong>2. Baixar o arquivo</strong>, com o token no cabeçalho:</p>
+<p><code>GET {url retornada}
+Authorization: Bearer sk_live_xxx</code></p>
+<p>Dois cuidados que a documentação da Datafy destaca:</p>
+<p><strong>A URL da Meta vale apenas 5 minutos.</strong> Baixe imediatamente depois de consultar. Recebendo <code>404</code>, peça uma nova URL e tente de novo.</p>
+<p><strong>O token é obrigatório no download.</strong> Clicar na URL no navegador retorna erro.</p>
+<p>Opcionalmente, <code>?phone_number_id=</code> na primeira chamada confere que a mídia pertence àquele número antes de devolver a URL.</p>
+<h2 id="os-prazos">Os prazos</h2>
 <div class="tablewrap"><table>
 <thead>
 <tr>
 <th>O que</th>
 <th>Prazo</th>
+<th>Fonte</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Identificador recebido no webhook, <strong>na Meta</strong></td>
-<td><strong>7 dias</strong></td>
+<td>URL devolvida por <code>GET /media/{id}</code></td>
+<td>30 dias</td>
+<td>Documentação da Datafy</td>
 </tr>
 <tr>
-<td>URL de download da Meta, pelo espelho</td>
-<td><strong>5 minutos</strong></td>
+<td>URL de download da Meta, por <code>GET /v1/{media_id}</code></td>
+<td>5 minutos</td>
+<td>Documentação da Datafy</td>
 </tr>
 <tr>
-<td>Arquivo que <strong>você subiu</strong> para enviar</td>
-<td><strong>30 dias</strong></td>
-</tr>
-<tr>
-<td>URL da Datafy, por <code>GET /media/{id}</code></td>
-<td><strong>30 dias</strong></td>
+<td>Identificador de mídia que chega no webhook</td>
+<td>7 dias</td>
+<td>Documentação da Meta</td>
 </tr>
 </tbody>
 </table></div>
-<p>Repare no contraste entre a segunda e a última linha, porque é o ponto desta página.</p>
-<p><strong>Pela Meta, você corre contra dois relógios.</strong> O identificador morre em 7 dias e a URL que ele devolve morre em 5 minutos. Isso obriga o seu código a pedir e baixar na mesma execução, e a tratar <code>404</code> pedindo outra URL. Não dá para guardar a URL e resolver depois.</p>
-<p><strong>Pela Datafy, você tem 30 dias.</strong> O arquivo é guardado em <code>files.datafyapi.com.br</code> e a URL continua respondendo. Isso muda o desenho de verdade: dá para gravar a URL no seu banco, processar em lote, reprocessar o que falhou, e mostrar a mídia na sua interface sem baixar nada.</p>
-<p>A recomendação de <strong>guardar o arquivo no seu armazenamento</strong> continua valendo para o que precisa durar mais que isso. A diferença é que, com 30 dias, isso vira decisão de produto, e não corrida contra o relógio.</p>
-<p>E isso tem um efeito de conformidade que vale antecipar: se o seu produto promete histórico de atendimento com anexos, ou se você precisa atender um pedido de acesso aos próprios dados, <a href="/o-cliente-pediu-para-apagar-os-dados-dele">o que existe é o que você guardou</a>. A retenção da plataforma é curta e rotativa de propósito.</p>
-<h2 id="o-que-muda-com-a-datafy">O que muda com a Datafy</h2>
-<p>Vale separar o que é regra da Meta do que é trabalho que dá para não fazer.</p>
-<p><strong>Não muda:</strong> a mídia continua sendo entregue por identificador, o prazo continua sendo o da Meta, e os limites de tamanho e formato são dela.</p>
-<p><strong>Muda a etapa de decodificação.</strong> A descriptografia já está resolvida: você manda o identificador que veio no webhook e recebe de volta uma URL pronta para uso, sem montar essa camada. Na explicação do Israel Henrique, CTO da Datafy: <em>"quando a API do WhatsApp, a oficial, envia para você uma mídia, ela vem criptografada e você precisa descriptografar. Aqui a gente já fez esse trabalho para você."</em></p>
-<p><strong>Muda a depuração.</strong> Quando a mídia não chega como você esperava, dá para ver o <strong>payload cru</strong> da mensagem no painel, sem depender do log do seu servidor. Vale saber o limite disso: esse log guarda 7 dias e no máximo 100 mensagens por conversa, e mídia não aparece nele, só o aviso de que chegou. Ele serve para depurar, não como arquivo.</p>
+<p>Por causa do último prazo, o caminho seguro é pedir a URL quando a mensagem chega, e não dias depois.</p>
+<h2 id="no-projeto-de-atendimento-do-canal">No projeto de atendimento do canal</h2>
+<p>No tutorial de WhatsApp Web do zero, a mídia aparece na tela pelo mesmo caminho: quando chega uma imagem, o servidor chama a Datafy com o identificador e o token, recebe a URL e guarda. Na fala do Israel ao passar a instrução para a IA: <em>"essa URL já é pública, só armazenar o link."</em></p>
 <figure>
-<a class="video" href="https://www.youtube.com/watch?v=LIT4FxgqHhE" rel="noopener">
+<a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
   <span class="thumb">
-    <img src="https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg" alt="Miniatura do vídeo: Logs de mensagens em tempo real na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <img src="https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg" alt="Miniatura do vídeo: Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)" loading="lazy" width="1280" height="720">
     <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
   </span>
-  <span class="meta"><b>Logs de mensagens em tempo real na API oficial do WhatsApp</b><span>Canal DATA7 · 3 min · assistir no YouTube</span></span>
+  <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Três minutos mostrando o log ao vivo e o payload de cada mensagem que entra. Em 00:00 ele explica por que mídia não aparece ali, e em 02:57 diz os prazos de retenção.</figcaption>
+<figcaption>Em 1:45:21 ele mostra o identificador no payload e a chamada que devolve a URL, e em 1:52:03 a função do projeto que resolve a mídia com a URL base e o token da Datafy.</figcaption>
 </figure>
 
-<h2 id="erros-que-aparecem-nesta-etapa">Erros que aparecem nesta etapa</h2>
-<p><strong>A URL não abre no navegador.</strong> Comportamento esperado. Ela exige cabeçalho de autorização, e navegador não manda.</p>
-<p><strong>Baixou e o arquivo está corrompido.</strong> Confira se você não está salvando a resposta como texto. Conteúdo binário precisa ser gravado como binário, e esse erro é comum em linguagem que trata resposta como string por padrão.</p>
-<p><strong>O hash não bate.</strong> O campo de verificação existe para isso. Se não bate, o download foi truncado, e vale repetir.</p>
-<p><strong>Funcionou ontem e hoje não.</strong> Se passaram mais de 7 dias desde a mensagem, o identificador expirou. Não é intermitência.</p>
-<p><strong>O arquivo é grande demais para o seu fluxo.</strong> Vídeo e documento chegam a tamanhos que travam ferramenta de automação visual. Nesses casos, baixe pelo servidor e passe adiante só a referência.</p>
+<p><a href="/criar-atendimento-whatsapp-do-zero">O projeto completo está aqui</a>.</p>
+<h2 id="o-log-n-o-mostra-a-m-dia">O log não mostra a mídia</h2>
+<p>O bate-papo do painel da Datafy mostra as mensagens ao vivo, mas não exibe imagem ou vídeo: <em>"ele apenas diz que você recebeu uma imagem ou que você recebeu um vídeo."</em> Para o arquivo, use <code>GET /media/{id}</code>. <a href="/ver-payload-das-mensagens-em-tempo-real">Como usar o log está aqui</a>.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Por que a Meta não manda o arquivo direto no webhook?</h3>
-<p>Porque o payload ficaria enorme e o webhook precisa ser rápido. O desenho por identificador mantém a entrega leve e deixa o download sob seu controle.</p>
-<h3>Preciso baixar toda mídia que chega?</h3>
-<p>Só a que você vai usar depois. Mas decida no momento em que ela chega, porque o identificador vale 7 dias. A regra segura, para quem tem produto, é baixar sempre e limpar depois pela sua política de retenção.</p>
-<h3>Qual o formato do áudio que o cliente manda?</h3>
-<p>OGG com codec Opus, que é o formato nativo do WhatsApp. Quase todo serviço de transcrição aceita direto, sem conversão.</p>
-<h3>A legenda da imagem vem junto?</h3>
-<p>Vem, num campo separado do objeto de mídia. Quem lê só o objeto da mídia perde a legenda.</p>
-<h3>Dá para saber o tamanho antes de baixar?</h3>
-<p>Dá. A primeira chamada devolve o tamanho junto com o endereço, e isso permite recusar arquivo acima do que o seu fluxo aguenta.</p>
-<h3>E se eu usar automação visual?</h3>
-<p>O mesmo caminho vale, com um cuidado: configure o nó de download para tratar a resposta como binário e lembre do cabeçalho de autorização na segunda chamada. É o passo que mais falha em ferramenta de fluxo.</p>
+<h3>Por que a URL do webhook dá erro de autenticação?</h3>
+<p>Porque a mídia vem criptografada e o acesso exige autenticação. Use o identificador para pedir a URL.</p>
+<h3>Quanto tempo vale a URL da Datafy?</h3>
+<p>30 dias.</p>
+<h3>E se eu precisar do arquivo por mais tempo?</h3>
+<p>Baixe pela URL e salve no seu armazenamento.</p>
+<h3>Quanto tempo vale a URL de download da Meta?</h3>
+<p>5 minutos. Baixe logo depois de consultar.</p>
+<h3>O identificador da mídia expira?</h3>
+<p>Segundo a documentação da Meta, o identificador que chega no webhook expira em 7 dias.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Se você recebe mídia esporádica e só quer ver a imagem, as duas chamadas resolvem e você não precisa de mais nada.</p>
-<p>Se mídia faz parte do produto, comprovante, foto de defeito, áudio de atendimento, então trate como pipeline: baixe no recebimento, grave no seu armazenamento com o identificador da mensagem, verifique o hash, e defina há quanto tempo você guarda. O prazo de 7 dias não perdoa quem deixa para depois.</p>
-<div class="cta"><h3>Descubra hoje se o seu fluxo está perdendo mídia</h3><p>Pegue uma mensagem com anexo de mais de uma semana atrás e tente baixar pelo identificador. Se falhar, o seu processamento está fora do prazo de 7 dias, e o conserto é baixar no recebimento.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Para exibir a mídia no seu sistema, use <code>GET /media/{id}</code> assim que a mensagem chegar e guarde a URL, que vale 30 dias. Se você precisa manter o arquivo além disso, baixe por ela e salve no seu armazenamento.</p>
+<div class="cta"><h3>Mande uma foto para o número e peça a URL</h3><p>Envie uma imagem do seu celular, copie o image.id do webhook e chame GET /media/{id} com o seu token. Abra a URL que voltar.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/como-enviar-midia-api-oficial-whatsapp">Como enviar imagem, documento e áudio pela API</a></li>
-<li><a href="/audio-chega-mudo-no-celular-do-cliente">O áudio que eu mando chega mudo no celular do cliente</a></li>
-<li><a href="/erro-131053-ao-enviar-midia">Erro 131053 ao enviar mídia</a></li>
-<li><a href="/quanto-tempo-o-whatsapp-guarda-minhas-mensagens">Quanto tempo o WhatsApp guarda minhas mensagens</a></li>
+<li><a href="/como-enviar-midia-api-oficial-whatsapp">Como enviar imagem, documento e áudio</a></li>
+<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens no seu servidor</a></li>
+<li><a href="/criar-atendimento-whatsapp-do-zero">Como criar um WhatsApp Web do zero</a></li>
+<li><a href="/ver-payload-das-mensagens-em-tempo-real">Ver o payload das mensagens em tempo real</a></li>
 </ul>
 </article>
 
@@ -815,10 +792,11 @@ Authorization: Bearer sk_live_xxx</code></p>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
         <li><a href="#o-que-chega-no-webhook">O que chega no webhook</a></li>
-        <li><a href="#as-duas-chamadas">As duas chamadas</a></li>
-        <li><a href="#os-quatro-prazos-e-por-que-eles-decidem">Os quatro prazos, e por que eles...</a></li>
-        <li><a href="#o-que-muda-com-a-datafy">O que muda com a Datafy</a></li>
-        <li><a href="#erros-que-aparecem-nesta-etapa">Erros que aparecem nesta etapa</a></li>
+        <li><a href="#pela-datafy-uma-chamada">Pela Datafy: uma chamada</a></li>
+        <li><a href="#pelo-espelho-duas-chamadas-e-o-bin-rio">Pelo espelho: duas chamadas e o...</a></li>
+        <li><a href="#os-prazos">Os prazos</a></li>
+        <li><a href="#no-projeto-de-atendimento-do-canal">No projeto de atendimento do canal</a></li>
+        <li><a href="#o-log-n-o-mostra-a-m-dia">O log não mostra a mídia</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

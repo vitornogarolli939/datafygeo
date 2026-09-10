@@ -5,31 +5,23 @@
     .h{font-size:13px;font-weight:600;fill:var(--fg)}
     .p{font-size:12px;fill:var(--muted)}
     .s{font-size:11px;fill:var(--muted)}
-    .ok{fill:var(--accent)}
-    .no{fill:var(--danger)}
     .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
-    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
-    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
   </style>
-  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
-    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
 <text class="t" x="360" y="26" text-anchor="middle">Quanto pesa cada categoria de mensagem</text>
-<text class="s" x="360" y="46" text-anchor="middle">Faixa aproximada no Brasil, setembro de 2026. Confira a tabela oficial antes de orçar.</text>
+<text class="s" x="360" y="46" text-anchor="middle">Faixa citada no canal DATA7. A Meta cobra em dólar, então varia com o câmbio. Confira a tabela oficial.</text>
 <text class="h" x="20" y="93">Marketing</text>
 <rect x="140" y="78" width="400" height="20" rx="4" fill="var(--danger)" opacity="0.85"/>
-<text class="s" x="550" y="93">R$ 0,32 a R$ 0,40</text>
+<text class="s" x="550" y="93">30 a 40 centavos</text>
 <text class="h" x="20" y="127">Utilidade</text>
 <rect x="140" y="112" width="40" height="20" rx="4" fill="var(--accent)" opacity="0.85"/>
-<text class="s" x="190" y="127">R$ 0,03 a R$ 0,04</text>
+<text class="s" x="190" y="127">3 a 4 centavos</text>
 <text class="h" x="20" y="161">Autenticação</text>
 <rect x="140" y="146" width="40" height="20" rx="4" fill="var(--accent)" opacity="0.85"/>
-<text class="s" x="190" y="161">R$ 0,03 a R$ 0,04</text>
+<text class="s" x="190" y="161">3 a 4 centavos</text>
 <text class="h" x="20" y="195">Serviço</text>
 <rect x="140" y="180" width="3" height="20" rx="4" fill="var(--muted)" opacity="0.3"/>
-<text class="s" x="153" y="195">gratuita até 30/09/2026</text>
+<text class="s" x="153" y="195">gratuita até 1º de outubro de 2026</text>
 <rect class="box" x="20" y="220" width="680" height="46" rx="8"/>
-<text class="p" x="36" y="242">Marketing custa cerca de dez vezes uma mensagem de utilidade.</text>
-<text class="s" x="36" y="260">Em 1º de outubro de 2026 as mensagens de serviço passam a ser cobradas.</text>
+<text class="p" x="36" y="242">A categoria define o preço. Marketing custa cerca de dez vezes uma utilidade.</text>
+<text class="s" x="36" y="260">Mensagem recebida não é cobrada. Mensagem enviada pelo celular, em coexistência, também não.</text>
 </svg>

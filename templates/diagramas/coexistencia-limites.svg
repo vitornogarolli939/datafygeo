@@ -18,21 +18,21 @@
 <text class="t" x="360" y="26" text-anchor="middle">Coexistência: o mesmo número nos dois lugares</text>
 <rect class="box" x="60" y="52" width="200" height="72" rx="8"/>
 <text class="h" x="160" y="80" text-anchor="middle">Aplicativo no celular</text>
-<text class="s" x="160" y="100" text-anchor="middle">atendimento humano</text>
+<text class="s" x="160" y="100" text-anchor="middle">mensagem enviada aqui não é cobrada</text>
 <rect class="box" x="460" y="52" width="200" height="72" rx="8"/>
-<text class="h" x="560" y="80" text-anchor="middle">Cloud API</text>
-<text class="s" x="560" y="100" text-anchor="middle">automacao e disparo</text>
+<text class="h" x="560" y="80" text-anchor="middle">API oficial</text>
+<text class="s" x="560" y="100" text-anchor="middle">mensagem enviada aqui é cobrada</text>
 <rect class="boxok" x="290" y="60" width="140" height="56" rx="8"/>
 <text class="h ok" x="360" y="84" text-anchor="middle">1 número</text>
-<text class="s" x="360" y="102" text-anchor="middle">mesmo histórico</text>
+<text class="s" x="360" y="102" text-anchor="middle">mesma conversa</text>
 <path class="ar" d="M265,88 L283,88"/>
 <path class="ar" d="M437,88 L455,88"/>
 <rect class="box" x="30" y="146" width="660" height="100" rx="8"/>
-<text class="h" x="46" y="170">Limites reais da sincronização de histórico</text>
-<text class="p" x="46" y="196">• 180 dias de conversa</text>
-<text class="p" x="266" y="196">• grupos não sincronizam</text>
-<text class="p" x="486" y="196">• mídia só dos últimos 14 dias</text>
-<text class="p" x="46" y="218">• 24 h para disparar a sync</text>
-<text class="p" x="266" y="218">• 20 msg/s de throughput</text>
-<text class="p" x="486" y="218">• uma vez só, no onboarding</text>
+<text class="h" x="46" y="170">O que a documentação da Meta diz sobre esse modo</text>
+<text class="p" x="46" y="196">• 20 msg/s, fixo</text>
+<text class="p" x="266" y="196">• histórico de até 180 dias</text>
+<text class="p" x="486" y="196">• mídia do histórico: 14 dias</text>
+<text class="p" x="46" y="218">• 24 h para sincronizar</text>
+<text class="p" x="266" y="218">• desconecta só pelo celular</text>
+<text class="p" x="486" y="218">• cada sync: uma vez só</text>
 </svg>

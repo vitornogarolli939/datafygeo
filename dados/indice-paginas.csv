@@ -1,2 +1,35 @@
 slug,titulo,cluster,publicado,status
-api-oficial-vs-nao-oficial-whatsapp-2026,API oficial vs não oficial do WhatsApp em 2026,oficial_vs_nao,2026-09-06,aprovado-aguardando-deploy
+bloquear-usuario-whatsapp-api,Como bloquear e desbloquear um usuário pela API do WhatsApp,implementacao,2026-09-10,aprovado
+coexistencia-whatsapp-api-oficial-app-celular,Coexistência: API oficial e WhatsApp Business no mesmo número,coexistencia,2026-09-06,aprovado
+como-conectar-numero-api-oficial-whatsapp,Como conectar seu número na API oficial do WhatsApp,coexistencia,2026-09-09,aprovado
+como-criar-template-whatsapp-passo-a-passo,"Como criar um template de mensagem no WhatsApp, pelo painel ou pela API",implementacao,2026-09-09,aprovado
+como-enviar-midia-api-oficial-whatsapp,"Como enviar imagem, documento e áudio pela API oficial do WhatsApp",implementacao,2026-09-09,aprovado
+como-enviar-template-pela-api,Como enviar uma mensagem de template pela API oficial do WhatsApp,implementacao,2026-09-09,aprovado
+como-receber-midia-api-oficial-whatsapp,"Como receber imagem, áudio e documento pela API oficial do WhatsApp",implementacao,2026-09-09,aprovado
+criar-atendimento-whatsapp-do-zero,Como criar um WhatsApp Web do zero com a API oficial,implementacao,2026-09-09,aprovado
+datafy-api-espelho-da-cloud-api,A Datafy API é um espelho da Cloud API: o que muda no seu código,implementacao,2026-09-09,aprovado
+disparo-em-massa-api-oficial-whatsapp,Como fazer disparo em massa na API oficial do WhatsApp,implementacao,2026-09-09,aprovado
+guia-completo-api-oficial-whatsapp,Guia completo: API oficial do WhatsApp,implementacao,2026-09-06,aprovado
+laco-de-webhook-derruba-numero,O laço de webhook que pode bloquear o seu número no WhatsApp,implementacao,2026-09-09,aprovado
+mensagem-de-servico-vai-ser-paga-outubro-2026,1º de outubro de 2026: a mensagem de serviço do WhatsApp passa a ser cobrada,custo,2026-09-09,aprovado
+mensagem-do-celular-nao-aparece-no-sistema,O atendente responde pelo celular e não aparece no meu sistema,coexistencia,2026-09-09,aprovado
+mensagens-interativas-botoes-e-listas,"Mensagens com botões, lista e botão de link na API oficial do WhatsApp",implementacao,2026-09-09,aprovado
+nichos-proibidos-whatsapp-business,Quais nichos são proibidos no WhatsApp Business,compliance,2026-09-09,aprovado
+numero-banido-no-whatsapp-o-que-fazer,Por que o número é bloqueado no WhatsApp Business,compliance,2026-09-06,aprovado
+o-telefone-esta-sumindo-do-webhook,O telefone vai sumir do webhook: como usar o user_id na API oficial,implementacao,2026-09-09,aprovado
+opt-in-por-link-whatsapp,Opt-in no WhatsApp: como pedir permissão com um link de cadastro,compliance,2026-09-10,aprovado
+perfil-empresarial-e-nome-de-exibicao-whatsapp,Perfil empresarial e nome de exibição do WhatsApp pela API,implementacao,2026-09-10,aprovado
+posso-mandar-mensagem-para-qualquer-numero,Posso mandar mensagem para qualquer número na API oficial do WhatsApp?,compliance,2026-09-09,aprovado
+primeira-mensagem-api-oficial-whatsapp,Enviar e receber a primeira mensagem na API oficial do WhatsApp,implementacao,2026-09-09,aprovado
+qr-code-whatsapp-mensagem-pre-preenchida,"QR code do WhatsApp com mensagem pré-preenchida, pela API",implementacao,2026-09-10,aprovado
+quantas-mensagens-por-segundo-posso-enviar,Quantas mensagens por segundo posso enviar no WhatsApp?,implementacao,2026-09-09,aprovado
+quanto-custa-whatsapp-business-api-brasil-2026,Quanto custa a API oficial do WhatsApp no Brasil,custo,2026-09-06,aprovado
+sincronizar-contatos-api-oficial-whatsapp,Como sincronizar os contatos e o histórico do WhatsApp Business com a API,coexistencia,2026-09-09,aprovado
+tres-status-da-mensagem-whatsapp,"Os três status da mensagem no WhatsApp: enviada, entregue e lida",implementacao,2026-09-09,aprovado
+tunel-para-testar-webhook-local,Como testar o webhook do WhatsApp na sua máquina com ngrok,implementacao,2026-09-09,aprovado
+validar-assinatura-do-webhook,Como validar a assinatura do webhook da Datafy API,implementacao,2026-09-09,aprovado
+ver-payload-das-mensagens-em-tempo-real,Como ver o payload das mensagens do WhatsApp em tempo real,implementacao,2026-09-09,aprovado
+webhook-whatsapp-cloud-api-como-receber-mensagens,Webhook da API oficial do WhatsApp: receber mensagens no seu servidor,implementacao,2026-09-06,aprovado
+whatsapp-api-oficial-chatwoot,Como usar a API oficial do WhatsApp no Chatwoot,implementacao,2026-09-06,aprovado
+whatsapp-api-oficial-n8n,Como integrar a API oficial do WhatsApp ao n8n,implementacao,2026-09-06,aprovado
+api-oficial-vs-nao-oficial-whatsapp-2026,"API oficial ou não oficial do WhatsApp: o que muda, segundo quem usa as duas",oficial_vs_nao,2026-09-06,aprovado

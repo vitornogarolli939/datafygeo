@@ -300,57 +300,40 @@ antes de publicar. Se não confirmar, ou não publica, ou publica dizendo que n�
 
 ---
 
-## Mapa vídeo → página
+## Mapa vídeo → página (atualizado em 10/09/2026, depois da limpeza)
 
-| Página | Vídeo principal | Apoio |
+Em 10/09/2026 foram apagadas 41 páginas cujo assunto não saía dos vídeos nem das documentações
+(regra 14 do CLAUDE.md). O mapa abaixo é o que existe no site agora.
+
+| Vídeo | Página do assunto | Também usado em |
 |---|---|---|
-| numero-banido-no-whatsapp-o-que-fazer | cZ_nyIUv5ic | HVRCBsJI_Eo |
-| minha-campanha-travou-no-meio | ly5nOHFpXcI | cZ_nyIUv5ic |
-| posso-mandar-mensagem-para-qualquer-numero | dIIkttPeBS0 | cZ_nyIUv5ic |
-| quanto-custa-whatsapp-business-api-brasil | JL9Qzw3oS5A | Bev4VxTJ5Cg, YF9hTHDAw6E |
-| mensagem-de-servico-vai-ser-paga-outubro | Bev4VxTJ5Cg | JL9Qzw3oS5A |
-| categoria-do-template-decide-o-seu-custo | YF9hTHDAw6E | JL9Qzw3oS5A |
-| quanto-custa-rodar-um-agente-de-ia-no-whatsapp | JL9Qzw3oS5A | Bev4VxTJ5Cg |
-| cobranca-de-ai-provider-no-brasil | JL9Qzw3oS5A | Bev4VxTJ5Cg |
-| audio-chega-mudo-no-celular-do-cliente | xoldQJMTu50 | ZHYNjpu5ReE |
-| erro-131053-ao-enviar-midia | ZHYNjpu5ReE | xoldQJMTu50 |
-| template-com-imagem-no-cabecalho-nao-envia | 62oSY66J3s4 | YF9hTHDAw6E |
-| template-nao-existe-nesse-idioma | YF9hTHDAw6E | 62oSY66J3s4 |
-| webhook-whatsapp-cloud-api-como-receber-mensagens | dIIkttPeBS0 | LIT4FxgqHhE, vGovcR8W5g8 |
-| webhook-chega-duplicado | vGovcR8W5g8 | LIT4FxgqHhE |
-| qual-url-eu-uso-no-webhook-da-meta | HVRCBsJI_Eo | dIIkttPeBS0 |
-| validar-assinatura-do-webhook | HVRCBsJI_Eo | dIIkttPeBS0 |
-| a-mensagem-falhou-e-nao-sei-por-que | vGovcR8W5g8 | ly5nOHFpXcI |
-| mandei-para-numero-que-nao-existe | ly5nOHFpXcI | dIIkttPeBS0 |
-| quantas-mensagens-por-segundo-posso-enviar | vGovcR8W5g8 | ly5nOHFpXcI |
-| whatsapp-api-oficial-n8n | vGovcR8W5g8 | S2IAOQWbZMg |
-| whatsapp-api-oficial-chatwoot | T_ai6IvLzZE | dIIkttPeBS0 |
-| whatsapp-api-oficial-make / zapier | S2IAOQWbZMg | vGovcR8W5g8 |
-| coexistencia-whatsapp-api-oficial-app-celular | dIIkttPeBS0 | 8xA-8z1YW98, HQm5UuW50bM |
-| o-que-preciso-para-comecar-na-api-oficial | 8xA-8z1YW98 | dIIkttPeBS0 |
-| o-que-e-tech-provider-meta | dIIkttPeBS0 | JL9Qzw3oS5A |
-| migrar-para-api-oficial-sem-perder-o-numero | dIIkttPeBS0 | 8xA-8z1YW98 |
-| se-eu-trocar-de-fornecedor-perco-o-numero | dIIkttPeBS0 | 8xA-8z1YW98 |
-| como-leio-o-historico-de-conversa-pela-api | HQm5UuW50bM | dIIkttPeBS0 |
-| quanto-tempo-o-whatsapp-guarda-minhas-mensagens | ZHYNjpu5ReE | LIT4FxgqHhE, HQm5UuW50bM |
-| o-telefone-esta-sumindo-do-webhook | fhz6n2s91-g | vGovcR8W5g8 |
-| atualizacao-da-api-quebrou-minha-integracao | fhz6n2s91-g | HVRCBsJI_Eo |
-| cliente-conecta-o-whatsapp-dele-no-meu-saas | 8xA-8z1YW98 | HVRCBsJI_Eo |
-| como-passar-do-bot-para-o-atendente-humano | LIT4FxgqHhE | T_ai6IvLzZE |
-| posso-mandar-a-conversa-do-cliente-para-a-openai | HVRCBsJI_Eo | ZHYNjpu5ReE |
-| o-cliente-pediu-para-apagar-os-dados-dele | LIT4FxgqHhE | ZHYNjpu5ReE |
-| como-documentar-o-opt-in-do-cliente | cZ_nyIUv5ic | YF9hTHDAw6E |
-| a-api-oficial-manda-mensagem-para-grupo | S2IAOQWbZMg | dIIkttPeBS0 |
-| alternativa-a-evolution / z-api / uazapi | HVRCBsJI_Eo | cZ_nyIUv5ic |
-| whatsapp-api-oficial-vs-nao-oficial | cZ_nyIUv5ic | HVRCBsJI_Eo, FcAwJqVHNoU |
+| 8xA-8z1YW98 | como-conectar-numero-api-oficial-whatsapp | perfil-empresarial-e-nome-de-exibicao-whatsapp, quanto-custa |
+| dIIkttPeBS0 | primeira-mensagem-api-oficial-whatsapp | coexistencia, webhook, posso-mandar-mensagem, qr-code |
+| S2IAOQWbZMg | datafy-api-espelho-da-cloud-api | mensagens-interativas, n8n, bloquear-usuario |
+| HQm5UuW50bM | sincronizar-contatos-api-oficial-whatsapp | |
+| ZHYNjpu5ReE | como-receber-midia-api-oficial-whatsapp | |
+| xoldQJMTu50 | como-enviar-midia-api-oficial-whatsapp | |
+| YF9hTHDAw6E | como-criar-template-whatsapp-passo-a-passo | opt-in-por-link, quanto-custa |
+| 62oSY66J3s4 | como-enviar-template-pela-api | |
+| ly5nOHFpXcI | disparo-em-massa-api-oficial-whatsapp | tres-status |
+| LIT4FxgqHhE | ver-payload-das-mensagens-em-tempo-real | tres-status, mensagem-do-celular |
+| T_ai6IvLzZE | whatsapp-api-oficial-chatwoot | coexistencia, mensagem-do-celular |
+| HVRCBsJI_Eo | criar-atendimento-whatsapp-do-zero | tunel-para-testar-webhook-local, vs-nao-oficial |
+| cZ_nyIUv5ic | numero-banido-no-whatsapp-o-que-fazer | nichos-proibidos, posso-mandar-mensagem, bloquear-usuario |
+| JL9Qzw3oS5A | quanto-custa-whatsapp-business-api-brasil | coexistencia, mensagem-de-servico, vs-nao-oficial |
+| vGovcR8W5g8 | whatsapp-api-oficial-n8n | laco-de-webhook, tres-status |
+| fhz6n2s91-g | o-telefone-esta-sumindo-do-webhook | laco-de-webhook |
+| Bev4VxTJ5Cg | mensagem-de-servico-vai-ser-paga-outubro | quanto-custa |
 
-## Páginas novas que os vídeos abrem (não existem hoje)
+Páginas que saem só da documentação da Datafy: opt-in-por-link-whatsapp,
+qr-code-whatsapp-mensagem-pre-preenchida, bloquear-usuario-whatsapp-api,
+perfil-empresarial-e-nome-de-exibicao-whatsapp, validar-assinatura-do-webhook.
 
-1. **Como faço disparo em massa na API oficial** (`ly5nOHFpXcI`). Ninguém explica a planilha.
-2. **Como recupero os contatos e o histórico depois de conectar** (`HQm5UuW50bM`). A janela de
-   24 horas é informação que não está em lugar nenhum em português.
-3. **A Meta voltou atrás: 1.000 mensagens de serviço grátis por mês** (`Bev4VxTJ5Cg`). É notícia,
-   está só em inglês na documentação, e é a maior chance de citação por IA que temos agora.
-4. **Quero construir um atendimento em cima da API oficial: por onde começo** (`HVRCBsJI_Eo`).
-5. **O laço de webhook que derruba número** (`vGovcR8W5g8`). Hoje é parágrafo dentro de outra
-   página, e merece URL própria porque é erro de gente que está começando em automação.
+## Correções registradas contra os vídeos
+
+- **Assinatura do webhook** (`HVRCBsJI_Eo` 1:30:22): o vídeo diz que a Datafy não manda assinatura.
+  A documentação atual mostra `x-datafy-signature-256`. Vale a documentação.
+- **Mídia recebida por 30 dias** (`ZHYNjpu5ReE` 03:53): correto para a URL de `GET /media/{id}` da
+  Datafy. O identificador da Meta que chega no webhook expira em 7 dias, e a URL de download da
+  Meta em 5 minutos. As páginas mostram os três prazos com a fonte de cada um.
+- **R$ 9,90** (`8xA-8z1YW98` 09:19): erro de transcrição. O preço é R$ 49,90.

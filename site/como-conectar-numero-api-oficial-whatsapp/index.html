@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Como conectar seu número na API oficial do WhatsApp, do zero</title>
-<meta name="description" content="O caminho por parceiro homologado dispensa criar aplicativo na Meta e passar por App Review. São cinco telas, e duas decisões que não dá para refazer depois.">
+<title>Como conectar seu número na API oficial do WhatsApp</title>
+<meta name="description" content="Pela Datafy API: criar o número, escolher o portfólio empresarial, escanear o QR code e receber o token. Sem criar aplicativo na Meta e sem aprovação.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/como-conectar-numero-api-oficial-whatsapp">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -13,15 +13,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
-<meta property="og:title" content="Como conectar seu número na API oficial do WhatsApp, do zero">
-<meta property="og:description" content="O caminho por parceiro homologado dispensa criar aplicativo na Meta e passar por App Review. São cinco telas, e duas decisões que não dá para refazer depois.">
+<meta property="og:title" content="Como conectar seu número na API oficial do WhatsApp">
+<meta property="og:description" content="Pela Datafy API: criar o número, escolher o portfólio empresarial, escanear o QR code e receber o token. Sem criar aplicativo na Meta e sem aprovação.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/como-conectar-numero-api-oficial-whatsapp">
-<meta property="article:published_time" content="2026-09-09">
-<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Como conectar seu número na API oficial do WhatsApp, do zero">
-<meta name="twitter:description" content="O caminho por parceiro homologado dispensa criar aplicativo na Meta e passar por App Review. São cinco telas, e duas decisões que não dá para refazer depois.">
+<meta name="twitter:title" content="Como conectar seu número na API oficial do WhatsApp">
+<meta name="twitter:description" content="Pela Datafy API: criar o número, escolher o portfólio empresarial, escanear o QR code e receber o token. Sem criar aplicativo na Meta e sem aprovação.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -112,18 +113,18 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Como conectar seu número na API oficial do WhatsApp, do zero"
+          "name": "Como conectar seu número na API oficial do WhatsApp"
         }
       ]
     },
     {
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/como-conectar-numero-api-oficial-whatsapp#article",
-      "headline": "Como conectar seu número na API oficial do WhatsApp, do zero",
-      "description": "O caminho por parceiro homologado dispensa criar aplicativo na Meta e passar por App Review. São cinco telas, e duas decisões que não dá para refazer depois.",
+      "headline": "Como conectar seu número na API oficial do WhatsApp",
+      "description": "Pela Datafy API: criar o número, escolher o portfólio empresarial, escanear o QR code e receber o token. Sem criar aplicativo na Meta e sem aprovação.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,13 +133,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/como-conectar-numero-api-oficial-whatsapp",
       "citation": [
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing",
-        "https://business.whatsapp.com/policy",
-        "https://app.datafyapi.com.br/docs",
         "https://www.youtube.com/watch?v=8xA-8z1YW98",
-        "https://www.youtube.com/watch?v=dIIkttPeBS0"
+        "https://www.youtube.com/watch?v=dIIkttPeBS0",
+        "https://www.youtube.com/watch?v=JL9Qzw3oS5A",
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -147,53 +146,64 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Preciso de CNPJ para conectar?",
+          "name": "Meu portfólio empresarial precisa estar verificado?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Para conectar, o requisito é o portfólio empresarial, que pode ser criado no fluxo. Verificação de empresa importa para limites maiores e para exibir o nome verificado, e não é pré-requisito para começar."
+            "text": "Não. Ele precisa existir. Verificado é melhor, e não é condição para conectar."
           }
         },
         {
           "@type": "Question",
-          "name": "Meu portfólio precisa estar verificado?",
+          "name": "Posso usar o número que já está no meu WhatsApp Business?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. Ele precisa existir. Verificado é melhor, e não é condição para conectar o número."
+            "text": "Pode. É a opção de conectar um app do WhatsApp Business, e o aplicativo continua funcionando no celular junto com a API."
           }
         },
         {
           "@type": "Question",
-          "name": "Posso conectar um número que já está no WhatsApp comum, não Business?",
+          "name": "Quanto custa?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "O fluxo de coexistência é desenhado para o aplicativo WhatsApp Business. Número em WhatsApp pessoal precisa migrar para o Business antes."
+            "text": "Na Datafy API, R$ 49,90 por número conectado por mês, com 7 dias de teste. As mensagens são cobradas pela Meta, no seu cartão. Os preços por categoria estão aqui."
           }
         },
         {
           "@type": "Question",
-          "name": "Quanto tempo leva?",
+          "name": "Marquei que não quero compartilhar o histórico. E agora?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A conexão em si leva minutos. O que consome tempo em qualquer caminho é decidir a estrutura antes: qual portfólio, qual número, quem fica com o celular, e se você quer o histórico."
+            "text": "Refaça o processo de conexão e marque a opção de compartilhar."
           }
         },
         {
           "@type": "Question",
-          "name": "Se eu escolher errado entre chip novo e aplicativo existente?",
+          "name": "Onde vejo o identificador do meu número?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A correção é desconectar e refazer. Por isso vale entender as duas opções antes de clicar, e não descobrir depois que o atendente perdeu o aplicativo."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Depois de conectar, dá para trocar de provedor?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Dá, e o número é seu porque ele vive no seu portfólio. A parte manual é a desconexão, que acontece no celular. Os detalhes estão aqui."
+            "text": "No painel do número na Datafy, ou com GET /me, passando só o token."
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/como-conectar-numero-api-oficial-whatsapp#video-JL9Qzw3oS5A",
+      "name": "Quanto custa a API oficial do WhatsApp",
+      "description": "Quem cobra o que, categoria por categoria, e o impacto real disso na conta de um cliente",
+      "thumbnailUrl": "https://i.ytimg.com/vi/JL9Qzw3oS5A/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=JL9Qzw3oS5A",
+      "embedUrl": "https://www.youtube.com/embed/JL9Qzw3oS5A",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/como-conectar-numero-api-oficial-whatsapp#article"
+      }
     },
     {
       "@type": "VideoObject",
@@ -204,6 +214,25 @@
       "uploadDate": "2026-09-09",
       "contentUrl": "https://www.youtube.com/watch?v=8xA-8z1YW98",
       "embedUrl": "https://www.youtube.com/embed/8xA-8z1YW98",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/como-conectar-numero-api-oficial-whatsapp#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/como-conectar-numero-api-oficial-whatsapp#video-dIIkttPeBS0",
+      "name": "Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia",
+      "description": "Conexao em coexistencia por QR code, cadastro de webhook, primeiro envio e a falha real fora da janela de 24 horas",
+      "thumbnailUrl": "https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=dIIkttPeBS0",
+      "embedUrl": "https://www.youtube.com/embed/dIIkttPeBS0",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -555,11 +584,11 @@ footer p{margin:0 0 .5rem}
   <div class="hero-grid">
     <div>
       <p class="eyebrow">Coexistência</p>
-      <h1>Como conectar seu número na API oficial do WhatsApp, do zero</h1>
+      <h1>Como conectar seu número na API oficial do WhatsApp</h1>
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -588,23 +617,23 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como conectar seu número na API oficial do WhatsApp, do zero</h1>
-<p><strong>Resposta curta:</strong> existem dois caminhos, e eles têm custos de tempo muito diferentes. Indo direto na Meta, você cria conta de desenvolvedor, cria um aplicativo, configura permissões, monta a infraestrutura de webhook e passa por <strong>App Review</strong>. Indo por um parceiro homologado, você escaneia um QR code e recebe um token pronto.</p>
-<p>O que este texto cobre é o segundo caminho, tela por tela, porque ele tem <strong>duas decisões que não dá para refazer</strong> sem desconectar e começar de novo. Errar qualquer uma das duas custa o histórico do número.</p>
+<h1>Como conectar seu número na API oficial do WhatsApp</h1>
+<p><strong>Resposta curta:</strong> pela Datafy API, você cria uma conta, cria um número no painel, clica em conectar ao WhatsApp e passa pelo fluxo de conexão oficial do Facebook: escolhe o portfólio empresarial, escaneia um QR code com o celular e conclui. No fim, o número está na API oficial e você tem um token para chamar os endpoints.</p>
+<p>O que esse caminho dispensa, na formulação do Israel Henrique, CTO da Datafy: <em>"sem precisar passar por aprovações da Meta, sem ter que criar aplicativo da Meta e sem ter que se tornar um Tech Provider."</em></p>
 <div class="stats">
-  <div class="stat"><b>2 caminhos</b><span>direto na Meta ou por parceiro homologado</span></div>
-  <div class="stat"><b>2 decisões</b><span>que não dá para refazer sem reconectar</span></div>
-  <div class="stat"><b>24 h</b><span>o prazo para pedir contatos e histórico depois de conectar</span></div>
-  <div class="stat"><b>0</b><span>App Review, no caminho por parceiro</span></div>
+  <div class="stat"><b>7 dias</b><span>de teste grátis na Datafy API</span></div>
+  <div class="stat"><b>45 s</b><span>o tempo que a tela da Meta indica para conectar</span></div>
+  <div class="stat"><b>24 h</b><span>para pedir contatos e histórico depois</span></div>
+  <div class="stat"><b>R$ 49,90</b><span>por número conectado, por mês</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li>O caminho por parceiro dispensa <strong>criar aplicativo na Meta, escolher permissões e passar por App Review</strong>, que é a etapa que mais trava projeto.</li>
-<li>Você <strong>precisa de um portfólio empresarial</strong> na Meta, e ele <strong>não precisa estar verificado</strong>. Basta existir, e dá para criar no meio do fluxo.</li>
-<li>A tela pergunta se o número é um <strong>chip novo</strong> ou um <strong>aplicativo já em uso</strong>. Essa escolha define se você fica em coexistência, e ela não é reversível sem reconectar.</li>
-<li>O celular pergunta se você quer <strong>compartilhar o histórico</strong>. Quem não marca, não recupera nada, e a correção é refazer o processo inteiro.</li>
-<li><strong>A forma de pagamento fica na Meta</strong>, no portfólio, e não no provedor. Sem cartão lá, o template não sai.</li>
+<li>Você precisa de uma <strong>conta no Facebook</strong> e de um <strong>portfólio empresarial</strong> (a BM). O portfólio <strong>não precisa estar verificado</strong>.</li>
+<li>No meio do fluxo há duas opções: <strong>criar uma conta do WhatsApp Business</strong>, para chip que não está em nenhum WhatsApp, ou <strong>conectar um app do WhatsApp Business</strong>, para usar o número que já está no celular (coexistência).</li>
+<li>O celular pergunta se você quer <strong>compartilhar o histórico</strong>. Essa decisão só se corrige refazendo a conexão.</li>
+<li><strong>A forma de pagamento das mensagens fica na Meta</strong>, no seu portfólio. A Datafy cobra a conexão, e não as mensagens.</li>
+<li><strong>Desconectar só é possível pelo celular.</strong> Não existe desconexão pela API.</li>
 </ul>
 <figure>
 <div class="diagram">
@@ -614,84 +643,91 @@ footer p{margin:0 0 .5rem}
     .t{font-size:15px;font-weight:600;fill:var(--fg)}
     .h{font-size:13px;font-weight:600;fill:var(--fg)}
     .p{font-size:12px;fill:var(--muted)}
-    .s{font-size:11px;fill:var(--muted)}
     .ok{fill:var(--accent)}
-    .no{fill:var(--danger)}
     .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
     .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
     .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
   </style>
   <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
     <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Migrar sem perder o número</text>
+<text class="t" x="360" y="26" text-anchor="middle">Do cadastro ao número conectado</text>
 <circle cx="85" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
 <text class="h ok" x="85" y="82" text-anchor="middle">1</text>
-<text class="p" x="85" y="116" text-anchor="middle">Criar conta</text>
+<text class="p" x="85" y="116" text-anchor="middle">Criar número</text>
 <path class="ar" d="M108,76 L152,76"/>
 <circle cx="219" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
 <text class="h ok" x="219" y="82" text-anchor="middle">2</text>
-<text class="p" x="219" y="116" text-anchor="middle">Conectar número</text>
+<text class="p" x="219" y="116" text-anchor="middle">Escolher portfólio</text>
 <path class="ar" d="M242,76 L286,76"/>
 <circle cx="353" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
 <text class="h ok" x="353" y="82" text-anchor="middle">3</text>
-<text class="p" x="353" y="116" text-anchor="middle">Copiar token</text>
+<text class="p" x="353" y="116" text-anchor="middle">Chip ou aplicativo</text>
 <path class="ar" d="M376,76 L420,76"/>
 <circle cx="487" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
 <text class="h ok" x="487" y="82" text-anchor="middle">4</text>
-<text class="p" x="487" y="116" text-anchor="middle">Trocar URL</text>
+<text class="p" x="487" y="116" text-anchor="middle">Escanear QR code</text>
 <path class="ar" d="M510,76 L554,76"/>
 <circle cx="621" cy="76" r="18" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
 <text class="h ok" x="621" y="82" text-anchor="middle">5</text>
-<text class="p" x="621" y="116" text-anchor="middle">Testar envio</text>
+<text class="p" x="621" y="116" text-anchor="middle">Concluir</text>
 <rect class="boxok" x="30" y="140" width="330" height="70" rx="8"/>
-<text class="h ok" x="46" y="164">O número continua seu</text>
-<text class="p" x="46" y="186">Ele está registrado na sua Business</text>
-<text class="p" x="46" y="202">Manager, não no provedor.</text>
+<text class="h ok" x="46" y="164">O número fica na sua BM</text>
+<text class="p" x="46" y="186">É no seu portfólio empresarial da Meta</text>
+<text class="p" x="46" y="202">que o número é cadastrado.</text>
 <rect class="box" x="380" y="140" width="310" height="70" rx="8"/>
-<text class="h" x="396" y="164">No codigo</text>
-<text class="p" x="396" y="186">Mudam duas coisas: a URL base</text>
-<text class="p" x="396" y="202">e o token. O payload é o mesmo.</text>
+<text class="h" x="396" y="164">No código</text>
+<text class="p" x="396" y="186">Muda o domínio e o token.</text>
+<text class="p" x="396" y="202">O resto é igual à API da Meta.</text>
 </svg>
 </div>
 <figcaption></figcaption>
 </figure>
 
-<h2 id="antes-de-come-ar-o-que-voc-precisa-ter">Antes de começar: o que você precisa ter</h2>
-<p>São quatro coisas, e nenhuma delas é documento de empresa nem verificação:</p>
-<p><strong>Uma conta no Facebook.</strong> O número fica dentro de um portfólio empresarial da Meta, e o acesso a ele é por conta pessoal do Facebook. Não tem como contornar isso.</p>
-<p><strong>Um portfólio empresarial.</strong> Se você não tem, dá para criar dentro do próprio fluxo de conexão. E vale desfazer o mito: <strong>ele não precisa estar verificado.</strong> Na formulação do Israel Henrique, CTO da Datafy: <em>"não precisa ser verificado, se for verificado é melhor, mas apenas criar o portfólio já é suficiente."</em> Verificação importa para limites maiores e para exibir nome da empresa, não para conectar.</p>
-<p><strong>O número, e o celular dele na mão.</strong> O QR code é lido pelo aparelho, e algumas decisões acontecem lá. Não é um processo que se faça sozinho pelo computador.</p>
-<p><strong>Um cartão de crédito, para depois.</strong> Não é necessário para conectar, e é necessário antes do primeiro template.</p>
-<h2 id="as-cinco-telas">As cinco telas</h2>
-<p><strong>1. Escolher o portfólio empresarial.</strong> Se você tem mais de um, escolha com cuidado: o número vai viver dentro dele, e mover número entre portfólios depois não é trivial.</p>
-<p><strong>2. Chip novo ou aplicativo existente.</strong> É a decisão mais importante do fluxo, e ela aparece como duas opções parecidas:</p>
+<h2 id="os-dois-caminhos-para-a-api-oficial">Os dois caminhos para a API oficial</h2>
+<p><strong>Direto na Meta.</strong> No vídeo sobre preço, o Israel descreve o processo: criar conta de desenvolvedor, criar um aplicativo, montar a infraestrutura de webhooks e endpoints, enviar para aprovação da Meta e esperar. E, para conectar o próprio aplicativo do celular na API, <em>"precisa se tornar um tech provider, que seria um parceiro de tecnologia da meta, o processo mais burocrático ainda."</em></p>
+<p><strong>Por um parceiro da Meta.</strong> A Datafy API é Tech Provider verificado pela Meta. Você cria a conta no sistema, escaneia o QR code exibido pelo Facebook e tem acesso à API oficial.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=JL9Qzw3oS5A" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/JL9Qzw3oS5A/maxresdefault.jpg" alt="Miniatura do vídeo: Quanto custa a API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Quanto custa a API oficial do WhatsApp</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 14:33 o Israel descreve o que é preciso para usar a API direto com a Meta, e em 15:04 a diferença de fazer isso por um parceiro.</figcaption>
+</figure>
+
+<h2 id="o-que-voc-precisa-antes">O que você precisa antes</h2>
+<p><strong>Conta no Facebook.</strong> O número fica cadastrado num portfólio empresarial do Facebook, e o acesso a ele é pela sua conta.</p>
+<p><strong>Portfólio empresarial.</strong> Se você não tem, dá para criar dentro do próprio fluxo de conexão. E ele não precisa estar verificado: <em>"não precisa ser verificado, se for verificado é melhor, mas apenas criar o portfólio já é suficiente."</em></p>
+<p><strong>O celular com o número.</strong> A conexão passa por uma mensagem que chega no WhatsApp desse número e por um QR code lido pela câmera dele.</p>
+<h2 id="passo-a-passo">Passo a passo</h2>
+<p><strong>1. Criar a conta e o número.</strong> No painel da Datafy API, crie a conta (o teste é grátis por 7 dias), clique em conectar o primeiro número, dê um nome e crie. Na tela do número, clique em conectar ao WhatsApp. Abre o fluxo de conexão oficial do Facebook.</p>
+<p><strong>2. Escolher o portfólio empresarial.</strong> Selecione o portfólio onde o número vai ficar, ou crie um ali.</p>
+<p><strong>3. Escolher entre chip novo e aplicativo existente.</strong> É a decisão mais importante do fluxo:</p>
 <div class="tablewrap"><table>
 <thead>
 <tr>
 <th>Opção</th>
 <th>Quando usar</th>
-<th>O que você fica</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>Criar uma conta do WhatsApp Business</strong></td>
-<td>O número existe só como chip, e <strong>não está</strong> em nenhum WhatsApp</td>
-<td>Número nasce na API, sem aplicativo no celular</td>
+<td>Você tem um chip e esse número <strong>não está</strong> em nenhum aplicativo do WhatsApp</td>
 </tr>
 <tr>
 <td><strong>Conectar um app do WhatsApp Business</strong></td>
-<td>O número <strong>já está</strong> em uso no aplicativo, no celular de alguém</td>
-<td>Coexistência: atendente no celular e API no mesmo número</td>
+<td>O número <strong>já está</strong> no aplicativo do WhatsApp Business, no celular. É a coexistência</td>
 </tr>
 </tbody>
 </table></div>
-<p>A segunda é a que a maioria quer e não sabe o nome. Se o seu atendimento hoje é alguém respondendo pelo celular, e você quer automatizar sem tirar isso, é ela.</p>
-<p><strong>3. Informar o número.</strong> Código do país, DDD e número. A Meta manda uma mensagem no WhatsApp desse número com um botão de conectar.</p>
-<p><strong>4. A tela do celular.</strong> Aqui acontece a segunda decisão irreversível, e ela passa rápido: o aplicativo pergunta se você quer <strong>compartilhar o histórico de conversas</strong>. Marcando, você habilita a recuperação de até 180 dias de conversa e dos contatos da agenda. Não marcando, não há segunda chance sem desconectar e refazer.</p>
-<p><strong>5. Escanear o QR code e aguardar.</strong> A conexão leva algumas dezenas de segundos. Não feche a janela antes de o botão de concluir aparecer, porque fechar no meio deixa o processo pela metade.</p>
+<p><strong>4. Informar o número.</strong> Código do país e número. Avance duas vezes.</p>
+<p><strong>5. Confirmar pelo celular.</strong> O Facebook manda uma mensagem no WhatsApp do número, com um botão de conectar. Tocando nele, o celular abre a tela para se conectar à plataforma do WhatsApp Business.</p>
+<p><strong>6. Decidir sobre o histórico.</strong> O aplicativo pergunta se você quer compartilhar o histórico de conversas. Marcando, você depois pode baixar o histórico e os contatos salvos na agenda. Se marcar que não por engano, <em>"é só fazer o processo novamente"</em>.</p>
+<p><strong>7. Escanear o QR code.</strong> A câmera do celular abre, você aponta para o QR code da tela, e a Meta indica que a conexão pode levar até 45 segundos. No celular aparece a confirmação de que a conta foi conectada à plataforma.</p>
+<p><strong>8. Concluir no computador.</strong> Escolha o fuso horário, confirme, e digite o código que a Meta pode enviar para o e-mail da sua conta do Facebook. Aguarde o botão de concluir: <em>"não pode fechar a janela antes"</em>.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=8xA-8z1YW98" rel="noopener">
   <span class="thumb">
@@ -700,61 +736,60 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>A forma mais fácil e simples de usar a API oficial do WhatsApp</b><span>Canal DATA7 · 9 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Nove minutos com o fluxo inteiro na tela, do cadastro ao número conectado. A escolha entre chip novo e aplicativo existente está em 02:34, a tela do celular em 04:40, e em 08:33 onde fica a configuração de pagamento dentro do portfólio.</figcaption>
+<figcaption>Nove minutos do zero ao número conectado. A escolha entre chip novo e aplicativo existente está em 02:34, o QR code em 05:03, o código por e-mail em 06:00 e a configuração de pagamento em 08:00.</figcaption>
 </figure>
 
-<p>Um detalhe que mudou e pega quem já fez isso antes: a Meta passou a mandar, em alguns casos, um <strong>código de confirmação por e-mail</strong> da conta do Facebook no meio do fluxo. Não é erro, é uma etapa a mais.</p>
-<h2 id="depois-de-conectar-os-tr-s-passos-que-t">Depois de conectar: os três passos que têm prazo</h2>
-<p>Conectar não é o fim, e aqui está a parte que quase todo tutorial esquece. Você tem <strong>24 horas</strong> para recuperar contatos e histórico, e o processo <strong>não é automático</strong>.</p>
-<p><strong>1. Assine o evento de sincronização no webhook.</strong> É por ele que os dados chegam. Sem isso, o passo 3 responde sucesso e nada aparece, que é a forma mais frustrante de perder o prazo.</p>
-<p><strong>2. Cadastre o webhook e escolha os eventos.</strong> No mínimo o de mensagens. Se o número está em coexistência, marque também o de <strong>mensagem enviada pelo celular</strong>, senão o atendente responde pelo aparelho e o seu sistema não fica sabendo.</p>
-<p><strong>3. Dispare a sincronização.</strong> É uma chamada de API, e ela pede contatos e histórico separadamente. Os contatos chegam praticamente na hora. As conversas demoram bem mais, e a Meta não crava prazo.</p>
-<p><a href="/como-leio-o-historico-de-conversa-pela-api">O passo a passo detalhado disso está aqui</a>, e vale ler antes de conectar, não depois.</p>
-<h2 id="o-cart-o-fica-na-meta-n-o-no-provedor">O cartão fica na Meta, não no provedor</h2>
-<p>Esse ponto gera chamado de suporte todo dia, então vale ser explícito.</p>
-<p><strong>Quem cobra as mensagens é a Meta.</strong> Marketing, utilidade, autenticação: tudo isso é debitado no cartão cadastrado no <strong>portfólio empresarial</strong>, direto com ela. O provedor cobra o acesso à infraestrutura, e não a mensagem.</p>
-<p>Na explicação do Israel: <em>"você não paga mensagens pra Datafy. Não existe nenhuma cobrança por parte da Datafy em relação às mensagens, é tudo diretamente com a meta."</em></p>
-<p>O efeito prático de não configurar isso: a conexão funciona, você recebe mensagem, responde dentro da janela de 24 horas normalmente, <strong>e o primeiro template falha</strong>. Como o sintoma aparece longe da causa, o diagnóstico costuma ser "a API não funciona".</p>
-<p>Resolva no mesmo dia da conexão. O caminho é o portfólio, contas do WhatsApp, o número, e configurações de pagamento.</p>
-<h2 id="como-desconectar-se-precisar">Como desconectar, se precisar</h2>
-<p>Detalhe operacional que muda o roteiro de qualquer migração: <strong>não existe chamada de API para desconectar um número em coexistência.</strong> Isso é confirmado pela documentação da Meta, que diz que o cliente desconecta pelo aplicativo, em configurações, conta e plataforma do WhatsApp Business, e que a API de cancelamento de registro não serve para esse caso.</p>
-<p>Duas consequências:</p>
-<p><strong>A troca de fornecedor depende de alguém com o telefone.</strong> Não é tarefa que a equipe técnica execute sozinha de madrugada.</p>
-<p><strong>Se você vende isso dentro do seu produto, você não desconecta pelo cliente.</strong> O botão está no celular dele, e o seu fluxo de cancelamento precisa explicar o caminho exato.</p>
-<h2 id="o-que-voc-deixa-de-fazer-indo-por-parcei">O que você deixa de fazer indo por parceiro</h2>
-<p>Vale a lista, porque é a diferença concreta entre os dois caminhos:</p>
-<ul>
-<li>Criar conta de desenvolvedor e aplicativo na Meta</li>
-<li>Escolher e justificar permissões</li>
-<li>Montar o endpoint que responde ao desafio de verificação do webhook</li>
-<li>Passar por <strong>App Review</strong>, com material de demonstração</li>
-<li>Virar <strong>Tech Provider</strong>, que é o requisito para oferecer coexistência a terceiros</li>
-</ul>
-<p>E o que continua sendo seu, em qualquer caminho: a conduta que evita bloqueio, a categoria correta dos templates, a qualidade do número e o cartão no portfólio. <a href="/numero-banido-no-whatsapp-o-que-fazer">Usar a API oficial não é blindagem contra bloqueio</a>, e nenhum fornecedor muda isso.</p>
+<h2 id="depois-de-conectar-descobrir-seus-identi">Depois de conectar: descobrir seus identificadores</h2>
+<p>Para chamar os endpoints você vai precisar do identificador do número e do identificador da conta do WhatsApp Business. Com o token em mãos, uma chamada devolve os dois:</p>
+<p><code>GET https://cloud.datafyapi.com.br/me
+Authorization: Bearer sk_live_xxx</code></p>
+<p><code>json
+{
+  "cliente_id": "uuid-do-cliente",
+  "phone_number_id": "106540352242922",
+  "waba_id": "366634483210360",
+  "business_id": "123456789"
+}</code></p>
+<p>O token vai sempre no cabeçalho <code>Authorization</code>. Passar como parâmetro na URL não funciona na Datafy API.</p>
+<h2 id="os-tr-s-passos-seguintes">Os três passos seguintes</h2>
+<p><strong>Pedir contatos e histórico, em até 24 horas.</strong> A sincronização não é automática. A documentação da Meta dá 24 horas a partir da conexão, e depois disso só refazendo o fluxo. <a href="/sincronizar-contatos-api-oficial-whatsapp">O passo a passo está aqui</a>.</p>
+<p><strong>Cadastrar o webhook.</strong> É por ele que as mensagens chegam. <a href="/primeira-mensagem-api-oficial-whatsapp">Como enviar e receber a primeira mensagem</a>.</p>
+<p><strong>Cadastrar a forma de pagamento na Meta.</strong> No portfólio empresarial: contas do WhatsApp, o número, resumo, configurações do pagamento, cartão de crédito. A Meta desconta direto desse cartão. Na fala do Israel: <em>"você não paga mensagens pra Datafy. Não existe nenhuma cobrança por parte da Datafy em relação às mensagens, é tudo diretamente com a meta."</em> Sem cartão, template não sai; responder quem falou com você dentro de 24 horas é gratuito até 1º de outubro de 2026.</p>
+<h2 id="como-desconectar">Como desconectar</h2>
+<p>Não existe desconexão pela API. No celular: configurações, conta, plataforma do WhatsApp Business, desconectar. A documentação da Meta confirma e diz que a API de cancelamento de registro não serve para esse caso.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 04:46 ele mostra o caminho de desconexão no celular: "não tem como desconectar via API, somente através do celular."</figcaption>
+</figure>
+
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Preciso de CNPJ para conectar?</h3>
-<p>Para conectar, o requisito é o portfólio empresarial, que pode ser criado no fluxo. Verificação de empresa importa para limites maiores e para exibir o nome verificado, e não é pré-requisito para começar.</p>
-<h3>Meu portfólio precisa estar verificado?</h3>
-<p>Não. Ele precisa existir. Verificado é melhor, e não é condição para conectar o número.</p>
-<h3>Posso conectar um número que já está no WhatsApp comum, não Business?</h3>
-<p>O fluxo de coexistência é desenhado para o aplicativo WhatsApp Business. Número em WhatsApp pessoal precisa migrar para o Business antes.</p>
-<h3>Quanto tempo leva?</h3>
-<p>A conexão em si leva minutos. O que consome tempo em qualquer caminho é decidir a estrutura antes: qual portfólio, qual número, quem fica com o celular, e se você quer o histórico.</p>
-<h3>Se eu escolher errado entre chip novo e aplicativo existente?</h3>
-<p>A correção é desconectar e refazer. Por isso vale entender as duas opções antes de clicar, e não descobrir depois que o atendente perdeu o aplicativo.</p>
-<h3>Depois de conectar, dá para trocar de provedor?</h3>
-<p>Dá, e o número é seu porque ele vive no seu portfólio. A parte manual é a desconexão, que acontece no celular. <a href="/se-eu-trocar-de-fornecedor-perco-o-numero">Os detalhes estão aqui</a>.</p>
+<h3>Meu portfólio empresarial precisa estar verificado?</h3>
+<p>Não. Ele precisa existir. Verificado é melhor, e não é condição para conectar.</p>
+<h3>Posso usar o número que já está no meu WhatsApp Business?</h3>
+<p>Pode. É a opção de conectar um app do WhatsApp Business, e o aplicativo continua funcionando no celular junto com a API.</p>
+<h3>Quanto custa?</h3>
+<p>Na Datafy API, R$ 49,90 por número conectado por mês, com 7 dias de teste. As mensagens são cobradas pela Meta, no seu cartão. <a href="/quanto-custa-whatsapp-business-api-brasil-2026">Os preços por categoria estão aqui</a>.</p>
+<h3>Marquei que não quero compartilhar o histórico. E agora?</h3>
+<p>Refaça o processo de conexão e marque a opção de compartilhar.</p>
+<h3>Onde vejo o identificador do meu número?</h3>
+<p>No painel do número na Datafy, ou com <code>GET /me</code>, passando só o token.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Se você vai gerenciar poucos números e tem tempo de engenharia sobrando, o caminho direto na Meta é viável e te dá controle total do aplicativo. Se o objetivo é ter um token funcionando hoje para integrar num fluxo, o caminho por parceiro elimina a etapa que costuma custar semanas.</p>
-<p>E, escolhendo qualquer um dos dois, resolva antes de conectar: quem fica com o celular, se você quer o histórico, e onde vai o cartão. As três decisões são mais caras de corrigir do que de tomar.</p>
-<div class="cta"><h3>Conecte um número de teste antes do número principal</h3><p>Um chip qualquer, o fluxo inteiro, o webhook cadastrado e a sincronização disparada. Em meia hora você conhece as duas decisões irreversíveis sem arriscar o número que atende seus clientes.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Se você quer manter o atendimento no celular e automatizar pela API, escolha conectar um app do WhatsApp Business. Se o número é novo e só vai existir na API, escolha criar uma conta do WhatsApp Business.</p>
+<p>Antes de escanear o QR code, deixe o webhook pronto para pedir contatos e histórico logo depois. As 24 horas contam a partir da conexão.</p>
+<div class="cta"><h3>Conecte um número de teste primeiro</h3><p>Faça o fluxo inteiro com um chip de teste, chame GET /me com o token e mande uma mensagem para você mesmo. Você conhece as decisões do fluxo sem arriscar o número principal.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/o-que-preciso-para-comecar-na-api-oficial">O que preciso para começar na API oficial</a></li>
 <li><a href="/coexistencia-whatsapp-api-oficial-app-celular">Coexistência: API e aplicativo no mesmo número</a></li>
-<li><a href="/como-leio-o-historico-de-conversa-pela-api">Como leio o histórico de conversa pela API</a></li>
-<li><a href="/o-que-e-tech-provider-meta">O que é Tech Provider da Meta</a></li>
+<li><a href="/sincronizar-contatos-api-oficial-whatsapp">Como sincronizar os contatos e o histórico</a></li>
+<li><a href="/primeira-mensagem-api-oficial-whatsapp">Enviar e receber a primeira mensagem</a></li>
+<li><a href="/datafy-api-espelho-da-cloud-api">A Datafy API é um espelho da Cloud API</a></li>
 </ul>
 </article>
 
@@ -770,12 +805,12 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#antes-de-come-ar-o-que-voc-precisa-ter">Antes de começar: o que você pre...</a></li>
-        <li><a href="#as-cinco-telas">As cinco telas</a></li>
-        <li><a href="#depois-de-conectar-os-tr-s-passos-que-t">Depois de conectar: os três pass...</a></li>
-        <li><a href="#o-cart-o-fica-na-meta-n-o-no-provedor">O cartão fica na Meta, não no pr...</a></li>
-        <li><a href="#como-desconectar-se-precisar">Como desconectar, se precisar</a></li>
-        <li><a href="#o-que-voc-deixa-de-fazer-indo-por-parcei">O que você deixa de fazer indo p...</a></li>
+        <li><a href="#os-dois-caminhos-para-a-api-oficial">Os dois caminhos para a API ofic...</a></li>
+        <li><a href="#o-que-voc-precisa-antes">O que você precisa antes</a></li>
+        <li><a href="#passo-a-passo">Passo a passo</a></li>
+        <li><a href="#depois-de-conectar-descobrir-seus-identi">Depois de conectar: descobrir se...</a></li>
+        <li><a href="#os-tr-s-passos-seguintes">Os três passos seguintes</a></li>
+        <li><a href="#como-desconectar">Como desconectar</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

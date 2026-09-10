@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>O laço de webhook que derruba número no WhatsApp</title>
-<meta name="description" content="Seu fluxo responde o que chega. Mas cada envio gera três eventos de status, e responder a eles multiplica: três viram nove, nove viram vinte e sete.">
+<title>O laço de webhook que pode bloquear o seu número no WhatsApp</title>
+<meta name="description" content="Cada mensagem enviada gera três eventos de status no mesmo webhook. Um fluxo que responde a tudo que chega responde aos status, e isso multiplica.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/laco-de-webhook-derruba-numero">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -13,15 +13,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
-<meta property="og:title" content="O laço de webhook que derruba número no WhatsApp">
-<meta property="og:description" content="Seu fluxo responde o que chega. Mas cada envio gera três eventos de status, e responder a eles multiplica: três viram nove, nove viram vinte e sete.">
+<meta property="og:title" content="O laço de webhook que pode bloquear o seu número no WhatsApp">
+<meta property="og:description" content="Cada mensagem enviada gera três eventos de status no mesmo webhook. Um fluxo que responde a tudo que chega responde aos status, e isso multiplica.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/laco-de-webhook-derruba-numero">
-<meta property="article:published_time" content="2026-09-09">
-<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="O laço de webhook que derruba número no WhatsApp">
-<meta name="twitter:description" content="Seu fluxo responde o que chega. Mas cada envio gera três eventos de status, e responder a eles multiplica: três viram nove, nove viram vinte e sete.">
+<meta name="twitter:title" content="O laço de webhook que pode bloquear o seu número no WhatsApp">
+<meta name="twitter:description" content="Cada mensagem enviada gera três eventos de status no mesmo webhook. Um fluxo que responde a tudo que chega responde aos status, e isso multiplica.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -112,18 +113,18 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "O laço de webhook que derruba número no WhatsApp"
+          "name": "O laço de webhook que pode bloquear o seu número no WhatsApp"
         }
       ]
     },
     {
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/laco-de-webhook-derruba-numero#article",
-      "headline": "O laço de webhook que derruba número no WhatsApp",
-      "description": "Seu fluxo responde o que chega. Mas cada envio gera três eventos de status, e responder a eles multiplica: três viram nove, nove viram vinte e sete.",
+      "headline": "O laço de webhook que pode bloquear o seu número no WhatsApp",
+      "description": "Cada mensagem enviada gera três eventos de status no mesmo webhook. Um fluxo que responde a tudo que chega responde aos status, e isso multiplica.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,12 +133,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/laco-de-webhook-derruba-numero",
       "citation": [
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
-        "https://developers.facebook.com/docs/whatsapp/throughput",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits",
-        "https://app.datafyapi.com.br/docs",
-        "https://www.youtube.com/watch?v=vGovcR8W5g8"
+        "https://www.youtube.com/watch?v=vGovcR8W5g8",
+        "https://www.youtube.com/watch?v=fhz6n2s91-g",
+        "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+        "https://www.youtube.com/watch?v=dIIkttPeBS0",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -146,34 +146,34 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Por que os status chegam no mesmo webhook das mensagens?",
+          "name": "Por que os status chegam no mesmo webhook?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Porque ambos são eventos do mesmo campo de assinatura. Não existe endereço separado, e é por isso que o filtro é responsabilidade sua."
+            "text": "Porque vêm pelo mesmo evento, messages. Os três status estão explicados aqui."
           }
         },
         {
           "@type": "Question",
-          "name": "Posso simplesmente não assinar os status?",
+          "name": "Quantos eventos cada mensagem gera?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Eles vêm junto com o campo de mensagens. E, mesmo que fosse possível separar, você não ia querer: sem status você não sabe se a mensagem chegou nem por que falhou."
+            "text": "Enviada, entregue e lida, este último só se a pessoa tiver a confirmação de leitura ativada. Falha gera um evento só."
           }
         },
         {
           "@type": "Question",
-          "name": "O filtro resolve sozinho?",
+          "name": "Ler de dentro de messages resolve?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Resolve esse laço. Continua valendo tratar reentrega e não responder a evento de conta, que é outro tipo que chega ali."
+            "text": "Resolve o laço, porque o passo falha quando chega um status. O filtro na entrada é a forma recomendada no vídeo."
           }
         },
         {
           "@type": "Question",
-          "name": "Se eu uso agente de IA, muda alguma coisa?",
+          "name": "Isso vale fora do n8n?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Aumenta a importância, porque o modelo responde a qualquer entrada. O filtro precisa vir antes do modelo, e não depender de ele decidir não responder."
+            "text": "O mecanismo é do webhook, não da ferramenta. Qualquer código que responde a todo evento recebido tem o mesmo problema."
           }
         },
         {
@@ -181,15 +181,7 @@
           "name": "Como testo se estou protegido?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Mande uma mensagem para o seu número pelo fluxo e espere o ciclo completo de status. Se nada além da sua mensagem sair, o filtro está funcionando."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Isso pode bloquear o número mesmo com poucos contatos?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "O volume por si só já é anômalo, e a reação de quem recebe é o que mais pesa. Poucos contatos recebendo dezenas de mensagens produzem bloqueio e denúncia com muita facilidade."
+            "text": "Mande uma mensagem para o número, deixe o fluxo responder, e confira que só uma resposta saiu depois que os status chegaram."
           }
         }
       ]
@@ -203,6 +195,44 @@
       "uploadDate": "2026-09-09",
       "contentUrl": "https://www.youtube.com/watch?v=vGovcR8W5g8",
       "embedUrl": "https://www.youtube.com/embed/vGovcR8W5g8",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/laco-de-webhook-derruba-numero#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/laco-de-webhook-derruba-numero#video-fhz6n2s91-g",
+      "name": "Como usar user name (user id) na API oficial do WhatsApp",
+      "description": "O identificador que substitui o telefone, por que ele muda de empresa para empresa, e como responder por ele",
+      "thumbnailUrl": "https://i.ytimg.com/vi/fhz6n2s91-g/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=fhz6n2s91-g",
+      "embedUrl": "https://www.youtube.com/embed/fhz6n2s91-g",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/laco-de-webhook-derruba-numero#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/laco-de-webhook-derruba-numero#video-LIT4FxgqHhE",
+      "name": "Logs de mensagens em tempo real na API oficial do WhatsApp",
+      "description": "Ver o payload cru de cada mensagem que entra e sai, e por quanto tempo esse log fica",
+      "thumbnailUrl": "https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+      "embedUrl": "https://www.youtube.com/embed/LIT4FxgqHhE",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -554,34 +584,33 @@ footer p{margin:0 0 .5rem}
   <div class="hero-grid">
     <div>
       <p class="eyebrow">Implementação</p>
-      <h1>O laço de webhook que derruba número no WhatsApp</h1>
+      <h1>O laço de webhook que pode bloquear o seu número no WhatsApp</h1>
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
     <div class="hero-art">
       <svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
-  <title id="heroT">Registro de erro com um código destacado</title>
-  <desc id="heroD">Ilustração de uma lista de registros em que uma linha aparece marcada com um código de erro.</desc>
+  <title id="heroT">Registro de status com uma falha destacada</title>
+  <desc id="heroD">Ilustração de uma lista de status de mensagens em que uma linha aparece marcada como falha.</desc>
   <rect x="30" y="52" width="280" height="196" rx="14" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
   <rect x="30" y="52" width="280" height="32" rx="14" fill="var(--code-bg)"/>
   <rect x="30" y="74" width="280" height="10" fill="var(--code-bg)"/>
-  <text x="48" y="74" style="font:700 10px ui-monospace,monospace;fill:var(--muted)">status</text>
+  <text x="48" y="74" style="font:700 10px ui-monospace,monospace;fill:var(--muted)">statuses</text>
   <g opacity=".55">
     <rect x="48" y="100" width="150" height="6" rx="3" fill="var(--muted)"/>
-    <rect x="250" y="98" width="44" height="12" rx="6" fill="var(--accent-soft)"/>
+    <text x="294" y="107" text-anchor="end" style="font:700 9px ui-monospace,monospace;fill:var(--accent)">delivered</text>
   </g>
   <g opacity=".55">
     <rect x="48" y="126" width="120" height="6" rx="3" fill="var(--muted)"/>
-    <rect x="250" y="124" width="44" height="12" rx="6" fill="var(--accent-soft)"/>
+    <text x="294" y="133" text-anchor="end" style="font:700 9px ui-monospace,monospace;fill:var(--accent)">read</text>
   </g>
   <rect x="40" y="146" width="260" height="40" rx="8" fill="var(--danger-soft)" stroke="var(--danger)" stroke-width="1.5"/>
   <text x="52" y="162" style="font:700 10px ui-monospace,monospace;fill:var(--danger)">failed</text>
-  <text x="52" y="178" style="font:600 10px ui-monospace,monospace;fill:var(--danger)">errors[0].code</text>
-  <text x="288" y="171" text-anchor="end" style="font:700 12px ui-monospace,monospace;fill:var(--danger)">131049</text>
+  <text x="52" y="178" style="font:600 10px ui-monospace,monospace;fill:var(--danger)">o motivo vem aqui dentro</text>
   <g opacity=".35">
     <rect x="48" y="202" width="140" height="6" rx="3" fill="var(--muted)"/>
     <rect x="48" y="220" width="100" height="6" rx="3" fill="var(--muted)"/>
@@ -594,28 +623,28 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>O laço de webhook que derruba número no WhatsApp</h1>
-<p><strong>Resposta curta:</strong> é o erro mais caro de quem monta o primeiro fluxo de automação, e ele parece inofensivo até acontecer.</p>
-<p>Você monta "recebi um webhook, respondo uma mensagem". Faz sentido. O que não é óbvio é que <strong>cada mensagem que você envia gera três eventos de volta</strong>, e eles chegam no mesmo endereço. Então a sua resposta gera três status, cada status dispara outra resposta, e cada uma delas gera mais três.</p>
-<p>Três, nove, vinte e sete. Em minutos você mandou centenas de mensagens que ninguém pediu, do seu número, para os seus clientes. O aviso do Israel Henrique, CTO da Datafy, é literal: <em>"vai bloquear o teu número."</em></p>
+<h1>O laço de webhook que pode bloquear o seu número no WhatsApp</h1>
+<p><strong>Resposta curta:</strong> um fluxo do tipo "recebi um webhook, respondo uma mensagem" parece certo e é perigoso. Cada mensagem enviada pela API gera <strong>eventos de status</strong> (enviada, entregue, lida), e eles chegam no <strong>mesmo webhook</strong> das mensagens dos clientes. Se o fluxo responde a tudo, responde aos status, e cada resposta gera mais status.</p>
+<p>No vídeo sobre n8n, o Israel Henrique, CTO da Datafy, para a montagem do fluxo para avisar: <em>"vai bloquear o teu número."</em></p>
+<p>A proteção é ler o remetente <strong>de dentro do objeto <code>messages</code></strong>, que não existe no evento de status, ou colocar um filtro que só deixa passar mensagem.</p>
 <div class="stats">
-  <div class="stat"><b>3 eventos</b><span>voltam para cada mensagem enviada</span></div>
-  <div class="stat"><b>3x</b><span>é o fator de multiplicação a cada rodada</span></div>
-  <div class="stat"><b>1 campo</b><span>resolve, e ele já está no payload</span></div>
-  <div class="stat"><b>minutos</b><span>é o tempo até virar problema de conta</span></div>
+  <div class="stat"><b>3</b><span>eventos de status por mensagem entregue e lida</span></div>
+  <div class="stat"><b>9</b><span>respostas na segunda rodada</span></div>
+  <div class="stat"><b>27</b><span>na terceira</span></div>
+  <div class="stat"><b>1</b><span>filtro resolve</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li><strong>Status chega no mesmo webhook das mensagens.</strong> Não existe endereço separado, e é daí que nasce o problema.</li>
-<li><strong>A multiplicação é exponencial</strong>, não linear. Não dá tempo de perceber e desligar.</li>
-<li><strong>A proteção é ler o remetente de dentro do objeto de mensagem</strong>, que não existe no evento de status.</li>
-<li>Falha ruidosa é o resultado <strong>desejado</strong> aqui: melhor o passo quebrar do que responder.</li>
-<li>O dano não é só volume: é conduta que a plataforma lê como envio indesejado, e isso vai para a qualidade do número.</li>
+<li><strong>Status e mensagens chegam no mesmo webhook.</strong> Não há endereço separado.</li>
+<li><strong>Responder a status multiplica:</strong> três viram nove, nove viram vinte e sete.</li>
+<li><strong>O objeto <code>messages</code> não existe no evento de status.</strong> Lendo o remetente de dentro dele, o passo falha em vez de responder.</li>
+<li><strong>Filtro na entrada:</strong> só seguir para a resposta quando for mensagem.</li>
+<li>O mesmo cuidado vale quando você responde pelo <code>user_id</code>.</li>
 </ul>
 <figure>
 <div class="diagram">
-<svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" class="d">
+<svg viewBox="0 0 720 222" xmlns="http://www.w3.org/2000/svg" class="d">
   <style>
     .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
     .t{font-size:15px;font-weight:600;fill:var(--fg)}
@@ -632,46 +661,35 @@ footer p{margin:0 0 .5rem}
   </style>
   <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
     <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Como o webhook entrega a mensagem</text>
-<rect class="box" x="30" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="115" y="80" text-anchor="middle">Cliente</text>
-<text class="s" x="115" y="100" text-anchor="middle">escreve no WhatsApp</text>
-<rect class="box" x="275" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="360" y="80" text-anchor="middle">Meta</text>
-<text class="s" x="360" y="100" text-anchor="middle">faz POST no seu endpoint</text>
-<rect class="box" x="520" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="605" y="80" text-anchor="middle">Seu servidor</text>
-<text class="s" x="605" y="100" text-anchor="middle">responde 200 na hora</text>
-<path class="ar" d="M205,87 L268,87"/>
-<path class="ar" d="M450,87 L513,87"/>
-<rect class="box" x="30" y="146" width="330" height="76" rx="8"/>
-<text class="h" x="46" y="170">Se você falhar</text>
-<text class="p" x="46" y="192">A Meta reentrega com frequência</text>
-<text class="p" x="46" y="210">decrescente por até 7 dias.</text>
-<rect class="box" x="380" y="146" width="310" height="76" rx="8"/>
-<text class="h" x="396" y="170">Como validar</text>
-<text class="p" x="396" y="192">HMAC SHA-256 no header</text>
-<text class="p" x="396" y="210">X-Hub-Signature-256.</text>
+<text class="t" x="360" y="26" text-anchor="middle">Um fluxo de resposta no n8n</text>
+<rect class="box" x="20" y="52" width="152" height="66" rx="8"/>
+<text class="h" x="96" y="80" text-anchor="middle">Webhook</text>
+<text class="s" x="96" y="98" text-anchor="middle">evento chega</text>
+<rect class="boxok" x="196" y="52" width="152" height="66" rx="8"/>
+<text class="h" x="272" y="80" text-anchor="middle">Existe messages?</text>
+<text class="s" x="272" y="98" text-anchor="middle">status não passa daqui</text>
+<rect class="box" x="372" y="52" width="152" height="66" rx="8"/>
+<text class="h" x="448" y="80" text-anchor="middle">HTTP Request</text>
+<text class="s" x="448" y="98" text-anchor="middle">cloud.datafyapi.com.br/v1</text>
+<rect class="box" x="548" y="52" width="152" height="66" rx="8"/>
+<text class="h" x="624" y="80" text-anchor="middle">Resposta</text>
+<text class="s" x="624" y="98" text-anchor="middle">chega no WhatsApp</text>
+<path class="ar" d="M172,85 L190,85"/>
+<path class="ar" d="M348,85 L366,85"/>
+<path class="ar" d="M524,85 L542,85"/>
+<rect class="box" x="20" y="142" width="680" height="64" rx="8"/>
+<text class="h" x="36" y="166">Limites que o fluxo precisa respeitar</text>
+<text class="p" x="36" y="190">• 80 msg/s por número (Meta)</text>
+<text class="p" x="266" y="190">• 500 req/min no envio (Datafy)</text>
+<text class="p" x="500" y="190">• responder 200 em até 20 s</text>
 </svg>
 </div>
 <figcaption></figcaption>
 </figure>
 
 <h2 id="como-o-la-o-se-forma">Como o laço se forma</h2>
-<p>Vale acompanhar a sequência devagar, porque ela é contraintuitiva.</p>
-<p><strong>Rodada 0.</strong> O cliente te manda "oi". Chega um evento de mensagem. Seu fluxo responde.</p>
-<p><strong>Rodada 1.</strong> A sua resposta gera três eventos de status: enviada, entregue, lida. Os três chegam no mesmo webhook. Seu fluxo, que responde a tudo que chega, responde três vezes.</p>
-<p><strong>Rodada 2.</strong> Aquelas três mensagens geram nove status. Nove respostas.</p>
-<p><strong>Rodada 3.</strong> Vinte e sete status. Vinte e sete respostas.</p>
-<p><strong>Rodada 4.</strong> Oitenta e uma.</p>
-<p>Na descrição dele, olhando o próprio fluxo: <em>"para cada um desses três web hooks ele iria enviar uma nova mensagem que iria voltar nove web hooks. E para cada um desses nove web hooks ele ia enviar mais isso vezes três."</em></p>
-<p>E o cliente, do outro lado, está recebendo tudo isso. Ele bloqueia, e provavelmente denuncia. Aí o problema deixa de ser técnico: <a href="/qualidade-do-numero-whatsapp">bloqueio e denúncia são exatamente o que derruba a qualidade do número</a>.</p>
-<h2 id="a-prote-o-que-uma-linha">A proteção, que é uma linha</h2>
-<p>O objeto <code>messages</code> <strong>não existe</strong> no evento de status. Essa é a chave.</p>
-<p>Então, se você lê o remetente de dentro dele, o passo simplesmente falha quando chega um status:</p>
-<p><code>{{ $json.entry[0].changes[0].value.messages[0].from }}</code></p>
-<p>Um erro no fluxo é irritante e é infinitamente mais barato que um laço exponencial. <strong>Falha ruidosa é o comportamento desejado.</strong></p>
-<p>Quem lê o telefone do topo do payload, ou de <code>contacts</code>, não tem essa rede, porque esses caminhos podem existir em eventos que não são mensagem.</p>
+<p>No vídeo, o Israel explica o mecanismo antes de executar o fluxo: <em>"quando você envia uma mensagem, a meta vai enviar para você o status da mensagem, dizendo o que aconteceu, se ela foi entregue, se ela foi lida, se ela foi enviada. E se eu recebo o status da mensagem e respondo enviando uma mensagem nova, eu tô respondendo uma notificação da meta, e aí ela vai enviar para essa nova mensagem um novo status, que eu vou responder com uma mensagem que vai enviar novo status, vai bloquear o teu número."</em></p>
+<p>E, depois de ver os status chegando, a conta: <em>"para cada um desses três web hooks ele iria enviar uma nova mensagem que iria voltar nove web hooks. E para cada um desses nove web hooks ele ia enviar mais isso vezes três, ou seja, um negócio exponencial."</em></p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
   <span class="thumb">
@@ -680,55 +698,62 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 14:47 ele interrompe a montagem do fluxo para avisar disso **antes** de executar, e explica por quê. Em 19:05 os três status chegam, o passo quebra em cima deles, e ele comemora o erro: era exatamente a proteção funcionando.</figcaption>
+<figcaption>Em 14:47 ele interrompe a montagem para avisar do laço, em 18:05 mostra os três status chegando, e em 19:05 explica por que o fluxo dele não entrou em laço.</figcaption>
 </figure>
 
-<h2 id="a-prote-o-melhor-um-desvio-na-entrada">A proteção melhor: um desvio na entrada</h2>
-<p>Falhar funciona. Separar funciona melhor, porque você fica com as duas coisas.</p>
-<p>Coloque uma condição no início do fluxo que pergunta: <strong>existe objeto de mensagem no payload?</strong></p>
-<p><strong>Se existe</strong>, é mensagem de cliente. Segue para o seu tratamento.</p>
-<p><strong>Se não existe</strong>, é status, ou evento de conta, ou outro tipo. Segue para um caminho que <strong>só grava</strong>, nunca responde.</p>
-<p>Com isso você para de perder o status, que é informação valiosa: é ele que diz <a href="/tres-status-da-mensagem-whatsapp">se a mensagem foi entregue e por que falhou</a>. Muita gente, depois de levar o susto, passa a descartar status inteiro, e aí perde a única fonte de verdade sobre entrega.</p>
-<h2 id="onde-isso-aparece-mais">Onde isso aparece mais</h2>
-<p><strong>Ferramentas de fluxo visual.</strong> É onde acontece com mais frequência, porque o nó de webhook não distingue tipo de evento e o caminho natural é ligar o gatilho direto no envio.</p>
-<p><strong>Agentes de IA.</strong> O modelo recebe qualquer coisa que chega e gera uma resposta, porque é isso que ele faz. Sem filtro antes, ele conversa com as notificações da plataforma.</p>
-<p><strong>Respostas automáticas.</strong> Autorresposta fora do horário, confirmação de recebimento, menu inicial. Todas respondem sem olhar o que chegou.</p>
-<p><strong>Integração feita às pressas.</strong> O primeiro protótipo funciona no teste, porque no teste você mandou uma mensagem e olhou o resultado, sem esperar o ciclo completo de status.</p>
-<h2 id="o-que-fazer-se-j-aconteceu">O que fazer se já aconteceu</h2>
-<p><strong>1. Desligue o fluxo.</strong> Não pause o envio, desligue o gatilho. Enquanto ele estiver ativo, os status pendentes continuam chegando.</p>
-<p><strong>2. Não tente "consertar rodando".</strong> Corrigir o filtro com o fluxo ligado, com fila acumulada, produz mais uma rodada.</p>
-<p><strong>3. Veja o tamanho do estrago.</strong> Quantas mensagens saíram, e para quantas pessoas. Se foi para poucos contatos, o dano é recuperável.</p>
-<p><strong>4. Olhe a qualidade do número.</strong> Se ela caiu, <a href="/qualidade-do-numero-whatsapp">reduza volume e pare disparo</a> por alguns dias.</p>
-<p><strong>5. Se puder, avise as pessoas.</strong> Uma mensagem reconhecendo o erro, uma só, costuma reduzir denúncia. E ela é enviada por alguém, à mão, não pelo fluxo.</p>
-<p><strong>6. Só religue com o filtro na entrada.</strong> E teste mandando uma mensagem para você mesmo, esperando o ciclo completo de status antes de declarar resolvido.</p>
-<h2 id="o-primo-desse-problema-reentrega">O primo desse problema: reentrega</h2>
-<p>Vale conhecer, porque o sintoma parece igual e a causa é outra.</p>
-<p>Se o seu endpoint demora a responder, ou responde com erro, a plataforma <strong>reentrega</strong> o mesmo evento. Aí você processa a mesma mensagem duas vezes, e responde duas vezes.</p>
-<p>Não é exponencial, é duplicação, e a correção é diferente: responder rápido, antes de processar, e guardar o identificador da mensagem para ignorar o que já foi visto. <a href="/webhook-chega-duplicado">O tratamento completo está aqui</a>.</p>
+<h2 id="a-prote-o-que-ele-usou">A proteção que ele usou</h2>
+<p>No nó que envia a resposta, o destinatário vem do objeto <code>messages</code>, e não do topo do payload nem de <code>contacts</code>. Na fala dele: <em>"por isso que aqui eu coloquei para você pegar do campo messages aqui, por segurança, porque quando ela envia um status não existe o campo messages. Aí ele dá erro."</em></p>
+<p>Ou seja: quando chega um status, o passo não encontra o remetente e falha. O fluxo para ali, em vez de responder.</p>
+<h2 id="a-prote-o-melhor-um-filtro">A proteção melhor: um filtro</h2>
+<p>No mesmo trecho, a recomendação é explícita: <em>"e isso aqui não faça, tá? Ou coloque um filtro."</em> Um nó condicional logo depois do webhook, que só deixa seguir para o envio quando o payload tem <code>messages</code>.</p>
+<p>No vídeo sobre <code>user_id</code>, ao repetir o teste respondendo pelo identificador, o conselho volta: <em>"por isso que você tem que colocar um filtro aí no teu projeto para não responder status de mensagem, responder apenas mensagens."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=fhz6n2s91-g" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/fhz6n2s91-g/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar user name (user id) na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como usar user name (user id) na API oficial do WhatsApp</b><span>Canal DATA7 · 5 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 04:54 os três status chegam de novo e ele reforça a necessidade do filtro.</figcaption>
+</figure>
+
+<h2 id="o-mesmo-cuidado-com-user-id">O mesmo cuidado com user_id</h2>
+<p>Quando você passa a responder pelo <code>user_id</code>, o valor também deve vir de dentro de <code>messages</code>. No vídeo: <em>"então dentro do objeto messages, não aqui em cima, tá? Para não dar o loop que eu falei na aula anterior."</em> <a href="/o-telefone-esta-sumindo-do-webhook">Como responder pelo user_id está aqui</a>.</p>
+<h2 id="como-ver-os-status-que-chegam">Como ver os status que chegam</h2>
+<p>No painel da Datafy, o log em tempo real mostra os eventos de cada envio. No vídeo sobre logs, ao enviar pela API: <em>"quando eu envio a mensagem pela API, eu vou receber vários web hooks."</em> <a href="/ver-payload-das-mensagens-em-tempo-real">Como usar o log está aqui</a>.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=LIT4FxgqHhE" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/LIT4FxgqHhE/maxresdefault.jpg" alt="Miniatura do vídeo: Logs de mensagens em tempo real na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Logs de mensagens em tempo real na API oficial do WhatsApp</b><span>Canal DATA7 · 3 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 01:59 ele envia pela API e abre os eventos de status que chegaram para aquela mensagem.</figcaption>
+</figure>
+
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Por que os status chegam no mesmo webhook das mensagens?</h3>
-<p>Porque ambos são eventos do mesmo campo de assinatura. Não existe endereço separado, e é por isso que o filtro é responsabilidade sua.</p>
-<h3>Posso simplesmente não assinar os status?</h3>
-<p>Eles vêm junto com o campo de mensagens. E, mesmo que fosse possível separar, você não ia querer: sem status você não sabe se a mensagem chegou nem por que falhou.</p>
-<h3>O filtro resolve sozinho?</h3>
-<p>Resolve esse laço. Continua valendo tratar reentrega e não responder a evento de conta, que é outro tipo que chega ali.</p>
-<h3>Se eu uso agente de IA, muda alguma coisa?</h3>
-<p>Aumenta a importância, porque o modelo responde a qualquer entrada. O filtro precisa vir <strong>antes</strong> do modelo, e não depender de ele decidir não responder.</p>
+<h3>Por que os status chegam no mesmo webhook?</h3>
+<p>Porque vêm pelo mesmo evento, <code>messages</code>. <a href="/tres-status-da-mensagem-whatsapp">Os três status estão explicados aqui</a>.</p>
+<h3>Quantos eventos cada mensagem gera?</h3>
+<p>Enviada, entregue e lida, este último só se a pessoa tiver a confirmação de leitura ativada. Falha gera um evento só.</p>
+<h3>Ler de dentro de messages resolve?</h3>
+<p>Resolve o laço, porque o passo falha quando chega um status. O filtro na entrada é a forma recomendada no vídeo.</p>
+<h3>Isso vale fora do n8n?</h3>
+<p>O mecanismo é do webhook, não da ferramenta. Qualquer código que responde a todo evento recebido tem o mesmo problema.</p>
 <h3>Como testo se estou protegido?</h3>
-<p>Mande uma mensagem para o seu número pelo fluxo e espere o ciclo completo de status. Se nada além da sua mensagem sair, o filtro está funcionando.</p>
-<h3>Isso pode bloquear o número mesmo com poucos contatos?</h3>
-<p>O volume por si só já é anômalo, e a reação de quem recebe é o que mais pesa. Poucos contatos recebendo dezenas de mensagens produzem bloqueio e denúncia com muita facilidade.</p>
+<p>Mande uma mensagem para o número, deixe o fluxo responder, e confira que só uma resposta saiu depois que os status chegaram.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Não há decisão a tomar aqui: se o seu fluxo responde algo que chega no webhook, ele precisa do filtro. É uma condição no início, e leva cinco minutos.</p>
-<p>O que vale escolher é entre as duas formas. <strong>Falhar</strong> em cima do status protege e descarta informação. <strong>Desviar</strong> protege e guarda o status para o seu controle de entrega. A segunda dá um pouco mais de trabalho e é a que você vai querer quando começar a se perguntar quantas mensagens realmente chegaram.</p>
-<div class="cta"><h3>Confira o seu fluxo agora, antes do próximo disparo</h3><p>Abra o primeiro passo e veja de onde ele lê o remetente. Se não for de dentro do objeto de mensagem, você está a um envio de distância de descobrir isso do jeito caro.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Se o seu fluxo envia alguma coisa em resposta a um webhook, coloque o filtro antes de qualquer outra lógica. É uma condição, e ela separa uma resposta de uma sequência exponencial de mensagens saindo do seu número.</p>
+<div class="cta"><h3>Confira de onde o seu fluxo lê o remetente</h3><p>Abra o passo que envia a resposta. Se o destinatário não vem de dentro de messages, coloque o filtro antes de publicar o fluxo de novo.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/tres-status-da-mensagem-whatsapp">Os três status da mensagem: enviada, entregue e lida</a></li>
+<li><a href="/tres-status-da-mensagem-whatsapp">Os três status da mensagem no WhatsApp</a></li>
 <li><a href="/whatsapp-api-oficial-n8n">WhatsApp API oficial no n8n</a></li>
-<li><a href="/webhook-chega-duplicado">Meu webhook chega duplicado</a></li>
-<li><a href="/ver-payload-das-mensagens-em-tempo-real">Ver o payload cru das mensagens em tempo real</a></li>
+<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens no seu servidor</a></li>
+<li><a href="/o-telefone-esta-sumindo-do-webhook">Como usar o user_id no lugar do telefone</a></li>
 </ul>
 </article>
 
@@ -745,11 +770,10 @@ footer p{margin:0 0 .5rem}
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
         <li><a href="#como-o-la-o-se-forma">Como o laço se forma</a></li>
-        <li><a href="#a-prote-o-que-uma-linha">A proteção, que é uma linha</a></li>
-        <li><a href="#a-prote-o-melhor-um-desvio-na-entrada">A proteção melhor: um desvio na...</a></li>
-        <li><a href="#onde-isso-aparece-mais">Onde isso aparece mais</a></li>
-        <li><a href="#o-que-fazer-se-j-aconteceu">O que fazer se já aconteceu</a></li>
-        <li><a href="#o-primo-desse-problema-reentrega">O primo desse problema: reentrega</a></li>
+        <li><a href="#a-prote-o-que-ele-usou">A proteção que ele usou</a></li>
+        <li><a href="#a-prote-o-melhor-um-filtro">A proteção melhor: um filtro</a></li>
+        <li><a href="#o-mesmo-cuidado-com-user-id">O mesmo cuidado com user_id</a></li>
+        <li><a href="#como-ver-os-status-que-chegam">Como ver os status que chegam</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

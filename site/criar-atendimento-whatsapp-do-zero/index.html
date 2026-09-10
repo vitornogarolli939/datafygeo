@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Como criar um atendimento de WhatsApp do zero com a API oficial</title>
-<meta name="description" content="As cinco camadas de um sistema de conversa, na ordem em que elas devem ser construídas, e as decisões de banco e tempo real que ficam caras se você errar no começo.">
+<title>Como criar um WhatsApp Web do zero com a API oficial</title>
+<meta name="description" content="O projeto do tutorial completo do canal DATA7: interface, banco com duas tabelas, webhook, mídia, envio, tempo real e publicação, com as decisões que aparecem no caminho.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/criar-atendimento-whatsapp-do-zero">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -13,15 +13,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
-<meta property="og:title" content="Como criar um atendimento de WhatsApp do zero com a API oficial">
-<meta property="og:description" content="As cinco camadas de um sistema de conversa, na ordem em que elas devem ser construídas, e as decisões de banco e tempo real que ficam caras se você errar no começo.">
+<meta property="og:title" content="Como criar um WhatsApp Web do zero com a API oficial">
+<meta property="og:description" content="O projeto do tutorial completo do canal DATA7: interface, banco com duas tabelas, webhook, mídia, envio, tempo real e publicação, com as decisões que aparecem no caminho.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/criar-atendimento-whatsapp-do-zero">
-<meta property="article:published_time" content="2026-09-09">
-<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Como criar um atendimento de WhatsApp do zero com a API oficial">
-<meta name="twitter:description" content="As cinco camadas de um sistema de conversa, na ordem em que elas devem ser construídas, e as decisões de banco e tempo real que ficam caras se você errar no começo.">
+<meta name="twitter:title" content="Como criar um WhatsApp Web do zero com a API oficial">
+<meta name="twitter:description" content="O projeto do tutorial completo do canal DATA7: interface, banco com duas tabelas, webhook, mídia, envio, tempo real e publicação, com as decisões que aparecem no caminho.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -112,18 +113,18 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Como criar um atendimento de WhatsApp do zero com a API oficial"
+          "name": "Como criar um WhatsApp Web do zero com a API oficial"
         }
       ]
     },
     {
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/criar-atendimento-whatsapp-do-zero#article",
-      "headline": "Como criar um atendimento de WhatsApp do zero com a API oficial",
-      "description": "As cinco camadas de um sistema de conversa, na ordem em que elas devem ser construídas, e as decisões de banco e tempo real que ficam caras se você errar no começo.",
+      "headline": "Como criar um WhatsApp Web do zero com a API oficial",
+      "description": "O projeto do tutorial completo do canal DATA7: interface, banco com duas tabelas, webhook, mídia, envio, tempo real e publicação, com as decisões que aparecem no caminho.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,13 +133,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/criar-atendimento-whatsapp-do-zero",
       "citation": [
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-scoped-user-ids/",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/media",
-        "https://app.datafyapi.com.br/docs",
         "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
-        "https://www.youtube.com/watch?v=vGovcR8W5g8"
+        "https://www.youtube.com/watch?v=vGovcR8W5g8",
+        "https://www.youtube.com/watch?v=fhz6n2s91-g",
+        "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -147,50 +146,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Vale a pena construir em vez de usar pronto?",
+          "name": "Quais ferramentas o tutorial usa?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Se a necessidade é atender com uma equipe, não. Uma caixa de entrada pronta entrega fila, atribuição e histórico hoje. Construir se paga quando a conversa faz parte do produto, ou quando você vai revender."
+            "text": "Claude Design, VS Code com Claude Code ou Codex, Nuxt, Supabase, Pusher, Datafy API e Vercel."
           }
         },
         {
           "@type": "Question",
-          "name": "Quantas tabelas eu preciso?",
+          "name": "Quantas tabelas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Duas para o essencial: conversas e mensagens. Multiatendimento acrescenta agentes, atribuição e estado da conversa, e isso pode vir depois."
+            "text": "Duas: conversas e mensagens."
           }
         },
         {
           "@type": "Question",
-          "name": "Como faço multinúmero?",
+          "name": "O código está disponível?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Guardando o identificador do número em todas as tabelas desde o começo, e usando a chave composta do contato. Acrescentar isso depois é migração de dados, não mudança de código."
+            "text": "Está, no GitHub, com as instruções, o SQL das tabelas e a referência de design."
           }
         },
         {
           "@type": "Question",
-          "name": "Como testo o webhook antes de publicar?",
+          "name": "Por que as consultas ao banco saem do servidor?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Com um túnel que expõe a sua porta local. Cuidado com três coisas: liberar o domínio do túnel no framework, o endereço muda a cada vez que ele sobe, e trocar para a URL de produção ao publicar."
+            "text": "Porque as tabelas ficam sem acesso público, e só a chave de serviço, que nunca vai para o navegador, consegue ler."
           }
         },
         {
           "@type": "Question",
-          "name": "Preciso guardar o payload inteiro?",
+          "name": "O projeto funciona com vários números?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vale muito a pena. É o que permite reprocessar quando um campo novo aparecer, e o custo de armazenamento é pequeno perto de perder histórico."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "E se eu quiser vender isso para outros?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Aí entra o cliente conectar o próprio número, e isso muda os requisitos do fornecedor. Está detalhado aqui."
+            "text": "Não. É um número, configurado por variável de ambiente."
           }
         }
       ]
@@ -204,25 +195,6 @@
       "uploadDate": "2026-09-09",
       "contentUrl": "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
       "embedUrl": "https://www.youtube.com/embed/HVRCBsJI_Eo",
-      "creator": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "publisher": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "isPartOf": {
-        "@id": "https://conteudo.datafyapi.com.br/criar-atendimento-whatsapp-do-zero#article"
-      }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://conteudo.datafyapi.com.br/criar-atendimento-whatsapp-do-zero#video-vGovcR8W5g8",
-      "name": "Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens",
-      "description": "Webhook de teste e de producao, envio pelo no de HTTP, e o laco de status que derruba numero",
-      "thumbnailUrl": "https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg",
-      "uploadDate": "2026-09-09",
-      "contentUrl": "https://www.youtube.com/watch?v=vGovcR8W5g8",
-      "embedUrl": "https://www.youtube.com/embed/vGovcR8W5g8",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -574,11 +546,11 @@ footer p{margin:0 0 .5rem}
   <div class="hero-grid">
     <div>
       <p class="eyebrow">Implementação</p>
-      <h1>Como criar um atendimento de WhatsApp do zero com a API oficial</h1>
+      <h1>Como criar um WhatsApp Web do zero com a API oficial</h1>
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -603,90 +575,71 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como criar um atendimento de WhatsApp do zero com a API oficial</h1>
-<p><strong>Resposta curta:</strong> um sistema de conversa em cima da API oficial tem <strong>cinco camadas</strong>, e a ordem em que você as constrói importa mais que a escolha das ferramentas. Interface, banco, webhook, tempo real e envio.</p>
-<p>Antes de tudo, vale a pergunta que economiza semanas: <strong>você precisa construir?</strong> Se a necessidade é atender clientes com uma equipe, <a href="/whatsapp-api-oficial-chatwoot">uma caixa de entrada pronta resolve em uma tarde</a>. Construir se justifica quando o atendimento é parte do seu produto, quando a conversa precisa conviver com o seu domínio, ou quando você vai revender isso.</p>
+<h1>Como criar um WhatsApp Web do zero com a API oficial</h1>
+<p><strong>Resposta curta:</strong> no tutorial completo do canal DATA7, o Israel Henrique, CTO da Datafy, constrói uma tela de conversa parecida com o WhatsApp Web, funcionando com a API oficial em coexistência. O projeto tem três fases: <strong>interface</strong>, <strong>banco de dados</strong> e <strong>conexão com a API</strong>. A pilha: Claude Design para o layout, VS Code com Claude Code ou Codex, Nuxt, Supabase com duas tabelas, Pusher para tempo real, a Datafy API para o WhatsApp e a Vercel para publicar. O código está público no GitHub.</p>
+<p>O objetivo declarado não é um produto comercial: <em>"o foco é entender o funcionamento da API, enviar e receber mensagens."</em></p>
 <div class="stats">
-  <div class="stat"><b>5 camadas</b><span>e a ordem entre elas importa</span></div>
-  <div class="stat"><b>2 tabelas</b><span>conversas e mensagens, no mínimo</span></div>
-  <div class="stat"><b>3 status</b><span>por mensagem enviada, para tratar</span></div>
-  <div class="stat"><b>1 chave</b><span>composta, e escolhida no começo</span></div>
+  <div class="stat"><b>3 fases</b><span>interface, banco e API</span></div>
+  <div class="stat"><b>2 tabelas</b><span>conversas e mensagens</span></div>
+  <div class="stat"><b>20 e 50</b><span>conversas e mensagens por página</span></div>
+  <div class="stat"><b>100</b><span>conexões simultâneas no plano grátis do Pusher</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li><strong>Construa de baixo para cima, mas com dados reais.</strong> Modelar o banco antes de ver um payload de verdade é o erro que mais custa refação.</li>
-<li><strong>A chave do contato é composta</strong>, e escolher isso no primeiro dia evita uma migração dolorosa.</li>
-<li><strong>Guarde o payload cru</strong> antes de interpretar. É o que permite reprocessar quando aparecer um campo novo.</li>
-<li><strong>Webhook não é tempo real.</strong> Ele entrega no seu servidor, e levar isso até a tela é outra camada.</li>
-<li><strong>Nunca dê à IA permissão de escrita no seu banco.</strong> Leitura no máximo, e as alterações passam por você.</li>
+<li><strong>Comece pela interface, com dados falsos,</strong> e só depois crie as tabelas.</li>
+<li><strong>Modele o banco a partir de payloads reais</strong>, copiados do log da Datafy.</li>
+<li><strong>Não dê à IA controle do banco.</strong> Ela gera o SQL; você executa.</li>
+<li><strong>Consulta ao banco sai do servidor</strong>, com a chave de serviço, nunca do navegador.</li>
+<li><strong>Webhook primeiro, tempo real depois.</strong> E, ao publicar, troque a URL do webhook pela de produção.</li>
 </ul>
 <figure>
 <div class="diagram">
-<svg viewBox="0 0 680 260" role="img" aria-labelledby="d1t d1d" style="width:100%;height:auto">
-  <title id="d1t">Como a API não oficial e a API oficial se conectam ao WhatsApp</title>
-  <desc id="d1d">Na API não oficial, o seu servidor fala com uma sessão emulada de WhatsApp Web, que se conecta ao WhatsApp por um elo frágil que quebra a cada atualização do aplicativo. Na API oficial, o seu servidor fala com um endpoint autorizado da Meta, que se conecta ao WhatsApp por um caminho contratual estável.</desc>
+<svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" class="d">
   <style>
-    .bx{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
-    .bx-r{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .bx-g{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .lb{font:600 12px system-ui,-apple-system,sans-serif;fill:var(--fg)}
-    .sm{font:11px system-ui,-apple-system,sans-serif;fill:var(--muted)}
-    .hd{font:700 11px system-ui,-apple-system,sans-serif;letter-spacing:.06em}
-    .ln{stroke:var(--muted);stroke-width:1.5;fill:none}
-    .ln-r{stroke:var(--danger);stroke-width:1.5;fill:none;stroke-dasharray:5 4}
-    .ln-g{stroke:var(--accent);stroke-width:2;fill:none}
+    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    .t{font-size:15px;font-weight:600;fill:var(--fg)}
+    .h{font-size:13px;font-weight:600;fill:var(--fg)}
+    .p{font-size:12px;fill:var(--muted)}
+    .s{font-size:11px;fill:var(--muted)}
+    .ok{fill:var(--accent)}
+    .no{fill:var(--danger)}
+    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
+    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
+    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
   </style>
-  <defs>
-    <marker id="a1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-      <path d="M0,0 L7,3.5 L0,7 z" fill="var(--muted)"/></marker>
-    <marker id="a2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-      <path d="M0,0 L7,3.5 L0,7 z" fill="var(--accent)"/></marker>
-  </defs>
-
-  <text x="0" y="14" class="hd" fill="var(--danger)">NÃO OFICIAL (MODO BAILEYS)</text>
-  <rect x="0" y="26" width="140" height="46" rx="8" class="bx"/>
-  <text x="70" y="46" class="lb" text-anchor="middle">Seu servidor</text>
-  <text x="70" y="61" class="sm" text-anchor="middle">n8n, código</text>
-  <path class="ln" d="M144 49 H196" marker-end="url(#a1)"/>
-  <rect x="200" y="26" width="170" height="46" rx="8" class="bx-r"/>
-  <text x="285" y="45" class="lb" text-anchor="middle">Sessão WhatsApp Web</text>
-  <text x="285" y="60" class="sm" text-anchor="middle">emulada num servidor</text>
-  <path class="ln-r" d="M374 49 H466"/>
-  <text x="420" y="40" class="sm" text-anchor="middle" fill="var(--danger)">frágil</text>
-  <path d="M416 43 l8 12 M424 43 l-8 12" stroke="var(--danger)" stroke-width="2"/>
-  <rect x="470" y="26" width="130" height="46" rx="8" class="bx"/>
-  <text x="535" y="53" class="lb" text-anchor="middle">WhatsApp</text>
-  <text x="0" y="94" class="sm">App atualizou, a sessão cai. Detectou automação, o número é banido, sem recurso.</text>
-
-  <line x1="0" y1="118" x2="680" y2="118" stroke="var(--line)" stroke-width="1"/>
-
-  <text x="0" y="146" class="hd" fill="var(--accent)">OFICIAL (CLOUD API)</text>
-  <rect x="0" y="158" width="140" height="46" rx="8" class="bx"/>
-  <text x="70" y="178" class="lb" text-anchor="middle">Seu servidor</text>
-  <text x="70" y="193" class="sm" text-anchor="middle">n8n, código</text>
-  <path class="ln-g" d="M144 181 H196" marker-end="url(#a2)"/>
-  <rect x="200" y="158" width="170" height="46" rx="8" class="bx-g"/>
-  <text x="285" y="177" class="lb" text-anchor="middle">Endpoint autorizado</text>
-  <text x="285" y="192" class="sm" text-anchor="middle">Meta Cloud API</text>
-  <path class="ln-g" d="M374 181 H466" marker-end="url(#a2)"/>
-  <text x="420" y="172" class="sm" text-anchor="middle" fill="var(--accent)">contratual</text>
-  <rect x="470" y="158" width="130" height="46" rx="8" class="bx"/>
-  <text x="535" y="185" class="lb" text-anchor="middle">WhatsApp</text>
-  <text x="0" y="226" class="sm">Regras públicas, template aprovado, qualidade monitorada. O elo não quebra sozinho.</text>
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
+<text class="t" x="360" y="26" text-anchor="middle">Como o webhook chega no seu servidor</text>
+<rect class="box" x="30" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="115" y="80" text-anchor="middle">Cliente</text>
+<text class="s" x="115" y="100" text-anchor="middle">escreve no WhatsApp</text>
+<rect class="boxok" x="275" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="360" y="80" text-anchor="middle">Datafy API</text>
+<text class="s" x="360" y="100" text-anchor="middle">POST com o payload da Meta</text>
+<rect class="box" x="520" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="605" y="80" text-anchor="middle">Seu servidor</text>
+<text class="s" x="605" y="100" text-anchor="middle">responde 200 em até 20 s</text>
+<path class="ar" d="M205,87 L268,87"/>
+<path class="ar" d="M450,87 L513,87"/>
+<rect class="box" x="30" y="146" width="330" height="76" rx="8"/>
+<text class="h" x="46" y="170">Idempotência</text>
+<text class="p" x="46" y="192">Guarde o x-datafy-delivery-id</text>
+<text class="p" x="46" y="210">e ignore a entrega que já viu.</text>
+<rect class="box" x="380" y="146" width="310" height="76" rx="8"/>
+<text class="h" x="396" y="170">Como validar</text>
+<text class="p" x="396" y="192">x-datafy-signature-256, HMAC</text>
+<text class="p" x="396" y="210">de {timestamp}.{corpo cru}</text>
 </svg>
 </div>
-<figcaption><strong>As duas arquiteturas.</strong> A não oficial põe um intermediário frágil no meio do caminho. É ele que quebra e é ele que a Meta detecta. A oficial fala direto com um endpoint autorizado.</figcaption>
+<figcaption></figcaption>
 </figure>
 
-<h2 id="a-ordem-interface-banco-integra-o">A ordem: interface, banco, integração</h2>
-<p>A sequência que funciona é contraintuitiva, porque começa pela parte visível.</p>
-<p><strong>1. Interface com dados falsos.</strong> Monte a tela com lista de conversas de um lado e mensagens do outro, preenchida com dados inventados. Parece perda de tempo e é o contrário: é aqui que você descobre quais campos a tela realmente precisa, e é bem mais barato descobrir isso antes do banco.</p>
-<p><strong>2. Banco, modelado a partir de payloads reais.</strong> Duas tabelas resolvem o essencial: <strong>conversas</strong> e <strong>mensagens</strong>. E o passo que muda tudo: antes de escrever o esquema, <strong>colete payloads de verdade</strong>. Mande uma mensagem de texto, um áudio, uma imagem, mande uma pelo celular e uma pela API, e guarde cada evento.</p>
-<p>Modelar a partir de payload real evita duas coisas que sempre acontecem: campos que você inventou e não existem, e campos que existem e você não previu. No projeto gravado, a primeira modelagem trouxe coluna de avatar, que a API oficial não manda, e esqueceu a legenda de mídia, que ela manda. Os dois erros aparecem em minutos quando o payload está na mesa.</p>
-<p><strong>3. Webhook, gravando.</strong> Sem tempo real ainda, sem enfeite: recebe, identifica ou cria a conversa, grava a mensagem. Dá para testar sozinho, sem depender de mais nada, e é a fundação de tudo o que vem depois.</p>
-<p><strong>4. Tempo real.</strong> Só agora. A mensagem já está gravada; falta empurrá-la para a tela sem recarregar.</p>
-<p><strong>5. Envio.</strong> O caminho inverso, e o mais simples dos cinco.</p>
+<h2 id="fase-1-a-interface">Fase 1: a interface</h2>
+<p>A tela tem duas áreas: lista de conversas à esquerda e mensagens à direita, com o campo de digitação flutuante. O layout foi gerado no Claude Design a partir de um print do WhatsApp Web, e depois transformado em componentes Vue no projeto Nuxt, com Tailwind.</p>
+<p>Uma prática que ele adota nessa fase e explica o motivo: criar um arquivo de documentação com o roteiro do projeto. <em>"Se eu iniciar uma sessão nova depois, a gente consegue ter um contexto."</em> Mais tarde no vídeo, quando uma ferramenta de IA trava, ele troca por outra, e o arquivo de roteiro é o que permite continuar de onde parou.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
   <span class="thumb">
@@ -695,70 +648,91 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Duas horas e vinte construindo exatamente isso, do design ao deploy. A coleta de payloads reais está em 45:12, a modelagem em 52:05, o webhook em 1:33:24, a mídia em 1:45:21, e o tempo real em 2:08:19. O código do projeto está público.</figcaption>
+<figcaption>Em 03:43 ele apresenta as ferramentas, em 12:08 começa o layout, e em 41:57 cria o arquivo de roteiro do projeto.</figcaption>
 </figure>
 
-<h2 id="as-decis-es-de-modelagem-que-ficam-caras">As decisões de modelagem que ficam caras</h2>
-<p>Quatro escolhas que são baratas no começo e dolorosas depois.</p>
-<p><strong>A chave do contato é composta.</strong> O identificador da pessoa que vem no payload <strong>não é global</strong>: ele identifica a relação entre aquela pessoa e a <strong>sua conta</strong>. A mesma pessoa falando com duas empresas tem dois identificadores. Guarde o par, identificador mais o número da sua conta que recebeu. <a href="/o-telefone-esta-sumindo-do-webhook">O detalhe está aqui</a>, e a hora de acertar é antes do segundo número entrar.</p>
-<p><strong>Guarde o payload cru.</strong> Uma coluna com o evento inteiro, ao lado dos campos que você extraiu. Quando aparecer um campo novo que você quer, dá para reprocessar. Sem isso, o histórico daquele período não tem como ser recuperado.</p>
-<p><strong>Separe enviada de entregue.</strong> São estados diferentes, e juntar os dois é o que faz relatório mentir. Cada mensagem enviada gera três eventos de status, e o painel precisa refletir isso.</p>
-<p><strong>Pense no apagamento em cascata antes de precisar.</strong> Apagar uma conversa que apaga mil mensagens junto trava. Decida se as mensagens somem com a conversa ou se a exclusão é feita em lote, e decida isso enquanto a base é pequena.</p>
-<p>As quatro decisões acima têm um detalhamento próprio, com as duas tabelas escritas campo a campo e o que fazer com cada uma: <a href="/modelar-banco-de-dados-whatsapp">como modelar o banco de dados de um atendimento de WhatsApp</a>.</p>
-<h2 id="o-webhook-e-o-erro-que-derruba-o-n-mero">O webhook, e o erro que derruba o número</h2>
-<p>Esta é a parte em que um projeto de aprendizado vira um incidente, então vale o alerta separado.</p>
-<p>Cada mensagem que você envia gera <strong>três eventos de volta</strong>: enviada, entregue e lida. Eles chegam no <strong>mesmo endereço</strong> das mensagens de cliente. Se o seu código responde tudo que chega, cada resposta gera três status, cada status vira outra resposta, e isso multiplica exponencialmente.</p>
+<h2 id="fase-2-o-banco">Fase 2: o banco</h2>
+<p><strong>Primeiro, os payloads.</strong> Antes das tabelas, ele manda mensagens de tipos diferentes para o número (texto, áudio, imagem, mensagem pelo celular, envio pela API) e copia o payload de cada uma no bate-papo do painel da Datafy, para a IA saber quais campos existem. <a href="/ver-payload-das-mensagens-em-tempo-real">Como usar esse log está aqui</a>.</p>
+<p>Três observações dele sobre os payloads, que valem para qualquer projeto:</p>
+<p><strong><code>phone_number_id</code> é do número conectado</strong>, e não de quem mandou: <em>"sempre vai vir esse mesmo número, independente de quem mandou a mensagem."</em></p>
+<p><strong>Quem mandou está em <code>contacts</code></strong>, com nome, telefone e <code>user_id</code>, <em>"que é uma identificação nova do WhatsApp das APIs. No futuro o telefone não vai mais estar disponível."</em> <a href="/o-telefone-esta-sumindo-do-webhook">Sobre o user_id</a>.</p>
+<p><strong>Envio pela API volta só como status</strong>: <em>"ele não vai trazer para você o conteúdo da mensagem, ele vai trazer apenas o ID da mensagem com o status."</em></p>
+<p><strong>Duas tabelas.</strong> Conversas e mensagens, no Supabase. A primeira versão gerada pela IA trouxe colunas que ele considerou desnecessárias, como avatar (<em>"a API oficial não manda isso"</em>) e contador de não lidas, e esqueceu a legenda de mídia, que ele pediu para acrescentar. Como a primeira versão já tinha sido aplicada, a correção veio numa nova migration.</p>
+<p><strong>Não dê à IA controle do banco.</strong> A IA sugeriu aplicar as mudanças pela linha de comando, e ele recusou: <em>"o banco de dados é o coração do projeto. Se dá o controle para ele, ele pode fazer muita coisa errada. No máximo você dá permissão para ela ler o teu banco de dados, mas nunca para mexer."</em> A IA gera o SQL; ele cola e executa no editor do Supabase.</p>
 <figure>
-<a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
+<a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
   <span class="thumb">
-    <img src="https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg" alt="Miniatura do vídeo: Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens" loading="lazy" width="1280" height="720">
+    <img src="https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg" alt="Miniatura do vídeo: Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)" loading="lazy" width="1280" height="720">
     <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
   </span>
-  <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
+  <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 14:47 o aviso vem antes da execução, e em 19:05 os três status aparecem e a proteção funciona. A frase é literal: um fluxo assim bloqueia o número.</figcaption>
+<figcaption>Em 45:12 ele coleta os payloads, em 54:35 roda a migration, em 56:44 corta as colunas e pede a legenda, e em 1:00:14 explica por que não dá controle do banco para a IA.</figcaption>
 </figure>
 
-<p>A proteção é filtrar na entrada: <strong>leia o remetente de dentro do objeto de mensagem</strong>, que não existe no evento de status. Assim o processamento falha ao receber status, em vez de responder. Melhor ainda, uma condição no início que separa mensagem de status e manda status só para atualização de estado.</p>
-<p>E dois cuidados que valem desde o primeiro dia: <strong>responda antes de processar</strong>, porque o webhook precisa ser rápido, e <strong>trate reentrega</strong>, guardando o identificador da mensagem para não gravar duas vezes.</p>
-<h2 id="m-dia-duas-chamadas-e-um-prazo-curto">Mídia: duas chamadas, e um prazo curto</h2>
-<p>Mídia não vem no webhook. Vem um identificador, e uma URL que <strong>não abre</strong>: ela devolve erro de autenticação, o que faz parecer problema de token.</p>
-<p>O caminho é trocar o identificador pelo endereço real e baixar <strong>com o cabeçalho de autorização</strong> na segunda chamada. Esquecer o cabeçalho nessa última etapa é o erro mais repetido do assunto.</p>
-<p>E o prazo que muda o desenho: <strong>o identificador que chega no webhook expira em 7 dias</strong>, enquanto o arquivo que você sobe para enviar dura 30. Baixe no recebimento, não depois. <a href="/como-receber-midia-api-oficial-whatsapp">O passo a passo está aqui</a>.</p>
-<h2 id="tempo-real-cache-e-as-escolhas-de-infrae">Tempo real, cache e as escolhas de infraestrutura</h2>
-<p><strong>Tempo real</strong> é uma camada à parte: o webhook entrega no seu servidor, e levar até a tela aberta exige um canal próprio. Serviço gerenciado de mensagens resolve isso com pouca coisa, e a maioria tem faixa gratuita suficiente para começar.</p>
-<p>O fluxo fica: mensagem chega no webhook, o servidor grava no banco <strong>e</strong> publica no canal, e a tela recebe. Grave antes de publicar, senão uma tela aberta vê uma mensagem que ainda não existe no banco.</p>
-<p><strong>Cache no lado do cliente</strong> vira necessidade rápido. Sem ele, clicar entre duas conversas refaz a consulta toda vez, mesmo para dados que você acabou de carregar. Um estado local que guarda conversas e mensagens já carregadas resolve.</p>
-<p><strong>Paginação desde o começo.</strong> Conversas em lotes, mensagens em lotes, com carregamento conforme o usuário rola. Uma conversa com milhares de mensagens trava a tela se vier inteira.</p>
-<h2 id="seguran-a-dois-erros-que-aparecem-em-pro">Segurança: dois erros que aparecem em projeto novo</h2>
-<p><strong>Consulta ao banco sai do servidor, não do navegador.</strong> Se as suas tabelas estão protegidas, como devem estar, a chave que consegue lê-las é a de serviço, e ela nunca vai para o lado do cliente. O padrão é uma camada de API no servidor, e o navegador falando só com ela.</p>
-<p><strong>Não dê à IA controle de escrita no banco.</strong> Vale citar o princípio direto: <em>"eu não gosto de dar o controle do banco de dados. O banco de dados é o coração do projeto. No máximo você dá permissão para ela ler o teu banco de dados, mas nunca para mexer."</em> Deixe a ferramenta gerar o SQL e execute você, olhando o que está sendo feito.</p>
-<p>E um terceiro, que acontece com quem sabe o que está fazendo: <strong>arquivo de exemplo de variáveis de ambiente recebe o nome da variável, nunca o valor.</strong> Ele vai para o repositório público. Chave que apareceu em tela, vídeo ou captura está queimada, e rotacionar é barato.</p>
+<h2 id="seguran-a-chaves-e-pol-ticas">Segurança: chaves e políticas</h2>
+<p><strong>Chaves do Supabase.</strong> A chave anônima é pública; a de serviço <em>"nunca pode ser exposta em lugar nenhum. Ela fica só no servidor."</em> Como ela apareceu na gravação, ele gera uma nova.</p>
+<p><strong>O arquivo de exemplo de variáveis vai para o GitHub.</strong> A IA avisou que ele tinha colado credenciais no arquivo de exemplo, e ele reforça: <em>"não coloca aqui os valores, senão vai acontecer uma tragédia."</em></p>
+<p><strong>Política pública removida.</strong> A IA tinha criado políticas que deixavam as tabelas legíveis por qualquer um com a chave pública. Ele remove, deixa as tabelas sem acesso público, e manda a IA mover todas as consultas para uma pasta de API no servidor, usando a chave de serviço.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg" alt="Miniatura do vídeo: Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 1:01:52 ele configura as variáveis e fala das chaves, e em 1:08:45 remove as políticas públicas e move as consultas para o servidor.</figcaption>
+</figure>
+
+<h2 id="desempenho-pagina-o-e-cache">Desempenho: paginação e cache</h2>
+<p><strong>Paginação.</strong> Conversas de 20 em 20 e mensagens de 50 em 50, carregando mais conforme o usuário rola.</p>
+<p><strong>Mensagens começando de baixo.</strong> A lista abre na mensagem mais recente.</p>
+<p><strong>Cache local com Pinia.</strong> Sem cache, voltar para uma conversa já aberta refazia a consulta. Na fala dele: <em>"isso aqui é uma chamada ao banco de dados desnecessária."</em></p>
+<h2 id="fase-3-a-api">Fase 3: a API</h2>
+<p><strong>Webhook primeiro, sem tempo real.</strong> Um endpoint que recebe o evento, identifica ou cria a conversa e grava a mensagem. Para testar localmente, ngrok na porta da aplicação. <a href="/tunel-para-testar-webhook-local">O passo a passo do túnel, com o erro 403 que apareceu, está aqui</a>.</p>
+<p><strong>Variáveis da Datafy.</strong> URL base, token e <code>phone_number_id</code>. Sobre o token: <em>"caso seu token vazar, você vem aqui e muda."</em></p>
+<p><strong>Mídia.</strong> Uma função que chama a Datafy com o identificador da mídia e o token e recebe a URL para exibir. <a href="/como-receber-midia-api-oficial-whatsapp">Como receber mídia está aqui</a>.</p>
+<p><strong>Envio.</strong> O campo de digitação envia pela Datafy API; o status e o eco da mensagem chegam depois pelo webhook, sem duplicar. Os tiques azuis aparecem quando o status de leitura chega.</p>
+<p><strong>Tempo real com Pusher.</strong> O servidor recebe o webhook, grava e publica no Pusher, e a tela recebe. Sobre o custo: <em>"até 100 conexões simultâneas é gratuito."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg" alt="Miniatura do vídeo: Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 1:33:24 o webhook começa a gravar, em 1:52:03 a mídia, em 1:57:07 o envio pelo campo de digitação, e em 2:08:19 o Pusher.</figcaption>
+</figure>
+
+<h2 id="apagar-conversa-em-cascata">Apagar conversa em cascata</h2>
+<p>Ao apagar uma conversa, a tabela apagava as mensagens junto. Ele comenta o risco: <em>"se você tiver, por exemplo, digamos lá, 1000 mensagens numa conversa, ela vai deletar 1000 linhas. Isso pode travar."</em> A alternativa que ele mostra é remover o comportamento em cascata. Para o tamanho do projeto, ele mantém.</p>
+<h2 id="publicar">Publicar</h2>
+<p>Código no GitHub, projeto importado na Vercel, variáveis de ambiente coladas de uma vez. E o passo que não pode faltar: trocar a URL do webhook no painel da Datafy, do túnel para a de produção. Enquanto o túnel estava ligado, as mensagens continuavam chegando por ele.</p>
+<h2 id="os-limites-do-projeto">Os limites do projeto</h2>
+<p>É um número só, configurado por variável de ambiente. Na fala dele: <em>"se você quiser algo mais robusto, mais elaborado, para ter vários números e de forma dinâmica selecionar os números, aí já é outra coisa."</em></p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Vale a pena construir em vez de usar pronto?</h3>
-<p>Se a necessidade é atender com uma equipe, não. Uma caixa de entrada pronta entrega fila, atribuição e histórico hoje. Construir se paga quando a conversa faz parte do produto, ou quando você vai revender.</p>
-<h3>Quantas tabelas eu preciso?</h3>
-<p>Duas para o essencial: conversas e mensagens. Multiatendimento acrescenta agentes, atribuição e estado da conversa, e isso pode vir depois.</p>
-<h3>Como faço multinúmero?</h3>
-<p>Guardando o identificador do número em todas as tabelas desde o começo, e usando a chave composta do contato. Acrescentar isso depois é migração de dados, não mudança de código.</p>
-<h3>Como testo o webhook antes de publicar?</h3>
-<p>Com um túnel que expõe a sua porta local. Cuidado com três coisas: liberar o domínio do túnel no framework, o endereço muda a cada vez que ele sobe, e trocar para a URL de produção ao publicar.</p>
-<h3>Preciso guardar o payload inteiro?</h3>
-<p>Vale muito a pena. É o que permite reprocessar quando um campo novo aparecer, e o custo de armazenamento é pequeno perto de perder histórico.</p>
-<h3>E se eu quiser vender isso para outros?</h3>
-<p>Aí entra o cliente conectar o próprio número, e isso muda os requisitos do fornecedor. <a href="/cliente-conecta-o-whatsapp-dele-no-meu-saas">Está detalhado aqui</a>.</p>
+<h3>Quais ferramentas o tutorial usa?</h3>
+<p>Claude Design, VS Code com Claude Code ou Codex, Nuxt, Supabase, Pusher, Datafy API e Vercel.</p>
+<h3>Quantas tabelas?</h3>
+<p>Duas: conversas e mensagens.</p>
+<h3>O código está disponível?</h3>
+<p>Está, no GitHub, com as instruções, o SQL das tabelas e a referência de design.</p>
+<h3>Por que as consultas ao banco saem do servidor?</h3>
+<p>Porque as tabelas ficam sem acesso público, e só a chave de serviço, que nunca vai para o navegador, consegue ler.</p>
+<h3>O projeto funciona com vários números?</h3>
+<p>Não. É um número, configurado por variável de ambiente.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Se o objetivo é aprender como a API funciona, construa: em um fim de semana você entende webhook, status, mídia e janela de 24 horas melhor do que lendo documentação por um mês.</p>
-<p>Se o objetivo é atender clientes na semana que vem, use pronto e construa depois, quando souber exatamente o que falta.</p>
-<p>E, construindo, não pule a etapa que parece burocrática: <strong>colete payloads reais antes de modelar</strong>. É a diferença entre um banco que aguenta o segundo número e um que precisa de migração no primeiro mês.</p>
-<div class="cta"><h3>Comece coletando payloads reais, hoje</h3><p>Mande para o seu número conectado um texto, um áudio, uma imagem, e depois responda pelo celular e pela API. Guarde os cinco eventos. Esses arquivos valem mais que qualquer diagrama na hora de modelar o banco.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Se o objetivo é entender como a API oficial funciona construindo, siga as três fases na ordem do vídeo, começando pela coleta de payloads antes do banco. Se você precisa atender clientes com equipe agora, uma caixa de entrada pronta como o Chatwoot se liga à Datafy em minutos.</p>
+<div class="cta"><h3>Comece coletando os payloads</h3><p>Abra o bate-papo do painel, mande para o número um texto, um áudio, uma imagem, uma mensagem pelo celular e um envio pela API, e copie os cinco payloads antes de criar qualquer tabela.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/primeira-mensagem-api-oficial-whatsapp">Enviar e receber a primeira mensagem</a></li>
-<li><a href="/cliente-conecta-o-whatsapp-dele-no-meu-saas">O cliente conecta o WhatsApp dele no meu SaaS</a></li>
-<li><a href="/o-telefone-esta-sumindo-do-webhook">O telefone está sumindo do webhook</a></li>
-<li><a href="/ver-payload-das-mensagens-em-tempo-real">Como ver o payload cru das mensagens em tempo real</a></li>
+<li><a href="/tunel-para-testar-webhook-local">Como testar o webhook na sua máquina com ngrok</a></li>
+<li><a href="/ver-payload-das-mensagens-em-tempo-real">Ver o payload das mensagens em tempo real</a></li>
+<li><a href="/como-receber-midia-api-oficial-whatsapp">Como receber imagem, áudio e documento</a></li>
+<li><a href="/laco-de-webhook-derruba-numero">O laço de webhook que pode bloquear o seu número</a></li>
 </ul>
 </article>
 
@@ -774,12 +748,14 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#a-ordem-interface-banco-integra-o">A ordem: interface, banco, integ...</a></li>
-        <li><a href="#as-decis-es-de-modelagem-que-ficam-caras">As decisões de modelagem que fic...</a></li>
-        <li><a href="#o-webhook-e-o-erro-que-derruba-o-n-mero">O webhook, e o erro que derruba...</a></li>
-        <li><a href="#m-dia-duas-chamadas-e-um-prazo-curto">Mídia: duas chamadas, e um prazo...</a></li>
-        <li><a href="#tempo-real-cache-e-as-escolhas-de-infrae">Tempo real, cache e as escolhas...</a></li>
-        <li><a href="#seguran-a-dois-erros-que-aparecem-em-pro">Segurança: dois erros que aparec...</a></li>
+        <li><a href="#fase-1-a-interface">Fase 1: a interface</a></li>
+        <li><a href="#fase-2-o-banco">Fase 2: o banco</a></li>
+        <li><a href="#seguran-a-chaves-e-pol-ticas">Segurança: chaves e políticas</a></li>
+        <li><a href="#desempenho-pagina-o-e-cache">Desempenho: paginação e cache</a></li>
+        <li><a href="#fase-3-a-api">Fase 3: a API</a></li>
+        <li><a href="#apagar-conversa-em-cascata">Apagar conversa em cascata</a></li>
+        <li><a href="#publicar">Publicar</a></li>
+        <li><a href="#os-limites-do-projeto">Os limites do projeto</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

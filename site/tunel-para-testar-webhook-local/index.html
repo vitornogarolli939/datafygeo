@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Como testar o webhook do WhatsApp na sua máquina, sem publicar nada</title>
-<meta name="description" content="Um túnel expõe a sua porta local com endereço público. Três coisas mordem aqui, e a terceira só aparece quando você publica e esquece de trocar a URL.">
+<title>Como testar o webhook do WhatsApp na sua máquina com ngrok</title>
+<meta name="description" content="O ngrok expõe a porta local com um endereço público para cadastrar como webhook. O erro 403 do framework e a troca para a URL de produção, como aparecem no tutorial do canal.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/tunel-para-testar-webhook-local">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -13,15 +13,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
-<meta property="og:title" content="Como testar o webhook do WhatsApp na sua máquina, sem publicar nada">
-<meta property="og:description" content="Um túnel expõe a sua porta local com endereço público. Três coisas mordem aqui, e a terceira só aparece quando você publica e esquece de trocar a URL.">
+<meta property="og:title" content="Como testar o webhook do WhatsApp na sua máquina com ngrok">
+<meta property="og:description" content="O ngrok expõe a porta local com um endereço público para cadastrar como webhook. O erro 403 do framework e a troca para a URL de produção, como aparecem no tutorial do canal.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/tunel-para-testar-webhook-local">
-<meta property="article:published_time" content="2026-09-09">
-<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Como testar o webhook do WhatsApp na sua máquina, sem publicar nada">
-<meta name="twitter:description" content="Um túnel expõe a sua porta local com endereço público. Três coisas mordem aqui, e a terceira só aparece quando você publica e esquece de trocar a URL.">
+<meta name="twitter:title" content="Como testar o webhook do WhatsApp na sua máquina com ngrok">
+<meta name="twitter:description" content="O ngrok expõe a porta local com um endereço público para cadastrar como webhook. O erro 403 do framework e a troca para a URL de produção, como aparecem no tutorial do canal.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -112,18 +113,18 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Como testar o webhook do WhatsApp na sua máquina, sem publicar nada"
+          "name": "Como testar o webhook do WhatsApp na sua máquina com ngrok"
         }
       ]
     },
     {
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/tunel-para-testar-webhook-local#article",
-      "headline": "Como testar o webhook do WhatsApp na sua máquina, sem publicar nada",
-      "description": "Um túnel expõe a sua porta local com endereço público. Três coisas mordem aqui, e a terceira só aparece quando você publica e esquece de trocar a URL.",
+      "headline": "Como testar o webhook do WhatsApp na sua máquina com ngrok",
+      "description": "O ngrok expõe a porta local com um endereço público para cadastrar como webhook. O erro 403 do framework e a troca para a URL de produção, como aparecem no tutorial do canal.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,13 +133,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/tunel-para-testar-webhook-local",
       "citation": [
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/create-webhook-endpoint/",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
-        "https://developers.facebook.com/docs/graph-api/webhooks/getting-started",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
-        "https://app.datafyapi.com.br/docs",
         "https://www.youtube.com/watch?v=HVRCBsJI_Eo",
-        "https://www.youtube.com/watch?v=dIIkttPeBS0"
+        "https://www.youtube.com/watch?v=vGovcR8W5g8",
+        "https://www.youtube.com/watch?v=dIIkttPeBS0",
+        "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -147,50 +146,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Preciso de túnel se uso ferramenta de fluxo?",
+          "name": "Por que preciso de túnel?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. Ferramentas como n8n, Make e Zapier já dão uma URL pública pronta. O túnel é para quem desenvolve código próprio."
+            "text": "Porque o webhook precisa de um endereço público, e a aplicação rodando na sua máquina não tem."
           }
         },
         {
           "@type": "Question",
-          "name": "Dá para usar túnel em produção?",
+          "name": "O payload aparece no ngrok, mas a aplicação responde 403. O que é?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. Ele é temporário, depende da sua máquina ligada, e não tem garantia de disponibilidade."
+            "text": "No tutorial do canal, era o framework bloqueando o domínio do túnel em desenvolvimento. Libere o domínio e reinicie o servidor."
           }
         },
         {
           "@type": "Question",
-          "name": "O que faço com a URL de teste e a de produção?",
+          "name": "Como vejo o que está chegando pelo túnel?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ferramentas de fluxo costumam ter as duas separadas, e a de teste só funciona enquanto você está com a escuta ativa. Publicar o fluxo é o que ativa a de produção."
+            "text": "Em localhost:4040, o inspetor local do ngrok."
           }
         },
         {
           "@type": "Question",
-          "name": "Meu endpoint responde no navegador mas o webhook não chega. Por quê?",
+          "name": "Publiquei e continua funcionando. Está tudo certo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Navegador faz GET, o webhook faz POST. Confirme que a sua rota aceita POST, e olhe a lista de hosts permitidos do framework."
+            "text": "Confira se não é o túnel ainda ligado. Desligue o túnel e mande uma mensagem."
           }
         },
         {
           "@type": "Question",
-          "name": "Como sei que a URL de produção está mesmo ativa?",
+          "name": "Preciso de túnel usando n8n?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Desligue o túnel e mande uma mensagem. Se chegar, está pelo servidor. É o único teste que vale."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "O túnel afeta o tempo de resposta?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Acrescenta latência, o que em desenvolvimento é irrelevante. Só lembre que o webhook espera resposta rápida, então responda antes de processar."
+            "text": "Não. O n8n já dá uma URL pública. Use a de produção depois de publicar o fluxo."
           }
         }
       ]
@@ -216,13 +207,13 @@
     },
     {
       "@type": "VideoObject",
-      "@id": "https://conteudo.datafyapi.com.br/tunel-para-testar-webhook-local#video-dIIkttPeBS0",
-      "name": "Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia",
-      "description": "Conexao em coexistencia por QR code, cadastro de webhook, primeiro envio e a falha real fora da janela de 24 horas",
-      "thumbnailUrl": "https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg",
+      "@id": "https://conteudo.datafyapi.com.br/tunel-para-testar-webhook-local#video-vGovcR8W5g8",
+      "name": "Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens",
+      "description": "Webhook de teste e de producao, envio pelo no de HTTP, e o laco de status que derruba numero",
+      "thumbnailUrl": "https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg",
       "uploadDate": "2026-09-09",
-      "contentUrl": "https://www.youtube.com/watch?v=dIIkttPeBS0",
-      "embedUrl": "https://www.youtube.com/embed/dIIkttPeBS0",
+      "contentUrl": "https://www.youtube.com/watch?v=vGovcR8W5g8",
+      "embedUrl": "https://www.youtube.com/embed/vGovcR8W5g8",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -574,11 +565,11 @@ footer p{margin:0 0 .5rem}
   <div class="hero-grid">
     <div>
       <p class="eyebrow">Implementação</p>
-      <h1>Como testar o webhook do WhatsApp na sua máquina, sem publicar nada</h1>
+      <h1>Como testar o webhook do WhatsApp na sua máquina com ngrok</h1>
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -608,77 +599,27 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como testar o webhook do WhatsApp na sua máquina, sem publicar nada</h1>
-<p><strong>Resposta curta:</strong> com um <strong>túnel</strong>. Ele expõe a porta que está rodando na sua máquina com um endereço público temporário, você cadastra esse endereço como webhook, e a mensagem cai direto no seu terminal, com ponto de parada e tudo.</p>
-<p>É o jeito mais rápido de desenvolver integração de WhatsApp, e ele tem três armadilhas. Duas você descobre em minutos. <strong>A terceira só aparece no dia em que você publica</strong>, e é a que derruba a integração em produção sem ninguém entender por quê.</p>
+<h1>Como testar o webhook do WhatsApp na sua máquina com ngrok</h1>
+<p><strong>Resposta curta:</strong> o webhook precisa de um endereço público, e a sua máquina não tem. O ngrok resolve: ele expõe a porta onde a aplicação roda com um endereço público, que você cadastra como webhook na Datafy. Aí as mensagens do WhatsApp chegam direto no seu computador.</p>
+<p>No tutorial de atendimento do canal DATA7, dois problemas aparecem nessa etapa: um <strong>403</strong> causado pela configuração do framework, e a necessidade de <strong>trocar a URL do webhook</strong> pela de produção quando a aplicação é publicada.</p>
 <div class="stats">
-  <div class="stat"><b>3 armadilhas</b><span>e a terceira aparece só na publicação</span></div>
-  <div class="stat"><b>403</b><span>o erro que parece da Meta e é do seu framework</span></div>
-  <div class="stat"><b>1 endereço</b><span>novo a cada vez que o túnel sobe</span></div>
-  <div class="stat"><b>2 URLs</b><span>teste e produção, e trocar é manual</span></div>
+  <div class="stat"><b>1 porta</b><span>exposta, a 3000 no tutorial</span></div>
+  <div class="stat"><b>403</b><span>o erro do host bloqueado no framework</span></div>
+  <div class="stat"><b>4040</b><span>a porta do inspetor local do ngrok</span></div>
+  <div class="stat"><b>2 URLs</b><span>a do túnel e a de produção</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li><strong>Túnel dá endereço público para a sua máquina</strong>, e resolve o requisito de o webhook ser acessível.</li>
-<li><strong>O framework pode recusar o domínio do túnel</strong>, devolvendo erro de proibido sem explicação. É configuração local, não problema da Meta.</li>
-<li><strong>O endereço muda a cada vez que o túnel sobe</strong>, e é a causa boba mais comum de "parou de funcionar".</li>
-<li><strong>Trocar para a URL de produção é um passo manual</strong> que dá para esquecer, porque enquanto o túnel está ligado tudo funciona.</li>
-<li>Antes de existir tráfego real, dá para <strong>disparar um evento de teste</strong> e separar problema de endpoint de problema de assinatura.</li>
+<li><strong>Crie a conta no ngrok e configure o token</strong> na sua máquina.</li>
+<li><strong>Ligue o túnel na porta da aplicação</strong> e cadastre o endereço gerado como webhook.</li>
+<li><strong>Erro 403 com o payload chegando no ngrok</strong> foi, no tutorial, o framework bloqueando o domínio do túnel.</li>
+<li><strong><code>localhost:4040</code></strong> mostra tudo que está chegando pelo túnel.</li>
+<li><strong>Ao publicar, troque a URL do webhook</strong> pela de produção e desligue o túnel para confirmar.</li>
 </ul>
-<figure>
-<div class="diagram">
-<svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" class="d">
-  <style>
-    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-    .t{font-size:15px;font-weight:600;fill:var(--fg)}
-    .h{font-size:13px;font-weight:600;fill:var(--fg)}
-    .p{font-size:12px;fill:var(--muted)}
-    .s{font-size:11px;fill:var(--muted)}
-    .ok{fill:var(--accent)}
-    .no{fill:var(--danger)}
-    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
-    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
-    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
-  </style>
-  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
-    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Como o webhook entrega a mensagem</text>
-<rect class="box" x="30" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="115" y="80" text-anchor="middle">Cliente</text>
-<text class="s" x="115" y="100" text-anchor="middle">escreve no WhatsApp</text>
-<rect class="box" x="275" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="360" y="80" text-anchor="middle">Meta</text>
-<text class="s" x="360" y="100" text-anchor="middle">faz POST no seu endpoint</text>
-<rect class="box" x="520" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="605" y="80" text-anchor="middle">Seu servidor</text>
-<text class="s" x="605" y="100" text-anchor="middle">responde 200 na hora</text>
-<path class="ar" d="M205,87 L268,87"/>
-<path class="ar" d="M450,87 L513,87"/>
-<rect class="box" x="30" y="146" width="330" height="76" rx="8"/>
-<text class="h" x="46" y="170">Se você falhar</text>
-<text class="p" x="46" y="192">A Meta reentrega com frequência</text>
-<text class="p" x="46" y="210">decrescente por até 7 dias.</text>
-<rect class="box" x="380" y="146" width="310" height="76" rx="8"/>
-<text class="h" x="396" y="170">Como validar</text>
-<text class="p" x="396" y="192">HMAC SHA-256 no header</text>
-<text class="p" x="396" y="210">X-Hub-Signature-256.</text>
-</svg>
-</div>
-<figcaption></figcaption>
-</figure>
-
-<h2 id="por-que-precisa-de-t-nel">Por que precisa de túnel</h2>
-<p>O webhook exige um endereço público que responda a requisições. A sua máquina, atrás do roteador, não tem isso.</p>
-<p>As alternativas são: publicar a aplicação a cada mudança, o que torna o ciclo de desenvolvimento insuportável, ou expor a porta local temporariamente. A segunda é o padrão.</p>
-<p>Com o túnel ligado, você desenvolve com o ciclo normal: muda o código, salva, manda uma mensagem no WhatsApp, e o evento chega no seu processo local, com depurador disponível.</p>
-<h2 id="armadilha-1-o-framework-recusa-o-dom-nio">Armadilha 1: o framework recusa o domínio</h2>
-<p>O sintoma engana muito. Você cadastra a URL, manda a mensagem, e recebe um <strong>erro de proibido</strong>. Pior: o painel do túnel mostra a requisição chegando, e a sua aplicação nunca vê nada.</p>
-<p>A conclusão natural é que o problema está no cadastro do webhook. Não está.</p>
-<p>Vários frameworks de desenvolvimento mantêm uma <strong>lista de hosts permitidos</strong> enquanto rodam em modo local, e recusam requisições que chegam com um domínio que não está nela. O endereço do túnel é justamente um domínio de fora.</p>
-<p>A correção é acrescentar o domínio do túnel a essa lista, na configuração do projeto. E o detalhe que faz perder mais dez minutos: <strong>reinicie o servidor depois</strong>, porque essa configuração não costuma pegar quente.</p>
+<h2 id="configurar-o-ngrok">Configurar o ngrok</h2>
+<p>No tutorial, o Israel Henrique, CTO da Datafy, descreve o ngrok assim: <em>"o Rock ele permite com que a gente exponha o nosso computador pra internet. Então, quando o WhatsApp enviar mensagem, ela vai chegar diretamente aqui no nosso terminal."</em></p>
+<p>Os passos: criar a conta no ngrok, copiar o token de autenticação e configurar o túnel. Ele passou o token para a ferramenta de IA que estava usando no projeto configurar, e pediu para ligar o túnel na porta 3000, onde a aplicação estava rodando.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
   <span class="thumb">
@@ -687,20 +628,14 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 1:38:16 o erro acontece ao vivo: o painel do túnel mostra o payload chegando, a aplicação devolve proibido, e o diagnóstico é o host bloqueado. Logo depois vem a correção e o primeiro `200`.</figcaption>
+<figcaption>Em 1:32:03 ele explica o ngrok e onde fica o token, e em 1:34:47 liga o túnel na porta 3000 e pega o endereço gerado.</figcaption>
 </figure>
 
-<h2 id="armadilha-2-o-endere-o-muda">Armadilha 2: o endereço muda</h2>
-<p>Cada vez que o túnel sobe, o endereço é outro, a menos que você tenha um domínio reservado.</p>
-<p>Isso significa que, na segunda-feira, o webhook cadastrado aponta para o endereço de sexta, que não existe mais. Nada falha do seu lado, simplesmente não chega nada.</p>
-<p>Duas formas de conviver:</p>
-<p><strong>Recadastre a URL sempre que subir o túnel.</strong> É chato e funciona.</p>
-<p><strong>Reserve um endereço fixo</strong>, quando a ferramenta oferecer. Vale muito a pena se você desenvolve isso com frequência, porque elimina o passo manual.</p>
-<h2 id="armadilha-3-esquecer-de-trocar-para-prod">Armadilha 3: esquecer de trocar para produção</h2>
-<p>Esta é a que causa dano real, e ela é traiçoeira porque <strong>não aparece na hora</strong>.</p>
-<p>Você termina o desenvolvimento, publica a aplicação, testa, e funciona. Fica tudo certo por horas. Só que o webhook continua apontando para o túnel da sua máquina, e enquanto o túnel estiver ligado, as mensagens continuam chegando <strong>no seu computador</strong>, e não no servidor publicado.</p>
-<p>Quando você fecha o terminal, para.</p>
-<p>O sintoma para quem descobre depois é o pior possível: a integração funcionava e parou sem ninguém mexer em nada.</p>
+<h2 id="cadastrar-o-endere-o-na-datafy">Cadastrar o endereço na Datafy</h2>
+<p>Com o endereço do túnel copiado, no painel da Datafy: abrir o número, webhooks, adicionar, colar a URL e marcar os eventos de mensagens e de mensagens enviadas pelo celular. O painel tem um botão para mandar um evento de teste.</p>
+<h2 id="o-403">O 403</h2>
+<p>No tutorial, o teste falhou. O evento chegou no ngrok e a aplicação respondeu 403. Para ver o que estava acontecendo, ele usou o inspetor local do ngrok: <em>"local host 4040. Ele vai dizer tudo que tá chegando no ngrok."</em></p>
+<p>A causa estava na configuração do projeto: em modo de desenvolvimento, o framework estava bloqueando o domínio do túnel. Depois de liberar esse domínio, foi preciso <strong>reiniciar o servidor</strong> para a mudança valer. Com isso, o teste passou a responder 200.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
   <span class="thumb">
@@ -709,56 +644,57 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 2:19:25 ele publica a aplicação, testa, e a mensagem chega. Aí ele percebe que era o túnel ainda ligado, desliga, e mostra a mensagem parando. A troca para a URL de produção vem em 2:19:54.</figcaption>
+<figcaption>Em 1:38:16 aparece o 403, o inspetor em localhost:4040 e o diagnóstico do host bloqueado, e em 1:40:24 o reinício do servidor e o primeiro 200.</figcaption>
 </figure>
 
-<p><strong>A regra que evita:</strong> trocar a URL do webhook faz parte do processo de publicação, na mesma lista de tarefas do deploy. E depois de trocar, <strong>desligue o túnel</strong> e mande uma mensagem de teste. Se chegar, foi pelo servidor.</p>
-<h2 id="o-atalho-que-evita-muito-disso">O atalho que evita muito disso</h2>
-<p>Antes de montar túnel, existe um passo mais rápido para separar problemas: <strong>disparar um evento de teste</strong> para a sua URL, escolhendo o tipo.</p>
-<p>Isso responde de imediato a pergunta mais comum do primeiro dia: o meu endpoint está errado, ou o evento não está chegando? Se o teste chega e a mensagem real não, o problema é a assinatura do evento, e não o seu código. Se nem o teste chega, é a URL ou a aplicação.</p>
+<h2 id="trocar-para-a-url-de-produ-o">Trocar para a URL de produção</h2>
+<p>Quando a aplicação foi publicada, o Israel mostrou por que esse passo não pode ser esquecido. A mensagem enviada chegou mesmo assim, e a razão era outra: <em>"ele chegou porque o Rock tá ligado. Esse servidor aqui está ligado."</em> Desligando o túnel, a mensagem parou de chegar, porque o webhook ainda apontava para ele.</p>
+<p>A correção foi trocar a URL no painel da Datafy pela URL de produção, com um aviso: <em>"cuidado com a barra."</em> Depois disso, as mensagens voltaram a chegar, agora pela aplicação publicada.</p>
 <figure>
-<a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
+<a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
   <span class="thumb">
-    <img src="https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia" loading="lazy" width="1280" height="720">
+    <img src="https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg" alt="Miniatura do vídeo: Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)" loading="lazy" width="1280" height="720">
     <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
   </span>
-  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
+  <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 07:41 ele usa o testador de webhook para mandar um evento falso antes de existir qualquer mensagem real, e o evento aparece no destino.</figcaption>
+<figcaption>Em 2:18:54 a mensagem ainda chega pelo túnel, em 2:19:25 ele desliga o servidor local e troca a URL pela de produção, e em 2:19:54 testa de novo.</figcaption>
 </figure>
 
-<p>E, depois que o tráfego existe, <a href="/ver-payload-das-mensagens-em-tempo-real">ver o payload cru de cada mensagem</a> resolve a segunda pergunta mais comum, que é qual campo veio e onde.</p>
-<h2 id="um-cuidado-de-seguran-a-enquanto-o-t-nel">Um cuidado de segurança enquanto o túnel está no ar</h2>
-<p>O endereço do túnel é público. Enquanto ele está ligado, qualquer um que descubra a URL consegue mandar um <code>POST</code> para a sua máquina.</p>
-<p>Em desenvolvimento isso raramente é problema, e vale saber:</p>
-<p><strong>Use um caminho difícil de adivinhar</strong>, não <code>/webhook</code>.</p>
-<p><strong>Não deixe o túnel ligado sem necessidade.</strong> Fechou o expediente, desligou.</p>
-<p><strong>Não confie no conteúdo recebido para decisão sensível</strong>, nem em desenvolvimento, porque o hábito passa para produção. <a href="/validar-assinatura-do-webhook">O que fazer em produção está aqui</a>.</p>
+<h2 id="sem-c-digo-a-url-de-teste-do-n8n">Sem código: a URL de teste do n8n</h2>
+<p>Quem usa n8n não precisa de túnel, porque o nó de webhook já entrega um endereço público. A diferença, mostrada no vídeo sobre n8n, é entre a URL de teste, que só recebe enquanto a escuta está ligada, e a de produção, que funciona depois que o fluxo é publicado.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg" alt="Miniatura do vídeo: Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 05:00 ele troca a URL de teste pela de produção no cadastro do webhook e publica o fluxo.</figcaption>
+</figure>
+
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Preciso de túnel se uso ferramenta de fluxo?</h3>
-<p>Não. Ferramentas como n8n, Make e Zapier já dão uma URL pública pronta. O túnel é para quem desenvolve código próprio.</p>
-<h3>Dá para usar túnel em produção?</h3>
-<p>Não. Ele é temporário, depende da sua máquina ligada, e não tem garantia de disponibilidade.</p>
-<h3>O que faço com a URL de teste e a de produção?</h3>
-<p>Ferramentas de fluxo costumam ter as duas separadas, e a de teste só funciona enquanto você está com a escuta ativa. Publicar o fluxo é o que ativa a de produção.</p>
-<h3>Meu endpoint responde no navegador mas o webhook não chega. Por quê?</h3>
-<p>Navegador faz <code>GET</code>, o webhook faz <code>POST</code>. Confirme que a sua rota aceita <code>POST</code>, e olhe a lista de hosts permitidos do framework.</p>
-<h3>Como sei que a URL de produção está mesmo ativa?</h3>
-<p>Desligue o túnel e mande uma mensagem. Se chegar, está pelo servidor. É o único teste que vale.</p>
-<h3>O túnel afeta o tempo de resposta?</h3>
-<p>Acrescenta latência, o que em desenvolvimento é irrelevante. Só lembre que o webhook espera resposta rápida, então responda antes de processar.</p>
+<h3>Por que preciso de túnel?</h3>
+<p>Porque o webhook precisa de um endereço público, e a aplicação rodando na sua máquina não tem.</p>
+<h3>O payload aparece no ngrok, mas a aplicação responde 403. O que é?</h3>
+<p>No tutorial do canal, era o framework bloqueando o domínio do túnel em desenvolvimento. Libere o domínio e reinicie o servidor.</p>
+<h3>Como vejo o que está chegando pelo túnel?</h3>
+<p>Em <code>localhost:4040</code>, o inspetor local do ngrok.</p>
+<h3>Publiquei e continua funcionando. Está tudo certo?</h3>
+<p>Confira se não é o túnel ainda ligado. Desligue o túnel e mande uma mensagem.</p>
+<h3>Preciso de túnel usando n8n?</h3>
+<p>Não. O n8n já dá uma URL pública. Use a de produção depois de publicar o fluxo.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Se você está construindo integração em código, use túnel desde o começo: o ganho no ciclo de desenvolvimento é grande demais para abrir mão.</p>
-<p>Se está montando em ferramenta de fluxo, você não precisa dele, e as outras armadilhas continuam valendo, principalmente a de esquecer de publicar o fluxo e continuar com a URL de teste.</p>
-<p>E, em qualquer caminho, coloque <strong>trocar a URL do webhook</strong> na sua lista de publicação. É o item mais fácil de esquecer e o único que faz a integração parar horas depois de você achar que terminou.</p>
-<div class="cta"><h3>Depois de publicar, desligue o túnel e teste</h3><p>É o único jeito de saber se as mensagens estão chegando no servidor ou ainda na sua máquina. Trinta segundos, e evita a integração parar no dia seguinte sem ninguém ter mexido em nada.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Se você está escrevendo o código do webhook, use o túnel desde o começo e deixe o inspetor em <code>localhost:4040</code> aberto. Na publicação, troque a URL no painel e desligue o túnel antes de testar.</p>
+<div class="cta"><h3>Troque a URL e desligue o túnel</h3><p>Depois de publicar, cadastre a URL de produção no painel da Datafy, desligue o ngrok e mande uma mensagem. Se chegar, está vindo pelo servidor.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/qual-url-eu-uso-no-webhook-da-meta">Qual URL eu uso no webhook da Meta</a></li>
-<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens em tempo real</a></li>
-<li><a href="/ver-payload-das-mensagens-em-tempo-real">Ver o payload cru das mensagens em tempo real</a></li>
-<li><a href="/criar-atendimento-whatsapp-do-zero">Como criar um atendimento de WhatsApp do zero</a></li>
+<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens no seu servidor</a></li>
+<li><a href="/criar-atendimento-whatsapp-do-zero">Como criar um atendimento do zero</a></li>
+<li><a href="/validar-assinatura-do-webhook">Como validar a assinatura do webhook</a></li>
+<li><a href="/whatsapp-api-oficial-n8n">WhatsApp API oficial no n8n</a></li>
 </ul>
 </article>
 
@@ -774,12 +710,11 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#por-que-precisa-de-t-nel">Por que precisa de túnel</a></li>
-        <li><a href="#armadilha-1-o-framework-recusa-o-dom-nio">Armadilha 1: o framework recusa...</a></li>
-        <li><a href="#armadilha-2-o-endere-o-muda">Armadilha 2: o endereço muda</a></li>
-        <li><a href="#armadilha-3-esquecer-de-trocar-para-prod">Armadilha 3: esquecer de trocar...</a></li>
-        <li><a href="#o-atalho-que-evita-muito-disso">O atalho que evita muito disso</a></li>
-        <li><a href="#um-cuidado-de-seguran-a-enquanto-o-t-nel">Um cuidado de segurança enquanto...</a></li>
+        <li><a href="#configurar-o-ngrok">Configurar o ngrok</a></li>
+        <li><a href="#cadastrar-o-endere-o-na-datafy">Cadastrar o endereço na Datafy</a></li>
+        <li><a href="#o-403">O 403</a></li>
+        <li><a href="#trocar-para-a-url-de-produ-o">Trocar para a URL de produção</a></li>
+        <li><a href="#sem-c-digo-a-url-de-teste-do-n8n">Sem código: a URL de teste do n8n</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

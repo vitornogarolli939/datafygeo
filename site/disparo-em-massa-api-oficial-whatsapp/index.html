@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Como fazer disparo em massa na API oficial do WhatsApp</title>
-<meta name="description" content="Planilha, mapeamento de variáveis e vazão controlada. Mais as quatro recusas diferentes que aparecem no relatório e pedem reações opostas.">
+<meta name="description" content="Pela aba de disparos da Datafy: planilha CSV com a coluna telefone, template aprovado, mapeamento de variáveis e agendamento. E o que o status mostra quando a Meta não entrega.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/disparo-em-massa-api-oficial-whatsapp">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -14,14 +14,14 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
 <meta property="og:title" content="Como fazer disparo em massa na API oficial do WhatsApp">
-<meta property="og:description" content="Planilha, mapeamento de variáveis e vazão controlada. Mais as quatro recusas diferentes que aparecem no relatório e pedem reações opostas.">
+<meta property="og:description" content="Pela aba de disparos da Datafy: planilha CSV com a coluna telefone, template aprovado, mapeamento de variáveis e agendamento. E o que o status mostra quando a Meta não entrega.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/disparo-em-massa-api-oficial-whatsapp">
-<meta property="article:published_time" content="2026-09-09">
-<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Como fazer disparo em massa na API oficial do WhatsApp">
-<meta name="twitter:description" content="Planilha, mapeamento de variáveis e vazão controlada. Mais as quatro recusas diferentes que aparecem no relatório e pedem reações opostas.">
+<meta name="twitter:description" content="Pela aba de disparos da Datafy: planilha CSV com a coluna telefone, template aprovado, mapeamento de variáveis e agendamento. E o que o status mostra quando a Meta não entrega.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -120,10 +121,10 @@
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/disparo-em-massa-api-oficial-whatsapp#article",
       "headline": "Como fazer disparo em massa na API oficial do WhatsApp",
-      "description": "Planilha, mapeamento de variáveis e vazão controlada. Mais as quatro recusas diferentes que aparecem no relatório e pedem reações opostas.",
+      "description": "Pela aba de disparos da Datafy: planilha CSV com a coluna telefone, template aprovado, mapeamento de variáveis e agendamento. E o que o status mostra quando a Meta não entrega.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,13 +133,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/disparo-em-massa-api-oficial-whatsapp",
       "citation": [
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits",
-        "https://developers.facebook.com/docs/whatsapp/throughput",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/marketing-templates/per-user-limits",
-        "https://business.whatsapp.com/policy",
-        "https://app.datafyapi.com.br/docs",
         "https://www.youtube.com/watch?v=ly5nOHFpXcI",
-        "https://www.youtube.com/watch?v=cZ_nyIUv5ic"
+        "https://www.youtube.com/watch?v=cZ_nyIUv5ic",
+        "https://www.youtube.com/watch?v=YF9hTHDAw6E",
+        "https://whatsappbusiness.com/policy/",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -147,53 +146,64 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Disparo em massa é permitido na API oficial?",
+          "name": "Qual o formato do telefone na planilha?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "É, com template aprovado e para quem consentiu. O que a política proíbe é mensagem não solicitada, e isso vale igual em qualquer volume."
+            "text": "55, DDD e número, na coluna telefone."
           }
         },
         {
           "@type": "Question",
-          "name": "Quantas mensagens posso mandar por dia?",
+          "name": "A coluna telefone precisa ser a primeira?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Depende do limite de envio da sua conta, que sobe conforme volume entregue com qualidade. Desde outubro de 2025 esse limite é do portfólio inteiro, e não de cada número."
+            "text": "Não. Precisa estar na primeira linha, com esse nome."
           }
         },
         {
           "@type": "Question",
-          "name": "Mais números resolvem meu volume?",
+          "name": "Posso agendar?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Para vazão por segundo, ajudam. Para o limite da conta, não, porque ele é do portfólio. Para o limite por pessoa, não resolve de jeito nenhum."
+            "text": "Pode, no fuso horário do computador de quem agenda."
           }
         },
         {
           "@type": "Question",
-          "name": "Posso reenviar o que falhou?",
+          "name": "Por que uma mensagem não foi entregue sem erro de número?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Depende do motivo, e essa é a pergunta certa. Excesso de vazão sim, com espera crescente. Limite por pessoa não, espere ao menos 24 horas. Opção de não receber, nunca."
+            "text": "Um motivo que aparece no vídeo é a Meta não entregar para manter a saúde do ecossistema, quando a pessoa não costuma responder. Outros: saldo ou cartão."
           }
         },
         {
           "@type": "Question",
-          "name": "Como sei se a campanha está indo bem enquanto ela roda?",
+          "name": "Posso disparar sem template?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Olhe taxa de entrega e taxa de resposta, não total enviado. Entrega caindo no meio é sinal de parar, não de acelerar."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Preciso de cartão cadastrado?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Precisa, e ele fica no portfólio empresarial da Meta. Template é cobrado, e sem meio de pagamento lá o disparo não sai."
+            "text": "Não para quem não falou com você nas últimas 24 horas."
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/disparo-em-massa-api-oficial-whatsapp#video-cZ_nyIUv5ic",
+      "name": "Porque você é bloqueado no WhatsApp Business",
+      "description": "As causas de bloqueio observadas na base de clientes, os nichos proibidos e o respaldo de quem esta no oficial",
+      "thumbnailUrl": "https://i.ytimg.com/vi/cZ_nyIUv5ic/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=cZ_nyIUv5ic",
+      "embedUrl": "https://www.youtube.com/embed/cZ_nyIUv5ic",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/disparo-em-massa-api-oficial-whatsapp#article"
+      }
     },
     {
       "@type": "VideoObject",
@@ -559,23 +569,23 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
     <div class="hero-art">
       <svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
   <title id="heroT">Medidor de vazão de envio</title>
-  <desc id="heroD">Ilustração de um medidor mostrando o limite de mensagens por segundo e uma faixa de excesso.</desc>
+  <desc id="heroD">Ilustração de um medidor mostrando o limite de requisições por minuto da Datafy API e a faixa de excesso que devolve 429.</desc>
   <path d="M60 200 a110 110 0 0 1 220 0" fill="none" stroke="var(--line)" stroke-width="20" stroke-linecap="round"/>
   <path d="M60 200 a110 110 0 0 1 150 -104" fill="none" stroke="var(--accent)" stroke-width="20" stroke-linecap="round"/>
   <path d="M247 118 a110 110 0 0 1 33 82" fill="none" stroke="var(--danger)" stroke-width="20" stroke-linecap="round"/>
   <circle cx="170" cy="200" r="10" fill="var(--fg)"/>
   <path d="M170 200 L228 132" stroke="var(--fg)" stroke-width="4" stroke-linecap="round"/>
-  <text x="170" y="238" text-anchor="middle" style="font:700 20px system-ui,sans-serif;fill:var(--fg)">80</text>
-  <text x="170" y="256" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--muted)">mensagens por segundo</text>
+  <text x="170" y="238" text-anchor="middle" style="font:700 20px system-ui,sans-serif;fill:var(--fg)">500</text>
+  <text x="170" y="256" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--muted)">requisições por minuto</text>
   <text x="52" y="228" style="font:600 9.5px system-ui,sans-serif;fill:var(--muted)">0</text>
-  <text x="278" y="228" text-anchor="end" style="font:600 9.5px system-ui,sans-serif;fill:var(--danger)">130429</text>
+  <text x="278" y="228" text-anchor="end" style="font:600 9.5px system-ui,sans-serif;fill:var(--danger)">429</text>
 </svg>
     </div>
   </div>
@@ -585,84 +595,45 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <h1>Como fazer disparo em massa na API oficial do WhatsApp</h1>
-<p><strong>Resposta curta:</strong> disparo em massa na API oficial é <strong>template aprovado, enviado em laço, com vazão controlada</strong>. Tecnicamente é simples. O que separa a campanha que entrega da campanha que derruba o número não está no código: está na lista, na taxa de resposta e no tratamento de cada tipo de recusa.</p>
-<p>Existem quatro recusas diferentes que aparecem no relatório, e <strong>reenviar piora três delas</strong>. Essa é a parte que quase nenhum tutorial cobre, e é a que custa o número.</p>
+<p><strong>Resposta curta:</strong> disparo em massa na API oficial é <strong>template aprovado</strong> enviado para uma lista. Pela API, você faz um laço chamando o envio de template. Pelo painel da Datafy, a aba <strong>Disparos</strong> faz isso sem código: você sobe uma planilha CSV com a coluna <strong><code>telefone</code></strong>, escolhe o template, liga as colunas às variáveis e envia agora ou agenda.</p>
+<p>No vídeo, o Israel Henrique, CTO da Datafy, explica por que a aba existe: <em>"basta você implementar no teu sistema e fazer um loop ali para enviar para todo mundo. Mas tem gente que não tem esse conhecimento técnico."</em></p>
 <div class="stats">
-  <div class="stat"><b>4 recusas</b><span>diferentes, com reações opostas</span></div>
-  <div class="stat"><b>80 msg/s</b><span>o teto por número, ou 20 em coexistência</span></div>
-  <div class="stat"><b>1 template</b><span>aprovado, obrigatório para iniciar conversa</span></div>
-  <div class="stat"><b>0</b><span>reenvios automáticos sem olhar o motivo</span></div>
+  <div class="stat"><b>1 coluna</b><span>obrigatória: telefone</span></div>
+  <div class="stat"><b>55</b><span>o código do Brasil no começo do número</span></div>
+  <div class="stat"><b>3</b><span>contatos exibidos para conferir antes</span></div>
+  <div class="stat"><b>30 dias</b><span>de validade das mídias da aba de mídias</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li>Fora da janela de 24 horas, <strong>só com template aprovado</strong>, e cada envio é cobrado pela categoria dele.</li>
-<li><strong>A planilha precisa do telefone no formato certo</strong>: código do país, DDD e número, sem símbolo. Formato antigo sem o nono dígito vira destinatário inválido.</li>
-<li><strong>Mande em blocos e observe</strong>, em vez de dez mil de uma vez. É o que permite parar antes de estragar a qualidade do número.</li>
-<li><strong>Cada tipo de recusa pede uma ação diferente.</strong> Um laço que trata tudo como "falhou, tenta de novo" transforma problema de entrega em problema de conta.</li>
-<li><strong>Taxa de resposta é o indicador que decide se você continua vivo.</strong> Base que não interage derruba número mesmo com template aprovado.</li>
+<li><strong>Precisa de template aprovado.</strong> Fora da janela de 24 horas, a política exige template para iniciar conversa.</li>
+<li><strong>Planilha CSV</strong> com a coluna <code>telefone</code> no cabeçalho, números no formato 55, DDD e número.</li>
+<li><strong>Outras colunas viram variáveis</strong> do template, com o nome que você quiser.</li>
+<li><strong>Template com imagem</strong> pede a imagem na hora do disparo. As mídias da aba de mídias duram 30 dias.</li>
+<li><strong>O status mostra quando a Meta não entrega</strong>, inclusive para quem não costuma responder.</li>
 </ul>
+<h2 id="antes-de-disparar-permiss-o-e-resposta">Antes de disparar: permissão e resposta</h2>
+<p>A política comercial do WhatsApp exige duas coisas para contatar alguém: a pessoa ter fornecido o número e ter dado opt-in. E só permite iniciar conversa com template aprovado. <a href="/opt-in-por-link-whatsapp">Como coletar opt-in com um link de cadastro</a>.</p>
+<p>No vídeo sobre bloqueio, o Israel conta o que acontece quando ninguém responde, mesmo com template certo: uma advogada que disparou para a própria lista por três dias, sem resposta, e foi bloqueada. <a href="/numero-banido-no-whatsapp-o-que-fazer">O caso e as causas de bloqueio estão aqui</a>.</p>
 <figure>
-<div class="diagram">
-<svg viewBox="0 0 720 222" xmlns="http://www.w3.org/2000/svg" class="d">
-  <style>
-    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-    .t{font-size:15px;font-weight:600;fill:var(--fg)}
-    .h{font-size:13px;font-weight:600;fill:var(--fg)}
-    .p{font-size:12px;fill:var(--muted)}
-    .s{font-size:11px;fill:var(--muted)}
-    .ok{fill:var(--accent)}
-    .no{fill:var(--danger)}
-    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
-    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
-    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
-  </style>
-  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
-    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Um fluxo de atendimento no n8n</text>
-<rect class="box" x="20" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="96" y="80" text-anchor="middle">Webhook</text>
-<text class="s" x="96" y="98" text-anchor="middle">mensagem chega</text>
-<rect class="box" x="196" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="272" y="80" text-anchor="middle">Condicional</text>
-<text class="s" x="272" y="98" text-anchor="middle">regra de negocio</text>
-<rect class="box" x="372" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="448" y="80" text-anchor="middle">HTTP Request</text>
-<text class="s" x="448" y="98" text-anchor="middle">responde pela API</text>
-<rect class="box" x="548" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="624" y="80" text-anchor="middle">Banco</text>
-<text class="s" x="624" y="98" text-anchor="middle">registra a conversa</text>
-<path class="ar" d="M172,85 L190,85"/>
-<path class="ar" d="M348,85 L366,85"/>
-<path class="ar" d="M524,85 L542,85"/>
-<rect class="box" x="20" y="142" width="680" height="64" rx="8"/>
-<text class="h" x="36" y="166">Limites que o fluxo precisa respeitar</text>
-<text class="p" x="36" y="190">• 80 msg/s por número</text>
-<text class="p" x="266" y="190">• 1 msg a cada 6 s por contato</text>
-<text class="p" x="516" y="190">• responder 200 na hora</text>
-</svg>
-</div>
-<figcaption></figcaption>
+<a class="video" href="https://www.youtube.com/watch?v=cZ_nyIUv5ic" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/cZ_nyIUv5ic/maxresdefault.jpg" alt="Miniatura do vídeo: Porque você é bloqueado no WhatsApp Business" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Porque você é bloqueado no WhatsApp Business</b><span>Canal DATA7 · 26 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 10:01 ele explica a taxa de engajamento, e em 10:39 conta o caso da advogada.</figcaption>
 </figure>
 
-<h2 id="antes-do-c-digo-a-pergunta-que-evita-o-p">Antes do código: a pergunta que evita o prejuízo</h2>
-<p>Um disparo tecnicamente perfeito para a lista errada derruba o número. Então a primeira checagem não é de formato:</p>
-<p><strong>Essas pessoas te deram o número?</strong> A política é explícita: só se contata quem forneceu o número e deu o aceite. Ter template aprovado <strong>não é autorização para lista fria</strong>, e essa confusão é a origem do erro mais caro do assunto.</p>
-<p><strong>Elas respondem quando você manda?</strong> Esse é o indicador que mais pesa. O caso que resume isso é o de uma advogada que fez tudo certo, com template aprovado e orientação, e foi bloqueada em dois dias porque ninguém respondeu. Três dias de silêncio do outro lado foram lidos como envio indesejado.</p>
-<p><strong>Você deu a ela um jeito fácil de dizer não?</strong> Botão de "não tenho interesse" no template transforma leitura passiva em interação, e ainda entrega a lista de quem tirar da base. <a href="/como-documentar-o-opt-in-do-cliente">O detalhe disso está aqui</a>.</p>
-<p>Se a resposta às três for confortável, siga. Se não, a lista é o problema, e nenhuma configuração de envio resolve.</p>
-<h2 id="a-planilha-e-o-formato-que-ningu-m-avisa">A planilha, e o formato que ninguém avisa</h2>
-<p>A forma mais comum de disparo no Brasil sai de uma planilha, e é aí que nascem os erros silenciosos.</p>
-<p><strong>Coluna de telefone é obrigatória</strong>, e o formato é rígido: código do país, DDD e número, tudo junto, sem parênteses, traço ou espaço.</p>
-<p><code>telefone,nome,vencimento
-5511999999999,Maria,10/09
-5541988887777,João,12/09</code></p>
-<p><strong>As demais colunas viram as variáveis do template.</strong> O nome da coluna não precisa ser igual ao da variável, mas o <strong>mapeamento</strong> precisa estar certo. E aqui está o erro que não dá erro: variável apontada para a coluna errada gera mil mensagens com o dado trocado, sem nenhuma falha no relatório.</p>
-<p><strong>Cuidado com o nono dígito.</strong> Número brasileiro salvo em formato antigo vira destinatário inválido, e você só descobre no resultado. O mesmo vale para números da Argentina e do México, que têm regra própria de prefixo.</p>
-<p><strong>Confira as três primeiras linhas antes de disparar.</strong> É o momento barato de descobrir cabeçalho na linha errada ou telefone com espaço.</p>
-<p>O formato completo, com as conferências que evitam retrabalho e o problema do nono dígito, está em <a href="/planilha-csv-para-disparo-whatsapp">como montar a planilha CSV para disparo</a>.</p>
+<h2 id="a-planilha">A planilha</h2>
+<p>Na fala do vídeo: <em>"tem que ter uma coluna chamada telefone, que é onde você vai colocar os telefones dos usuários. E eles têm que estar nesse formato aqui: 55, que no caso seria o DDI, o código do país, DDD e o número."</em></p>
+<p><code>telefone,nome
+5511999999999,Maria
+5541988887777,João</code></p>
+<p><strong>A coluna <code>telefone</code></strong> pode estar em qualquer posição, mas o nome precisa estar na primeira linha.</p>
+<p><strong>As outras colunas</strong> são as variáveis do template: <em>"o nome da coluna pode ser qualquer um, tanto faz."</em></p>
+<p><strong>Exportar como CSV.</strong> No Google Sheets, pelo menu de arquivo, baixando como CSV.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=ly5nOHFpXcI" rel="noopener">
   <span class="thumb">
@@ -671,85 +642,66 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Disparo em massa de mensagens na API oficial do WhatsApp</b><span>Canal DATA7 · 10 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Dez minutos com um disparo real do começo ao fim. Em 02:19 ele mostra o formato exigido da planilha, em 05:39 o mapeamento de variáveis com pré-visualização, em 06:29 o resultado com um envio falhando, e em 07:20 um disparo agendado.</figcaption>
+<figcaption>Em 02:19 ele mostra o formato da planilha, em 02:53 a regra da coluna telefone, e em 03:47 as colunas que viram variáveis.</figcaption>
 </figure>
 
-<p><strong>O teste que evita o susto:</strong> coloque <strong>o seu próprio número na primeira linha</strong> e dispare para uma lista de três antes de disparar para dez mil. Você vê a mensagem exata que o cliente vai ver, com a variável preenchida.</p>
-<h2 id="vaz-o-n-o-mande-do-la-o-direto">Vazão: não mande do laço direto</h2>
-<p>O teto por número é de <strong>80 mensagens por segundo</strong>, e cai para <strong>20</strong> se o número estiver em coexistência. Estourar devolve um erro específico de excesso de vazão.</p>
-<p>Isso raramente é o gargalo real, e mesmo assim vale controlar, porque o padrão que protege é o mesmo:</p>
-<p><strong>Fila com liberação em taxa constante</strong>, abaixo do teto. Em ferramenta de automação visual, isso costuma ser um nó de lote com espera entre eles.</p>
-<p><strong>Espera crescente no reenvio</strong>, e só para erro de vazão. Reenvio imediato transforma um pico em incidente.</p>
-<p><strong>Blocos, e não a base inteira.</strong> Mande mil, olhe entrega e resposta, e continue. Isso reduz o risco de qualidade e evita descobrir o problema com dez mil mensagens já entregues.</p>
-<p>E existe um comportamento que não é erro seu: a Meta <strong>segura lotes de propósito</strong> para medir reação durante a campanha. A campanha fica lenta, sem erro claro, e depois retoma. Reenviar não acelera. <a href="/minha-campanha-travou-no-meio">As quatro causas de travamento estão detalhadas aqui</a>.</p>
-<h2 id="as-quatro-recusas-e-o-que-fazer-com-cada">As quatro recusas, e o que fazer com cada uma</h2>
-<p>Esta é a tabela que vale imprimir, porque tratar todas igual é o que causa dano real:</p>
-<div class="tablewrap"><table>
-<thead>
-<tr>
-<th>O que aparece</th>
-<th>O que é</th>
-<th>O que fazer</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Erro de excesso de vazão</td>
-<td>Você mandou rápido demais</td>
-<td>Esperar e reenviar com intervalo crescente</td>
-</tr>
-<tr>
-<td>Limite por pessoa</td>
-<td>Aquele indivíduo já recebe muito marketing, somado entre todas as empresas</td>
-<td><strong>Não reenviar.</strong> Esperar ao menos 24 h</td>
-</tr>
-<tr>
-<td>Recusa por opção da pessoa</td>
-<td>Ela optou por não receber marketing</td>
-<td><strong>Parar de enviar</strong> para ela</td>
-</tr>
-<tr>
-<td>"Para manter a saúde do ecossistema"</td>
-<td>A plataforma julgou que ela não quer receber você</td>
-<td>Marcar e parar. Reenviar alimenta o indicador</td>
-</tr>
-</tbody>
-</table></div>
-<p>As duas do meio parecem iguais no relatório e pedem coisas opostas. Um laço de reenvio automático que não distingue as duas escala para restrição no nível da conta.</p>
-<p>Sobre a última, vale o diagnóstico do Israel olhando um número da própria base que sempre recebia essa recusa: <em>"porque esse número aqui eu não respondo ele. Quando a API envia mensagens, eu não costumo responder. Então, por isso que ele não entregou."</em></p>
-<p>E a versão honesta do resumo, que evita horas procurando defeito onde não tem: <em>"às vezes a meta simplesmente não entrega porque ela não quer. Isso acontece."</em> Outras causas banais da mesma família: cartão do portfólio com problema, ou saldo indisponível.</p>
-<h2 id="agendamento-e-fuso">Agendamento e fuso</h2>
-<p>Se você agenda, saiba que o horário costuma ser o <strong>fuso de quem agenda</strong>, e não o de quem recebe. Para base inteira no Brasil dá na mesma. Para base espalhada, alguém vai receber promoção às três da manhã, e isso vira denúncia, que é o pior indicador possível.</p>
-<h2 id="o-que-muda-com-a-datafy">O que muda com a Datafy</h2>
-<p><strong>Não muda:</strong> limite, entrega, categoria, qualidade e bloqueio. Tudo isso é da Meta, e nenhum fornecedor se coloca entre você e essas decisões.</p>
-<p><strong>Muda quem escreve o laço.</strong> Existe uma aba de disparos no painel que recebe a planilha CSV, lista os primeiros contatos para conferência, mostra os templates aprovados da conta, faz o mapeamento de variáveis com pré-visualização, aceita agendamento e mostra o status por destinatário. Foi feita, nas palavras dele, porque <em>"tem gente que não tem esse conhecimento técnico"</em>, e resolve o caso de quem sabe montar o template mas não vai escrever fila com vazão.</p>
-<p><strong>Muda a hospedagem da imagem.</strong> Template de marketing com imagem precisa de um arquivo acessível, e existe uma aba de mídias para subir e obter o link, com validade de 30 dias.</p>
-<p><strong>Muda a depuração.</strong> O status de cada envio aparece com o motivo, o que permite separar as quatro recusas em vez de ver só "falhou".</p>
-<p>Pela API, tudo isso é seu: você monta a fila, controla a vazão, trata cada código de erro e guarda o resultado. <a href="/como-enviar-template-pela-api">O envio de template está detalhado aqui</a>.</p>
+<h2 id="o-disparo-na-aba-disparos">O disparo, na aba Disparos</h2>
+<p><strong>1. Nova campanha</strong>, com um nome.</p>
+<p><strong>2. Subir a planilha.</strong> O painel mostra os três primeiros contatos para você conferir.</p>
+<p><strong>3. Escolher o template.</strong> Aparecem os templates aprovados na Meta. <a href="/como-criar-template-whatsapp-passo-a-passo">Como criar um está aqui</a>.</p>
+<p><strong>4. Mídia, se o template tiver.</strong> Um template com imagem no cabeçalho pede a imagem nessa hora. No vídeo, ele usa uma que já estava na aba de mídias, e lembra: <em>"essa aba de mídias fica aqui durante 30 dias."</em></p>
+<p><strong>5. Mapear as variáveis.</strong> Para cada variável do template, a coluna da planilha que preenche. O painel mostra uma prévia.</p>
+<p><strong>6. Enviar agora ou agendar.</strong> O agendamento usa o fuso horário do computador de quem agenda: <em>"como eu tô no Brasil, ele vai pegar o do teu computador."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=ly5nOHFpXcI" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/ly5nOHFpXcI/maxresdefault.jpg" alt="Miniatura do vídeo: Disparo em massa de mensagens na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Disparo em massa de mensagens na API oficial do WhatsApp</b><span>Canal DATA7 · 10 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 04:38 ele sobe a planilha, em 05:16 escolhe o template e a imagem, em 05:39 mapeia a variável, e em 07:20 agenda um segundo disparo.</figcaption>
+</figure>
+
+<h2 id="o-que-o-status-mostra">O que o status mostra</h2>
+<p>Depois do disparo, o painel mostra o resultado por contato. No vídeo, dois enviados e um erro, que era o número inventado de propósito na planilha.</p>
+<p>E o Israel avisa sobre outros motivos: <em>"às vezes a meta simplesmente não entrega porque ela não quer. Isso acontece. Ou talvez você não tem saldo, teu cartão de crédito tá com problema."</em></p>
+<p>No bate-papo do painel, ele abre uma mensagem que não foi entregue e lê o motivo: a mensagem não foi entregue <strong>para manter a saúde do ecossistema</strong>. E explica por que aquele número recebia isso: <em>"porque esse número aqui eu não respondo ele. Quando a API envia mensagens, eu não costumo responder."</em> Mais adiante: <em>"a meta entende que essa pessoa não quer receber mensagens."</em></p>
+<p>Os status também chegam no seu webhook. <a href="/tres-status-da-mensagem-whatsapp">Os três status estão explicados aqui</a>.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=ly5nOHFpXcI" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/ly5nOHFpXcI/maxresdefault.jpg" alt="Miniatura do vídeo: Disparo em massa de mensagens na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Disparo em massa de mensagens na API oficial do WhatsApp</b><span>Canal DATA7 · 10 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 06:29 aparece o resultado com o erro do número inexistente, e em 08:52 ele abre a mensagem que a Meta não entregou para manter a saúde do ecossistema.</figcaption>
+</figure>
+
+<h2 id="pela-api">Pela API</h2>
+<p>O mesmo resultado sai de um laço que envia o template para cada número da lista, pelo endpoint de mensagens da Datafy API. <a href="/como-enviar-template-pela-api">Como enviar template pela API está aqui</a>.</p>
+<p>Dois limites para o laço: o envio de mensagens na Datafy API aceita <strong>500 requisições por minuto</strong>, com resposta <code>429</code> indicando quantos segundos esperar. E cada template enviado é cobrado pela Meta, pela categoria dele.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Disparo em massa é permitido na API oficial?</h3>
-<p>É, com template aprovado e para quem consentiu. O que a política proíbe é mensagem não solicitada, e isso vale igual em qualquer volume.</p>
-<h3>Quantas mensagens posso mandar por dia?</h3>
-<p>Depende do limite de envio da sua conta, que sobe conforme volume entregue com qualidade. Desde outubro de 2025 esse limite é do portfólio inteiro, e não de cada número.</p>
-<h3>Mais números resolvem meu volume?</h3>
-<p>Para vazão por segundo, ajudam. Para o limite da conta, não, porque ele é do portfólio. Para o limite por pessoa, não resolve de jeito nenhum.</p>
-<h3>Posso reenviar o que falhou?</h3>
-<p>Depende do motivo, e essa é a pergunta certa. Excesso de vazão sim, com espera crescente. Limite por pessoa não, espere ao menos 24 horas. Opção de não receber, nunca.</p>
-<h3>Como sei se a campanha está indo bem enquanto ela roda?</h3>
-<p>Olhe taxa de entrega e taxa de resposta, não total enviado. Entrega caindo no meio é sinal de parar, não de acelerar.</p>
-<h3>Preciso de cartão cadastrado?</h3>
-<p>Precisa, e ele fica no portfólio empresarial da Meta. Template é cobrado, e sem meio de pagamento lá o disparo não sai.</p>
+<h3>Qual o formato do telefone na planilha?</h3>
+<p>55, DDD e número, na coluna <code>telefone</code>.</p>
+<h3>A coluna telefone precisa ser a primeira?</h3>
+<p>Não. Precisa estar na primeira linha, com esse nome.</p>
+<h3>Posso agendar?</h3>
+<p>Pode, no fuso horário do computador de quem agenda.</p>
+<h3>Por que uma mensagem não foi entregue sem erro de número?</h3>
+<p>Um motivo que aparece no vídeo é a Meta não entregar para manter a saúde do ecossistema, quando a pessoa não costuma responder. Outros: saldo ou cartão.</p>
+<h3>Posso disparar sem template?</h3>
+<p>Não para quem não falou com você nas últimas 24 horas.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Se você dispara esporadicamente para uma base que interage, use uma ferramenta de planilha e pare por aí: montar fila em código não te dá nada que você não tenha.</p>
-<p>Se disparo é parte do produto, com volume recorrente, escreva o seu: fila com vazão controlada, tratamento por tipo de erro e registro do resultado por destinatário. O que não vale, em nenhum dos dois casos, é reenviar automaticamente sem olhar o motivo.</p>
-<p>E antes de qualquer disparo grande, faça a conta que ninguém faz: <strong>quantos por cento responderam o último?</strong> Se esse número for baixo, o próximo disparo não é uma oportunidade, é um risco.</p>
-<div class="cta"><h3>Antes do próximo disparo, separe três recusas</h3><p>Excesso de vazão pede espera crescente. Limite por pessoa pede parar por 24 horas. Opção de não receber pede parar de vez. Um laço que trata as três igual é o caminho mais rápido para restringir a conta inteira.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Sem time técnico, use a aba Disparos: planilha com <code>telefone</code>, template aprovado, mapeamento e, se quiser, agendamento. Com time técnico, faça o laço pela API respeitando as 500 requisições por minuto. Nos dois casos, olhe o status depois: é ali que aparece quem não está recebendo.</p>
+<div class="cta"><h3>Faça um disparo de três linhas</h3><p>Monte a planilha com o seu número e mais dois de teste, escolha um template aprovado, mapeie a variável e dispare. Confira o status de cada linha no painel.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/minha-campanha-travou-no-meio">Disparei a campanha e ela travou no meio</a></li>
-<li><a href="/como-enviar-template-pela-api">Como enviar uma mensagem de template pela API</a></li>
-<li><a href="/quantas-mensagens-por-segundo-posso-enviar">Quantas mensagens por segundo posso enviar?</a></li>
+<li><a href="/como-criar-template-whatsapp-passo-a-passo">Como criar um template</a></li>
+<li><a href="/como-enviar-template-pela-api">Como enviar template pela API</a></li>
+<li><a href="/opt-in-por-link-whatsapp">Opt-in no WhatsApp com link de cadastro</a></li>
 <li><a href="/numero-banido-no-whatsapp-o-que-fazer">Número bloqueado no WhatsApp: o que fazer</a></li>
 </ul>
 </article>
@@ -766,12 +718,11 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#antes-do-c-digo-a-pergunta-que-evita-o-p">Antes do código: a pergunta que...</a></li>
-        <li><a href="#a-planilha-e-o-formato-que-ningu-m-avisa">A planilha, e o formato que ning...</a></li>
-        <li><a href="#vaz-o-n-o-mande-do-la-o-direto">Vazão: não mande do laço direto</a></li>
-        <li><a href="#as-quatro-recusas-e-o-que-fazer-com-cada">As quatro recusas, e o que fazer...</a></li>
-        <li><a href="#agendamento-e-fuso">Agendamento e fuso</a></li>
-        <li><a href="#o-que-muda-com-a-datafy">O que muda com a Datafy</a></li>
+        <li><a href="#antes-de-disparar-permiss-o-e-resposta">Antes de disparar: permissão e r...</a></li>
+        <li><a href="#a-planilha">A planilha</a></li>
+        <li><a href="#o-disparo-na-aba-disparos">O disparo, na aba Disparos</a></li>
+        <li><a href="#o-que-o-status-mostra">O que o status mostra</a></li>
+        <li><a href="#pela-api">Pela API</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

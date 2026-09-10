@@ -1,4 +1,4 @@
-<svg viewBox="0 0 720 254" xmlns="http://www.w3.org/2000/svg" class="d">
+<svg viewBox="0 0 720 230" xmlns="http://www.w3.org/2000/svg" class="d">
   <style>
     .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
     .t{font-size:15px;font-weight:600;fill:var(--fg)}
@@ -6,27 +6,28 @@
     .p{font-size:12px;fill:var(--muted)}
     .s{font-size:11px;fill:var(--muted)}
     .ok{fill:var(--accent)}
-    .no{fill:var(--danger)}
     .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
     .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
     .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
   </style>
   <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
     <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Chatwoot: uma fila no lugar de várias caixas</text>
-<rect class="box" x="20" y="46" width="330" height="172" rx="8"/>
-<text class="h" x="185" y="76" text-anchor="middle">Sem inbox compartilhado</text>
-<text class="p " x="36" y="104">Cada um responde do seu aparelho</text>
-<text class="p " x="36" y="126">Ninguém sabe quem já respondeu</text>
-<text class="p " x="36" y="148">Histórico espalhado</text>
-<text class="p " x="36" y="170">Cliente recebe resposta repetida</text>
-<rect class="boxok" x="370" y="46" width="330" height="172" rx="8"/>
-<text class="h" x="535" y="76" text-anchor="middle">Com inbox compartilhado</text>
-<text class="p ok" x="386" y="104">✓ Uma fila para a equipe</text>
-<text class="p ok" x="386" y="126">✓ Da para ver quem assumiu</text>
-<text class="p ok" x="386" y="148">✓ Tags, status e atribuição</text>
-<text class="p ok" x="386" y="170">✓ Histórico em um lugar só</text>
-<text class="s" x="360" y="240" text-anchor="middle">Com coexistência, o que o gerente responde pelo celular aparece na mesma fila.</text>
+<text class="t" x="360" y="26" text-anchor="middle">Chatwoot com a API oficial, pela Datafy</text>
+<rect class="box" x="20" y="50" width="210" height="80" rx="8"/>
+<text class="h" x="125" y="76" text-anchor="middle">No Chatwoot</text>
+<text class="p" x="125" y="98" text-anchor="middle">caixa de entrada tipo API</text>
+<text class="p" x="125" y="116" text-anchor="middle">com a URL da Datafy</text>
+<path class="ar" d="M232,90 L268,90"/>
+<rect class="boxok" x="272" y="50" width="210" height="80" rx="8"/>
+<text class="h" x="377" y="76" text-anchor="middle">Na aba Chatwoot</text>
+<text class="p" x="377" y="98" text-anchor="middle">URL base, account ID,</text>
+<text class="p" x="377" y="116" text-anchor="middle">inbox ID e token</text>
+<path class="ar" d="M484,90 L520,90"/>
+<rect class="box" x="524" y="50" width="176" height="80" rx="8"/>
+<text class="h" x="612" y="76" text-anchor="middle">Conectado</text>
+<text class="p" x="612" y="98" text-anchor="middle">nos dois sentidos</text>
+<text class="p" x="612" y="116" text-anchor="middle">texto, imagem, PDF</text>
+<rect class="box" x="20" y="152" width="680" height="60" rx="8"/>
+<text class="p" x="36" y="178">Em coexistência, a mensagem enviada pelo celular do número também aparece no Chatwoot.</text>
+<text class="s" x="36" y="198">Demonstrado no vídeo do canal DATA7, em 04:20.</text>
 </svg>

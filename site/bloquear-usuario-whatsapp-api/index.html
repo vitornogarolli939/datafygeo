@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Como bloquear e desbloquear um usuário pela API do WhatsApp</title>
+<meta name="description" content="A empresa bloqueia um ou mais usuários com um POST, e eles deixam de conseguir mandar mensagem para o número. Não confundir com o cliente bloquear você.">
+<link rel="canonical" href="https://conteudo.datafyapi.com.br/bloquear-usuario-whatsapp-api">
+<meta name="author" content="Vitor Nogarolli">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Datafy API · Conteúdo">
+<meta property="og:title" content="Como bloquear e desbloquear um usuário pela API do WhatsApp">
+<meta property="og:description" content="A empresa bloqueia um ou mais usuários com um POST, e eles deixam de conseguir mandar mensagem para o número. Não confundir com o cliente bloquear você.">
+<meta property="og:url" content="https://conteudo.datafyapi.com.br/bloquear-usuario-whatsapp-api">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:author" content="Vitor Nogarolli">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Como bloquear e desbloquear um usuário pela API do WhatsApp">
+<meta name="twitter:description" content="A empresa bloqueia um ou mais usuários com um POST, e eles deixam de conseguir mandar mensagem para o número. Não confundir com o cliente bloquear você.">
+
+<link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://datafyapi.com.br/#organization",
+      "name": "Datafy API",
+      "alternateName": "DatafyAPI",
+      "url": "https://datafyapi.com.br/",
+      "description": "Plataforma brasileira que da acesso a API oficial do WhatsApp (Meta Cloud API) por meio de infraestrutura propria, como Tech Provider verificado pela Meta.",
+      "areaServed": "BR",
+      "legalName": "Agência Nexum Marketing e Performance Ltda",
+      "taxID": "41.756.486/0001-70",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Curitiba",
+        "addressRegion": "PR",
+        "addressCountry": "BR"
+      },
+      "founder": {
+        "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person",
+      "name": "Vitor Nogarolli",
+      "jobTitle": "Cofundador da Datafy API",
+      "url": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli",
+      "worksFor": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://conteudo.datafyapi.com.br/#website",
+      "url": "https://conteudo.datafyapi.com.br/",
+      "name": "Datafy API · Conteúdo",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://datafyapi.com.br/#software",
+      "name": "Datafy API",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://datafyapi.com.br/",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "featureList": [
+        "Embedded Signup",
+        "Coexistência com WhatsApp Business App",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
+        "Disparo por template via CSV",
+        "Integração com Chatwoot"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "49.90",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock",
+        "description": "Por número conectado, por mês. R$ 39,90 de 10 a 49 números e R$ 29,90 a partir de 50."
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://conteudo.datafyapi.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Implementação",
+          "item": "https://conteudo.datafyapi.com.br/tema/implementacao"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Como bloquear e desbloquear um usuário pela API do WhatsApp"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://conteudo.datafyapi.com.br/bloquear-usuario-whatsapp-api#article",
+      "headline": "Como bloquear e desbloquear um usuário pela API do WhatsApp",
+      "description": "A empresa bloqueia um ou mais usuários com um POST, e eles deixam de conseguir mandar mensagem para o número. Não confundir com o cliente bloquear você.",
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-09-10",
+      "dateModified": "2026-09-10",
+      "author": {
+        "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "mainEntityOfPage": "https://conteudo.datafyapi.com.br/bloquear-usuario-whatsapp-api",
+      "citation": [
+        "https://app.datafyapi.com.br/docs",
+        "https://www.youtube.com/watch?v=cZ_nyIUv5ic",
+        "https://www.youtube.com/watch?v=S2IAOQWbZMg",
+        "https://www.youtube.com/watch?v=fhz6n2s91-g",
+        "https://whatsappbusiness.com/policy/"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://conteudo.datafyapi.com.br/bloquear-usuario-whatsapp-api#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O usuário bloqueado consegue me mandar mensagem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Usuário bloqueado não consegue enviar mensagens para o número da empresa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso bloquear vários usuários de uma vez?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pode. block_users é uma lista."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como desbloqueio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DELETE no mesmo endpoint, com o usuário em block_users."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bloquear um usuário prejudica a qualidade do meu número?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A documentação não diz isso. O que o vídeo sobre bloqueio aponta como risco é o contrário: o cliente bloquear ou denunciar a empresa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como vejo quem está bloqueado?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GET /v1/{phone_number_id}/block_users."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/bloquear-usuario-whatsapp-api#video-cZ_nyIUv5ic",
+      "name": "Porque você é bloqueado no WhatsApp Business",
+      "description": "As causas de bloqueio observadas na base de clientes, os nichos proibidos e o respaldo de quem esta no oficial",
+      "thumbnailUrl": "https://i.ytimg.com/vi/cZ_nyIUv5ic/maxresdefault.jpg",
+      "uploadDate": "2026-09-10",
+      "contentUrl": "https://www.youtube.com/watch?v=cZ_nyIUv5ic",
+      "embedUrl": "https://www.youtube.com/embed/cZ_nyIUv5ic",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/bloquear-usuario-whatsapp-api#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/bloquear-usuario-whatsapp-api#video-S2IAOQWbZMg",
+      "name": "Como funciona a Datafy API",
+      "description": "A API como espelho da Cloud API: o que muda e o que nao muda em relacao a Meta, texto, botoes e lista",
+      "thumbnailUrl": "https://i.ytimg.com/vi/S2IAOQWbZMg/maxresdefault.jpg",
+      "uploadDate": "2026-09-10",
+      "contentUrl": "https://www.youtube.com/watch?v=S2IAOQWbZMg",
+      "embedUrl": "https://www.youtube.com/embed/S2IAOQWbZMg",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/bloquear-usuario-whatsapp-api#article"
+      }
+    }
+  ]
+}
+</script>
+
+
+
+<style>
+:root{
+  --bg:#fcfbf9; --surface:#ffffff; --fg:#17181a; --muted:#63666b; --line:#e6e3de;
+  --accent:#0b6e4f; --accent-2:#0d8a63; --accent-soft:#e9f4ef;
+  --danger:#a33a2a; --danger-soft:#fbeeeb;
+  --code-bg:#f2f1ed; --warn-bg:#fdf7e9; --warn-line:#e6d09a;
+  --shadow:0 1px 2px rgba(20,20,20,.05), 0 8px 24px -12px rgba(20,20,20,.12);
+  --max:46rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131416; --surface:#1a1c1f; --fg:#eceae6; --muted:#9ea3a9; --line:#2c2f33;
+    --accent:#4fc79b; --accent-2:#63d6ac; --accent-soft:#12251e;
+    --danger:#e08272; --danger-soft:#2a1a17;
+    --code-bg:#22252a; --warn-bg:#26210f; --warn-line:#5d5127;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131416; --surface:#1a1c1f; --fg:#eceae6; --muted:#9ea3a9; --line:#2c2f33;
+  --accent:#4fc79b; --accent-2:#63d6ac; --accent-soft:#12251e;
+  --danger:#e08272; --danger-soft:#2a1a17;
+  --code-bg:#22252a; --warn-bg:#26210f; --warn-line:#5d5127;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:"Iowan Old Style","Charter",Georgia,"Times New Roman",serif;
+  font-size:1.075rem; line-height:1.68; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 1.35rem}
+.sans{font-family:system-ui,-apple-system,"Segoe UI",Inter,sans-serif}
+a{color:var(--accent); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+img,svg{max-width:100%}
+
+/* topo */
+.topbar{border-bottom:1px solid var(--line); background:var(--surface); position:sticky; top:0; z-index:10}
+.topbar .wrap{display:flex; gap:1rem; align-items:center; justify-content:space-between; padding:.8rem 1.35rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.85rem}
+.brand{font-weight:700; letter-spacing:-.02em; text-decoration:none; color:var(--fg); font-size:.95rem}
+.brand span{color:var(--accent)}
+nav.crumbs{color:var(--muted); font-size:.8rem}
+nav.crumbs a{color:var(--muted); text-decoration:none}
+nav.crumbs a:hover{text-decoration:underline}
+
+/* hero */
+header.post{padding:3rem 0 0}
+.eyebrow{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.75rem; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--accent); margin-bottom:.85rem;
+}
+h1{
+  font-size:clamp(1.9rem,5.2vw,2.85rem); line-height:1.12; letter-spacing:-.025em;
+  margin:0 0 1.15rem; font-weight:700; text-wrap:balance;
+}
+.byline{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.85rem; color:var(--muted);
+  display:flex; flex-wrap:wrap; gap:.45rem .8rem; align-items:center;
+}
+.byline a{color:var(--fg)}
+.badge{
+  display:inline-flex; align-items:center; gap:.3rem;
+  background:var(--accent-soft); color:var(--accent); border-radius:99px;
+  padding:.2rem .65rem; font-weight:650; font-size:.76rem; border:1px solid transparent;
+}
+.stats{
+  margin-top:0;
+  display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  margin:2rem 0 .5rem;
+}
+@media (min-width:40rem){ .stats{grid-template-columns:repeat(4,1fr)} }
+.stat{background:var(--surface); padding:.95rem 1.05rem; font-family:system-ui,-apple-system,sans-serif}
+.stat b{display:block; font-size:1.22rem; letter-spacing:-.02em; line-height:1.2; color:var(--accent)}
+.stat span{display:block; font-size:.78rem; color:var(--muted); margin-top:.15rem; line-height:1.35}
+
+.lede{
+  font-size:1.22rem; line-height:1.55; margin:2rem 0;
+  padding:1.25rem 1.4rem; background:var(--surface); border:1px solid var(--line);
+  border-left:4px solid var(--accent); border-radius:0 12px 12px 0; box-shadow:var(--shadow);
+}
+.lede p{margin:0}
+
+/* sumário */
+.toc{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:1.05rem 1.3rem; margin:2rem 0; font-family:system-ui,-apple-system,sans-serif; font-size:.9rem;
+}
+.toc strong{display:block; font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:.6rem}
+.toc ol{margin:0; padding-left:1.15rem; columns:2; column-gap:1.5rem}
+@media (max-width:34rem){ .toc ol{columns:1} }
+.toc li{margin-bottom:.3rem; break-inside:avoid}
+.toc a{text-decoration:none}
+.toc a:hover{text-decoration:underline}
+
+h2{
+  font-size:clamp(1.35rem,3.6vw,1.75rem); line-height:1.22; letter-spacing:-.02em;
+  margin:3rem 0 .9rem; font-weight:700; text-wrap:balance; scroll-margin-top:4rem;
+}
+h3{
+  font-family:system-ui,-apple-system,sans-serif; font-size:1.03rem;
+  margin:2rem 0 .5rem; font-weight:650; letter-spacing:-.005em;
+}
+p{margin:0 0 1.15rem}
+ul,ol{margin:0 0 1.25rem; padding-left:1.35rem}
+li{margin-bottom:.55rem}
+li::marker{color:var(--muted)}
+strong{font-weight:650}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+
+blockquote{
+  margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
+  border-radius:12px; font-size:1.13rem; line-height:1.5; position:relative;
+}
+blockquote p{margin:0 0 .7rem; font-style:italic}
+blockquote cite{display:block; font-style:normal; font-size:.83rem; color:var(--muted);
+  font-family:system-ui,-apple-system,sans-serif}
+
+/* figuras / diagramas */
+figure{margin:2.25rem 0; padding:0}
+.diagram{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:1.4rem 1.2rem 1rem; box-shadow:var(--shadow);
+}
+figcaption{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; color:var(--muted);
+  margin-top:.85rem; line-height:1.45; text-align:left;
+}
+
+/* vídeo */
+.video{
+  display:block; text-decoration:none; color:inherit; border:1px solid var(--line);
+  border-radius:12px; overflow:hidden; background:var(--surface); box-shadow:var(--shadow);
+}
+.video:hover{text-decoration:none; border-color:var(--accent)}
+.video .thumb{position:relative; aspect-ratio:16/9; background:var(--code-bg); display:block}
+.video .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.video .play{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+}
+.video .play span{
+  width:60px; height:60px; border-radius:50%; background:rgba(0,0,0,.72);
+  display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(0,0,0,.35);
+}
+.video:hover .play span{background:#c00}
+.video .meta{padding:.85rem 1.05rem; font-family:system-ui,-apple-system,sans-serif}
+.video .meta b{display:block; font-size:.95rem; line-height:1.35; letter-spacing:-.01em}
+.video .meta span{display:block; font-size:.8rem; color:var(--muted); margin-top:.2rem}
+
+/* tabela */
+.tablewrap{overflow-x:auto; margin:1.75rem 0; border:1px solid var(--line);
+  border-radius:12px; background:var(--surface); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; min-width:38rem; font-size:.88rem;
+  font-family:system-ui,-apple-system,sans-serif}
+th,td{padding:.7rem .85rem; text-align:left; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{background:var(--code-bg); font-weight:650; font-size:.8rem; white-space:nowrap}
+thead th:last-child{color:var(--accent)}
+tbody tr:last-child td{border-bottom:0}
+tbody th{font-weight:600; background:transparent; white-space:nowrap}
+td.yes{color:var(--accent); font-weight:600}
+td.no{color:var(--danger)}
+caption{caption-side:bottom; padding:.7rem .85rem; text-align:left;
+  font-size:.78rem; color:var(--muted); font-family:system-ui,-apple-system,sans-serif}
+
+.callout{
+  background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:12px;
+  padding:1.1rem 1.3rem; margin:1.9rem 0; font-size:.98rem;
+}
+.callout p:last-child{margin-bottom:0}
+
+.cta{
+  border:1px solid var(--line); border-radius:14px; padding:1.6rem 1.75rem;
+  margin:2.75rem 0; background:var(--accent-soft); box-shadow:var(--shadow);
+}
+.cta h3{margin:0 0 .5rem; font-size:1.15rem; font-weight:700}
+.cta p{margin:0 0 1.1rem; font-size:.98rem}
+.cta p:last-child{margin-bottom:0}
+.btn{
+  display:inline-block; background:var(--accent); color:#fff; text-decoration:none;
+  padding:.72rem 1.3rem; border-radius:8px; font-weight:650; font-size:.95rem;
+  font-family:system-ui,-apple-system,sans-serif;
+}
+.btn:hover{background:var(--accent-2); text-decoration:none}
+.cta small{display:block; margin-top:.6rem; font-size:.8rem; color:var(--muted);
+  font-family:system-ui,-apple-system,sans-serif}
+
+.sources{font-size:.86rem; color:var(--muted)}
+.sources li{margin-bottom:.4rem}
+footer{
+  border-top:1px solid var(--line); margin-top:4rem; padding:2.25rem 0 3.5rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; color:var(--muted);
+  background:var(--surface);
+}
+footer a{color:var(--muted)}
+footer p{margin:0 0 .5rem}
+
+/* ===== MOLDURA DO SITE (fixa, igual em todas as páginas) ===== */
+.site-head{
+  position:sticky; top:0; z-index:30; background:color-mix(in srgb,var(--surface) 92%,transparent);
+  backdrop-filter:saturate(1.4) blur(8px); border-bottom:1px solid var(--line);
+}
+.site-head .row{
+  max-width:74rem; margin:0 auto; padding:.7rem 1.35rem;
+  display:flex; align-items:center; gap:1.25rem;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.logo{display:flex; align-items:center; gap:.5rem; text-decoration:none; color:var(--fg); font-weight:750;
+  letter-spacing:-.025em; font-size:1rem; flex:none}
+.logo .dot{width:22px;height:22px;border-radius:6px;background:var(--accent);display:grid;place-items:center;
+  color:#fff;font-size:.72rem;font-weight:800}
+.logo span{color:var(--accent)}
+.site-nav{display:flex; gap:1.1rem; font-size:.87rem; margin-left:.5rem}
+.site-nav a{color:var(--muted); text-decoration:none}
+.site-nav a:hover{color:var(--fg)}
+@media (max-width:52rem){ .site-nav{display:none} }
+.head-cta{margin-left:auto; display:flex; gap:.55rem; align-items:center; flex:none}
+.head-cta a{font-size:.85rem; text-decoration:none; white-space:nowrap}
+.head-cta .ghost{color:var(--muted); padding:.45rem .2rem}
+.head-cta .ghost:hover{color:var(--fg)}
+.head-cta .solid{background:var(--accent); color:#fff; padding:.5rem .95rem; border-radius:7px; font-weight:650}
+.head-cta .solid:hover{background:var(--accent-2)}
+@media (max-width:34rem){ .head-cta .ghost{display:none} }
+
+/* ===== FAIXA DE TOPO ===== */
+.hero-band{background:var(--accent-soft); border-bottom:1px solid var(--line)}
+.hero-grid{
+  max-width:74rem; margin:0 auto; padding:2.75rem 1.35rem 2.5rem;
+  display:grid; grid-template-columns:1fr; gap:2rem; align-items:center;
+}
+@media (min-width:56rem){ .hero-grid{grid-template-columns:1.15fr .85fr; gap:3rem} }
+.hero-art{order:-1}
+@media (min-width:56rem){ .hero-art{order:0} }
+.hero-band h1{margin:0 0 1rem}
+.hero-band .byline{padding-bottom:0; border-bottom:0}
+
+/* ===== CORPO EM DUAS COLUNAS ===== */
+.shell{max-width:74rem; margin:0 auto; padding:0 1.35rem; display:grid; grid-template-columns:1fr; gap:2.5rem}
+@media (min-width:62rem){ .shell{grid-template-columns:minmax(0,1fr) 19rem; gap:3.25rem} }
+.shell > article{min-width:0; padding-top:2.25rem}
+.rail{display:none}
+@media (min-width:62rem){
+  .rail{display:block; padding-top:2.25rem}
+  .rail-inner{position:sticky; top:4.5rem; display:flex; flex-direction:column; gap:1.1rem}
+}
+.rail-cta{
+  background:var(--accent); color:#fff; border-radius:14px; padding:1.35rem 1.4rem;
+  font-family:system-ui,-apple-system,sans-serif; box-shadow:var(--shadow);
+}
+.rail-cta b{display:block; font-size:1.05rem; font-weight:750; letter-spacing:-.015em; line-height:1.3; margin-bottom:.5rem}
+.rail-cta p{font-size:.87rem; line-height:1.5; margin:0 0 1rem; opacity:.92}
+.rail-cta a{
+  display:block; text-align:center; background:#fff; color:var(--accent);
+  padding:.6rem 1rem; border-radius:8px; font-weight:700; font-size:.9rem; text-decoration:none;
+}
+.rail-cta a:hover{opacity:.92; text-decoration:none}
+.rail-cta small{display:block; margin-top:.6rem; font-size:.75rem; opacity:.85; text-align:center}
+.rail-box{
+  background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:1.1rem 1.25rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.86rem;
+}
+.rail-box strong{display:block; font-size:.72rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:.6rem}
+.rail-box ol{margin:0; padding-left:1.1rem}
+.rail-box li{margin-bottom:.35rem; line-height:1.4}
+.rail-box a{text-decoration:none}
+.rail-box a:hover{text-decoration:underline}
+
+/* ===== RODAPÉ ===== */
+.site-foot{border-top:1px solid var(--line); background:var(--surface); margin-top:4rem}
+.foot-grid{
+  max-width:74rem; margin:0 auto; padding:2.75rem 1.35rem 1.75rem;
+  display:grid; grid-template-columns:1fr; gap:2rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.86rem;
+}
+@media (min-width:44rem){ .foot-grid{grid-template-columns:1.4fr 1fr 1fr} }
+.foot-grid h4{font-size:.74rem; letter-spacing:.09em; text-transform:uppercase; color:var(--muted);
+  margin:0 0 .7rem; font-weight:700}
+.foot-grid ul{list-style:none; margin:0; padding:0}
+.foot-grid li{margin-bottom:.4rem}
+.foot-grid a{color:var(--muted); text-decoration:none}
+.foot-grid a:hover{color:var(--fg)}
+.foot-about p{color:var(--muted); margin:0 0 .6rem; max-width:26rem; line-height:1.55}
+.foot-legal{
+  max-width:74rem; margin:0 auto; padding:1.1rem 1.35rem 2.5rem; border-top:1px solid var(--line);
+  font-family:system-ui,-apple-system,sans-serif; font-size:.78rem; color:var(--muted);
+}
+
+/* ===== home e pagina de autor ===== */
+.shell-solo{grid-template-columns:minmax(0,1fr) !important; max-width:52rem}
+.shell-solo > article{padding-top:3rem}
+.sub{font-size:1.15rem; color:var(--muted); margin:0 0 2rem}
+.cards{list-style:none; margin:1.5rem 0 0; padding:0; display:grid; gap:1rem}
+@media (min-width:44rem){ .cards{grid-template-columns:1fr 1fr} }
+.card a{display:block; text-decoration:none; color:inherit; height:100%;
+  background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  padding:1.25rem 1.35rem; box-shadow:var(--shadow)}
+.card a:hover{border-color:var(--accent); text-decoration:none}
+.card-tema{display:inline-block; font-family:system-ui,-apple-system,sans-serif;
+  font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent); background:var(--accent-soft); padding:.2rem .55rem;
+  border-radius:99px; margin-bottom:.65rem}
+.card b{display:block; font-size:1.08rem; line-height:1.3; letter-spacing:-.015em; margin-bottom:.4rem}
+.card p{font-size:.92rem; color:var(--muted); margin:0 0 .8rem; line-height:1.5}
+.card-data{font-family:system-ui,-apple-system,sans-serif; font-size:.78rem; color:var(--faint,var(--muted))}
+
+</style>
+</head>
+<body>
+
+
+
+<header class="site-head">
+  <div class="row">
+    <a class="logo" href="/"><span class="dot">D</span>Datafy<span>API</span></a>
+    <nav class="site-nav" aria-label="Temas">
+      <a href="/tema/oficial-vs-nao-oficial">Oficial vs não oficial</a>
+      <a href="/tema/custo">Custos</a>
+      <a href="/tema/coexistencia">Coexistência</a>
+      <a href="/tema/implementacao">Implementação</a>
+      <a href="/tema/compliance">Banimento e compliance</a>
+    </nav>
+    <div class="head-cta">
+      <a class="ghost" href="https://app.datafyapi.com.br/docs">Documentação</a>
+      <a class="solid" href="https://app.datafyapi.com.br">Teste 7 dias grátis</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero-band">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">Implementação</p>
+      <h1>Como bloquear e desbloquear um usuário pela API do WhatsApp</h1>
+      <div class="byline">
+        <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
+        <span class="badge">Tech Provider verificado pela Meta</span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
+  <title id="heroT">Registro de status com uma falha destacada</title>
+  <desc id="heroD">Ilustração de uma lista de status de mensagens em que uma linha aparece marcada como falha.</desc>
+  <rect x="30" y="52" width="280" height="196" rx="14" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
+  <rect x="30" y="52" width="280" height="32" rx="14" fill="var(--code-bg)"/>
+  <rect x="30" y="74" width="280" height="10" fill="var(--code-bg)"/>
+  <text x="48" y="74" style="font:700 10px ui-monospace,monospace;fill:var(--muted)">statuses</text>
+  <g opacity=".55">
+    <rect x="48" y="100" width="150" height="6" rx="3" fill="var(--muted)"/>
+    <text x="294" y="107" text-anchor="end" style="font:700 9px ui-monospace,monospace;fill:var(--accent)">delivered</text>
+  </g>
+  <g opacity=".55">
+    <rect x="48" y="126" width="120" height="6" rx="3" fill="var(--muted)"/>
+    <text x="294" y="133" text-anchor="end" style="font:700 9px ui-monospace,monospace;fill:var(--accent)">read</text>
+  </g>
+  <rect x="40" y="146" width="260" height="40" rx="8" fill="var(--danger-soft)" stroke="var(--danger)" stroke-width="1.5"/>
+  <text x="52" y="162" style="font:700 10px ui-monospace,monospace;fill:var(--danger)">failed</text>
+  <text x="52" y="178" style="font:600 10px ui-monospace,monospace;fill:var(--danger)">o motivo vem aqui dentro</text>
+  <g opacity=".35">
+    <rect x="48" y="202" width="140" height="6" rx="3" fill="var(--muted)"/>
+    <rect x="48" y="220" width="100" height="6" rx="3" fill="var(--muted)"/>
+  </g>
+</svg>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+<article>
+
+<h1>Como bloquear e desbloquear um usuário pela API do WhatsApp</h1>
+<p><strong>Resposta curta:</strong> com <code>POST /v1/{phone_number_id}/block_users</code>, a empresa bloqueia um ou mais usuários. <strong>Usuário bloqueado não consegue mandar mensagem para o número.</strong> O mesmo endpoint lista os bloqueados com <code>GET</code> e desbloqueia com <code>DELETE</code>.</p>
+<p>Vale separar isso de outra coisa que tem o mesmo nome: quando <strong>o cliente bloqueia a sua empresa</strong> no WhatsApp. Esse segundo caso é o que pesa contra o seu número, segundo o vídeo sobre bloqueio do canal DATA7.</p>
+<div class="stats">
+  <div class="stat"><b>3 métodos</b><span>GET lista, POST bloqueia, DELETE desbloqueia</span></div>
+  <div class="stat"><b>1 chamada</b><span>pode bloquear vários usuários</span></div>
+  <div class="stat"><b>0</b><span>mensagens que o bloqueado consegue mandar</span></div>
+  <div class="stat"><b>1 endpoint</b><span>para as três operações</span></div>
+</div>
+
+<h2 id="principais-pontos">Principais pontos</h2>
+<ul>
+<li><strong>Listar:</strong> <code>GET /v1/{phone_number_id}/block_users</code>.</li>
+<li><strong>Bloquear:</strong> <code>POST</code> no mesmo endpoint, com a lista de usuários em <code>block_users</code>.</li>
+<li><strong>Desbloquear:</strong> <code>DELETE</code> no mesmo endpoint, com a mesma estrutura de corpo.</li>
+<li>Bloqueado <strong>não consegue enviar mensagem</strong> para o número da empresa.</li>
+<li><strong>Cliente bloqueando a empresa é outra coisa</strong>, e é a que aparece como sinal de risco no vídeo sobre bloqueio.</li>
+</ul>
+<h2 id="listar-os-bloqueados">Listar os bloqueados</h2>
+<p><code>GET https://cloud.datafyapi.com.br/v1/{phone_number_id}/block_users
+Authorization: Bearer sk_live_xxx</code></p>
+<p><code>json
+{
+  "data": [
+    { "user_identity": "5511999999999" },
+    { "user_identity": "5521988888888" }
+  ]
+}</code></p>
+<p>Não sabe o <code>phone_number_id</code>? <code>GET https://cloud.datafyapi.com.br/me</code> devolve, passando só o token no cabeçalho.</p>
+<h2 id="bloquear">Bloquear</h2>
+<p>```
+POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/block_users
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json</p>
+<p>{
+  "messaging_product": "whatsapp",
+  "block_users": [
+    { "user": "5511999999999" }
+  ]
+}
+```</p>
+<p><code>json
+{
+  "block_users": [
+    {
+      "user": "5511999999999",
+      "input_phone_number": "5511999999999",
+      "wa_id": "5511999999999"
+    }
+  ]
+}</code></p>
+<p>O campo <code>block_users</code> é uma lista, então a mesma chamada aceita mais de um usuário.</p>
+<h2 id="desbloquear">Desbloquear</h2>
+<p>Mesmo endpoint, método <code>DELETE</code>, mesmo formato de corpo:</p>
+<p>```
+DELETE https://cloud.datafyapi.com.br/v1/{phone_number_id}/block_users
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json</p>
+<p>{
+  "messaging_product": "whatsapp",
+  "block_users": [
+    { "user": "5511999999999" }
+  ]
+}
+```</p>
+<p><code>json
+{ "success": true }</code></p>
+<p>Depois de desbloqueado, o usuário volta a conseguir mandar mensagens para o número.</p>
+<h2 id="bloquear-n-o-o-mesmo-que-ser-bloqueado">Bloquear não é o mesmo que ser bloqueado</h2>
+<p>O endpoint acima é a <strong>empresa</strong> bloqueando alguém. O caso que preocupa quem envia mensagem é o inverso: <strong>o cliente</strong> bloqueando ou denunciando a empresa.</p>
+<p>No vídeo sobre bloqueio, o Israel Henrique, CTO da Datafy, é direto sobre esse segundo caso: <em>"quando a pessoa te bloqueia ou te denuncia, a chance de você tomar um bloqueio da meta é muito alta."</em> E ele conta como ele mesmo age do lado de quem recebe: quando uma empresa que ele não conhece manda mensagem oferecendo alguma coisa, <em>"eu bloqueio na hora."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=cZ_nyIUv5ic" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/cZ_nyIUv5ic/maxresdefault.jpg" alt="Miniatura do vídeo: Porque você é bloqueado no WhatsApp Business" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Porque você é bloqueado no WhatsApp Business</b><span>Canal DATA7 · 26 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 13:32 ele descreve como bloqueia empresas que mandam mensagem sem ele conhecer, e em 14:20 explica por que bloqueio e denúncia pesam contra o número.</figcaption>
+</figure>
+
+<p>A recomendação dele para reduzir esse risco é dar à pessoa uma saída dentro do template, como um botão de não ter interesse, e tirar da lista quem clicar. <a href="/numero-banido-no-whatsapp-o-que-fazer">Isso está na página sobre bloqueio de número</a>.</p>
+<h2 id="por-que-o-endpoint-funciona-igual-ao-da">Por que o endpoint funciona igual ao da Meta</h2>
+<p>A Datafy API espelha a Cloud API: o caminho, o corpo e a resposta são os mesmos, e mudam só o domínio e o token. Na explicação do vídeo sobre como a Datafy funciona, se o endpoint não estiver na documentação da Datafy, você usa o da Meta com essa troca.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=S2IAOQWbZMg" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/S2IAOQWbZMg/maxresdefault.jpg" alt="Miniatura do vídeo: Como funciona a Datafy API" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como funciona a Datafy API</b><span>Canal DATA7 · 14 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 12:40 ele resume: a única coisa que muda é a URL, e o token vai em todas as chamadas.</figcaption>
+</figure>
+
+<h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+<h3>O usuário bloqueado consegue me mandar mensagem?</h3>
+<p>Não. Usuário bloqueado não consegue enviar mensagens para o número da empresa.</p>
+<h3>Posso bloquear vários usuários de uma vez?</h3>
+<p>Pode. <code>block_users</code> é uma lista.</p>
+<h3>Como desbloqueio?</h3>
+<p><code>DELETE</code> no mesmo endpoint, com o usuário em <code>block_users</code>.</p>
+<h3>Bloquear um usuário prejudica a qualidade do meu número?</h3>
+<p>A documentação não diz isso. O que o vídeo sobre bloqueio aponta como risco é o contrário: o cliente bloquear ou denunciar a empresa.</p>
+<h3>Como vejo quem está bloqueado?</h3>
+<p><code>GET /v1/{phone_number_id}/block_users</code>.</p>
+<h2 id="como-decidir">Como decidir</h2>
+<p>Use o bloqueio pela API quando a empresa não quer mais receber mensagens de um contato. Para evitar o caso que prejudica o número, que é o cliente bloquear você, o caminho não é esse endpoint: é mandar menos para quem não responde e dar uma saída no template.</p>
+<div class="cta"><h3>Teste o ciclo com um número seu</h3><p>Bloqueie um número de teste, tente mandar uma mensagem dele para o número da empresa, e depois desbloqueie com DELETE.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+
+<h2 id="leia-tamb-m">Leia também</h2>
+<ul>
+<li><a href="/numero-banido-no-whatsapp-o-que-fazer">Número bloqueado no WhatsApp: o que fazer</a></li>
+<li><a href="/datafy-api-espelho-da-cloud-api">A Datafy API é um espelho da Cloud API</a></li>
+<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens no seu servidor</a></li>
+<li><a href="/opt-in-por-link-whatsapp">Opt-in no WhatsApp com link de cadastro</a></li>
+</ul>
+</article>
+
+<aside class="rail" aria-label="Ações">
+  <div class="rail-inner">
+    <div class="rail-cta">
+      <b>Teste com um número</b>
+      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
+      <small>7 dias · sem cartão · sem setup</small>
+    </div>
+    <nav class="rail-box" aria-label="Sumário lateral">
+      <strong>Nesta página</strong>
+      <ol>
+        <li><a href="#principais-pontos">Principais pontos</a></li>
+        <li><a href="#listar-os-bloqueados">Listar os bloqueados</a></li>
+        <li><a href="#bloquear">Bloquear</a></li>
+        <li><a href="#desbloquear">Desbloquear</a></li>
+        <li><a href="#bloquear-n-o-o-mesmo-que-ser-bloqueado">Bloquear não é o mesmo que ser b...</a></li>
+        <li><a href="#por-que-o-endpoint-funciona-igual-ao-da">Por que o endpoint funciona igua...</a></li>
+        <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+        <li><a href="#como-decidir">Como decidir</a></li>
+        <li><a href="#leia-tamb-m">Leia também</a></li>
+      </ol>
+    </nav>
+    <div class="rail-box">
+      <strong>Falar com a gente</strong>
+      <p style="margin:0;color:var(--muted);line-height:1.5">Dúvida antes de assinar?
+      <a href="https://wa.me/5541991338055" rel="noopener">Chame no WhatsApp</a>.</p>
+    </div>
+  </div>
+</aside>
+</div>
+
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div class="foot-about">
+      <a class="logo" href="/" style="margin-bottom:.8rem"><span class="dot">D</span>Datafy<span>API</span></a>
+      <p>A API oficial do WhatsApp para quem automatiza e constrói software. Tech Provider verificado pela Meta, com coexistência e espelho 1:1 da Cloud API.</p>
+      <p>Agência Nexum Marketing e Performance Ltda<br>CNPJ 41.756.486/0001-70 · Curitiba/PR</p>
+    </div>
+    <div>
+      <h4>Temas</h4>
+      <ul>
+        <li><a href="/tema/oficial-vs-nao-oficial">Oficial vs não oficial</a></li>
+        <li><a href="/tema/custo">Custos</a></li>
+        <li><a href="/tema/coexistencia">Coexistência</a></li>
+        <li><a href="/tema/implementacao">Implementação</a></li>
+        <li><a href="/tema/compliance">Banimento e compliance</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Datafy</h4>
+      <ul>
+        <li><a href="https://datafyapi.com.br/">Site</a></li>
+        <li><a href="https://app.datafyapi.com.br/docs">Documentação</a></li>
+        <li><a href="https://app.datafyapi.com.br">Painel</a></li>
+        <li><a href="/autor/vitor-nogarolli">Sobre o autor</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">© 2026 Datafy API. Conteúdo técnico em português sobre WhatsApp Business API.</div>
+</footer>
+
+</body>
+</html>

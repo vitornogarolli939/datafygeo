@@ -1,6 +1,6 @@
 ---
-title: "Webhook WhatsApp Cloud API: receber mensagens em tempo real no seu servidor"
-description: "Como configurar webhook, validar assinatura HMAC, processar JSON de mensagem entrada e responder na Meta."
+title: "Webhook da API oficial do WhatsApp: receber mensagens no seu servidor"
+description: "Cadastrar a URL, escolher os eventos, responder 200 em até 20 segundos e usar os cabeçalhos da Datafy para evitar processar a mesma entrega duas vezes."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "webhook-whatsapp-cloud-api-como-receber-mensagens"
 cluster: "implementacao"
@@ -9,333 +9,129 @@ intent: "como-fazer"
 persona: "automacao, saas"
 competitors: []
 published: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-10
 sources:
-  - https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks
-  - https://developers.facebook.com/docs/whatsapp/webhooks
-  - https://developers.facebook.com/docs/whatsapp/cloud-api/reference/webhook-payload
   - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://www.youtube.com/watch?v=vGovcR8W5g8
   - https://www.youtube.com/watch?v=LIT4FxgqHhE
-  - https://www.youtube.com/watch?v=cZ_nyIUv5ic
-videos: [dIIkttPeBS0, LIT4FxgqHhE]
+  - https://www.youtube.com/watch?v=HVRCBsJI_Eo
+videos: [dIIkttPeBS0, vGovcR8W5g8]
 internal_links:
-  - /api-oficial-vs-nao-oficial-whatsapp-2026
   - /validar-assinatura-do-webhook
-  - /webhook-chega-duplicado
-  - /whatsapp-api-oficial-n8n
-  - /o-que-e-tech-provider-meta
+  - /laco-de-webhook-derruba-numero
+  - /tres-status-da-mensagem-whatsapp
+  - /tunel-para-testar-webhook-local
+  - /ver-payload-das-mensagens-em-tempo-real
 status: aprovado
 ---
 
-# Webhook WhatsApp Cloud API: receber mensagens em tempo real no seu servidor
+# Webhook da API oficial do WhatsApp: receber mensagens no seu servidor
 
-**Última atualização: 06/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** webhook é um POST HTTP que Meta (ou Datafy em nome dela) faz para seu servidor toda vez que chega mensagem no número. Seu servidor recebe JSON, processa (salva em banco, envia para CRM, etc), responde com "200 OK". Se o seu servidor falhar, a Meta reentrega, com frequência decrescente, por até 7 dias.
+**Resposta curta:** webhook é a URL que recebe um `POST` a cada evento do número: mensagem que chega, status do que você enviou, mensagem enviada pelo celular. Na Datafy API você cadastra essa URL no painel, escolhe os eventos e pode testar com um clique. O payload é **idêntico ao que a Meta envia**, e cada entrega vem com cabeçalhos da Datafy para identificar e, se você ativar, assinar a entrega.
 
-Pré-requisito: servidor com HTTPS válido (certificado SSL), URL acessível de fora, porta 443 aberta.
+A sua URL precisa responder **200 em até 20 segundos**.
 
-::numeros: 19 campos|de webhook na conta, verificado em setembro de 2026 ;; 7 dias|que a Meta reentrega, com frequência decrescente, se você falhar ;; 200|o status HTTP que a Meta espera de volta ;; SHA-256|o HMAC do header X-Hub-Signature-256
+::numeros: 20 s|para a sua URL responder 200 ;; 3 cabeçalhos|delivery-id, timestamp e assinatura ;; 3 status|voltam de cada mensagem enviada ;; 1 clique|para mandar um evento de teste
 
 ## Principais pontos
-- Webhook é a única forma de receber mensagens em tempo real. Sem webhook, seu app não sabe que chegou conversa.
-- Meta faz POST com conteúdo JSON. JSON tem: remetente, conteúdo, tipo (texto, imagem, áudio), timestamp, message_id.
-- Você valida que o JSON veio da Meta (assinatura HMAC no header X-Hub-Signature-256), responde 200 na hora e processa depois. A Meta não publica um tempo limite de resposta, então o seguro é confirmar primeiro e trabalhar de forma assíncrona.
-- A Meta não publica um tempo limite de resposta nem um número fixo de tentativas: ela reentrega com frequência decrescente por até 7 dias.
-- A conta tem 19 campos de webhook disponíveis na documentação da Meta, verificado em setembro de 2026: mensagens, status de entrega, alertas de conta, qualidade do número, situação e categoria de template, histórico, segurança, entre outros. A lista cresce sem aviso, e provedores podem expor eventos próprios além dela.
-
-## Configurar webhook no Datafy
-
-Se você usa Datafy:
-
-1. No painel, vai em "API" > "Webhooks".
-2. Cola sua URL (deve ser HTTPS): `https://seu-servidor.com/webhook/whatsapp`
-3. Datafy valida fazendo POST de teste.
-4. Seu servidor responde "200 OK", Datafy aprova.
-5. Feito. Daqui em diante, toda mensagem chega lá.
-
-## Configurar webhook direto na Meta
-
-Se você conecta direto na Meta:
-
-1. Vai em Business Manager > App Dashboard.
-2. Procura "Webhooks" em "Configuração".
-3. "Adicionar Webhook": cola sua URL.
-4. Meta manda POST de teste, você responde com token (token_verify).
-5. Meta aprova, webhooks ligado.
-
-## Responder a POST de teste da Meta
-
-Quando Meta valida webhook, ela faz POST com query param: `?hub.mode=subscribe&hub.challenge=XXXXXXXXXXX&hub.verify_token=SEU_TOKEN`
-
-Seu código precisa:
-
-```python
-# Flask exemplo
-@app.route('/webhook/whatsapp', methods=['GET'])
-def webhook_verify():
-    token = request.args.get('hub.verify_token')
-    challenge = request.args.get('hub.challenge')
-    
-    if token == 'SEU_TOKEN_SECRETO':
-        return challenge  # Meta valida webhook
-    else:
-        return 'Forbidden', 403
-```
-
-## Testar antes de existir tráfego
-
-Um detalhe de ordem prática que economiza a primeira hora: dá para **disparar um evento falso** para a sua URL, escolhendo o tipo, antes de qualquer cliente mandar mensagem. É o jeito de separar "meu endpoint está errado" de "o evento não está chegando", que são problemas diferentes e se confundem no começo.
-
-E depois que o tráfego existe, o que mais ajuda é conseguir ver o **payload cru** de cada mensagem que entrou e saiu, sem depender de log do seu servidor. Vale saber os limites disso: no painel da Datafy esse log guarda **7 dias e no máximo 100 mensagens por conversa**, e mídia não aparece, só o aviso de que chegou. O próprio Israel é explícito no que ele não é: *"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."*
-
-::video: dIIkttPeBS0 | Em 05:31 ele cadastra o webhook e escolhe os eventos, em 07:41 usa o testador para mandar um evento falso antes de existir mensagem real, e em 08:15 abre o payload que chegou, campo por campo.
-
-## Um evento que quase todo mundo esquece de marcar
-
-Se o número está em coexistência, existe um evento separado para **as mensagens que você mesmo envia pelo celular**: sem ele, o atendente responde pelo aplicativo e o seu sistema não fica sabendo, o que produz aquele histórico furado em que só metade da conversa aparece.
-
-A pegadinha: esse evento **não** cobre mensagem enviada pela API. Essa você já sabe que enviou, e o que volta dela é status. São dois caminhos diferentes para duas origens diferentes, e quem espera ver o próprio envio pela API nesse evento fica procurando defeito onde não tem.
-
-## Receber mensagem de verdade
-
-Depois que webhook validado, Meta faz POST toda vez que chega mensagem:
-
-```json
-{
-  "object": "whatsapp_business_account",
-  "entry": [
-    {
-      "id": "123456",
-      "changes": [
-        {
-          "value": {
-            "messaging_product": "whatsapp",
-            "messages": [
-              {
-                "from": "55XX999999999",
-                "id": "wamid.XXXXX",
-                "timestamp": "1234567890",
-                "type": "text",
-                "text": {
-                  "body": "Oi, qual é o preço?"
-                }
-              }
-            ],
-            "metadata": {
-              "phone_number_id": "102XXX",
-              "display_phone_number": "55XXXX"
-            }
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-
-Seu código extrai:
-
-```python
-@app.route('/webhook/whatsapp', methods=['POST'])
-def webhook_receive():
-    data = request.json
-    
-    # Valida assinatura HMAC (vê depois)
-    from_number = data['entry'][0]['changes'][0]['value']['messages'][0]['from']
-    message_text = data['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
-    
-    # Processa
-    # ... salva em banco, chama CRM, etc ...
-    
-    return 'ok', 200
-```
-
-## Estrutura JSON de mensagem (todos os tipos)
-
-**Texto:**
-```
-"type": "text"
-"text": { "body": "conteúdo" }
-```
-
-**Imagem:**
-```
-"type": "image"
-"image": { "mime_type": "image/jpeg", "sha256": "HASH", "id": "123" }
-```
-
-**Áudio:**
-```
-"type": "audio"
-"audio": { "mime_type": "audio/ogg", "sha256": "HASH", "id": "123" }
-```
-
-**Documento:**
-```
-"type": "document"
-"document": { "mime_type": "application/pdf", "sha256": "HASH", "id": "123", "filename": "relatorio.pdf" }
-```
-
-**Localização:**
-```
-"type": "location"
-"location": { "latitude": -23.55, "longitude": -46.63 }
-```
+- **Cadastro:** aba de webhooks do número, URL, eventos e botão de teste. Dá para cadastrar mais de um webhook.
+- **Resposta:** 200 em até 20 segundos. Processamento longo antes de responder conta como falha.
+- **Idempotência:** o cabeçalho `x-datafy-delivery-id` identifica cada entrega. Guarde e ignore o que já viu.
+- **Assinatura:** opcional, ativada por número, com `x-datafy-signature-256`.
+- **Cuidado:** status chegam no mesmo webhook das mensagens, e responder a eles gera laço.
 
 ::diagrama: webhook-fluxo
 
-## Os campos de webhook que a Meta disponibiliza
+## Cadastrar a URL
 
-Aqui mora uma confusão que custa horas de debug: **campo de webhook não é o mesmo que tipo de mensagem.**
+No painel da Datafy, abra o número e vá em webhooks. Cadastre a URL, selecione os eventos e salve. Na fala do Israel Henrique, CTO da Datafy: *"lembrando que você pode cadastrar novos webhooks aqui."*
 
-O campo é o que você assina no App Dashboard. Texto, imagem, áudio, localização e figurinha **não são campos**: todos chegam dentro do campo `messages`, e você diferencia lendo o `type` de cada mensagem no payload. Assinar `messages` já traz todos eles.
+Para testar sem depender de alguém mandar mensagem, o painel envia um evento de teste: *"seleciona o evento, clica em enviar. Aí ele vai enviar um teste aqui para cá."*
 
-Na documentação da Meta, a conta tem **19 campos** disponíveis, verificado em setembro de 2026:
+::video: dIIkttPeBS0 | Em 05:31 ele cadastra a URL, em 06:40 escolhe os eventos, e em 07:41 envia o evento de teste e mostra ele chegando no n8n.
 
-| Campo | O que avisa |
+## Quais eventos marcar
+
+| Evento | O que traz |
 |---|---|
-| `messages` | Mensagem recebida e status de entrega, leitura e falha |
-| `smb_message_echoes` | Mensagem enviada pelo aplicativo do celular, em coexistência |
-| `smb_app_state_sync` | Sincronização de contatos e estado do aplicativo |
-| `history` | Histórico de conversa importado no onboarding |
-| `message_template_status_update` | Template aprovado, reprovado ou pausado |
-| `message_template_quality_update` | Qualidade do template mudou |
-| `message_template_components_update` | Componentes do template foram alterados |
-| `template_category_update` | A Meta reclassificou a categoria, e isso muda o preço |
-| `phone_number_quality_update` | Qualidade do número caiu ou subiu |
-| `phone_number_name_update` | Nome de exibição aprovado ou recusado |
-| `account_update` | Mudança na conta, inclusive banimento |
-| `account_alerts` | Alertas da Meta sobre a conta |
-| `account_review_update` | Resultado da revisão da conta |
-| `business_capability_update` | Limites de envio e de números mudaram |
-| `payment_configuration_update` | Configuração de pagamento |
-| `partner_solutions` | Eventos de solução de parceiro |
-| `user_preferences` | Cliente optou por não receber marketing |
-| `automatic_events` | Eventos automáticos de mensageria |
-| `security` | Eventos de segurança da conta |
+| `messages` | Mensagens que chegam no número e os status das que você envia pela API |
+| `smb_message_echoes` | Mensagens enviadas pelo celular do número, em coexistência |
+| `history` | Conversas do aplicativo, quando você pede a sincronização |
+| `smb_app_state_sync` | Contatos do aplicativo, na sincronização e nas alterações seguintes |
 
-Assine só o que você vai tratar. Cada campo assinado é volume de POST no seu servidor.
+Os dois primeiros são os do dia a dia. Os dois últimos só fazem sentido em coexistência, e precisam estar marcados **antes** de você pedir a sincronização. [Como sincronizar está aqui](/sincronizar-contatos-api-oficial-whatsapp).
 
-Dois valem atenção especial: **`template_category_update`**, porque uma reclassificação de utilidade para marketing multiplica o custo da mensagem sem aviso, e **`phone_number_quality_update`**, porque é o sinal que antecede o bloqueio.
+## O que chega em cada entrega
 
-A lista muda sem aviso, a Meta acrescenta campos com o tempo. Confira a [referência de webhooks](https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview) antes de assumir que está completa. Provedores também podem expor eventos próprios além dos campos da Meta.
+**O corpo** é o payload da Meta, sem alteração. Segundo a documentação da Datafy, vale integralmente a documentação de webhooks da Meta para interpretar os campos.
 
-## Validar assinatura HMAC
+**Os cabeçalhos** são da Datafy:
 
-Antes de processar, você PRECISA validar que POST veio de Meta:
+| Cabeçalho | Descrição |
+|---|---|
+| `x-datafy-delivery-id` | Identificador único da entrega (UUID). Use como chave de idempotência |
+| `x-datafy-timestamp` | Momento em que a entrega foi assinada, em segundos |
+| `x-datafy-signature-256` | Assinatura HMAC-SHA256 no formato `sha256=<hex>` |
 
-```python
-import hmac
-import hashlib
+Os dois últimos só aparecem quando a assinatura está ativada para o número. [Como validar a assinatura está aqui](/validar-assinatura-do-webhook).
 
-def validate_hmac(request_body, signature, app_secret):
-    expected = 'sha256=' + hmac.new(
-        app_secret.encode(),
-        request_body,
-        hashlib.sha256
-    ).hexdigest()
-    
-    return hmac.compare_digest(expected, signature)
+## Responder rápido, processar depois
 
-# No seu webhook:
-@app.route('/webhook/whatsapp', methods=['POST'])
-def webhook():
-    signature = request.headers.get('X-Hub-Signature-256')
-    body = request.get_data(as_text=True)
-    
-    if not validate_hmac(body, signature, 'APP_SECRET'):
-        return 'Unauthorized', 401
-    
-    # Continua processamento...
-    return 'ok', 200
-```
+A documentação da Datafy é explícita: a URL deve responder `200` em até **20 segundos**, e o recomendado é responder imediatamente e processar o evento de forma assíncrona. Processamento síncrono longo estoura o tempo e é contabilizado como falha.
 
-APP_SECRET vem do Datafy (painel) ou da Meta (App Dashboard).
+Na prática, a ordem dentro do seu endpoint é: receber, guardar o `x-datafy-delivery-id`, responder 200, e só então processar.
 
-## Responder mensagem
+## Teste e produção, no n8n
 
-Receber é POST de Meta. Responder é POST seu para Meta:
+No vídeo sobre n8n, o Israel mostra uma diferença que confunde no primeiro dia. O nó de webhook do n8n tem duas URLs: a de teste só recebe enquanto você está com a escuta ligada, e a de produção funciona o tempo todo depois que o fluxo é publicado. Na fala dele: *"essa esse teste aqui ele só funciona quando eu clico nesse botão aqui. Já o de produção funciona sempre, 24 horas por dia."*
 
-```python
-import requests
+::video: vGovcR8W5g8 | Em 01:23 ele cadastra a URL de teste, em 03:02 liga a escuta e recebe uma mensagem, e em 05:00 troca pela URL de produção e publica o fluxo.
 
-def send_message(to_number, message_text, token):
-    url = f'https://cloud.datafyapi.com.br/v1/{{phone_number_id}}/messages'
-    
-    headers = {
-        'Authorization': f'Bearer {token}',
-        'Content-Type': 'application/json'
-    }
-    
-    payload = {
-        'messaging_product': 'whatsapp',
-        'to': to_number,
-        'type': 'text',
-        'text': {'body': message_text}
-    }
-    
-    response = requests.post(url, json=payload, headers=headers)
-    return response.json()
+Para testar código na sua própria máquina, [o caminho é um túnel](/tunel-para-testar-webhook-local).
 
-# Ao receber mensagem:
-send_message('5511999999999', 'Oi, recebemos seu contato!', token)
-```
+## Status chegam no mesmo webhook
 
-## Problemas comuns
+Cada mensagem que você envia pela API gera eventos de status que chegam no mesmo endereço das mensagens dos clientes: enviada, entregue e lida, ou um evento de falha. [Os três estão explicados aqui](/tres-status-da-mensagem-whatsapp).
 
-**Webhook não recebe nada**
+Isso tem um risco. Se o seu fluxo responde a tudo que chega, ele responde aos status, e cada resposta gera novos status. No vídeo, o aviso é direto: *"vai bloquear o teu número."* [Como evitar está aqui](/laco-de-webhook-derruba-numero).
 
-1. URL está correta? Testa `curl -I https://seu-servidor.com/webhook/whatsapp`
-2. Certificado SSL válido? Self-signed não funciona, precisa de autoridade real.
-3. Firewall deixa port 443? `netstat -tuln | grep 443`
-4. Webhook ativado no painel? Valida em Datafy ou Meta.
+## Ver o que chegou
 
-**Webhook recebe mas assinatura falha**
-
-1. APP_SECRET está correto? Copia de novo do painel.
-2. Está comparando signature correta? X-Hub-Signature-256 vs SHA256.
-3. Body está UTF-8? `request.get_data()` vs `request.get_json()`
-
-**Meta retenta webhook 3x e desiste**
-
-1. Seu servidor respondeu depois de 60s? Processa rápido, salva fila se precisa, retorna logo.
-2. Seu servidor está online? Valida logs.
-3. Seu servidor respondeu 200? Precisa ser exato 200, não 201 ou 202.
+Quando algo não bate, o painel da Datafy tem um log em tempo real que mostra o payload de cada mensagem enviada e recebida. Ele guarda 7 dias e até 100 mensagens por conversa, e é só log. [Como usar está aqui](/ver-payload-das-mensagens-em-tempo-real).
 
 ## Perguntas frequentes
 
-### E se webhook cair por 1 hora?
+### Quanto tempo a minha URL tem para responder?
 
-Meta tenta 3x, depois abandona essa mensagem. Você perde webhook. Histórico continua em Meta (você consegue via Graph API depois).
+20 segundos, segundo a documentação da Datafy.
 
-### Posso ter 2 webhooks rodando?
+### O payload é diferente do da Meta?
 
-Sim. Você cola 2 URLs no painel, Meta envia para os 2.
+Não. É idêntico, sem alteração.
 
-### Qual é a latência do webhook?
+### Posso ter mais de um webhook no mesmo número?
 
-Menos de 1 segundo, na maioria dos casos. Pode ser até 10s se Meta está sob carga.
+Pode. O painel permite cadastrar novos webhooks.
 
-### Posso testar webhook localmente?
+### Como evito processar a mesma entrega duas vezes?
 
-Não, URL precisa ser pública e HTTPS. Use ngrok (`ngrok http 3000`) para abrir tunnel local.
+Guarde o `x-datafy-delivery-id` de cada entrega e ignore o que já foi visto.
 
-### Se Meta manda evento duplicado?
+### A assinatura é obrigatória?
 
-Rare, mas pode acontecer. Você deduplicação usando message_id (cada mensagem tem ID único).
+Não. É ativada por número, no painel. Sem ela, as entregas chegam sem `x-datafy-timestamp` e `x-datafy-signature-256`.
 
-## Como decidir: webhook para você?
+## Como decidir
 
-Se você quer: receber mensagens em tempo real, integrar com seu servidor, processar customizado.
+Comece com `messages` e, se o número está no celular, `smb_message_echoes`. Use o botão de teste antes de depender de tráfego real, responda 200 antes de processar, e guarde o `x-datafy-delivery-id`. Quando o endpoint for para produção, ative a assinatura.
 
-Se não quer: usar plataforma like Chatwoot que já tem webhook configurado.
-
-[Teste 7 dias grátis em Datafy com webhook pré-configurado](https://app.datafyapi.com.br)
+::cta: Cadastre e teste em cinco minutos | Cadastre a URL, marque messages, clique no botão de teste e confira os três cabeçalhos x-datafy na requisição que chegou.
 
 ## Leia também
-- [API oficial vs não oficial](/api-oficial-vs-nao-oficial-whatsapp-2026)
-- [Validar assinatura HMAC](/validar-assinatura-do-webhook)
-- [Webhook não chega](/webhook-chega-duplicado)
-- [WhatsApp API no n8n](/whatsapp-api-oficial-n8n)
+- [Como validar a assinatura do webhook](/validar-assinatura-do-webhook)
+- [O laço de webhook que derruba número](/laco-de-webhook-derruba-numero)
+- [Os três status da mensagem no WhatsApp](/tres-status-da-mensagem-whatsapp)
+- [Como testar o webhook na sua máquina](/tunel-para-testar-webhook-local)

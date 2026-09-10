@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Coexistência no WhatsApp: rodando API oficial e app do celular no mesmo número</title>
-<meta name="description" content="Como manter número rodando em API oficial e ainda usar o app WhatsApp no celular sem conflito, perda de mensagem ou instabilidade.">
+<title>Coexistência: API oficial e WhatsApp Business no mesmo número</title>
+<meta name="description" content="O atendente continua no celular e a automação roda pela API, no mesmo número. O que a documentação da Meta diz desse modo e o que muda no seu webhook.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -13,15 +13,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
-<meta property="og:title" content="Coexistência no WhatsApp: rodando API oficial e app do celular no mesmo número">
-<meta property="og:description" content="Como manter número rodando em API oficial e ainda usar o app WhatsApp no celular sem conflito, perda de mensagem ou instabilidade.">
+<meta property="og:title" content="Coexistência: API oficial e WhatsApp Business no mesmo número">
+<meta property="og:description" content="O atendente continua no celular e a automação roda pela API, no mesmo número. O que a documentação da Meta diz desse modo e o que muda no seu webhook.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular">
-<meta property="article:published_time" content="2026-09-06">
-<meta property="article:modified_time" content="2026-09-06">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Coexistência no WhatsApp: rodando API oficial e app do celular no mesmo número">
-<meta name="twitter:description" content="Como manter número rodando em API oficial e ainda usar o app WhatsApp no celular sem conflito, perda de mensagem ou instabilidade.">
+<meta name="twitter:title" content="Coexistência: API oficial e WhatsApp Business no mesmo número">
+<meta name="twitter:description" content="O atendente continua no celular e a automação roda pela API, no mesmo número. O que a documentação da Meta diz desse modo e o que muda no seu webhook.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -106,24 +107,24 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Implementação",
-          "item": "https://conteudo.datafyapi.com.br/tema/implementacao"
+          "name": "Coexistência",
+          "item": "https://conteudo.datafyapi.com.br/tema/coexistencia"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Coexistência no WhatsApp: rodando API oficial e app do celular no mesmo número"
+          "name": "Coexistência: API oficial e WhatsApp Business no mesmo número"
         }
       ]
     },
     {
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular#article",
-      "headline": "Coexistência no WhatsApp: rodando API oficial e app do celular no mesmo número",
-      "description": "Como manter número rodando em API oficial e ainda usar o app WhatsApp no celular sem conflito, perda de mensagem ou instabilidade.",
+      "headline": "Coexistência: API oficial e WhatsApp Business no mesmo número",
+      "description": "O atendente continua no celular e a automação roda pela API, no mesmo número. O que a documentação da Meta diz desse modo e o que muda no seu webhook.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-06",
-      "dateModified": "2026-09-06",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,15 +133,12 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular",
       "citation": [
-        "https://developers.facebook.com/docs/whatsapp/cloud-api",
-        "https://developers.facebook.com/docs/whatsapp/coexist",
-        "https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks",
-        "https://business.whatsapp.com/",
-        "https://www.youtube.com/watch?v=FcAwJqVHNoU",
-        "https://app.datafyapi.com.br/docs",
-        "https://www.youtube.com/watch?v=HQm5UuW50bM",
-        "https://www.youtube.com/watch?v=8xA-8z1YW98",
-        "https://www.youtube.com/watch?v=dIIkttPeBS0"
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/",
+        "https://developers.facebook.com/docs/whatsapp/throughput",
+        "https://www.youtube.com/watch?v=dIIkttPeBS0",
+        "https://www.youtube.com/watch?v=JL9Qzw3oS5A",
+        "https://www.youtube.com/watch?v=T_ai6IvLzZE",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -149,55 +147,55 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Se webhook cair, app ainda funciona?",
+          "name": "O aplicativo continua funcionando no celular?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. Webhook e app são dois caminhos independentes. Webhook cai, app continua recebendo e mostrando conversa. Sua automação fica quebrada, mas você consegue responder pelo app."
+            "text": "Continua. Esse é o ponto da coexistência: o número funciona no aplicativo e na API ao mesmo tempo."
           }
         },
         {
           "@type": "Question",
-          "name": "Posso rodar número em 3 dispositivos API ao mesmo time?",
+          "name": "Mensagem que o atendente manda pelo celular é cobrada?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. Se você tem 3 servidores mandando mensagem (ambos via Datafy), todos funcionam. Meta deduplicação cliente se você mandar mensagem identica 3x."
+            "text": "Não. A cobrança é por mensagem enviada pela API."
           }
         },
         {
           "@type": "Question",
-          "name": "Se mando mensagem pelo app, quanto tempo demora a chegar no webhook?",
+          "name": "Posso desconectar pela API?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Instantâneo, menos de 1 segundo."
+            "text": "Não. A desconexão é feita no aplicativo do celular."
           }
         },
         {
           "@type": "Question",
-          "name": "Coexistência funciona com grupo?",
+          "name": "O limite de envio é o mesmo de um número comum?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. Grupos não são suportados em Cloud API. Funciona só com chats 1-to-1."
+            "text": "Não. A documentação da Meta fixa em 20 mensagens por segundo para número do WhatsApp Business App."
           }
         },
         {
           "@type": "Question",
-          "name": "Se bloqueio alguém no app, webhook recebe?",
+          "name": "Como faço para o meu sistema ver as respostas do atendente?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. Meta continua mandando webhook de \"você bloqueou\", sua aplicação vê que pessoa está bloqueada e para de mandar para ela."
+            "text": "Assine o evento smb_message_echoes no webhook do número."
           }
         }
       ]
     },
     {
       "@type": "VideoObject",
-      "@id": "https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular#video-HQm5UuW50bM",
-      "name": "Sincronizar contatos na API oficial do WhatsApp",
-      "description": "O evento de sincronizacao, a janela de 24 horas para pedir os contatos e o tempo do historico",
-      "thumbnailUrl": "https://i.ytimg.com/vi/HQm5UuW50bM/maxresdefault.jpg",
+      "@id": "https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular#video-dIIkttPeBS0",
+      "name": "Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia",
+      "description": "Conexao em coexistencia por QR code, cadastro de webhook, primeiro envio e a falha real fora da janela de 24 horas",
+      "thumbnailUrl": "https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg",
       "uploadDate": "2026-09-06",
-      "contentUrl": "https://www.youtube.com/watch?v=HQm5UuW50bM",
-      "embedUrl": "https://www.youtube.com/embed/HQm5UuW50bM",
+      "contentUrl": "https://www.youtube.com/watch?v=dIIkttPeBS0",
+      "embedUrl": "https://www.youtube.com/embed/dIIkttPeBS0",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -210,13 +208,32 @@
     },
     {
       "@type": "VideoObject",
-      "@id": "https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular#video-8xA-8z1YW98",
-      "name": "A forma mais fácil e simples de usar a API oficial do WhatsApp",
-      "description": "Numero conectado do zero, chip novo contra aplicativo existente, e onde entra a forma de pagamento",
-      "thumbnailUrl": "https://i.ytimg.com/vi/8xA-8z1YW98/maxresdefault.jpg",
+      "@id": "https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular#video-JL9Qzw3oS5A",
+      "name": "Quanto custa a API oficial do WhatsApp",
+      "description": "Quem cobra o que, categoria por categoria, e o impacto real disso na conta de um cliente",
+      "thumbnailUrl": "https://i.ytimg.com/vi/JL9Qzw3oS5A/maxresdefault.jpg",
       "uploadDate": "2026-09-06",
-      "contentUrl": "https://www.youtube.com/watch?v=8xA-8z1YW98",
-      "embedUrl": "https://www.youtube.com/embed/8xA-8z1YW98",
+      "contentUrl": "https://www.youtube.com/watch?v=JL9Qzw3oS5A",
+      "embedUrl": "https://www.youtube.com/embed/JL9Qzw3oS5A",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular#article"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular#video-T_ai6IvLzZE",
+      "name": "Como usar a API oficial do WhatsApp no Chatwoot",
+      "description": "Canal de API no Chatwoot, webhook, e o teste de texto, imagem e documento nos dois sentidos",
+      "thumbnailUrl": "https://i.ytimg.com/vi/T_ai6IvLzZE/maxresdefault.jpg",
+      "uploadDate": "2026-09-06",
+      "contentUrl": "https://www.youtube.com/watch?v=T_ai6IvLzZE",
+      "embedUrl": "https://www.youtube.com/embed/T_ai6IvLzZE",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -567,12 +584,12 @@ footer p{margin:0 0 .5rem}
 <div class="hero-band">
   <div class="hero-grid">
     <div>
-      <p class="eyebrow">Implementação</p>
-      <h1>Coexistência no WhatsApp: rodando API oficial e app do celular no mesmo número</h1>
+      <p class="eyebrow">Coexistência</p>
+      <h1>Coexistência: API oficial e WhatsApp Business no mesmo número</h1>
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-06">6 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -604,23 +621,23 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Coexistência no WhatsApp: rodando API oficial e app do celular no mesmo número</h1>
-<p><strong>Resposta curta:</strong> coexistência (coexist) é capacidade de ter o mesmo número rodando na API oficial e abrindo o app WhatsApp no celular ao mesmo tempo, sem que um derrube o outro, sem perda de mensagem. O provedor precisa ser Solution Partner ou Tech Provider na Meta para oferecer o recurso.</p>
-<p>Caso real: seu número roda automação 24/7 na API. Ao mesmo tempo, você abre o WhatsApp no celular e vê a conversa lá também. Se gerente responde no celular, a resposta sai de verdade, cliente recebe. Se automação manda mensagem, aparece lá também. Um espelho.</p>
+<h1>Coexistência: API oficial e WhatsApp Business no mesmo número</h1>
+<p><strong>Resposta curta:</strong> coexistência é usar o aplicativo do WhatsApp Business no celular <strong>e</strong> a API oficial ao mesmo tempo, no mesmo número. O atendente responde pelo aplicativo, a automação responde pela API, e as duas coisas acontecem na mesma conversa.</p>
+<p>Para usar esse modo indo direto na Meta, é preciso virar Tech Provider. Pela Datafy API, que é Tech Provider verificado pela Meta, você conecta escolhendo a opção de conectar um app do WhatsApp Business e escaneando um QR code.</p>
 <div class="stats">
-  <div class="stat"><b>180 dias</b><span>de histórico de conversa que a Meta sincroniza</span></div>
-  <div class="stat"><b>24 h</b><span>prazo para disparar a sincronização depois de conectar</span></div>
-  <div class="stat"><b>20 msg/s</b><span>throughput de um número em coexistência</span></div>
-  <div class="stat"><b>0</b><span>conversas de grupo sincronizadas, a Meta não inclui grupos</span></div>
+  <div class="stat"><b>20 msg/s</b><span>o limite fixo de envio em coexistência</span></div>
+  <div class="stat"><b>180 dias</b><span>de histórico que podem ser sincronizados</span></div>
+  <div class="stat"><b>24 h</b><span>para sincronizar depois de conectar</span></div>
+  <div class="stat"><b>0</b><span>custo da mensagem enviada pelo celular</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li>Coexistência é autorizada e nativa em 2026. Antes era experimental, hoje é estável.</li>
-<li>Pré-requisito do lado do provedor: a Meta exige que ele seja Solution Partner ou Tech Provider para oferecer o recurso. A Datafy é Tech Provider, então o recurso vem junto na conexão.</li>
-<li>No dia a dia a troca é imediata: mensagem que chega no aplicativo aparece no webhook, e mensagem que sai pela API aparece no celular. O que tem limite é o histórico antigo, trazido uma única vez no onboarding.</li>
-<li>Mensagem enviada pelo aplicativo do celular chega ao seu servidor pelo campo de webhook <code>smb_message_echoes</code>. É por ele que você sabe que um humano assumiu a conversa.</li>
-<li>Um número em coexistência tem throughput de 20 mensagens por segundo, contra 80 do número comum (<a href="https://developers.facebook.com/docs/whatsapp/throughput" rel="noopener">documentação de throughput</a>). Para atendimento não faz diferença. Para disparo em volume, faz.</li>
+<li>É o modo em que <strong>o número já existe no aplicativo</strong> e passa a funcionar também na API.</li>
+<li>A documentação da Meta fixa o envio em <strong>20 mensagens por segundo</strong> para número do aplicativo, contra 80 do padrão.</li>
+<li>A <strong>mensagem enviada pelo celular não é cobrada</strong>. A Meta cobra o que sai pela API.</li>
+<li>Para o seu sistema ver o que o atendente manda pelo celular, é preciso assinar o evento <strong><code>smb_message_echoes</code></strong>.</li>
+<li><strong>Desconexão só pelo celular</strong>, e a sincronização de histórico tem <strong>24 horas</strong> para ser pedida.</li>
 </ul>
 <figure>
 <div class="diagram">
@@ -644,235 +661,130 @@ footer p{margin:0 0 .5rem}
 <text class="t" x="360" y="26" text-anchor="middle">Coexistência: o mesmo número nos dois lugares</text>
 <rect class="box" x="60" y="52" width="200" height="72" rx="8"/>
 <text class="h" x="160" y="80" text-anchor="middle">Aplicativo no celular</text>
-<text class="s" x="160" y="100" text-anchor="middle">atendimento humano</text>
+<text class="s" x="160" y="100" text-anchor="middle">mensagem enviada aqui não é cobrada</text>
 <rect class="box" x="460" y="52" width="200" height="72" rx="8"/>
-<text class="h" x="560" y="80" text-anchor="middle">Cloud API</text>
-<text class="s" x="560" y="100" text-anchor="middle">automacao e disparo</text>
+<text class="h" x="560" y="80" text-anchor="middle">API oficial</text>
+<text class="s" x="560" y="100" text-anchor="middle">mensagem enviada aqui é cobrada</text>
 <rect class="boxok" x="290" y="60" width="140" height="56" rx="8"/>
 <text class="h ok" x="360" y="84" text-anchor="middle">1 número</text>
-<text class="s" x="360" y="102" text-anchor="middle">mesmo histórico</text>
+<text class="s" x="360" y="102" text-anchor="middle">mesma conversa</text>
 <path class="ar" d="M265,88 L283,88"/>
 <path class="ar" d="M437,88 L455,88"/>
 <rect class="box" x="30" y="146" width="660" height="100" rx="8"/>
-<text class="h" x="46" y="170">Limites reais da sincronização de histórico</text>
-<text class="p" x="46" y="196">• 180 dias de conversa</text>
-<text class="p" x="266" y="196">• grupos não sincronizam</text>
-<text class="p" x="486" y="196">• mídia só dos últimos 14 dias</text>
-<text class="p" x="46" y="218">• 24 h para disparar a sync</text>
-<text class="p" x="266" y="218">• 20 msg/s de throughput</text>
-<text class="p" x="486" y="218">• uma vez só, no onboarding</text>
+<text class="h" x="46" y="170">O que a documentação da Meta diz sobre esse modo</text>
+<text class="p" x="46" y="196">• 20 msg/s, fixo</text>
+<text class="p" x="266" y="196">• histórico de até 180 dias</text>
+<text class="p" x="486" y="196">• mídia do histórico: 14 dias</text>
+<text class="p" x="46" y="218">• 24 h para sincronizar</text>
+<text class="p" x="266" y="218">• desconecta só pelo celular</text>
+<text class="p" x="486" y="218">• cada sync: uma vez só</text>
 </svg>
 </div>
 <figcaption></figcaption>
 </figure>
 
-<h2 id="o-que-a-coexist-ncia-resolve">O que a coexistência resolve</h2>
-<p>Cenário antigo (pré-2024): você conectava número em Z-API/Evolution. Aí o número ficava preso em emulação. Se tentava abrir app WhatsApp Web no navegador, conflitava, perdia mensagem.</p>
-<p>Escolha era: ou automação, ou app. Não os dois.</p>
-<p>Cenário novo: você conecta o número pela API oficial, abre o aplicativo no celular, e os dois convivem. O que o humano responde no aparelho chega ao seu servidor pelo campo <code>smb_message_echoes</code>.</p>
-<p>Uso real: seu gerente/dono está em reunião, recebe WhatsApp de cliente importante. Responde do celular. A resposta sai pela conta oficial, com template (se aplicável), tudo registrado no histórico. Ninguém soube que veio de person, não de bot.</p>
-<h2 id="como-funciona-tecnicamente">Como funciona tecnicamente</h2>
-<p>Quando você conecta número via Datafy (Tech Provider):</p>
-<ol>
-<li>Meta vincula número à conta de API (Datafy).</li>
-<li>Meta também mantém número apto para app.</li>
-<li>Quando seu celular abre app, Meta sincroniza histórico de API para app.</li>
-<li>Quando chega mensagem, Meta roteia para webhook (API) e também mostra no app.</li>
-<li>Quando você manda pelo app, Meta roteia também para webhook.</li>
-</ol>
-<p>O tráfego novo corre nos dois sentidos. O que tem limite é o histórico antigo, trazido uma vez só no onboarding.</p>
-<h2 id="configurar-coexist-ncia">Configurar coexistência</h2>
-<p>A coexistência é escolhida no momento do onboarding do número, e não depois. Se o número for conectado pelo fluxo comum, trazer o aplicativo para junto exige refazer a conexão.</p>
-<p>Teste:</p>
-<ol>
-<li>Conecta número em Datafy (já faz isso automático).</li>
-<li>Abre um terminal, faz chamada HTTP POST para enviar mensagem (via Datafy).</li>
-<li>Abre WhatsApp no celular.</li>
-<li>Valida que mensagem aparece no histórico do app.</li>
-</ol>
-<p>Pronto. Funcionando.</p>
-<h2 id="cen-rios-de-uso-reais">Cenários de uso reais</h2>
-<h3>Cenário 1: SaaS com suporte humano</h3>
-<p>Seu SaaS de dashboard dispara notificação por WhatsApp toda manhã ("Relatório diário pronto"). Isso é automação pura, via API.</p>
-<p>Ao mesmo time, se cliente manda pergunta de suporte direto no WhatsApp, alguém da equipe recebe no app, responde. A resposta sai de verdade (com validação de token), não é só conversa.</p>
-<h3>Cenário 2: Agência de marketing</h3>
-<p>Agência manda disparo em massa para 5 mil contatos (via API).</p>
-<p>Ao mesmo time, o executivo de contas abre WhatsApp no celular e atende 1-to-1 contatos que responderam.</p>
-<p>Sem conflito. Sem perda.</p>
-<h3>Cenário 3: E-commerce com chatbot</h3>
-<p>E-commerce roda chatbot que responde perguntas automáticas (qual é preço, frete para CEP tal, etc).</p>
-<p>Se chatbot não consegue resolver, escala para humano. Humano abre app no celular, continua conversa como se fosse normal, cliente não vê diferença.</p>
-<h2 id="diferen-a-coexist-ncia-vs-webhook">Diferença coexistência vs webhook</h2>
-<p>Webhook (que você já usa para receber mensagens):</p>
-<ul>
-<li>Você recebe JSON de mensagem que chegou</li>
-<li>Seu servidor processa</li>
-<li>Seu servidor manda resposta</li>
-</ul>
-<p>Coexistência:</p>
-<ul>
-<li>Webhook continua funcionando igual</li>
-<li>Além disso, app no celular também recebe a mensagem</li>
-<li>Se você responde no app, também aparece no webhook</li>
-</ul>
-<p>Coexistência é webhook + app sincronizados. Não é um ou outro, é os dois.</p>
-<h2 id="o-que-a-sincroniza-o-traz-e-o-que-ela-n">O que a sincronização traz, e o que ela não traz</h2>
-<p>Este é o ponto que mais gera expectativa errada. A coexistência não copia o seu WhatsApp inteiro para a nuvem. Ela traz uma janela de histórico, uma vez só, no momento em que você conecta. O que está <a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/" rel="noopener">documentado pela Meta</a>:</p>
+<h2 id="por-que-coexist-ncia-exige-tech-provider">Por que coexistência exige Tech Provider</h2>
+<p>No vídeo sobre preço, o Israel Henrique, CTO da Datafy, descreve o caminho direto: criar conta de desenvolvedor, criar aplicativo, montar webhooks, enviar para aprovação. E completa: <em>"se você quiser ainda conectar o teu próprio aplicativo do celular na API, precisa se tornar um tech provider, que seria um parceiro de tecnologia da meta, o processo mais burocrático ainda."</em></p>
+<p>A Datafy API é Tech Provider verificado pela Meta. No fluxo de conexão, a opção que ativa a coexistência é <strong>conectar um app do WhatsApp Business</strong>. <a href="/como-conectar-numero-api-oficial-whatsapp">O passo a passo da conexão está aqui</a>.</p>
+<h2 id="o-que-a-documenta-o-da-meta-diz-sobre-es">O que a documentação da Meta diz sobre esse modo</h2>
 <div class="tablewrap"><table>
 <thead>
 <tr>
 <th>O que</th>
-<th>Limite real</th>
+<th>Valor</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Histórico de conversa</td>
-<td>Os <strong>últimos 180 dias</strong>, ou seja, cerca de 6 meses</td>
+<td>Envio por segundo</td>
+<td><strong>20</strong>, fixo, para número do WhatsApp Business App</td>
 </tr>
 <tr>
-<td>Conversas de grupo</td>
-<td><strong>Não são sincronizadas</strong></td>
+<td>Prazo para sincronizar o histórico</td>
+<td><strong>24 horas</strong> depois da conexão</td>
 </tr>
 <tr>
-<td>Arquivos de mídia</td>
-<td>Os identificadores só vêm para mensagens dos <strong>últimos 14 dias</strong></td>
+<td>Histórico sincronizado</td>
+<td><strong>Últimos 180 dias</strong>, em três fases</td>
 </tr>
 <tr>
-<td>Prazo para disparar a sincronização</td>
-<td><strong>24 horas</strong> depois de conectar</td>
+<td>Mídia do histórico</td>
+<td>Só das mensagens de até <strong>14 dias</strong> antes da conexão</td>
 </tr>
 <tr>
-<td>Throughput do número</td>
-<td><strong>20 mensagens por segundo</strong>, contra 80 do número comum</td>
+<td>Desconexão</td>
+<td><strong>Só pelo aplicativo</strong>: configurações, conta, plataforma do WhatsApp Business</td>
 </tr>
 </tbody>
 </table></div>
-<p>O prazo de 24 horas é o que mais pega gente desprevenida: se você conecta o número e deixa para sincronizar o histórico depois, perde a janela. A conta precisa ser desconectada e todo o fluxo de onboarding refeito.</p>
-<p>Conversa de grupo não vir é o segundo. Se a sua operação usa grupos, essa parte continua existindo só no aparelho.</p>
-<p>Depois que o número está conectado, o tráfego novo flui nos dois sentidos sem esses limites: o que chega no aplicativo aparece no webhook, o que sai pela API aparece no celular.</p>
-<h3>A sincronização não acontece sozinha</h3>
-<p>Aqui está a parte que a documentação deixa implícita e que faz gente perder a janela de 24 horas achando que estava tudo automático. São três passos, e eles têm ordem:</p>
-<p><strong>1. Marcar a opção no celular, durante a conexão.</strong> No meio do fluxo, o aplicativo pergunta se você quer compartilhar o histórico de conversas. Se você não marcar, não tem como voltar atrás: <em>"se você por acidente marcar que não quer compartilhar, é só fazer o processo novamente"</em>, ou seja, desconectar e reconectar o número.</p>
-<p><strong>2. Assinar o evento de sincronização antes de pedir.</strong> Existe um campo de webhook próprio para isso, e é por ele que os contatos e as conversas chegam. Se ele não estiver marcado, você faz a chamada, recebe confirmação de sucesso, e nada aparece.</p>
-<p><strong>3. Fazer a chamada que dispara.</strong> (<a href="/sincronizar-contatos-api-oficial-whatsapp">o passo a passo completo está aqui</a>) É esse passo que quase todo mundo não sabe que existe. Nas palavras do Israel: <em>"você conectou o telefone, com webhook, tá marcado, agora tem que avisar a meta que você quer os contatos."</em> Contatos e histórico são pedidos separadamente, no corpo da requisição.</p>
-<p>E o comportamento da resposta é diferente para os dois, o que evita depuração inútil: <strong>os contatos chegam praticamente na hora, e as conversas demoram bastante mais.</strong> A Meta não crava um prazo, e diz que a sincronização pode levar vários minutos dependendo do tamanho do histórico, da conexão e da velocidade com que você consome os webhooks. Na operação, a espera do histórico é da ordem de dezenas de minutos.</p>
-<p>Isso importa por um motivo: quem pede o histórico, não vê nada em dois minutos e conclui que falhou, refaz o processo sem necessidade e às vezes queima a janela de 24 horas fazendo isso.</p>
+<p>Fontes: página de <a href="https://developers.facebook.com/docs/whatsapp/throughput" rel="noopener">throughput</a> e página de <a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/" rel="noopener">onboarding de usuários do WhatsApp Business App</a>.</p>
+<h2 id="o-que-muda-no-seu-webhook">O que muda no seu webhook</h2>
+<p>Em coexistência há duas origens de mensagem saindo do mesmo número, e elas chegam por caminhos diferentes:</p>
+<p><strong>Mensagem que o cliente manda</strong> chega pelo evento <code>messages</code>. Por esse mesmo evento chegam os status das mensagens que você envia pela API.</p>
+<p><strong>Mensagem que o atendente manda pelo celular</strong> chega pelo evento <code>smb_message_echoes</code>. Na explicação do vídeo: <em>"esse SMB Messages Echoes, ele vai te notificar sempre que você enviar uma mensagem do celular. Quando você envia mensagens direto pela API, não aparece."</em></p>
 <figure>
-<a class="video" href="https://www.youtube.com/watch?v=HQm5UuW50bM" rel="noopener">
+<a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
   <span class="thumb">
-    <img src="https://i.ytimg.com/vi/HQm5UuW50bM/maxresdefault.jpg" alt="Miniatura do vídeo: Sincronizar contatos na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <img src="https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia" loading="lazy" width="1280" height="720">
     <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
   </span>
-  <span class="meta"><b>Sincronizar contatos na API oficial do WhatsApp</b><span>Canal DATA7 · 4 min · assistir no YouTube</span></span>
+  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Quatro minutos exatos sobre isso: em 00:30 ele marca o evento, em 01:05 explica o prazo de 24 horas, em 02:38 dispara a sincronização e os contatos aparecem no webhook na hora, e em 03:40 mostra a diferença de tempo do histórico.</figcaption>
+<figcaption>Em 06:40 ele marca os dois eventos no cadastro do webhook e explica a diferença entre eles.</figcaption>
 </figure>
 
-<p>Uma dica que sai daí e vale guardar: <strong>salve o identificador que a chamada de sincronização devolve.</strong> Se algo der errado, é com ele que você abre suporte com a Meta.</p>
-<h2 id="outros-detalhes-de-comportamento">Outros detalhes de comportamento</h2>
-<ol>
-<li><strong>Duplicidade</strong>: se você enviar a mesma mensagem duas vezes pela API, ela aparece duas vezes no aplicativo. Não existe deduplicação automática, o controle é seu.</li>
-<li><strong>Resposta a mensagem específica</strong>: funciona nos dois sentidos. O que você responde no aplicativo chega ao webhook como resposta, e vice-versa.</li>
-<li><strong>Status de entrega</strong>: enviado, entregue e lido ficam iguais nos dois lados.</li>
-<li><strong>Quem escreve pelo aplicativo não abre janela de atendimento.</strong> Mensagem enviada pelo aplicativo do WhatsApp Business não abre nem estende a janela de 24 horas da API. Vale a pena saber disso antes de montar automação em cima de janela.</li>
-</ol>
-<h2 id="desconectar-s-d-pelo-celular">Desconectar só dá pelo celular</h2>
-<p>Detalhe operacional pequeno e de consequência grande, que não aparece em comparativo nenhum: <strong>não existe endpoint para desconectar o número da API.</strong> A desconexão é feita no aparelho, nas configurações do WhatsApp Business, em conta e plataforma do WhatsApp Business.</p>
-<p>Isso importa em dois momentos. Se você constrói produto e o seu cliente conecta o número dele, <strong>você não consegue desconectar por ele</strong>: o botão está no celular dele, e o seu fluxo de cancelamento precisa levar isso em conta. E se você precisa refazer a conexão para recuperar a janela de sincronização, o passo depende de alguém com o telefone na mão.</p>
-<h2 id="o-que-a-conex-o-exige-e-o-que-n-o-exige">O que a conexão exige, e o que não exige</h2>
-<p>Vale desfazer duas expectativas erradas que aparecem sempre, porque as duas fazem gente desistir antes de tentar.</p>
-<p><strong>Precisa de portfólio empresarial, e ele não precisa ser verificado.</strong> Basta existir. Verificado é melhor e não é requisito para conectar: <em>"não precisa ser verificado, se for verificado é melhor, mas apenas criar o portfólio já é suficiente."</em></p>
-<p><strong>A forma de pagamento fica na Meta, não no provedor.</strong> As mensagens são cobradas pela Meta, direto no cartão cadastrado no portfólio, e é isso que você precisa configurar antes de enviar template. O provedor cobra o acesso, não a mensagem. Sem cartão no portfólio, a mensagem de serviço funciona e o template não sai.</p>
+<p>Se você não assinar o segundo evento, o que o atendente responde pelo celular não chega no seu sistema. <a href="/mensagem-do-celular-nao-aparece-no-sistema">O sintoma e a correção estão aqui</a>.</p>
+<h2 id="o-que-muda-no-custo">O que muda no custo</h2>
+<p>A Meta cobra por mensagem <strong>enviada pela API</strong>. Mensagem recebida não é cobrada, e mensagem enviada pelo celular também não. Na fala do Israel: <em>"se você conectar o teu WhatsApp Web ou o teu celular aqui junto com a API e você enviar mensagens pelo celular, você não paga. Só paga se for enviado pela API."</em></p>
 <figure>
-<a class="video" href="https://www.youtube.com/watch?v=8xA-8z1YW98" rel="noopener">
+<a class="video" href="https://www.youtube.com/watch?v=JL9Qzw3oS5A" rel="noopener">
   <span class="thumb">
-    <img src="https://i.ytimg.com/vi/8xA-8z1YW98/maxresdefault.jpg" alt="Miniatura do vídeo: A forma mais fácil e simples de usar a API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <img src="https://i.ytimg.com/vi/JL9Qzw3oS5A/maxresdefault.jpg" alt="Miniatura do vídeo: Quanto custa a API oficial do WhatsApp" loading="lazy" width="1280" height="720">
     <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
   </span>
-  <span class="meta"><b>A forma mais fácil e simples de usar a API oficial do WhatsApp</b><span>Canal DATA7 · 9 min · assistir no YouTube</span></span>
+  <span class="meta"><b>Quanto custa a API oficial do WhatsApp</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Nove minutos do zero: em 02:34 aparece a escolha entre chip novo e aplicativo existente, que é a decisão que define se você está em coexistência, e em 08:33 ele mostra onde fica a configuração de pagamento dentro do portfólio.</figcaption>
+<figcaption>Em 00:21, logo no começo do vídeo sobre preço, ele estabelece essa regra antes de explicar as categorias.</figcaption>
 </figure>
 
-<h2 id="o-requisito-do-lado-do-provedor">O requisito do lado do provedor</h2>
-<p>A Meta exige que quem oferece coexistência seja <strong>Solution Partner ou Tech Provider</strong>. Não é um recurso que qualquer integração consegue habilitar: depende do App Review aprovado com as permissões <code>whatsapp_business_messaging</code> e <code>whatsapp_business_management</code>.</p>
-<p>Isso significa que a escolha do provedor decide se você tem o recurso. Se você for direto na Meta por conta própria, precisa passar por esse processo você mesmo.</p>
-<h2 id="compara-o-chatwoot-coexist-ncia-vs-whats">Comparação: Chatwoot + coexistência vs WhatsApp Web</h2>
-<p>Chatwoot já oferece inbox centralizado (vários agentes veem conversa). Coexistência é diferente: é você no celular vendo e respondendo direto.</p>
-<div class="tablewrap"><table>
-<thead>
-<tr>
-<th>Aspecto</th>
-<th>Chatwoot</th>
-<th>App + coexistência</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Inbox visual</strong></td>
-<td>Sim, inbox centralizado</td>
-<td>Não, só app nativo</td>
-</tr>
-<tr>
-<td><strong>Múltiplos agentes</strong></td>
-<td>Sim, 5+ veem mesmo chat</td>
-<td>Não, só quem abrir app</td>
-</tr>
-<tr>
-<td><strong>Sincronização</strong></td>
-<td>Sim, com webhooks</td>
-<td>Sim, com API</td>
-</tr>
-<tr>
-<td><strong>Setup</strong></td>
-<td>Médio</td>
-<td>Zero, automático</td>
-</tr>
-<tr>
-<td><strong>Automação</strong></td>
-<td>Sim, regras e bots</td>
-<td>Parcial, webhook só</td>
-</tr>
-<tr>
-<td><strong>Quando usar</strong></td>
-<td>Suporte com equipe</td>
-<td>Suporte informal, 1 pessoa</td>
-</tr>
-</tbody>
-</table></div>
-<p>Use Chatwoot se: você tem equipe.</p>
-<p>Use app + coexistência se: você é solo ou está em reunião e quer responder pessoalmente.</p>
-<h2 id="monitorar-coexist-ncia">Monitorar coexistência</h2>
-<p>Datafy oferece dashboard mostrando:</p>
-<ul>
-<li>Última sincronização do app</li>
-<li>Mensagens recebidas (via app vs via webhook)</li>
-<li>Taxa de entrega</li>
-<li>Webhooks falhando</li>
-</ul>
-<p>Se webhook não funciona, app ainda recebe (porque é direto). Mas sua automação quebra.</p>
-<p>Monitora webhook com frequência (de dia em dia).</p>
+<p><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Os preços por categoria estão aqui</a>.</p>
+<h2 id="contatos-e-hist-rico-do-aplicativo">Contatos e histórico do aplicativo</h2>
+<p>Durante a conexão, o celular pergunta se você quer compartilhar o histórico. Marcando, dá para trazer as conversas e os contatos do aplicativo para a API, com uma chamada que precisa ser feita dentro de 24 horas e só pode ser feita uma vez por tipo. <a href="/sincronizar-contatos-api-oficial-whatsapp">Como fazer isso está aqui</a>.</p>
+<h2 id="coexist-ncia-com-uma-caixa-de-entrada">Coexistência com uma caixa de entrada</h2>
+<p>No vídeo sobre o Chatwoot, o Israel manda uma mensagem pelo celular do número conectado e ela aparece na caixa de entrada: <em>"essa aqui foi enviada diretamente do celular que está conectado na API. Então tá sincronizado."</em> <a href="/whatsapp-api-oficial-chatwoot">A configuração do Chatwoot está aqui</a>.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=T_ai6IvLzZE" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/T_ai6IvLzZE/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp no Chatwoot" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como usar a API oficial do WhatsApp no Chatwoot</b><span>Canal DATA7 · 5 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 04:20 a mensagem enviada pelo celular aparece no Chatwoot.</figcaption>
+</figure>
+
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Se webhook cair, app ainda funciona?</h3>
-<p>Sim. Webhook e app são dois caminhos independentes. Webhook cai, app continua recebendo e mostrando conversa. Sua automação fica quebrada, mas você consegue responder pelo app.</p>
-<h3>Posso rodar número em 3 dispositivos API ao mesmo time?</h3>
-<p>Sim. Se você tem 3 servidores mandando mensagem (ambos via Datafy), todos funcionam. Meta deduplicação cliente se você mandar mensagem identica 3x.</p>
-<h3>Se mando mensagem pelo app, quanto tempo demora a chegar no webhook?</h3>
-<p>Instantâneo, menos de 1 segundo.</p>
-<h3>Coexistência funciona com grupo?</h3>
-<p>Não. Grupos não são suportados em Cloud API. Funciona só com chats 1-to-1.</p>
-<h3>Se bloqueio alguém no app, webhook recebe?</h3>
-<p>Sim. Meta continua mandando webhook de "você bloqueou", sua aplicação vê que pessoa está bloqueada e para de mandar para ela.</p>
-<h2 id="como-decidir-vou-usar-coexist-ncia">Como decidir: vou usar coexistência?</h2>
-<p>Simples: conecta em Datafy, já funciona. Não precisa de decisão. Está lá, use quando precisar.</p>
-<p><a href="https://app.datafyapi.com.br" rel="noopener">Teste 7 dias grátis em Datafy com coexistência já ativa</a></p>
+<h3>O aplicativo continua funcionando no celular?</h3>
+<p>Continua. Esse é o ponto da coexistência: o número funciona no aplicativo e na API ao mesmo tempo.</p>
+<h3>Mensagem que o atendente manda pelo celular é cobrada?</h3>
+<p>Não. A cobrança é por mensagem enviada pela API.</p>
+<h3>Posso desconectar pela API?</h3>
+<p>Não. A desconexão é feita no aplicativo do celular.</p>
+<h3>O limite de envio é o mesmo de um número comum?</h3>
+<p>Não. A documentação da Meta fixa em 20 mensagens por segundo para número do WhatsApp Business App.</p>
+<h3>Como faço para o meu sistema ver as respostas do atendente?</h3>
+<p>Assine o evento <code>smb_message_echoes</code> no webhook do número.</p>
+<h2 id="como-decidir">Como decidir</h2>
+<p>Se o seu número já atende pelo celular e você quer somar automação sem tirar o atendente do aplicativo, coexistência é o modo. Assine os dois eventos de mensagem no webhook e peça a sincronização nas primeiras 24 horas.</p>
+<p>Se o seu plano é disparar em volume pelo mesmo número, considere o limite de 20 mensagens por segundo antes de decidir.</p>
+<div class="cta"><h3>Teste os dois lados no mesmo número</h3><p>Conecte o número escolhendo conectar um app do WhatsApp Business, assine messages e smb_message_echoes, mande uma mensagem pelo celular e outra pela API, e veja as duas chegarem no seu webhook.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/api-oficial-vs-nao-oficial-whatsapp-2026">API oficial vs não oficial</a></li>
-<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Como receber mensagens no webhook</a></li>
-<li><a href="/whatsapp-api-oficial-chatwoot">Chatwoot com API oficial</a></li>
-<li><a href="/o-que-e-tech-provider-meta">O que é Tech Provider</a></li>
+<li><a href="/como-conectar-numero-api-oficial-whatsapp">Como conectar seu número na API oficial</a></li>
+<li><a href="/sincronizar-contatos-api-oficial-whatsapp">Como sincronizar os contatos e o histórico</a></li>
+<li><a href="/mensagem-do-celular-nao-aparece-no-sistema">O atendente responde pelo celular e não aparece no sistema</a></li>
+<li><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Quanto custa a API oficial do WhatsApp</a></li>
 </ul>
 </article>
 
@@ -888,20 +800,14 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#o-que-a-coexist-ncia-resolve">O que a coexistência resolve</a></li>
-        <li><a href="#como-funciona-tecnicamente">Como funciona tecnicamente</a></li>
-        <li><a href="#configurar-coexist-ncia">Configurar coexistência</a></li>
-        <li><a href="#cen-rios-de-uso-reais">Cenários de uso reais</a></li>
-        <li><a href="#diferen-a-coexist-ncia-vs-webhook">Diferença coexistência vs webhook</a></li>
-        <li><a href="#o-que-a-sincroniza-o-traz-e-o-que-ela-n">O que a sincronização traz, e o...</a></li>
-        <li><a href="#outros-detalhes-de-comportamento">Outros detalhes de comportamento</a></li>
-        <li><a href="#desconectar-s-d-pelo-celular">Desconectar só dá pelo celular</a></li>
-        <li><a href="#o-que-a-conex-o-exige-e-o-que-n-o-exige">O que a conexão exige, e o que n...</a></li>
-        <li><a href="#o-requisito-do-lado-do-provedor">O requisito do lado do provedor</a></li>
-        <li><a href="#compara-o-chatwoot-coexist-ncia-vs-whats">Comparação: Chatwoot + coexistên...</a></li>
-        <li><a href="#monitorar-coexist-ncia">Monitorar coexistência</a></li>
+        <li><a href="#por-que-coexist-ncia-exige-tech-provider">Por que coexistência exige Tech...</a></li>
+        <li><a href="#o-que-a-documenta-o-da-meta-diz-sobre-es">O que a documentação da Meta diz...</a></li>
+        <li><a href="#o-que-muda-no-seu-webhook">O que muda no seu webhook</a></li>
+        <li><a href="#o-que-muda-no-custo">O que muda no custo</a></li>
+        <li><a href="#contatos-e-hist-rico-do-aplicativo">Contatos e histórico do aplicativo</a></li>
+        <li><a href="#coexist-ncia-com-uma-caixa-de-entrada">Coexistência com uma caixa de en...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
-        <li><a href="#como-decidir-vou-usar-coexist-ncia">Como decidir: vou usar coexistên...</a></li>
+        <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>
       </ol>
     </nav>

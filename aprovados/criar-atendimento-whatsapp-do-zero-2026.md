@@ -1,160 +1,150 @@
 ---
-title: "Como criar um atendimento de WhatsApp do zero com a API oficial"
-description: "As cinco camadas de um sistema de conversa, na ordem em que elas devem ser construídas, e as decisões de banco e tempo real que ficam caras se você errar no começo."
+title: "Como criar um WhatsApp Web do zero com a API oficial"
+description: "O projeto do tutorial completo do canal DATA7: interface, banco com duas tabelas, webhook, mídia, envio, tempo real e publicação, com as decisões que aparecem no caminho."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "criar-atendimento-whatsapp-do-zero"
 cluster: "implementacao"
 hero: "camadas"
 intent: "como-fazer"
-persona: "saas, automacao"
+persona: "saas"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-10
 sources:
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/business-scoped-user-ids/
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/media
-  - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=HVRCBsJI_Eo
   - https://www.youtube.com/watch?v=vGovcR8W5g8
-videos: [HVRCBsJI_Eo, vGovcR8W5g8]
+  - https://www.youtube.com/watch?v=fhz6n2s91-g
+  - https://www.youtube.com/watch?v=LIT4FxgqHhE
+  - https://app.datafyapi.com.br/docs
+videos: [HVRCBsJI_Eo]
 internal_links:
-  - /primeira-mensagem-api-oficial-whatsapp
-  - /cliente-conecta-o-whatsapp-dele-no-meu-saas
-  - /o-telefone-esta-sumindo-do-webhook
+  - /tunel-para-testar-webhook-local
   - /ver-payload-das-mensagens-em-tempo-real
-  - /whatsapp-api-oficial-chatwoot
+  - /como-receber-midia-api-oficial-whatsapp
+  - /laco-de-webhook-derruba-numero
+  - /o-telefone-esta-sumindo-do-webhook
 status: aprovado
 ---
 
-# Como criar um atendimento de WhatsApp do zero com a API oficial
+# Como criar um WhatsApp Web do zero com a API oficial
 
-**Última atualização: 09/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** um sistema de conversa em cima da API oficial tem **cinco camadas**, e a ordem em que você as constrói importa mais que a escolha das ferramentas. Interface, banco, webhook, tempo real e envio.
+**Resposta curta:** no tutorial completo do canal DATA7, o Israel Henrique, CTO da Datafy, constrói uma tela de conversa parecida com o WhatsApp Web, funcionando com a API oficial em coexistência. O projeto tem três fases: **interface**, **banco de dados** e **conexão com a API**. A pilha: Claude Design para o layout, VS Code com Claude Code ou Codex, Nuxt, Supabase com duas tabelas, Pusher para tempo real, a Datafy API para o WhatsApp e a Vercel para publicar. O código está público no GitHub.
 
-Antes de tudo, vale a pergunta que economiza semanas: **você precisa construir?** Se a necessidade é atender clientes com uma equipe, [uma caixa de entrada pronta resolve em uma tarde](/whatsapp-api-oficial-chatwoot). Construir se justifica quando o atendimento é parte do seu produto, quando a conversa precisa conviver com o seu domínio, ou quando você vai revender isso.
+O objetivo declarado não é um produto comercial: *"o foco é entender o funcionamento da API, enviar e receber mensagens."*
 
-::numeros: 5 camadas|e a ordem entre elas importa ;; 2 tabelas|conversas e mensagens, no mínimo ;; 3 status|por mensagem enviada, para tratar ;; 1 chave|composta, e escolhida no começo
+::numeros: 3 fases|interface, banco e API ;; 2 tabelas|conversas e mensagens ;; 20 e 50|conversas e mensagens por página ;; 100|conexões simultâneas no plano grátis do Pusher
 
 ## Principais pontos
-- **Construa de baixo para cima, mas com dados reais.** Modelar o banco antes de ver um payload de verdade é o erro que mais custa refação.
-- **A chave do contato é composta**, e escolher isso no primeiro dia evita uma migração dolorosa.
-- **Guarde o payload cru** antes de interpretar. É o que permite reprocessar quando aparecer um campo novo.
-- **Webhook não é tempo real.** Ele entrega no seu servidor, e levar isso até a tela é outra camada.
-- **Nunca dê à IA permissão de escrita no seu banco.** Leitura no máximo, e as alterações passam por você.
+- **Comece pela interface, com dados falsos,** e só depois crie as tabelas.
+- **Modele o banco a partir de payloads reais**, copiados do log da Datafy.
+- **Não dê à IA controle do banco.** Ela gera o SQL; você executa.
+- **Consulta ao banco sai do servidor**, com a chave de serviço, nunca do navegador.
+- **Webhook primeiro, tempo real depois.** E, ao publicar, troque a URL do webhook pela de produção.
 
-::diagrama: duas-arquiteturas
+::diagrama: webhook-fluxo
 
-## A ordem: interface, banco, integração
+## Fase 1: a interface
 
-A sequência que funciona é contraintuitiva, porque começa pela parte visível.
+A tela tem duas áreas: lista de conversas à esquerda e mensagens à direita, com o campo de digitação flutuante. O layout foi gerado no Claude Design a partir de um print do WhatsApp Web, e depois transformado em componentes Vue no projeto Nuxt, com Tailwind.
 
-**1. Interface com dados falsos.** Monte a tela com lista de conversas de um lado e mensagens do outro, preenchida com dados inventados. Parece perda de tempo e é o contrário: é aqui que você descobre quais campos a tela realmente precisa, e é bem mais barato descobrir isso antes do banco.
+Uma prática que ele adota nessa fase e explica o motivo: criar um arquivo de documentação com o roteiro do projeto. *"Se eu iniciar uma sessão nova depois, a gente consegue ter um contexto."* Mais tarde no vídeo, quando uma ferramenta de IA trava, ele troca por outra, e o arquivo de roteiro é o que permite continuar de onde parou.
 
-**2. Banco, modelado a partir de payloads reais.** Duas tabelas resolvem o essencial: **conversas** e **mensagens**. E o passo que muda tudo: antes de escrever o esquema, **colete payloads de verdade**. Mande uma mensagem de texto, um áudio, uma imagem, mande uma pelo celular e uma pela API, e guarde cada evento.
+::video: HVRCBsJI_Eo | Em 03:43 ele apresenta as ferramentas, em 12:08 começa o layout, e em 41:57 cria o arquivo de roteiro do projeto.
 
-Modelar a partir de payload real evita duas coisas que sempre acontecem: campos que você inventou e não existem, e campos que existem e você não previu. No projeto gravado, a primeira modelagem trouxe coluna de avatar, que a API oficial não manda, e esqueceu a legenda de mídia, que ela manda. Os dois erros aparecem em minutos quando o payload está na mesa.
+## Fase 2: o banco
 
-**3. Webhook, gravando.** Sem tempo real ainda, sem enfeite: recebe, identifica ou cria a conversa, grava a mensagem. Dá para testar sozinho, sem depender de mais nada, e é a fundação de tudo o que vem depois.
+**Primeiro, os payloads.** Antes das tabelas, ele manda mensagens de tipos diferentes para o número (texto, áudio, imagem, mensagem pelo celular, envio pela API) e copia o payload de cada uma no bate-papo do painel da Datafy, para a IA saber quais campos existem. [Como usar esse log está aqui](/ver-payload-das-mensagens-em-tempo-real).
 
-**4. Tempo real.** Só agora. A mensagem já está gravada; falta empurrá-la para a tela sem recarregar.
+Três observações dele sobre os payloads, que valem para qualquer projeto:
 
-**5. Envio.** O caminho inverso, e o mais simples dos cinco.
+**`phone_number_id` é do número conectado**, e não de quem mandou: *"sempre vai vir esse mesmo número, independente de quem mandou a mensagem."*
 
-::video: HVRCBsJI_Eo | Duas horas e vinte construindo exatamente isso, do design ao deploy. A coleta de payloads reais está em 45:12, a modelagem em 52:05, o webhook em 1:33:24, a mídia em 1:45:21, e o tempo real em 2:08:19. O código do projeto está público.
+**Quem mandou está em `contacts`**, com nome, telefone e `user_id`, *"que é uma identificação nova do WhatsApp das APIs. No futuro o telefone não vai mais estar disponível."* [Sobre o user_id](/o-telefone-esta-sumindo-do-webhook).
 
-## As decisões de modelagem que ficam caras
+**Envio pela API volta só como status**: *"ele não vai trazer para você o conteúdo da mensagem, ele vai trazer apenas o ID da mensagem com o status."*
 
-Quatro escolhas que são baratas no começo e dolorosas depois.
+**Duas tabelas.** Conversas e mensagens, no Supabase. A primeira versão gerada pela IA trouxe colunas que ele considerou desnecessárias, como avatar (*"a API oficial não manda isso"*) e contador de não lidas, e esqueceu a legenda de mídia, que ele pediu para acrescentar. Como a primeira versão já tinha sido aplicada, a correção veio numa nova migration.
 
-**A chave do contato é composta.** O identificador da pessoa que vem no payload **não é global**: ele identifica a relação entre aquela pessoa e a **sua conta**. A mesma pessoa falando com duas empresas tem dois identificadores. Guarde o par, identificador mais o número da sua conta que recebeu. [O detalhe está aqui](/o-telefone-esta-sumindo-do-webhook), e a hora de acertar é antes do segundo número entrar.
+**Não dê à IA controle do banco.** A IA sugeriu aplicar as mudanças pela linha de comando, e ele recusou: *"o banco de dados é o coração do projeto. Se dá o controle para ele, ele pode fazer muita coisa errada. No máximo você dá permissão para ela ler o teu banco de dados, mas nunca para mexer."* A IA gera o SQL; ele cola e executa no editor do Supabase.
 
-**Guarde o payload cru.** Uma coluna com o evento inteiro, ao lado dos campos que você extraiu. Quando aparecer um campo novo que você quer, dá para reprocessar. Sem isso, o histórico daquele período não tem como ser recuperado.
+::video: HVRCBsJI_Eo | Em 45:12 ele coleta os payloads, em 54:35 roda a migration, em 56:44 corta as colunas e pede a legenda, e em 1:00:14 explica por que não dá controle do banco para a IA.
 
-**Separe enviada de entregue.** São estados diferentes, e juntar os dois é o que faz relatório mentir. Cada mensagem enviada gera três eventos de status, e o painel precisa refletir isso.
+## Segurança: chaves e políticas
 
-**Pense no apagamento em cascata antes de precisar.** Apagar uma conversa que apaga mil mensagens junto trava. Decida se as mensagens somem com a conversa ou se a exclusão é feita em lote, e decida isso enquanto a base é pequena.
+**Chaves do Supabase.** A chave anônima é pública; a de serviço *"nunca pode ser exposta em lugar nenhum. Ela fica só no servidor."* Como ela apareceu na gravação, ele gera uma nova.
 
-As quatro decisões acima têm um detalhamento próprio, com as duas tabelas escritas campo a campo e o que fazer com cada uma: [como modelar o banco de dados de um atendimento de WhatsApp](/modelar-banco-de-dados-whatsapp).
+**O arquivo de exemplo de variáveis vai para o GitHub.** A IA avisou que ele tinha colado credenciais no arquivo de exemplo, e ele reforça: *"não coloca aqui os valores, senão vai acontecer uma tragédia."*
 
-## O webhook, e o erro que derruba o número
+**Política pública removida.** A IA tinha criado políticas que deixavam as tabelas legíveis por qualquer um com a chave pública. Ele remove, deixa as tabelas sem acesso público, e manda a IA mover todas as consultas para uma pasta de API no servidor, usando a chave de serviço.
 
-Esta é a parte em que um projeto de aprendizado vira um incidente, então vale o alerta separado.
+::video: HVRCBsJI_Eo | Em 1:01:52 ele configura as variáveis e fala das chaves, e em 1:08:45 remove as políticas públicas e move as consultas para o servidor.
 
-Cada mensagem que você envia gera **três eventos de volta**: enviada, entregue e lida. Eles chegam no **mesmo endereço** das mensagens de cliente. Se o seu código responde tudo que chega, cada resposta gera três status, cada status vira outra resposta, e isso multiplica exponencialmente.
+## Desempenho: paginação e cache
 
-::video: vGovcR8W5g8 | Em 14:47 o aviso vem antes da execução, e em 19:05 os três status aparecem e a proteção funciona. A frase é literal: um fluxo assim bloqueia o número.
+**Paginação.** Conversas de 20 em 20 e mensagens de 50 em 50, carregando mais conforme o usuário rola.
 
-A proteção é filtrar na entrada: **leia o remetente de dentro do objeto de mensagem**, que não existe no evento de status. Assim o processamento falha ao receber status, em vez de responder. Melhor ainda, uma condição no início que separa mensagem de status e manda status só para atualização de estado.
+**Mensagens começando de baixo.** A lista abre na mensagem mais recente.
 
-E dois cuidados que valem desde o primeiro dia: **responda antes de processar**, porque o webhook precisa ser rápido, e **trate reentrega**, guardando o identificador da mensagem para não gravar duas vezes.
+**Cache local com Pinia.** Sem cache, voltar para uma conversa já aberta refazia a consulta. Na fala dele: *"isso aqui é uma chamada ao banco de dados desnecessária."*
 
-## Mídia: duas chamadas, e um prazo curto
+## Fase 3: a API
 
-Mídia não vem no webhook. Vem um identificador, e uma URL que **não abre**: ela devolve erro de autenticação, o que faz parecer problema de token.
+**Webhook primeiro, sem tempo real.** Um endpoint que recebe o evento, identifica ou cria a conversa e grava a mensagem. Para testar localmente, ngrok na porta da aplicação. [O passo a passo do túnel, com o erro 403 que apareceu, está aqui](/tunel-para-testar-webhook-local).
 
-O caminho é trocar o identificador pelo endereço real e baixar **com o cabeçalho de autorização** na segunda chamada. Esquecer o cabeçalho nessa última etapa é o erro mais repetido do assunto.
+**Variáveis da Datafy.** URL base, token e `phone_number_id`. Sobre o token: *"caso seu token vazar, você vem aqui e muda."*
 
-E o prazo que muda o desenho: **o identificador que chega no webhook expira em 7 dias**, enquanto o arquivo que você sobe para enviar dura 30. Baixe no recebimento, não depois. [O passo a passo está aqui](/como-receber-midia-api-oficial-whatsapp).
+**Mídia.** Uma função que chama a Datafy com o identificador da mídia e o token e recebe a URL para exibir. [Como receber mídia está aqui](/como-receber-midia-api-oficial-whatsapp).
 
-## Tempo real, cache e as escolhas de infraestrutura
+**Envio.** O campo de digitação envia pela Datafy API; o status e o eco da mensagem chegam depois pelo webhook, sem duplicar. Os tiques azuis aparecem quando o status de leitura chega.
 
-**Tempo real** é uma camada à parte: o webhook entrega no seu servidor, e levar até a tela aberta exige um canal próprio. Serviço gerenciado de mensagens resolve isso com pouca coisa, e a maioria tem faixa gratuita suficiente para começar.
+**Tempo real com Pusher.** O servidor recebe o webhook, grava e publica no Pusher, e a tela recebe. Sobre o custo: *"até 100 conexões simultâneas é gratuito."*
 
-O fluxo fica: mensagem chega no webhook, o servidor grava no banco **e** publica no canal, e a tela recebe. Grave antes de publicar, senão uma tela aberta vê uma mensagem que ainda não existe no banco.
+::video: HVRCBsJI_Eo | Em 1:33:24 o webhook começa a gravar, em 1:52:03 a mídia, em 1:57:07 o envio pelo campo de digitação, e em 2:08:19 o Pusher.
 
-**Cache no lado do cliente** vira necessidade rápido. Sem ele, clicar entre duas conversas refaz a consulta toda vez, mesmo para dados que você acabou de carregar. Um estado local que guarda conversas e mensagens já carregadas resolve.
+## Apagar conversa em cascata
 
-**Paginação desde o começo.** Conversas em lotes, mensagens em lotes, com carregamento conforme o usuário rola. Uma conversa com milhares de mensagens trava a tela se vier inteira.
+Ao apagar uma conversa, a tabela apagava as mensagens junto. Ele comenta o risco: *"se você tiver, por exemplo, digamos lá, 1000 mensagens numa conversa, ela vai deletar 1000 linhas. Isso pode travar."* A alternativa que ele mostra é remover o comportamento em cascata. Para o tamanho do projeto, ele mantém.
 
-## Segurança: dois erros que aparecem em projeto novo
+## Publicar
 
-**Consulta ao banco sai do servidor, não do navegador.** Se as suas tabelas estão protegidas, como devem estar, a chave que consegue lê-las é a de serviço, e ela nunca vai para o lado do cliente. O padrão é uma camada de API no servidor, e o navegador falando só com ela.
+Código no GitHub, projeto importado na Vercel, variáveis de ambiente coladas de uma vez. E o passo que não pode faltar: trocar a URL do webhook no painel da Datafy, do túnel para a de produção. Enquanto o túnel estava ligado, as mensagens continuavam chegando por ele.
 
-**Não dê à IA controle de escrita no banco.** Vale citar o princípio direto: *"eu não gosto de dar o controle do banco de dados. O banco de dados é o coração do projeto. No máximo você dá permissão para ela ler o teu banco de dados, mas nunca para mexer."* Deixe a ferramenta gerar o SQL e execute você, olhando o que está sendo feito.
+## Os limites do projeto
 
-E um terceiro, que acontece com quem sabe o que está fazendo: **arquivo de exemplo de variáveis de ambiente recebe o nome da variável, nunca o valor.** Ele vai para o repositório público. Chave que apareceu em tela, vídeo ou captura está queimada, e rotacionar é barato.
+É um número só, configurado por variável de ambiente. Na fala dele: *"se você quiser algo mais robusto, mais elaborado, para ter vários números e de forma dinâmica selecionar os números, aí já é outra coisa."*
 
 ## Perguntas frequentes
 
-### Vale a pena construir em vez de usar pronto?
+### Quais ferramentas o tutorial usa?
 
-Se a necessidade é atender com uma equipe, não. Uma caixa de entrada pronta entrega fila, atribuição e histórico hoje. Construir se paga quando a conversa faz parte do produto, ou quando você vai revender.
+Claude Design, VS Code com Claude Code ou Codex, Nuxt, Supabase, Pusher, Datafy API e Vercel.
 
-### Quantas tabelas eu preciso?
+### Quantas tabelas?
 
-Duas para o essencial: conversas e mensagens. Multiatendimento acrescenta agentes, atribuição e estado da conversa, e isso pode vir depois.
+Duas: conversas e mensagens.
 
-### Como faço multinúmero?
+### O código está disponível?
 
-Guardando o identificador do número em todas as tabelas desde o começo, e usando a chave composta do contato. Acrescentar isso depois é migração de dados, não mudança de código.
+Está, no GitHub, com as instruções, o SQL das tabelas e a referência de design.
 
-### Como testo o webhook antes de publicar?
+### Por que as consultas ao banco saem do servidor?
 
-Com um túnel que expõe a sua porta local. Cuidado com três coisas: liberar o domínio do túnel no framework, o endereço muda a cada vez que ele sobe, e trocar para a URL de produção ao publicar.
+Porque as tabelas ficam sem acesso público, e só a chave de serviço, que nunca vai para o navegador, consegue ler.
 
-### Preciso guardar o payload inteiro?
+### O projeto funciona com vários números?
 
-Vale muito a pena. É o que permite reprocessar quando um campo novo aparecer, e o custo de armazenamento é pequeno perto de perder histórico.
-
-### E se eu quiser vender isso para outros?
-
-Aí entra o cliente conectar o próprio número, e isso muda os requisitos do fornecedor. [Está detalhado aqui](/cliente-conecta-o-whatsapp-dele-no-meu-saas).
+Não. É um número, configurado por variável de ambiente.
 
 ## Como decidir
 
-Se o objetivo é aprender como a API funciona, construa: em um fim de semana você entende webhook, status, mídia e janela de 24 horas melhor do que lendo documentação por um mês.
+Se o objetivo é entender como a API oficial funciona construindo, siga as três fases na ordem do vídeo, começando pela coleta de payloads antes do banco. Se você precisa atender clientes com equipe agora, uma caixa de entrada pronta como o Chatwoot se liga à Datafy em minutos.
 
-Se o objetivo é atender clientes na semana que vem, use pronto e construa depois, quando souber exatamente o que falta.
-
-E, construindo, não pule a etapa que parece burocrática: **colete payloads reais antes de modelar**. É a diferença entre um banco que aguenta o segundo número e um que precisa de migração no primeiro mês.
-
-::cta: Comece coletando payloads reais, hoje | Mande para o seu número conectado um texto, um áudio, uma imagem, e depois responda pelo celular e pela API. Guarde os cinco eventos. Esses arquivos valem mais que qualquer diagrama na hora de modelar o banco.
+::cta: Comece coletando os payloads | Abra o bate-papo do painel, mande para o número um texto, um áudio, uma imagem, uma mensagem pelo celular e um envio pela API, e copie os cinco payloads antes de criar qualquer tabela.
 
 ## Leia também
-- [Enviar e receber a primeira mensagem](/primeira-mensagem-api-oficial-whatsapp)
-- [O cliente conecta o WhatsApp dele no meu SaaS](/cliente-conecta-o-whatsapp-dele-no-meu-saas)
-- [O telefone está sumindo do webhook](/o-telefone-esta-sumindo-do-webhook)
-- [Como ver o payload cru das mensagens em tempo real](/ver-payload-das-mensagens-em-tempo-real)
+- [Como testar o webhook na sua máquina com ngrok](/tunel-para-testar-webhook-local)
+- [Ver o payload das mensagens em tempo real](/ver-payload-das-mensagens-em-tempo-real)
+- [Como receber imagem, áudio e documento](/como-receber-midia-api-oficial-whatsapp)
+- [O laço de webhook que pode bloquear o seu número](/laco-de-webhook-derruba-numero)

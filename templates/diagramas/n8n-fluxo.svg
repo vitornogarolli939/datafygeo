@@ -15,25 +15,25 @@
   </style>
   <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
     <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Um fluxo de atendimento no n8n</text>
+<text class="t" x="360" y="26" text-anchor="middle">Um fluxo de resposta no n8n</text>
 <rect class="box" x="20" y="52" width="152" height="66" rx="8"/>
 <text class="h" x="96" y="80" text-anchor="middle">Webhook</text>
-<text class="s" x="96" y="98" text-anchor="middle">mensagem chega</text>
-<rect class="box" x="196" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="272" y="80" text-anchor="middle">Condicional</text>
-<text class="s" x="272" y="98" text-anchor="middle">regra de negocio</text>
+<text class="s" x="96" y="98" text-anchor="middle">evento chega</text>
+<rect class="boxok" x="196" y="52" width="152" height="66" rx="8"/>
+<text class="h" x="272" y="80" text-anchor="middle">Existe messages?</text>
+<text class="s" x="272" y="98" text-anchor="middle">status não passa daqui</text>
 <rect class="box" x="372" y="52" width="152" height="66" rx="8"/>
 <text class="h" x="448" y="80" text-anchor="middle">HTTP Request</text>
-<text class="s" x="448" y="98" text-anchor="middle">responde pela API</text>
+<text class="s" x="448" y="98" text-anchor="middle">cloud.datafyapi.com.br/v1</text>
 <rect class="box" x="548" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="624" y="80" text-anchor="middle">Banco</text>
-<text class="s" x="624" y="98" text-anchor="middle">registra a conversa</text>
+<text class="h" x="624" y="80" text-anchor="middle">Resposta</text>
+<text class="s" x="624" y="98" text-anchor="middle">chega no WhatsApp</text>
 <path class="ar" d="M172,85 L190,85"/>
 <path class="ar" d="M348,85 L366,85"/>
 <path class="ar" d="M524,85 L542,85"/>
 <rect class="box" x="20" y="142" width="680" height="64" rx="8"/>
 <text class="h" x="36" y="166">Limites que o fluxo precisa respeitar</text>
-<text class="p" x="36" y="190">• 80 msg/s por número</text>
-<text class="p" x="266" y="190">• 1 msg a cada 6 s por contato</text>
-<text class="p" x="516" y="190">• responder 200 na hora</text>
+<text class="p" x="36" y="190">• 80 msg/s por número (Meta)</text>
+<text class="p" x="266" y="190">• 500 req/min no envio (Datafy)</text>
+<text class="p" x="500" y="190">• responder 200 em até 20 s</text>
 </svg>

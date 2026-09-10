@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Como enviar imagem, documento e áudio pela API oficial do WhatsApp</title>
-<meta name="description" content="Dois caminhos, link ou identificador, e um deles falha de forma intermitente. Mais a marcação que transforma um arquivo de som em bolha de voz.">
+<meta name="description" content="Por link ou por identificador de mídia. Legenda na imagem, nome no documento, e voice true para o áudio chegar como mensagem de voz, com o limite de 512 KB.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/como-enviar-midia-api-oficial-whatsapp">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -14,14 +14,14 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
 <meta property="og:title" content="Como enviar imagem, documento e áudio pela API oficial do WhatsApp">
-<meta property="og:description" content="Dois caminhos, link ou identificador, e um deles falha de forma intermitente. Mais a marcação que transforma um arquivo de som em bolha de voz.">
+<meta property="og:description" content="Por link ou por identificador de mídia. Legenda na imagem, nome no documento, e voice true para o áudio chegar como mensagem de voz, com o limite de 512 KB.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/como-enviar-midia-api-oficial-whatsapp">
-<meta property="article:published_time" content="2026-09-09">
-<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Como enviar imagem, documento e áudio pela API oficial do WhatsApp">
-<meta name="twitter:description" content="Dois caminhos, link ou identificador, e um deles falha de forma intermitente. Mais a marcação que transforma um arquivo de som em bolha de voz.">
+<meta name="twitter:description" content="Por link ou por identificador de mídia. Legenda na imagem, nome no documento, e voice true para o áudio chegar como mensagem de voz, com o limite de 512 KB.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -120,10 +121,10 @@
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/como-enviar-midia-api-oficial-whatsapp#article",
       "headline": "Como enviar imagem, documento e áudio pela API oficial do WhatsApp",
-      "description": "Dois caminhos, link ou identificador, e um deles falha de forma intermitente. Mais a marcação que transforma um arquivo de som em bolha de voz.",
+      "description": "Por link ou por identificador de mídia. Legenda na imagem, nome no documento, e voice true para o áudio chegar como mensagem de voz, com o limite de 512 KB.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,13 +133,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/como-enviar-midia-api-oficial-whatsapp",
       "citation": [
+        "https://www.youtube.com/watch?v=xoldQJMTu50",
+        "https://www.youtube.com/watch?v=ly5nOHFpXcI",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/media",
         "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/audio-messages",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/interactive-messages",
-        "https://app.datafyapi.com.br/docs",
-        "https://www.youtube.com/watch?v=xoldQJMTu50",
-        "https://www.youtube.com/watch?v=ZHYNjpu5ReE"
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -147,50 +146,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Link ou identificador, qual eu uso?",
+          "name": "Link ou identificador?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Link para teste rápido. Identificador para produção, e principalmente para campanha, porque elimina a falha intermitente e deixa o disparo mais rápido quando a imagem se repete."
+            "text": "Os dois funcionam. O vídeo usa link; o identificador exige subir o arquivo antes."
           }
         },
         {
           "@type": "Question",
-          "name": "Quanto tempo o arquivo que eu subo fica disponível?",
+          "name": "Quanto tempo vale o identificador que eu subo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Cerca de 30 dias. É o contrário do que chega pelo webhook, que expira em 7. Confundir os dois prazos é o erro mais comum do assunto."
+            "text": "30 dias."
           }
         },
         {
           "@type": "Question",
-          "name": "Posso usar URL assinada de armazenamento em nuvem?",
+          "name": "Por que o meu áudio não chega com onda sonora?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pode, e acrescenta uma variável nova, o prazo de validade da assinatura, sem remover a causa original da falha por link. Não melhora."
+            "text": "Confira os dois requisitos da Meta: OGG com Opus e \"voice\": true. E o tamanho: acima de 512 KB, o ícone de tocar vira download."
           }
         },
         {
           "@type": "Question",
-          "name": "Preciso subir de novo para cada destinatário?",
+          "name": "Qual o tamanho máximo de documento?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. Suba uma vez e reutilize o identificador em quantos envios quiser, durante os 30 dias."
+            "text": "100 MB."
           }
         },
         {
           "@type": "Question",
-          "name": "O cliente consegue baixar o arquivo depois?",
+          "name": "Onde hospedo o arquivo se não tenho servidor?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A mídia fica disponível no aparelho dele conforme o comportamento normal do aplicativo. Do seu lado, o que você controla é o seu armazenamento."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Vídeo funciona igual?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Segue a mesma lógica de imagem e documento, com limite de tamanho próprio e a mesma escolha entre link e identificador."
+            "text": "Na aba de mídias do painel da Datafy, por 30 dias."
           }
         }
       ]
@@ -559,7 +550,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -593,84 +584,26 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <h1>Como enviar imagem, documento e áudio pela API oficial do WhatsApp</h1>
-<p><strong>Resposta curta:</strong> existem <strong>dois caminhos</strong>, e a escolha entre eles decide se você vai ter uma falha intermitente daqui a algumas semanas.</p>
-<p><strong>Por link</strong>, você aponta para uma URL sua e a Meta busca o arquivo. É rápido de escrever, e coloca a entrega na dependência de a infraestrutura dela conseguir baixar da sua. <strong>Por identificador</strong>, você sobe o arquivo antes e manda a referência. É uma chamada a mais, e elimina uma classe inteira de erro.</p>
-<p>Para áudio existe um detalhe extra: sem uma marcação específica, o arquivo chega como anexo de som, e não como a bolha de voz com onda sonora.</p>
+<p><strong>Resposta curta:</strong> mídia sai pelo mesmo endpoint das mensagens, <code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages</code>, de dois jeitos: <strong>por link</strong>, apontando para a URL do arquivo, ou <strong>por identificador</strong>, subindo o arquivo antes com <code>POST /v1/{phone_number_id}/media</code>. No vídeo do canal DATA7, o Israel Henrique, CTO da Datafy, envia imagem com legenda, documento com nome de arquivo e áudio como mensagem de voz, usando link.</p>
+<p>Para o áudio chegar com a onda sonora de mensagem de voz, a documentação da Meta exige <strong>arquivo OGG com codec Opus</strong> e <strong><code>"voice": true</code></strong>.</p>
 <div class="stats">
-  <div class="stat"><b>2 caminhos</b><span>link ou identificador de mídia</span></div>
-  <div class="stat"><b>30 dias</b><span>quanto o arquivo que você sobe fica disponível</span></div>
-  <div class="stat"><b>voice: true</b><span>o que transforma áudio em bolha de voz</span></div>
-  <div class="stat"><b>512 KB</b><span>acima disso o ícone de tocar vira download</span></div>
+  <div class="stat"><b>2 jeitos</b><span>por link ou por identificador</span></div>
+  <div class="stat"><b>512 KB</b><span>até onde o ícone de tocar aparece</span></div>
+  <div class="stat"><b>30 dias</b><span>de validade do identificador que você sobe</span></div>
+  <div class="stat"><b>60 req/min</b><span>o limite de upload de mídia na Datafy</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li><strong>Link é conveniente para teste, identificador é o caminho de produção.</strong> Por link, quem baixa o arquivo é a infraestrutura da Meta, e essa busca pode falhar por motivos fora do seu controle.</li>
-<li><strong>Arquivo subido vale 30 dias</strong> e pode ser reaproveitado em vários envios, o que deixa o disparo mais rápido, não mais lento.</li>
-<li><strong>Áudio precisa de OGG com codec Opus</strong> e da marcação de voz para virar bolha com onda sonora.</li>
-<li><strong>Cabeçalho de imagem não aceita legenda.</strong> O texto vai no corpo da mensagem, e mandar legenda no cabeçalho faz o envio ser recusado.</li>
-<li>Em template, <a href="/template-com-imagem-no-cabecalho-nao-envia">a imagem é reenviada a cada envio</a>: a que está no template é só exemplo.</li>
+<li><strong>Por link:</strong> o corpo aponta para a URL do arquivo. É o mais simples, e é o que o vídeo usa.</li>
+<li><strong>Por identificador:</strong> suba com <code>POST /v1/{phone_number_id}/media</code> e use o <code>id</code> retornado. Ele vale 30 dias.</li>
+<li><strong>Sem URL própria?</strong> A aba de mídias do painel da Datafy sobe o arquivo e dá o link. Expira em 30 dias.</li>
+<li><strong>Mensagem de voz:</strong> OGG com Opus e <code>"voice": true</code>. Acima de 512 KB, o ícone de tocar vira download.</li>
+<li><strong>Documento:</strong> use o nome do arquivo, senão ele chega sem o nome que você quer.</li>
 </ul>
-<figure>
-<div class="diagram">
-<svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" class="d">
-  <style>
-    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-    .t{font-size:15px;font-weight:600;fill:var(--fg)}
-    .h{font-size:13px;font-weight:600;fill:var(--fg)}
-    .p{font-size:12px;fill:var(--muted)}
-    .s{font-size:11px;fill:var(--muted)}
-    .ok{fill:var(--accent)}
-    .no{fill:var(--danger)}
-    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
-    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
-    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
-  </style>
-  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
-    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Como o webhook entrega a mensagem</text>
-<rect class="box" x="30" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="115" y="80" text-anchor="middle">Cliente</text>
-<text class="s" x="115" y="100" text-anchor="middle">escreve no WhatsApp</text>
-<rect class="box" x="275" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="360" y="80" text-anchor="middle">Meta</text>
-<text class="s" x="360" y="100" text-anchor="middle">faz POST no seu endpoint</text>
-<rect class="box" x="520" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="605" y="80" text-anchor="middle">Seu servidor</text>
-<text class="s" x="605" y="100" text-anchor="middle">responde 200 na hora</text>
-<path class="ar" d="M205,87 L268,87"/>
-<path class="ar" d="M450,87 L513,87"/>
-<rect class="box" x="30" y="146" width="330" height="76" rx="8"/>
-<text class="h" x="46" y="170">Se você falhar</text>
-<text class="p" x="46" y="192">A Meta reentrega com frequência</text>
-<text class="p" x="46" y="210">decrescente por até 7 dias.</text>
-<rect class="box" x="380" y="146" width="310" height="76" rx="8"/>
-<text class="h" x="396" y="170">Como validar</text>
-<text class="p" x="396" y="192">HMAC SHA-256 no header</text>
-<text class="p" x="396" y="210">X-Hub-Signature-256.</text>
-</svg>
-</div>
-<figcaption></figcaption>
-</figure>
-
-<h2 id="caminho-1-por-link">Caminho 1: por link</h2>
-<p>O mais direto, e o que todo tutorial mostra primeiro:</p>
-<p><code>json
-{
-  "messaging_product": "whatsapp",
-  "to": "5511999999999",
-  "type": "image",
-  "image": {
-    "link": "https://seusite.com/foto.jpg",
-    "caption": "Segue a foto do produto"
-  }
-}</code></p>
-<p>Funciona, e é ótimo para testar. O que você precisa saber antes de levar isso para produção: <strong>você não está enviando o arquivo.</strong> Você está pedindo para a Meta ir buscar na sua URL. Se essa busca falhar, o envio falha, e o motivo não está do seu lado.</p>
-<p>O sintoma característico disso é o pior de diagnosticar: <strong>funciona, depois não funciona, com o mesmo arquivo e a mesma URL.</strong> <a href="/erro-131053-ao-enviar-midia">O erro e as três causas possíveis estão detalhados aqui</a>.</p>
-<h2 id="caminho-2-por-identificador">Caminho 2: por identificador</h2>
-<p>Duas etapas. Primeiro sobe:</p>
+<h2 id="subir-o-arquivo-e-usar-o-identificador">Subir o arquivo e usar o identificador</h2>
+<p>No vídeo, o Israel explica os dois caminhos: <em>"na hora de enviar a imagem, você pode ou passar um link de uma imagem ou um ID. Esse ID você faz um upload antes, que fica hospedado lá na meta, no próprio servidor da meta."</em></p>
+<p>O upload:</p>
 <p>```
 POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/media
 Authorization: Bearer sk_live_xxx
@@ -679,15 +612,43 @@ Content-Type: multipart/form-data</p>
 type=image/jpeg
 file=@foto.jpg
 ```</p>
-<p>A resposta traz um <code>id</code>, válido por <strong>30 dias</strong>. Depois envia com ele:</p>
 <p><code>json
-{
-  "messaging_product": "whatsapp",
-  "to": "5511999999999",
-  "type": "image",
-  "image": { "id": "1234567890" }
-}</code></p>
-<p>Parece mais trabalho e costuma ser <strong>mais rápido na prática</strong>, porque para arquivo fixo você sobe uma vez e reaproveita. Catálogo, banner de campanha, tabela de preços, manual em PDF: sobe no dia em que a campanha é criada, guarda o identificador junto com o template no seu banco, e cada envio vira uma chamada só, sem a Meta precisar buscar nada.</p>
+{ "id": "1037543291543636" }</code></p>
+<p>Esse <code>id</code> vai no lugar do link no corpo do envio. Segundo a documentação da Datafy, identificadores de mídia que você sobe expiram em 30 dias. O upload tem limite de <strong>60 requisições por minuto</strong>.</p>
+<p>Limites de tamanho, conforme a documentação da Meta e da Datafy:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Formatos</th>
+<th>Tamanho máximo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Imagem</td>
+<td>JPEG, PNG</td>
+<td>5 MB</td>
+</tr>
+<tr>
+<td>Áudio</td>
+<td>AAC, MP4, MPEG, OGG, AMR</td>
+<td>16 MB</td>
+</tr>
+<tr>
+<td>Vídeo</td>
+<td>MP4, 3GPP</td>
+<td>16 MB</td>
+</tr>
+<tr>
+<td>Documento</td>
+<td>PDF, texto, Word e outros</td>
+<td>100 MB</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="a-aba-de-m-dias-da-datafy">A aba de mídias da Datafy</h2>
+<p>Se você não tem onde hospedar o arquivo, o painel resolve: <em>"se você não tiver um link, eu coloquei aqui dentro do sistema uma aba de mídias. Você pode fazer upload de uma mídia aqui para você utilizar."</em> No vídeo de disparo em massa, o prazo: <em>"essa aba de mídias fica aqui durante 30 dias. A imagem depois que expira tem que fazer upload de novo."</em></p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=xoldQJMTu50" rel="noopener">
   <span class="thumb">
@@ -696,63 +657,93 @@ file=@foto.jpg
   </span>
   <span class="meta"><b>Como enviar mídias pela API oficial do WhatsApp</b><span>Canal DATA7 · 7 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Sete minutos enviando imagem, documento e áudio. Em 01:25 ele monta o envio de imagem por link, em 03:04 manda um PDF com nome de arquivo, e em 05:02 acrescenta a marcação que transforma o áudio em bolha de voz.</figcaption>
+<figcaption>Em 00:27 ele mostra as opções de imagem por mídia e por link, e em 02:28 copia o link de uma imagem da aba de mídias do painel.</figcaption>
 </figure>
 
-<h2 id="udio-a-diferen-a-entre-anexo-e-bolha-de">Áudio: a diferença entre anexo e bolha de voz</h2>
-<p>O WhatsApp trata mensagem de voz como um tipo próprio de conteúdo, com onda sonora e reprodução contínua. Conseguir isso exige <strong>duas coisas juntas</strong>, e faltar qualquer uma produz um anexo comum:</p>
-<p><strong>Formato OGG com codec Opus.</strong> É o que o aplicativo grava quando você segura o microfone. Se você converte de mp3:</p>
-<p><code>ffmpeg -i entrada.mp3 -c:a libopus -b:a 32k -ar 48000 -ac 1 saida.ogg</code></p>
-<p><strong>A marcação de voz no corpo do envio:</strong></p>
+<h2 id="imagem-com-legenda">Imagem com legenda</h2>
+<p>```
+POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json</p>
+<p>{
+  "messaging_product": "whatsapp",
+  "to": "5511999999999",
+  "type": "image",
+  "image": {
+    "link": "https://.../foto.jpg",
+    "caption": "Segue a foto"
+  }
+}
+```</p>
+<p>Lembre da janela: fora das 24 horas depois da última mensagem da pessoa, mensagem livre não sai. No vídeo: <em>"como ele entrou em contato comigo em 24 horas, eu posso respondê-lo nessa janela de forma gratuita."</em> <a href="/primeira-mensagem-api-oficial-whatsapp">A regra está aqui</a>.</p>
+<h2 id="documento-com-nome-de-arquivo">Documento com nome de arquivo</h2>
 <p><code>json
-"audio": { "link": "https://.../audio.ogg", "voice": true }</code></p>
-<p>Sem a marcação, mesmo com o formato certo, o resultado tende a ser um arquivo anexado. E aqui está a parte que faz esse problema demorar tanto para ser diagnosticado: <strong>a API não devolve erro.</strong> Ela aceita, entrega, e o cliente recebe algo diferente do que você imaginava. <a href="/audio-chega-mudo-no-celular-do-cliente">O sintoma completo, do lado de quem recebe, está aqui</a>.</p>
-<p>Sobre tamanho, um detalhe documentado que vale conhecer: o ícone de tocar só aparece se o arquivo tiver <strong>512 KB ou menos</strong>, e acima disso ele vira ícone de download. Com Opus a 32 kbps, 512 KB dão vários minutos de fala, então isso aperta quem manda áudio longo em qualidade alta, e não quem manda voz.</p>
-<p>Curiosidade útil do teste gravado: um arquivo de 630 KB, acima desse limite, ainda apareceu com onda sonora. Não contradiz a documentação, e mostra a nuance: o que muda acima de 512 KB é o <strong>ícone</strong>, não necessariamente a bolha.</p>
-<h2 id="documento-o-campo-que-separa-profissiona">Documento: o campo que separa profissional de amador</h2>
-<p>Documento aceita um parâmetro que quase todo mundo esquece, e ele é visível para o cliente:</p>
-<p><code>json
-"document": {
-  "id": "1234567890",
-  "caption": "Segue a proposta conforme combinado",
-  "filename": "Proposta Comercial.pdf"
+{
+  "messaging_product": "whatsapp",
+  "to": "5511999999999",
+  "type": "document",
+  "document": {
+    "link": "https://.../proposta.pdf",
+    "caption": "Segue a proposta conforme combinado",
+    "filename": "Proposta comercial"
+  }
 }</code></p>
-<p>Sem o nome do arquivo, o documento chega com um nome genérico. O conteúdo é o mesmo, a impressão é outra: proposta comercial que chega como uma sequência de números não passa a mesma seriedade.</p>
-<h2 id="os-erros-que-aparecem-aqui">Os erros que aparecem aqui</h2>
-<p><strong>Legenda no cabeçalho de template.</strong> Cabeçalho de imagem não aceita legenda. Mandar faz o envio ser recusado, e o texto deve ir no corpo.</p>
-<p><strong>Tipo declarado diferente do arquivo.</strong> Declarar um tipo e mandar outro cai num erro genérico de mídia que não distingue a causa. Se você aceita upload do usuário, valide o conteúdo real, e não a extensão.</p>
-<p><strong>Reaproveitar identificador entre números.</strong> O identificador é vinculado ao número que fez o envio. Operando vários números, suba por número ou guarde um mapa.</p>
-<p><strong>Deixar o tipo de mídia fixo no código.</strong> Vale conferir se a ferramenta que você usa no meio não força um tipo. Existem conectores que fixam mp3 e não oferecem a marcação de voz, e nesse caso converter o arquivo antes não resolve nada.</p>
-<p><strong>Arquivo acima do limite.</strong> Imagem, áudio, vídeo e documento têm tetos diferentes, e o de imagem é bem mais baixo do que a maioria imagina. Redimensione antes em vez de descobrir no disparo.</p>
+<p>No vídeo, o documento é uma proposta, com legenda e o nome de arquivo preenchido.</p>
+<h2 id="udio-como-mensagem-de-voz">Áudio como mensagem de voz</h2>
+<p><code>json
+{
+  "messaging_product": "whatsapp",
+  "to": "5511999999999",
+  "type": "audio",
+  "audio": {
+    "link": "https://.../audio.ogg",
+    "voice": true
+  }
+}</code></p>
+<p>No vídeo, o Israel acrescenta o campo e explica de onde tirou: <em>"esse parâmetro eu vou chamar de voice. Voice entre aspas dois pontos true. Por quê? Porque está aqui na documentação da meta. Isso quer dizer que ele vai ser enviado como aquelas ondinhas."</em></p>
+<p>O que a documentação da Meta diz sobre isso:</p>
+<p><strong>Formato:</strong> mensagem de voz exige arquivo <code>.ogg</code> com codec <strong>Opus</strong>.</p>
+<p><strong>Tamanho:</strong> o ícone de tocar só aparece se o arquivo tiver <strong>512 KB ou menos</strong>. Acima disso, vira ícone de download.</p>
+<p><strong>Sem os dois:</strong> o áudio aparece como arquivo comum, com botão de download.</p>
+<p>No teste do vídeo, um áudio de 630 KB chegou com a onda sonora, e ele comenta que existe um limite de tamanho: <em>"se o áudio for muito grande, por exemplo, ele não vai ir como com as ondinhas, ele vai ir como se tivesse encaminhado."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=xoldQJMTu50" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/xoldQJMTu50/maxresdefault.jpg" alt="Miniatura do vídeo: Como enviar mídias pela API oficial do WhatsApp" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como enviar mídias pela API oficial do WhatsApp</b><span>Canal DATA7 · 7 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 03:04 ele envia o documento, em 05:02 acrescenta voice true ao áudio, em 06:19 confere a onda sonora no celular, e em 06:43 fala do limite de tamanho.</figcaption>
+</figure>
+
+<h2 id="v-deo">Vídeo</h2>
+<p>Segue a mesma lógica de imagem e documento. Na fala do vídeo: <em>"tem vídeo também, mas ele vai seguir, ele seguiria exatamente a mesma lógica."</em></p>
 <h2 id="o-que-muda-com-a-datafy">O que muda com a Datafy</h2>
-<p><strong>Não muda:</strong> formato, tamanho, marcação de voz e o que a Meta aceita. Converter para OGG com Opus é trabalho seu em qualquer caminho, e nenhum fornecedor transforma mp3 em bolha de voz por você.</p>
-<p><strong>Muda a hospedagem do arquivo de campanha.</strong> Existe uma aba de mídias no painel para subir arquivo e obter um link pronto para usar no envio, com validade de 30 dias. Resolve o caso de quem não tem onde hospedar imagem de campanha e estava usando link de serviço de nuvem, que costuma trazer problema próprio de expiração de assinatura.</p>
-<p><strong>Muda o lado do recebimento</strong>, que é onde o trabalho realmente pesa: <a href="/como-receber-midia-api-oficial-whatsapp">a mídia que chega vem cifrada</a>, e a etapa de decodificação já vem resolvida.</p>
+<p><strong>Não muda:</strong> formato, tamanho e marcação de voz são regra da Meta.</p>
+<p><strong>Muda onde hospedar:</strong> a aba de mídias do painel dá o link do arquivo, por 30 dias.</p>
+<p><strong>Muda o recebimento:</strong> a mídia que o cliente manda chega criptografada, e <code>GET /media/{id}</code> devolve a URL pronta. <a href="/como-receber-midia-api-oficial-whatsapp">Como receber está aqui</a>.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Link ou identificador, qual eu uso?</h3>
-<p>Link para teste rápido. Identificador para produção, e principalmente para campanha, porque elimina a falha intermitente e deixa o disparo mais rápido quando a imagem se repete.</p>
-<h3>Quanto tempo o arquivo que eu subo fica disponível?</h3>
-<p>Cerca de 30 dias. É o contrário do que chega pelo webhook, que expira em 7. Confundir os dois prazos é o erro mais comum do assunto.</p>
-<h3>Posso usar URL assinada de armazenamento em nuvem?</h3>
-<p>Pode, e acrescenta uma variável nova, o prazo de validade da assinatura, sem remover a causa original da falha por link. Não melhora.</p>
-<h3>Preciso subir de novo para cada destinatário?</h3>
-<p>Não. Suba uma vez e reutilize o identificador em quantos envios quiser, durante os 30 dias.</p>
-<h3>O cliente consegue baixar o arquivo depois?</h3>
-<p>A mídia fica disponível no aparelho dele conforme o comportamento normal do aplicativo. Do seu lado, o que você controla é o seu armazenamento.</p>
-<h3>Vídeo funciona igual?</h3>
-<p>Segue a mesma lógica de imagem e documento, com limite de tamanho próprio e a mesma escolha entre link e identificador.</p>
+<h3>Link ou identificador?</h3>
+<p>Os dois funcionam. O vídeo usa link; o identificador exige subir o arquivo antes.</p>
+<h3>Quanto tempo vale o identificador que eu subo?</h3>
+<p>30 dias.</p>
+<h3>Por que o meu áudio não chega com onda sonora?</h3>
+<p>Confira os dois requisitos da Meta: OGG com Opus e <code>"voice": true</code>. E o tamanho: acima de 512 KB, o ícone de tocar vira download.</p>
+<h3>Qual o tamanho máximo de documento?</h3>
+<p>100 MB.</p>
+<h3>Onde hospedo o arquivo se não tenho servidor?</h3>
+<p>Na aba de mídias do painel da Datafy, por 30 dias.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Se você manda mídia esporádica, em atendimento, link resolve e você não precisa mudar nada hoje.</p>
-<p>Se mídia entra em campanha, com cliente esperando, mude para identificador antes de a falha intermitente aparecer, e não depois: a versão que aparece depois vem com cliente reclamando de arquivo que não chegou e um código de erro que não distingue causa.</p>
-<p>E, se áudio faz parte da experiência, faça as duas coisas juntas: OGG com Opus e a marcação de voz. Só uma das duas produz exatamente o sintoma que faz o time perder um dia procurando defeito no arquivo.</p>
-<div class="cta"><h3>Suba uma imagem fixa e guarde o identificador</h3><p>Se você tem um banner que se repete em toda campanha, suba uma vez e salve o identificador ao lado do template no seu banco. O disparo fica mais rápido e para de depender de a Meta conseguir buscar arquivo na sua infraestrutura.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Para testar e para arquivo que você já tem publicado, envie por link. Para áudio que precisa parecer gravado na hora, gere OGG com Opus, mantenha até 512 KB e marque <code>voice: true</code>.</p>
+<div class="cta"><h3>Envie os três tipos para você mesmo</h3><p>Mande uma mensagem do seu celular para o número, e responda com uma imagem com legenda, um PDF com nome de arquivo e um áudio OGG com voice true.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/como-receber-midia-api-oficial-whatsapp">Como receber imagem, áudio e documento pela API</a></li>
-<li><a href="/erro-131053-ao-enviar-midia">Erro 131053 ao enviar mídia</a></li>
-<li><a href="/audio-chega-mudo-no-celular-do-cliente">O áudio que eu mando chega mudo no celular do cliente</a></li>
-<li><a href="/template-com-imagem-no-cabecalho-nao-envia">Meu template com imagem no cabeçalho não envia</a></li>
+<li><a href="/como-receber-midia-api-oficial-whatsapp">Como receber imagem, áudio e documento</a></li>
+<li><a href="/primeira-mensagem-api-oficial-whatsapp">Enviar e receber a primeira mensagem</a></li>
+<li><a href="/como-enviar-template-pela-api">Como enviar template pela API</a></li>
+<li><a href="/quantas-mensagens-por-segundo-posso-enviar">Quantas mensagens por segundo posso enviar?</a></li>
 </ul>
 </article>
 
@@ -768,11 +759,12 @@ file=@foto.jpg
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#caminho-1-por-link">Caminho 1: por link</a></li>
-        <li><a href="#caminho-2-por-identificador">Caminho 2: por identificador</a></li>
-        <li><a href="#udio-a-diferen-a-entre-anexo-e-bolha-de">Áudio: a diferença entre anexo e...</a></li>
-        <li><a href="#documento-o-campo-que-separa-profissiona">Documento: o campo que separa pr...</a></li>
-        <li><a href="#os-erros-que-aparecem-aqui">Os erros que aparecem aqui</a></li>
+        <li><a href="#subir-o-arquivo-e-usar-o-identificador">Subir o arquivo e usar o identif...</a></li>
+        <li><a href="#a-aba-de-m-dias-da-datafy">A aba de mídias da Datafy</a></li>
+        <li><a href="#imagem-com-legenda">Imagem com legenda</a></li>
+        <li><a href="#documento-com-nome-de-arquivo">Documento com nome de arquivo</a></li>
+        <li><a href="#udio-como-mensagem-de-voz">Áudio como mensagem de voz</a></li>
+        <li><a href="#v-deo">Vídeo</a></li>
         <li><a href="#o-que-muda-com-a-datafy">O que muda com a Datafy</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>

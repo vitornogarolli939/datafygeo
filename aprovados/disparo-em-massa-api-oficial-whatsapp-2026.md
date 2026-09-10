@@ -1,6 +1,6 @@
 ---
 title: "Como fazer disparo em massa na API oficial do WhatsApp"
-description: "Planilha, mapeamento de variáveis e vazão controlada. Mais as quatro recusas diferentes que aparecem no relatório e pedem reações opostas."
+description: "Pela aba de disparos da Datafy: planilha CSV com a coluna telefone, template aprovado, mapeamento de variáveis e agendamento. E o que o status mostra quando a Meta não entrega."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "disparo-em-massa-api-oficial-whatsapp"
 cluster: "implementacao"
@@ -9,165 +9,130 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-10
 sources:
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits
-  - https://developers.facebook.com/docs/whatsapp/throughput
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/marketing-templates/per-user-limits
-  - https://business.whatsapp.com/policy
-  - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=ly5nOHFpXcI
   - https://www.youtube.com/watch?v=cZ_nyIUv5ic
+  - https://www.youtube.com/watch?v=YF9hTHDAw6E
+  - https://whatsappbusiness.com/policy/
+  - https://app.datafyapi.com.br/docs
 videos: [ly5nOHFpXcI, cZ_nyIUv5ic]
 internal_links:
-  - /minha-campanha-travou-no-meio
+  - /como-criar-template-whatsapp-passo-a-passo
   - /como-enviar-template-pela-api
-  - /quantas-mensagens-por-segundo-posso-enviar
+  - /opt-in-por-link-whatsapp
   - /numero-banido-no-whatsapp-o-que-fazer
-  - /como-documentar-o-opt-in-do-cliente
+  - /tres-status-da-mensagem-whatsapp
 status: aprovado
 ---
 
 # Como fazer disparo em massa na API oficial do WhatsApp
 
-**Última atualização: 09/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** disparo em massa na API oficial é **template aprovado, enviado em laço, com vazão controlada**. Tecnicamente é simples. O que separa a campanha que entrega da campanha que derruba o número não está no código: está na lista, na taxa de resposta e no tratamento de cada tipo de recusa.
+**Resposta curta:** disparo em massa na API oficial é **template aprovado** enviado para uma lista. Pela API, você faz um laço chamando o envio de template. Pelo painel da Datafy, a aba **Disparos** faz isso sem código: você sobe uma planilha CSV com a coluna **`telefone`**, escolhe o template, liga as colunas às variáveis e envia agora ou agenda.
 
-Existem quatro recusas diferentes que aparecem no relatório, e **reenviar piora três delas**. Essa é a parte que quase nenhum tutorial cobre, e é a que custa o número.
+No vídeo, o Israel Henrique, CTO da Datafy, explica por que a aba existe: *"basta você implementar no teu sistema e fazer um loop ali para enviar para todo mundo. Mas tem gente que não tem esse conhecimento técnico."*
 
-::numeros: 4 recusas|diferentes, com reações opostas ;; 80 msg/s|o teto por número, ou 20 em coexistência ;; 1 template|aprovado, obrigatório para iniciar conversa ;; 0|reenvios automáticos sem olhar o motivo
+::numeros: 1 coluna|obrigatória: telefone ;; 55|o código do Brasil no começo do número ;; 3|contatos exibidos para conferir antes ;; 30 dias|de validade das mídias da aba de mídias
 
 ## Principais pontos
-- Fora da janela de 24 horas, **só com template aprovado**, e cada envio é cobrado pela categoria dele.
-- **A planilha precisa do telefone no formato certo**: código do país, DDD e número, sem símbolo. Formato antigo sem o nono dígito vira destinatário inválido.
-- **Mande em blocos e observe**, em vez de dez mil de uma vez. É o que permite parar antes de estragar a qualidade do número.
-- **Cada tipo de recusa pede uma ação diferente.** Um laço que trata tudo como "falhou, tenta de novo" transforma problema de entrega em problema de conta.
-- **Taxa de resposta é o indicador que decide se você continua vivo.** Base que não interage derruba número mesmo com template aprovado.
+- **Precisa de template aprovado.** Fora da janela de 24 horas, a política exige template para iniciar conversa.
+- **Planilha CSV** com a coluna `telefone` no cabeçalho, números no formato 55, DDD e número.
+- **Outras colunas viram variáveis** do template, com o nome que você quiser.
+- **Template com imagem** pede a imagem na hora do disparo. As mídias da aba de mídias duram 30 dias.
+- **O status mostra quando a Meta não entrega**, inclusive para quem não costuma responder.
 
-::diagrama: n8n-fluxo
+## Antes de disparar: permissão e resposta
 
-## Antes do código: a pergunta que evita o prejuízo
+A política comercial do WhatsApp exige duas coisas para contatar alguém: a pessoa ter fornecido o número e ter dado opt-in. E só permite iniciar conversa com template aprovado. [Como coletar opt-in com um link de cadastro](/opt-in-por-link-whatsapp).
 
-Um disparo tecnicamente perfeito para a lista errada derruba o número. Então a primeira checagem não é de formato:
+No vídeo sobre bloqueio, o Israel conta o que acontece quando ninguém responde, mesmo com template certo: uma advogada que disparou para a própria lista por três dias, sem resposta, e foi bloqueada. [O caso e as causas de bloqueio estão aqui](/numero-banido-no-whatsapp-o-que-fazer).
 
-**Essas pessoas te deram o número?** A política é explícita: só se contata quem forneceu o número e deu o aceite. Ter template aprovado **não é autorização para lista fria**, e essa confusão é a origem do erro mais caro do assunto.
+::video: cZ_nyIUv5ic | Em 10:01 ele explica a taxa de engajamento, e em 10:39 conta o caso da advogada.
 
-**Elas respondem quando você manda?** Esse é o indicador que mais pesa. O caso que resume isso é o de uma advogada que fez tudo certo, com template aprovado e orientação, e foi bloqueada em dois dias porque ninguém respondeu. Três dias de silêncio do outro lado foram lidos como envio indesejado.
+## A planilha
 
-**Você deu a ela um jeito fácil de dizer não?** Botão de "não tenho interesse" no template transforma leitura passiva em interação, e ainda entrega a lista de quem tirar da base. [O detalhe disso está aqui](/como-documentar-o-opt-in-do-cliente).
-
-Se a resposta às três for confortável, siga. Se não, a lista é o problema, e nenhuma configuração de envio resolve.
-
-## A planilha, e o formato que ninguém avisa
-
-A forma mais comum de disparo no Brasil sai de uma planilha, e é aí que nascem os erros silenciosos.
-
-**Coluna de telefone é obrigatória**, e o formato é rígido: código do país, DDD e número, tudo junto, sem parênteses, traço ou espaço.
+Na fala do vídeo: *"tem que ter uma coluna chamada telefone, que é onde você vai colocar os telefones dos usuários. E eles têm que estar nesse formato aqui: 55, que no caso seria o DDI, o código do país, DDD e o número."*
 
 ```
-telefone,nome,vencimento
-5511999999999,Maria,10/09
-5541988887777,João,12/09
+telefone,nome
+5511999999999,Maria
+5541988887777,João
 ```
 
-**As demais colunas viram as variáveis do template.** O nome da coluna não precisa ser igual ao da variável, mas o **mapeamento** precisa estar certo. E aqui está o erro que não dá erro: variável apontada para a coluna errada gera mil mensagens com o dado trocado, sem nenhuma falha no relatório.
+**A coluna `telefone`** pode estar em qualquer posição, mas o nome precisa estar na primeira linha.
 
-**Cuidado com o nono dígito.** Número brasileiro salvo em formato antigo vira destinatário inválido, e você só descobre no resultado. O mesmo vale para números da Argentina e do México, que têm regra própria de prefixo.
+**As outras colunas** são as variáveis do template: *"o nome da coluna pode ser qualquer um, tanto faz."*
 
-**Confira as três primeiras linhas antes de disparar.** É o momento barato de descobrir cabeçalho na linha errada ou telefone com espaço.
+**Exportar como CSV.** No Google Sheets, pelo menu de arquivo, baixando como CSV.
 
-O formato completo, com as conferências que evitam retrabalho e o problema do nono dígito, está em [como montar a planilha CSV para disparo](/planilha-csv-para-disparo-whatsapp).
+::video: ly5nOHFpXcI | Em 02:19 ele mostra o formato da planilha, em 02:53 a regra da coluna telefone, e em 03:47 as colunas que viram variáveis.
 
-::video: ly5nOHFpXcI | Dez minutos com um disparo real do começo ao fim. Em 02:19 ele mostra o formato exigido da planilha, em 05:39 o mapeamento de variáveis com pré-visualização, em 06:29 o resultado com um envio falhando, e em 07:20 um disparo agendado.
+## O disparo, na aba Disparos
 
-**O teste que evita o susto:** coloque **o seu próprio número na primeira linha** e dispare para uma lista de três antes de disparar para dez mil. Você vê a mensagem exata que o cliente vai ver, com a variável preenchida.
+**1. Nova campanha**, com um nome.
 
-## Vazão: não mande do laço direto
+**2. Subir a planilha.** O painel mostra os três primeiros contatos para você conferir.
 
-O teto por número é de **80 mensagens por segundo**, e cai para **20** se o número estiver em coexistência. Estourar devolve um erro específico de excesso de vazão.
+**3. Escolher o template.** Aparecem os templates aprovados na Meta. [Como criar um está aqui](/como-criar-template-whatsapp-passo-a-passo).
 
-Isso raramente é o gargalo real, e mesmo assim vale controlar, porque o padrão que protege é o mesmo:
+**4. Mídia, se o template tiver.** Um template com imagem no cabeçalho pede a imagem nessa hora. No vídeo, ele usa uma que já estava na aba de mídias, e lembra: *"essa aba de mídias fica aqui durante 30 dias."*
 
-**Fila com liberação em taxa constante**, abaixo do teto. Em ferramenta de automação visual, isso costuma ser um nó de lote com espera entre eles.
+**5. Mapear as variáveis.** Para cada variável do template, a coluna da planilha que preenche. O painel mostra uma prévia.
 
-**Espera crescente no reenvio**, e só para erro de vazão. Reenvio imediato transforma um pico em incidente.
+**6. Enviar agora ou agendar.** O agendamento usa o fuso horário do computador de quem agenda: *"como eu tô no Brasil, ele vai pegar o do teu computador."*
 
-**Blocos, e não a base inteira.** Mande mil, olhe entrega e resposta, e continue. Isso reduz o risco de qualidade e evita descobrir o problema com dez mil mensagens já entregues.
+::video: ly5nOHFpXcI | Em 04:38 ele sobe a planilha, em 05:16 escolhe o template e a imagem, em 05:39 mapeia a variável, e em 07:20 agenda um segundo disparo.
 
-E existe um comportamento que não é erro seu: a Meta **segura lotes de propósito** para medir reação durante a campanha. A campanha fica lenta, sem erro claro, e depois retoma. Reenviar não acelera. [As quatro causas de travamento estão detalhadas aqui](/minha-campanha-travou-no-meio).
+## O que o status mostra
 
-## As quatro recusas, e o que fazer com cada uma
+Depois do disparo, o painel mostra o resultado por contato. No vídeo, dois enviados e um erro, que era o número inventado de propósito na planilha.
 
-Esta é a tabela que vale imprimir, porque tratar todas igual é o que causa dano real:
+E o Israel avisa sobre outros motivos: *"às vezes a meta simplesmente não entrega porque ela não quer. Isso acontece. Ou talvez você não tem saldo, teu cartão de crédito tá com problema."*
 
-| O que aparece | O que é | O que fazer |
-|---|---|---|
-| Erro de excesso de vazão | Você mandou rápido demais | Esperar e reenviar com intervalo crescente |
-| Limite por pessoa | Aquele indivíduo já recebe muito marketing, somado entre todas as empresas | **Não reenviar.** Esperar ao menos 24 h |
-| Recusa por opção da pessoa | Ela optou por não receber marketing | **Parar de enviar** para ela |
-| "Para manter a saúde do ecossistema" | A plataforma julgou que ela não quer receber você | Marcar e parar. Reenviar alimenta o indicador |
+No bate-papo do painel, ele abre uma mensagem que não foi entregue e lê o motivo: a mensagem não foi entregue **para manter a saúde do ecossistema**. E explica por que aquele número recebia isso: *"porque esse número aqui eu não respondo ele. Quando a API envia mensagens, eu não costumo responder."* Mais adiante: *"a meta entende que essa pessoa não quer receber mensagens."*
 
-As duas do meio parecem iguais no relatório e pedem coisas opostas. Um laço de reenvio automático que não distingue as duas escala para restrição no nível da conta.
+Os status também chegam no seu webhook. [Os três status estão explicados aqui](/tres-status-da-mensagem-whatsapp).
 
-Sobre a última, vale o diagnóstico do Israel olhando um número da própria base que sempre recebia essa recusa: *"porque esse número aqui eu não respondo ele. Quando a API envia mensagens, eu não costumo responder. Então, por isso que ele não entregou."*
+::video: ly5nOHFpXcI | Em 06:29 aparece o resultado com o erro do número inexistente, e em 08:52 ele abre a mensagem que a Meta não entregou para manter a saúde do ecossistema.
 
-E a versão honesta do resumo, que evita horas procurando defeito onde não tem: *"às vezes a meta simplesmente não entrega porque ela não quer. Isso acontece."* Outras causas banais da mesma família: cartão do portfólio com problema, ou saldo indisponível.
+## Pela API
 
-## Agendamento e fuso
+O mesmo resultado sai de um laço que envia o template para cada número da lista, pelo endpoint de mensagens da Datafy API. [Como enviar template pela API está aqui](/como-enviar-template-pela-api).
 
-Se você agenda, saiba que o horário costuma ser o **fuso de quem agenda**, e não o de quem recebe. Para base inteira no Brasil dá na mesma. Para base espalhada, alguém vai receber promoção às três da manhã, e isso vira denúncia, que é o pior indicador possível.
-
-## O que muda com a Datafy
-
-**Não muda:** limite, entrega, categoria, qualidade e bloqueio. Tudo isso é da Meta, e nenhum fornecedor se coloca entre você e essas decisões.
-
-**Muda quem escreve o laço.** Existe uma aba de disparos no painel que recebe a planilha CSV, lista os primeiros contatos para conferência, mostra os templates aprovados da conta, faz o mapeamento de variáveis com pré-visualização, aceita agendamento e mostra o status por destinatário. Foi feita, nas palavras dele, porque *"tem gente que não tem esse conhecimento técnico"*, e resolve o caso de quem sabe montar o template mas não vai escrever fila com vazão.
-
-**Muda a hospedagem da imagem.** Template de marketing com imagem precisa de um arquivo acessível, e existe uma aba de mídias para subir e obter o link, com validade de 30 dias.
-
-**Muda a depuração.** O status de cada envio aparece com o motivo, o que permite separar as quatro recusas em vez de ver só "falhou".
-
-Pela API, tudo isso é seu: você monta a fila, controla a vazão, trata cada código de erro e guarda o resultado. [O envio de template está detalhado aqui](/como-enviar-template-pela-api).
+Dois limites para o laço: o envio de mensagens na Datafy API aceita **500 requisições por minuto**, com resposta `429` indicando quantos segundos esperar. E cada template enviado é cobrado pela Meta, pela categoria dele.
 
 ## Perguntas frequentes
 
-### Disparo em massa é permitido na API oficial?
+### Qual o formato do telefone na planilha?
 
-É, com template aprovado e para quem consentiu. O que a política proíbe é mensagem não solicitada, e isso vale igual em qualquer volume.
+55, DDD e número, na coluna `telefone`.
 
-### Quantas mensagens posso mandar por dia?
+### A coluna telefone precisa ser a primeira?
 
-Depende do limite de envio da sua conta, que sobe conforme volume entregue com qualidade. Desde outubro de 2025 esse limite é do portfólio inteiro, e não de cada número.
+Não. Precisa estar na primeira linha, com esse nome.
 
-### Mais números resolvem meu volume?
+### Posso agendar?
 
-Para vazão por segundo, ajudam. Para o limite da conta, não, porque ele é do portfólio. Para o limite por pessoa, não resolve de jeito nenhum.
+Pode, no fuso horário do computador de quem agenda.
 
-### Posso reenviar o que falhou?
+### Por que uma mensagem não foi entregue sem erro de número?
 
-Depende do motivo, e essa é a pergunta certa. Excesso de vazão sim, com espera crescente. Limite por pessoa não, espere ao menos 24 horas. Opção de não receber, nunca.
+Um motivo que aparece no vídeo é a Meta não entregar para manter a saúde do ecossistema, quando a pessoa não costuma responder. Outros: saldo ou cartão.
 
-### Como sei se a campanha está indo bem enquanto ela roda?
+### Posso disparar sem template?
 
-Olhe taxa de entrega e taxa de resposta, não total enviado. Entrega caindo no meio é sinal de parar, não de acelerar.
-
-### Preciso de cartão cadastrado?
-
-Precisa, e ele fica no portfólio empresarial da Meta. Template é cobrado, e sem meio de pagamento lá o disparo não sai.
+Não para quem não falou com você nas últimas 24 horas.
 
 ## Como decidir
 
-Se você dispara esporadicamente para uma base que interage, use uma ferramenta de planilha e pare por aí: montar fila em código não te dá nada que você não tenha.
+Sem time técnico, use a aba Disparos: planilha com `telefone`, template aprovado, mapeamento e, se quiser, agendamento. Com time técnico, faça o laço pela API respeitando as 500 requisições por minuto. Nos dois casos, olhe o status depois: é ali que aparece quem não está recebendo.
 
-Se disparo é parte do produto, com volume recorrente, escreva o seu: fila com vazão controlada, tratamento por tipo de erro e registro do resultado por destinatário. O que não vale, em nenhum dos dois casos, é reenviar automaticamente sem olhar o motivo.
-
-E antes de qualquer disparo grande, faça a conta que ninguém faz: **quantos por cento responderam o último?** Se esse número for baixo, o próximo disparo não é uma oportunidade, é um risco.
-
-::cta: Antes do próximo disparo, separe três recusas | Excesso de vazão pede espera crescente. Limite por pessoa pede parar por 24 horas. Opção de não receber pede parar de vez. Um laço que trata as três igual é o caminho mais rápido para restringir a conta inteira.
+::cta: Faça um disparo de três linhas | Monte a planilha com o seu número e mais dois de teste, escolha um template aprovado, mapeie a variável e dispare. Confira o status de cada linha no painel.
 
 ## Leia também
-- [Disparei a campanha e ela travou no meio](/minha-campanha-travou-no-meio)
-- [Como enviar uma mensagem de template pela API](/como-enviar-template-pela-api)
-- [Quantas mensagens por segundo posso enviar?](/quantas-mensagens-por-segundo-posso-enviar)
+- [Como criar um template](/como-criar-template-whatsapp-passo-a-passo)
+- [Como enviar template pela API](/como-enviar-template-pela-api)
+- [Opt-in no WhatsApp com link de cadastro](/opt-in-por-link-whatsapp)
 - [Número bloqueado no WhatsApp: o que fazer](/numero-banido-no-whatsapp-o-que-fazer)

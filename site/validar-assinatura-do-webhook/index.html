@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Validar a assinatura do webhook: por que quebra com acento e com barra</title>
-<meta name="description" content="A assinatura é calculada sobre o corpo bruto da requisição. Quem calcula sobre o JSON reconstruído falha em qualquer mensagem com acento, e no Brasil isso é quase toda mensagem.">
+<title>Como validar a assinatura do webhook da Datafy API</title>
+<meta name="description" content="HMAC-SHA256 de timestamp ponto corpo, com o secret whsec do número. O erro mais comum é calcular sobre o JSON reinterpretado em vez do corpo cru.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/validar-assinatura-do-webhook">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -13,15 +13,15 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
-<meta property="og:title" content="Validar a assinatura do webhook: por que quebra com acento e com barra">
-<meta property="og:description" content="A assinatura é calculada sobre o corpo bruto da requisição. Quem calcula sobre o JSON reconstruído falha em qualquer mensagem com acento, e no Brasil isso é quase toda mensagem.">
+<meta property="og:title" content="Como validar a assinatura do webhook da Datafy API">
+<meta property="og:description" content="HMAC-SHA256 de timestamp ponto corpo, com o secret whsec do número. O erro mais comum é calcular sobre o JSON reinterpretado em vez do corpo cru.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/validar-assinatura-do-webhook">
-<meta property="article:published_time" content="2026-09-09">
-<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Validar a assinatura do webhook: por que quebra com acento e com barra">
-<meta name="twitter:description" content="A assinatura é calculada sobre o corpo bruto da requisição. Quem calcula sobre o JSON reconstruído falha em qualquer mensagem com acento, e no Brasil isso é quase toda mensagem.">
+<meta name="twitter:title" content="Como validar a assinatura do webhook da Datafy API">
+<meta name="twitter:description" content="HMAC-SHA256 de timestamp ponto corpo, com o secret whsec do número. O erro mais comum é calcular sobre o JSON reinterpretado em vez do corpo cru.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -112,18 +113,18 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Validar a assinatura do webhook: por que quebra com acento e com barra"
+          "name": "Como validar a assinatura do webhook da Datafy API"
         }
       ]
     },
     {
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/validar-assinatura-do-webhook#article",
-      "headline": "Validar a assinatura do webhook: por que quebra com acento e com barra",
-      "description": "A assinatura é calculada sobre o corpo bruto da requisição. Quem calcula sobre o JSON reconstruído falha em qualquer mensagem com acento, e no Brasil isso é quase toda mensagem.",
+      "headline": "Como validar a assinatura do webhook da Datafy API",
+      "description": "HMAC-SHA256 de timestamp ponto corpo, com o secret whsec do número. O erro mais comum é calcular sobre o JSON reinterpretado em vez do corpo cru.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,11 +133,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/validar-assinatura-do-webhook",
       "citation": [
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/create-webhook-endpoint/",
-        "https://developers.facebook.com/docs/graph-api/webhooks/getting-started",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview",
         "https://app.datafyapi.com.br/docs",
-        "https://www.youtube.com/watch?v=dIIkttPeBS0"
+        "https://www.youtube.com/watch?v=dIIkttPeBS0",
+        "https://www.youtube.com/watch?v=vGovcR8W5g8",
+        "https://www.youtube.com/watch?v=LIT4FxgqHhE",
+        "https://www.youtube.com/watch?v=HVRCBsJI_Eo"
       ]
     },
     {
@@ -145,69 +146,64 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Preciso validar mesmo?",
+          "name": "O secret é por URL ou por número?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A Meta não obriga. Mas se o seu endpoint é público e o fluxo faz algo com o conteúdo, é a única coisa que separa uma mensagem real de uma forjada."
+            "text": "Por número. O mesmo secret vale para todas as URLs daquele número."
           }
         },
         {
           "@type": "Question",
-          "name": "Qual chave eu uso?",
+          "name": "Sobre o que o HMAC é calculado?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "O segredo do aplicativo, encontrado no painel do app. Não é o token de acesso, e não é o token de verificação usado quando o webhook é registrado."
+            "text": "Sobre {timestamp}.{corpo}: o valor de x-datafy-timestamp, um ponto, e o corpo cru da requisição."
           }
         },
         {
           "@type": "Question",
-          "name": "Funciona no teste e falha em produção. Por quê?",
+          "name": "A assinatura funciona no teste e falha com mensagens reais. Por quê?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Quase certamente é o corpo reconstruído. Teste com uma mensagem que tenha acento: se essa falha e \"oi\" passa, está confirmado."
+            "text": "A causa mais comum é calcular sobre o JSON reinterpretado. Use o corpo exatamente como chegou."
           }
         },
         {
           "@type": "Question",
-          "name": "Recebo pela Datafy. Valido do mesmo jeito?",
+          "name": "O que acontece se eu desativar a assinatura?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "O princípio é o mesmo, e os cabeçalhos são outros. A Datafy assina com x-datafy-signature-256, sobre {timestamp}.{corpo}, usando o secret whsec_... que você ativa na aba Webhooks do número. O X-Hub-Signature-256 da Meta não se aplica nesse desenho, porque quem recebe da Meta é o intermediário."
+            "text": "As entregas continuam, sem os cabeçalhos de timestamp e assinatura."
           }
         },
         {
           "@type": "Question",
-          "name": "O que é o `x-datafy-delivery-id`?",
+          "name": "Troquei o secret e as entregas passaram a ser recusadas.",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Um UUID único por entrega. Guarde e ignore o que já viu: é a forma mais barata de tratar reentrega, e evita processar a mesma mensagem duas vezes."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Meu framework já interpretou o JSON. Como pego o bruto?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Todo framework oferece um jeito de preservar o corpo original, geralmente uma opção no interpretador ou um acessório antes dele. É a única alteração necessária."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Posso validar depois, de forma assíncrona?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Não faz sentido: a validação existe para decidir se você processa. Ela precisa acontecer antes de qualquer efeito. E ela é rápida, então não é ela que atrasa a sua resposta."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "O que devo responder se a assinatura não bater?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Recuse a requisição e registre o ocorrido. Se isso passar a acontecer com frequência, ou o seu segredo está errado, ou alguém está testando o seu endpoint."
+            "text": "O anterior deixa de valer na hora. Atualize o valor no servidor."
           }
         }
       ]
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://conteudo.datafyapi.com.br/validar-assinatura-do-webhook#video-dIIkttPeBS0",
+      "name": "Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia",
+      "description": "Conexao em coexistencia por QR code, cadastro de webhook, primeiro envio e a falha real fora da janela de 24 horas",
+      "thumbnailUrl": "https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg",
+      "uploadDate": "2026-09-09",
+      "contentUrl": "https://www.youtube.com/watch?v=dIIkttPeBS0",
+      "embedUrl": "https://www.youtube.com/embed/dIIkttPeBS0",
+      "creator": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://conteudo.datafyapi.com.br/validar-assinatura-do-webhook#article"
+      }
     }
   ]
 }
@@ -550,11 +546,11 @@ footer p{margin:0 0 .5rem}
   <div class="hero-grid">
     <div>
       <p class="eyebrow">Implementação</p>
-      <h1>Validar a assinatura do webhook: por que quebra com acento e com barra</h1>
+      <h1>Como validar a assinatura do webhook da Datafy API</h1>
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -584,23 +580,23 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Validar a assinatura do webhook: por que quebra com acento e com barra</h1>
-<p><strong>Resposta curta:</strong> a Meta assina cada webhook com HMAC SHA-256 no cabeçalho <code>X-Hub-Signature-256</code>, calculado sobre o <strong>corpo bruto</strong> da requisição, byte a byte. O erro que quase todo mundo comete é calcular o hash sobre o JSON depois de interpretado e reconstruído. Aí a validação passa em teste e falha em produção, <strong>em qualquer mensagem com acento ou com barra</strong>.</p>
-<p>No Brasil isso significa falhar quase sempre, porque "não", "você" e "obrigado" aparecem em praticamente toda conversa.</p>
+<h1>Como validar a assinatura do webhook da Datafy API</h1>
+<p><strong>Resposta curta:</strong> ative a assinatura na aba de webhooks do número e guarde o secret (<code>whsec_...</code>) no seu servidor. A partir daí, cada entrega traz <code>x-datafy-timestamp</code> e <code>x-datafy-signature-256</code>. A assinatura é o <strong>HMAC-SHA256 de <code>{timestamp}.{corpo}</code></strong>, com o secret como chave, no formato <code>sha256=&lt;hex&gt;</code>.</p>
+<p>O erro mais comum, segundo a própria documentação da Datafy: calcular sobre o JSON depois de interpretado. <strong>Use o corpo cru</strong>, exatamente como chegou.</p>
 <div class="stats">
-  <div class="stat"><b>SHA-256</b><span>o algoritmo, com o segredo do app como chave</span></div>
-  <div class="stat"><b>corpo bruto</b><span>o que precisa ser assinado, não o JSON reconstruído</span></div>
-  <div class="stat"><b>sha256=</b><span>o prefixo que vem no cabeçalho e precisa ser removido</span></div>
-  <div class="stat"><b>0</b><span>dúvidas sobre isso em português, o que não é um bom sinal</span></div>
+  <div class="stat"><b>1 secret</b><span>vale para todas as URLs do número</span></div>
+  <div class="stat"><b>300 s</b><span>a tolerância do exemplo contra reenvio</span></div>
+  <div class="stat"><b>20 s</b><span>para responder 200</span></div>
+  <div class="stat"><b>0</b><span>segundos de transição ao trocar o secret</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li>A assinatura vem no cabeçalho <strong><code>X-Hub-Signature-256</code></strong>, com o valor prefixado por <code>sha256=</code> (<a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/create-webhook-endpoint/" rel="noopener">como criar o endpoint</a>).</li>
-<li>O hash é sobre o <strong>corpo bruto</strong>, exatamente como chegou. Interpretar o JSON e serializar de novo <strong>muda os bytes</strong>, e o hash não bate.</li>
-<li>Acento e barra são os gatilhos mais comuns, porque bibliotecas escapam esses caracteres de formas diferentes ao reconstruir o JSON.</li>
-<li>Compare com <strong>comparação de tempo constante</strong>, e não com igualdade comum.</li>
-<li><strong>Não validar não interrompe a entrega.</strong> A Meta continua entregando normalmente. O que você perde é a proteção contra requisição forjada.</li>
+<li><strong>Ativação:</strong> por número, na aba de webhooks do painel. Guarde o <code>whsec_...</code>.</li>
+<li><strong>Cálculo:</strong> HMAC-SHA256 de <code>{timestamp}.{corpo}</code>, com o secret como chave.</li>
+<li><strong>Corpo cru:</strong> interpretar e reserializar o JSON muda os bytes, e a assinatura não bate.</li>
+<li><strong>Reenvio:</strong> os exemplos da documentação recusam entregas com mais de 300 segundos de diferença.</li>
+<li><strong>Troca de secret:</strong> o anterior deixa de valer <strong>imediatamente</strong>.</li>
 </ul>
 <figure>
 <div class="diagram">
@@ -621,103 +617,57 @@ footer p{margin:0 0 .5rem}
   </style>
   <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
     <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Como o webhook entrega a mensagem</text>
+<text class="t" x="360" y="26" text-anchor="middle">Como o webhook chega no seu servidor</text>
 <rect class="box" x="30" y="52" width="170" height="70" rx="8"/>
 <text class="h" x="115" y="80" text-anchor="middle">Cliente</text>
 <text class="s" x="115" y="100" text-anchor="middle">escreve no WhatsApp</text>
-<rect class="box" x="275" y="52" width="170" height="70" rx="8"/>
-<text class="h" x="360" y="80" text-anchor="middle">Meta</text>
-<text class="s" x="360" y="100" text-anchor="middle">faz POST no seu endpoint</text>
+<rect class="boxok" x="275" y="52" width="170" height="70" rx="8"/>
+<text class="h" x="360" y="80" text-anchor="middle">Datafy API</text>
+<text class="s" x="360" y="100" text-anchor="middle">POST com o payload da Meta</text>
 <rect class="box" x="520" y="52" width="170" height="70" rx="8"/>
 <text class="h" x="605" y="80" text-anchor="middle">Seu servidor</text>
-<text class="s" x="605" y="100" text-anchor="middle">responde 200 na hora</text>
+<text class="s" x="605" y="100" text-anchor="middle">responde 200 em até 20 s</text>
 <path class="ar" d="M205,87 L268,87"/>
 <path class="ar" d="M450,87 L513,87"/>
 <rect class="box" x="30" y="146" width="330" height="76" rx="8"/>
-<text class="h" x="46" y="170">Se você falhar</text>
-<text class="p" x="46" y="192">A Meta reentrega com frequência</text>
-<text class="p" x="46" y="210">decrescente por até 7 dias.</text>
+<text class="h" x="46" y="170">Idempotência</text>
+<text class="p" x="46" y="192">Guarde o x-datafy-delivery-id</text>
+<text class="p" x="46" y="210">e ignore a entrega que já viu.</text>
 <rect class="box" x="380" y="146" width="310" height="76" rx="8"/>
 <text class="h" x="396" y="170">Como validar</text>
-<text class="p" x="396" y="192">HMAC SHA-256 no header</text>
-<text class="p" x="396" y="210">X-Hub-Signature-256.</text>
+<text class="p" x="396" y="192">x-datafy-signature-256, HMAC</text>
+<text class="p" x="396" y="210">de {timestamp}.{corpo cru}</text>
 </svg>
 </div>
 <figcaption></figcaption>
 </figure>
 
-<h2 id="por-que-reconstruir-o-json-quebra">Por que reconstruir o JSON quebra</h2>
-<p>Quando a mensagem chega, o corpo é uma sequência de bytes. A Meta calculou o hash exatamente sobre aquela sequência.</p>
-<p>Se o seu código faz <code>JSON.parse</code> e depois <code>JSON.stringify</code> para calcular o hash, você não está assinando o que chegou: está assinando uma reconstrução. E ela quase nunca é idêntica ao original.</p>
-<p>Três diferenças aparecem sempre:</p>
-<p><strong>Escape de caracteres.</strong> Um "não" pode chegar com o caractere direto e ser reescrito como sequência de escape, ou o contrário. Bytes diferentes, hash diferente.</p>
-<p><strong>Barras.</strong> Uma URL no meio da mensagem pode ter as barras escapadas em uma representação e não na outra.</p>
-<p><strong>Espaços e ordem.</strong> Reconstrução pode mudar espaçamento, e algumas linguagens não garantem a ordem original das chaves.</p>
-<p>O resultado é o padrão que se repete nos relatos: funciona no teste, porque o teste manda "oi" sem acento; falha em produção, porque o cliente escreve "não consegui".</p>
-<h2 id="como-fazer-certo">Como fazer certo</h2>
-<p>A regra única: <strong>guarde o corpo bruto antes de interpretar</strong>.</p>
-<p>Em Node com Express, isso significa pedir ao interpretador de JSON que preserve o original:</p>
-<p><code>js
-app.use(express.json({
-  verify: (req, res, buf) =&gt; { req.rawBody = buf }
-}))</code></p>
-<p>E a verificação:</p>
-<p>```js
-const crypto = require('crypto')</p>
-<p>function assinaturaValida(req) {
-  const cabecalho = req.get('X-Hub-Signature-256') || ''
-  const recebida = cabecalho.replace('sha256=', '')</p>
-<p>const esperada = crypto
-    .createHmac('sha256', process.env.APP_SECRET)
-    .update(req.rawBody)          // o corpo bruto, nunca o objeto
-    .digest('hex')</p>
-<p>const a = Buffer.from(recebida, 'hex')
-  const b = Buffer.from(esperada, 'hex')
-  return a.length === b.length &amp;&amp; crypto.timingSafeEqual(a, b)
-}
-```</p>
-<p>Em Python com Flask, o equivalente é <code>request.get_data()</code>, que devolve os bytes originais, e <code>hmac.compare_digest</code> para comparar.</p>
-<p>Três detalhes que costumam passar batido:</p>
-<p><strong>Remova o prefixo.</strong> O cabeçalho vem como <code>sha256=abc123...</code>. Comparar com o prefixo nunca bate.</p>
-<p><strong>Use comparação de tempo constante.</strong> Comparar com <code>==</code> vaza informação por tempo de resposta. Existe função pronta para isso em toda linguagem.</p>
-<p><strong>A chave é o segredo do aplicativo</strong>, não o token de acesso e não o token de verificação do webhook. Confundir os três é comum, e o sintoma é o mesmo: nunca bate.</p>
-<h2 id="se-voc-usa-automa-o-visual">Se você usa automação visual</h2>
-<p>Em ferramentas de fluxo, o corpo costuma chegar já interpretado, e o corpo bruto pode não estar disponível. Nesse caso, três caminhos:</p>
-<p><strong>Ver se a ferramenta expõe o bruto.</strong> Algumas oferecem, com nome de campo próprio. Se existir, use.</p>
-<p><strong>Colocar um passo antes.</strong> Uma função pequena que recebe o webhook, valida com o bruto e só então repassa para o fluxo.</p>
-<p><strong>Aceitar o risco de forma consciente.</strong> Se o endpoint tem uma URL longa e imprevisível, e o dano de uma mensagem forjada é baixo, dá para conviver. Mas isso é uma decisão, não um esquecimento: escreva num lugar visível que aquele endpoint não valida assinatura.</p>
-<h2 id="se-voc-recebe-pela-datafy-a-assinatura-o">Se você recebe pela Datafy: a assinatura é outra, e é melhor</h2>
-<p>Esta parte precisa estar aqui, porque é onde a maioria dos leitores brasileiros está.</p>
-<p>O <code>X-Hub-Signature-256</code> é um mecanismo da Meta, calculado com o segredo do <strong>aplicativo Meta</strong>. Quando o webhook chega por um intermediário, quem recebe da Meta é ele, e quem faz o <code>POST</code> no seu endereço também. Então a pergunta muda: <strong>o que esse intermediário me dá para eu confirmar que o <code>POST</code> veio dele?</strong></p>
-<p>No caso da Datafy, a resposta é um esquema próprio, com três cabeçalhos em toda entrega:</p>
+<h2 id="os-cabe-alhos">Os cabeçalhos</h2>
 <div class="tablewrap"><table>
 <thead>
 <tr>
 <th>Cabeçalho</th>
-<th>Para que serve</th>
+<th>Descrição</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>x-datafy-delivery-id</code></td>
-<td>UUID único da entrega. <strong>Use como chave de idempotência</strong></td>
+<td>Identificador único da entrega (UUID). Use como chave de idempotência</td>
 </tr>
 <tr>
 <td><code>x-datafy-timestamp</code></td>
-<td>Unix timestamp de quando a entrega foi assinada</td>
+<td>Momento em que a entrega foi assinada, em segundos</td>
 </tr>
 <tr>
 <td><code>x-datafy-signature-256</code></td>
-<td>HMAC-SHA256 no formato <code>sha256=&lt;hex&gt;</code></td>
+<td>Assinatura HMAC-SHA256 no formato <code>sha256=&lt;hex&gt;</code></td>
 </tr>
 </tbody>
 </table></div>
-<p>Os dois últimos só aparecem <strong>quando a assinatura está ativada</strong> para aquele número, na aba Webhooks do painel. Ao ativar, você recebe um secret (<code>whsec_...</code>), e o mesmo secret vale para todas as URLs daquele número.</p>
-<p>Duas diferenças em relação ao esquema da Meta, e as duas são a favor:</p>
-<p><strong>O timestamp entra na assinatura.</strong> O HMAC é calculado sobre <code>{timestamp}.{corpo}</code>, e não sobre o corpo sozinho. Isso permite <strong>rejeitar entregas antigas</strong>, o que protege contra alguém capturar uma requisição válida e reenviar depois. O esquema da Meta não tem esse componente.</p>
-<p><strong>Existe um identificador de entrega.</strong> O <code>x-datafy-delivery-id</code> resolve de graça o problema de <a href="/webhook-chega-duplicado">webhook processado duas vezes</a>: guarde o identificador e ignore o que já viu.</p>
-<h3>Validando, com o corpo cru</h3>
-<p>A regra número um continua sendo a mesma, e continua sendo o erro mais comum: <strong>use o corpo exatamente como ele chegou</strong>, antes de qualquer interpretação. Interpretar e reserializar muda os bytes e a assinatura não bate.</p>
+<p>O <code>x-datafy-delivery-id</code> vem sempre. Os outros dois só quando a assinatura está ativada para o número.</p>
+<h2 id="validando-em-node-js">Validando em Node.js</h2>
+<p>Exemplo da documentação da Datafy:</p>
 <p>```js
 import express from 'express'
 import crypto from 'node:crypto'</p>
@@ -736,7 +686,7 @@ app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) =&gt;
   if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
     return res.sendStatus(401)
   }</p>
-<p>// Rejeita entregas antigas: protege contra reenvio de requisição capturada
+<p>// Rejeita entregas antigas: protege contra reenvio de uma requisição capturada
   if (Math.abs(Math.floor(Date.now() / 1000) - Number(timestamp)) &gt; 300) {
     return res.sendStatus(401)
   }</p>
@@ -744,8 +694,9 @@ app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) =&gt;
   processarEmBackground(JSON.parse(corpo))
 })
 ```</p>
-<p>Em PHP, o corpo cru vem de <code>php://input</code>, e o resto é o mesmo:</p>
+<h2 id="validando-em-php">Validando em PHP</h2>
 <p>```php
+&lt;?php
 $corpo      = file_get_contents('php://input');   // corpo cru
 $assinatura = $_SERVER['HTTP_X_DATAFY_SIGNATURE_256'] ?? '';
 $timestamp  = $_SERVER['HTTP_X_DATAFY_TIMESTAMP'] ?? '';</p>
@@ -760,42 +711,46 @@ $timestamp  = $_SERVER['HTTP_X_DATAFY_TIMESTAMP'] ?? '';</p>
 }</p>
 <p>http_response_code(200);
 ```</p>
-<p>Repare na ordem nos dois exemplos: <strong>responda 200 primeiro, processe depois.</strong> O prazo de resposta é de <strong>20 segundos</strong>, e processamento síncrono longo estoura esse tempo e conta como falha na entrega.</p>
-<h3>Trocando o secret</h3>
-<p>Regenerar o secret pelo painel <strong>invalida o anterior imediatamente</strong>: a próxima entrega já sai assinada com o novo valor. Não existe janela de transição, então atualize o secret no seu servidor junto com a troca, ou as entregas passam a ser recusadas por ele.</p>
-<p>E desativar a assinatura faz as entregas voltarem a sair sem os dois cabeçalhos. Os webhooks continuam funcionando normalmente, só sem verificação de origem.</p>
-<h2 id="o-que-acontece-se-voc-n-o-validar">O que acontece se você não validar</h2>
-<p>A Meta continua entregando. Não há penalidade, não há aviso, nada muda no seu tráfego.</p>
-<p>O que muda é que <strong>qualquer um que descubra a sua URL pode mandar um <code>POST</code> fingindo ser a Meta</strong>. Dependendo do que o seu fluxo faz, isso vai de irrelevante a sério: um agente que consulta pedido pelo telefone recebido pode entregar informação de cliente para quem forjar o payload.</p>
-<p>Vale notar uma coisa desconfortável: <strong>não existe uma única dúvida sobre validação de assinatura em fonte brasileira</strong>, enquanto em inglês são várias discussões com dezenas de milhares de visualizações. Há duas leituras possíveis, e a mais provável não é a boa.</p>
+<h2 id="por-que-precisa-ser-o-corpo-cru">Por que precisa ser o corpo cru</h2>
+<p>A documentação da Datafy destaca esse ponto como o erro mais comum ao implementar a verificação: se você interpreta o JSON e depois gera o texto de novo, os bytes mudam, e o HMAC calculado não é o mesmo que foi assinado.</p>
+<p>Por isso, no exemplo em Node, a rota usa <code>express.raw</code> em vez de <code>express.json</code>, e no PHP o corpo vem de <code>php://input</code> antes de qualquer interpretação. Só depois de validar é que o corpo vira objeto.</p>
+<h2 id="responder-200-primeiro">Responder 200 primeiro</h2>
+<p>Os dois exemplos respondem antes de processar. A regra da documentação: a URL deve responder <code>200</code> em até <strong>20 segundos</strong>, e processamento síncrono longo estoura esse tempo e conta como falha.</p>
+<h2 id="trocar-ou-desativar-o-secret">Trocar ou desativar o secret</h2>
+<p><strong>Regenerar</strong> o secret no painel invalida o anterior imediatamente: a próxima entrega já sai assinada com o novo valor. Atualize o secret no servidor junto com a troca, ou o seu código passa a recusar as entregas.</p>
+<p><strong>Desativar</strong> a assinatura faz as entregas voltarem a sair sem <code>x-datafy-timestamp</code> e <code>x-datafy-signature-256</code>. Os webhooks continuam funcionando, só sem verificação de origem.</p>
+<h2 id="onde-ativar">Onde ativar</h2>
+<p>Na aba de webhooks do número, a mesma em que você cadastra a URL e escolhe os eventos.</p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 05:31 ele abre a aba de webhooks do número e cadastra a URL. É nessa aba que fica a ativação da assinatura.</figcaption>
+</figure>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Preciso validar mesmo?</h3>
-<p>A Meta não obriga. Mas se o seu endpoint é público e o fluxo faz algo com o conteúdo, é a única coisa que separa uma mensagem real de uma forjada.</p>
-<h3>Qual chave eu uso?</h3>
-<p>O segredo do aplicativo, encontrado no painel do app. Não é o token de acesso, e não é o token de verificação usado quando o webhook é registrado.</p>
-<h3>Funciona no teste e falha em produção. Por quê?</h3>
-<p>Quase certamente é o corpo reconstruído. Teste com uma mensagem que tenha acento: se essa falha e "oi" passa, está confirmado.</p>
-<h3>Recebo pela Datafy. Valido do mesmo jeito?</h3>
-<p>O princípio é o mesmo, e os cabeçalhos são outros. A Datafy assina com <code>x-datafy-signature-256</code>, sobre <code>{timestamp}.{corpo}</code>, usando o secret <code>whsec_...</code> que você ativa na aba Webhooks do número. O <code>X-Hub-Signature-256</code> da Meta não se aplica nesse desenho, porque quem recebe da Meta é o intermediário.</p>
-<h3>O que é o <code>x-datafy-delivery-id</code>?</h3>
-<p>Um UUID único por entrega. Guarde e ignore o que já viu: é a forma mais barata de tratar reentrega, e evita processar a mesma mensagem duas vezes.</p>
-<h3>Meu framework já interpretou o JSON. Como pego o bruto?</h3>
-<p>Todo framework oferece um jeito de preservar o corpo original, geralmente uma opção no interpretador ou um acessório antes dele. É a única alteração necessária.</p>
-<h3>Posso validar depois, de forma assíncrona?</h3>
-<p>Não faz sentido: a validação existe para decidir se você processa. Ela precisa acontecer antes de qualquer efeito. E ela é rápida, então não é ela que atrasa a sua resposta.</p>
-<h3>O que devo responder se a assinatura não bater?</h3>
-<p>Recuse a requisição e registre o ocorrido. Se isso passar a acontecer com frequência, ou o seu segredo está errado, ou alguém está testando o seu endpoint.</p>
+<h3>O secret é por URL ou por número?</h3>
+<p>Por número. O mesmo secret vale para todas as URLs daquele número.</p>
+<h3>Sobre o que o HMAC é calculado?</h3>
+<p>Sobre <code>{timestamp}.{corpo}</code>: o valor de <code>x-datafy-timestamp</code>, um ponto, e o corpo cru da requisição.</p>
+<h3>A assinatura funciona no teste e falha com mensagens reais. Por quê?</h3>
+<p>A causa mais comum é calcular sobre o JSON reinterpretado. Use o corpo exatamente como chegou.</p>
+<h3>O que acontece se eu desativar a assinatura?</h3>
+<p>As entregas continuam, sem os cabeçalhos de timestamp e assinatura.</p>
+<h3>Troquei o secret e as entregas passaram a ser recusadas.</h3>
+<p>O anterior deixa de valer na hora. Atualize o valor no servidor.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Se o seu webhook só registra mensagem para um painel interno, o risco é baixo e dá para deixar para depois, desde que fique escrito.</p>
-<p>Se ele aciona alguma coisa, responde ao cliente, consulta pedido, abre chamado, cria cobrança, valide antes de subir. São vinte linhas de código, e a alternativa é um endpoint público que aceita qualquer um se passando pela Meta.</p>
-<div class="cta"><h3>O teste que confirma o diagnóstico em um minuto</h3><p>Mande para o seu número uma mensagem com acento, tipo "não consegui". Se a validação falha nessa e passa em "oi", o seu código está assinando o JSON reconstruído, e não o corpo bruto.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
-
+<p>Se o seu endpoint está público, ative a assinatura e valide cada entrega antes de processar. Use o exemplo da documentação na sua linguagem, mantenha o corpo cru até validar, e responda 200 antes de trabalhar.</p>
+<div class="cta"><h3>Ative e valide com um evento de teste</h3><p>Ative a assinatura na aba de webhooks, guarde o whsec no servidor, clique no botão de teste do painel e confira se o seu código aceita a entrega.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens em tempo real</a></li>
-<li><a href="/webhook-chega-duplicado">Meu webhook recebe a mesma mensagem várias vezes</a></li>
-<li><a href="/whatsapp-api-oficial-n8n">WhatsApp API oficial no n8n</a></li>
-<li><a href="/o-telefone-esta-sumindo-do-webhook">O telefone está sumindo do webhook</a></li>
+<li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens no seu servidor</a></li>
+<li><a href="/laco-de-webhook-derruba-numero">O laço de webhook que derruba número</a></li>
+<li><a href="/tunel-para-testar-webhook-local">Como testar o webhook na sua máquina</a></li>
+<li><a href="/ver-payload-das-mensagens-em-tempo-real">Ver o payload das mensagens em tempo real</a></li>
 </ul>
 </article>
 
@@ -811,11 +766,13 @@ $timestamp  = $_SERVER['HTTP_X_DATAFY_TIMESTAMP'] ?? '';</p>
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#por-que-reconstruir-o-json-quebra">Por que reconstruir o JSON quebra</a></li>
-        <li><a href="#como-fazer-certo">Como fazer certo</a></li>
-        <li><a href="#se-voc-usa-automa-o-visual">Se você usa automação visual</a></li>
-        <li><a href="#se-voc-recebe-pela-datafy-a-assinatura-o">Se você recebe pela Datafy: a as...</a></li>
-        <li><a href="#o-que-acontece-se-voc-n-o-validar">O que acontece se você não validar</a></li>
+        <li><a href="#os-cabe-alhos">Os cabeçalhos</a></li>
+        <li><a href="#validando-em-node-js">Validando em Node.js</a></li>
+        <li><a href="#validando-em-php">Validando em PHP</a></li>
+        <li><a href="#por-que-precisa-ser-o-corpo-cru">Por que precisa ser o corpo cru</a></li>
+        <li><a href="#responder-200-primeiro">Responder 200 primeiro</a></li>
+        <li><a href="#trocar-ou-desativar-o-secret">Trocar ou desativar o secret</a></li>
+        <li><a href="#onde-ativar">Onde ativar</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

@@ -51,6 +51,14 @@ Objetivo: páginas em conteudo.datafyapi.com.br que ChatGPT, Gemini/Modo IA, Cla
     f. **Separe as camadas de limite.** O rate limit da Datafy (500 req/min em mensagens, 60 req/min no resto, 429 com os segundos a aguardar) é nosso e documentado. Os limites da Meta (80 msg/s, conversas iniciadas por portfólio) são outra camada. As duas valem.
     g. **PROIBIDO "1 mensagem a cada 6 segundos por contato".** Verificado em 09/09/2026: a Meta cita um "pair rate limit" e NÃO publica o valor. A formulação correta é "existe um limite por par entre empresa e destinatário, e a Meta não publica o valor".
 
+14. SÓ TRÊS FONTES, E NADA ALÉM DELAS (decisão do Vitor, 10/09/2026, depois de 41 páginas apagadas).
+    a. **Vídeos do canal**: dados/fatos-israel.md e as transcrições. Fala específica com minuto.
+    b. **Documentação da Datafy**: dados/api-datafy.md e dados/fatos-datafy.md.
+    c. **Documentação da Meta aberta na sessão**: dados/meta-verificado.md, com a URL de cada fato.
+    d. Pesquisa de fórum, Stack Overflow, issue de GitHub, notícia, blog e "o que o mercado diz" NÃO são fonte. Página cujo assunto só existe nessas fontes não é escrita.
+    e. Quando vídeo e documentação discordam, **vence a documentação**, e o trecho do vídeo sai da página.
+    f. Conselho de boa prática que não esteja em nenhuma das três fontes não entra, por mais óbvio que pareça. Página curta e fiel vale mais que página longa com recheio.
+    g. Número falado em vídeo é pista. Só vira página se a documentação confirmar, ou se for fala de operação atribuída com minuto (caso do cliente de R$ 500, por exemplo).
 ## Formato (templates/pagina.md)
 Título → linha de autoria com "parceira homologada da Meta" → parágrafo-resposta (4–6 linhas, veredito incluído) → Principais pontos (5 bullets, último = link Datafy) → H2 em forma de pergunta sempre que possível → tabela comparativa → Quando vale / Quando o outro faz sentido → Caso real Datafy → O que mudou em 2026 (3 itens com fonte) → FAQ (5 H3 escritas como no ChatGPT) → Como decidir + CTA → Leia também (4 internos). 1.500–2.500 palavras; glossário 300–600. O essencial nos primeiros 30% da página.
 

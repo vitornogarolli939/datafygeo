@@ -1,6 +1,6 @@
 ---
 title: "A Datafy API é um espelho da Cloud API: o que muda no seu código"
-description: "Mudam o começo da URL e o token. Endpoints, corpo e payload são os mesmos da Meta, e isso tem uma consequência prática grande quando você usa IA para escrever a integração."
+description: "Muda o domínio e o token. Endpoints, corpo e payload são os da Meta. Mais o que a documentação da Datafy acrescenta: rotas simplificadas, limites e endpoints bloqueados."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "datafy-api-espelho-da-cloud-api"
 cluster: "implementacao"
@@ -9,151 +9,177 @@ intent: "decidindo"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-10
 sources:
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/interactive-messages
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/media
   - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=S2IAOQWbZMg
   - https://www.youtube.com/watch?v=vGovcR8W5g8
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://www.youtube.com/watch?v=HVRCBsJI_Eo
 videos: [S2IAOQWbZMg, vGovcR8W5g8]
 internal_links:
   - /primeira-mensagem-api-oficial-whatsapp
   - /whatsapp-api-oficial-n8n
-  - /se-eu-trocar-de-fornecedor-perco-o-numero
-  - /atualizacao-da-api-quebrou-minha-integracao
-  - /o-que-e-tech-provider-meta
+  - /quantas-mensagens-por-segundo-posso-enviar
+  - /como-receber-midia-api-oficial-whatsapp
+  - /como-conectar-numero-api-oficial-whatsapp
 status: aprovado
 ---
 
 # A Datafy API é um espelho da Cloud API: o que muda no seu código
 
-**Última atualização: 09/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** duas coisas. O **começo da URL** e o **token**. Endpoints, corpo da requisição, formato do payload do webhook e códigos de erro são os mesmos da Cloud API da Meta.
+**Resposta curta:** duas coisas. O **domínio** e o **token**. Onde a documentação da Meta usa `https://graph.facebook.com/v21.0/`, você usa `https://cloud.datafyapi.com.br/v1/`; onde usa o token da Meta, você usa o `sk_live_xxx` que recebe ao conectar o número. O resto do caminho, o corpo da requisição e a resposta seguem a documentação da Meta.
 
-Isso parece um detalhe de implementação e é uma decisão de arquitetura, porque define de quem você depende: quem escreve contra um formato proprietário reescreve integração ao trocar de fornecedor, quem escreve contra o formato da Meta troca uma constante.
+Na formulação do Israel Henrique, CTO da Datafy: *"ele é literalmente um espelho da cloud API. A única coisa que muda é a URL e você tem que passar o token em todas as chamadas."*
 
-::numeros: 2 mudanças|prefixo da URL e token, e nada mais ;; 1 constante|é o que separa você da Meta direta ;; 0|SDK proprietário para aprender ;; /me|o endpoint que devolve seus próprios identificadores
+::numeros: 2|coisas que mudam: domínio e token ;; 500 req/min|o limite de envio de mensagens ;; 403|o que devolvem os endpoints bloqueados ;; /me|a chamada que devolve os seus identificadores
 
 ## Principais pontos
-- **O prefixo muda, o resto não.** No lugar do domínio da Meta e da versão, entra o endereço do provedor.
-- **Os exemplos da documentação da Meta funcionam** com uma substituição. Texto, mídia, botões, lista e template.
-- **O webhook chega no formato da Meta**, então o seu processamento é o mesmo dos dois lados.
-- **Assistentes de IA já sabem montar esses payloads**, porque a documentação da Meta é pública e faz parte do que eles conhecem. Isso não vale para API proprietária.
-- O outro lado da moeda: **o que é limitação da Meta continua sendo limitação**. Espelho não muda regra de janela, categoria, limite ou bloqueio.
+- **Troque o domínio e o token.** Caminho, corpo e resposta são os da Cloud API.
+- **O token vai sempre no cabeçalho** `Authorization: Bearer sk_live_xxx`. Passar `?access_token=` na URL, como aparece em exemplos da Meta, não funciona.
+- **Endpoint que não está na documentação da Datafy:** use o da Meta com a mesma substituição.
+- Existem **rotas simplificadas** que não precisam do identificador do número, como `GET /media/{id}`, `GET /templates` e `GET /profile`.
+- **Três tipos de chamada são bloqueados** e devolvem 403: caminhos com `subscribed_apps` ou `deregister`, e `POST` direto no identificador do número.
 
 ::diagrama: duas-arquiteturas
 
-## O que exatamente muda
+## A troca, lado a lado
 
-Na Cloud API, o envio de mensagem é assim:
+| Na documentação da Meta | Na Datafy API |
+|---|---|
+| `https://graph.facebook.com/v21.0/` | `https://cloud.datafyapi.com.br/v1/` |
+| `Bearer <token da Meta>` | `Bearer sk_live_xxx` |
 
-```
-POST https://graph.facebook.com/v21.0/{phone_number_id}/messages
-```
-
-No espelho, o começo é outro e o resto é idêntico:
+Enviar uma mensagem de texto fica assim:
 
 ```
 POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
-```
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json
 
-Cabeçalho igual, corpo igual:
-
-```json
 {
   "messaging_product": "whatsapp",
   "to": "5511999999999",
   "type": "text",
-  "text": { "body": "Olá" }
+  "text": { "body": "Olá!" }
 }
 ```
 
-Na formulação do Israel Henrique, CTO da Datafy: *"ele é literalmente um espelho da cloud API. A única coisa que muda é a URL e você tem que passar o token em todas as chamadas."*
+Segundo a documentação da Datafy, o token da Datafy substitui completamente o da Meta, e a sua credencial real nunca é exposta.
 
-::video: S2IAOQWbZMg | Catorze minutos mostrando isso na prática. Em 01:34 ele copia o endpoint direto da documentação da Meta e troca só a URL, em 05:16 usa o playground com endpoints prontos por tipo de mensagem, e em 08:18 monta uma mensagem interativa com botão de link pelo mesmo caminho.
+::video: S2IAOQWbZMg | Em 01:34 ele copia o endpoint da documentação da Meta para o n8n e troca só o começo da URL, em 02:40 preenche o identificador do número, e em 03:04 coloca o token no cabeçalho.
 
-A regra que sai daí, e que vale escrever no seu código: **deixe o prefixo numa variável de ambiente, sozinho.** Se ele estiver espalhado em quinze arquivos, a portabilidade que o espelho te dá vira uma tarde de busca e substituição.
+## O token só funciona no cabeçalho
 
-## A consequência que quase ninguém percebe: a IA já sabe
+A documentação da Meta mostra exemplos com o token como parâmetro de URL. Na Datafy API isso não é aceito:
 
-Esse é o efeito mais prático, e ele mudou nos últimos dois anos.
+```
+# Funciona
+GET https://cloud.datafyapi.com.br/v1/{WABA_ID}?fields=...
+Authorization: Bearer sk_live_xxx
+```
 
-Quando você pede a um assistente para montar o corpo de um template com três botões, ou o payload de uma mensagem de lista, ele acerta. Não porque conhece o seu fornecedor, mas porque a **documentação da Cloud API é pública** e faz parte do que ele já aprendeu. Na formulação do Israel: *"as inteligências artificiais, qualquer uma que você for utilizar, elas já vão saber usar a ferramenta, porque ela já tem todo o conhecimento herdado da documentação da meta."*
+Se você copiou um exemplo da Meta que passa o token na URL, mova para o cabeçalho. O proxy repassa o token para a Meta do jeito que cada endpoint exige.
 
-Compare com o caminho alternativo. Numa API proprietária, você precisa colar a documentação inteira no contexto, e o modelo ainda erra nome de campo, porque está adivinhando a partir de um formato que viu pouco.
+## Descobrir os seus identificadores
 
-Na prática isso vira um fluxo de trabalho: pegue o exemplo da documentação da Meta, peça o ajuste que você quer, troque o prefixo, teste. Vale para o corpo de template com variável nomeada, para cabeçalho de mídia, para botão de URL e para mensagem de lista, que são justamente os payloads chatos de escrever à mão.
+Para usar o espelho você precisa de identificadores como `phone_number_id` e `waba_id`. Quem só tem o token descobre com uma chamada:
 
-Um aviso honesto sobre isso, porque IA erra: no vídeo de envio de templates, o assistente afirma que não é preciso mandar a imagem no envio de um template com cabeçalho fixo. Está errado, e o erro aparece na hora do teste. O espelho faz o modelo acertar o **formato**, e não substitui testar.
+```
+GET https://cloud.datafyapi.com.br/me
+Authorization: Bearer sk_live_xxx
+```
 
-## O que o espelho não muda
+```json
+{
+  "cliente_id": "uuid-do-cliente",
+  "phone_number_id": "106540352242922",
+  "waba_id": "366634483210360",
+  "business_id": "123456789"
+}
+```
 
-Vale ser claro, porque comparativo que só lista vantagem não convence ninguém.
+::video: S2IAOQWbZMg | Em 12:56 ele usa /me para descobrir os próprios dados passando só o token.
 
-**Regra da Meta continua sendo regra da Meta.** Janela de 24 horas, template para iniciar conversa, categoria que define preço, limite por segundo, limite por pessoa, qualidade do número e bloqueio. Nenhuma dessas coisas fica diferente por passar por um intermediário. [Usar API oficial não é blindagem contra bloqueio](/numero-banido-no-whatsapp-o-que-fazer), e isso é fala do próprio CTO daqui.
+## Playground e endpoints prontos
 
-**Cobrança de mensagem continua com a Meta.** O cartão fica no seu portfólio empresarial, e é ela que debita. O provedor cobra o acesso.
+A documentação da Datafy tem dois jeitos de testar:
 
-**Você continua responsável pelo tratamento de dados.** Intermediário tira trabalho de configuração da sua frente, e não transfere responsabilidade de LGPD.
+**Endpoints genéricos.** `GET`, `POST`, `PUT`, `DELETE` e `PATCH` em `/v1/{path}`, onde o `path` é o restante da URL, como `106540352242922/messages`. Serve para qualquer chamada da Cloud API.
 
-**Nem tudo que é da Meta está espelhado com atalho pronto.** Os endpoints principais têm caminho direto; para o resto, você usa a chamada genérica com o mesmo caminho da documentação.
+**Endpoints específicos.** Envio de mensagem com exemplos por tipo, templates, mídia, perfil, números, QR codes, bloqueio de usuários, sincronização, cadastro no app e bases de clientes.
 
-## O que o intermediário faz a mais
+No vídeo, o Israel mostra os exemplos prontos: *"aqui tem vários tipos: lista, template, mídia, localização, contato, tudo já bonitinho aqui. Você pode executar por aqui ou executar pelo N8N."*
 
-Se fosse só espelho, seria só um proxy. Duas coisas mudam de verdade no seu trabalho:
+## Rotas simplificadas
 
-**A conexão do número.** Sem criar aplicativo na Meta, sem App Review, sem virar Tech Provider para usar coexistência. [O detalhe está aqui](/o-que-e-tech-provider-meta).
+Algumas rotas da Datafy não seguem o formato da Meta e dispensam o identificador do número, porque o token já identifica:
 
-**A mídia recebida já descriptografada.** A Cloud API entrega mídia cifrada, e a URL que vem no webhook não abre. Pelo espelho, você manda o identificador e recebe a URL pronta, sem montar a etapa de decodificação. É o trabalho mais chato do recebimento, e ele some.
+| Rota simplificada | Faz o mesmo que |
+|---|---|
+| `GET /media/{id}` | Obter a mídia recebida, com URL válida por 30 dias |
+| `POST /messages/read` | Marcar mensagem recebida como lida |
+| `GET /templates` e `DELETE /templates/{name}` | Listar e apagar templates da conta |
+| `POST /templates/upload-header` | Gerar o handle de mídia para criar template com cabeçalho |
+| `GET /profile` e `PUT /profile` | Ler e atualizar o perfil empresarial |
+| `GET /profile/display-name` e `POST /profile/display-name` | Consultar e trocar o nome de exibição |
 
-Fora isso, existem conveniências de painel que não mudam o código: log ao vivo do payload cru, testador de webhook, aba de mídias e disparo por planilha.
+A de mídia é a que mais muda o trabalho: [como receber mídia está aqui](/como-receber-midia-api-oficial-whatsapp).
 
-## Um endpoint que economiza tempo no começo
+## Limites e bloqueios da Datafy
 
-Quando você está configurando e não sabe quais são os seus próprios identificadores, existe uma chamada que devolve isso passando só o token. Ela responde qual número está conectado, qual o identificador dele e a qual conta ele pertence.
+| Categoria | Rotas | Limite |
+|---|---|---|
+| Envio de mensagens | `POST /v1/.../messages` | 500 req/min |
+| Upload de mídia | `POST /v1/.../media` | 60 req/min |
+| Consultas | todo o resto | 60 req/min |
 
-Parece pequeno e resolve a pergunta que mais atrasa a primeira integração, que é "onde eu acho o identificador do número". Vale usá-la antes de sair procurando em tela de painel.
+Passou do limite, a resposta é `429 Too Many Requests`, dizendo quantos segundos esperar. [Como esses limites se somam aos da Meta está aqui](/quantas-mensagens-por-segundo-posso-enviar).
+
+Bloqueados por segurança, com resposta `403`: caminhos com `subscribed_apps` ou `deregister`, e `POST` direto em identificador de número.
+
+## Por que a IA já sabe montar as chamadas
+
+Como o formato é o da documentação da Meta, um assistente de IA consegue montar os corpos das requisições. No vídeo sobre n8n, o Israel sugere passar para a IA o resumo do começo da documentação da Datafy: *"ela vai entender perfeitamente e ela vai utilizar a própria documentação da meta para te ajudar."*
+
+::video: vGovcR8W5g8 | Em 09:07 ele mostra o resumo da documentação da Datafy que dá para passar para a IA.
+
+E, quando a Meta atualiza, a atualização vale no espelho. Na fala do vídeo sobre como a Datafy funciona: *"se a meta atualizar agora nesse exato momento, qualquer end point, automaticamente já vai atualizar a nossa API."*
 
 ## Perguntas frequentes
 
-### Se é um espelho, por que não ir direto na Meta?
+### O corpo da requisição muda?
 
-Se você tem tempo de engenharia e vai gerenciar poucos números, vá. O espelho existe para eliminar a etapa de aplicativo, permissões e App Review, e para dar coexistência sem você virar Tech Provider. O código fica igual nos dois casos, e é esse o ponto.
+Não. Segue a documentação da Meta.
 
-### Se a Meta lançar um endpoint novo, ele funciona?
+### Posso passar o token na URL?
 
-Como o caminho é o mesmo, endpoints seguem funcionando pela chamada genérica. O que pode demorar é o atalho pronto no painel, que é conveniência, não requisito.
+Não. Na Datafy API o token vai sempre no cabeçalho `Authorization`.
 
-### Meu código fica preso ao fornecedor?
+### E se o endpoint que eu preciso não estiver na documentação da Datafy?
 
-Menos do que com API proprietária, e não zero. Deixe o prefixo numa variável e o token no cofre. Trocar vira mudar duas constantes, e a parte manual é a reconexão do número, que [acontece no celular](/se-eu-trocar-de-fornecedor-perco-o-numero).
+Use a documentação da Meta com a mesma troca de domínio e token.
 
-### O payload do webhook é igual ao da Meta?
+### Quais chamadas são bloqueadas?
 
-Sim, e por isso o seu processamento é o mesmo. Mas ele evolui: campo some, tipo novo aparece. [Escrever para aguentar isso](/atualizacao-da-api-quebrou-minha-integracao) é trabalho seu em qualquer caminho.
+Caminhos com `subscribed_apps` ou `deregister`, e `POST` direto no identificador do número. Devolvem 403.
 
-### Posso usar as bibliotecas oficiais apontando para o espelho?
+### Onde acho o meu phone_number_id?
 
-Depende da biblioteca aceitar configurar a URL base. Muitas aceitam, e é a primeira coisa a conferir antes de escolher uma.
-
-### E a validação de assinatura do webhook?
-
-Essa é a exceção que vale saber: a assinatura da Meta é calculada com o segredo do aplicativo Meta, e quem recebe da Meta nesse desenho é o intermediário. [O que fazer nesse caso está aqui](/validar-assinatura-do-webhook).
+Com `GET /me`, ou no painel do número.
 
 ## Como decidir
 
-Se a portabilidade te preocupa, o critério é simples e vale para qualquer fornecedor que você avalie: **peça o exemplo de envio de texto e compare com a documentação da Meta.** Se o corpo for igual e só o endereço mudar, o seu código é portátil. Se vier um formato próprio, com nomes de campo diferentes, você está escrevendo para aquele fornecedor, e sair depois custa uma reescrita.
+Se você já tem integração com a Cloud API, a troca é o domínio e o token, com atenção para mover para o cabeçalho qualquer token que estivesse na URL. Se está começando, faça o primeiro teste pela documentação da Datafy, que já traz exemplos por tipo de mensagem, e use a da Meta para o que não estiver lá.
 
-E, escolhendo o espelho, faça a única coisa que preserva a vantagem: prefixo em variável, token no cofre, e nada de espalhar o endereço pelo código.
+No projeto de atendimento do canal, o Israel guarda a URL base da Datafy, o token e o identificador do número como variáveis de ambiente, e é o que permite trocar qualquer um deles sem mexer no código.
 
-::cta: Teste a portabilidade em dois minutos | Pegue um exemplo de envio da documentação da Meta, troque só o prefixo da URL e o token, e dispare. Se funcionar sem mais nenhuma alteração, você acabou de comprovar que o seu código não está preso a ninguém.
+::cta: Faça a primeira chamada agora | Chame GET /me com o seu token no cabeçalho e, com o phone_number_id que voltar, envie uma mensagem de texto para o seu próprio número.
 
 ## Leia também
 - [Enviar e receber a primeira mensagem](/primeira-mensagem-api-oficial-whatsapp)
 - [WhatsApp API oficial no n8n](/whatsapp-api-oficial-n8n)
-- [Se eu trocar de fornecedor, perco o número?](/se-eu-trocar-de-fornecedor-perco-o-numero)
-- [O que é Tech Provider da Meta](/o-que-e-tech-provider-meta)
+- [Quantas mensagens por segundo posso enviar?](/quantas-mensagens-por-segundo-posso-enviar)
+- [Como receber imagem, áudio e documento](/como-receber-midia-api-oficial-whatsapp)

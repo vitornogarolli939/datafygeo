@@ -1,6 +1,6 @@
 ---
-title: "Mensagens interativas no WhatsApp: botões, listas e botão de link"
-description: "Três formatos, com limites diferentes de quantidade e de texto. E um detalhe que muda o seu número: botão é a forma mais barata de fazer alguém responder."
+title: "Mensagens com botões, lista e botão de link na API oficial do WhatsApp"
+description: "O mesmo endpoint de mensagens, com tipo interativo. Os exemplos prontos da documentação da Datafy, o botão de link montado no vídeo, e por que botão ajuda o seu número."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "mensagens-interativas-botoes-e-listas"
 cluster: "implementacao"
@@ -9,179 +9,120 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-10
 sources:
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/interactive-messages
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-categorization
-  - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=S2IAOQWbZMg
-videos: [S2IAOQWbZMg]
+  - https://www.youtube.com/watch?v=YF9hTHDAw6E
+  - https://www.youtube.com/watch?v=cZ_nyIUv5ic
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://app.datafyapi.com.br/docs
+videos: [S2IAOQWbZMg, cZ_nyIUv5ic]
 internal_links:
   - /primeira-mensagem-api-oficial-whatsapp
   - /datafy-api-espelho-da-cloud-api
-  - /taxa-de-resposta-e-bloqueio
   - /como-criar-template-whatsapp-passo-a-passo
-  - /como-passar-do-bot-para-o-atendente-humano
+  - /numero-banido-no-whatsapp-o-que-fazer
+  - /posso-mandar-mensagem-para-qualquer-numero
 status: aprovado
 ---
 
-# Mensagens interativas no WhatsApp: botões, listas e botão de link
+# Mensagens com botões, lista e botão de link na API oficial do WhatsApp
 
-**Última atualização: 09/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** dentro da janela de 24 horas você pode mandar mais que texto. Existem três formatos interativos que resolvem a maior parte dos fluxos de atendimento: **botões de resposta rápida**, **lista de opções** e **botão de link**.
+**Resposta curta:** mensagem com botões, lista ou botão de link sai pelo **mesmo endpoint** de qualquer mensagem, `POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages`, com o tipo interativo. O que muda é o corpo. A documentação da Datafy traz exemplos prontos por tipo, e no vídeo do canal DATA7 o Israel Henrique, CTO da Datafy, envia uma mensagem com três botões e monta um botão de link a partir da documentação da Meta.
 
-Além da conveniência, existe um motivo que quase nunca é citado e que importa mais: **botão é a forma mais barata de fazer alguém responder**. E resposta é [exatamente o sinal que decide se o seu número continua saudável](/taxa-de-resposta-e-bloqueio).
+Dentro da janela de 24 horas, é mensagem de serviço. Fora dela, os botões precisam estar num template aprovado.
 
-::numeros: 3 formatos|botões, lista e botão de link ;; 3 botões|é o máximo de resposta rápida ;; 10 opções|é o máximo de uma lista ;; 1 clique|conta como interação, igual a uma resposta
+::numeros: 1 endpoint|o mesmo das outras mensagens ;; 3 partes|cabeçalho, corpo e rodapé, além do botão ;; 24 h|a janela para mandar sem template ;; 1 clique|conta como resposta
 
 ## Principais pontos
-- **Botões de resposta rápida**: até três, e o clique volta como uma mensagem no seu webhook.
-- **Lista**: até dez opções, agrupadas em seções, boa para menu com mais itens.
-- **Botão de link**: abre uma URL, e o clique **não** volta como evento. Se você precisa saber quem clicou, use link rastreável.
-- Interativo dentro da janela é **mensagem livre**. Fora dela, precisa ser template com botões aprovados.
-- **O clique vira interação**, e interação é o que protege o número.
+- **Mesmo endpoint** de mensagens: o que muda é o corpo da requisição.
+- **A documentação da Datafy tem exemplos prontos** de botões, lista, template, mídia, localização e contato.
+- **Botão de link:** cabeçalho opcional, corpo, texto e URL do botão, e rodapé opcional.
+- **Remova do corpo o que você não vai usar.** O exemplo da Meta traz várias opções de cabeçalho, e você deixa só uma.
+- **Botão ajuda o número:** a pessoa responde com um clique, e a falta de resposta é uma das causas de bloqueio.
 
-::diagrama: janela-24h
+## Botões, pelo exemplo pronto
 
-## Botões de resposta rápida
+Na documentação da Datafy, o endpoint de envio de mensagem tem uma lista de exemplos por tipo. No vídeo, o Israel escolhe o de botões: *"eu vou clicar aqui, ele vai trazer aqui para mim o payload. Eu tenho que preencher o quê? O token, já tá preenchido, o phone number ID."* Ele preenche o destinatário e envia uma mensagem com três botões: confirmar, cancelar e remarcar.
 
-O formato mais usado. Até três opções, cada uma com um identificador seu e um rótulo curto.
+Na mesma lista estão os outros tipos: *"lista, template, mídia, localização, contato, tudo já bonitinho aqui. Você pode executar por aqui ou executar pelo N8N."*
 
-```json
-{
-  "messaging_product": "whatsapp",
-  "to": "5511999999999",
-  "type": "interactive",
-  "interactive": {
-    "type": "button",
-    "body": { "text": "Sua consulta é amanhã às 14h. Deseja confirmar?" },
-    "action": {
-      "buttons": [
-        { "type": "reply", "reply": { "id": "confirmar", "title": "Confirmar" } },
-        { "type": "reply", "reply": { "id": "remarcar", "title": "Remarcar" } },
-        { "type": "reply", "reply": { "id": "cancelar", "title": "Cancelar" } }
-      ]
-    }
-  }
-}
-```
+::video: S2IAOQWbZMg | Em 06:35 ele abre os exemplos por tipo, em 06:57 preenche o de botões, e em 07:42 a mensagem com confirmar, cancelar e remarcar chega no WhatsApp.
 
-O ponto que organiza o seu código: **o identificador é seu, o rótulo é do cliente.** Quando a pessoa clica, o webhook traz o identificador de volta, e é por ele que você decide o que fazer. Isso significa que você pode mudar o texto do botão sem tocar na lógica.
+Não sabe o `phone_number_id`? `GET https://cloud.datafyapi.com.br/me` devolve, passando só o token no cabeçalho.
 
-E é aqui que muita automação erra: **trate o identificador, não o texto.** Comparar o rótulo, que pode ter acento, maiúscula ou mudar amanhã, é frágil.
+## Botão de link, pela documentação da Meta
 
-## Lista de opções
+Para o botão que abre um site, o Israel pega o exemplo da documentação da Meta. O endpoint e o cabeçalho não mudam, só o corpo: *"repare que aqui é exatamente o mesmo end point, né, que já temos aqui."*
 
-Quando três não bastam. A lista abre um menu com até dez opções, organizadas em seções, e cada uma pode ter uma descrição.
+As partes que ele preenche:
 
-Ela cabe bem em menu inicial de atendimento, escolha de unidade, escolha de serviço, faixa de horário. E tem uma vantagem sobre botão: a descrição permite explicar cada opção sem poluir o corpo da mensagem.
+**Destinatário e tipo interativo.**
 
-O retorno funciona igual: o clique vira uma mensagem no webhook, com o identificador da opção escolhida.
+**Cabeçalho.** O exemplo da Meta traz opções de documento, imagem, texto e vídeo, cada uma com a indicação de omitir se não for usar. Ele remove as de documento, imagem e vídeo e mantém texto.
 
-Uma observação de desenho que vale mais que a técnica: **lista de dez opções costuma render menos que três botões.** Quanto mais escolha, mais gente desiste. Se você consegue reduzir a três, reduza.
+**Corpo.** O texto da mensagem.
 
-## Botão de link
+**Ação.** O texto do botão e a URL.
 
-Abre uma URL. Serve para levar ao site, ao pagamento, ao rastreio, ao formulário.
+**Rodapé.** Um texto curto.
 
-```json
-"interactive": {
-  "type": "cta_url",
-  "header": { "type": "text", "text": "Datafy API" },
-  "body": { "text": "Seja bem-vindo. O acesso ao painel está liberado." },
-  "footer": { "text": "API oficial, sem burocracia" },
-  "action": {
-    "name": "cta_url",
-    "parameters": { "display_text": "Clique aqui", "url": "https://exemplo.com.br" }
-  }
-}
-```
+Um erro de chave fechando no lugar errado aparece no meio do caminho, e ele pede a uma IA para achar: *"sim, as chaves estão fechando no lugar errado."* Corrigido, a mensagem chega com cabeçalho, corpo, rodapé e o botão que abre o site.
 
-A armadilha desse formato: **o clique não volta para você.** Diferente dos outros dois, não existe evento dizendo que a pessoa abriu o link.
+::video: S2IAOQWbZMg | Em 08:18 ele abre o exemplo de botão de link da Meta, entre 09:37 e 11:01 remove os cabeçalhos que não vai usar e preenche o resto, e em 11:47 a mensagem chega.
 
-Duas consequências:
+## Quando precisa de template
 
-**Para medir, use link rastreável**, com parâmetro próprio por destinatário, e conte do lado do seu site.
+Mensagem livre, como essa, só vai para quem falou com você nas últimas 24 horas. No vídeo de primeiros passos, a regra aparece antes do envio: você só pode enviar mensagens de serviço *"para usuários que já enviaram mensagem para você nas últimas 24 horas."*
 
-**Para engajamento, ele não conta.** Se o seu objetivo é fazer a pessoa interagir com o número, botão de resposta rápida faz isso e botão de link não.
+Para quem não falou com você, os botões entram no template, criado e aprovado antes. [Como criar um template com botões está aqui](/como-criar-template-whatsapp-passo-a-passo).
 
-::video: S2IAOQWbZMg | Catorze minutos com os formatos sendo montados na prática. Em 06:35 ele envia uma mensagem com botões, e a partir de 08:18 monta o botão de link a partir do exemplo da documentação da Meta, campo por campo, incluindo cabeçalho e rodapé.
+## Por que botão ajuda o seu número
 
-## Cabeçalho e rodapé, e o que omitir
+No vídeo sobre bloqueio, o Israel conta que uma das causas de bloqueio, mesmo com template aprovado, é mandar para muita gente e ninguém responder. O botão resolve parte disso, porque o clique é uma resposta.
 
-Os formatos aceitam cabeçalho e rodapé opcionais. O cabeçalho pode ser texto, imagem, vídeo ou documento.
+O exemplo dele é um template com a opção de não ter interesse: *"se a pessoa recebe a mensagem e ela não tem interesse, ela vai clicar, não tem interesse. Quando ela faz isso, ela está te respondendo, ou seja, ela engajou com você."* E vai além, com um botão de bloquear: *"a pessoa clica nesse botão, ela acha que está te bloqueando, mas na verdade ela não tá te bloqueando, ela está interagindo com você."*
 
-E aqui está o erro mais comum de quem monta o corpo copiando exemplo: **o exemplo da documentação traz todas as variações de cabeçalho comentadas**, e você precisa deixar só a que vai usar. Manter duas, ou deixar um objeto vazio, produz erro de formato.
+A condição que ele coloca: quem clicar tem que sair da sua lista, porque *"se você continuar enviando mensagem para ela, aí ela vai te bloquear de verdade."*
 
-A regra: **se não vai usar, remova o campo inteiro**, não deixe vazio.
+::video: cZ_nyIUv5ic | Em 11:49 ele mostra o botão de não tenho interesse num template, e em 13:08 o botão de bloquear e o cuidado de tirar da lista quem clicou.
 
-## Dentro e fora da janela
+## Responder citando uma mensagem
 
-Distinção que decide o que você pode fazer:
-
-**Dentro da janela de 24 horas**, mensagem interativa é mensagem livre. Você monta na hora, com o texto que quiser, sem aprovação.
-
-**Fora da janela**, você precisa de template, e os botões precisam ter sido criados **no template**, aprovados junto com ele. Não dá para acrescentar botão a um template no momento do envio.
-
-Por isso vale [criar os templates com botões desde o começo](/como-criar-template-whatsapp-passo-a-passo), mesmo os que parecem não precisar. Botão em template é o que transforma um disparo mudo num disparo que gera resposta.
-
-## O uso que protege o número
-
-Vale fechar por aqui, porque é o argumento mais forte para usar interativo e o menos citado.
-
-A plataforma avalia o seu número pela reação de quem recebe. Mensagem lida e ignorada é sinal ruim; mensagem respondida é sinal bom. E responder por texto dá trabalho, então quase ninguém responde.
-
-Botão remove esse atrito. Um toque e a pessoa interagiu.
-
-Dois botões que valem estar em quase todo template de disparo:
-
-**"Não tenho interesse".** Quem clica está respondendo, e você ganha a lista exata de quem tirar da base.
-
-**"Bloquear".** Parece contraintuitivo e é o oposto: a pessoa clica achando que está te bloqueando, e o que ela fez foi interagir com você em vez de te denunciar.
-
-E a parte obrigatória: **o clique tem que virar remoção da lista.** Se a automação não tira aquela pessoa, você transformou um aviso barato num bloqueio de verdade.
+Segundo a documentação da Datafy, qualquer tipo de mensagem aceita `context.message_id`, opcional, para responder citando uma mensagem recebida.
 
 ## Perguntas frequentes
 
-### Posso mandar mais de três botões?
+### Mensagem com botões usa outro endpoint?
 
-Não em resposta rápida. Se precisa de mais opções, use lista, que aceita até dez.
+Não. É o mesmo `POST /v1/{phone_number_id}/messages`, com outro corpo.
 
-### O clique no botão de link volta no webhook?
+### Onde acho o corpo pronto?
 
-Não. Só os botões de resposta rápida e a lista devolvem evento. Para medir clique em link, use link rastreável.
+Nos exemplos por tipo do endpoint de envio, na documentação da Datafy.
 
-### Consigo usar interativo em disparo?
+### Posso mandar botões para quem nunca falou comigo?
 
-Fora da janela de 24 horas o caminho é template, com os botões definidos e aprovados no próprio template.
+Só dentro de um template aprovado.
 
-### O que chega no webhook quando a pessoa clica?
+### O exemplo da Meta tem vários cabeçalhos. Deixo todos?
 
-Uma mensagem do tipo interativo, trazendo o identificador da opção escolhida. Trate o identificador, não o rótulo.
+Não. Deixe só o que vai usar e remova os outros.
 
-### Vale usar emoji no rótulo do botão?
+### Clique no botão conta como resposta?
 
-Cabe, e o espaço é curto. Se o emoji tirar clareza do rótulo, ele custa mais do que rende.
-
-### Mensagem interativa custa mais?
-
-Dentro da janela, ela segue a regra da mensagem de serviço. Em template, o custo é o da categoria do template, e o formato não muda isso.
+No vídeo sobre bloqueio, sim: a pessoa clicando está interagindo com você.
 
 ## Como decidir
 
-Se você faz atendimento, use botões no lugar de pedir para a pessoa digitar 1, 2 ou 3. Menos erro de digitação, menos ida e volta, e o clique já chega estruturado no seu fluxo.
+Dentro da janela de 24 horas, use botões sempre que a resposta esperada for uma escolha: o cliente responde com um clique e o seu fluxo recebe a opção. Nos templates que você dispara, inclua uma saída como não ter interesse, e tire da lista quem clicar.
 
-Se você dispara, coloque botão em todo template. O ganho de engajamento não é sobre conversão: é sobre o seu número continuar existindo.
-
-E, ao montar o código, guarde a regra que evita retrabalho: **decida pelo identificador, nunca pelo texto do botão.**
-
-::cta: Coloque um botão de saída no seu próximo template | Uma opção de "não tenho interesse" que a automação usa para remover a pessoa da lista. Parece perder contato, e é o que transforma silêncio em interação, que é justamente o sinal que a plataforma mede.
+::cta: Envie o exemplo de botões para você mesmo | Mande uma mensagem do seu celular para o número, abra o exemplo de botões na documentação da Datafy, preencha o seu número e envie dentro da janela.
 
 ## Leia também
 - [Enviar e receber a primeira mensagem](/primeira-mensagem-api-oficial-whatsapp)
-- [Taxa de resposta: por que quem não é respondido cai](/taxa-de-resposta-e-bloqueio)
-- [Como criar um template de mensagem, passo a passo](/como-criar-template-whatsapp-passo-a-passo)
-- [Como passar do bot para o atendente humano](/como-passar-do-bot-para-o-atendente-humano)
+- [A Datafy API é um espelho da Cloud API](/datafy-api-espelho-da-cloud-api)
+- [Como criar um template, passo a passo](/como-criar-template-whatsapp-passo-a-passo)
+- [Número bloqueado no WhatsApp: o que fazer](/numero-banido-no-whatsapp-o-que-fazer)

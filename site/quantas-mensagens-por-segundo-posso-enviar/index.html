@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Quantas mensagens por segundo posso enviar no WhatsApp?</title>
-<meta name="description" content="São 80 por segundo por número na Meta, 20 em coexistência, e 500 requisições por minuto no envio pela Datafy. São camadas diferentes e pegam em momentos diferentes.">
+<meta name="description" content="Na Meta, 80 por segundo por número, até 1.000 para números elegíveis e 20 em coexistência. Na Datafy API, 500 requisições por minuto no envio. São duas camadas.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/quantas-mensagens-por-segundo-posso-enviar">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -14,14 +14,14 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
 <meta property="og:title" content="Quantas mensagens por segundo posso enviar no WhatsApp?">
-<meta property="og:description" content="São 80 por segundo por número na Meta, 20 em coexistência, e 500 requisições por minuto no envio pela Datafy. São camadas diferentes e pegam em momentos diferentes.">
+<meta property="og:description" content="Na Meta, 80 por segundo por número, até 1.000 para números elegíveis e 20 em coexistência. Na Datafy API, 500 requisições por minuto no envio. São duas camadas.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/quantas-mensagens-por-segundo-posso-enviar">
-<meta property="article:published_time" content="2026-09-09">
-<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Quantas mensagens por segundo posso enviar no WhatsApp?">
-<meta name="twitter:description" content="São 80 por segundo por número na Meta, 20 em coexistência, e 500 requisições por minuto no envio pela Datafy. São camadas diferentes e pegam em momentos diferentes.">
+<meta name="twitter:description" content="Na Meta, 80 por segundo por número, até 1.000 para números elegíveis e 20 em coexistência. Na Datafy API, 500 requisições por minuto no envio. São duas camadas.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -120,10 +121,10 @@
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/quantas-mensagens-por-segundo-posso-enviar#article",
       "headline": "Quantas mensagens por segundo posso enviar no WhatsApp?",
-      "description": "São 80 por segundo por número na Meta, 20 em coexistência, e 500 requisições por minuto no envio pela Datafy. São camadas diferentes e pegam em momentos diferentes.",
+      "description": "Na Meta, 80 por segundo por número, até 1.000 para números elegíveis e 20 em coexistência. Na Datafy API, 500 requisições por minuto no envio. São duas camadas.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -133,12 +134,10 @@
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/quantas-mensagens-por-segundo-posso-enviar",
       "citation": [
         "https://developers.facebook.com/docs/whatsapp/throughput",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/marketing-templates/per-user-limits",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
         "https://app.datafyapi.com.br/docs",
-        "https://cloud.datafyapi.com.br",
-        "https://www.youtube.com/watch?v=vGovcR8W5g8"
+        "https://www.youtube.com/watch?v=vGovcR8W5g8",
+        "https://www.youtube.com/watch?v=ly5nOHFpXcI",
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/"
       ]
     },
     {
@@ -147,58 +146,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "80 por segundo é pouco?",
+          "name": "Qual é o limite padrão da Meta?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "São 4.800 por minuto vindas de um número só. Para quase toda operação brasileira, o gargalo aparece antes em outro lugar: no limite da conta ou na qualidade do número."
+            "text": "80 mensagens por segundo por número."
           }
         },
         {
           "@type": "Question",
-          "name": "Como subo para 1.000?",
+          "name": "Em coexistência muda?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A subida é automática e depende de volume entregue com qualidade, além de outros critérios da documentação. Não é um botão."
+            "text": "Muda. Número do WhatsApp Business App fica em 20 por segundo, fixo."
           }
         },
         {
           "@type": "Question",
-          "name": "Mais números resolvem meu volume?",
+          "name": "Existe limite para mandar várias mensagens para a mesma pessoa?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Para throughput, ajudam, porque cada número tem o próprio teto. Para o limite de envio da conta, não, porque desde outubro de 2025 ele é do portfólio. E para o limite por pessoa de marketing, não resolve de jeito nenhum: ele é somado entre empresas."
+            "text": "Existe um limite por par, citado pela Meta, sem valor publicado."
           }
         },
         {
           "@type": "Question",
-          "name": "Por que a coexistência corta para 20?",
+          "name": "Qual o limite da Datafy API?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "É o valor documentado para número que também opera pelo aplicativo. Para atendimento é mais que suficiente; para disparo em volume, pesa."
+            "text": "500 requisições por minuto no envio de mensagens, e 60 por minuto em upload de mídia e consultas."
           }
         },
         {
           "@type": "Question",
-          "name": "O 429 da Datafy é o mesmo que o 130429 da Meta?",
+          "name": "O que faço quando recebo 429?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. São camadas diferentes. O 429 é o rate limit da Datafy, com os segundos de espera na resposta. O 130429 é estouro de throughput da Meta. Podem acontecer nas mesmas circunstâncias e pedem a mesma reação: esperar, não insistir."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Onde vejo o limite atual da minha conta?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Nos campos de limite de envio da API. Atenção: o campo antigo foi descontinuado em favor de um novo, do nível do portfólio, e biblioteca desatualizada devolve valor errado."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Mensagem recebida conta no limite?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Não. Os limites são de envio."
+            "text": "Espere os segundos indicados na resposta e tente de novo."
           }
         }
       ]
@@ -567,23 +550,23 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
     <div class="hero-art">
       <svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
   <title id="heroT">Medidor de vazão de envio</title>
-  <desc id="heroD">Ilustração de um medidor mostrando o limite de mensagens por segundo e uma faixa de excesso.</desc>
+  <desc id="heroD">Ilustração de um medidor mostrando o limite de requisições por minuto da Datafy API e a faixa de excesso que devolve 429.</desc>
   <path d="M60 200 a110 110 0 0 1 220 0" fill="none" stroke="var(--line)" stroke-width="20" stroke-linecap="round"/>
   <path d="M60 200 a110 110 0 0 1 150 -104" fill="none" stroke="var(--accent)" stroke-width="20" stroke-linecap="round"/>
   <path d="M247 118 a110 110 0 0 1 33 82" fill="none" stroke="var(--danger)" stroke-width="20" stroke-linecap="round"/>
   <circle cx="170" cy="200" r="10" fill="var(--fg)"/>
   <path d="M170 200 L228 132" stroke="var(--fg)" stroke-width="4" stroke-linecap="round"/>
-  <text x="170" y="238" text-anchor="middle" style="font:700 20px system-ui,sans-serif;fill:var(--fg)">80</text>
-  <text x="170" y="256" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--muted)">mensagens por segundo</text>
+  <text x="170" y="238" text-anchor="middle" style="font:700 20px system-ui,sans-serif;fill:var(--fg)">500</text>
+  <text x="170" y="256" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--muted)">requisições por minuto</text>
   <text x="52" y="228" style="font:600 9.5px system-ui,sans-serif;fill:var(--muted)">0</text>
-  <text x="278" y="228" text-anchor="end" style="font:600 9.5px system-ui,sans-serif;fill:var(--danger)">130429</text>
+  <text x="278" y="228" text-anchor="end" style="font:600 9.5px system-ui,sans-serif;fill:var(--danger)">429</text>
 </svg>
     </div>
   </div>
@@ -593,75 +576,52 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <h1>Quantas mensagens por segundo posso enviar no WhatsApp?</h1>
-<p><strong>Resposta curta:</strong> existem <strong>camadas diferentes de limite</strong>, e elas pegam em momentos diferentes. Na Meta, o padrão é <strong>80 mensagens por segundo</strong> por número, chegando a <strong>1.000</strong> por atualização automática, e caindo para <strong>20 por segundo</strong> se o número estiver em <strong>coexistência</strong>. Na Datafy, o rate limit é <strong>500 requisições por minuto</strong> no envio e <strong>60 por minuto</strong> no resto.</p>
-<p>Existe ainda um limite <strong>por par</strong>, entre a sua empresa e um destinatário específico. Ele é citado pela Meta e <strong>o valor não é publicado</strong>, então quem cravar um número está inventando.</p>
+<p><strong>Resposta curta:</strong> existem duas camadas de limite, e as duas valem.</p>
+<p><strong>Na Meta:</strong> o padrão é <strong>80 mensagens por segundo</strong> por número, com atualização automática até <strong>1.000</strong> para números elegíveis. Número do WhatsApp Business App, em coexistência, fica em <strong>20 por segundo</strong>, fixo. E existe um limite <strong>por par</strong>, entre a empresa e um mesmo usuário, cujo valor a Meta não publica.</p>
+<p><strong>Na Datafy API:</strong> <strong>500 requisições por minuto</strong> no envio de mensagens, e <strong>60 por minuto</strong> no upload de mídia e nas consultas. Passou, a resposta é <code>429</code>, com os segundos que você deve esperar.</p>
 <div class="stats">
-  <div class="stat"><b>80 msg/s</b><span>throughput padrão de um número, na Meta</span></div>
-  <div class="stat"><b>20 msg/s</b><span>se o número estiver em coexistência</span></div>
-  <div class="stat"><b>500 req/min</b><span>o rate limit da Datafy no envio</span></div>
-  <div class="stat"><b>429</b><span>o código que a Datafy devolve ao estourar</span></div>
+  <div class="stat"><b>80/s</b><span>padrão por número, na Meta</span></div>
+  <div class="stat"><b>20/s</b><span>em coexistência</span></div>
+  <div class="stat"><b>500/min</b><span>envio de mensagens, na Datafy</span></div>
+  <div class="stat"><b>429</b><span>a resposta ao passar do limite da Datafy</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li><strong>80 por segundo</strong> é o padrão documentado, com subida automática até 1.000 para quem tem volume e qualidade (<a href="https://developers.facebook.com/docs/whatsapp/throughput" rel="noopener">throughput</a>).</li>
-<li><strong>20 por segundo</strong> é o teto de número em coexistência, e isso costuma surpreender quem escolheu manter o aplicativo no celular.</li>
-<li>Existe um <strong>limite por par</strong>, entre você e um destinatário específico. A Meta cita esse limite e <strong>não publica o valor</strong>, então trate como "mandar muitas mensagens seguidas para a mesma pessoa é arriscado", sem número mágico.</li>
-<li>O erro de estouro de throughput é o <strong>130429</strong>, e a resposta correta a ele é esperar e reenviar com intervalo crescente, nunca reenviar na hora.</li>
-<li>Existe outro limite, <strong>por pessoa e não por empresa</strong>, para mensagem de marketing. Esse não se contorna com mais número nem trocando de fornecedor.</li>
+<li><strong>80 por segundo</strong> é o padrão da Meta por número; até <strong>1.000</strong> com atualização automática para números elegíveis.</li>
+<li><strong>20 por segundo</strong> para número do WhatsApp Business App, sem atualização.</li>
+<li><strong>Limite por par:</strong> mandar mensagens demais para o mesmo usuário gera erro. A Meta não publica o valor.</li>
+<li><strong>Datafy:</strong> 500 requisições por minuto em mensagens, 60 em mídia e consultas.</li>
+<li><strong>O <code>429</code> da Datafy diz quantos segundos esperar.</strong> Espere esse tempo antes de tentar de novo.</li>
 </ul>
-<figure>
-<div class="diagram">
-<svg viewBox="0 0 720 222" xmlns="http://www.w3.org/2000/svg" class="d">
-  <style>
-    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-    .t{font-size:15px;font-weight:600;fill:var(--fg)}
-    .h{font-size:13px;font-weight:600;fill:var(--fg)}
-    .p{font-size:12px;fill:var(--muted)}
-    .s{font-size:11px;fill:var(--muted)}
-    .ok{fill:var(--accent)}
-    .no{fill:var(--danger)}
-    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
-    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
-    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
-  </style>
-  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
-    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Um fluxo de atendimento no n8n</text>
-<rect class="box" x="20" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="96" y="80" text-anchor="middle">Webhook</text>
-<text class="s" x="96" y="98" text-anchor="middle">mensagem chega</text>
-<rect class="box" x="196" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="272" y="80" text-anchor="middle">Condicional</text>
-<text class="s" x="272" y="98" text-anchor="middle">regra de negocio</text>
-<rect class="box" x="372" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="448" y="80" text-anchor="middle">HTTP Request</text>
-<text class="s" x="448" y="98" text-anchor="middle">responde pela API</text>
-<rect class="box" x="548" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="624" y="80" text-anchor="middle">Banco</text>
-<text class="s" x="624" y="98" text-anchor="middle">registra a conversa</text>
-<path class="ar" d="M172,85 L190,85"/>
-<path class="ar" d="M348,85 L366,85"/>
-<path class="ar" d="M524,85 L542,85"/>
-<rect class="box" x="20" y="142" width="680" height="64" rx="8"/>
-<text class="h" x="36" y="166">Limites que o fluxo precisa respeitar</text>
-<text class="p" x="36" y="190">• 80 msg/s por número</text>
-<text class="p" x="266" y="190">• 1 msg a cada 6 s por contato</text>
-<text class="p" x="516" y="190">• responder 200 na hora</text>
-</svg>
-</div>
-<figcaption></figcaption>
-</figure>
-
-<h2 id="os-tr-s-limites-e-quando-cada-um-aparece">Os três limites, e quando cada um aparece</h2>
-<p><strong>Throughput do número.</strong> É o teto de quantas mensagens por segundo saem daquele número. Aparece quando você dispara em lote e o código manda tudo de uma vez. Quem tem fila com espera entre lotes raramente encosta nele.</p>
-<p><strong>Limite por par.</strong> Um limite entre a sua empresa e <strong>um destinatário específico</strong>. A documentação da Meta menciona que enviar mensagens demais para o mesmo usuário pode gerar erro de par, e <strong>não publica o valor</strong>. Nós também não vamos inventar um.</p>
-<p>O que dá para dizer com segurança: esse é o limite que pega em <strong>conversa</strong>, não em campanha, e é a causa mais comum de mensagem sumindo em fluxo automatizado que parece correto. Agente de IA que responde em várias mensagens curtas seguidas é o caso clássico. A prática que resolve, sem depender de saber o número, é <strong>uma resposta por mensagem</strong>, juntando o que seria três balões num só.</p>
-<p><strong>Limite de envio da conta.</strong> É o total de conversas iniciadas por período, com faixas que sobem conforme volume entregue e qualidade. Desde outubro de 2025 esse limite é <strong>do portfólio inteiro</strong>, e não de cada número: um número pode consumir a capacidade dos outros. Quem opera muitos números precisa saber disso.</p>
-<h2 id="o-rate-limit-da-datafy-que-outra-camada">O rate limit da Datafy, que é outra camada</h2>
-<p>Quem envia pela Datafy tem um limite adicional, e ele é nosso, documentado, e independente dos limites da Meta:</p>
+<h2 id="os-limites-da-meta">Os limites da Meta</h2>
+<p>Segundo a página de <a href="https://developers.facebook.com/docs/whatsapp/throughput" rel="noopener">throughput da Meta</a>:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Situação</th>
+<th>Mensagens por segundo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Padrão por número registrado</td>
+<td>80</td>
+</tr>
+<tr>
+<td>Números elegíveis, com atualização automática</td>
+<td>até 1.000</td>
+</tr>
+<tr>
+<td>Número do WhatsApp Business App (coexistência)</td>
+<td>20, fixo</td>
+</tr>
+</tbody>
+</table></div>
+<p>A mesma página menciona que, ao tentar enviar mensagens demais para o mesmo número de usuário, você pode receber um erro de limite por par. <strong>O valor desse limite não é publicado</strong>, e por isso não existe número confiável para citar.</p>
+<p>Se o número está em coexistência, o teto de 20 por segundo vale para ele. <a href="/coexistencia-whatsapp-api-oficial-app-celular">O que muda nesse modo está aqui</a>.</p>
+<h2 id="os-limites-da-datafy-api">Os limites da Datafy API</h2>
+<p>Segundo a documentação da Datafy:</p>
 <div class="tablewrap"><table>
 <thead>
 <tr>
@@ -674,68 +634,26 @@ footer p{margin:0 0 .5rem}
 <tr>
 <td>Envio de mensagens</td>
 <td><code>POST /v1/.../messages</code></td>
-<td><strong>500 req/min</strong></td>
+<td>500 requisições por minuto</td>
 </tr>
 <tr>
 <td>Upload de mídia</td>
 <td><code>POST /v1/.../media</code></td>
-<td><strong>60 req/min</strong></td>
+<td>60 requisições por minuto</td>
 </tr>
 <tr>
 <td>Consultas</td>
 <td>todo o resto</td>
-<td><strong>60 req/min</strong></td>
+<td>60 requisições por minuto</td>
 </tr>
 </tbody>
 </table></div>
-<p>Estourando, a resposta é <strong><code>429 Too Many Requests</code></strong>, e a mensagem diz <strong>quantos segundos aguardar</strong> antes de tentar de novo. Isso é melhor que o erro da Meta em um ponto prático: você não precisa adivinhar o intervalo da espera, ele vem escrito.</p>
-<p>Como as camadas se relacionam, na ordem em que você encosta nelas:</p>
-<p><strong>500 requisições por minuto</strong> dão pouco mais de 8 por segundo. Ou seja, para quem envia pela Datafy, <strong>esse limite chega antes</strong> dos 80 por segundo da Meta. Se você dimensionou a fila pelos 80, refaça pelo teto de 500 por minuto.</p>
-<p><strong>Consulta pesa.</strong> Listar templates, buscar mídia e consultar perfil compartilham os 60 por minuto. Fluxo que consulta a lista de templates a cada envio queima essa cota rápido, e a correção é sincronizar a lista periodicamente em vez de consultar a cada mensagem.</p>
-<p><strong>Upload de mídia é a cota mais apertada.</strong> São 60 por minuto, o que reforça o padrão de <a href="/como-enviar-midia-api-oficial-whatsapp">subir a imagem uma vez e reaproveitar o identificador</a> em vez de subir a cada envio.</p>
-<p>E o tratamento correto do <code>429</code>, que é diferente do tratamento de erro da Meta: <strong>leia os segundos indicados na resposta e espere exatamente isso.</strong> Reenvio imediato só consome a cota do minuto seguinte.</p>
-<h2 id="o-que-fazer-quando-trava">O que fazer quando trava</h2>
-<p><strong>Se você recebeu 130429:</strong> estourou o throughput. Reenvie com espera crescente, e coloque um controle de vazão na saída. Reenviar imediatamente piora, porque soma à fila que já está cheia.</p>
-<p><strong>Se a campanha ficou lenta ou parou no meio, sem erro claro:</strong> pode ser o mecanismo que a Meta usa para segurar entrega em lote e medir reação durante a campanha. Ele existe desde dezembro de 2025 e atua no nível do portfólio, segurando os lotes seguintes enquanto observa o resultado dos primeiros. Não é falha sua e não adianta reenviar.</p>
-<p><strong>Se mensagens somem para um contato específico:</strong> quase sempre é o limite por par. Junte as mensagens curtas numa só, ou espere entre elas.</p>
-<p><strong>Se as mensagens de marketing param de chegar para algumas pessoas:</strong> pode ser o limite por usuário, que é somado entre todas as empresas que falam com aquela pessoa. Nesse caso o erro é <code>131049</code>, e a resposta certa é <strong>não reenviar</strong>, porque insistir escala para bloqueio no nível da conta.</p>
-<h2 id="os-dois-erros-que-parecem-iguais-e-pedem">Os dois erros que parecem iguais e pedem o oposto</h2>
-<p>Vale separar, porque tratar um como o outro causa dano real:</p>
-<div class="tablewrap"><table>
-<thead>
-<tr>
-<th></th>
-<th><code>131049</code></th>
-<th><code>131050</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O que é</td>
-<td>Limite por usuário, ou tentativa em excesso</td>
-<td>A pessoa optou por não receber marketing</td>
-</tr>
-<tr>
-<td>Depende de você?</td>
-<td>Não. É somado entre todas as empresas</td>
-<td>Não. É escolha dela</td>
-</tr>
-<tr>
-<td>O que fazer</td>
-<td>Esperar pelo menos 24 h antes de tentar de novo</td>
-<td>Parar de enviar marketing para ela</td>
-</tr>
-<tr>
-<td>O que NÃO fazer</td>
-<td><strong>Reenviar na hora.</strong> Escala para bloqueio da conta</td>
-<td>Tentar de novo por outro caminho</td>
-</tr>
-</tbody>
-</table></div>
-<p>Os dois falham parecido e pedem tratamento oposto. Um laço de reenvio automático que não distingue os dois é o caminho mais rápido para limitar a conta inteira.</p>
-<h2 id="o-jeito-mais-r-pido-de-estourar-tudo-de">O jeito mais rápido de estourar tudo de uma vez</h2>
-<p>Antes de projetar vazão, vale conhecer o erro que ignora qualquer planejamento: <strong>responder webhook de status como se fosse mensagem.</strong></p>
-<p>Cada mensagem que você envia gera três eventos de volta, enviada, entregue e lida. Se o seu fluxo responde o que chega sem filtrar, cada resposta gera três status, e cada status gera outra resposta. Três, nove, vinte e sete. Você não encosta no teto de 80 por segundo: você o atravessa em segundos, com mensagens que ninguém pediu, e o risco deixa de ser erro de vazão e passa a ser o número.</p>
+<p>Quando o limite é excedido, a API retorna <code>429 Too Many Requests</code>, com a mensagem indicando <strong>quantos segundos aguardar</strong> antes de tentar novamente.</p>
+<h2 id="como-as-duas-camadas-se-encontram">Como as duas camadas se encontram</h2>
+<p>500 requisições por minuto dão pouco mais de 8 por segundo. Então, enviando pela Datafy API, o limite de envio da Datafy aparece antes do padrão de 80 por segundo da Meta. Se o seu disparo está calculado por segundo, refaça a conta por minuto.</p>
+<p>As consultas, como listar templates ou pedir URL de mídia, dividem os mesmos 60 por minuto. E o upload de mídia tem o próprio limite de 60 por minuto; um arquivo que você sobe gera um identificador que vale 30 dias, e ele pode ser usado em vários envios. <a href="/como-enviar-midia-api-oficial-whatsapp">Como enviar mídia está aqui</a>.</p>
+<h2 id="o-jeito-mais-r-pido-de-estourar-tudo">O jeito mais rápido de estourar tudo</h2>
+<p>Um fluxo que responde aos eventos de status do próprio webhook gera mensagens em progressão: cada resposta gera novos status, que geram novas respostas. No vídeo sobre n8n, o Israel Henrique, CTO da Datafy, avisa antes de executar: <em>"vai bloquear o teu número."</em></p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
   <span class="thumb">
@@ -744,41 +662,33 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 14:47 o Israel para a montagem do fluxo no n8n para avisar disso antes de executar, e em 19:05 mostra a proteção funcionando. O aviso dele é literal: "vai bloquear o teu número".</figcaption>
+<figcaption>Em 14:47 ele explica o laço de status, e em 19:05 mostra por que o fluxo dele não entrou em laço.</figcaption>
 </figure>
 
-<p>A proteção não é limitar vazão, é filtrar entrada: <strong>leia o remetente de dentro de <code>messages</code></strong>, que é um objeto que não existe no evento de status. Assim, se chegar um status, o passo falha em vez de responder. Melhor ainda, uma condição no início do fluxo que separa mensagem de status e manda status só para o registro.</p>
-<h2 id="como-projetar-para-n-o-encostar">Como projetar para não encostar</h2>
-<p><strong>Fila com vazão controlada.</strong> Não mande direto do laço. Coloque na fila e libere numa taxa que você escolhe, abaixo do teto. Em automação visual, isso costuma ser um nó de lote com espera entre eles.</p>
-<p><strong>Espera crescente no reenvio.</strong> Erro de throughput pede espera que aumenta a cada tentativa, com limite de tentativas. Reenvio imediato é o que transforma um pico em incidente.</p>
-<p><strong>Uma mensagem por resposta.</strong> Em agente de IA, resista à tentação de mandar três balões seguidos para parecer humano. Além de esbarrar no limite por par, cada mensagem passa a ter custo próprio a partir de outubro de 2026.</p>
-<p><strong>Saiba em que modo o número está.</strong> Coexistência dá 20 por segundo. Se você planejou para 80 e o número está em coexistência, a conta não fecha, e a descoberta costuma acontecer no meio da campanha.</p>
+<p><a href="/laco-de-webhook-derruba-numero">Como evitar está aqui</a>.</p>
+<h2 id="disparo-sem-c-digo">Disparo sem código</h2>
+<p>A aba Disparos do painel da Datafy envia um template para uma planilha de contatos, com agendamento e status por contato. <a href="/disparo-em-massa-api-oficial-whatsapp">Como usar está aqui</a>.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>80 por segundo é pouco?</h3>
-<p>São 4.800 por minuto vindas de um número só. Para quase toda operação brasileira, o gargalo aparece antes em outro lugar: no limite da conta ou na qualidade do número.</p>
-<h3>Como subo para 1.000?</h3>
-<p>A subida é automática e depende de volume entregue com qualidade, além de outros critérios da documentação. Não é um botão.</p>
-<h3>Mais números resolvem meu volume?</h3>
-<p>Para throughput, ajudam, porque cada número tem o próprio teto. Para o limite de envio da conta, não, porque desde outubro de 2025 ele é do portfólio. E para o limite por pessoa de marketing, não resolve de jeito nenhum: ele é somado entre empresas.</p>
-<h3>Por que a coexistência corta para 20?</h3>
-<p>É o valor documentado para número que também opera pelo aplicativo. Para atendimento é mais que suficiente; para disparo em volume, pesa.</p>
-<h3>O 429 da Datafy é o mesmo que o 130429 da Meta?</h3>
-<p>Não. São camadas diferentes. O <code>429</code> é o rate limit da Datafy, com os segundos de espera na resposta. O <code>130429</code> é estouro de throughput da Meta. Podem acontecer nas mesmas circunstâncias e pedem a mesma reação: esperar, não insistir.</p>
-<h3>Onde vejo o limite atual da minha conta?</h3>
-<p>Nos campos de limite de envio da API. Atenção: o campo antigo foi descontinuado em favor de um novo, do nível do portfólio, e biblioteca desatualizada devolve valor errado.</p>
-<h3>Mensagem recebida conta no limite?</h3>
-<p>Não. Os limites são de envio.</p>
+<h3>Qual é o limite padrão da Meta?</h3>
+<p>80 mensagens por segundo por número.</p>
+<h3>Em coexistência muda?</h3>
+<p>Muda. Número do WhatsApp Business App fica em 20 por segundo, fixo.</p>
+<h3>Existe limite para mandar várias mensagens para a mesma pessoa?</h3>
+<p>Existe um limite por par, citado pela Meta, sem valor publicado.</p>
+<h3>Qual o limite da Datafy API?</h3>
+<p>500 requisições por minuto no envio de mensagens, e 60 por minuto em upload de mídia e consultas.</p>
+<h3>O que faço quando recebo 429?</h3>
+<p>Espere os segundos indicados na resposta e tente de novo.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Se você faz atendimento, o limite que importa é o por par, e a prática que o resolve é mandar uma mensagem por resposta em vez de vários balões. Se você faz disparo, o que importa é o limite da conta e a vazão da sua fila, porque o teto por segundo raramente é o gargalo real.</p>
-<p>E antes de planejar volume, confirme se o número está em coexistência. Essa única informação muda o teto por um fator de quatro.</p>
-<div class="cta"><h3>Confira duas coisas antes da próxima campanha</h3><p>Em que modo o número está, porque coexistência corta o teto para 20 por segundo. E se o seu reenvio distingue 131049 de erro comum, porque insistir no primeiro limita a conta inteira.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Calcule o seu envio por minuto, com teto de 500 requisições na Datafy API, e confira se o número está em coexistência, onde o teto da Meta é 20 por segundo. Trate o <code>429</code> esperando o tempo indicado, e filtre os status do webhook antes de qualquer lógica que responde.</p>
+<div class="cta"><h3>Confira o modo do seu número antes do próximo envio</h3><p>Veja se ele está em coexistência, porque o teto da Meta cai para 20 por segundo, e divida o seu volume por minuto para caber nas 500 requisições da Datafy API.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/whatsapp-api-oficial-n8n">WhatsApp API oficial no n8n</a></li>
-<li><a href="/posso-mandar-mensagem-para-qualquer-numero">Posso mandar mensagem para qualquer número?</a></li>
-<li><a href="/numero-banido-no-whatsapp-o-que-fazer">Número banido: o que fazer</a></li>
+<li><a href="/laco-de-webhook-derruba-numero">O laço de webhook que pode bloquear o seu número</a></li>
+<li><a href="/disparo-em-massa-api-oficial-whatsapp">Como fazer disparo em massa</a></li>
 <li><a href="/coexistencia-whatsapp-api-oficial-app-celular">Coexistência: API e aplicativo no mesmo número</a></li>
+<li><a href="/como-enviar-midia-api-oficial-whatsapp">Como enviar imagem, documento e áudio</a></li>
 </ul>
 </article>
 
@@ -794,12 +704,11 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#os-tr-s-limites-e-quando-cada-um-aparece">Os três limites, e quando cada u...</a></li>
-        <li><a href="#o-rate-limit-da-datafy-que-outra-camada">O rate limit da Datafy, que é ou...</a></li>
-        <li><a href="#o-que-fazer-quando-trava">O que fazer quando trava</a></li>
-        <li><a href="#os-dois-erros-que-parecem-iguais-e-pedem">Os dois erros que parecem iguais...</a></li>
-        <li><a href="#o-jeito-mais-r-pido-de-estourar-tudo-de">O jeito mais rápido de estourar...</a></li>
-        <li><a href="#como-projetar-para-n-o-encostar">Como projetar para não encostar</a></li>
+        <li><a href="#os-limites-da-meta">Os limites da Meta</a></li>
+        <li><a href="#os-limites-da-datafy-api">Os limites da Datafy API</a></li>
+        <li><a href="#como-as-duas-camadas-se-encontram">Como as duas camadas se encontram</a></li>
+        <li><a href="#o-jeito-mais-r-pido-de-estourar-tudo">O jeito mais rápido de estourar...</a></li>
+        <li><a href="#disparo-sem-c-digo">Disparo sem código</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

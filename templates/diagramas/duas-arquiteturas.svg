@@ -1,16 +1,14 @@
-<svg viewBox="0 0 680 260" role="img" aria-labelledby="d1t d1d" style="width:100%;height:auto">
-  <title id="d1t">Como a API não oficial e a API oficial se conectam ao WhatsApp</title>
-  <desc id="d1d">Na API não oficial, o seu servidor fala com uma sessão emulada de WhatsApp Web, que se conecta ao WhatsApp por um elo frágil que quebra a cada atualização do aplicativo. Na API oficial, o seu servidor fala com um endpoint autorizado da Meta, que se conecta ao WhatsApp por um caminho contratual estável.</desc>
+<svg viewBox="0 0 680 250" role="img" aria-labelledby="d1t d1d" style="width:100%;height:auto">
+  <title id="d1t">Dois caminhos para a API oficial do WhatsApp</title>
+  <desc id="d1d">Indo direto na Meta, você cria conta de desenvolvedor, cria um aplicativo, monta a infraestrutura de webhooks, envia para aprovação e, para usar o aplicativo do celular junto, precisa virar Tech Provider. Indo pela Datafy API, você escaneia um QR code, recebe um token e chama os mesmos endpoints trocando só o domínio e o token.</desc>
   <style>
     .bx{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
-    .bx-r{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
     .bx-g{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
     .lb{font:600 12px system-ui,-apple-system,sans-serif;fill:var(--fg)}
     .sm{font:11px system-ui,-apple-system,sans-serif;fill:var(--muted)}
     .hd{font:700 11px system-ui,-apple-system,sans-serif;letter-spacing:.06em}
-    .ln{stroke:var(--muted);stroke-width:1.5;fill:none}
-    .ln-r{stroke:var(--danger);stroke-width:1.5;fill:none;stroke-dasharray:5 4}
     .ln-g{stroke:var(--accent);stroke-width:2;fill:none}
+    .ln{stroke:var(--muted);stroke-width:1.5;fill:none}
   </style>
   <defs>
     <marker id="a1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
@@ -18,35 +16,32 @@
     <marker id="a2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
       <path d="M0,0 L7,3.5 L0,7 z" fill="var(--accent)"/></marker>
   </defs>
-
-  <text x="0" y="14" class="hd" fill="var(--danger)">NÃO OFICIAL (MODO BAILEYS)</text>
-  <rect x="0" y="26" width="140" height="46" rx="8" class="bx"/>
-  <text x="70" y="46" class="lb" text-anchor="middle">Seu servidor</text>
-  <text x="70" y="61" class="sm" text-anchor="middle">n8n, código</text>
-  <path class="ln" d="M144 49 H196" marker-end="url(#a1)"/>
-  <rect x="200" y="26" width="170" height="46" rx="8" class="bx-r"/>
-  <text x="285" y="45" class="lb" text-anchor="middle">Sessão WhatsApp Web</text>
-  <text x="285" y="60" class="sm" text-anchor="middle">emulada num servidor</text>
-  <path class="ln-r" d="M374 49 H466"/>
-  <text x="420" y="40" class="sm" text-anchor="middle" fill="var(--danger)">frágil</text>
-  <path d="M416 43 l8 12 M424 43 l-8 12" stroke="var(--danger)" stroke-width="2"/>
-  <rect x="470" y="26" width="130" height="46" rx="8" class="bx"/>
-  <text x="535" y="53" class="lb" text-anchor="middle">WhatsApp</text>
-  <text x="0" y="94" class="sm">App atualizou, a sessão cai. Detectou automação, o número é banido, sem recurso.</text>
-
-  <line x1="0" y1="118" x2="680" y2="118" stroke="var(--line)" stroke-width="1"/>
-
-  <text x="0" y="146" class="hd" fill="var(--accent)">OFICIAL (CLOUD API)</text>
-  <rect x="0" y="158" width="140" height="46" rx="8" class="bx"/>
-  <text x="70" y="178" class="lb" text-anchor="middle">Seu servidor</text>
-  <text x="70" y="193" class="sm" text-anchor="middle">n8n, código</text>
-  <path class="ln-g" d="M144 181 H196" marker-end="url(#a2)"/>
-  <rect x="200" y="158" width="170" height="46" rx="8" class="bx-g"/>
-  <text x="285" y="177" class="lb" text-anchor="middle">Endpoint autorizado</text>
-  <text x="285" y="192" class="sm" text-anchor="middle">Meta Cloud API</text>
-  <path class="ln-g" d="M374 181 H466" marker-end="url(#a2)"/>
-  <text x="420" y="172" class="sm" text-anchor="middle" fill="var(--accent)">contratual</text>
-  <rect x="470" y="158" width="130" height="46" rx="8" class="bx"/>
-  <text x="535" y="185" class="lb" text-anchor="middle">WhatsApp</text>
-  <text x="0" y="226" class="sm">Regras públicas, template aprovado, qualidade monitorada. O elo não quebra sozinho.</text>
+  <text x="0" y="14" class="hd" fill="var(--muted)">DIRETO NA META</text>
+  <rect x="0" y="26" width="120" height="46" rx="8" class="bx"/>
+  <text x="60" y="53" class="lb" text-anchor="middle">Criar app</text>
+  <path class="ln" d="M122 49 H146" marker-end="url(#a1)"/>
+  <rect x="150" y="26" width="120" height="46" rx="8" class="bx"/>
+  <text x="210" y="53" class="lb" text-anchor="middle">Infra de webhook</text>
+  <path class="ln" d="M272 49 H296" marker-end="url(#a1)"/>
+  <rect x="300" y="26" width="120" height="46" rx="8" class="bx"/>
+  <text x="360" y="53" class="lb" text-anchor="middle">Aprovação</text>
+  <path class="ln" d="M422 49 H446" marker-end="url(#a1)"/>
+  <rect x="450" y="26" width="160" height="46" rx="8" class="bx"/>
+  <text x="530" y="45" class="lb" text-anchor="middle">Tech Provider</text>
+  <text x="530" y="60" class="sm" text-anchor="middle">para usar com o celular</text>
+  <text x="0" y="96" class="sm">graph.facebook.com, com o token da Meta.</text>
+  <line x1="0" y1="120" x2="680" y2="120" stroke="var(--line)" stroke-width="1"/>
+  <text x="0" y="148" class="hd" fill="var(--accent)">PELA DATAFY API</text>
+  <rect x="0" y="160" width="170" height="46" rx="8" class="bx-g"/>
+  <text x="85" y="179" class="lb" text-anchor="middle">QR code</text>
+  <text x="85" y="194" class="sm" text-anchor="middle">conexão oficial da Meta</text>
+  <path class="ln-g" d="M172 183 H216" marker-end="url(#a2)"/>
+  <rect x="220" y="160" width="170" height="46" rx="8" class="bx-g"/>
+  <text x="305" y="179" class="lb" text-anchor="middle">Token sk_live_xxx</text>
+  <text x="305" y="194" class="sm" text-anchor="middle">sempre no header</text>
+  <path class="ln-g" d="M392 183 H436" marker-end="url(#a2)"/>
+  <rect x="440" y="160" width="170" height="46" rx="8" class="bx-g"/>
+  <text x="525" y="179" class="lb" text-anchor="middle">Mesmos endpoints</text>
+  <text x="525" y="194" class="sm" text-anchor="middle">cloud.datafyapi.com.br/v1</text>
+  <text x="0" y="232" class="sm">Muda o domínio e o token. Corpo, payload e webhook continuam iguais aos da Meta.</text>
 </svg>

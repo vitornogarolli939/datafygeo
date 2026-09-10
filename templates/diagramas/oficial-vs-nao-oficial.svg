@@ -5,32 +5,25 @@
     .h{font-size:13px;font-weight:600;fill:var(--fg)}
     .p{font-size:12px;fill:var(--muted)}
     .s{font-size:11px;fill:var(--muted)}
-    .ok{fill:var(--accent)}
-    .no{fill:var(--danger)}
     .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
     .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
-    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
   </style>
-  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
-    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Duas arquiteturas para o mesmo WhatsApp</text>
+<text class="t" x="360" y="26" text-anchor="middle">O que muda na prática, segundo o canal DATA7</text>
 <rect class="boxok" x="20" y="46" width="320" height="210" rx="8"/>
 <text class="h" x="180" y="76" text-anchor="middle">API oficial</text>
-<text class="s" x="180" y="93" text-anchor="middle">endpoint da Meta</text>
-<text class="p ok" x="36" y="118">✓ Número registrado no seu CNPJ</text>
-<text class="p ok" x="36" y="140">✓ Contrato e canal de recurso</text>
-<text class="p ok" x="36" y="162">✓ Endpoint estável, versionado</text>
-<text class="p ok" x="36" y="184">✓ 80 msg/s de throughput</text>
-<text class="p " x="36" y="206">• Exige Business Manager</text>
-<rect class="boxno" x="380" y="46" width="320" height="210" rx="8"/>
-<text class="h" x="540" y="76" text-anchor="middle">Não oficial</text>
-<text class="s" x="540" y="93" text-anchor="middle">emula o WhatsApp Web</text>
-<text class="p no" x="396" y="118">✗ Sem relação contratual</text>
-<text class="p no" x="396" y="140">✗ Sem canal de recurso</text>
-<text class="p no" x="396" y="162">✗ Quebra quando o app muda</text>
-<text class="p no" x="396" y="184">✗ Viola os Termos do WhatsApp</text>
-<text class="p " x="396" y="206">• Conecta por QR code</text>
-<text class="s" x="360" y="278" text-anchor="middle">O risco vem da arquitetura, não da marca: a mesma ferramenta pode rodar nos dois modos.</text>
+<text class="s" x="180" y="93" text-anchor="middle">conexão pela Meta</text>
+<text class="p" x="36" y="120">• Inicia conversa só com template aprovado</text>
+<text class="p" x="36" y="144">• Cobra por mensagem enviada pela API</text>
+<text class="p" x="36" y="168">• Mostra a qualidade do número antes</text>
+<text class="p" x="36" y="192">• Não é blindagem contra bloqueio</text>
+<text class="p" x="36" y="216">• Dá respaldo para reclamar de bloqueio</text>
+<rect class="box" x="380" y="46" width="320" height="210" rx="8"/>
+<text class="h" x="540" y="76" text-anchor="middle">API não oficial</text>
+<text class="s" x="540" y="93" text-anchor="middle">conexão por QR code do WhatsApp Web</text>
+<text class="p" x="396" y="120">• Manda mensagem livre para qualquer um</text>
+<text class="p" x="396" y="144">• Não cobra por mensagem da Meta</text>
+<text class="p" x="396" y="168">• A Meta proíbe iniciar sem template</text>
+<text class="p" x="396" y="192">• Quem usa relata mais bloqueio</text>
+<text class="p" x="396" y="216">• Bloqueado, "não adianta muito reclamar"</text>
+<text class="s" x="360" y="278" text-anchor="middle">O próprio CTO da Datafy usa as duas, e diz isso em vídeo.</text>
 </svg>

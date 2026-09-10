@@ -1,154 +1,130 @@
 ---
 title: "Os três status da mensagem no WhatsApp: enviada, entregue e lida"
-description: "Um risco, dois riscos, dois azuis. Cada envio devolve três eventos, e a ausência de cada um deles significa uma coisa diferente no seu diagnóstico."
+description: "A resposta do envio só diz que a Meta aceitou. O que aconteceu com a mensagem chega depois, no webhook: enviada, entregue, lida, ou um evento de falha com o motivo."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "tres-status-da-mensagem-whatsapp"
 cluster: "implementacao"
-hero: "fluxo"
+hero: "erro"
 intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-10
 sources:
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing
-  - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=vGovcR8W5g8
   - https://www.youtube.com/watch?v=LIT4FxgqHhE
-videos: [vGovcR8W5g8, LIT4FxgqHhE]
+  - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://www.youtube.com/watch?v=ly5nOHFpXcI
+  - https://app.datafyapi.com.br/docs
+videos: [vGovcR8W5g8, LIT4FxgqHhE, dIIkttPeBS0]
 internal_links:
   - /laco-de-webhook-derruba-numero
-  - /a-mensagem-falhou-e-nao-sei-por-que
-  - /mandei-para-numero-que-nao-existe-e-nao-deu-erro
+  - /primeira-mensagem-api-oficial-whatsapp
+  - /disparo-em-massa-api-oficial-whatsapp
   - /ver-payload-das-mensagens-em-tempo-real
-  - /minha-campanha-travou-no-meio
+  - /webhook-whatsapp-cloud-api-como-receber-mensagens
 status: aprovado
 ---
 
 # Os três status da mensagem no WhatsApp: enviada, entregue e lida
 
-**Última atualização: 09/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** cada mensagem que você envia com sucesso devolve **três eventos**, em sequência, e eles correspondem exatamente ao que o usuário vê no aplicativo: **um risco** quando saiu, **dois riscos** quando chegou no aparelho, **dois riscos azuis** quando foi aberta.
+**Resposta curta:** quando você envia uma mensagem pela API, a resposta traz um identificador e só significa que a Meta **aceitou** a mensagem. O que aconteceu com ela chega depois, no webhook, como status: **`sent`** (enviada, um tique), **`delivered`** (entregue, dois tiques) e **`read`** (lida, azul), este último só se a pessoa tiver a confirmação de leitura ativada. Se deu errado, chega **um evento de falha**, com o motivo.
 
-Mensagem que falha devolve **um evento só**, com o motivo dentro.
-
-Saber isso muda o diagnóstico, porque **a ausência de um status também é informação**. Recebeu só o primeiro? A mensagem saiu e não chegou. Não recebeu nenhum? O problema não é a mensagem, é o webhook.
-
-::numeros: 3 eventos|para cada mensagem entregue ;; 1 evento|quando ela falha, com o motivo ;; 1 chave|o identificador que liga tudo ;; 0|conteúdo da mensagem dentro do status
+::numeros: 1 tique|sent, enviada ;; 2 tiques|delivered, entregue ;; azul|read, lida, se a pessoa permitir ;; 1 evento|de falha, com o motivo
 
 ## Principais pontos
-- **Enviada, entregue e lida**, nessa ordem, correspondem aos riscos que o cliente vê.
-- **O status não traz o conteúdo da mensagem**, só o identificador e a situação. O conteúdo é você que guarda.
-- **O terceiro status é opcional na prática**: só chega se a pessoa tiver a confirmação de leitura habilitada.
-- **Falha vem como evento único**, com o código e o motivo, e é o campo que mais some no caminho.
-- Esses eventos chegam no **mesmo webhook** das mensagens, e responder a eles [derruba número](/laco-de-webhook-derruba-numero).
+- **A resposta do envio não é a entrega.** Ela volta com identificador mesmo quando a mensagem vai falhar.
+- **Enviar é diferente de entregar.** São dois status separados.
+- **`read` depende da pessoa** ter a confirmação de leitura ativada.
+- **Falha vem num único evento**, que explica o motivo.
+- **O status não traz o conteúdo da mensagem**, só o identificador e a situação.
 
 ::diagrama: webhook-fluxo
 
-## Os três, e o que cada um significa
+## Os três, na ordem
 
-| Status | No aplicativo | O que significa de verdade |
+No vídeo sobre n8n, o Israel Henrique, CTO da Datafy, faz a correspondência com o que o usuário vê: *"o primeiro, sent, quer dizer que ela foi enviado. É quando fica aquele risquinho, sabe? Um risquinho. Depois ela te envia o delivered, que é quando aparece dois risquinhos, que foi entregue. E se a pessoa ler a mensagem e tiver habilitado para visualizar, ela vai te enviar um terceiro web hook de read."*
+
+| Status | No aplicativo | Quando chega |
 |---|---|---|
-| **Enviada** | Um risco | A plataforma aceitou e despachou. Não diz nada sobre o aparelho do destinatário |
-| **Entregue** | Dois riscos | Chegou no aparelho. Ainda não foi vista |
-| **Lida** | Dois riscos azuis | A conversa foi aberta. Só chega se a confirmação de leitura estiver ativa |
+| `sent` | Um tique | A mensagem foi enviada |
+| `delivered` | Dois tiques | A mensagem chegou no aparelho |
+| `read` | Tiques azuis | A pessoa leu, se tiver a confirmação de leitura ativada |
 
-Existe ainda um quarto, mais recente, para **mensagem de voz tocada**, que avisa na primeira reprodução. Ele é útil para quem manda áudio e quer saber se foi ouvido, não só recebido.
+::video: vGovcR8W5g8 | Em 18:05 ele abre os três eventos de status de uma mensagem e explica cada um. Em 18:37 fala do evento de falha.
 
-::video: vGovcR8W5g8 | Em 18:05 os três eventos aparecem em sequência no fluxo, um a um, e ele faz a correspondência com os riscos do WhatsApp. Em 15:11 explica por que responder a eles é perigoso.
+No vídeo sobre logs, a diferença entre os dois primeiros aparece com essas palavras: *"porque enviar é diferente de entregar."*
 
-## A ausência como diagnóstico
+::video: LIT4FxgqHhE | Em 01:59 ele envia pela API e abre, um por um, os eventos sent, delivered e read da mesma mensagem.
 
-Esta é a parte que economiza tempo, e quase ninguém usa.
+## A falha
 
-**Nenhum evento chegou.** O problema não é a mensagem, é o webhook. Confira se o campo de mensagens está assinado e se o seu endpoint responde. A mensagem pode ter sido entregue perfeitamente sem você saber.
+Quando a mensagem não pode ser entregue, o webhook traz um único evento, com o motivo. No vídeo sobre n8n: *"se a mensagem que você enviou ocorreu algum erro que não pôde ser entregue, a meta te envia um único web hook de falha, explicando qual foi a falha."*
 
-**Só o primeiro chegou.** A mensagem saiu e a entrega ficou pendente. Acontece com aparelho desligado ou sem rede, e o segundo evento pode chegar bem depois, quando a pessoa reconectar. Não trate como falha.
+Dois exemplos que aparecem nos vídeos do canal:
 
-**Chegaram o primeiro e o segundo, e o terceiro nunca vem.** Comportamento normal. A pessoa provavelmente tem a confirmação de leitura desativada. Não dá para distinguir isso de "não leu", e é por isso que **leitura não serve como métrica de negócio**.
+**Destinatário fora da janela de 24 horas.** No vídeo de primeiros passos, a falha chega com o mesmo identificador do envio, dizendo que se passaram mais de 24 horas desde o último contato daquele usuário.
 
-**Chegou um evento de falha.** É o desfecho: não vem entrega depois. O motivo está dentro, e [é o campo que mais se perde no caminho](/a-mensagem-falhou-e-nao-sei-por-que).
+**Número que não existe.** No vídeo de disparo em massa, uma planilha com um número inventado de propósito resulta num envio com erro: *"aqui deu um erro porque é aquele número que eu falei para vocês que não existe."*
 
-## O identificador é a chave de tudo
+::video: dIIkttPeBS0 | Em 13:36 ele envia para quem não falou com ele, a chamada devolve identificador normalmente, e em 14:15 a falha chega no webhook com o motivo.
 
-O status não traz o conteúdo da mensagem. Traz o identificador dela e a situação.
+## A resposta do envio só diz que a Meta aceitou
 
-Isso significa que, sem guardar o identificador que a chamada de envio devolveu, **você recebe um evento e não sabe a que ele se refere.** É a informação mais barata de guardar e a mais sentida quando falta.
+A documentação da Datafy descreve a resposta padrão de envio assim: ela indica que a Meta aceitou a mensagem, não que foi entregue, e o status real chega pelo webhook.
 
-O padrão que funciona:
+```json
+{
+  "messaging_product": "whatsapp",
+  "contacts": [{ "input": "5511999999999", "wa_id": "5511999999999" }],
+  "messages": [{ "id": "wamid.HBgLMTY0Nj..." }]
+}
+```
 
-**No envio**, grave o identificador junto com o destinatário, o conteúdo e o horário.
+Guarde o `id`. É ele que aparece nos eventos de status e liga cada evento à mensagem enviada.
 
-**No status**, ache a mensagem por esse identificador e atualize a situação dela.
+## O status não traz o conteúdo
 
-**Separe os estados no seu painel.** Enviada e entregue precisam ser colunas diferentes. Juntar as duas é o que faz relatório mentir, porque [o envio responde sucesso mesmo quando vai falhar](/mandei-para-numero-que-nao-existe-e-nao-deu-erro).
+No tutorial de atendimento do canal, ao olhar os payloads, o Israel destaca: *"quando você envia a mensagem pela API, a meta ela vai retornar para você apenas o status da mensagem. Ele não vai trazer para você o conteúdo da mensagem. Ele vai trazer apenas o ID da mensagem com o status."*
 
-## A métrica que muda a conversa
+Ou seja, o conteúdo do que você enviou é você que guarda, no momento do envio.
 
-Com os status guardados, você consegue calcular o número que importa: **taxa de entrega**, e não taxa de envio.
+## Status chegam no mesmo webhook das mensagens
 
-A diferença aparece na hora de uma campanha. Dez mil enviados, no sentido de "dez mil requisições aceitas", não diz nada. Dez mil entregues é outro assunto. E a fatia que falhou se divide em causas diferentes, cada uma pedindo uma ação: número inexistente pede limpar base, limite por pessoa pede esperar, e [a recusa por saúde do ecossistema pede parar com aquele contato](/minha-campanha-travou-no-meio).
-
-Sem status, todas essas fatias ficam invisíveis e o relatório mostra sucesso.
-
-## Cuidado ao processar
-
-**Eles chegam fora de ordem, às vezes.** Não assuma sequência. Guarde a situação mais avançada que você viu, e não sobrescreva "lida" com "entregue" porque o segundo chegou depois.
-
-**Eles podem repetir.** Reentrega acontece. Processar duas vezes o mesmo status é inofensivo se a sua atualização for idempotente, e vira problema se você conta eventos em vez de estados.
-
-**Eles chegam em lote.** Um payload pode trazer vários status juntos. Percorra o vetor inteiro, e não leia só o primeiro. É um erro comum e silencioso.
-
-**Nunca responda a eles.** É a regra que vale mais que todas as outras desta página. [Um fluxo que responde status multiplica](/laco-de-webhook-derruba-numero).
-
-## Quanto isso custa
-
-Nada. **Status não é cobrado**, e webhook recebido não gera custo.
-
-O que é cobrado é a mensagem que você envia, e só quando ela é entregue. Isso tem uma consequência prática boa: **mensagem que falha não entra na fatura**. Se a sua conta veio maior que o esperado, o lugar de olhar é a categoria dos templates, não o volume de status.
+Os status vêm pelo evento `messages`, junto com as mensagens dos clientes. Um fluxo que responde a tudo que chega responde aos status, e isso gera um laço. [Como evitar está aqui](/laco-de-webhook-derruba-numero).
 
 ## Perguntas frequentes
 
-### Recebo três eventos por mensagem. Está duplicando?
+### A chamada devolveu um id. A mensagem chegou?
 
-Não. São enviada, entregue e lida. Duplicação é quando o **mesmo** status chega duas vezes, o que é outra coisa e se resolve com idempotência.
+Não necessariamente. O id significa que a Meta aceitou. A entrega ou a falha chega pelo webhook.
 
-### Por que a mensagem que eu envio não volta como mensagem?
+### Por que não recebi o status read?
 
-Porque você já sabe que a enviou. O que volta dela é status. Em coexistência, mensagem enviada **pelo celular** volta por um evento próprio, que é outro caso.
+Porque ele só chega se a pessoa tiver a confirmação de leitura ativada.
 
-### Dá para saber se a pessoa leu, sempre?
+### Quantos eventos chegam quando a mensagem falha?
 
-Não. Se ela desativou a confirmação de leitura, esse status não chega. E não dá para distinguir isso de não ter lido.
+Um, explicando a falha.
 
-### Quanto tempo demora entre enviada e entregue?
+### O status traz o texto que eu enviei?
 
-Costuma ser rápido, e não é garantido. Aparelho desligado atrasa indefinidamente. Trate como assíncrono.
+Não. Traz o identificador da mensagem e a situação.
 
-### O que faço com o status de falha?
+### Onde vejo os status de uma mensagem específica?
 
-Grave o motivo e trate por tipo. Reenviar sem olhar o motivo é o que transforma problema de entrega em problema de conta.
-
-### Preciso guardar todos os status?
-
-Guarde a situação atual de cada mensagem, e o histórico se você quiser medir tempo de entrega. O mínimo útil é ter enviada e entregue como estados separados.
+No seu webhook, pelo identificador, ou no log em tempo real do painel da Datafy.
 
 ## Como decidir
 
-Se você faz atendimento, os status importam pouco no dia a dia e continuam valendo para diagnóstico: quando alguém disser que não recebeu, é neles que está a resposta.
+Guarde o `id` de cada envio e atualize a situação da mensagem conforme os status chegam. Trate `sent` e `delivered` como coisas diferentes e não conte `read` como garantido. E filtre os status antes de qualquer lógica que responde.
 
-Se você dispara, eles são a única fonte de verdade sobre a sua operação. Sem guardar, o seu relatório conta quantas requisições foram aceitas, o que não é a mesma coisa que quantas mensagens chegaram.
-
-Comece pelo mínimo: guarde o identificador no envio, e atualize a situação quando o status chegar. Duas colunas, e você passa a saber o que está acontecendo.
-
-::cta: Olhe uma métrica no seu painel agora | Você tem taxa de entrega ou só taxa de envio? Se as duas forem o mesmo número, você não está guardando status, e o seu relatório está contando requisições aceitas em vez de mensagens entregues.
+::cta: Veja os três chegando | Envie uma mensagem para o seu próprio número pela API, abra o log em tempo real do painel e acompanhe sent, delivered e read da mesma mensagem.
 
 ## Leia também
-- [O laço de webhook que derruba número](/laco-de-webhook-derruba-numero)
-- [A mensagem falhou e eu não sei por quê](/a-mensagem-falhou-e-nao-sei-por-que)
-- [Mandei para um número que não existe e não deu erro](/mandei-para-numero-que-nao-existe-e-nao-deu-erro)
-- [Ver o payload cru das mensagens em tempo real](/ver-payload-das-mensagens-em-tempo-real)
+- [O laço de webhook que pode bloquear o seu número](/laco-de-webhook-derruba-numero)
+- [Enviar e receber a primeira mensagem](/primeira-mensagem-api-oficial-whatsapp)
+- [Como fazer disparo em massa](/disparo-em-massa-api-oficial-whatsapp)
+- [Ver o payload das mensagens em tempo real](/ver-payload-das-mensagens-em-tempo-real)

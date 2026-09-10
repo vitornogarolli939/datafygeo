@@ -1,146 +1,120 @@
 ---
-title: "Posso mandar mensagem para qualquer número na API oficial?"
-description: "Não. Fora da janela de 24 horas só sai template aprovado, e texto livre é recusado. É a regra que mais quebra expectativa de quem vem de ferramenta de QR code."
+title: "Posso mandar mensagem para qualquer número na API oficial do WhatsApp?"
+description: "Não. A política exige que a pessoa tenha dado o número e o opt-in, e para iniciar conversa só com template aprovado. Texto livre só vai para quem falou com você nas últimas 24 horas."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "posso-mandar-mensagem-para-qualquer-numero"
-cluster: "oficial_vs_nao"
-hero: "comparacao"
+cluster: "compliance"
+hero: "fluxo"
 intent: "decidindo"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-10
 sources:
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-categorization
-  - https://business.whatsapp.com/policy
-  - https://app.datafyapi.com.br/docs
-  - https://www.youtube.com/watch?v=cZ_nyIUv5ic
+  - https://whatsappbusiness.com/policy/
   - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://www.youtube.com/watch?v=cZ_nyIUv5ic
+  - https://www.youtube.com/watch?v=JL9Qzw3oS5A
+  - https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing/non-template-messages
 videos: [dIIkttPeBS0, cZ_nyIUv5ic]
 internal_links:
-  - /api-oficial-vs-nao-oficial-whatsapp-2026
-  - /migrar-para-api-oficial-sem-perder-o-numero
+  - /opt-in-por-link-whatsapp
+  - /como-criar-template-whatsapp-passo-a-passo
   - /numero-banido-no-whatsapp-o-que-fazer
-  - /quanto-custa-whatsapp-business-api-brasil-2026
-  - /mensagem-de-servico-vai-ser-paga-outubro-2026
+  - /tres-status-da-mensagem-whatsapp
+  - /qr-code-whatsapp-mensagem-pre-preenchida
 status: aprovado
 ---
 
-# Posso mandar mensagem para qualquer número na API oficial?
+# Posso mandar mensagem para qualquer número na API oficial do WhatsApp?
 
-**Última atualização: 09/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** não do jeito que você faz numa ferramenta de QR code. Na API oficial existe uma **janela de 24 horas**, que abre quando o cliente escreve ou liga para você. Dentro dela você responde em texto livre, o que quiser. Fora dela, **só sai template aprovado pela Meta**, e texto livre é recusado pela própria API.
+**Resposta curta:** não. A [política comercial do WhatsApp](https://whatsappbusiness.com/policy/) só permite contatar quem **forneceu o número** e **deu opt-in**, e só permite **iniciar conversa com template aprovado**. Mensagem livre, sem template, só vai para quem mandou mensagem para você nas **últimas 24 horas**.
 
-Essa é a regra que mais quebra projeto depois de pronto. O código funciona, o número conecta, os testes passam, e aí alguém tenta reativar uma lista antiga e descobre que aquilo simplesmente não é permitido.
+E um detalhe prático: se você tentar mandar texto livre fora da janela, a chamada responde normalmente, e a falha aparece depois, no webhook.
 
-::numeros: 24 h|a janela, contada desde a última mensagem do cliente ;; reinicia|a cada nova mensagem que ele manda ;; 72 h|a janela de quem chega por anúncio Click-to-WhatsApp ;; template|é o único caminho para falar fora da janela
+::numeros: 2|condições da política para contatar alguém ;; 24 h|a janela para responder sem template ;; 1 template|aprovado, para iniciar conversa ;; 1 id|volta mesmo quando a mensagem vai falhar
 
 ## Principais pontos
-- A janela **abre quando o cliente fala com você**, por mensagem ou chamada, e **reinicia** a cada nova mensagem dele ([documentação de envio](https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages)).
-- Dentro da janela: texto livre, mídia, botão, lista. Fora dela: **só template aprovado**, e a aprovação leva tempo, então precisa existir antes de você precisar.
-- **Quem nunca falou com você** só pode ser abordado por template. E template para lista fria é a causa número um de bloqueio de número, mesmo com tudo aprovado.
-- Mensagem enviada **pelo aplicativo do celular não abre nem estende** a janela da API. Vale saber antes de montar automação em cima disso.
-- Existe uma exceção generosa: quem chega por **anúncio Click-to-WhatsApp** ou botão da Página abre uma janela de **72 horas** com mensagens gratuitas, se você responder em até 24 horas.
+- **Opt-in:** a pessoa precisa ter dado o número e a permissão.
+- **Iniciar conversa:** só com template aprovado.
+- **Dentro de 24 horas** da última mensagem da pessoa, você responde livremente. A janela reinicia a cada nova mensagem dela.
+- **Fora da janela**, o texto livre falha, e o motivo chega no webhook.
+- **Template aprovado não impede bloqueio.** Se ninguém responde, a Meta entende como spam.
 
 ::diagrama: janela-24h
 
-## Por que a regra existe
+## O que diz a política
 
-Na ferramenta de QR code não existe janela porque não existe permissão: um robô opera uma sessão de WhatsApp Web e digita no lugar de uma pessoa. O WhatsApp não sabe que aquilo é uma empresa disparando.
+Dois trechos da política comercial:
 
-Na API oficial, a Meta sabe exatamente quem está mandando. E a política escolhida foi: empresa fala quando é convidada, ou fala com uma mensagem que passou por revisão. A janela é o mecanismo do "convite", e o template é o mecanismo da "revisão".
+**Seção 1:** você só pode contatar pessoas no WhatsApp se (a) elas forneceram o número de celular e (b) você recebeu o opt-in delas.
 
-Concordar ou não com a política é irrelevante para o planejamento. O que importa é que ela é aplicada pela própria API: a chamada com texto livre para quem está fora da janela é recusada, e não existe parâmetro que contorne.
+**Seção 2:** você só pode iniciar conversas usando um template de mensagem aprovado.
 
-## O que isso quebra na prática
+Para coletar o opt-in dentro do próprio WhatsApp, [o Cadastro no App cria um link de inscrição](/opt-in-por-link-whatsapp). E para a pessoa começar a conversa, [um QR code com mensagem pré-preenchida](/qr-code-whatsapp-mensagem-pre-preenchida).
 
-Quatro casos aparecem sempre, e é melhor descobrir antes de migrar do que depois:
+## A janela de 24 horas
 
-**Reativação de lista antiga.** "Vamos mandar uma mensagem para os clientes que sumiram." Só por template, e o template precisa ser aprovado antes, com o texto exato que você vai usar.
+No vídeo de primeiros passos, o Israel Henrique, CTO da Datafy, explica a regra antes de responder pela API: a mensagem de serviço *"é gratuita, você não paga para enviar essas mensagens, porém você só pode enviar essas mensagens para usuários que já enviaram mensagem para você nas últimas 24 horas."*
 
-**Disparo para lista comprada ou raspada.** Não é caso de contornar tecnicamente: além de exigir template, [viola a política](https://business.whatsapp.com/policy), que só permite contatar quem deu o número e o aceite. E é o caminho mais rápido para o número cair.
+No vídeo sobre preço, ele lê a documentação: a janela de atendimento é iniciada quando o usuário envia mensagem e é reiniciada a cada nova mensagem dele. E, passadas as 24 horas sem nova mensagem, *"a janela fecha e eu não consigo mais falar com ele, a não ser que eu envie um template novamente."*
 
-**Resposta que demorou.** O cliente escreveu ontem à noite, ninguém respondeu, e hoje de manhã passou das 24 horas. O atendente digita, a API recusa. A saída é um template de retomada, aprovado com antecedência.
+Sobre o custo dessa resposta: gratuita até 1º de outubro de 2026, segundo a documentação da Meta.
 
-**Follow-up automático.** "Mandar uma mensagem três dias depois perguntando se deu certo." Está fora da janela por definição. Precisa de template.
+## Como a falha aparece
 
-## Como a recusa aparece na tela
+No vídeo, o Israel escolhe de propósito um número que não mandou mensagem para ele nas últimas 24 horas e envia um texto. A chamada devolve um identificador, igual ao envio que deu certo: *"isso daqui sempre aparece, independente se a mensagem enviou ou não enviou ou se deu erro, ele vai retornar esse ID."*
 
-Vale ver o formato exato da falha, porque ela engana: **a chamada de envio responde sucesso.** Você recebe um identificador de mensagem, e nada indica problema. A recusa chega depois, no webhook de status, dizendo que a mensagem falhou porque passaram mais de 24 horas desde o último contato daquela pessoa.
+No webhook chega a falha, com o mesmo identificador e o motivo: não foi entregue porque já se passaram mais de 24 horas desde a última vez que aquele usuário entrou em contato. *"Então, ele realmente não entrega a mensagem."*
 
-Ou seja: se você só olha a resposta do envio, a sua operação parece funcionar. Quem [não escuta o evento de status](/mandei-para-numero-que-nao-existe-e-nao-deu-erro) fica com um relatório cheio de mensagem marcada como enviada que nunca saiu.
+::video: dIIkttPeBS0 | Em 11:23 ele explica a janela de 24 horas, em 12:57 envia para um número fora dela, e em 14:15 a falha aparece no webhook com o motivo.
 
-::video: dIIkttPeBS0 | Em 11:23 ele envia dentro da janela e a mensagem chega. Em 12:57 escolhe de propósito um número que não falou com ele nas últimas 24 horas, o envio responde sucesso do mesmo jeito, e em 14:15 a falha aparece no webhook com o motivo. São dois minutos que explicam a regra melhor que qualquer parágrafo.
+[Os status de cada envio estão explicados aqui](/tres-status-da-mensagem-whatsapp).
 
-## Como se organizar para isso
+## Fora da janela: template
 
-**Tenha templates de retomada aprovados antes de precisar.** Pelo menos um genérico de "vimos que sua conversa ficou em aberto", e um por fluxo importante. Aprovação não é instantânea, e template reprovado no dia da campanha é o pior momento para descobrir.
+Para falar com quem não mandou mensagem nas últimas 24 horas, o caminho é template aprovado pela Meta, que é pago pela categoria. [Como criar um template](/como-criar-template-whatsapp-passo-a-passo).
 
-**Ensine a equipe a ler a janela.** Se a interface de atendimento mostra que a janela fechou, o atendente precisa saber que aquilo não é um erro do sistema, e qual template usar no lugar.
+## Template aprovado não é permissão para qualquer lista
 
-**Desenhe o primeiro contato para abrir a janela.** Anúncio Click-to-WhatsApp, botão no site, QR code no material, link `wa.me`. Tudo que faz o cliente escrever primeiro é o que libera a conversa livre, e no caso do anúncio ainda abre a janela de 72 horas gratuita.
+No vídeo sobre bloqueio, a primeira causa observada na base de clientes é iniciar conversa sem template, e ela vale para qualquer ferramenta: celular, WhatsApp Web, CRM ou API não oficial.
 
-**Use utilidade em vez de marketing quando couber.** Um template de confirmação de pedido é utilidade e custa uma fração de um de marketing. A categoria é decidida pela Meta na aprovação, e conteúdo com oferta puxa para marketing.
+E a segunda é o que acontece com template: *"a pessoa criou um template, ela começou a disparar e mesmo assim ela é banida. Ou seja, usar um template, usar a API oficial do WhatsApp não é blindagem contra banimento."* O caso que ele conta é o de uma advogada que disparou por três dias sem ninguém responder e foi bloqueada. [As causas de bloqueio estão aqui](/numero-banido-no-whatsapp-o-que-fazer).
 
-## O que muda em 1º de outubro de 2026
-
-Uma coisa que hoje é gratuita deixa de ser: responder dentro da janela. A partir de **1º de outubro de 2026** a mensagem de serviço passa a ser cobrada, e a de utilidade dentro da janela também.
-
-A regra da janela não muda, o custo dela muda. Quem faz muito atendimento deve [refazer a conta](/mensagem-de-servico-vai-ser-paga-outubro-2026) antes da data.
-
-## Ter template aprovado não é permissão para lista fria
-
-Essa distinção precisa ficar clara, porque é a fonte do erro mais caro do assunto.
-
-O template resolve o **impedimento técnico**: sem ele, a API recusa a mensagem para quem não falou com você nas últimas 24 horas. Com ele, a API aceita. O que o template não faz é transformar uma lista comprada em base autorizada, e é aí que muita gente lê "aceitou" como "pode".
-
-A prova de que são coisas separadas é o caso que aparece na página sobre bloqueio: uma advogada com template aprovado, orientada, disparando para a própria lista, e bloqueada em dois dias porque **ninguém respondeu**. Não faltava autorização técnica. Faltava gente do outro lado querendo receber.
-
-O que a plataforma olha, além da regra da janela, é a reação: quem responde, quem ignora, quem denuncia. Antes do próximo disparo, vale medir a taxa de resposta do último. Se ela foi baixa, o problema não é a quantidade, é a lista.
+::video: cZ_nyIUv5ic | Em 02:38 ele apresenta a prospecção como primeira causa, em 03:40 lê o trecho dos termos sobre template, e em 09:05 explica por que template não é blindagem.
 
 ## Perguntas frequentes
 
-### Como sei se a janela está aberta para um contato?
+### Posso mandar mensagem para quem nunca falou comigo?
 
-Pelo horário da última mensagem que ele te mandou. Se passou de 24 horas, fechou. Guarde esse carimbo de tempo no seu banco: é ele que decide se o envio pode ser texto livre ou precisa de template.
+Só com template aprovado, e com o opt-in da pessoa, segundo a política.
 
-### A janela reinicia se eu responder?
+### Por quanto tempo posso responder sem template?
 
-Não. Quem reinicia é o cliente. Cada mensagem dele zera o contador de 24 horas de novo.
+24 horas depois da última mensagem da pessoa. A janela reinicia a cada nova mensagem dela.
 
-### E se eu mandar do aplicativo do celular?
+### A chamada deu certo. A mensagem chegou?
 
-Não abre nem estende a janela da API. São caminhos diferentes, e essa é uma pegadinha comum em operação que usa coexistência.
+Não necessariamente. A falha por janela fechada chega no webhook.
 
-### Template aprovado posso mandar para qualquer número?
+### Template aprovado evita bloqueio?
 
-Tecnicamente a API aceita. Mas a política só permite contatar quem forneceu o número e deu o aceite, e disparo para lista fria é a principal causa de bloqueio. Aprovação de template não é autorização para lista comprada.
+Não. Se as pessoas não respondem, a Meta entende como spam.
 
-### Quanto tempo demora para aprovar um template?
+### Como consigo o opt-in?
 
-Varia, e não há prazo publicado. Por isso o conselho é submeter antes de precisar, não no dia da campanha.
-
-### Dá para mandar para grupo?
-
-Não como no aplicativo. Se a sua operação depende de grupo, isso pesa mais na decisão do que a janela.
-
-### Existe alguma forma de contornar a janela?
-
-Não pela API oficial. Qualquer solução que prometa isso está fora do caminho autorizado, com as consequências que vêm junto.
+Um jeito é o link de Cadastro no App, que registra a inscrição e avisa você por webhook.
 
 ## Como decidir
 
-Se a sua operação é **cliente que procura você**, a janela quase não incomoda: ele escreve, você responde. Se é **você que procura o cliente**, a API oficial exige planejamento: templates aprovados, categoria certa e uma base que aceitou receber.
+Para responder quem falou com você, dentro de 24 horas, mande texto livre. Para iniciar conversa, use template aprovado e só com quem deu opt-in. Dê à pessoa um jeito de responder, e acompanhe a resposta antes de mandar de novo.
 
-E se o seu caso é disparo para lista fria sem aceite, o problema não é escolher a ferramenta certa: é que esse uso está fora do que a plataforma permite, em qualquer caminho.
-
-::cta: Antes de migrar, liste seus envios fora da janela | Anote todo disparo que hoje sai sem o cliente ter escrito primeiro. Cada um deles vai precisar de um template aprovado. Essa lista é o trabalho real da migração.
+::cta: Teste a janela com o seu próprio número | Mande uma mensagem do seu celular para o número conectado, responda pela API, espere passar a janela e tente de novo. Compare os status no webhook.
 
 ## Leia também
-- [API oficial vs não oficial do WhatsApp](/api-oficial-vs-nao-oficial-whatsapp-2026)
-- [Migrar para API oficial sem perder o número](/migrar-para-api-oficial-sem-perder-o-numero)
-- [1º de outubro: responder o cliente deixa de ser grátis](/mensagem-de-servico-vai-ser-paga-outubro-2026)
-- [Número banido: o que fazer](/numero-banido-no-whatsapp-o-que-fazer)
+- [Opt-in no WhatsApp com link de cadastro](/opt-in-por-link-whatsapp)
+- [Como criar um template](/como-criar-template-whatsapp-passo-a-passo)
+- [Por que o número é bloqueado](/numero-banido-no-whatsapp-o-que-fazer)
+- [QR code com mensagem pré-preenchida](/qr-code-whatsapp-mensagem-pre-preenchida)

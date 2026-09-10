@@ -1,6 +1,6 @@
 ---
-title: "Como sincronizar os contatos e o histórico depois de conectar o número"
-description: "A sincronização não é automática, exige um evento assinado antes, e tem prazo de 24 horas. Passou disso, só desconectando e reconectando."
+title: "Como sincronizar os contatos e o histórico do WhatsApp Business com a API"
+description: "Uma chamada por tipo, uma vez só, em até 24 horas depois de conectar. Como os contatos e as conversas chegam no webhook, e as armadilhas de fase, duplicata e timestamp."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "sincronizar-contatos-api-oficial-whatsapp"
 cluster: "coexistencia"
@@ -9,147 +9,153 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-10
 sources:
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/overview
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/business-scoped-user-ids/
-  - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=HQm5UuW50bM
   - https://www.youtube.com/watch?v=dIIkttPeBS0
+  - https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/
+  - https://app.datafyapi.com.br/docs
+  - https://www.youtube.com/watch?v=8xA-8z1YW98
 videos: [HQm5UuW50bM, dIIkttPeBS0]
 internal_links:
-  - /como-leio-o-historico-de-conversa-pela-api
   - /coexistencia-whatsapp-api-oficial-app-celular
   - /como-conectar-numero-api-oficial-whatsapp
-  - /migrar-para-api-oficial-sem-perder-o-numero
-  - /o-telefone-esta-sumindo-do-webhook
+  - /webhook-whatsapp-cloud-api-como-receber-mensagens
+  - /mensagem-do-celular-nao-aparece-no-sistema
+  - /criar-atendimento-whatsapp-do-zero
 status: aprovado
 ---
 
-# Como sincronizar os contatos e o histórico depois de conectar o número
+# Como sincronizar os contatos e o histórico do WhatsApp Business com a API
 
-**Última atualização: 09/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** ela **não acontece sozinha**. Conectar o número em coexistência não traz contato nem conversa: você precisa de três coisas, na ordem, e **dentro de 24 horas** a partir da conexão.
+**Resposta curta:** a sincronização **não é automática**. Depois de conectar o número em coexistência, você precisa ter autorizado o compartilhamento no celular, assinar os eventos `history` e `smb_app_state_sync` no webhook, e fazer uma chamada para `POST /v1/{phone_number_id}/smb_app_data`, uma para contatos e outra para histórico.
 
-Marcar o compartilhamento no celular, assinar o evento de sincronização no webhook, e fazer a chamada que dispara. Errar a ordem, ou deixar para depois, custa a janela inteira: passadas as 24 horas, a documentação da Meta é explícita de que o número precisa ser desconectado e o fluxo refeito.
+São duas regras que não perdoam: **24 horas** a partir da conexão, e **uma vez só** por tipo. Perdeu a janela ou errou, só refazendo a conexão.
 
-::numeros: 24 h|o prazo, contado a partir da conexão ;; 3 passos|e a ordem entre eles importa ;; 180 dias|de histórico, quando dá certo ;; 1 vez|é quantas vezes isso acontece na vida do número
+::numeros: 24 h|a partir da conexão para disparar ;; 1 vez|por tipo de sincronização ;; 180 dias|de histórico, em três fases ;; 14 dias|de mídia do histórico com arquivo
 
 ## Principais pontos
-- **É uma chamada de API**, e não um processo automático. Conectar não sincroniza nada.
-- **O evento de sincronização precisa estar assinado antes.** Sem ele, a chamada responde sucesso e nada aparece.
-- **A decisão de compartilhar é tomada no celular**, durante a conexão, e passa rápido. Quem não marca não recupera nada.
-- **Contatos chegam praticamente na hora. Conversas demoram bem mais**, e a Meta não crava prazo.
-- Isso acontece **uma vez só** na vida daquele número. Depois disso, histórico é o que você guardar do tráfego novo.
+- **Pré-requisito no celular:** durante a conexão, o cliente precisa autorizar o compartilhamento. Se recusou, nada é enviado.
+- **Pré-requisito no webhook:** os campos `history` e `smb_app_state_sync` assinados antes de disparar.
+- **Contatos chegam praticamente na hora.** No vídeo, o histórico pode levar até cerca de 30 minutos para começar a chegar.
+- **O histórico vem em fases e pedaços fora de ordem, e com duplicatas.** Junte por conversa, remova repetidas pelo `wamid` e ordene por horário.
+- **Contatos usam timestamp em milissegundos; histórico usa segundos.** Tratar os dois igual quebra as datas.
 
 ::diagrama: coexistencia-limites
 
-## Por que isso existe, e por que só uma vez
+## Antes de disparar
 
-Coexistência é o modo em que o número continua funcionando no aplicativo do celular **e** na API ao mesmo tempo. O atendente responde pelo aparelho, a automação responde pela API, e os dois lados enxergam a mesma conversa.
+**1. O compartilhamento foi autorizado no celular.** No fluxo de conexão, o aplicativo pergunta se você quer compartilhar o histórico. Marcando, dá para recuperar conversas e contatos. Se marcou que não, o caminho é refazer a conexão.
 
-Quando você conecta, existe um conteúdo que já estava no celular e não está na nuvem: a agenda e as conversas antigas. A sincronização é a ponte, feita uma vez, no momento da entrada. Não é um endpoint de consulta de histórico, e [esse endpoint não existe](/como-leio-o-historico-de-conversa-pela-api): depois da entrada, o que você tem é o que você guardar do que chega.
+**2. Os eventos estão assinados.** No painel da Datafy, na aba de webhooks do número, marque `history` e `smb_app_state_sync`. No vídeo, o Israel Henrique, CTO da Datafy, marca o evento de contatos antes de qualquer chamada: *"você tem que marcar um evento específico."*
 
-Por isso o prazo curto faz sentido do ponto de vista de quem desenhou, e por isso ele é tão caro para quem descobre tarde.
+**3. Você está dentro das 24 horas.** Na fala dele: *"isso tem que ser feito em até 24 horas após você fazer a conexão. Se passou de 24 horas, não dá mais. Aí tem que desconectar e conectar de novo."* A documentação da Meta diz o mesmo: sem sincronizar em 24 horas, o cliente precisa ser desconectado e refazer o fluxo.
 
-## Os três passos, na ordem
+## A chamada
 
-**1. No celular, aceitar compartilhar as conversas.**
+Contatos:
 
-Acontece durante a conexão, numa tela do aplicativo, e é fácil passar batido. Marcando, você habilita a recuperação do histórico e dos contatos. Não marcando, não existe segunda chance: a correção é desconectar e refazer o fluxo. Na formulação do Israel Henrique, CTO da Datafy: *"se você por acidente marcar que não quer compartilhar, é só fazer o processo novamente."*
+```
+POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/smb_app_data
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json
 
-**2. Assinar o evento de sincronização no webhook.**
+{
+  "messaging_product": "whatsapp",
+  "sync_type": "smb_app_state_sync"
+}
+```
 
-Existe um campo de webhook próprio para isso, separado do de mensagens, e é por ele que contatos e conversas chegam. Este é o passo que produz o fracasso mais frustrante do processo: se ele não estiver marcado, o passo 3 **responde sucesso** e nada aparece nunca. Você fica esperando um dado que não tem por onde entrar.
+Histórico de conversas, trocando só o tipo:
 
-**3. Fazer a chamada que dispara.**
+```json
+{
+  "messaging_product": "whatsapp",
+  "sync_type": "history"
+}
+```
 
-É esse passo que quase ninguém sabe que existe. Nas palavras dele: *"você conectou o telefone, com webhook, tá marcado, agora tem que avisar a meta que você quer os contatos."*
+A resposta confirma o aceite. Os dados chegam depois, pelo webhook:
 
-Contatos e histórico são pedidos **separadamente**, indicando no corpo da requisição o que você quer. Dá para pedir os dois.
+```json
+{
+  "messaging_product": "whatsapp",
+  "request_id": "7a3b2c1d-e5f6-4a8b-9c0d-1e2f3a4b5c6d",
+  "success": true
+}
+```
 
-::video: HQm5UuW50bM | Quatro minutos, e o único material em português que mostra isso funcionando. Em 00:30 ele marca o evento no webhook, em 01:05 explica o prazo de 24 horas, em 02:38 dispara a sincronização e os contatos aparecem na hora, e em 03:40 mostra a diferença de tempo do histórico.
+**Guarde o `request_id`.** É o identificador que você passa ao suporte da Meta se a entrega falhar. No vídeo, o conselho é o mesmo: *"é bom salvar esse valor aqui caso dê algum problema, que daí você pode entrar em contato com a meta."*
 
-**Guarde o identificador que a chamada devolve.** Se a sincronização não vier, é com ele que se abre suporte com a Meta. É o tipo de coisa que ninguém anota e todo mundo precisa depois.
+::video: HQm5UuW50bM | Quatro minutos: em 00:30 ele marca o evento, em 01:05 explica o prazo de 24 horas, em 02:38 dispara a sincronização e os contatos aparecem no webhook, e em 03:40 fala do tempo do histórico.
 
-## O que chega, e quando
+## Como os contatos chegam
 
-| O que | Quando chega | Limite |
-|---|---|---|
-| Contatos da agenda | Praticamente na hora | Os contatos salvos naquele aparelho |
-| Conversas | Bem mais devagar | Últimos **180 dias** |
-| Conversas de grupo | Não chegam | Não são sincronizadas |
-| Mídia do histórico | Só parcialmente | Identificadores só para mensagens dos últimos **14 dias** |
+Pelo campo `smb_app_state_sync`, geralmente num único webhook com todos os contatos no array `state_sync`. Contas grandes podem gerar vários, sem ordem garantida.
 
-O descompasso de tempo entre contatos e conversas é a causa mais comum de gente refazer o processo sem necessidade: pede o histórico, não vê nada em dois minutos, conclui que falhou, desconecta e reconecta, e às vezes queima a janela fazendo isso.
+Cada contato vem com uma ação: `add` para adicionar ou atualizar, `remove` para remover.
 
-A Meta não publica um prazo fixo. Ela diz que a sincronização pode levar vários minutos, dependendo do tamanho do histórico, da velocidade da conexão e da rapidez com que você consome os webhooks. Na prática, a espera do histórico é de dezenas de minutos, não de segundos.
+**O timestamp dos contatos está em milissegundos, com 13 dígitos.** O do histórico está em segundos, com 10. Converter os dois com a mesma função gera datas erradas em um deles.
 
-**Grupo não vir é o segundo susto.** Se o seu atendimento usa grupos, esse conteúdo continua existindo só no aparelho, e vale exportar o que for necessário antes de qualquer migração.
+Depois da sincronização inicial, as alterações nos contatos do aplicativo continuam chegando por esse mesmo evento, sem chamar o endpoint de novo.
 
-## Como receber isso do lado do seu sistema
+## Como o histórico chega
 
-Os dados chegam pelo webhook, em lotes, e não como uma resposta única. Três cuidados que evitam retrabalho:
+Pelo campo `history`, em vários webhooks assíncronos. Cada um pode carregar muitas mensagens:
 
-**Trate como assíncrono.** Não é uma requisição que devolve uma lista. É um fluxo de eventos que começa depois e pode durar. O seu endpoint precisa aguentar rajada.
+```
+webhook (1 POST)
+└── value.history[]
+    └── threads[]       1 thread = 1 conversa com 1 contato
+        └── messages[]  mensagens daquela conversa
+```
 
-**Guarde o payload cru antes de interpretar.** Se você descobrir depois que precisava de um campo que ignorou, sem o bruto não há como reprocessar, e a sincronização não se repete.
+**Fases.** São três, com o dia da conexão como referência: fase 0 do dia 0 ao 1, fase 1 do dia 1 ao 90, fase 2 do dia 90 ao 180. **Na prática as fases se sobrepõem**: mensagem de qualquer data pode aparecer em qualquer fase. Não use a fase para deduzir período.
 
-**Use a chave certa desde o começo.** O identificador da pessoa que vem nesses eventos é da **relação entre ela e a sua conta**, não da pessoa. Guardar isso como chave composta, junto com o número da sua conta, evita uma migração dolorosa depois. [O detalhe da modelagem está aqui](/o-telefone-esta-sumindo-do-webhook).
+**Pedaços.** Cada fase pode vir em vários pedaços (`chunk_order`), fora de ordem. O campo `progress` vai de 0 a 100, e `progress: 100` na última fase indica histórico completo.
 
-## O erro que faz perder a janela
+**Duplicatas.** O mesmo `thread.id` aparece em vários webhooks, e a mesma mensagem pode vir repetida. A regra: junte as mensagens de todos os webhooks pelo `thread.id`, remova as repetidas pelo `wamid`, e ordene pelo `timestamp`.
 
-Vale listar em ordem de frequência, porque os quatro custam a mesma coisa:
+**Direção.** `history_context.from_me: true` é mensagem enviada pela empresa. Ausente ou falso, recebida.
 
-**Deixar para depois.** É o mais comum. O time conecta na sexta, planeja integrar na segunda, e o prazo venceu no sábado.
+**Mídia.** Não vem dentro das conversas. Aparece como `type: "media_placeholder"`, sem conteúdo, e o arquivo chega em webhooks separados, casados pelo `wamid`. Só mídias dos últimos cerca de 14 dias têm arquivo, o que bate com a documentação da Meta.
 
-**Assinar o evento depois de disparar.** A chamada responde sucesso, e o dado não tem por onde chegar.
-
-**Não marcar o compartilhamento no celular.** Passa rápido, e alguém clica em avançar sem ler.
-
-**Reconectar no meio.** Desconectar e reconectar reinicia o processo, e vale como recuperação, com o custo de refazer tudo.
-
-A recomendação prática, para quem vai migrar de verdade: **trate a conexão e a sincronização como uma única tarefa, na mesma sessão de trabalho.** Webhook cadastrado e evento assinado **antes** de escanear o QR code, e a chamada de sincronização disparada nos minutos seguintes. [O roteiro completo de migração está aqui](/migrar-para-api-oficial-sem-perder-o-numero).
+**Tempo.** A documentação da Meta diz que pode levar vários minutos, dependendo do tamanho do histórico. No vídeo, a observação do Israel é que *"as conversas elas podem levar até 30 minutos para começar a chegar. Demora bastante mesmo, dependendo aí da quantidade."* Não refaça o processo porque nada apareceu em dois minutos.
 
 ## Perguntas frequentes
 
-### Perdi as 24 horas. Tem jeito?
+### Passou das 24 horas. Tem jeito?
 
-Desconectar o número e refazer o fluxo de conexão. A desconexão acontece no celular, nas configurações do WhatsApp Business, porque não existe chamada de API para isso.
+Só desconectando o número pelo celular e refazendo a conexão. A desconexão não existe pela API.
 
-### A sincronização traz as conversas de grupo?
+### Posso disparar a sincronização de novo depois?
 
-Não. Grupo não é sincronizado, e esse conteúdo permanece só no aparelho.
+Não. Cada tipo pode ser disparado uma vez por conexão.
 
-### Consigo pedir de novo mais tarde, para atualizar?
+### Quanto tempo de histórico vem?
 
-Não é assim que funciona. É uma ponte de entrada, feita uma vez. Depois, o histórico é o que você guarda do tráfego novo que passa pelo webhook.
+Até 180 dias, segundo a documentação da Meta.
 
-### Os contatos vêm com nome?
+### As mídias antigas vêm junto?
 
-Vêm os contatos salvos naquele aparelho, com a identificação que a plataforma entrega. Trate isso como dado pessoal desde o primeiro dia, com base legal definida.
+Só as dos últimos cerca de 14 dias têm arquivo. As demais aparecem como marcador, sem conteúdo.
 
-### Quanto tempo de histórico eu recebo?
+### Os contatos que eu adicionar depois chegam também?
 
-Até 180 dias de mensagens. Mídia é mais restrita: os identificadores só vêm para mensagens dos últimos 14 dias.
-
-### Preciso disso se o número é novo?
-
-Não. Se o número nasceu na API, não existe histórico anterior para trazer. Isso só vale para coexistência, quando o número já era usado no aplicativo.
+Chegam. Depois da sincronização inicial, as alterações continuam vindo pelo evento `smb_app_state_sync`.
 
 ## Como decidir
 
-Se o histórico daquele número não importa para você, pule: conecte e siga com o tráfego novo. Muita operação de automação e disparo está nesse caso, e a janela de 24 horas passa sem prejuízo.
+Se o histórico do número importa, prepare tudo **antes** de escanear o QR code: webhook cadastrado, `history` e `smb_app_state_sync` assinados, e o código que junta, remove duplicata e ordena pronto para receber. Assim, a chamada vira o passo seguinte da conexão, e não uma corrida contra as 24 horas.
 
-Se o número é o do atendimento, com conversa que o time consulta, então a sincronização é a parte mais importante da migração, e ela precisa estar pronta **antes** de você conectar. Chegar no QR code sem o webhook configurado é o jeito mais eficiente de perder seis meses de conversa.
+Se o histórico não importa, os contatos ainda valem a chamada: são uma requisição e chegam na hora.
 
-::cta: Prepare o webhook antes de escanear o QR code | Cadastre a URL, assine o evento de mensagens e o de sincronização, e só então conecte o número. Assim a chamada de sincronização vira o passo seguinte imediato, e não uma corrida contra as 24 horas.
+::cta: Deixe o webhook pronto antes de conectar | Assine history e smb_app_state_sync, conecte o número, dispare as duas sincronizações em seguida e guarde os dois request_id.
 
 ## Leia também
-- [Como leio o histórico de conversa pela API](/como-leio-o-historico-de-conversa-pela-api)
 - [Coexistência: API e aplicativo no mesmo número](/coexistencia-whatsapp-api-oficial-app-celular)
 - [Como conectar seu número na API oficial](/como-conectar-numero-api-oficial-whatsapp)
-- [Migrar para a API oficial sem perder o número](/migrar-para-api-oficial-sem-perder-o-numero)
+- [Webhook: receber mensagens no seu servidor](/webhook-whatsapp-cloud-api-como-receber-mensagens)
+- [Como criar um atendimento do zero](/criar-atendimento-whatsapp-do-zero)

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Como enviar uma mensagem de template pela API oficial do WhatsApp</title>
-<meta name="description" content="O template é identificado por nome mais idioma, e cada componente é enviado separado. A imagem do cabeçalho vai de novo em cada envio, e é aí que quase todo mundo erra.">
+<meta name="description" content="Listar os templates aprovados, montar o corpo com nome, idioma e componentes, e enviar pela Datafy API. Template com imagem no cabeçalho exige a imagem no envio.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/como-enviar-template-pela-api">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -14,14 +14,14 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
 <meta property="og:title" content="Como enviar uma mensagem de template pela API oficial do WhatsApp">
-<meta property="og:description" content="O template é identificado por nome mais idioma, e cada componente é enviado separado. A imagem do cabeçalho vai de novo em cada envio, e é aí que quase todo mundo erra.">
+<meta property="og:description" content="Listar os templates aprovados, montar o corpo com nome, idioma e componentes, e enviar pela Datafy API. Template com imagem no cabeçalho exige a imagem no envio.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/como-enviar-template-pela-api">
-<meta property="article:published_time" content="2026-09-09">
-<meta property="article:modified_time" content="2026-09-09">
+<meta property="article:published_time" content="2026-09-10">
+<meta property="article:modified_time" content="2026-09-10">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Como enviar uma mensagem de template pela API oficial do WhatsApp">
-<meta name="twitter:description" content="O template é identificado por nome mais idioma, e cada componente é enviado separado. A imagem do cabeçalho vai de novo em cada envio, e é aí que quase todo mundo erra.">
+<meta name="twitter:description" content="Listar os templates aprovados, montar o corpo com nome, idioma e componentes, e enviar pela Datafy API. Template com imagem no cabeçalho exige a imagem no envio.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -82,9 +82,10 @@
       "featureList": [
         "Embedded Signup",
         "Coexistência com WhatsApp Business App",
-        "28 eventos de webhook",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
         "Disparo por template via CSV",
-        "Integração com n8n, Make, Zapier e Chatwoot"
+        "Integração com Chatwoot"
       ],
       "offers": {
         "@type": "Offer",
@@ -120,10 +121,10 @@
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/como-enviar-template-pela-api#article",
       "headline": "Como enviar uma mensagem de template pela API oficial do WhatsApp",
-      "description": "O template é identificado por nome mais idioma, e cada componente é enviado separado. A imagem do cabeçalho vai de novo em cada envio, e é aí que quase todo mundo erra.",
+      "description": "Listar os templates aprovados, montar o corpo com nome, idioma e componentes, e enviar pela Datafy API. Template com imagem no cabeçalho exige a imagem no envio.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-09",
+      "dateModified": "2026-09-10",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -132,13 +133,11 @@
       },
       "mainEntityOfPage": "https://conteudo.datafyapi.com.br/como-enviar-template-pela-api",
       "citation": [
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/media",
-        "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing",
-        "https://app.datafyapi.com.br/docs",
         "https://www.youtube.com/watch?v=62oSY66J3s4",
-        "https://www.youtube.com/watch?v=YF9hTHDAw6E"
+        "https://www.youtube.com/watch?v=YF9hTHDAw6E",
+        "https://www.youtube.com/watch?v=ly5nOHFpXcI",
+        "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/overview",
+        "https://app.datafyapi.com.br/docs"
       ]
     },
     {
@@ -147,50 +146,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "O template está aprovado no painel e a API diz que não existe. Por quê?",
+          "name": "Como sei o nome exato do template?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Quase sempre o código do idioma, e em segundo lugar o nome com uma letra diferente. Liste os templates pela API e compare caractere por caractere."
+            "text": "Com GET /templates, que lista os templates da conta com status, categoria e idioma."
           }
         },
         {
           "@type": "Question",
-          "name": "Preciso mandar a imagem se o cabeçalho já tem uma?",
+          "name": "Preciso mandar a imagem se o template já tem uma?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Precisa. A do template é exemplo. Sem informar a imagem no envio, ele é recusado."
+            "text": "Precisa. A imagem do template é só exemplo, e sem a imagem no envio dá erro."
           }
         },
         {
           "@type": "Question",
-          "name": "Posso mandar template para quem está dentro da janela de 24 horas?",
+          "name": "Posso enviar template para quem não falou comigo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pode, e você paga por isso. Dentro da janela, a resposta em texto livre é mais barata, e continua gratuita até 1º de outubro de 2026."
+            "text": "Pode. É para isso que template existe. E é cobrado."
           }
         },
         {
           "@type": "Question",
-          "name": "Como sei se o template foi entregue?",
+          "name": "A IA consegue montar o corpo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pelo evento de status. A resposta do envio só confirma que a requisição foi aceita."
+            "text": "No vídeo, consegue, porque o formato é o da documentação da Meta. E errou no caso da imagem, que só apareceu testando."
           }
         },
         {
           "@type": "Question",
-          "name": "Dá para enviar template com botão de URL dinâmica?",
+          "name": "Onde vejo se foi entregue?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Dá, quando o template foi criado com o botão parametrizado. O valor vai como parâmetro do componente de botão, no envio."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Vale montar o payload com ajuda de IA?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Vale, e funciona bem, porque o formato é o mesmo da documentação pública da Meta. Com uma ressalva demonstrada em vídeo: o modelo erra justamente no caso da imagem de cabeçalho. Teste antes de disparar para a base."
+            "text": "No webhook, pelos status, ou no log em tempo real do painel da Datafy."
           }
         }
       ]
@@ -559,7 +550,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-09">9 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -589,111 +580,45 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <h1>Como enviar uma mensagem de template pela API oficial do WhatsApp</h1>
-<p><strong>Resposta curta:</strong> o envio é um <code>POST</code> como qualquer outro, com uma diferença que organiza tudo: <strong>o template é identificado por nome mais idioma</strong>, e os valores das variáveis vão em <strong>componentes separados</strong>, um para o cabeçalho e outro para o corpo.</p>
-<p>Duas coisas quebram com mais frequência que todas as outras. A primeira é o idioma, porque <code>pt_BR</code> e <code>pt_PT</code> são templates diferentes para a API. A segunda é a <strong>imagem do cabeçalho</strong>, que precisa ser enviada de novo a cada envio, mesmo que ela pareça já estar dentro do template.</p>
+<p><strong>Resposta curta:</strong> template sai pelo mesmo endpoint de qualquer mensagem, <code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages</code>, com <code>"type": "template"</code> e um objeto <code>template</code> com o <strong>nome</strong>, o <strong>idioma</strong> e os <strong>componentes</strong>, que carregam os valores das variáveis. Antes, liste os templates aprovados da conta com <code>GET https://cloud.datafyapi.com.br/templates</code> para saber o nome exato.</p>
+<p>No vídeo do canal DATA7, o Israel Henrique, CTO da Datafy, envia dois templates. O segundo tem imagem no cabeçalho, e mostra o erro que acontece quando a imagem não vai no envio.</p>
 <div class="stats">
-  <div class="stat"><b>nome + idioma</b><span>é o que identifica o template, não só o nome</span></div>
-  <div class="stat"><b>2 componentes</b><span>cabeçalho e corpo vão separados</span></div>
-  <div class="stat"><b>1 imagem</b><span>reenviada em todo envio, sempre</span></div>
-  <div class="stat"><b>3 status</b><span>voltam depois de cada envio</span></div>
+  <div class="stat"><b>1 nome</b><span>identifica o template, e não repete</span></div>
+  <div class="stat"><b>1 endpoint</b><span>o mesmo das outras mensagens</span></div>
+  <div class="stat"><b>1 imagem</b><span>obrigatória no envio de template com cabeçalho de imagem</span></div>
+  <div class="stat"><b>pago</b><span>cada template enviado, pela categoria</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li><strong>Nome e idioma juntos</strong> formam a chave. Um envio pedindo tradução que não existe falha, mesmo com o template aprovado no painel.</li>
-<li><strong>Cabeçalho e corpo são componentes separados</strong>, cada um com os próprios parâmetros. Misturar dá erro de contagem.</li>
-<li><strong>A imagem do template é só exemplo.</strong> No envio você manda a imagem de verdade, sempre, ou o envio é recusado.</li>
-<li><strong>Template é cobrado</strong>, e o preço depende da categoria. Diferente de resposta dentro da janela de 24 horas.</li>
-<li>O envio <strong>responde sucesso mesmo quando vai falhar</strong>. A verdade chega no evento de status.</li>
+<li><strong>O template é identificado pelo nome.</strong> Por isso o nome não pode se repetir.</li>
+<li><strong>Liste os aprovados</strong> com <code>GET /templates</code>, sem precisar do <code>waba_id</code>.</li>
+<li><strong>O corpo</strong> leva <code>name</code>, <code>language</code> com <code>code</code>, e <code>components</code> com os parâmetros.</li>
+<li><strong>Template com imagem no cabeçalho exige a imagem no envio.</strong> A imagem cadastrada no template é só exemplo.</li>
+<li><strong>Template é cobrado</strong> pela Meta, e pode ser enviado fora da janela de 24 horas.</li>
 </ul>
-<figure>
-<div class="diagram">
-<svg viewBox="0 0 720 222" xmlns="http://www.w3.org/2000/svg" class="d">
-  <style>
-    .d text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-    .t{font-size:15px;font-weight:600;fill:var(--fg)}
-    .h{font-size:13px;font-weight:600;fill:var(--fg)}
-    .p{font-size:12px;fill:var(--muted)}
-    .s{font-size:11px;fill:var(--muted)}
-    .ok{fill:var(--accent)}
-    .no{fill:var(--danger)}
-    .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
-    .boxok{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
-    .boxno{fill:var(--danger-soft);stroke:var(--danger);stroke-width:1.5}
-    .ln{stroke:var(--line);stroke-width:1.5;fill:none}
-    .ar{stroke:var(--accent);stroke-width:1.5;fill:none;marker-end:url(#a)}
-  </style>
-  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
-    <path d="M0,0 L7,2.5 L0,5 z" fill="var(--accent)"/></marker></defs>
-<text class="t" x="360" y="26" text-anchor="middle">Um fluxo de atendimento no n8n</text>
-<rect class="box" x="20" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="96" y="80" text-anchor="middle">Webhook</text>
-<text class="s" x="96" y="98" text-anchor="middle">mensagem chega</text>
-<rect class="box" x="196" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="272" y="80" text-anchor="middle">Condicional</text>
-<text class="s" x="272" y="98" text-anchor="middle">regra de negocio</text>
-<rect class="box" x="372" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="448" y="80" text-anchor="middle">HTTP Request</text>
-<text class="s" x="448" y="98" text-anchor="middle">responde pela API</text>
-<rect class="box" x="548" y="52" width="152" height="66" rx="8"/>
-<text class="h" x="624" y="80" text-anchor="middle">Banco</text>
-<text class="s" x="624" y="98" text-anchor="middle">registra a conversa</text>
-<path class="ar" d="M172,85 L190,85"/>
-<path class="ar" d="M348,85 L366,85"/>
-<path class="ar" d="M524,85 L542,85"/>
-<rect class="box" x="20" y="142" width="680" height="64" rx="8"/>
-<text class="h" x="36" y="166">Limites que o fluxo precisa respeitar</text>
-<text class="p" x="36" y="190">• 80 msg/s por número</text>
-<text class="p" x="266" y="190">• 1 msg a cada 6 s por contato</text>
-<text class="p" x="516" y="190">• responder 200 na hora</text>
-</svg>
-</div>
-<figcaption></figcaption>
-</figure>
-
-<h2 id="o-envio-mais-simples">O envio mais simples</h2>
-<p>Template só com corpo e uma variável:</p>
+<h2 id="1-descobrir-o-nome-exato">1. Descobrir o nome exato</h2>
+<p>No vídeo: <em>"a identificação do template é o nome do template, por isso que eles não podem se repetir."</em></p>
+<p>Pela rota simplificada da Datafy, sem o identificador da conta:</p>
+<p><code>GET https://cloud.datafyapi.com.br/templates
+Authorization: Bearer sk_live_xxx</code></p>
+<p>Pelo espelho, com filtros:</p>
+<p><code>GET https://cloud.datafyapi.com.br/v1/{waba_id}/message_templates?name=entrega_em_andamento
+Authorization: Bearer sk_live_xxx</code></p>
 <p><code>json
 {
-  "messaging_product": "whatsapp",
-  "to": "5511999999999",
-  "type": "template",
-  "template": {
-    "name": "confirmacao_consulta",
-    "language": { "code": "pt_BR" },
-    "components": [
-      {
-        "type": "body",
-        "parameters": [
-          { "type": "text", "text": "Maria" }
-        ]
-      }
-    ]
-  }
+  "data": [
+    {
+      "name": "entrega_em_andamento",
+      "status": "APPROVED",
+      "category": "UTILITY",
+      "language": "pt_BR",
+      "id": "4206368849626155"
+    }
+  ],
+  "paging": {}
 }</code></p>
-<p>Três pontos de atenção nesse corpo mínimo:</p>
-<p><strong>O nome diferencia maiúscula de minúscula</strong> e precisa bater exatamente com o que foi criado. Copiar do painel com uma letra diferente já quebra.</p>
-<p><strong>O código do idioma é o que foi cadastrado.</strong> Se o template foi criado em português do Brasil, é <code>pt_BR</code>. Pedir <code>pt</code>, <code>br</code> ou <code>pt_PT</code> devolve que o template não existe naquela tradução, <a href="/template-nao-existe-nesse-idioma">que é o erro mais confuso do assunto</a> porque você está vendo o template aprovado na tela.</p>
-<p><strong>A ordem dos parâmetros importa</strong>, se as variáveis forem posicionais. Se forem nomeadas, o envio precisa seguir o mesmo formato com que o template foi criado, e misturar os dois dá erro de contagem de parâmetros.</p>
-<h2 id="com-imagem-no-cabe-alho-onde-quase-todo">Com imagem no cabeçalho: onde quase todo mundo erra</h2>
-<p>Este é o caso que gera mais chamado, e a causa não é técnica, é de expectativa.</p>
-<p>Quando você cria o template no painel, escolhe uma imagem. É natural entender que aquela é <strong>a</strong> imagem do template. Não é: ela serve para a Meta revisar e para você ver o resultado. <strong>No envio, você manda a imagem de novo.</strong> Na frase do Israel Henrique, CTO da Datafy: <em>"essa imagem que a gente colocou aqui, ela só é para criar o template, ela seria um exemplo. Na hora você vai ter que enviar outra."</em></p>
-<p>O corpo fica assim, com os dois componentes separados:</p>
-<p><code>json
-"components": [
-  {
-    "type": "header",
-    "parameters": [
-      { "type": "image", "image": { "id": "1234567890" } }
-    ]
-  },
-  {
-    "type": "body",
-    "parameters": [
-      { "type": "text", "text": "Maria" }
-    ]
-  }
-]</code></p>
+<p>No vídeo, ele tira os filtros para trazer todos: <em>"eu vou remover tudo que tem aqui no parâmetro, nos parâmetros, para ele trazer todos os templates."</em> Não sabe o <code>waba_id</code>? <code>GET https://cloud.datafyapi.com.br/me</code> devolve.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=62oSY66J3s4" rel="noopener">
   <span class="thumb">
@@ -702,54 +627,78 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como enviar mensagens de templates pela API oficial</b><span>Canal DATA7 · 8 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Oito minutos enviando templates. Em 01:03 ele lista os templates da conta pela API, em 02:34 monta o payload, e entre 05:31 e 06:43 o erro acontece ao vivo: o assistente afirma que não precisa mandar a imagem, o envio é recusado, e ele corrige informando a imagem.</figcaption>
+<figcaption>Em 00:24 ele abre a listagem de templates pela API, e em 01:03 remove os filtros para ver todos com o status de cada um.</figcaption>
 </figure>
 
-<p>Vale notar por que esse erro é tão comum em fluxo montado com ajuda de IA: o modelo raciocina que uma imagem cadastrada no template não precisaria ser reenviada. É uma intuição razoável, e não é como a plataforma funciona.</p>
-<p><strong>Prefira identificador de mídia a link.</strong> Enviando por link, quem busca o arquivo é a infraestrutura da Meta, e <a href="/erro-131053-ao-enviar-midia">essa busca falha de forma intermitente</a>. Subindo a imagem uma vez, o identificador vale 30 dias e serve para a campanha inteira.</p>
-<h2 id="descobrir-o-que-voc-tem-listar-os-templa">Descobrir o que você tem: listar os templates</h2>
-<p>Antes de enviar, vale puxar a lista de templates da conta pela API. Ela devolve nome, idioma, categoria e situação de cada um.</p>
-<p>Isso resolve três problemas de uma vez: confirma o nome exato, confirma o código do idioma, e mostra se o template está mesmo aprovado ou ainda em análise.</p>
-<p>Duas armadilhas nessa listagem:</p>
-<p><strong>Ela vem paginada.</strong> Quem tem muitos templates lê a primeira página, não acha o que procura, e conclui que ele não existe. Percorra todas as páginas.</p>
-<p><strong>A categoria vem junto, e vale guardar.</strong> É ela que determina o seu custo, e é ela que a Meta pode ter mudado sem avisar.</p>
-<p>O padrão que funciona em produção: <strong>sincronize essa lista para o seu banco periodicamente</strong>, guardando nome e idioma como um par, nunca como texto solto. Assim não existe a possibilidade de mandar um nome com o idioma errado, e a categoria fica visível para o seu controle de custo.</p>
-<h2 id="depois-do-envio-os-tr-s-eventos">Depois do envio: os três eventos</h2>
-<p>Template enviado com sucesso gera <strong>três eventos de status</strong>: enviada, entregue e lida. O terceiro só chega se a pessoa tiver a confirmação de leitura habilitada, então a ausência dele não indica problema.</p>
-<p>Template que falha gera <strong>um evento só</strong>, com o motivo dentro. E aqui está o comportamento que engana: <strong>a chamada de envio responde sucesso nos dois casos</strong>, com um identificador de mensagem. Guarde esse identificador, porque é ele que casa com o status que chega depois.</p>
-<p>Se você só olha a resposta do envio, <a href="/mandei-para-numero-que-nao-existe-e-nao-deu-erro">a sua operação parece funcionar</a> mesmo quando nada está chegando.</p>
-<p>Um aviso que vale para quem monta isso em ferramenta de fluxo: como esses três status chegam no mesmo webhook das mensagens de cliente, um fluxo que responde tudo que entra vira um laço que multiplica. Filtre pela existência do objeto de mensagem antes de responder qualquer coisa.</p>
-<h2 id="quanto-custa-cada-envio">Quanto custa cada envio</h2>
-<p>Diferente da resposta dentro da janela de 24 horas, <strong>template é cobrado sempre</strong>, e a categoria define o valor. Marketing custa cerca de dez vezes uma utilidade no Brasil.</p>
-<p>Duas consequências práticas:</p>
-<p><strong>Cartão no portfólio da Meta é pré-requisito.</strong> Sem ele, o template não sai. A cobrança é da Meta, direto, e não do provedor.</p>
-<p><strong>Revisar categoria é revisar custo.</strong> Um template que virou marketing por conter uma frase promocional a mais pode estar custando dez vezes o necessário, e <a href="/categoria-do-template-decide-o-seu-custo">a mudança de categoria acontece sem aviso</a>.</p>
-<p>Confirme os valores na tabela oficial da Meta, escolhendo Brasil e a moeda.</p>
+<h2 id="2-montar-o-corpo">2. Montar o corpo</h2>
+<p>A estrutura, conforme a documentação de templates da Meta:</p>
+<p>```
+POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json</p>
+<p>{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "5511999999999",
+  "type": "template",
+  "template": {
+    "name": "entrega_em_andamento",
+    "language": { "code": "pt_BR" },
+    "components": [
+      {
+        "type": "body",
+        "parameters": [ ... ]
+      }
+    ]
+  }
+}
+```</p>
+<p>Os <code>parameters</code> levam os valores das variáveis do template, na ordem ou pelo nome, conforme o template foi criado. Para ver um corpo de template preenchido, o endpoint de envio na documentação da Datafy tem exemplos por tipo de mensagem, incluindo template.</p>
+<p>No vídeo, o Israel copia a lista de templates para uma IA e pede o corpo de um deles: <em>"quero enviar o template de confirmação de consulta, monte para mim o payload."</em> Funciona porque o formato é o da documentação da Meta. E ele lembra de trocar o começo da URL e o token se usar o comando que a IA gerar: <em>"lembre só de substituir aqui pelo nosso URL, e aqui o token."</em></p>
+<h2 id="3-template-com-imagem-no-cabe-alho">3. Template com imagem no cabeçalho</h2>
+<p>Esse é o caso que mais dá erro, e o vídeo mostra acontecendo.</p>
+<p>A IA respondeu que, como o cabeçalho já tinha uma imagem aprovada, não era preciso mandar imagem no envio. O Israel desconfia: <em>"eu acho que isso aqui que ele falou tá errado, tá? Ele tá dizendo que eu não preciso colocar imagem, mas eu preciso sim."</em> Envia assim mesmo, e dá erro. Com o erro na mão, o corpo é corrigido para incluir a imagem, e o envio passa.</p>
+<p>A regra vem do vídeo de criação de templates: <em>"essa imagem que a gente colocou aqui, ela só é para criar o template. Ela seria um exemplo. Na hora você vai ter que enviar outra."</em></p>
+<p>Para a imagem do envio, ele usa o link de uma imagem já subida na aba de mídias do painel, e avisa: <em>"a imagem tem que ser quadrada, 500 por 500, senão ele não deixa."</em></p>
+<figure>
+<a class="video" href="https://www.youtube.com/watch?v=62oSY66J3s4" rel="noopener">
+  <span class="thumb">
+    <img src="https://i.ytimg.com/vi/62oSY66J3s4/maxresdefault.jpg" alt="Miniatura do vídeo: Como enviar mensagens de templates pela API oficial" loading="lazy" width="1280" height="720">
+    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+  </span>
+  <span class="meta"><b>Como enviar mensagens de templates pela API oficial</b><span>Canal DATA7 · 8 min · assistir no YouTube</span></span>
+</a>
+<figcaption>Em 04:41 ele pede o corpo do template com imagem, em 05:31 desconfia da resposta da IA, em 06:11 o envio dá erro, e em 06:43 corrige com a imagem e envia.</figcaption>
+</figure>
+
+<p>Sem servidor para hospedar a imagem, a aba de mídias do painel dá o link, válido por 30 dias. <a href="/como-enviar-midia-api-oficial-whatsapp">Como enviar mídia está aqui</a>.</p>
+<h2 id="quando-usar-template-e-quanto-custa">Quando usar template, e quanto custa</h2>
+<p>Template é o que permite falar com quem não mandou mensagem nas últimas 24 horas. No vídeo: <em>"nesse caso aqui eu posso enviar fora da janela de 24 horas, porém eu vou pagar por cada mensagem enviada."</em> O preço depende da categoria. <a href="/quanto-custa-whatsapp-business-api-brasil-2026">Os preços estão aqui</a>.</p>
+<h2 id="depois-do-envio">Depois do envio</h2>
+<p>A resposta traz o identificador da mensagem e significa que a Meta aceitou. O que aconteceu chega no webhook, como status: enviada, entregue, lida, ou falha. <a href="/tres-status-da-mensagem-whatsapp">Os status estão explicados aqui</a>.</p>
+<h2 id="para-muitos-contatos">Para muitos contatos</h2>
+<p>Pela API, é um laço que envia o template para cada número, dentro do limite de 500 requisições por minuto da Datafy. Sem código, a aba Disparos do painel faz isso com uma planilha CSV. <a href="/disparo-em-massa-api-oficial-whatsapp">Como fazer disparo em massa</a>.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>O template está aprovado no painel e a API diz que não existe. Por quê?</h3>
-<p>Quase sempre o código do idioma, e em segundo lugar o nome com uma letra diferente. Liste os templates pela API e compare caractere por caractere.</p>
-<h3>Preciso mandar a imagem se o cabeçalho já tem uma?</h3>
-<p>Precisa. A do template é exemplo. Sem informar a imagem no envio, ele é recusado.</p>
-<h3>Posso mandar template para quem está dentro da janela de 24 horas?</h3>
-<p>Pode, e você paga por isso. Dentro da janela, a resposta em texto livre é mais barata, e continua gratuita até 1º de outubro de 2026.</p>
-<h3>Como sei se o template foi entregue?</h3>
-<p>Pelo evento de status. A resposta do envio só confirma que a requisição foi aceita.</p>
-<h3>Dá para enviar template com botão de URL dinâmica?</h3>
-<p>Dá, quando o template foi criado com o botão parametrizado. O valor vai como parâmetro do componente de botão, no envio.</p>
-<h3>Vale montar o payload com ajuda de IA?</h3>
-<p>Vale, e funciona bem, porque o formato é o mesmo da documentação pública da Meta. Com uma ressalva demonstrada em vídeo: o modelo erra justamente no caso da imagem de cabeçalho. Teste antes de disparar para a base.</p>
+<h3>Como sei o nome exato do template?</h3>
+<p>Com <code>GET /templates</code>, que lista os templates da conta com status, categoria e idioma.</p>
+<h3>Preciso mandar a imagem se o template já tem uma?</h3>
+<p>Precisa. A imagem do template é só exemplo, e sem a imagem no envio dá erro.</p>
+<h3>Posso enviar template para quem não falou comigo?</h3>
+<p>Pode. É para isso que template existe. E é cobrado.</p>
+<h3>A IA consegue montar o corpo?</h3>
+<p>No vídeo, consegue, porque o formato é o da documentação da Meta. E errou no caso da imagem, que só apareceu testando.</p>
+<h3>Onde vejo se foi entregue?</h3>
+<p>No webhook, pelos status, ou no log em tempo real do painel da Datafy.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Se você manda poucos templates, monte o corpo à mão a partir do exemplo da documentação e siga. É simples o suficiente.</p>
-<p>Se template faz parte da operação, invista uma tarde nos três hábitos que eliminam quase todo erro de envio: sincronizar a lista de templates para o seu banco, guardar nome e idioma como par, e subir a imagem fixa uma vez guardando o identificador ao lado do template.</p>
-<p>E antes do primeiro disparo grande, mande para o seu próprio número. Você vê exatamente o que o cliente vai ver, com a variável preenchida, e é a forma mais rápida de pegar erro de mapeamento.</p>
-<div class="cta"><h3>Liste os seus templates pela API agora</h3><p>Puxe a lista completa, percorrendo todas as páginas, e compare nome, idioma e categoria com o que o seu código manda. Em cinco minutos você descobre se o próximo erro vai ser de idioma, de nome ou de custo.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Liste os templates, copie o nome e o idioma exatos, e mande primeiro para o seu próprio número. Se o template tem imagem no cabeçalho, inclua a imagem no envio desde o primeiro teste.</p>
+<div class="cta"><h3>Envie um template aprovado para você mesmo</h3><p>Chame GET /templates, escolha um template aprovado, monte o corpo com nome, idioma e parâmetros e envie para o seu número pela Datafy API.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
-<li><a href="/como-criar-template-whatsapp-passo-a-passo">Como criar um template de mensagem, passo a passo</a></li>
-<li><a href="/template-com-imagem-no-cabecalho-nao-envia">Meu template com imagem no cabeçalho não envia</a></li>
-<li><a href="/template-nao-existe-nesse-idioma">Erro 132001: o template não existe nesse idioma</a></li>
-<li><a href="/disparo-em-massa-api-oficial-whatsapp">Como fazer disparo em massa na API oficial</a></li>
+<li><a href="/como-criar-template-whatsapp-passo-a-passo">Como criar um template</a></li>
+<li><a href="/disparo-em-massa-api-oficial-whatsapp">Como fazer disparo em massa</a></li>
+<li><a href="/tres-status-da-mensagem-whatsapp">Os três status da mensagem no WhatsApp</a></li>
+<li><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Quanto custa a API oficial do WhatsApp</a></li>
 </ul>
 </article>
 
@@ -765,11 +714,12 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#o-envio-mais-simples">O envio mais simples</a></li>
-        <li><a href="#com-imagem-no-cabe-alho-onde-quase-todo">Com imagem no cabeçalho: onde qu...</a></li>
-        <li><a href="#descobrir-o-que-voc-tem-listar-os-templa">Descobrir o que você tem: listar...</a></li>
-        <li><a href="#depois-do-envio-os-tr-s-eventos">Depois do envio: os três eventos</a></li>
-        <li><a href="#quanto-custa-cada-envio">Quanto custa cada envio</a></li>
+        <li><a href="#1-descobrir-o-nome-exato">1. Descobrir o nome exato</a></li>
+        <li><a href="#2-montar-o-corpo">2. Montar o corpo</a></li>
+        <li><a href="#3-template-com-imagem-no-cabe-alho">3. Template com imagem no cabeça...</a></li>
+        <li><a href="#quando-usar-template-e-quanto-custa">Quando usar template, e quanto c...</a></li>
+        <li><a href="#depois-do-envio">Depois do envio</a></li>
+        <li><a href="#para-muitos-contatos">Para muitos contatos</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

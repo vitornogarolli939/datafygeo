@@ -1,6 +1,6 @@
 ---
-title: "Número bloqueado no WhatsApp: o que fazer agora"
-description: "As cinco condutas que derrubam número mesmo com API oficial, o sinal que aparece antes, e como montar um recurso que tenha chance."
+title: "Por que o número é bloqueado no WhatsApp Business"
+description: "As causas que o canal DATA7 observou na base de clientes: iniciar conversa sem template, ninguém responder, número novo, template disfarçado e nicho proibido. E o aviso que aparece antes."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "numero-banido-no-whatsapp-o-que-fazer"
 cluster: "compliance"
@@ -9,211 +9,146 @@ intent: "problema-urgente"
 persona: "automacao, saas"
 competitors: []
 published: 2026-09-06
-updated: 2026-09-09
+updated: 2026-09-10
 sources:
-  - https://business.whatsapp.com/policy
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/template-quality
-  - https://developers.facebook.com/documentation/business-messaging/whatsapp/messaging-limits
   - https://www.youtube.com/watch?v=cZ_nyIUv5ic
-  - https://app.datafyapi.com.br/docs
+  - https://whatsappbusiness.com/policy/
+  - https://www.youtube.com/watch?v=JL9Qzw3oS5A
   - https://www.youtube.com/watch?v=HVRCBsJI_Eo
-videos: [cZ_nyIUv5ic, HVRCBsJI_Eo]
+  - https://app.datafyapi.com.br/docs
+videos: [cZ_nyIUv5ic]
 internal_links:
-  - /api-oficial-vs-nao-oficial-whatsapp-2026
+  - /nichos-proibidos-whatsapp-business
   - /posso-mandar-mensagem-para-qualquer-numero
-  - /minha-campanha-travou-no-meio
-  - /coexistencia-whatsapp-api-oficial-app-celular
-  - /quantas-mensagens-por-segundo-posso-enviar
+  - /opt-in-por-link-whatsapp
+  - /como-criar-template-whatsapp-passo-a-passo
+  - /api-oficial-vs-nao-oficial-whatsapp-2026
 status: aprovado
-pendencias: ["[VERIFICAR] prazos de resposta da Meta a recurso não são publicados; não cravar número"]
 ---
 
-# Número bloqueado no WhatsApp: o que fazer agora
+# Por que o número é bloqueado no WhatsApp Business
 
-**Última atualização: 09/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** primeiro, uma coisa que precisa ficar clara: **a API oficial não é blindagem**. O bloqueio acompanha a **conduta**, não a ferramenta. Migrar de uma ferramenta de QR code para a oficial elimina um tipo de risco, o de usar algo não autorizado, e não elimina os outros.
+**Resposta curta:** a Meta diz que você violou os termos, e parte dos termos é subjetiva. No vídeo sobre bloqueio do canal DATA7, o Israel Henrique, CTO da Datafy, conta o que a equipe observou olhando o que os clientes estavam fazendo quando foram bloqueados. As causas: **iniciar conversa sem template**, **template certo e ninguém responder**, **número novo começando a disparar**, **marketing disfarçado de utilidade** e **nicho proibido**. Às vezes, **engano da própria Meta**.
 
-Se o seu número acabou de cair, existem passos concretos. E se ainda não caiu, a parte mais útil deste texto é a do sinal que aparece antes: **ninguém é bloqueado do nada.**
+E o ponto mais importante do vídeo: *"usar um template, usar a API oficial do WhatsApp não é blindagem contra banimento."*
 
-::numeros: 5 condutas|que derrubam número mesmo com API oficial ;; média|a qualidade cai antes do bloqueio, e é o aviso ;; 1 recurso|por vez, com prova de que a causa foi corrigida ;; conduta|é o que decide, não a ferramenta
+::numeros: 5|causas observadas na base de clientes ;; 3 dias|sem resposta, no caso da advogada ;; 3 níveis|de qualidade do número: alta, média, baixa ;; 0|blindagem por usar a API oficial
 
 ## Principais pontos
-- O bloqueio é **da conta e do número**, e acompanha o comportamento. Trocar de ferramenta sem trocar de conduta não resolve.
-- **A qualidade do número cai antes.** Esse é o aviso, e ele é visível no painel. Quem monitora consegue reagir; quem não monitora descobre quando já parou.
-- A causa número um é **prospectar quem nunca falou com você**, com ou sem template aprovado.
-- Recurso é possível, mas só funciona com **prova de que a causa foi corrigida**. Pedido sem mudança de conduta costuma voltar negado.
-- Existe um evento de webhook que avisa mudança na conta, incluindo restrição. Assinar esse evento é a diferença entre saber na hora e saber quando um cliente reclama.
+- **Iniciar conversa sem template** é a primeira causa, com celular, WhatsApp Web, CRM ou API não oficial.
+- **Mesmo com template, ninguém responder** é lido como spam.
+- **Número novo que começa a disparar** costuma ser bloqueado, segundo a observação do canal, sem estar escrito nos termos.
+- **A qualidade do número avisa antes**: alta, média ou baixa, no gerenciador do WhatsApp.
+- **Nicho proibido** bloqueia, mesmo que a atividade seja legal no Brasil.
 
 ::diagrama: numero-banido-visual
 
-## De onde vem o que está escrito aqui
+## Por que os termos não bastam
 
-Vale abrir isso antes das listas, porque muda como você deve ler o resto.
+No começo do vídeo, o Israel explica: os termos são objetivos em alguns casos, como não vender armas, e subjetivos em outros. *"Ah, você estava praticando spam. Pô, mas o que é spam?"* O caminho foi observar: *"nós fizemos um estudo com centenas de clientes que nós temos para tentar entender o que que eles estavam fazendo no momento em que eles foram bloqueados."*
 
-Uma parte da política da Meta é objetiva: não vender arma, não vender substância ilícita. Outra parte não é. Está escrito, na própria política, que a Meta pode agir contra "modelos de negócios, bens, itens ou serviços que **concluímos** que podem ser fraudulentos, enganosos, ofensivos". Quem conclui é ela. Isso significa que existe uma faixa grande de conduta em que os termos não respondem, e o que sobra é observar quem caiu e por quê.
+::video: cZ_nyIUv5ic | Em 01:20 ele fala da subjetividade dos termos, e em 01:47 explica o levantamento na base de clientes.
 
-É exatamente o que o Israel Henrique, CTO da Datafy, faz no vídeo abaixo, olhando a base de clientes: *"se esses termos eles são subjetivos, com base no que que a gente vai saber o que pode e o que não pode? Com base na observação."*
+## 1. Iniciar conversa sem template
 
-::video: cZ_nyIUv5ic | Vinte e seis minutos com as causas de bloqueio observadas na base de clientes da Datafy, os nichos que bloqueiam na certa, e o sinal de qualidade que aparece antes. Os casos citados nesta página estão em 10:39, 17:26, 19:43 e 22:29.
+A primeira causa: *"o primeiro grande causador de banimento, quase 100% das vezes, é a prospecção, ou seja, você iniciar conversas com o seu cliente."* E vale para qualquer ferramenta: *"você pega o teu celular, por exemplo, começa a enviar mensagens pros usuários e você é bloqueado. Você pega o teu WhatsApp Web, começa a enviar mensagens pro seu usuário e você é bloqueado."*
 
-Duas consequências disso, e as duas importam:
+A regra está na política: você só pode iniciar conversa usando um template aprovado. E só pode contatar quem forneceu o número e deu opt-in. [Como pedir opt-in com um link de cadastro](/opt-in-por-link-whatsapp).
 
-**O que está marcado como observação não é regra publicada.** Onde este texto diz "não está nos termos, é padrão de campo", é isso mesmo. Serve para você decidir, não para você citar num recurso.
+## 2. Template certo, e ninguém responde
 
-**Não existe número de risco confiável, e não vamos inventar um.** Você vai encontrar por aí percentuais de banimento apresentados como pesquisa. Não temos amostra publicada para sustentar isso, e o método honesto aqui é qualitativo: as condutas abaixo aparecem repetidamente em quem procura ajuda depois de cair.
+*"A pessoa contrata uma API oficial, começa a usar e toma bloqueio mesmo assim. Por quê? Porque não adianta você usar a API oficial e continuar violando os termos."*
 
-## As cinco condutas que derrubam número
+O caso que ele conta: uma advogada que já tinha sido bloqueada, contratou a API, foi orientada a montar o template, e foi bloqueada de novo. *"Aí eu falei: nossa, tá, mas alguém te respondeu? Ninguém, ninguém. Ela ficou três dias enviando mensagens para as pessoas e ninguém respondia a ela. Bloqueio."*
 
-**1. Prospectar quem nunca falou com você.** É a causa mais comum, de longe. Comprar lista, raspar contato, mandar para quem não pediu. A [política](https://business.whatsapp.com/policy) é explícita: só se contata quem forneceu o número e deu o aceite. Ter template aprovado não é autorização para lista fria, e é aqui que muita gente se engana.
+A recomendação dele é dar à pessoa um jeito de responder no próprio template: um botão de **não tenho interesse**, e até um botão de **bloquear**, que na verdade é uma resposta. *"A pessoa clica nesse botão, ela acha que está te bloqueando, mas na verdade ela não tá te bloqueando, ela está interagindo com você."* Com uma condição: tirar da lista quem clicou, *"porque se você continuar enviando mensagem para ela, aí ela vai te bloquear de verdade."*
 
-**2. Engajamento baixo mesmo com template.** Mandar para muita gente e quase ninguém responder é lido como envio indesejado. Essa é a que mais surpreende, porque a pessoa fez tudo certo e caiu, e é a que merece um caso inteiro.
+::video: cZ_nyIUv5ic | Em 09:05 ele diz que API oficial não é blindagem, em 10:39 conta o caso da advogada, em 11:49 mostra o botão de não tenho interesse, e em 13:08 o de bloquear.
 
-### O caso da advogada
+E sobre ser bloqueado ou denunciado pelo cliente: *"quando a pessoa te bloqueia ou te denuncia, a chance de você tomar um bloqueio da meta é muito alta."*
 
-É o relato que resume o assunto melhor que qualquer lista. Uma advogada tinha uma lista de clientes e já havia sido bloqueada antes. Contratou a API oficial, foi orientada a montar o template do jeito certo, e montou. Nas palavras do Israel:
+## 3. Número novo
 
-> "Começou a disparar um, dois dias, foi bloqueada de novo. Aí eu falei: 'Nossa, tá, mas alguém te respondeu?' 'Ninguém, ninguém.' Ela ficou três dias enviando mensagens para as pessoas e ninguém respondia a ela. Bloqueio."
+*"A pessoa acabou de comprar o número ali na loja, cadastrou na API, começou a disparar, foi bloqueado no mesmo dia."* E ele é explícito sobre a origem da informação: *"não tá nos termos de uso que número novo bloqueia, não tá escrito em lugar nenhum isso. Porém, com base na observação."*
 
-Ela não violou nada explícito. Não era nicho proibido, não era lista comprada, o template estava aprovado. O que aconteceu é que a Meta olhou uma coisa que quase ninguém mede antes de disparar: **quantas pessoas responderam.** Três dias de silêncio do outro lado foram lidos como envio indesejado.
+O que ele recomenda: *"começa a usar o teu número para receber mensagens, vai respondendo quem entrou em contato com você, envia poucas mensagens por dia até o seu número conseguir ali ser bem visto pela meta."*
 
-A conclusão prática é desconfortável e é a mais importante desta página: **o template aprovado autoriza você a iniciar a conversa, e não garante que a conversa é bem-vinda.** Quem manda para uma base que não interage está comprando risco, mesmo fazendo tudo pelo caminho oficial. Na formulação do próprio Israel: *"usar um template, usar a API oficial do WhatsApp não é blindagem contra banimento."*
+## 4. Marketing disfarçado de utilidade
 
-O que fazer com isso, antes do próximo disparo: **dar à pessoa um jeito fácil de responder**. Um botão de "não tenho interesse" no template resolve duas coisas de uma vez, porque o clique conta como interação e entrega a lista de quem tirar da base. Vale também medir a taxa de resposta do último disparo antes de fazer o próximo: se ela foi baixa, o problema não é o volume, é a lista.
+Criar um template que parece utilidade e preencher as variáveis com texto de venda. *"Inclusive essa é uma prática que até ensinam na internet, eu sou contra isso."* E a Meta percebe. [Como escolher a categoria certa](/como-criar-template-whatsapp-passo-a-passo).
 
-**3. Número novo disparando volume.** Conta recém-conectada com volume alto no primeiro dia levanta suspeita. **Não está escrito em termo nenhum**, é padrão de campo, e é consistente o suficiente para o Israel descrever como quase certeza: *"quase 100% dos usuários que compram um número novo e começam a fazer disparo, eles tomam bloqueio."* Ele é explícito que a observação não tem respaldo em documento: *"não tá nos termos de uso que número novo bloqueia, não tá escrito em lugar nenhum isso."*
+## 5. Nicho proibido
 
-O que ele recomenda no lugar: comece **recebendo**. Use o número para responder quem chamou você, mande pouco por dia, e deixe o histórico se formar antes de qualquer campanha.
+*"Esses casos de uso aqui são os que, enfim, você fez aquilo, é bloqueio na certa."* Os exemplos do vídeo incluem uma empresa de eventos bloqueada porque os pacotes tinham cerveja e vinho, e um cliente que mandava cotações de aposta. [A lista da política e os casos estão aqui](/nichos-proibidos-whatsapp-business).
 
-**4. Categoria de template forçada.** Template de marketing escrito como se fosse utilidade é reclassificado pela Meta, e a conta pode mudar de preço sem aviso. Repetir isso tem escalada própria de punição, que vai de aviso até restrição no nível da conta.
+::video: cZ_nyIUv5ic | Em 16:12 ele fala do número novo, em 17:26 do template disfarçado, e em 19:43 começa a lista de nichos.
 
-**5. Nicho proibido.** Armas, álcool e tabaco, medicamentos e produtos de saúde, animais vivos, criptomoeda e day trade, apostas com dinheiro real, partes ou fluidos corporais, e **cobrança de dívida**, que é a que mais pega gente de boa-fé. Vale a regra da plataforma, não a lei do país: aposta é legal no Brasil e bloqueia do mesmo jeito.
+## O aviso que aparece antes
 
-Dois casos que mostram como isso acontece na prática, e nenhum dos dois é de quem estava tentando burlar nada.
+*"Antes de ele te bloquear, ele vai te falar a qualidade do número."* No gerenciador do WhatsApp, a qualidade aparece como alta, média ou baixa. *"Se eu começar a enviar mensagem pros meus clientes e eu ver que a qualidade tá média ou baixa, já fica um alerta: opa, eu tenho que melhorar alguma coisa. Você não é bloqueado do nada."*
 
-**A empresa de eventos.** Organizava festa de 15 anos e casamento. O pacote descrevia o que ia ter na festa, e o que ia ter na festa incluía cerveja e vinho. *"E ele sempre era bloqueado por causa disso. Não tem o que fazer."* Não era loja de bebida: era álcool aparecendo na descrição de um serviço legítimo. O contorno possível é não colocar essas palavras, e nem isso é confiável.
+Pela API, a documentação da Datafy lista `quality_rating` entre os campos do número:
 
-**O vendedor de odds.** Contratou a API oficial justamente porque estava sendo bloqueado, foi bloqueado de novo e reclamou. Aí apareceu o que ele fazia: mandava mensagem com cotação de aposta esportiva para uma lista. *"Cara, isso é aposta. Aposta é proibido explicitamente pela meta. Então não tem o que fazer. Não tem nem como reclamar."*
+```
+GET https://cloud.datafyapi.com.br/v1/{phone_number_id}?fields=verified_name,display_phone_number,quality_rating
+Authorization: Bearer sk_live_xxx
+```
 
-A lição dos dois: se o seu conteúdo cai num desses nichos, **nenhuma escolha de fornecedor muda o resultado**, porque a regra é da plataforma e a decisão é dela. Vale descobrir isso antes de montar a operação em cima do WhatsApp, e não depois.
+```json
+{
+  "verified_name": "Jasper's Market",
+  "display_phone_number": "+1 631-555-5555",
+  "id": "1906385232743451",
+  "quality_rating": "GREEN"
+}
+```
 
-## E às vezes é engano da Meta
+## Quando é engano da Meta
 
-Precisa estar aqui, porque quem acabou de cair passa horas procurando o próprio erro e às vezes não tem erro.
+*"Às vezes a meta bane mesmo, por engano, eu já fui vítima disso."* Ele perdeu uma conta de desenvolvedor, e a resposta da Meta reconheceu que a conta foi banida por engano pelos agentes automatizados.
 
-Bloqueio automático erra. O Israel perdeu uma conta de desenvolvedor desse jeito e recebeu da Meta uma resposta reconhecendo: *"desculpe, sua conta foi banida por engano pelos nossos agentes automatizados."*
+E sobre o que fazer depois de um bloqueio indevido, a posição dele: quem está no oficial, com empresa registrada, seguindo as regras e com qualidade alta tem respaldo para recorrer, e ele relata ter visto casos de processo com indenização. Já quem usava API não oficial, *"aí não adianta muito tentar reclamar."*
 
-Isso não é motivo para assumir que o seu caso é engano, e é motivo para abrir recurso mesmo quando você não encontra a causa. O que continua valendo é a ordem: procurar a causa primeiro, e recorrer descrevendo o que você verificou, inclusive quando a conclusão é que nada mudou na sua operação.
-
-Um ponto relacionado, e vale a honestidade sobre o tamanho dele: quem opera pelo caminho oficial, com empresa registrada e número em boa qualidade, tem uma posição melhor para reclamar do que quem estava usando ferramenta não autorizada, porque no segundo caso a própria operação violava os termos. O Israel vai além disso e relata ter visto casos de indenização na Justiça. Fica registrado como o que é, **relato dele e não levantamento de jurisprudência nosso**, e não como promessa de que se recorre e se ganha.
-
-## O sinal que aparece antes
-
-Este é o trecho mais útil da página, e o menos usado.
-
-Antes do bloqueio, a **qualidade do número cai**. A avaliação é feita sobre uma janela recente, a partir de bloqueios, denúncias e outras reações de quem recebe. Ela aparece no painel, e existe um evento de webhook que avisa quando ela muda.
-
-Outros sinais que costumam aparecer junto:
-
-- O **limite de envio** cai em vez de subir.
-- Um **template é pausado** por qualidade baixa, com escalada de 3 horas, 6 horas e desativação.
-- A **taxa de entrega** cai sem mudança de volume.
-
-Quem assina o evento de qualidade do número e o de mudança na conta consegue agir enquanto ainda dá. Quem não assina descobre quando as mensagens param.
-
-## Se o número já caiu
-
-**1. Confirme o que aconteceu.** Bloqueio de conta, restrição temporária e limite de envio zerado são coisas diferentes, com saídas diferentes. O evento de mudança na conta traz a informação da restrição.
-
-**2. Pare de enviar.** Insistir enquanto está restrito piora, especialmente se a causa foi tentativa em excesso.
-
-**3. Ache a causa antes de recorrer.** Olhe o que mudou nos últimos dias: subiu volume, entrou lista nova, mudou template, caiu a qualidade? Recurso sem causa identificada é recurso negado.
-
-**4. Corrija de verdade.** Tire a lista fria, ajuste a categoria do template, reduza volume, revise o conteúdo. É isso que você vai apresentar.
-
-**5. Abra o recurso pelo suporte.** Descreva o que aconteceu, o que foi corrigido e o que muda daqui para frente. Anexe o que sustentar: como o aceite é coletado, o que mudou no processo, e os números que mostram a correção.
-
-**6. Espere.** Não há prazo publicado, e insistir com pedidos repetidos não acelera.
-
-## O que aumenta a chance do recurso
-
-O que costuma funcionar é mostrar **mudança de processo**, e não pedido de exceção:
-
-- Como o aceite passou a ser coletado, com prova de onde e quando.
-- O que saiu da base, e por quê.
-- Qual template mudou de categoria e qual é o conteúdo novo.
-- Como o volume foi reduzido, e o plano de retomada gradual.
-
-O que costuma não funcionar: dizer que foi engano sem mudar nada, prometer que não acontece de novo sem mostrar o quê mudou, ou abrir vários pedidos seguidos.
-
-## Se o número for irrecuperável
-
-Acontece. Nesse caso, três cuidados antes de seguir com um número novo:
-
-**Não repita a causa.** O número novo cai igual se a conduta for a mesma. Foi lista fria que derrubou? O número novo dura menos ainda, porque começa sem histórico.
-
-**Comece devagar.** Conta nova com volume alto é o item 3 da lista acima.
-
-**Monte o monitoramento antes.** Qualidade do número e mudança na conta assinados desde o primeiro dia. É barato e é a diferença entre reagir e descobrir depois.
+::video: cZ_nyIUv5ic | Em 15:14 ele mostra a qualidade do número, em 24:26 conta o bloqueio por engano, e em 24:59 fala do respaldo de quem está no oficial.
 
 ## O que muda com a Datafy, e o que não muda
 
-Vale ser direto, porque é aqui que a maioria das páginas sobre o assunto mente por omissão.
+**Não muda:** as regras. Bloqueio é decisão da Meta, sobre a conduta. Na frase do vídeo, API oficial não é blindagem.
 
-**Não muda:** o bloqueio. Quem decide é a Meta, sobre a sua conduta, e nenhuma plataforma se coloca entre você e essa decisão. Nós não conseguimos desbloquear número, não conseguimos apressar recurso, e não conseguimos autorizar nicho proibido. Quem promete isso está prometendo o que não é dele.
-
-**Muda o que dá para saber antes.** Os eventos que avisam de queda de qualidade e de mudança na conta chegam no seu webhook, e existe um testador para você confirmar que o seu endpoint recebe cada tipo de evento antes de existir tráfego real. A diferença entre reagir e descobrir com o cliente reclamando está inteira nesse ponto, e é configuração de quinze minutos.
-
-**Muda o ponto de partida.** O caminho oficial em coexistência dispensa criar aplicativo na Meta, passar por App Review e virar Tech Provider, e é isso que a plataforma faz por você. O que ela não faz é o resto desta página.
+**Muda o caminho:** template aprovado para iniciar conversa, qualidade do número visível, e a conexão oficial, que é o que dá respaldo para reclamar.
 
 ## Perguntas frequentes
 
-### Migrar para a API oficial resolve o bloqueio?
+### Usar a API oficial impede o bloqueio?
 
-Resolve metade. Acaba com o risco de usar ferramenta não autorizada. Não muda nada se a conduta continuar: lista fria bloqueia número oficial do mesmo jeito.
+Não. *"Não é blindagem contra banimento."*
 
-### Quanto tempo a Meta demora para responder?
+### Qual a principal causa de bloqueio?
 
-Não há prazo publicado, e por isso não vale cravar número aqui. O que ajuda é o pedido bem montado, não a insistência.
+Iniciar conversa sem template, com qualquer ferramenta.
 
-### Posso usar o mesmo número em outra empresa?
+### Número novo é bloqueado?
 
-O bloqueio acompanha o número. Trocar a empresa em volta dele não muda isso.
+Segundo a observação do canal, quem compra número novo e começa a disparar costuma ser bloqueado. Não está escrito nos termos.
 
-### Existe restrição temporária?
+### Como sei se estou em risco?
 
-Existem restrições com prazo, aplicadas em algumas situações, e nesses casos o acesso volta sozinho ao fim do período. Por isso o primeiro passo é confirmar o que aconteceu antes de assumir o pior.
+Olhe a qualidade do número no gerenciador do WhatsApp, ou o campo `quality_rating` pela API.
 
-### Quantas vezes posso recorrer?
+### A Meta bloqueia por engano?
 
-Vale tratar como poucas. Pedido repetido sem mudança de conduta não melhora a avaliação, e pode piorar.
-
-### Fiz tudo certo, template aprovado, e caí. Como?
-
-É o caso mais comum de quem já está no oficial, e a resposta costuma ser engajamento: você mandou e as pessoas não responderam. Olhe a taxa de resposta do último disparo antes de olhar qualquer outra coisa.
-
-### Número novo bloqueia mesmo?
-
-Não está em termo nenhum, e é padrão de campo consistente: número recém-comprado que começa disparando cai. Comece recebendo e respondendo, com volume baixo, e deixe o histórico se formar.
-
-### Vender bebida junto com outra coisa conta como nicho proibido?
-
-Conta, e é o caso da empresa de eventos citada acima: o serviço era festa, mas a descrição tinha cerveja e vinho. A leitura é sobre o conteúdo da mensagem, não sobre o CNAE da empresa.
-
-### Como sei se meu número está em risco hoje?
-
-Olhe a qualidade no painel. Se ela saiu do nível mais alto, você já está no aviso. É a hora de reduzir volume e revisar a base, não a de aumentar disparo.
+Acontece. O próprio Israel teve uma conta de desenvolvedor bloqueada por engano.
 
 ## Como decidir
 
-Se o número caiu, resista à vontade de abrir recurso imediato: descubra a causa primeiro, porque é ela que faz o pedido ter chance. Se o número ainda está de pé, use os quinze minutos deste texto para assinar os dois eventos de webhook que avisam antes, e olhar a qualidade hoje.
+Antes de qualquer disparo: template aprovado, lista com opt-in, botão de saída no template, e quem clicar sai da lista. Se o número é novo, comece recebendo. E acompanhe a qualidade: média já é o alerta.
 
-Bloqueio quase nunca é surpresa. É aviso que ninguém estava lendo.
-
-::cta: Assine hoje os dois eventos que avisam antes | Qualidade do número e mudança na conta. Quinze minutos de configuração, e você passa a saber que algo está errado enquanto ainda dá para corrigir.
+::cta: Confira a qualidade do seu número hoje | Chame GET /v1/{phone_number_id}?fields=quality_rating com o seu token. Se não estiver no nível mais alto, reduza os envios e revise a lista antes do próximo disparo.
 
 ## Leia também
-- [API oficial vs não oficial do WhatsApp](/api-oficial-vs-nao-oficial-whatsapp-2026)
+- [Quais nichos são proibidos no WhatsApp Business](/nichos-proibidos-whatsapp-business)
 - [Posso mandar mensagem para qualquer número?](/posso-mandar-mensagem-para-qualquer-numero)
-- [Disparei a campanha e ela travou no meio](/minha-campanha-travou-no-meio)
-- [Quantas mensagens por segundo posso enviar?](/quantas-mensagens-por-segundo-posso-enviar)
+- [Opt-in no WhatsApp com link de cadastro](/opt-in-por-link-whatsapp)
+- [API oficial ou não oficial](/api-oficial-vs-nao-oficial-whatsapp-2026)
