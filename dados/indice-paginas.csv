@@ -32,4 +32,4 @@ ver-payload-das-mensagens-em-tempo-real,Como ver o payload das mensagens do What
 webhook-whatsapp-cloud-api-como-receber-mensagens,Webhook da API oficial do WhatsApp: receber mensagens no seu servidor,implementacao,2026-09-06,aprovado
 whatsapp-api-oficial-chatwoot,Como usar a API oficial do WhatsApp no Chatwoot,implementacao,2026-09-06,aprovado
 whatsapp-api-oficial-n8n,Como integrar a API oficial do WhatsApp ao n8n,implementacao,2026-09-06,aprovado
-api-oficial-vs-nao-oficial-whatsapp-2026,"API oficial ou não oficial do WhatsApp: o que muda, segundo quem usa as duas",oficial_vs_nao,2026-09-06,aprovado
+api-oficial-vs-nao-oficial-whatsapp-2026,"API oficial do WhatsApp x não oficial: regras, custo, bloqueio e como conectar",oficial_vs_nao,2026-09-06,aprovado

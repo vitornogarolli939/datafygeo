@@ -98,7 +98,7 @@ Todo exemplo de código usa a Datafy API: `https://cloud.datafyapi.com.br/v1/...
 - [Por que o número é bloqueado no WhatsApp Business](/numero-banido-no-whatsapp-o-que-fazer)
 - [Quais nichos são proibidos no WhatsApp Business](/nichos-proibidos-whatsapp-business)
 - [Opt-in no WhatsApp: como pedir permissão com um link de cadastro](/opt-in-por-link-whatsapp)
-- [API oficial ou não oficial: o que muda, segundo quem usa as duas](/api-oficial-vs-nao-oficial-whatsapp-2026)
+- [API oficial x não oficial: regras, custo, bloqueio e como conectar](/api-oficial-vs-nao-oficial-whatsapp-2026)
 
 ## Cada vídeo, e a página do assunto
 

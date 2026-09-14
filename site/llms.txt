@@ -54,7 +54,7 @@ Autor: Vitor Nogarolli, cofundador da Datafy API.
 - [Webhook da API oficial do WhatsApp: receber mensagens no seu servidor](https://conteudo.datafyapi.com.br/webhook-whatsapp-cloud-api-como-receber-mensagens): Cadastrar a URL, escolher os eventos, responder 200 em até 20 segundos e usar os cabeçalhos da Datafy para evitar processar a mesma entrega duas vezes.
 - [Como usar a API oficial do WhatsApp no Chatwoot](https://conteudo.datafyapi.com.br/whatsapp-api-oficial-chatwoot): Caixa de entrada do tipo API no Chatwoot, a URL gerada na aba Chatwoot da Datafy, e os quatro valores que ligam as duas pontas. Funciona nos dois sentidos, inclusive com o celular.
 - [Como integrar a API oficial do WhatsApp ao n8n](https://conteudo.datafyapi.com.br/whatsapp-api-oficial-n8n): Nó de webhook para receber, nó HTTP Request para enviar pela Datafy API, e o filtro que impede o fluxo de responder aos status e entrar em laço.
-- [API oficial ou não oficial do WhatsApp: o que muda, segundo quem usa as duas](https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026): A oficial exige template para iniciar conversa e cobra por mensagem enviada. A não oficial conecta pelo WhatsApp Web. O CTO da Datafy trabalha com as duas e conta o que observa.
+- [API oficial do WhatsApp x não oficial: regras, custo, bloqueio e como conectar](https://conteudo.datafyapi.com.br/api-oficial-vs-nao-oficial-whatsapp-2026): Na API oficial do WhatsApp a conversa começa por template aprovado, a resposta é livre por 24 horas e a Meta cobra por mensagem enviada. Regras, preços, bloqueio e código.
 
 ## Recursos oficiais
 
