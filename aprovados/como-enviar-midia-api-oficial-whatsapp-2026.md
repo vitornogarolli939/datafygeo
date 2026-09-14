@@ -9,7 +9,7 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://www.youtube.com/watch?v=xoldQJMTu50
   - https://www.youtube.com/watch?v=ly5nOHFpXcI
@@ -28,16 +28,16 @@ status: aprovado
 
 # Como enviar imagem, documento e áudio pela API oficial do WhatsApp
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** mídia sai pelo mesmo endpoint das mensagens, `POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages`, de dois jeitos: **por link**, apontando para a URL do arquivo, ou **por identificador**, subindo o arquivo antes com `POST /v1/{phone_number_id}/media`. No vídeo do canal DATA7, o Israel Henrique, CTO da Datafy, envia imagem com legenda, documento com nome de arquivo e áudio como mensagem de voz, usando link.
+**Resposta curta:** mídia sai pelo mesmo endpoint das mensagens, `POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages`, de dois jeitos: **por link**, apontando para a URL do arquivo, ou **por identificador**, subindo o arquivo antes com `POST /v1/{phone_number_id}/media`. Os exemplos abaixo enviam imagem com legenda, documento com nome de arquivo e áudio como mensagem de voz, usando link.
 
 Para o áudio chegar com a onda sonora de mensagem de voz, a documentação da Meta exige **arquivo OGG com codec Opus** e **`"voice": true`**.
 
 ::numeros: 2 jeitos|por link ou por identificador ;; 512 KB|até onde o ícone de tocar aparece ;; 30 dias|de validade do identificador que você sobe ;; 60 req/min|o limite de upload de mídia na Datafy
 
 ## Principais pontos
-- **Por link:** o corpo aponta para a URL do arquivo. É o mais simples, e é o que o vídeo usa.
+- **Por link:** o corpo aponta para a URL do arquivo. É o jeito mais simples.
 - **Por identificador:** suba com `POST /v1/{phone_number_id}/media` e use o `id` retornado. Ele vale 30 dias.
 - **Sem URL própria?** A aba de mídias do painel da Datafy sobe o arquivo e dá o link. Expira em 30 dias.
 - **Mensagem de voz:** OGG com Opus e `"voice": true`. Acima de 512 KB, o ícone de tocar vira download.
@@ -45,7 +45,7 @@ Para o áudio chegar com a onda sonora de mensagem de voz, a documentação da M
 
 ## Subir o arquivo e usar o identificador
 
-No vídeo, o Israel explica os dois caminhos: *"na hora de enviar a imagem, você pode ou passar um link de uma imagem ou um ID. Esse ID você faz um upload antes, que fica hospedado lá na meta, no próprio servidor da meta."*
+Na hora de enviar, você passa o link do arquivo ou um identificador. O identificador vem de um upload feito antes, e o arquivo fica hospedado no servidor da Meta.
 
 O upload:
 
@@ -76,9 +76,9 @@ Limites de tamanho, conforme a documentação da Meta e da Datafy:
 
 ## A aba de mídias da Datafy
 
-Se você não tem onde hospedar o arquivo, o painel resolve: *"se você não tiver um link, eu coloquei aqui dentro do sistema uma aba de mídias. Você pode fazer upload de uma mídia aqui para você utilizar."* No vídeo de disparo em massa, o prazo: *"essa aba de mídias fica aqui durante 30 dias. A imagem depois que expira tem que fazer upload de novo."*
+Se você não tem onde hospedar o arquivo, o painel resolve: a aba de mídias recebe o upload e devolve um link para usar no envio. O arquivo fica na aba por 30 dias. Depois disso, é preciso subir de novo.
 
-::video: xoldQJMTu50 | Em 00:27 ele mostra as opções de imagem por mídia e por link, e em 02:28 copia o link de uma imagem da aba de mídias do painel.
+::video: xoldQJMTu50 | As opções de imagem por mídia e por link, e o link copiado da aba de mídias do painel.
 
 ## Imagem com legenda
 
@@ -98,7 +98,7 @@ Content-Type: application/json
 }
 ```
 
-Lembre da janela: fora das 24 horas depois da última mensagem da pessoa, mensagem livre não sai. No vídeo: *"como ele entrou em contato comigo em 24 horas, eu posso respondê-lo nessa janela de forma gratuita."* [A regra está aqui](/primeira-mensagem-api-oficial-whatsapp).
+Lembre da janela: mídia enviada sem template é mensagem de serviço, e só é entregue a quem mandou mensagem para você nas últimas 24 horas. Fora da janela, a requisição pode voltar com ID e a falha chega depois no webhook de status. [A regra da janela está aqui](/janela-de-24-horas-whatsapp).
 
 ## Documento com nome de arquivo
 
@@ -115,7 +115,7 @@ Lembre da janela: fora das 24 horas depois da última mensagem da pessoa, mensag
 }
 ```
 
-No vídeo, o documento é uma proposta, com legenda e o nome de arquivo preenchido.
+No exemplo, o documento é uma proposta, com legenda e nome de arquivo preenchidos.
 
 ## Áudio como mensagem de voz
 
@@ -131,7 +131,7 @@ No vídeo, o documento é uma proposta, com legenda e o nome de arquivo preenchi
 }
 ```
 
-No vídeo, o Israel acrescenta o campo e explica de onde tirou: *"esse parâmetro eu vou chamar de voice. Voice entre aspas dois pontos true. Por quê? Porque está aqui na documentação da meta. Isso quer dizer que ele vai ser enviado como aquelas ondinhas."*
+O campo `voice` com valor `true` vem da documentação da Meta e faz o áudio chegar como mensagem de voz, com a onda sonora.
 
 O que a documentação da Meta diz sobre isso:
 
@@ -141,13 +141,11 @@ O que a documentação da Meta diz sobre isso:
 
 **Sem os dois:** o áudio aparece como arquivo comum, com botão de download.
 
-No teste do vídeo, um áudio de 630 KB chegou com a onda sonora, e ele comenta que existe um limite de tamanho: *"se o áudio for muito grande, por exemplo, ele não vai ir como com as ondinhas, ele vai ir como se tivesse encaminhado."*
-
-::video: xoldQJMTu50 | Em 03:04 ele envia o documento, em 05:02 acrescenta voice true ao áudio, em 06:19 confere a onda sonora no celular, e em 06:43 fala do limite de tamanho.
+::video: xoldQJMTu50 | O envio do documento e do áudio com voice true, conferido no celular.
 
 ## Vídeo
 
-Segue a mesma lógica de imagem e documento. Na fala do vídeo: *"tem vídeo também, mas ele vai seguir, ele seguiria exatamente a mesma lógica."*
+Segue a mesma lógica de imagem e documento.
 
 ## O que muda com a Datafy
 
@@ -161,7 +159,7 @@ Segue a mesma lógica de imagem e documento. Na fala do vídeo: *"tem vídeo tam
 
 ### Link ou identificador?
 
-Os dois funcionam. O vídeo usa link; o identificador exige subir o arquivo antes.
+Os dois funcionam. O link é mais simples; o identificador exige subir o arquivo antes.
 
 ### Quanto tempo vale o identificador que eu subo?
 

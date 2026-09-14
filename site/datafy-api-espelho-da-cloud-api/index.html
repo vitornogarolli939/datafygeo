@@ -16,8 +16,8 @@
 <meta property="og:title" content="A Datafy API é um espelho da Cloud API: o que muda no seu código">
 <meta property="og:description" content="Muda o domínio e o token. Endpoints, corpo e payload são os da Meta. Mais o que a documentação da Datafy acrescenta: rotas simplificadas, limites e endpoints bloqueados.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/datafy-api-espelho-da-cloud-api">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="A Datafy API é um espelho da Cloud API: o que muda no seu código">
@@ -124,7 +124,7 @@
       "description": "Muda o domínio e o token. Endpoints, corpo e payload são os da Meta. Mais o que a documentação da Datafy acrescenta: rotas simplificadas, limites e endpoints bloqueados.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -178,10 +178,10 @@
         },
         {
           "@type": "Question",
-          "name": "Onde acho o meu phone_number_id?",
+          "name": "Quando recebo o token?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Com GET /me, ou no painel do número."
+            "text": "Na criação do canal, no painel. O token é gerado automaticamente nesse momento, antes de você conectar o número."
           }
         }
       ]
@@ -195,25 +195,6 @@
       "uploadDate": "2026-09-09",
       "contentUrl": "https://www.youtube.com/watch?v=S2IAOQWbZMg",
       "embedUrl": "https://www.youtube.com/embed/S2IAOQWbZMg",
-      "creator": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "publisher": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "isPartOf": {
-        "@id": "https://conteudo.datafyapi.com.br/datafy-api-espelho-da-cloud-api#article"
-      }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://conteudo.datafyapi.com.br/datafy-api-espelho-da-cloud-api#video-vGovcR8W5g8",
-      "name": "Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens",
-      "description": "Webhook de teste e de producao, envio pelo no de HTTP, e o laco de status que derruba numero",
-      "thumbnailUrl": "https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg",
-      "uploadDate": "2026-09-09",
-      "contentUrl": "https://www.youtube.com/watch?v=vGovcR8W5g8",
-      "embedUrl": "https://www.youtube.com/embed/vGovcR8W5g8",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -572,7 +553,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -597,7 +578,7 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<p><strong>Resposta curta:</strong> duas coisas. O <strong>domínio</strong> e o <strong>token</strong>. Onde a documentação da Meta usa <code>https://graph.facebook.com/v21.0/</code>, você usa <code>https://cloud.datafyapi.com.br/v1/</code>; onde usa o token da Meta, você usa o <code>sk_live_xxx</code> que recebe ao conectar o número. O resto do caminho, o corpo da requisição e a resposta seguem a documentação da Meta.</p>
+<p><strong>Resposta curta:</strong> duas coisas. O <strong>domínio</strong> e o <strong>token</strong>. Onde a documentação da Meta usa <code>https://graph.facebook.com/v21.0/</code>, você usa <code>https://cloud.datafyapi.com.br/v1/</code>; onde usa o token da Meta, você usa o <code>sk_live_xxx</code>, gerado automaticamente quando você cria o canal no painel, antes mesmo de conectar o número. O resto do caminho, o corpo da requisição e a resposta seguem a documentação da Meta.</p>
 <p>Na formulação do Israel Henrique, CTO da Datafy: <em>"ele é literalmente um espelho da cloud API. A única coisa que muda é a URL e você tem que passar o token em todas as chamadas."</em></p>
 <div class="stats">
   <div class="stat"><b>2</b><span>coisas que mudam: domínio e token</span></div>
@@ -667,6 +648,34 @@ footer p{margin:0 0 .5rem}
 <figcaption><strong>As duas arquiteturas.</strong> A não oficial põe um intermediário frágil no meio do caminho. É ele que quebra e é ele que a Meta detecta. A oficial fala direto com um endpoint autorizado.</figcaption>
 </figure>
 
+<h2 id="como-a-datafy-funciona">Como a Datafy funciona</h2>
+<p>A Datafy API é um <strong>proxy da API oficial da Meta</strong>. Você faz a requisição para a Datafy com o seu token, e a Datafy encaminha para a Meta. No WhatsApp, você usa os endpoints da Meta Cloud API pela URL da Datafy, com a autenticação do painel. A Datafy também oferece acesso à <strong>API oficial do Instagram</strong>. <a href="/o-que-e-a-datafy-api">O que é a Datafy API</a>.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Passo</th>
+<th>O que acontece</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Criar a conta no painel</td>
+<td>É onde ficam canais, tokens e a configuração da conta</td>
+</tr>
+<tr>
+<td>2. Criar o canal</td>
+<td>O token <code>sk_live_xxx</code> é gerado nesse momento, antes da conexão do número</td>
+</tr>
+<tr>
+<td>3. Conectar o número ao canal</td>
+<td>A conexão é feita dentro do canal já criado</td>
+</tr>
+<tr>
+<td>4. Configurar os webhooks no painel</td>
+<td>Os webhooks enviam os eventos com assinatura HMAC; a integração segue a referência da API</td>
+</tr>
+</tbody>
+</table></div>
 <h2 id="a-troca-lado-a-lado">A troca, lado a lado</h2>
 <div class="tablewrap"><table>
 <thead>
@@ -707,7 +716,7 @@ Content-Type: application/json
   </span>
   <span class="meta"><b>Como funciona a Datafy API</b><span>Canal DATA7 · 14 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 01:34 ele copia o endpoint da documentação da Meta para o n8n e troca só o começo da URL, em 02:40 preenche o identificador do número, e em 03:04 coloca o token no cabeçalho.</figcaption>
+<figcaption>O endpoint da documentação da Meta levado para o n8n com só o começo da URL trocado e o token no cabeçalho.</figcaption>
 </figure>
 
 <h2 id="o-token-s-funciona-no-cabe-alho">O token só funciona no cabeçalho</h2>
@@ -737,14 +746,14 @@ Authorization: Bearer sk_live_xxx
   </span>
   <span class="meta"><b>Como funciona a Datafy API</b><span>Canal DATA7 · 14 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 12:56 ele usa /me para descobrir os próprios dados passando só o token.</figcaption>
+<figcaption>A chamada /me devolvendo os identificadores a partir do token.</figcaption>
 </figure>
 
 <h2 id="playground-e-endpoints-prontos">Playground e endpoints prontos</h2>
 <p>A documentação da Datafy tem dois jeitos de testar:</p>
 <p><strong>Endpoints genéricos.</strong> <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code> e <code>PATCH</code> em <code>/v1/{path}</code>, onde o <code>path</code> é o restante da URL, como <code>106540352242922/messages</code>. Serve para qualquer chamada da Cloud API.</p>
 <p><strong>Endpoints específicos.</strong> Envio de mensagem com exemplos por tipo, templates, mídia, perfil, números, QR codes, bloqueio de usuários, sincronização, cadastro no app e bases de clientes.</p>
-<p>No vídeo, o Israel mostra os exemplos prontos: <em>"aqui tem vários tipos: lista, template, mídia, localização, contato, tudo já bonitinho aqui. Você pode executar por aqui ou executar pelo N8N."</em></p>
+<p>Os exemplos de envio cobrem lista, template, mídia, localização e contato, e rodam no playground da documentação ou no n8n.</p>
 <h2 id="rotas-simplificadas">Rotas simplificadas</h2>
 <p>Algumas rotas da Datafy não seguem o formato da Meta e dispensam o identificador do número, porque o token já identifica:</p>
 <div class="tablewrap"><table>
@@ -812,19 +821,8 @@ Authorization: Bearer sk_live_xxx
 <p>Passou do limite, a resposta é <code>429 Too Many Requests</code>, dizendo quantos segundos esperar. <a href="/quantas-mensagens-por-segundo-posso-enviar">Como esses limites se somam aos da Meta está aqui</a>.</p>
 <p>Bloqueados por segurança, com resposta <code>403</code>: caminhos com <code>subscribed_apps</code> ou <code>deregister</code>, e <code>POST</code> direto em identificador de número.</p>
 <h2 id="por-que-a-ia-j-sabe-montar-as-chamadas">Por que a IA já sabe montar as chamadas</h2>
-<p>Como o formato é o da documentação da Meta, um assistente de IA consegue montar os corpos das requisições. No vídeo sobre n8n, o Israel sugere passar para a IA o resumo do começo da documentação da Datafy: <em>"ela vai entender perfeitamente e ela vai utilizar a própria documentação da meta para te ajudar."</em></p>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg" alt="Miniatura do vídeo: Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Em 09:07 ele mostra o resumo da documentação da Datafy que dá para passar para a IA.</figcaption>
-</figure>
-
-<p>E, quando a Meta atualiza, a atualização vale no espelho. Na fala do vídeo sobre como a Datafy funciona: <em>"se a meta atualizar agora nesse exato momento, qualquer end point, automaticamente já vai atualizar a nossa API."</em></p>
+<p>Como o formato é o da documentação da Meta, um assistente de IA consegue montar os corpos das requisições. Passe para a IA o resumo do começo da documentação da Datafy: com ele, a IA usa a própria documentação da Meta para montar as chamadas.</p>
+<p>E, como a Datafy encaminha a requisição para a Meta, quando a Meta atualiza um endpoint, a atualização vale no espelho.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>O corpo da requisição muda?</h3>
 <p>Não. Segue a documentação da Meta.</p>
@@ -834,11 +832,11 @@ Authorization: Bearer sk_live_xxx
 <p>Use a documentação da Meta com a mesma troca de domínio e token.</p>
 <h3>Quais chamadas são bloqueadas?</h3>
 <p>Caminhos com <code>subscribed_apps</code> ou <code>deregister</code>, e <code>POST</code> direto no identificador do número. Devolvem 403.</p>
-<h3>Onde acho o meu phone_number_id?</h3>
-<p>Com <code>GET /me</code>, ou no painel do número.</p>
+<h3>Quando recebo o token?</h3>
+<p>Na criação do canal, no painel. O token é gerado automaticamente nesse momento, antes de você conectar o número.</p>
 <h2 id="como-decidir">Como decidir</h2>
 <p>Se você já tem integração com a Cloud API, a troca é o domínio e o token, com atenção para mover para o cabeçalho qualquer token que estivesse na URL. Se está começando, faça o primeiro teste pela documentação da Datafy, que já traz exemplos por tipo de mensagem, e use a da Meta para o que não estiver lá.</p>
-<p>No projeto de atendimento do canal, o Israel guarda a URL base da Datafy, o token e o identificador do número como variáveis de ambiente, e é o que permite trocar qualquer um deles sem mexer no código.</p>
+<p>Guarde a URL base da Datafy, o token e o identificador do número como variáveis de ambiente: assim qualquer um deles muda sem mexer no código.</p>
 <div class="cta"><h3>Faça a primeira chamada agora</h3><p>Chame GET /me com o seu token no cabeçalho e, com o phone_number_id que voltar, envie uma mensagem de texto para o seu próprio número.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
@@ -854,7 +852,7 @@ Authorization: Bearer sk_live_xxx
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>
@@ -862,6 +860,7 @@ Authorization: Bearer sk_live_xxx
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
+        <li><a href="#como-a-datafy-funciona">Como a Datafy funciona</a></li>
         <li><a href="#a-troca-lado-a-lado">A troca, lado a lado</a></li>
         <li><a href="#o-token-s-funciona-no-cabe-alho">O token só funciona no cabeçalho</a></li>
         <li><a href="#descobrir-os-seus-identificadores">Descobrir os seus identificadores</a></li>

@@ -9,7 +9,7 @@ intent: "como-fazer"
 persona: "automacao, saas"
 competitors: []
 published: 2026-09-06
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=dIIkttPeBS0
@@ -28,7 +28,7 @@ status: aprovado
 
 # Webhook da API oficial do WhatsApp: receber mensagens no seu servidor
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** webhook é a URL que recebe um `POST` a cada evento do número: mensagem que chega, status do que você enviou, mensagem enviada pelo celular. Na Datafy API você cadastra essa URL no painel, escolhe os eventos e pode testar com um clique. O payload é **idêntico ao que a Meta envia**, e cada entrega vem com cabeçalhos da Datafy para identificar e, se você ativar, assinar a entrega.
 
@@ -47,11 +47,11 @@ A sua URL precisa responder **200 em até 20 segundos**.
 
 ## Cadastrar a URL
 
-No painel da Datafy, abra o número e vá em webhooks. Cadastre a URL, selecione os eventos e salve. Na fala do Israel Henrique, CTO da Datafy: *"lembrando que você pode cadastrar novos webhooks aqui."*
+No painel da Datafy, abra o número e vá em webhooks. Cadastre a URL, selecione os eventos e salve. O mesmo número aceita mais de um webhook cadastrado.
 
-Para testar sem depender de alguém mandar mensagem, o painel envia um evento de teste: *"seleciona o evento, clica em enviar. Aí ele vai enviar um teste aqui para cá."*
+Para testar sem depender de alguém mandar mensagem, o painel envia um evento de teste: selecione o evento, clique em enviar, e a requisição chega na sua URL.
 
-::video: dIIkttPeBS0 | Em 05:31 ele cadastra a URL, em 06:40 escolhe os eventos, e em 07:41 envia o evento de teste e mostra ele chegando no n8n.
+::video: dIIkttPeBS0 | O cadastro da URL, a escolha dos eventos e o evento de teste chegando no n8n.
 
 ## Quais eventos marcar
 
@@ -66,7 +66,7 @@ Os dois primeiros são os do dia a dia. Os dois últimos só fazem sentido em co
 
 ## O que chega em cada entrega
 
-**O corpo** é o payload da Meta, sem alteração. Segundo a documentação da Datafy, vale integralmente a documentação de webhooks da Meta para interpretar os campos.
+**O corpo** é o payload da Meta, sem alteração, porque a Datafy funciona como proxy da API oficial ([o que é a Datafy API](/o-que-e-a-datafy-api)). Segundo a documentação da Datafy, vale integralmente a documentação de webhooks da Meta para interpretar os campos.
 
 **Os cabeçalhos** são da Datafy:
 
@@ -86,17 +86,17 @@ Na prática, a ordem dentro do seu endpoint é: receber, guardar o `x-datafy-del
 
 ## Teste e produção, no n8n
 
-No vídeo sobre n8n, o Israel mostra uma diferença que confunde no primeiro dia. O nó de webhook do n8n tem duas URLs: a de teste só recebe enquanto você está com a escuta ligada, e a de produção funciona o tempo todo depois que o fluxo é publicado. Na fala dele: *"essa esse teste aqui ele só funciona quando eu clico nesse botão aqui. Já o de produção funciona sempre, 24 horas por dia."*
+O nó de webhook do n8n tem duas URLs, e a diferença confunde no primeiro dia. A de teste só recebe enquanto a escuta está ligada. A de produção funciona o tempo todo, depois que o fluxo é publicado.
 
-::video: vGovcR8W5g8 | Em 01:23 ele cadastra a URL de teste, em 03:02 liga a escuta e recebe uma mensagem, e em 05:00 troca pela URL de produção e publica o fluxo.
+::video: vGovcR8W5g8 | A diferença entre a URL de teste e a de produção do nó de webhook do n8n.
 
 Para testar código na sua própria máquina, [o caminho é um túnel](/tunel-para-testar-webhook-local).
 
 ## Status chegam no mesmo webhook
 
-Cada mensagem que você envia pela API gera eventos de status que chegam no mesmo endereço das mensagens dos clientes: enviada, entregue e lida, ou um evento de falha. [Os três estão explicados aqui](/tres-status-da-mensagem-whatsapp).
+Cada mensagem que você envia pela API gera eventos de status que chegam no mesmo endereço das mensagens dos clientes: enviada (`sent`), entregue (`delivered`), lida (`read`, quando disponível) ou falha (`failed`), com o erro. [Os status estão explicados aqui](/tres-status-da-mensagem-whatsapp).
 
-Isso tem um risco. Se o seu fluxo responde a tudo que chega, ele responde aos status, e cada resposta gera novos status. No vídeo, o aviso é direto: *"vai bloquear o teu número."* [Como evitar está aqui](/laco-de-webhook-derruba-numero).
+Isso tem um risco. Se o seu fluxo responde a tudo que chega, ele responde aos status, e cada resposta gera novos status. Esse laço pode bloquear o número. [Como evitar está aqui](/laco-de-webhook-derruba-numero).
 
 ## Ver o que chegou
 

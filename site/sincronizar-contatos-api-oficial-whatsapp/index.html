@@ -16,8 +16,8 @@
 <meta property="og:title" content="Como sincronizar os contatos e o histórico do WhatsApp Business com a API">
 <meta property="og:description" content="Uma chamada por tipo, uma vez só, em até 24 horas depois de conectar. Como os contatos e as conversas chegam no webhook, e as armadilhas de fase, duplicata e timestamp.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/sincronizar-contatos-api-oficial-whatsapp">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Como sincronizar os contatos e o histórico do WhatsApp Business com a API">
@@ -124,7 +124,7 @@
       "description": "Uma chamada por tipo, uma vez só, em até 24 horas depois de conectar. Como os contatos e as conversas chegam no webhook, e as armadilhas de fase, duplicata e timestamp.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -553,7 +553,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -597,7 +597,7 @@ footer p{margin:0 0 .5rem}
 <ul>
 <li><strong>Pré-requisito no celular:</strong> durante a conexão, o cliente precisa autorizar o compartilhamento. Se recusou, nada é enviado.</li>
 <li><strong>Pré-requisito no webhook:</strong> os campos <code>history</code> e <code>smb_app_state_sync</code> assinados antes de disparar.</li>
-<li><strong>Contatos chegam praticamente na hora.</strong> No vídeo, o histórico pode levar até cerca de 30 minutos para começar a chegar.</li>
+<li><strong>Contatos chegam praticamente na hora.</strong> O histórico demora mais: a documentação da Meta fala em vários minutos, dependendo do tamanho.</li>
 <li><strong>O histórico vem em fases e pedaços fora de ordem, e com duplicatas.</strong> Junte por conversa, remova repetidas pelo <code>wamid</code> e ordene por horário.</li>
 <li><strong>Contatos usam timestamp em milissegundos; histórico usa segundos.</strong> Tratar os dois igual quebra as datas.</li>
 </ul>
@@ -647,8 +647,8 @@ footer p{margin:0 0 .5rem}
 
 <h2 id="antes-de-disparar">Antes de disparar</h2>
 <p><strong>1. O compartilhamento foi autorizado no celular.</strong> No fluxo de conexão, o aplicativo pergunta se você quer compartilhar o histórico. Marcando, dá para recuperar conversas e contatos. Se marcou que não, o caminho é refazer a conexão.</p>
-<p><strong>2. Os eventos estão assinados.</strong> No painel da Datafy, na aba de webhooks do número, marque <code>history</code> e <code>smb_app_state_sync</code>. No vídeo, o Israel Henrique, CTO da Datafy, marca o evento de contatos antes de qualquer chamada: <em>"você tem que marcar um evento específico."</em></p>
-<p><strong>3. Você está dentro das 24 horas.</strong> Na fala dele: <em>"isso tem que ser feito em até 24 horas após você fazer a conexão. Se passou de 24 horas, não dá mais. Aí tem que desconectar e conectar de novo."</em> A documentação da Meta diz o mesmo: sem sincronizar em 24 horas, o cliente precisa ser desconectado e refazer o fluxo.</p>
+<p><strong>2. Os eventos estão assinados.</strong> No painel da Datafy, na aba de webhooks do número, marque <code>history</code> e <code>smb_app_state_sync</code> antes de qualquer chamada. Cada tipo de dado chega pelo seu evento específico.</p>
+<p><strong>3. Você está dentro das 24 horas.</strong> O prazo conta a partir da conexão. Passou de 24 horas, não dá mais: é preciso desconectar e conectar de novo. A documentação da Meta diz o mesmo: sem sincronizar em 24 horas, o cliente precisa ser desconectado e refazer o fluxo.</p>
 <h2 id="a-chamada">A chamada</h2>
 <p>Contatos:</p>
 <pre><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/smb_app_data
@@ -673,7 +673,7 @@ Content-Type: application/json
   &quot;success&quot;: true
 }
 </code></pre>
-<p><strong>Guarde o <code>request_id</code>.</strong> É o identificador que você passa ao suporte da Meta se a entrega falhar. No vídeo, o conselho é o mesmo: <em>"é bom salvar esse valor aqui caso dê algum problema, que daí você pode entrar em contato com a meta."</em></p>
+<p><strong>Guarde o <code>request_id</code>.</strong> É o identificador que você passa ao suporte da Meta se a entrega falhar.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=HQm5UuW50bM" rel="noopener">
   <span class="thumb">
@@ -682,7 +682,7 @@ Content-Type: application/json
   </span>
   <span class="meta"><b>Sincronizar contatos na API oficial do WhatsApp</b><span>Canal DATA7 · 4 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Quatro minutos: em 00:30 ele marca o evento, em 01:05 explica o prazo de 24 horas, em 02:38 dispara a sincronização e os contatos aparecem no webhook, e em 03:40 fala do tempo do histórico.</figcaption>
+<figcaption>A sincronização de ponta a ponta: o evento marcado, o prazo de 24 horas, o disparo com os contatos chegando no webhook e o tempo do histórico.</figcaption>
 </figure>
 
 <h2 id="como-os-contatos-chegam">Como os contatos chegam</h2>
@@ -702,7 +702,7 @@ Content-Type: application/json
 <p><strong>Duplicatas.</strong> O mesmo <code>thread.id</code> aparece em vários webhooks, e a mesma mensagem pode vir repetida. A regra: junte as mensagens de todos os webhooks pelo <code>thread.id</code>, remova as repetidas pelo <code>wamid</code>, e ordene pelo <code>timestamp</code>.</p>
 <p><strong>Direção.</strong> <code>history_context.from_me: true</code> é mensagem enviada pela empresa. Ausente ou falso, recebida.</p>
 <p><strong>Mídia.</strong> Não vem dentro das conversas. Aparece como <code>type: "media_placeholder"</code>, sem conteúdo, e o arquivo chega em webhooks separados, casados pelo <code>wamid</code>. Só mídias dos últimos cerca de 14 dias têm arquivo, o que bate com a documentação da Meta.</p>
-<p><strong>Tempo.</strong> A documentação da Meta diz que pode levar vários minutos, dependendo do tamanho do histórico. No vídeo, a observação do Israel é que <em>"as conversas elas podem levar até 30 minutos para começar a chegar. Demora bastante mesmo, dependendo aí da quantidade."</em> Não refaça o processo porque nada apareceu em dois minutos.</p>
+<p><strong>Tempo.</strong> A documentação da Meta diz que pode levar vários minutos, dependendo do tamanho do histórico. Israel Henrique, CTO da Datafy, resume a experiência com as conversas: <em>"Demora bastante mesmo, dependendo aí da quantidade."</em> Não refaça o processo porque nada apareceu em dois minutos.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Passou das 24 horas. Tem jeito?</h3>
 <p>Só desconectando o número pelo celular e refazendo a conexão. A desconexão não existe pela API.</p>
@@ -732,7 +732,7 @@ Content-Type: application/json
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>

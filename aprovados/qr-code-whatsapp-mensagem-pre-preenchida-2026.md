@@ -9,14 +9,14 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-10
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=dIIkttPeBS0
   - https://www.youtube.com/watch?v=JL9Qzw3oS5A
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing/non-template-messages
   - https://developers.facebook.com/docs/whatsapp/pricing
-videos: [dIIkttPeBS0, JL9Qzw3oS5A]
+videos: [dIIkttPeBS0]
 internal_links:
   - /posso-mandar-mensagem-para-qualquer-numero
   - /primeira-mensagem-api-oficial-whatsapp
@@ -28,11 +28,11 @@ status: aprovado
 
 # QR code do WhatsApp com mensagem pré-preenchida, pela API
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** a API cria QR codes para o seu número, cada um com uma **mensagem pré-preenchida** de até 140 caracteres. A resposta traz o link curto (`wa.me/message/...`) e a imagem do QR hospedada pela Meta, em SVG ou PNG. Cada número pode ter até **2.000** QR codes.
 
-O efeito prático: quem escaneia abre a conversa com a mensagem já escrita. Quando a pessoa envia, **é ela que inicia a conversa**, e a janela de 24 horas para você responder livremente começa ali.
+O efeito prático: quem escaneia abre a conversa com a mensagem já escrita. Quando a pessoa envia, **é ela que inicia a conversa**, e a [janela de 24 horas](/janela-de-24-horas-whatsapp) para você responder com mensagens de serviço, sem template, começa ali.
 
 ::numeros: 2.000|QR codes por número ;; 140|caracteres na mensagem pré-preenchida ;; 24 h|de janela depois que a pessoa manda ;; SVG|o formato indicado para impresso
 
@@ -107,17 +107,24 @@ Apagar é permanente. Quem escanear depois vê a mensagem "Este QR code expirou"
 
 ## Por que o QR muda o custo e a regra da conversa
 
-Quando a pessoa escaneia e envia a mensagem, quem começou a conversa foi ela. Isso importa por causa da janela de 24 horas.
+Quando a pessoa escaneia e envia a mensagem, quem começou a conversa foi ela. Isso importa por causa da janela de 24 horas: só a mensagem do cliente abre e renova a janela, e cada cliente tem a sua. A mensagem da empresa não renova o prazo.
 
-No vídeo de primeiros passos, o Israel Henrique, CTO da Datafy, explica: a mensagem de serviço *"é gratuita, você não paga para enviar essas mensagens, porém você só pode enviar essas mensagens para usuários que já enviaram mensagem para você nas últimas 24 horas."*
+Exemplo, com um QR impresso num folheto:
 
-::video: dIIkttPeBS0 | Em 11:23 ele explica a janela de 24 horas antes de responder pela API, e em 12:57 mostra o que acontece quando o destinatário não falou com ele nesse prazo.
+| Quando | O que acontece | Até quando responde sem template |
+|---|---|---|
+| Segunda, 9h | A pessoa escaneia o QR e envia a mensagem pré-preenchida | Terça, 9h |
+| Segunda, 9h10 | A empresa responde pela API | Continua até terça, 9h |
+| Segunda, 15h | A pessoa manda outra pergunta | Muda para terça, 15h |
+| Terça, 15h01 | Nenhuma mensagem nova da pessoa | Janela fechada; precisa de template |
 
-E a janela reinicia a cada nova mensagem da pessoa, como ele mostra no vídeo sobre preço lendo a documentação.
+Sem o QR, a empresa que quer começar a conversa precisa de template. E enviar template não abre a janela: ela só abre quando a pessoa responde. [Serviço e template, a diferença](/tipos-de-mensagem-whatsapp-servico-e-template).
 
-::video: JL9Qzw3oS5A | Em 09:24 ele lê a regra da janela de atendimento e mostra que ela reinicia a cada nova mensagem do usuário.
+Fora da janela, a requisição de mensagem de serviço pode voltar HTTP 200 com um ID, e a falha chega depois, no webhook de status, como `failed`.
 
-Sobre o custo dessa resposta: a documentação da Meta marca a mensagem de serviço como gratuita **até 1º de outubro de 2026**, e cobrada por mensagem a partir daí. [O que muda nessa data está aqui](/mensagem-de-servico-vai-ser-paga-outubro-2026).
+::video: dIIkttPeBS0 | A resposta pela API dentro da janela de 24 horas, e o que acontece quando o destinatário não falou com a empresa nesse prazo.
+
+Sobre o custo dessa resposta: a Meta cobra por mensagem entregue, pela categoria e pelo país do destinatário. Até 30 de setembro de 2026, mensagem de serviço dentro da janela não é cobrada. A partir de 1º de outubro de 2026, cada número tem 1.000 mensagens de serviço gratuitas por mês, e a cobrança começa na 1.001ª entregue, com valor de referência de R$ 0,035 no Brasil. [O que muda nessa data está aqui](/mensagem-de-servico-vai-ser-paga-outubro-2026).
 
 ## Perguntas frequentes
 

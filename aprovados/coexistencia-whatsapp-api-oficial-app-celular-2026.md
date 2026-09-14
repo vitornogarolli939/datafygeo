@@ -9,7 +9,7 @@ intent: "decidindo"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-06
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/
   - https://developers.facebook.com/docs/whatsapp/throughput
@@ -17,7 +17,7 @@ sources:
   - https://www.youtube.com/watch?v=JL9Qzw3oS5A
   - https://www.youtube.com/watch?v=T_ai6IvLzZE
   - https://app.datafyapi.com.br/docs
-videos: [dIIkttPeBS0, JL9Qzw3oS5A, T_ai6IvLzZE]
+videos: [dIIkttPeBS0, T_ai6IvLzZE]
 internal_links:
   - /como-conectar-numero-api-oficial-whatsapp
   - /sincronizar-contatos-api-oficial-whatsapp
@@ -29,18 +29,18 @@ status: aprovado
 
 # Coexistência: API oficial e WhatsApp Business no mesmo número
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** coexistência é usar o aplicativo do WhatsApp Business no celular **e** a API oficial ao mesmo tempo, no mesmo número. O atendente responde pelo aplicativo, a automação responde pela API, e as duas coisas acontecem na mesma conversa.
 
-Para usar esse modo indo direto na Meta, é preciso virar Tech Provider. Pela Datafy API, que é Tech Provider verificado pela Meta, você conecta escolhendo a opção de conectar um app do WhatsApp Business e escaneando um QR code.
+Para usar esse modo indo direto na Meta, é preciso virar Tech Provider. Pela [Datafy API](/o-que-e-a-datafy-api), que é Tech Provider verificado pela Meta, você conecta escolhendo a opção de conectar um app do WhatsApp Business e escaneando um QR code.
 
 ::numeros: 20 msg/s|o limite fixo de envio em coexistência ;; 180 dias|de histórico que podem ser sincronizados ;; 24 h|para sincronizar depois de conectar ;; 0|custo da mensagem enviada pelo celular
 
 ## Principais pontos
 - É o modo em que **o número já existe no aplicativo** e passa a funcionar também na API.
 - A documentação da Meta fixa o envio em **20 mensagens por segundo** para número do aplicativo, contra 80 do padrão.
-- A **mensagem enviada pelo celular não é cobrada**. A Meta cobra o que sai pela API.
+- A **mensagem enviada pelo celular não é cobrada**. A Meta cobra as mensagens enviadas pela API que foram entregues.
 - Para o seu sistema ver o que o atendente manda pelo celular, é preciso assinar o evento **`smb_message_echoes`**.
 - **Desconexão só pelo celular**, e a sincronização de histórico tem **24 horas** para ser pedida.
 
@@ -48,7 +48,7 @@ Para usar esse modo indo direto na Meta, é preciso virar Tech Provider. Pela Da
 
 ## Por que coexistência exige Tech Provider
 
-No vídeo sobre preço, o Israel Henrique, CTO da Datafy, descreve o caminho direto: criar conta de desenvolvedor, criar aplicativo, montar webhooks, enviar para aprovação. E completa: *"se você quiser ainda conectar o teu próprio aplicativo do celular na API, precisa se tornar um tech provider, que seria um parceiro de tecnologia da meta, o processo mais burocrático ainda."*
+Direto na Meta, usar a API exige criar conta de desenvolvedor, criar aplicativo, montar webhooks e enviar para aprovação. Conectar o próprio aplicativo do celular na API exige ainda se tornar Tech Provider, o parceiro de tecnologia da Meta, que é o processo mais burocrático.
 
 A Datafy API é Tech Provider verificado pela Meta. No fluxo de conexão, a opção que ativa a coexistência é **conectar um app do WhatsApp Business**. [O passo a passo da conexão está aqui](/como-conectar-numero-api-oficial-whatsapp).
 
@@ -70,19 +70,25 @@ Em coexistência há duas origens de mensagem saindo do mesmo número, e elas ch
 
 **Mensagem que o cliente manda** chega pelo evento `messages`. Por esse mesmo evento chegam os status das mensagens que você envia pela API.
 
-**Mensagem que o atendente manda pelo celular** chega pelo evento `smb_message_echoes`. Na explicação do vídeo: *"esse SMB Messages Echoes, ele vai te notificar sempre que você enviar uma mensagem do celular. Quando você envia mensagens direto pela API, não aparece."*
+**Mensagem que o atendente manda pelo celular** chega pelo evento `smb_message_echoes`. Ele notifica toda mensagem enviada pelo celular. O que você envia direto pela API não aparece nele.
 
-::video: dIIkttPeBS0 | Em 06:40 ele marca os dois eventos no cadastro do webhook e explica a diferença entre eles.
+::video: dIIkttPeBS0 | O cadastro do webhook com os dois eventos marcados, e a diferença entre eles.
 
 Se você não assinar o segundo evento, o que o atendente responde pelo celular não chega no seu sistema. [O sintoma e a correção estão aqui](/mensagem-do-celular-nao-aparece-no-sistema).
 
 ## O que muda no custo
 
-A Meta cobra por mensagem **enviada pela API**. Mensagem recebida não é cobrada, e mensagem enviada pelo celular também não. Na fala do Israel: *"se você conectar o teu WhatsApp Web ou o teu celular aqui junto com a API e você enviar mensagens pelo celular, você não paga. Só paga se for enviado pela API."*
+A Meta cobra por mensagem **entregue**, conforme a categoria e o país do destinatário. Em coexistência, a mensagem enviada pelo celular não é cobrada: a cobrança vale para o que sai pela API. Mensagem recebida também não é cobrada.
 
-::video: JL9Qzw3oS5A | Em 00:21, logo no começo do vídeo sobre preço, ele estabelece essa regra antes de explicar as categorias.
+| De onde sai a mensagem | Cobrança da Meta (referência no Brasil) |
+|---|---|
+| Pelo celular do número | Sem cobrança |
+| Pela API, mensagem de serviço dentro da janela de 24 horas | Sem cobrança até 30 de setembro de 2026. A partir de 1º de outubro, 1.000 grátis por mês por número, e R$ 0,035 da 1.001ª entregue em diante |
+| Pela API, template de marketing | R$ 0,32 por mensagem entregue, mesmo com a janela aberta |
+| Pela API, template de utilidade | R$ 0,035 por mensagem entregue. Dentro da janela, sem cobrança só até 30 de setembro de 2026 |
+| Pela API, template de autenticação | R$ 0,035 por mensagem entregue, mesmo com a janela aberta |
 
-[Os preços por categoria estão aqui](/quanto-custa-whatsapp-business-api-brasil-2026).
+Os valores são referência para planejamento: o efetivo depende da tabela vigente. [Serviço e template](/tipos-de-mensagem-whatsapp-servico-e-template), [as categorias de template](/categorias-de-template-whatsapp) e [os preços por categoria](/quanto-custa-whatsapp-business-api-brasil-2026) têm páginas próprias.
 
 ## Contatos e histórico do aplicativo
 
@@ -90,9 +96,9 @@ Durante a conexão, o celular pergunta se você quer compartilhar o histórico. 
 
 ## Coexistência com uma caixa de entrada
 
-No vídeo sobre o Chatwoot, o Israel manda uma mensagem pelo celular do número conectado e ela aparece na caixa de entrada: *"essa aqui foi enviada diretamente do celular que está conectado na API. Então tá sincronizado."* [A configuração do Chatwoot está aqui](/whatsapp-api-oficial-chatwoot).
+Com o evento `smb_message_echoes` assinado, a mensagem enviada pelo celular do número conectado aparece na caixa de entrada integrada, sincronizada com a conversa. [A configuração do Chatwoot está aqui](/whatsapp-api-oficial-chatwoot).
 
-::video: T_ai6IvLzZE | Em 04:20 a mensagem enviada pelo celular aparece no Chatwoot.
+::video: T_ai6IvLzZE | A integração com o Chatwoot, com a mensagem enviada pelo celular aparecendo na caixa de entrada.
 
 ## Perguntas frequentes
 
@@ -102,7 +108,7 @@ Continua. Esse é o ponto da coexistência: o número funciona no aplicativo e n
 
 ### Mensagem que o atendente manda pelo celular é cobrada?
 
-Não. A cobrança é por mensagem enviada pela API.
+Não. A Meta cobra as mensagens enviadas pela API que foram entregues.
 
 ### Posso desconectar pela API?
 

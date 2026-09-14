@@ -16,8 +16,8 @@
 <meta property="og:title" content="Webhook da API oficial do WhatsApp: receber mensagens no seu servidor">
 <meta property="og:description" content="Cadastrar a URL, escolher os eventos, responder 200 em até 20 segundos e usar os cabeçalhos da Datafy para evitar processar a mesma entrega duas vezes.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/webhook-whatsapp-cloud-api-como-receber-mensagens">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Webhook da API oficial do WhatsApp: receber mensagens no seu servidor">
@@ -124,7 +124,7 @@
       "description": "Cadastrar a URL, escolher os eventos, responder 200 em até 20 segundos e usar os cabeçalhos da Datafy para evitar processar a mesma entrega duas vezes.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-06",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -572,7 +572,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -664,8 +664,8 @@ footer p{margin:0 0 .5rem}
 </figure>
 
 <h2 id="cadastrar-a-url">Cadastrar a URL</h2>
-<p>No painel da Datafy, abra o número e vá em webhooks. Cadastre a URL, selecione os eventos e salve. Na fala do Israel Henrique, CTO da Datafy: <em>"lembrando que você pode cadastrar novos webhooks aqui."</em></p>
-<p>Para testar sem depender de alguém mandar mensagem, o painel envia um evento de teste: <em>"seleciona o evento, clica em enviar. Aí ele vai enviar um teste aqui para cá."</em></p>
+<p>No painel da Datafy, abra o número e vá em webhooks. Cadastre a URL, selecione os eventos e salve. O mesmo número aceita mais de um webhook cadastrado.</p>
+<p>Para testar sem depender de alguém mandar mensagem, o painel envia um evento de teste: selecione o evento, clique em enviar, e a requisição chega na sua URL.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
   <span class="thumb">
@@ -674,7 +674,7 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 05:31 ele cadastra a URL, em 06:40 escolhe os eventos, e em 07:41 envia o evento de teste e mostra ele chegando no n8n.</figcaption>
+<figcaption>O cadastro da URL, a escolha dos eventos e o evento de teste chegando no n8n.</figcaption>
 </figure>
 
 <h2 id="quais-eventos-marcar">Quais eventos marcar</h2>
@@ -706,7 +706,7 @@ footer p{margin:0 0 .5rem}
 </table></div>
 <p>Os dois primeiros são os do dia a dia. Os dois últimos só fazem sentido em coexistência, e precisam estar marcados <strong>antes</strong> de você pedir a sincronização. <a href="/sincronizar-contatos-api-oficial-whatsapp">Como sincronizar está aqui</a>.</p>
 <h2 id="o-que-chega-em-cada-entrega">O que chega em cada entrega</h2>
-<p><strong>O corpo</strong> é o payload da Meta, sem alteração. Segundo a documentação da Datafy, vale integralmente a documentação de webhooks da Meta para interpretar os campos.</p>
+<p><strong>O corpo</strong> é o payload da Meta, sem alteração, porque a Datafy funciona como proxy da API oficial (<a href="/o-que-e-a-datafy-api">o que é a Datafy API</a>). Segundo a documentação da Datafy, vale integralmente a documentação de webhooks da Meta para interpretar os campos.</p>
 <p><strong>Os cabeçalhos</strong> são da Datafy:</p>
 <div class="tablewrap"><table>
 <thead>
@@ -735,7 +735,7 @@ footer p{margin:0 0 .5rem}
 <p>A documentação da Datafy é explícita: a URL deve responder <code>200</code> em até <strong>20 segundos</strong>, e o recomendado é responder imediatamente e processar o evento de forma assíncrona. Processamento síncrono longo estoura o tempo e é contabilizado como falha.</p>
 <p>Na prática, a ordem dentro do seu endpoint é: receber, guardar o <code>x-datafy-delivery-id</code>, responder 200, e só então processar.</p>
 <h2 id="teste-e-produ-o-no-n8n">Teste e produção, no n8n</h2>
-<p>No vídeo sobre n8n, o Israel mostra uma diferença que confunde no primeiro dia. O nó de webhook do n8n tem duas URLs: a de teste só recebe enquanto você está com a escuta ligada, e a de produção funciona o tempo todo depois que o fluxo é publicado. Na fala dele: <em>"essa esse teste aqui ele só funciona quando eu clico nesse botão aqui. Já o de produção funciona sempre, 24 horas por dia."</em></p>
+<p>O nó de webhook do n8n tem duas URLs, e a diferença confunde no primeiro dia. A de teste só recebe enquanto a escuta está ligada. A de produção funciona o tempo todo, depois que o fluxo é publicado.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
   <span class="thumb">
@@ -744,13 +744,13 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 01:23 ele cadastra a URL de teste, em 03:02 liga a escuta e recebe uma mensagem, e em 05:00 troca pela URL de produção e publica o fluxo.</figcaption>
+<figcaption>A diferença entre a URL de teste e a de produção do nó de webhook do n8n.</figcaption>
 </figure>
 
 <p>Para testar código na sua própria máquina, <a href="/tunel-para-testar-webhook-local">o caminho é um túnel</a>.</p>
 <h2 id="status-chegam-no-mesmo-webhook">Status chegam no mesmo webhook</h2>
-<p>Cada mensagem que você envia pela API gera eventos de status que chegam no mesmo endereço das mensagens dos clientes: enviada, entregue e lida, ou um evento de falha. <a href="/tres-status-da-mensagem-whatsapp">Os três estão explicados aqui</a>.</p>
-<p>Isso tem um risco. Se o seu fluxo responde a tudo que chega, ele responde aos status, e cada resposta gera novos status. No vídeo, o aviso é direto: <em>"vai bloquear o teu número."</em> <a href="/laco-de-webhook-derruba-numero">Como evitar está aqui</a>.</p>
+<p>Cada mensagem que você envia pela API gera eventos de status que chegam no mesmo endereço das mensagens dos clientes: enviada (<code>sent</code>), entregue (<code>delivered</code>), lida (<code>read</code>, quando disponível) ou falha (<code>failed</code>), com o erro. <a href="/tres-status-da-mensagem-whatsapp">Os status estão explicados aqui</a>.</p>
+<p>Isso tem um risco. Se o seu fluxo responde a tudo que chega, ele responde aos status, e cada resposta gera novos status. Esse laço pode bloquear o número. <a href="/laco-de-webhook-derruba-numero">Como evitar está aqui</a>.</p>
 <h2 id="ver-o-que-chegou">Ver o que chegou</h2>
 <p>Quando algo não bate, o painel da Datafy tem um log em tempo real que mostra o payload de cada mensagem enviada e recebida. Ele guarda 7 dias e até 100 mensagens por conversa, e é só log. <a href="/ver-payload-das-mensagens-em-tempo-real">Como usar está aqui</a>.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
@@ -781,7 +781,7 @@ footer p{margin:0 0 .5rem}
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>

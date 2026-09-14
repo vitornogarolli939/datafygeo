@@ -16,8 +16,8 @@
 <meta property="og:title" content="Como integrar a API oficial do WhatsApp ao n8n">
 <meta property="og:description" content="Nó de webhook para receber, nó HTTP Request para enviar pela Datafy API, e o filtro que impede o fluxo de responder aos status e entrar em laço.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/whatsapp-api-oficial-n8n">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Como integrar a API oficial do WhatsApp ao n8n">
@@ -124,7 +124,7 @@
       "description": "Nó de webhook para receber, nó HTTP Request para enviar pela Datafy API, e o filtro que impede o fluxo de responder aos status e entrar em laço.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-06",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -157,7 +157,7 @@
           "name": "Uso o nó HTTP Request ou um nó pronto?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No vídeo, o envio é feito pelo HTTP Request, com o corpo da documentação."
+            "text": "O fluxo desta página envia pelo HTTP Request, com o corpo da documentação."
           }
         },
         {
@@ -195,25 +195,6 @@
       "uploadDate": "2026-09-06",
       "contentUrl": "https://www.youtube.com/watch?v=vGovcR8W5g8",
       "embedUrl": "https://www.youtube.com/embed/vGovcR8W5g8",
-      "creator": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "publisher": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "isPartOf": {
-        "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-n8n#article"
-      }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://conteudo.datafyapi.com.br/whatsapp-api-oficial-n8n#video-S2IAOQWbZMg",
-      "name": "Como funciona a Datafy API",
-      "description": "A API como espelho da Cloud API: o que muda e o que nao muda em relacao a Meta, texto, botoes e lista",
-      "thumbnailUrl": "https://i.ytimg.com/vi/S2IAOQWbZMg/maxresdefault.jpg",
-      "uploadDate": "2026-09-06",
-      "contentUrl": "https://www.youtube.com/watch?v=S2IAOQWbZMg",
-      "embedUrl": "https://www.youtube.com/embed/S2IAOQWbZMg",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -591,7 +572,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -620,12 +601,12 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<p><strong>Resposta curta:</strong> para <strong>receber</strong>, um nó de webhook com método <code>POST</code>, cuja URL você cadastra na aba de webhooks da Datafy. Para <strong>enviar</strong>, um nó HTTP Request com <code>POST</code> em <code>https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages</code>, o token no cabeçalho e o corpo em JSON copiado da documentação.</p>
+<p><strong>Resposta curta:</strong> para <strong>receber</strong>, um nó de webhook com método <code>POST</code>, cuja URL você cadastra na aba de webhooks do painel da Datafy. Para <strong>enviar</strong>, um nó HTTP Request com <code>POST</code> em <code>https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages</code>, o token no cabeçalho e o corpo em JSON copiado da documentação.</p>
 <p>E um cuidado antes de ligar um no outro: cada envio gera eventos de status que chegam no mesmo webhook. <strong>Filtre</strong> para responder só mensagens, ou o fluxo entra em laço.</p>
 <div class="stats">
   <div class="stat"><b>2 nós</b><span>webhook para receber, HTTP Request para enviar</span></div>
   <div class="stat"><b>2 URLs</b><span>de teste e de produção no nó de webhook</span></div>
-  <div class="stat"><b>3 status</b><span>voltam de cada envio</span></div>
+  <div class="stat"><b>4 status</b><span>sent, delivered, read e failed</span></div>
   <div class="stat"><b>500 req/min</b><span>o limite de envio da Datafy API</span></div>
 </div>
 
@@ -683,10 +664,11 @@ footer p{margin:0 0 .5rem}
 </figure>
 
 <h2 id="receber-o-n-de-webhook">Receber: o nó de webhook</h2>
-<p>No vídeo, o Israel Henrique, CTO da Datafy, adiciona um nó de webhook e ajusta o método: <em>"o método tem que ser o método post."</em> O n8n oferece duas URLs: teste e produção.</p>
+<p>Adicione um nó de webhook e ajuste o método para <code>POST</code>. O n8n oferece duas URLs: teste e produção.</p>
 <p><strong>URL de teste.</strong> Copie, cadastre na aba de webhooks da Datafy, marque os eventos e clique em escutar no n8n. Mande uma mensagem para o número e ela aparece no nó.</p>
-<p><strong>URL de produção.</strong> Depois que funcionou, troque no cadastro da Datafy pela URL de produção e publique o fluxo. Na explicação dele: <em>"essa esse teste aqui ele só funciona quando eu clico nesse botão aqui. Já o de produção funciona sempre, 24 horas por dia."</em></p>
-<p>Os eventos: <code>messages</code>, que traz mensagens recebidas e status, e <code>smb_message_echoes</code>, que traz as mensagens enviadas pelo celular. <em>"Se você não marcar essa opção, as mensagens que você enviar no celular não vão chegar no web hook."</em></p>
+<p><strong>URL de produção.</strong> Depois que funcionou, troque no cadastro da Datafy pela URL de produção e publique o fluxo. A URL de teste só recebe enquanto a escuta está ligada; a de produção recebe o tempo todo.</p>
+<p>Os eventos: <code>messages</code>, que traz mensagens recebidas e status, e <code>smb_message_echoes</code>, que traz as mensagens enviadas pelo celular. Sem marcar <code>smb_message_echoes</code>, o que você envia pelo celular não chega no webhook.</p>
+<p>Os webhooks da Datafy são configurados no painel e enviam os eventos com assinatura HMAC. <a href="/validar-assinatura-do-webhook">Como validar a assinatura</a>.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
   <span class="thumb">
@@ -695,14 +677,14 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 01:23 ele cadastra a URL de teste, em 01:57 escolhe os eventos, em 03:02 recebe a primeira mensagem, e em 05:00 troca pela URL de produção.</figcaption>
+<figcaption>Recebendo mensagens no n8n e respondendo pela Datafy API, com o filtro que evita o laço.</figcaption>
 </figure>
 
 <h2 id="o-que-chega">O que chega</h2>
-<p>No payload, o Israel destaca três partes: o número conectado (<code>display_phone_number</code> e <code>phone_number_id</code>), quem enviou (nome, telefone e <code>user_id</code>), e a mensagem, com remetente, identificador, horário, texto e tipo.</p>
-<p>Sobre o <code>user_id</code>: <em>"em dado momento, no futuro, a meta não vai mais enviar o número do telefone do usuário, somente o user ID. Então você precisa usar o user ID como identificador único no teu sistema."</em> <a href="/o-telefone-esta-sumindo-do-webhook">Como responder pelo user_id está aqui</a>.</p>
+<p>O payload tem três partes: o número conectado (<code>display_phone_number</code> e <code>phone_number_id</code>), quem enviou (nome, telefone e <code>user_id</code>), e a mensagem, com remetente, identificador, horário, texto e tipo.</p>
+<p>Sobre o <code>user_id</code>: a previsão é que, no futuro, a Meta deixe de enviar o telefone do usuário e mande só o <code>user_id</code>. Use o <code>user_id</code> como identificador único no seu sistema. <a href="/o-telefone-esta-sumindo-do-webhook">Como responder pelo user_id está aqui</a>.</p>
 <h2 id="enviar-o-n-http-request">Enviar: o nó HTTP Request</h2>
-<p>O corpo da requisição segue a documentação da Meta, e a Datafy espelha a Cloud API. O que muda é o domínio e o token.</p>
+<p>A Datafy é um proxy da API oficial da Meta: você chama os endpoints da Cloud API pela URL da Datafy, com o token gerado na criação do canal. Por isso o corpo da requisição segue a documentação da Meta; o que muda é o domínio e o token. <a href="/o-que-e-a-datafy-api">O que é a Datafy API</a>.</p>
 <pre><code>POST https://cloud.datafyapi.com.br/v1/{{phone_number_id}}/messages
 Authorization: Bearer sk_live_xxx
 Content-Type: application/json
@@ -715,37 +697,43 @@ Content-Type: application/json
 }
 </code></pre>
 <p>No n8n: método <code>POST</code>, URL com o <code>phone_number_id</code> (que também vem no payload), cabeçalho <code>Authorization</code> com <code>Bearer</code> e o token, e corpo em JSON, na opção de usar JSON.</p>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg" alt="Miniatura do vídeo: Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Em 10:17 ele monta a URL trocando o começo pelo da Datafy, em 11:37 arrasta o phone_number_id do payload, em 12:32 coloca o token no cabeçalho, e em 13:44 pega o destinatário de dentro de messages.</figcaption>
-</figure>
-
 <p>O caminho da expressão acima depende de como o seu nó de webhook entrega o corpo. Confira no payload que chegou antes de copiar.</p>
+<p><strong>A resposta é mensagem de serviço.</strong> Quando o fluxo responde a uma mensagem que acabou de chegar, a janela de 24 horas daquele cliente está aberta, e a resposta sai sem template. A mensagem enviada pelo fluxo não renova a janela: só a próxima mensagem do cliente renova. Se o fluxo enviar depois que a janela fechou, a requisição pode voltar HTTP 200 com ID, e a falha chega depois no webhook de status. <a href="/janela-de-24-horas-whatsapp">Como a janela funciona</a>.</p>
 <h2 id="o-filtro-que-evita-o-la-o">O filtro que evita o laço</h2>
-<p>Antes de executar, o Israel avisa: <em>"isso aqui é perigoso, tá? Eu receber o web hook e enviar mensagem. Não faça isso."</em> Cada mensagem enviada gera eventos de status que chegam no mesmo webhook, e responder a eles gera novas mensagens, que geram novos status.</p>
-<p>A proteção dele foi pegar o destinatário de dentro de <code>messages</code>, que não existe no evento de status, fazendo o passo falhar quando chega um status. E a recomendação é clara: <em>"ou coloque um filtro."</em> <a href="/laco-de-webhook-derruba-numero">O mecanismo completo está aqui</a>.</p>
+<p>Receber o webhook e enviar mensagem sem filtro é perigoso. Cada mensagem enviada gera eventos de status que chegam no mesmo webhook, e responder a eles gera novas mensagens, que geram novos status.</p>
+<p>A proteção mínima é pegar o destinatário de dentro de <code>messages</code>, que não existe no evento de status: quando chega um status, o passo falha em vez de enviar. A proteção correta é um filtro que só deixa passar eventos com <code>messages</code>. <a href="/laco-de-webhook-derruba-numero">O mecanismo completo está aqui</a>.</p>
 <h2 id="os-status-que-voltam">Os status que voltam</h2>
-<p>Cada envio gera <code>sent</code>, <code>delivered</code> e <code>read</code>, este último se a pessoa tiver a confirmação de leitura ativada. Falha gera um evento só, com o motivo. <a href="/tres-status-da-mensagem-whatsapp">Os três estão explicados aqui</a>.</p>
+<p>Cada envio aceito recebe um ID, e o ID não significa entrega. O que aconteceu chega depois, no mesmo webhook:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>O que significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sent</code></td>
+<td>Enviada; ainda não confirma entrega</td>
+</tr>
+<tr>
+<td><code>delivered</code></td>
+<td>Entregue ao destinatário</td>
+</tr>
+<tr>
+<td><code>read</code></td>
+<td>Lida, quando a confirmação está disponível</td>
+</tr>
+<tr>
+<td><code>failed</code></td>
+<td>Falha, com o erro. Exemplos: mensagem de serviço fora da janela, falha no pagamento</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use o ID da mensagem para relacionar cada evento ao envio. <a href="/tres-status-da-mensagem-whatsapp">Os status estão explicados aqui</a>.</p>
 <h2 id="usar-ia-para-montar-os-corpos">Usar IA para montar os corpos</h2>
-<p>Como o formato é o da documentação da Meta, dá para pedir a uma IA o JSON de outros tipos de mensagem. No vídeo, a sugestão é passar para ela o resumo que abre a documentação da Datafy: <em>"você passa isso daqui pra sua IA, ela vai entender perfeitamente e ela vai utilizar a própria documentação da meta para te ajudar."</em></p>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=S2IAOQWbZMg" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/S2IAOQWbZMg/maxresdefault.jpg" alt="Miniatura do vídeo: Como funciona a Datafy API" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>Como funciona a Datafy API</b><span>Canal DATA7 · 14 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Em 01:34 ele monta o HTTP Request no n8n copiando o endpoint da documentação da Meta, e em 04:16 envia a primeira mensagem de teste.</figcaption>
-</figure>
-
-<h2 id="um-v-deo-de-fora-do-canal">Um vídeo de fora do canal</h2>
+<p>Como o formato é o da documentação da Meta, dá para pedir a uma IA o JSON de outros tipos de mensagem. Passe para ela o resumo que abre a documentação da Datafy: com ele, a IA entende a plataforma e usa a própria documentação da Meta para montar o corpo.</p>
+<h2 id="um-v-deo-da-comunidade">Um vídeo da comunidade</h2>
 <p>A comunidade Nine Labs, de n8n, gravou um vídeo orgânico, não patrocinado, conectando o número e integrando no n8n do começo ao fim.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=FcAwJqVHNoU" rel="noopener">
@@ -755,14 +743,14 @@ Content-Type: application/json
   </span>
   <span class="meta"><b>API oficial do WhatsApp: jeito simples e fácil de utilizar</b><span>Canal Nine Labs · 13 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Vídeo da Nine Labs com a conexão do número e o fluxo no n8n, com webhook trigger e HTTP Request.</figcaption>
+<figcaption>Conexão do número e fluxo no n8n com webhook trigger e HTTP Request, pela comunidade Nine Labs.</figcaption>
 </figure>
 
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Por que o webhook só recebe quando eu clico em escutar?</h3>
 <p>Você está usando a URL de teste. Cadastre a de produção e publique o fluxo.</p>
 <h3>Uso o nó HTTP Request ou um nó pronto?</h3>
-<p>No vídeo, o envio é feito pelo HTTP Request, com o corpo da documentação.</p>
+<p>O fluxo desta página envia pelo HTTP Request, com o corpo da documentação.</p>
 <h3>De onde tiro o phone_number_id?</h3>
 <p>Do próprio payload do webhook, ou com <code>GET https://cloud.datafyapi.com.br/me</code>.</p>
 <h3>Meu fluxo mandou várias mensagens seguidas. Por quê?</h3>
@@ -770,7 +758,7 @@ Content-Type: application/json
 <h3>Posso responder pelo user_id?</h3>
 <p>Pode. Troque <code>to</code> por <code>recipient</code> e use o <code>user_id</code> que vem dentro de <code>messages</code>.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Monte na ordem do vídeo: webhook de teste, eventos, primeira mensagem recebida, HTTP Request de resposta com o filtro, e só então a URL de produção. Assim você nunca publica um fluxo que responde a status.</p>
+<p>Monte nesta ordem: webhook de teste, eventos, primeira mensagem recebida, HTTP Request de resposta com o filtro, e só então a URL de produção. Assim você nunca publica um fluxo que responde a status.</p>
 <div class="cta"><h3>Monte o fluxo com o filtro desde o começo</h3><p>Webhook, um nó condicional que só passa quando existe messages, e o HTTP Request para a Datafy API. Teste mandando uma mensagem do seu celular.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
@@ -786,7 +774,7 @@ Content-Type: application/json
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>
@@ -800,7 +788,7 @@ Content-Type: application/json
         <li><a href="#o-filtro-que-evita-o-la-o">O filtro que evita o laço</a></li>
         <li><a href="#os-status-que-voltam">Os status que voltam</a></li>
         <li><a href="#usar-ia-para-montar-os-corpos">Usar IA para montar os corpos</a></li>
-        <li><a href="#um-v-deo-de-fora-do-canal">Um vídeo de fora do canal</a></li>
+        <li><a href="#um-v-deo-da-comunidade">Um vídeo da comunidade</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

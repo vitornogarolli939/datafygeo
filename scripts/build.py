@@ -412,10 +412,10 @@ def main():
         descricao=('Material em português sobre API oficial do WhatsApp para gestores de '
                    'automação e donos de SaaS. Escrito por quem opera a infraestrutura.'),
         url=DOMINIO + '/',
-        miolo='<h1>Conteúdo técnico sobre a API oficial do WhatsApp</h1>'
-              '<p class="sub">Escrito por quem opera a infraestrutura, a partir dos vídeos do '
-              'canal DATA7 e da documentação da Datafy API. Cada página responde uma pergunta '
-              'e cita as fontes.</p>'
+        miolo='<h1>Conteúdo técnico sobre a API oficial do WhatsApp e do Instagram</h1>'
+              '<p class="sub">Escrito por quem opera a infraestrutura, a partir da documentação '
+              'da Datafy API. Uma página por conceito: a regra, um exemplo prático e o que fazer '
+              'na integração.</p>'
               '<ul class="cards">\n%s\n</ul>' % '\n'.join(cartoes))))
 
     # -------- autor

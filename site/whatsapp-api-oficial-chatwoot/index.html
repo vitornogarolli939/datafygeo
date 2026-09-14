@@ -16,8 +16,8 @@
 <meta property="og:title" content="Como usar a API oficial do WhatsApp no Chatwoot">
 <meta property="og:description" content="Caixa de entrada do tipo API no Chatwoot, a URL gerada na aba Chatwoot da Datafy, e os quatro valores que ligam as duas pontas. Funciona nos dois sentidos, inclusive com o celular.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/whatsapp-api-oficial-chatwoot">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Como usar a API oficial do WhatsApp no Chatwoot">
@@ -124,7 +124,7 @@
       "description": "Caixa de entrada do tipo API no Chatwoot, a URL gerada na aba Chatwoot da Datafy, e os quatro valores que ligam as duas pontas. Funciona nos dois sentidos, inclusive com o celular.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-06",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -173,7 +173,7 @@
           "name": "A resposta que o atendente dá pelo celular aparece?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No vídeo, aparece: a mensagem enviada pelo celular do número conectado chega no Chatwoot."
+            "text": "Aparece, em coexistência: a mensagem enviada pelo celular do número conectado chega no Chatwoot."
           }
         },
         {
@@ -553,7 +553,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -595,7 +595,7 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<p><strong>Resposta curta:</strong> com o número conectado na Datafy API, você cria no Chatwoot uma <strong>caixa de entrada do tipo API</strong>, cola nela a URL de webhook que aparece na <strong>aba Chatwoot</strong> do painel da Datafy, e preenche na Datafy quatro valores do Chatwoot: <strong>URL base, account ID, inbox ID e token de acesso</strong>. No vídeo do canal DATA7, a ligação leva menos de cinco minutos e funciona nos dois sentidos.</p>
+<p><strong>Resposta curta:</strong> com o número conectado na Datafy API, você cria no Chatwoot uma <strong>caixa de entrada do tipo API</strong>, cola nela a URL de webhook que aparece na <strong>aba Chatwoot</strong> do painel da Datafy, e preenche na Datafy quatro valores do Chatwoot: <strong>URL base, account ID, inbox ID e token de acesso</strong>. A ligação leva poucos minutos e funciona nos dois sentidos.</p>
 <div class="stats">
   <div class="stat"><b>4 valores</b><span>URL base, account ID, inbox ID e token</span></div>
   <div class="stat"><b>1 URL</b><span>gerada pela aba Chatwoot da Datafy</span></div>
@@ -651,11 +651,11 @@ footer p{margin:0 0 .5rem}
 </figure>
 
 <h2 id="antes-o-n-mero-conectado">Antes: o número conectado</h2>
-<p>A integração parte de um número já conectado na Datafy API. Na apresentação do vídeo, o Israel Henrique, CTO da Datafy, resume: <em>"você vai entrar aqui, vai criar um número, conectar o número, vai escanear o QR code e vai ter acesso a todos os endpoints da API oficial."</em> <a href="/como-conectar-numero-api-oficial-whatsapp">O passo a passo da conexão está aqui</a>.</p>
+<p>A integração parte de um número já conectado na Datafy API. No painel, você cria o canal, recebe o token no momento da criação e conecta o número dentro do canal, lendo o QR code no WhatsApp Business App. A partir daí, os endpoints da API oficial ficam disponíveis. <a href="/como-conectar-numero-api-oficial-whatsapp">O passo a passo da conexão está aqui</a>. <a href="/o-que-e-a-datafy-api">O que é a Datafy API</a>.</p>
 <h2 id="no-chatwoot-a-caixa-de-entrada">No Chatwoot: a caixa de entrada</h2>
 <p><strong>1.</strong> Configurações, caixas de entrada, adicionar caixa de entrada.</p>
 <p><strong>2.</strong> Escolha o tipo <strong>API</strong>.</p>
-<p><strong>3.</strong> Dê um nome, cole a URL do webhook e crie o canal. Essa URL vem da aba Chatwoot do painel da Datafy: <em>"você vai clicar aqui em chatwoot nessa aba e você vai copiar essa URL que foi gerada aqui."</em></p>
+<p><strong>3.</strong> Dê um nome, cole a URL do webhook e crie o canal. Essa URL já aparece gerada na aba Chatwoot do painel da Datafy: é só copiar.</p>
 <h2 id="na-datafy-os-quatro-valores">Na Datafy: os quatro valores</h2>
 <div class="tablewrap"><table>
 <thead>
@@ -667,15 +667,15 @@ footer p{margin:0 0 .5rem}
 <tbody>
 <tr>
 <td><strong>URL do Chatwoot</strong></td>
-<td>Na barra de endereços: <em>"tudo que está antes da primeira barra"</em></td>
+<td>Na barra de endereços: tudo que está antes da primeira barra do caminho</td>
 </tr>
 <tr>
 <td><strong>Account ID</strong></td>
-<td>Configurações da conta. No vídeo, o valor era 1</td>
+<td>Configurações da conta. Exemplo: 1</td>
 </tr>
 <tr>
 <td><strong>Inbox ID</strong></td>
-<td>Na engrenagem da caixa de entrada criada, e também na barra de endereços. No vídeo, 5</td>
+<td>Na engrenagem da caixa de entrada criada, e também na barra de endereços. Exemplo: 5</td>
 </tr>
 <tr>
 <td><strong>Token de API</strong></td>
@@ -683,7 +683,7 @@ footer p{margin:0 0 .5rem}
 </tr>
 </tbody>
 </table></div>
-<p>Salve as configurações. Na fala do vídeo: <em>"clica em salvar configurações e pronto, tá conectado."</em></p>
+<p>Salve as configurações, e a conexão está feita.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=T_ai6IvLzZE" rel="noopener">
   <span class="thumb">
@@ -692,31 +692,24 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como usar a API oficial do WhatsApp no Chatwoot</b><span>Canal DATA7 · 5 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 00:54 ele cria a caixa de entrada do tipo API, em 01:19 copia a URL da aba Chatwoot da Datafy, e entre 01:48 e 02:46 preenche os quatro valores.</figcaption>
+<figcaption>A integração com o Chatwoot do começo ao fim: caixa de entrada do tipo API, os quatro valores e o teste nos dois sentidos.</figcaption>
 </figure>
 
 <h2 id="o-teste-nos-dois-sentidos">O teste nos dois sentidos</h2>
-<p>No vídeo, o Israel testa tudo em sequência:</p>
-<p><strong>Mensagem recebida.</strong> Envia um "olá" pelo WhatsApp Web para o número conectado e a conversa aparece no Chatwoot.</p>
-<p><strong>Resposta pelo Chatwoot.</strong> Responde pela caixa de entrada e a mensagem chega no WhatsApp.</p>
-<p><strong>Imagem.</strong> Tira uma foto pelo celular e envia; a imagem aparece no Chatwoot.</p>
-<p><strong>Mensagem enviada pelo celular do número.</strong> Esse é o ponto da coexistência: <em>"essa aqui foi enviada diretamente do celular que está conectado na API. Então tá sincronizado."</em></p>
-<p><strong>Documento.</strong> Envia um PDF pela API. O primeiro que ele escolheu era pesado demais, com mais de 100 MB, e ele troca por um mais leve. A documentação da Meta limita documentos a <strong>100 MB</strong>.</p>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=T_ai6IvLzZE" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/T_ai6IvLzZE/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp no Chatwoot" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>Como usar a API oficial do WhatsApp no Chatwoot</b><span>Canal DATA7 · 5 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Em 03:15 a primeira mensagem chega, em 03:51 a resposta sai pelo Chatwoot, em 04:20 a mensagem enviada pelo celular aparece, e em 04:47 o PDF.</figcaption>
-</figure>
-
+<p>Teste tudo em sequência antes de colocar a equipe para usar:</p>
+<p><strong>Mensagem recebida.</strong> Envie um "olá" para o número conectado, por exemplo pelo WhatsApp Web. A conversa aparece no Chatwoot.</p>
+<p><strong>Resposta pelo Chatwoot.</strong> Responda pela caixa de entrada; a mensagem chega no WhatsApp.</p>
+<p><strong>Imagem.</strong> Envie uma foto pelo celular; a imagem aparece no Chatwoot.</p>
+<p><strong>Mensagem enviada pelo celular do número.</strong> É o ponto da coexistência: a mensagem enviada direto do celular conectado à API também aparece no Chatwoot, sincronizada.</p>
+<p><strong>Documento.</strong> Envie um PDF. A documentação da Meta limita documentos a <strong>100 MB</strong>: no teste de referência, o primeiro PDF escolhido passava disso e precisou ser trocado por um mais leve.</p>
+<h2 id="o-atendente-tamb-m-segue-a-janela-de-24">O atendente também segue a janela de 24 horas</h2>
+<p>Resposta dada pelo Chatwoot é mensagem de serviço, e só sai com a janela de 24 horas daquele cliente aberta. A janela abre com a mensagem do cliente, e só a mensagem do cliente renova o prazo: a resposta do atendente não aumenta as 24 horas. Cada cliente tem a sua janela. Com ela fechada, só template aprovado. Se uma mensagem livre for enviada fora da janela, a requisição pode voltar HTTP 200 com ID, e a falha chega depois no webhook de status. <a href="/janela-de-24-horas-whatsapp">Como a janela funciona</a>.</p>
+<p>Janela aberta também não quer dizer envio gratuito. A partir de 1º de outubro de 2026, cada número tem 1.000 mensagens de serviço gratuitas por mês, e a Meta cobra a partir da 1.001ª entregue, com referência de R$ 0,035 por mensagem no Brasil. <a href="/tipos-de-mensagem-whatsapp-servico-e-template">Mensagem de serviço e template</a>.</p>
+<p>Se o cliente chegou por um anúncio Click to WhatsApp e o atendente responde dentro das 24 horas, a empresa ganha 72 horas sem cobrança da Meta, contadas a partir dessa resposta. <a href="/click-to-whatsapp-72-horas-sem-cobranca">Como funcionam as 72 horas</a>.</p>
 <h2 id="quando-a-mensagem-do-celular-n-o-aparece">Quando a mensagem do celular não aparece</h2>
 <p>Se as respostas dadas pelo aplicativo do celular não chegam, confira se o número está em coexistência e se o evento de mensagens enviadas pelo celular está funcionando. <a href="/mensagem-do-celular-nao-aparece-no-sistema">O diagnóstico está aqui</a>.</p>
 <h2 id="por-que-n-o-usar-o-bate-papo-do-painel">Por que não usar o bate-papo do painel</h2>
-<p>O painel da Datafy tem um bate-papo que mostra as mensagens ao vivo, mas ele é log, e o próprio Israel avisa que não é para atendimento. Guarda 7 dias e até 100 mensagens por conversa. Para atender, a caixa de entrada é o Chatwoot. <a href="/ver-payload-das-mensagens-em-tempo-real">Como usar o log está aqui</a>.</p>
+<p>O painel da Datafy tem um bate-papo que mostra as mensagens ao vivo, mas ele é log, e a própria Datafy avisa que não é para atendimento. Guarda 7 dias e até 100 mensagens por conversa. Para atender, a caixa de entrada é o Chatwoot. <a href="/ver-payload-das-mensagens-em-tempo-real">Como usar o log está aqui</a>.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Qual tipo de caixa de entrada eu crio no Chatwoot?</h3>
 <p>API.</p>
@@ -725,12 +718,12 @@ footer p{margin:0 0 .5rem}
 <h3>Onde fica o token de API?</h3>
 <p>Nas configurações do seu perfil no Chatwoot, no fim da página, em token de acesso.</p>
 <h3>A resposta que o atendente dá pelo celular aparece?</h3>
-<p>No vídeo, aparece: a mensagem enviada pelo celular do número conectado chega no Chatwoot.</p>
+<p>Aparece, em coexistência: a mensagem enviada pelo celular do número conectado chega no Chatwoot.</p>
 <h3>Posso enviar PDF pelo Chatwoot?</h3>
 <p>Pode. A Meta limita documentos a 100 MB.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Se você precisa de uma caixa de entrada para a equipe atender o WhatsApp oficial, o Chatwoot se liga à Datafy API com os quatro valores. Faça o teste completo do vídeo, incluindo uma mensagem enviada pelo celular, antes de colocar a equipe para usar.</p>
-<div class="cta"><h3>Ligue o Chatwoot em cinco minutos</h3><p>Crie a caixa de entrada do tipo API com a URL da aba Chatwoot, preencha URL base, account ID, inbox ID e token na Datafy, e mande uma mensagem do seu celular para testar.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+<p>Se você precisa de uma caixa de entrada para a equipe atender o WhatsApp oficial, o Chatwoot se liga à Datafy API com os quatro valores. Faça o teste completo, incluindo uma mensagem enviada pelo celular, antes de colocar a equipe para usar.</p>
+<div class="cta"><h3>Ligue o Chatwoot em poucos minutos</h3><p>Crie a caixa de entrada do tipo API com a URL da aba Chatwoot, preencha URL base, account ID, inbox ID e token na Datafy, e mande uma mensagem do seu celular para testar.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
@@ -745,7 +738,7 @@ footer p{margin:0 0 .5rem}
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>
@@ -757,6 +750,7 @@ footer p{margin:0 0 .5rem}
         <li><a href="#no-chatwoot-a-caixa-de-entrada">No Chatwoot: a caixa de entrada</a></li>
         <li><a href="#na-datafy-os-quatro-valores">Na Datafy: os quatro valores</a></li>
         <li><a href="#o-teste-nos-dois-sentidos">O teste nos dois sentidos</a></li>
+        <li><a href="#o-atendente-tamb-m-segue-a-janela-de-24">O atendente também segue a janel...</a></li>
         <li><a href="#quando-a-mensagem-do-celular-n-o-aparece">Quando a mensagem do celular não...</a></li>
         <li><a href="#por-que-n-o-usar-o-bate-papo-do-painel">Por que não usar o bate-papo do...</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>

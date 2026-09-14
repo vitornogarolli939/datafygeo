@@ -16,8 +16,8 @@
 <meta property="og:title" content="Coexistência: API oficial e WhatsApp Business no mesmo número">
 <meta property="og:description" content="O atendente continua no celular e a automação roda pela API, no mesmo número. O que a documentação da Meta diz desse modo e o que muda no seu webhook.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Coexistência: API oficial e WhatsApp Business no mesmo número">
@@ -124,7 +124,7 @@
       "description": "O atendente continua no celular e a automação roda pela API, no mesmo número. O que a documentação da Meta diz desse modo e o que muda no seu webhook.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-06",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -158,7 +158,7 @@
           "name": "Mensagem que o atendente manda pelo celular é cobrada?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. A cobrança é por mensagem enviada pela API."
+            "text": "Não. A Meta cobra as mensagens enviadas pela API que foram entregues."
           }
         },
         {
@@ -196,25 +196,6 @@
       "uploadDate": "2026-09-06",
       "contentUrl": "https://www.youtube.com/watch?v=dIIkttPeBS0",
       "embedUrl": "https://www.youtube.com/embed/dIIkttPeBS0",
-      "creator": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "publisher": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "isPartOf": {
-        "@id": "https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular#article"
-      }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://conteudo.datafyapi.com.br/coexistencia-whatsapp-api-oficial-app-celular#video-JL9Qzw3oS5A",
-      "name": "Quanto custa a API oficial do WhatsApp",
-      "description": "Quem cobra o que, categoria por categoria, e o impacto real disso na conta de um cliente",
-      "thumbnailUrl": "https://i.ytimg.com/vi/JL9Qzw3oS5A/maxresdefault.jpg",
-      "uploadDate": "2026-09-06",
-      "contentUrl": "https://www.youtube.com/watch?v=JL9Qzw3oS5A",
-      "embedUrl": "https://www.youtube.com/embed/JL9Qzw3oS5A",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -592,7 +573,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -625,7 +606,7 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <p><strong>Resposta curta:</strong> coexistência é usar o aplicativo do WhatsApp Business no celular <strong>e</strong> a API oficial ao mesmo tempo, no mesmo número. O atendente responde pelo aplicativo, a automação responde pela API, e as duas coisas acontecem na mesma conversa.</p>
-<p>Para usar esse modo indo direto na Meta, é preciso virar Tech Provider. Pela Datafy API, que é Tech Provider verificado pela Meta, você conecta escolhendo a opção de conectar um app do WhatsApp Business e escaneando um QR code.</p>
+<p>Para usar esse modo indo direto na Meta, é preciso virar Tech Provider. Pela <a href="/o-que-e-a-datafy-api">Datafy API</a>, que é Tech Provider verificado pela Meta, você conecta escolhendo a opção de conectar um app do WhatsApp Business e escaneando um QR code.</p>
 <div class="stats">
   <div class="stat"><b>20 msg/s</b><span>o limite fixo de envio em coexistência</span></div>
   <div class="stat"><b>180 dias</b><span>de histórico que podem ser sincronizados</span></div>
@@ -637,7 +618,7 @@ footer p{margin:0 0 .5rem}
 <ul>
 <li>É o modo em que <strong>o número já existe no aplicativo</strong> e passa a funcionar também na API.</li>
 <li>A documentação da Meta fixa o envio em <strong>20 mensagens por segundo</strong> para número do aplicativo, contra 80 do padrão.</li>
-<li>A <strong>mensagem enviada pelo celular não é cobrada</strong>. A Meta cobra o que sai pela API.</li>
+<li>A <strong>mensagem enviada pelo celular não é cobrada</strong>. A Meta cobra as mensagens enviadas pela API que foram entregues.</li>
 <li>Para o seu sistema ver o que o atendente manda pelo celular, é preciso assinar o evento <strong><code>smb_message_echoes</code></strong>.</li>
 <li><strong>Desconexão só pelo celular</strong>, e a sincronização de histórico tem <strong>24 horas</strong> para ser pedida.</li>
 </ul>
@@ -686,7 +667,7 @@ footer p{margin:0 0 .5rem}
 </figure>
 
 <h2 id="por-que-coexist-ncia-exige-tech-provider">Por que coexistência exige Tech Provider</h2>
-<p>No vídeo sobre preço, o Israel Henrique, CTO da Datafy, descreve o caminho direto: criar conta de desenvolvedor, criar aplicativo, montar webhooks, enviar para aprovação. E completa: <em>"se você quiser ainda conectar o teu próprio aplicativo do celular na API, precisa se tornar um tech provider, que seria um parceiro de tecnologia da meta, o processo mais burocrático ainda."</em></p>
+<p>Direto na Meta, usar a API exige criar conta de desenvolvedor, criar aplicativo, montar webhooks e enviar para aprovação. Conectar o próprio aplicativo do celular na API exige ainda se tornar Tech Provider, o parceiro de tecnologia da Meta, que é o processo mais burocrático.</p>
 <p>A Datafy API é Tech Provider verificado pela Meta. No fluxo de conexão, a opção que ativa a coexistência é <strong>conectar um app do WhatsApp Business</strong>. <a href="/como-conectar-numero-api-oficial-whatsapp">O passo a passo da conexão está aqui</a>.</p>
 <h2 id="o-que-a-documenta-o-da-meta-diz-sobre-es">O que a documentação da Meta diz sobre esse modo</h2>
 <div class="tablewrap"><table>
@@ -723,7 +704,7 @@ footer p{margin:0 0 .5rem}
 <h2 id="o-que-muda-no-seu-webhook">O que muda no seu webhook</h2>
 <p>Em coexistência há duas origens de mensagem saindo do mesmo número, e elas chegam por caminhos diferentes:</p>
 <p><strong>Mensagem que o cliente manda</strong> chega pelo evento <code>messages</code>. Por esse mesmo evento chegam os status das mensagens que você envia pela API.</p>
-<p><strong>Mensagem que o atendente manda pelo celular</strong> chega pelo evento <code>smb_message_echoes</code>. Na explicação do vídeo: <em>"esse SMB Messages Echoes, ele vai te notificar sempre que você enviar uma mensagem do celular. Quando você envia mensagens direto pela API, não aparece."</em></p>
+<p><strong>Mensagem que o atendente manda pelo celular</strong> chega pelo evento <code>smb_message_echoes</code>. Ele notifica toda mensagem enviada pelo celular. O que você envia direto pela API não aparece nele.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
   <span class="thumb">
@@ -732,28 +713,47 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 06:40 ele marca os dois eventos no cadastro do webhook e explica a diferença entre eles.</figcaption>
+<figcaption>O cadastro do webhook com os dois eventos marcados, e a diferença entre eles.</figcaption>
 </figure>
 
 <p>Se você não assinar o segundo evento, o que o atendente responde pelo celular não chega no seu sistema. <a href="/mensagem-do-celular-nao-aparece-no-sistema">O sintoma e a correção estão aqui</a>.</p>
 <h2 id="o-que-muda-no-custo">O que muda no custo</h2>
-<p>A Meta cobra por mensagem <strong>enviada pela API</strong>. Mensagem recebida não é cobrada, e mensagem enviada pelo celular também não. Na fala do Israel: <em>"se você conectar o teu WhatsApp Web ou o teu celular aqui junto com a API e você enviar mensagens pelo celular, você não paga. Só paga se for enviado pela API."</em></p>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=JL9Qzw3oS5A" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/JL9Qzw3oS5A/maxresdefault.jpg" alt="Miniatura do vídeo: Quanto custa a API oficial do WhatsApp" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>Quanto custa a API oficial do WhatsApp</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Em 00:21, logo no começo do vídeo sobre preço, ele estabelece essa regra antes de explicar as categorias.</figcaption>
-</figure>
-
-<p><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Os preços por categoria estão aqui</a>.</p>
+<p>A Meta cobra por mensagem <strong>entregue</strong>, conforme a categoria e o país do destinatário. Em coexistência, a mensagem enviada pelo celular não é cobrada: a cobrança vale para o que sai pela API. Mensagem recebida também não é cobrada.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>De onde sai a mensagem</th>
+<th>Cobrança da Meta (referência no Brasil)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pelo celular do número</td>
+<td>Sem cobrança</td>
+</tr>
+<tr>
+<td>Pela API, mensagem de serviço dentro da janela de 24 horas</td>
+<td>Sem cobrança até 30 de setembro de 2026. A partir de 1º de outubro, 1.000 grátis por mês por número, e R$ 0,035 da 1.001ª entregue em diante</td>
+</tr>
+<tr>
+<td>Pela API, template de marketing</td>
+<td>R$ 0,32 por mensagem entregue, mesmo com a janela aberta</td>
+</tr>
+<tr>
+<td>Pela API, template de utilidade</td>
+<td>R$ 0,035 por mensagem entregue. Dentro da janela, sem cobrança só até 30 de setembro de 2026</td>
+</tr>
+<tr>
+<td>Pela API, template de autenticação</td>
+<td>R$ 0,035 por mensagem entregue, mesmo com a janela aberta</td>
+</tr>
+</tbody>
+</table></div>
+<p>Os valores são referência para planejamento: o efetivo depende da tabela vigente. <a href="/tipos-de-mensagem-whatsapp-servico-e-template">Serviço e template</a>, <a href="/categorias-de-template-whatsapp">as categorias de template</a> e <a href="/quanto-custa-whatsapp-business-api-brasil-2026">os preços por categoria</a> têm páginas próprias.</p>
 <h2 id="contatos-e-hist-rico-do-aplicativo">Contatos e histórico do aplicativo</h2>
 <p>Durante a conexão, o celular pergunta se você quer compartilhar o histórico. Marcando, dá para trazer as conversas e os contatos do aplicativo para a API, com uma chamada que precisa ser feita dentro de 24 horas e só pode ser feita uma vez por tipo. <a href="/sincronizar-contatos-api-oficial-whatsapp">Como fazer isso está aqui</a>.</p>
 <h2 id="coexist-ncia-com-uma-caixa-de-entrada">Coexistência com uma caixa de entrada</h2>
-<p>No vídeo sobre o Chatwoot, o Israel manda uma mensagem pelo celular do número conectado e ela aparece na caixa de entrada: <em>"essa aqui foi enviada diretamente do celular que está conectado na API. Então tá sincronizado."</em> <a href="/whatsapp-api-oficial-chatwoot">A configuração do Chatwoot está aqui</a>.</p>
+<p>Com o evento <code>smb_message_echoes</code> assinado, a mensagem enviada pelo celular do número conectado aparece na caixa de entrada integrada, sincronizada com a conversa. <a href="/whatsapp-api-oficial-chatwoot">A configuração do Chatwoot está aqui</a>.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=T_ai6IvLzZE" rel="noopener">
   <span class="thumb">
@@ -762,14 +762,14 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como usar a API oficial do WhatsApp no Chatwoot</b><span>Canal DATA7 · 5 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 04:20 a mensagem enviada pelo celular aparece no Chatwoot.</figcaption>
+<figcaption>A integração com o Chatwoot, com a mensagem enviada pelo celular aparecendo na caixa de entrada.</figcaption>
 </figure>
 
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>O aplicativo continua funcionando no celular?</h3>
 <p>Continua. Esse é o ponto da coexistência: o número funciona no aplicativo e na API ao mesmo tempo.</p>
 <h3>Mensagem que o atendente manda pelo celular é cobrada?</h3>
-<p>Não. A cobrança é por mensagem enviada pela API.</p>
+<p>Não. A Meta cobra as mensagens enviadas pela API que foram entregues.</p>
 <h3>Posso desconectar pela API?</h3>
 <p>Não. A desconexão é feita no aplicativo do celular.</p>
 <h3>O limite de envio é o mesmo de um número comum?</h3>
@@ -794,7 +794,7 @@ footer p{margin:0 0 .5rem}
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>

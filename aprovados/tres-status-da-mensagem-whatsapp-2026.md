@@ -1,6 +1,6 @@
 ---
-title: "Os três status da mensagem no WhatsApp: enviada, entregue e lida"
-description: "A resposta do envio só diz que a Meta aceitou. O que aconteceu com a mensagem chega depois, no webhook: enviada, entregue, lida, ou um evento de falha com o motivo."
+title: "Status da mensagem no WhatsApp: enviada, entregue, lida e falha"
+description: "O ID da resposta só confirma que a requisição foi aceita. O que aconteceu com a mensagem chega depois, no webhook de status: enviada, entregue, lida, ou falha com o erro."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "tres-status-da-mensagem-whatsapp"
 cluster: "implementacao"
@@ -9,14 +9,14 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://www.youtube.com/watch?v=vGovcR8W5g8
   - https://www.youtube.com/watch?v=LIT4FxgqHhE
   - https://www.youtube.com/watch?v=dIIkttPeBS0
   - https://www.youtube.com/watch?v=ly5nOHFpXcI
   - https://app.datafyapi.com.br/docs
-videos: [vGovcR8W5g8, LIT4FxgqHhE, dIIkttPeBS0]
+videos: [LIT4FxgqHhE, dIIkttPeBS0]
 internal_links:
   - /laco-de-webhook-derruba-numero
   - /primeira-mensagem-api-oficial-whatsapp
@@ -26,54 +26,68 @@ internal_links:
 status: aprovado
 ---
 
-# Os três status da mensagem no WhatsApp: enviada, entregue e lida
+# Status da mensagem no WhatsApp: enviada, entregue, lida e falha
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** quando você envia uma mensagem pela API, a resposta traz um identificador e só significa que a Meta **aceitou** a mensagem. O que aconteceu com ela chega depois, no webhook, como status: **`sent`** (enviada, um tique), **`delivered`** (entregue, dois tiques) e **`read`** (lida, azul), este último só se a pessoa tiver a confirmação de leitura ativada. Se deu errado, chega **um evento de falha**, com o motivo.
+**Resposta curta:** quando você envia uma mensagem pela API, a requisição aceita retorna um ID. Isso confirma que a solicitação foi recebida, **não** que a mensagem chegou ao cliente. O que acontece depois chega pelos webhooks de status: **`sent`** (enviada, ainda não é entrega), **`delivered`** (entregue, chegou ao destinatário) e **`read`** (lida, quando disponível). Se deu errado, chega **`failed`** (falha), com a informação do erro. Use o ID da mensagem para relacionar cada evento ao envio.
 
-::numeros: 1 tique|sent, enviada ;; 2 tiques|delivered, entregue ;; azul|read, lida, se a pessoa permitir ;; 1 evento|de falha, com o motivo
+::numeros: sent|enviada, ainda não é entrega ;; delivered|chegou ao destinatário ;; read|lida, quando disponível ;; failed|falha, com o erro
 
 ## Principais pontos
-- **A resposta do envio não é a entrega.** Ela volta com identificador mesmo quando a mensagem vai falhar.
-- **Enviar é diferente de entregar.** São dois status separados.
-- **`read` depende da pessoa** ter a confirmação de leitura ativada.
-- **Falha vem num único evento**, que explica o motivo.
-- **O status não traz o conteúdo da mensagem**, só o identificador e a situação.
+- **O ID da resposta não é a entrega.** Ele volta mesmo quando a mensagem vai falhar.
+- **Enviada não é entregue.** `sent` ainda não confirma que a mensagem chegou.
+- **`read` chega quando disponível.** Não conte com ele em toda mensagem.
+- **`failed` traz o erro**, como mensagem de serviço fora da janela ou falha no pagamento.
+- **Use o ID da mensagem** para ligar cada evento ao envio. O status não traz o conteúdo.
 
 ::diagrama: webhook-fluxo
 
-## Os três, na ordem
+## Os status, um por um
 
-No vídeo sobre n8n, o Israel Henrique, CTO da Datafy, faz a correspondência com o que o usuário vê: *"o primeiro, sent, quer dizer que ela foi enviado. É quando fica aquele risquinho, sabe? Um risquinho. Depois ela te envia o delivered, que é quando aparece dois risquinhos, que foi entregue. E se a pessoa ler a mensagem e tiver habilitado para visualizar, ela vai te enviar um terceiro web hook de read."*
-
-| Status | No aplicativo | Quando chega |
+| Status | O que significa | No aplicativo |
 |---|---|---|
-| `sent` | Um tique | A mensagem foi enviada |
-| `delivered` | Dois tiques | A mensagem chegou no aparelho |
-| `read` | Tiques azuis | A pessoa leu, se tiver a confirmação de leitura ativada |
+| `sent` | Enviada. Ainda não é confirmação de entrega | Um tique |
+| `delivered` | Entregue. Chegou ao destinatário | Dois tiques |
+| `read` | Lida. Confirmação de leitura, quando disponível | Tiques azuis |
+| `failed` | Falha. O evento traz a informação do erro | A mensagem não chega |
 
-::video: vGovcR8W5g8 | Em 18:05 ele abre os três eventos de status de uma mensagem e explica cada um. Em 18:37 fala do evento de falha.
+Os três primeiros marcam o caminho da mensagem até o cliente, e é deles que vem o nome desta página. O quarto informa que ela não chegou. Israel Henrique, CTO da Datafy, resume a diferença entre os dois primeiros: *"enviar é diferente de entregar."*
 
-No vídeo sobre logs, a diferença entre os dois primeiros aparece com essas palavras: *"porque enviar é diferente de entregar."*
+O `read` depende de a confirmação de leitura estar disponível. Se a pessoa não permite a confirmação de leitura, esse evento não chega.
 
-::video: LIT4FxgqHhE | Em 01:59 ele envia pela API e abre, um por um, os eventos sent, delivered e read da mesma mensagem.
+::video: LIT4FxgqHhE | Um envio pela API e os eventos sent, delivered e read da mesma mensagem, abertos um por um.
+
+## Exemplo: dois envios, dois caminhos
+
+Uma loja responde dois clientes pela API. Um escreveu há duas horas; o outro, há três dias.
+
+| Quando | O que acontece |
+|---|---|
+| Envio para o cliente que escreveu há 2 horas | A requisição volta com o ID `wamid.A` |
+| Logo depois | Chega `sent` com o ID `wamid.A` |
+| A mensagem chega ao cliente | Chega `delivered` com o ID `wamid.A` |
+| O cliente abre a conversa, com leitura disponível | Chega `read` com o ID `wamid.A` |
+| Envio de mensagem de serviço para o cliente que escreveu há 3 dias | A requisição pode voltar HTTP 200 com o ID `wamid.B` |
+| Depois | Chega `failed` com o ID `wamid.B` e o erro de mensagem fora da janela |
+
+Os dois envios devolveram ID. Só o webhook de status mostra que o segundo não foi entregue.
 
 ## A falha
 
-Quando a mensagem não pode ser entregue, o webhook traz um único evento, com o motivo. No vídeo sobre n8n: *"se a mensagem que você enviou ocorreu algum erro que não pôde ser entregue, a meta te envia um único web hook de falha, explicando qual foi a falha."*
+Quando a mensagem não pode ser entregue, chega um único evento `failed`, com a informação do erro. Exemplos:
 
-Dois exemplos que aparecem nos vídeos do canal:
+**Mensagem de serviço fora da janela de 24 horas.** A requisição devolve o ID normalmente. O `failed` chega com o mesmo ID, dizendo que se passaram mais de 24 horas desde a última mensagem daquele cliente. Só a mensagem do cliente abre e renova a janela; mensagem da empresa não renova. [Como a janela funciona](/janela-de-24-horas-whatsapp).
 
-**Destinatário fora da janela de 24 horas.** No vídeo de primeiros passos, a falha chega com o mesmo identificador do envio, dizendo que se passaram mais de 24 horas desde o último contato daquele usuário.
+**Falha no pagamento.** Também chega como `failed`, com o erro correspondente.
 
-**Número que não existe.** No vídeo de disparo em massa, uma planilha com um número inventado de propósito resulta num envio com erro: *"aqui deu um erro porque é aquele número que eu falei para vocês que não existe."*
+**Número que não existe.** Numa planilha de disparo, um número que não existe resulta em envio com erro.
 
-::video: dIIkttPeBS0 | Em 13:36 ele envia para quem não falou com ele, a chamada devolve identificador normalmente, e em 14:15 a falha chega no webhook com o motivo.
+::video: dIIkttPeBS0 | O envio para quem não falou com o número nas últimas 24 horas: a chamada devolve o ID e a falha chega no webhook com o motivo.
 
-## A resposta do envio só diz que a Meta aceitou
+## A resposta do envio só confirma que a requisição foi aceita
 
-A documentação da Datafy descreve a resposta padrão de envio assim: ela indica que a Meta aceitou a mensagem, não que foi entregue, e o status real chega pelo webhook.
+A resposta padrão de envio traz o ID da mensagem. Ela confirma o recebimento da solicitação, não que a mensagem foi entregue, e o status real chega pelo webhook.
 
 ```json
 {
@@ -85,11 +99,11 @@ A documentação da Datafy descreve a resposta padrão de envio assim: ela indic
 
 Guarde o `id`. É ele que aparece nos eventos de status e liga cada evento à mensagem enviada.
 
+O status também importa para a conta: a Meta cobra por mensagem **entregue**, conforme a categoria e o país do destinatário. Requisição aceita com ID não significa mensagem entregue nem cobrada.
+
 ## O status não traz o conteúdo
 
-No tutorial de atendimento do canal, ao olhar os payloads, o Israel destaca: *"quando você envia a mensagem pela API, a meta ela vai retornar para você apenas o status da mensagem. Ele não vai trazer para você o conteúdo da mensagem. Ele vai trazer apenas o ID da mensagem com o status."*
-
-Ou seja, o conteúdo do que você enviou é você que guarda, no momento do envio.
+O evento de status traz o ID da mensagem e a situação, não o conteúdo do que você enviou. O conteúdo é você que guarda, no momento do envio, junto com o ID.
 
 ## Status chegam no mesmo webhook das mensagens
 
@@ -97,31 +111,31 @@ Os status vêm pelo evento `messages`, junto com as mensagens dos clientes. Um f
 
 ## Perguntas frequentes
 
-### A chamada devolveu um id. A mensagem chegou?
+### A chamada devolveu um ID. A mensagem chegou?
 
-Não necessariamente. O id significa que a Meta aceitou. A entrega ou a falha chega pelo webhook.
+Não necessariamente. O ID confirma que a requisição foi aceita. A entrega ou a falha chega pelo webhook de status.
 
 ### Por que não recebi o status read?
 
-Porque ele só chega se a pessoa tiver a confirmação de leitura ativada.
+Porque a confirmação de leitura só chega quando disponível. Se a pessoa não permite a confirmação de leitura, o `read` não vem.
 
 ### Quantos eventos chegam quando a mensagem falha?
 
-Um, explicando a falha.
+Um evento `failed`, com a informação do erro.
 
-### O status traz o texto que eu enviei?
+### Mensagem aceita já é cobrada?
 
-Não. Traz o identificador da mensagem e a situação.
+Não. A Meta cobra por mensagem entregue, conforme a categoria e o país do destinatário.
 
 ### Onde vejo os status de uma mensagem específica?
 
-No seu webhook, pelo identificador, ou no log em tempo real do painel da Datafy.
+No seu webhook, pelo ID, ou no log em tempo real do painel da Datafy.
 
 ## Como decidir
 
-Guarde o `id` de cada envio e atualize a situação da mensagem conforme os status chegam. Trate `sent` e `delivered` como coisas diferentes e não conte `read` como garantido. E filtre os status antes de qualquer lógica que responde.
+Guarde o `id` de cada envio e atualize a situação da mensagem conforme os status chegam. Trate `sent` e `delivered` como coisas diferentes, não conte `read` como garantido, e leia o erro de cada `failed`. E filtre os status antes de qualquer lógica que responde.
 
-::cta: Veja os três chegando | Envie uma mensagem para o seu próprio número pela API, abra o log em tempo real do painel e acompanhe sent, delivered e read da mesma mensagem.
+::cta: Veja os status chegando | Envie uma mensagem para o seu próprio número pela API, abra o log em tempo real do painel e acompanhe sent, delivered e read da mesma mensagem.
 
 ## Leia também
 - [O laço de webhook que pode bloquear o seu número](/laco-de-webhook-derruba-numero)

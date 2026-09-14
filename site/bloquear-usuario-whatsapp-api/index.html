@@ -16,8 +16,8 @@
 <meta property="og:title" content="Como bloquear e desbloquear um usuário pela API do WhatsApp">
 <meta property="og:description" content="A empresa bloqueia um ou mais usuários com um POST, e eles deixam de conseguir mandar mensagem para o número. Não confundir com o cliente bloquear você.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/bloquear-usuario-whatsapp-api">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Como bloquear e desbloquear um usuário pela API do WhatsApp">
@@ -124,7 +124,7 @@
       "description": "A empresa bloqueia um ou mais usuários com um POST, e eles deixam de conseguir mandar mensagem para o número. Não confundir com o cliente bloquear você.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-10",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -173,7 +173,7 @@
           "name": "Bloquear um usuário prejudica a qualidade do meu número?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A documentação não diz isso. O que o vídeo sobre bloqueio aponta como risco é o contrário: o cliente bloquear ou denunciar a empresa."
+            "text": "A documentação não diz isso. O risco é o contrário: o cliente bloquear ou denunciar a empresa."
           }
         },
         {
@@ -572,7 +572,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -608,7 +608,7 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <p><strong>Resposta curta:</strong> com <code>POST /v1/{phone_number_id}/block_users</code>, a empresa bloqueia um ou mais usuários. <strong>Usuário bloqueado não consegue mandar mensagem para o número.</strong> O mesmo endpoint lista os bloqueados com <code>GET</code> e desbloqueia com <code>DELETE</code>.</p>
-<p>Vale separar isso de outra coisa que tem o mesmo nome: quando <strong>o cliente bloqueia a sua empresa</strong> no WhatsApp. Esse segundo caso é o que pesa contra o seu número, segundo o vídeo sobre bloqueio do canal DATA7.</p>
+<p>Vale separar isso de outra coisa que tem o mesmo nome: quando <strong>o cliente bloqueia a sua empresa</strong> no WhatsApp. Esse segundo caso é o que pesa contra o seu número.</p>
 <div class="stats">
   <div class="stat"><b>3 métodos</b><span>GET lista, POST bloqueia, DELETE desbloqueia</span></div>
   <div class="stat"><b>1 chamada</b><span>pode bloquear vários usuários</span></div>
@@ -622,7 +622,7 @@ footer p{margin:0 0 .5rem}
 <li><strong>Bloquear:</strong> <code>POST</code> no mesmo endpoint, com a lista de usuários em <code>block_users</code>.</li>
 <li><strong>Desbloquear:</strong> <code>DELETE</code> no mesmo endpoint, com a mesma estrutura de corpo.</li>
 <li>Bloqueado <strong>não consegue enviar mensagem</strong> para o número da empresa.</li>
-<li><strong>Cliente bloqueando a empresa é outra coisa</strong>, e é a que aparece como sinal de risco no vídeo sobre bloqueio.</li>
+<li><strong>Cliente bloqueando a empresa é outra coisa</strong>, e é essa que pesa contra o número.</li>
 </ul>
 <h2 id="listar-os-bloqueados">Listar os bloqueados</h2>
 <pre><code>GET https://cloud.datafyapi.com.br/v1/{phone_number_id}/block_users
@@ -677,7 +677,7 @@ Content-Type: application/json
 <p>Depois de desbloqueado, o usuário volta a conseguir mandar mensagens para o número.</p>
 <h2 id="bloquear-n-o-o-mesmo-que-ser-bloqueado">Bloquear não é o mesmo que ser bloqueado</h2>
 <p>O endpoint acima é a <strong>empresa</strong> bloqueando alguém. O caso que preocupa quem envia mensagem é o inverso: <strong>o cliente</strong> bloqueando ou denunciando a empresa.</p>
-<p>No vídeo sobre bloqueio, o Israel Henrique, CTO da Datafy, é direto sobre esse segundo caso: <em>"quando a pessoa te bloqueia ou te denuncia, a chance de você tomar um bloqueio da meta é muito alta."</em> E ele conta como ele mesmo age do lado de quem recebe: quando uma empresa que ele não conhece manda mensagem oferecendo alguma coisa, <em>"eu bloqueio na hora."</em></p>
+<p>Israel Henrique, CTO da Datafy, é direto sobre esse segundo caso: <em>"quando a pessoa te bloqueia ou te denuncia, a chance de você tomar um bloqueio da meta é muito alta."</em> E ele mesmo, do lado de quem recebe, bloqueia na hora a empresa que não conhece e manda mensagem oferecendo alguma coisa.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=cZ_nyIUv5ic" rel="noopener">
   <span class="thumb">
@@ -686,12 +686,12 @@ Content-Type: application/json
   </span>
   <span class="meta"><b>Porque você é bloqueado no WhatsApp Business</b><span>Canal DATA7 · 26 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 13:32 ele descreve como bloqueia empresas que mandam mensagem sem ele conhecer, e em 14:20 explica por que bloqueio e denúncia pesam contra o número.</figcaption>
+<figcaption>Por que o bloqueio e a denúncia feitos pelo cliente pesam contra o número da empresa.</figcaption>
 </figure>
 
-<p>A recomendação dele para reduzir esse risco é dar à pessoa uma saída dentro do template, como um botão de não ter interesse, e tirar da lista quem clicar. <a href="/numero-banido-no-whatsapp-o-que-fazer">Isso está na página sobre bloqueio de número</a>.</p>
+<p>Para reduzir esse risco, dê à pessoa uma saída dentro do template, como um botão de não ter interesse, e tire da lista quem clicar. <a href="/numero-banido-no-whatsapp-o-que-fazer">Isso está na página sobre bloqueio de número</a>.</p>
 <h2 id="por-que-o-endpoint-funciona-igual-ao-da">Por que o endpoint funciona igual ao da Meta</h2>
-<p>A Datafy API espelha a Cloud API: o caminho, o corpo e a resposta são os mesmos, e mudam só o domínio e o token. Na explicação do vídeo sobre como a Datafy funciona, se o endpoint não estiver na documentação da Datafy, você usa o da Meta com essa troca.</p>
+<p>A Datafy API é um proxy da API oficial da Meta e espelha a Cloud API: o caminho, o corpo e a resposta são os mesmos, e mudam só o domínio e o token. Se um endpoint não estiver na documentação da Datafy, use o da Meta com essa troca. <a href="/o-que-e-a-datafy-api">O que é a Datafy API</a>.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=S2IAOQWbZMg" rel="noopener">
   <span class="thumb">
@@ -700,7 +700,7 @@ Content-Type: application/json
   </span>
   <span class="meta"><b>Como funciona a Datafy API</b><span>Canal DATA7 · 14 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 12:40 ele resume: a única coisa que muda é a URL, e o token vai em todas as chamadas.</figcaption>
+<figcaption>Como a Datafy API funciona: muda só a URL, e o token vai em todas as chamadas.</figcaption>
 </figure>
 
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
@@ -711,7 +711,7 @@ Content-Type: application/json
 <h3>Como desbloqueio?</h3>
 <p><code>DELETE</code> no mesmo endpoint, com o usuário em <code>block_users</code>.</p>
 <h3>Bloquear um usuário prejudica a qualidade do meu número?</h3>
-<p>A documentação não diz isso. O que o vídeo sobre bloqueio aponta como risco é o contrário: o cliente bloquear ou denunciar a empresa.</p>
+<p>A documentação não diz isso. O risco é o contrário: o cliente bloquear ou denunciar a empresa.</p>
 <h3>Como vejo quem está bloqueado?</h3>
 <p><code>GET /v1/{phone_number_id}/block_users</code>.</p>
 <h2 id="como-decidir">Como decidir</h2>
@@ -731,7 +731,7 @@ Content-Type: application/json
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>

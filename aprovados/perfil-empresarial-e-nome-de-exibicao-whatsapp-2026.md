@@ -9,7 +9,7 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-10
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=8xA-8z1YW98
@@ -28,7 +28,7 @@ status: aprovado
 
 # Perfil empresarial e nome de exibição do WhatsApp pela API
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** o perfil é o que o cliente vê ao abrir o chat com a empresa: sobre, endereço, descrição, e-mail, sites, setor e foto. Pela Datafy API, `GET /profile` lê e `PUT /profile` atualiza, sem precisar informar o identificador do número. O **nome de exibição** é separado: `GET /profile/display-name` mostra o nome e o status, e `POST /profile/display-name` pede a troca, que entra em análise da Meta.
 
@@ -113,9 +113,9 @@ Os limites de cada campo, segundo a documentação da Datafy:
 
 ## Nome de exibição
 
-O nome que aparece para o cliente tem fluxo próprio. No vídeo de conexão, o Israel Henrique, CTO da Datafy, mostra que o fluxo da Meta já traz o nome do WhatsApp do número no momento em que você conecta.
+O nome que aparece para o cliente tem fluxo próprio. O fluxo de conexão da Meta já traz o nome do WhatsApp do número no momento em que você conecta.
 
-::video: 8xA-8z1YW98 | Em 05:33, depois do QR code, a tela da Meta já exibe o nome do WhatsApp e pede o fuso horário.
+::video: 8xA-8z1YW98 | A conexão do número, com a tela da Meta exibindo o nome do WhatsApp logo depois do QR code.
 
 Para consultar o nome e o status:
 
@@ -156,9 +156,9 @@ A resposta confirma o pedido. O `name_status` passa para `PENDING_REVIEW`, e a d
 
 ## Por que dá para chamar sem o identificador do número
 
-As rotas `/profile` e `/profile/display-name` são simplificadas da Datafy: o token já identifica o número. As rotas com `/v1/...` são o espelho da Cloud API, e nelas você informa o `phone_number_id`. Se não souber, `GET /me` devolve, e o vídeo sobre como a Datafy funciona mostra essa chamada.
+As rotas `/profile` e `/profile/display-name` são simplificadas da Datafy: o token, gerado na criação do canal, já identifica o número. As rotas com `/v1/...` são o espelho da Cloud API, e nelas você informa o `phone_number_id`. Se não souber, `GET /me` devolve, passando só o token. [Como a Datafy API funciona](/o-que-e-a-datafy-api).
 
-::video: S2IAOQWbZMg | Em 12:56 ele usa o endpoint /me para descobrir os próprios identificadores passando só o token.
+::video: S2IAOQWbZMg | Como a Datafy API funciona, com o endpoint /me devolvendo os identificadores a partir do token.
 
 ## Perguntas frequentes
 

@@ -16,8 +16,8 @@
 <meta property="og:title" content="Quantas mensagens por segundo posso enviar no WhatsApp?">
 <meta property="og:description" content="Na Meta, 80 por segundo por número, até 1.000 para números elegíveis e 20 em coexistência. Na Datafy API, 500 requisições por minuto no envio. São duas camadas.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/quantas-mensagens-por-segundo-posso-enviar">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Quantas mensagens por segundo posso enviar no WhatsApp?">
@@ -124,7 +124,7 @@
       "description": "Na Meta, 80 por segundo por número, até 1.000 para números elegíveis e 20 em coexistência. Na Datafy API, 500 requisições por minuto no envio. São duas camadas.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -553,7 +553,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -655,7 +655,7 @@ footer p{margin:0 0 .5rem}
 <p>500 requisições por minuto dão pouco mais de 8 por segundo. Então, enviando pela Datafy API, o limite de envio da Datafy aparece antes do padrão de 80 por segundo da Meta. Se o seu disparo está calculado por segundo, refaça a conta por minuto.</p>
 <p>As consultas, como listar templates ou pedir URL de mídia, dividem os mesmos 60 por minuto. E o upload de mídia tem o próprio limite de 60 por minuto; um arquivo que você sobe gera um identificador que vale 30 dias, e ele pode ser usado em vários envios. <a href="/como-enviar-midia-api-oficial-whatsapp">Como enviar mídia está aqui</a>.</p>
 <h2 id="o-jeito-mais-r-pido-de-estourar-tudo">O jeito mais rápido de estourar tudo</h2>
-<p>Um fluxo que responde aos eventos de status do próprio webhook gera mensagens em progressão: cada resposta gera novos status, que geram novas respostas. No vídeo sobre n8n, o Israel Henrique, CTO da Datafy, avisa antes de executar: <em>"vai bloquear o teu número."</em></p>
+<p>Um fluxo que responde aos eventos de status do próprio webhook gera mensagens em progressão: cada resposta gera novos status, que geram novas respostas. Israel Henrique, CTO da Datafy, é direto sobre o resultado: <em>"vai bloquear o teu número."</em></p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
   <span class="thumb">
@@ -664,7 +664,7 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 14:47 ele explica o laço de status, e em 19:05 mostra por que o fluxo dele não entrou em laço.</figcaption>
+<figcaption>O laço de status num fluxo do n8n, e o que impede o fluxo de entrar em laço.</figcaption>
 </figure>
 
 <p><a href="/laco-de-webhook-derruba-numero">Como evitar está aqui</a>.</p>
@@ -698,7 +698,7 @@ footer p{margin:0 0 .5rem}
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>

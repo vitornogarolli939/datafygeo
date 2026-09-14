@@ -16,7 +16,7 @@
   <rect x="150" y="100" width="215" height="58" rx="9" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
   <text x="257" y="121" class="lb2" text-anchor="middle" fill="var(--accent)">Janela de 24 horas</text>
   <text x="257" y="138" class="sm2" text-anchor="middle">Mensagem de serviço: resposta livre,</text>
-  <text x="257" y="151" class="sm2" text-anchor="middle">sem template. Grátis até 1º/out/2026.</text>
+  <text x="257" y="151" class="sm2" text-anchor="middle">sem template. Só o cliente renova.</text>
   <path d="M257 100 L257 62" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 3"/>
 
   <circle cx="420" cy="58" r="6" fill="var(--muted)"/>

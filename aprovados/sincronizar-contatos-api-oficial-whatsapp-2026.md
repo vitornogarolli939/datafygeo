@@ -9,14 +9,14 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://www.youtube.com/watch?v=HQm5UuW50bM
   - https://www.youtube.com/watch?v=dIIkttPeBS0
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/
   - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=8xA-8z1YW98
-videos: [HQm5UuW50bM, dIIkttPeBS0]
+videos: [HQm5UuW50bM]
 internal_links:
   - /coexistencia-whatsapp-api-oficial-app-celular
   - /como-conectar-numero-api-oficial-whatsapp
@@ -28,7 +28,7 @@ status: aprovado
 
 # Como sincronizar os contatos e o histórico do WhatsApp Business com a API
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** a sincronização **não é automática**. Depois de conectar o número em coexistência, você precisa ter autorizado o compartilhamento no celular, assinar os eventos `history` e `smb_app_state_sync` no webhook, e fazer uma chamada para `POST /v1/{phone_number_id}/smb_app_data`, uma para contatos e outra para histórico.
 
@@ -39,7 +39,7 @@ São duas regras que não perdoam: **24 horas** a partir da conexão, e **uma ve
 ## Principais pontos
 - **Pré-requisito no celular:** durante a conexão, o cliente precisa autorizar o compartilhamento. Se recusou, nada é enviado.
 - **Pré-requisito no webhook:** os campos `history` e `smb_app_state_sync` assinados antes de disparar.
-- **Contatos chegam praticamente na hora.** No vídeo, o histórico pode levar até cerca de 30 minutos para começar a chegar.
+- **Contatos chegam praticamente na hora.** O histórico demora mais: a documentação da Meta fala em vários minutos, dependendo do tamanho.
 - **O histórico vem em fases e pedaços fora de ordem, e com duplicatas.** Junte por conversa, remova repetidas pelo `wamid` e ordene por horário.
 - **Contatos usam timestamp em milissegundos; histórico usa segundos.** Tratar os dois igual quebra as datas.
 
@@ -49,9 +49,9 @@ São duas regras que não perdoam: **24 horas** a partir da conexão, e **uma ve
 
 **1. O compartilhamento foi autorizado no celular.** No fluxo de conexão, o aplicativo pergunta se você quer compartilhar o histórico. Marcando, dá para recuperar conversas e contatos. Se marcou que não, o caminho é refazer a conexão.
 
-**2. Os eventos estão assinados.** No painel da Datafy, na aba de webhooks do número, marque `history` e `smb_app_state_sync`. No vídeo, o Israel Henrique, CTO da Datafy, marca o evento de contatos antes de qualquer chamada: *"você tem que marcar um evento específico."*
+**2. Os eventos estão assinados.** No painel da Datafy, na aba de webhooks do número, marque `history` e `smb_app_state_sync` antes de qualquer chamada. Cada tipo de dado chega pelo seu evento específico.
 
-**3. Você está dentro das 24 horas.** Na fala dele: *"isso tem que ser feito em até 24 horas após você fazer a conexão. Se passou de 24 horas, não dá mais. Aí tem que desconectar e conectar de novo."* A documentação da Meta diz o mesmo: sem sincronizar em 24 horas, o cliente precisa ser desconectado e refazer o fluxo.
+**3. Você está dentro das 24 horas.** O prazo conta a partir da conexão. Passou de 24 horas, não dá mais: é preciso desconectar e conectar de novo. A documentação da Meta diz o mesmo: sem sincronizar em 24 horas, o cliente precisa ser desconectado e refazer o fluxo.
 
 ## A chamada
 
@@ -87,9 +87,9 @@ A resposta confirma o aceite. Os dados chegam depois, pelo webhook:
 }
 ```
 
-**Guarde o `request_id`.** É o identificador que você passa ao suporte da Meta se a entrega falhar. No vídeo, o conselho é o mesmo: *"é bom salvar esse valor aqui caso dê algum problema, que daí você pode entrar em contato com a meta."*
+**Guarde o `request_id`.** É o identificador que você passa ao suporte da Meta se a entrega falhar.
 
-::video: HQm5UuW50bM | Quatro minutos: em 00:30 ele marca o evento, em 01:05 explica o prazo de 24 horas, em 02:38 dispara a sincronização e os contatos aparecem no webhook, e em 03:40 fala do tempo do histórico.
+::video: HQm5UuW50bM | A sincronização de ponta a ponta: o evento marcado, o prazo de 24 horas, o disparo com os contatos chegando no webhook e o tempo do histórico.
 
 ## Como os contatos chegam
 
@@ -122,7 +122,7 @@ webhook (1 POST)
 
 **Mídia.** Não vem dentro das conversas. Aparece como `type: "media_placeholder"`, sem conteúdo, e o arquivo chega em webhooks separados, casados pelo `wamid`. Só mídias dos últimos cerca de 14 dias têm arquivo, o que bate com a documentação da Meta.
 
-**Tempo.** A documentação da Meta diz que pode levar vários minutos, dependendo do tamanho do histórico. No vídeo, a observação do Israel é que *"as conversas elas podem levar até 30 minutos para começar a chegar. Demora bastante mesmo, dependendo aí da quantidade."* Não refaça o processo porque nada apareceu em dois minutos.
+**Tempo.** A documentação da Meta diz que pode levar vários minutos, dependendo do tamanho do histórico. Israel Henrique, CTO da Datafy, resume a experiência com as conversas: *"Demora bastante mesmo, dependendo aí da quantidade."* Não refaça o processo porque nada apareceu em dois minutos.
 
 ## Perguntas frequentes
 

@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Mensagem de serviço e template: os dois tipos de mensagem da API oficial do WhatsApp</title>
+<meta name="description" content="O que você pode enviar depende da última mensagem do cliente. Com a janela de 24 horas aberta, mensagem de serviço livre. Fechada, só template aprovado. E no Instagram, como fica.">
+<link rel="canonical" href="https://conteudo.datafyapi.com.br/tipos-de-mensagem-whatsapp-servico-e-template">
+<meta name="author" content="Vitor Nogarolli">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Datafy API · Conteúdo">
+<meta property="og:title" content="Mensagem de serviço e template: os dois tipos de mensagem da API oficial do WhatsApp">
+<meta property="og:description" content="O que você pode enviar depende da última mensagem do cliente. Com a janela de 24 horas aberta, mensagem de serviço livre. Fechada, só template aprovado. E no Instagram, como fica.">
+<meta property="og:url" content="https://conteudo.datafyapi.com.br/tipos-de-mensagem-whatsapp-servico-e-template">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
+<meta property="article:author" content="Vitor Nogarolli">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mensagem de serviço e template: os dois tipos de mensagem da API oficial do WhatsApp">
+<meta name="twitter:description" content="O que você pode enviar depende da última mensagem do cliente. Com a janela de 24 horas aberta, mensagem de serviço livre. Fechada, só template aprovado. E no Instagram, como fica.">
+
+<link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://datafyapi.com.br/#organization",
+      "name": "Datafy API",
+      "alternateName": "DatafyAPI",
+      "url": "https://datafyapi.com.br/",
+      "description": "Plataforma brasileira que da acesso a API oficial do WhatsApp (Meta Cloud API) por meio de infraestrutura propria, como Tech Provider verificado pela Meta.",
+      "areaServed": "BR",
+      "legalName": "Agência Nexum Marketing e Performance Ltda",
+      "taxID": "41.756.486/0001-70",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Curitiba",
+        "addressRegion": "PR",
+        "addressCountry": "BR"
+      },
+      "founder": {
+        "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person",
+      "name": "Vitor Nogarolli",
+      "jobTitle": "Cofundador da Datafy API",
+      "url": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli",
+      "worksFor": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://conteudo.datafyapi.com.br/#website",
+      "url": "https://conteudo.datafyapi.com.br/",
+      "name": "Datafy API · Conteúdo",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://datafyapi.com.br/#software",
+      "name": "Datafy API",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://datafyapi.com.br/",
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "featureList": [
+        "Embedded Signup",
+        "Coexistência com WhatsApp Business App",
+        "Espelho da Meta Cloud API",
+        "Webhook com assinatura HMAC-SHA256",
+        "Disparo por template via CSV",
+        "Integração com Chatwoot"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "49.90",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock",
+        "description": "Por número conectado, por mês. R$ 39,90 de 10 a 49 números e R$ 29,90 a partir de 50."
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://conteudo.datafyapi.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Implementação",
+          "item": "https://conteudo.datafyapi.com.br/tema/implementacao"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Mensagem de serviço e template: os dois tipos de mensagem da API oficial do WhatsApp"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://conteudo.datafyapi.com.br/tipos-de-mensagem-whatsapp-servico-e-template#article",
+      "headline": "Mensagem de serviço e template: os dois tipos de mensagem da API oficial do WhatsApp",
+      "description": "O que você pode enviar depende da última mensagem do cliente. Com a janela de 24 horas aberta, mensagem de serviço livre. Fechada, só template aprovado. E no Instagram, como fica.",
+      "inLanguage": "pt-BR",
+      "datePublished": "2026-09-14",
+      "dateModified": "2026-09-14",
+      "author": {
+        "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
+      },
+      "publisher": {
+        "@id": "https://datafyapi.com.br/#organization"
+      },
+      "mainEntityOfPage": "https://conteudo.datafyapi.com.br/tipos-de-mensagem-whatsapp-servico-e-template",
+      "citation": [
+        "https://datafy.mintlify.site/guias/whatsapp/conceitos/tipos-de-mensagem",
+        "https://datafy.mintlify.site/guias/whatsapp/conceitos/janela-de-24-horas",
+        "https://datafy.mintlify.site/guias/whatsapp/conceitos/templates-de-mensagem",
+        "https://whatsappbusiness.com/policy/",
+        "https://app.datafyapi.com.br/docs"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://conteudo.datafyapi.com.br/tipos-de-mensagem-whatsapp-servico-e-template#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Posso mandar mensagem livre para quem nunca falou comigo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Sem mensagem do cliente não existe janela, e o primeiro contato só pode ser feito com template aprovado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mensagem de serviço precisa de aprovação da Meta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Só o template passa por aprovação. A mensagem de serviço é livre dentro da janela."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O template abre a janela de 24 horas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. A janela abre quando o cliente responde ao template."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso criar um template para cada cliente?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Um template aprovado pode ser reutilizado com outros clientes, preenchendo as variáveis em cada envio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Resposta de bot conta como mensagem de serviço?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Conta. A regra é a mesma para atendente, bot e automação."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+<style>
+:root{
+  --bg:#fcfbf9; --surface:#ffffff; --fg:#17181a; --muted:#63666b; --line:#e6e3de;
+  --accent:#0b6e4f; --accent-2:#0d8a63; --accent-soft:#e9f4ef;
+  --danger:#a33a2a; --danger-soft:#fbeeeb;
+  --code-bg:#f2f1ed; --warn-bg:#fdf7e9; --warn-line:#e6d09a;
+  --shadow:0 1px 2px rgba(20,20,20,.05), 0 8px 24px -12px rgba(20,20,20,.12);
+  --max:46rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131416; --surface:#1a1c1f; --fg:#eceae6; --muted:#9ea3a9; --line:#2c2f33;
+    --accent:#4fc79b; --accent-2:#63d6ac; --accent-soft:#12251e;
+    --danger:#e08272; --danger-soft:#2a1a17;
+    --code-bg:#22252a; --warn-bg:#26210f; --warn-line:#5d5127;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131416; --surface:#1a1c1f; --fg:#eceae6; --muted:#9ea3a9; --line:#2c2f33;
+  --accent:#4fc79b; --accent-2:#63d6ac; --accent-soft:#12251e;
+  --danger:#e08272; --danger-soft:#2a1a17;
+  --code-bg:#22252a; --warn-bg:#26210f; --warn-line:#5d5127;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:"Iowan Old Style","Charter",Georgia,"Times New Roman",serif;
+  font-size:1.075rem; line-height:1.68; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 1.35rem}
+.sans{font-family:system-ui,-apple-system,"Segoe UI",Inter,sans-serif}
+a{color:var(--accent); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+img,svg{max-width:100%}
+
+/* topo */
+.topbar{border-bottom:1px solid var(--line); background:var(--surface); position:sticky; top:0; z-index:10}
+.topbar .wrap{display:flex; gap:1rem; align-items:center; justify-content:space-between; padding:.8rem 1.35rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.85rem}
+.brand{font-weight:700; letter-spacing:-.02em; text-decoration:none; color:var(--fg); font-size:.95rem}
+.brand span{color:var(--accent)}
+nav.crumbs{color:var(--muted); font-size:.8rem}
+nav.crumbs a{color:var(--muted); text-decoration:none}
+nav.crumbs a:hover{text-decoration:underline}
+
+/* hero */
+header.post{padding:3rem 0 0}
+.eyebrow{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.75rem; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--accent); margin-bottom:.85rem;
+}
+h1{
+  font-size:clamp(1.9rem,5.2vw,2.85rem); line-height:1.12; letter-spacing:-.025em;
+  margin:0 0 1.15rem; font-weight:700; text-wrap:balance;
+}
+.byline{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.85rem; color:var(--muted);
+  display:flex; flex-wrap:wrap; gap:.45rem .8rem; align-items:center;
+}
+.byline a{color:var(--fg)}
+.badge{
+  display:inline-flex; align-items:center; gap:.3rem;
+  background:var(--accent-soft); color:var(--accent); border-radius:99px;
+  padding:.2rem .65rem; font-weight:650; font-size:.76rem; border:1px solid transparent;
+}
+.stats{
+  margin-top:0;
+  display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  margin:2rem 0 .5rem;
+}
+@media (min-width:40rem){ .stats{grid-template-columns:repeat(4,1fr)} }
+.stat{background:var(--surface); padding:.95rem 1.05rem; font-family:system-ui,-apple-system,sans-serif}
+.stat b{display:block; font-size:1.22rem; letter-spacing:-.02em; line-height:1.2; color:var(--accent)}
+.stat span{display:block; font-size:.78rem; color:var(--muted); margin-top:.15rem; line-height:1.35}
+
+.lede{
+  font-size:1.22rem; line-height:1.55; margin:2rem 0;
+  padding:1.25rem 1.4rem; background:var(--surface); border:1px solid var(--line);
+  border-left:4px solid var(--accent); border-radius:0 12px 12px 0; box-shadow:var(--shadow);
+}
+.lede p{margin:0}
+
+/* sumário */
+.toc{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:1.05rem 1.3rem; margin:2rem 0; font-family:system-ui,-apple-system,sans-serif; font-size:.9rem;
+}
+.toc strong{display:block; font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:.6rem}
+.toc ol{margin:0; padding-left:1.15rem; columns:2; column-gap:1.5rem}
+@media (max-width:34rem){ .toc ol{columns:1} }
+.toc li{margin-bottom:.3rem; break-inside:avoid}
+.toc a{text-decoration:none}
+.toc a:hover{text-decoration:underline}
+
+h2{
+  font-size:clamp(1.35rem,3.6vw,1.75rem); line-height:1.22; letter-spacing:-.02em;
+  margin:3rem 0 .9rem; font-weight:700; text-wrap:balance; scroll-margin-top:4rem;
+}
+h3{
+  font-family:system-ui,-apple-system,sans-serif; font-size:1.03rem;
+  margin:2rem 0 .5rem; font-weight:650; letter-spacing:-.005em;
+}
+p{margin:0 0 1.15rem}
+ul,ol{margin:0 0 1.25rem; padding-left:1.35rem}
+li{margin-bottom:.55rem}
+li::marker{color:var(--muted)}
+strong{font-weight:650}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
+
+blockquote{
+  margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
+  border-radius:12px; font-size:1.13rem; line-height:1.5; position:relative;
+}
+blockquote p{margin:0 0 .7rem; font-style:italic}
+blockquote cite{display:block; font-style:normal; font-size:.83rem; color:var(--muted);
+  font-family:system-ui,-apple-system,sans-serif}
+
+/* figuras / diagramas */
+figure{margin:2.25rem 0; padding:0}
+.diagram{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:1.4rem 1.2rem 1rem; box-shadow:var(--shadow);
+}
+figcaption{
+  font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; color:var(--muted);
+  margin-top:.85rem; line-height:1.45; text-align:left;
+}
+
+/* vídeo */
+.video{
+  display:block; text-decoration:none; color:inherit; border:1px solid var(--line);
+  border-radius:12px; overflow:hidden; background:var(--surface); box-shadow:var(--shadow);
+}
+.video:hover{text-decoration:none; border-color:var(--accent)}
+.video .thumb{position:relative; aspect-ratio:16/9; background:var(--code-bg); display:block}
+.video .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.video .play{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+}
+.video .play span{
+  width:60px; height:60px; border-radius:50%; background:rgba(0,0,0,.72);
+  display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(0,0,0,.35);
+}
+.video:hover .play span{background:#c00}
+.video .meta{padding:.85rem 1.05rem; font-family:system-ui,-apple-system,sans-serif}
+.video .meta b{display:block; font-size:.95rem; line-height:1.35; letter-spacing:-.01em}
+.video .meta span{display:block; font-size:.8rem; color:var(--muted); margin-top:.2rem}
+
+/* tabela */
+.tablewrap{overflow-x:auto; margin:1.75rem 0; border:1px solid var(--line);
+  border-radius:12px; background:var(--surface); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; min-width:38rem; font-size:.88rem;
+  font-family:system-ui,-apple-system,sans-serif}
+th,td{padding:.7rem .85rem; text-align:left; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{background:var(--code-bg); font-weight:650; font-size:.8rem; white-space:nowrap}
+thead th:last-child{color:var(--accent)}
+tbody tr:last-child td{border-bottom:0}
+tbody th{font-weight:600; background:transparent; white-space:nowrap}
+td.yes{color:var(--accent); font-weight:600}
+td.no{color:var(--danger)}
+caption{caption-side:bottom; padding:.7rem .85rem; text-align:left;
+  font-size:.78rem; color:var(--muted); font-family:system-ui,-apple-system,sans-serif}
+
+.callout{
+  background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:12px;
+  padding:1.1rem 1.3rem; margin:1.9rem 0; font-size:.98rem;
+}
+.callout p:last-child{margin-bottom:0}
+
+.cta{
+  border:1px solid var(--line); border-radius:14px; padding:1.6rem 1.75rem;
+  margin:2.75rem 0; background:var(--accent-soft); box-shadow:var(--shadow);
+}
+.cta h3{margin:0 0 .5rem; font-size:1.15rem; font-weight:700}
+.cta p{margin:0 0 1.1rem; font-size:.98rem}
+.cta p:last-child{margin-bottom:0}
+.btn{
+  display:inline-block; background:var(--accent); color:#fff; text-decoration:none;
+  padding:.72rem 1.3rem; border-radius:8px; font-weight:650; font-size:.95rem;
+  font-family:system-ui,-apple-system,sans-serif;
+}
+.btn:hover{background:var(--accent-2); text-decoration:none}
+.cta small{display:block; margin-top:.6rem; font-size:.8rem; color:var(--muted);
+  font-family:system-ui,-apple-system,sans-serif}
+
+.sources{font-size:.86rem; color:var(--muted)}
+.sources li{margin-bottom:.4rem}
+footer{
+  border-top:1px solid var(--line); margin-top:4rem; padding:2.25rem 0 3.5rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.82rem; color:var(--muted);
+  background:var(--surface);
+}
+footer a{color:var(--muted)}
+footer p{margin:0 0 .5rem}
+
+/* ===== MOLDURA DO SITE (fixa, igual em todas as páginas) ===== */
+.site-head{
+  position:sticky; top:0; z-index:30; background:color-mix(in srgb,var(--surface) 92%,transparent);
+  backdrop-filter:saturate(1.4) blur(8px); border-bottom:1px solid var(--line);
+}
+.site-head .row{
+  max-width:74rem; margin:0 auto; padding:.7rem 1.35rem;
+  display:flex; align-items:center; gap:1.25rem;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.logo{display:flex; align-items:center; gap:.5rem; text-decoration:none; color:var(--fg); font-weight:750;
+  letter-spacing:-.025em; font-size:1rem; flex:none}
+.logo .dot{width:22px;height:22px;border-radius:6px;background:var(--accent);display:grid;place-items:center;
+  color:#fff;font-size:.72rem;font-weight:800}
+.logo span{color:var(--accent)}
+.site-nav{display:flex; gap:1.1rem; font-size:.87rem; margin-left:.5rem}
+.site-nav a{color:var(--muted); text-decoration:none}
+.site-nav a:hover{color:var(--fg)}
+@media (max-width:52rem){ .site-nav{display:none} }
+.head-cta{margin-left:auto; display:flex; gap:.55rem; align-items:center; flex:none}
+.head-cta a{font-size:.85rem; text-decoration:none; white-space:nowrap}
+.head-cta .ghost{color:var(--muted); padding:.45rem .2rem}
+.head-cta .ghost:hover{color:var(--fg)}
+.head-cta .solid{background:var(--accent); color:#fff; padding:.5rem .95rem; border-radius:7px; font-weight:650}
+.head-cta .solid:hover{background:var(--accent-2)}
+@media (max-width:34rem){ .head-cta .ghost{display:none} }
+
+/* ===== FAIXA DE TOPO ===== */
+.hero-band{background:var(--accent-soft); border-bottom:1px solid var(--line)}
+.hero-grid{
+  max-width:74rem; margin:0 auto; padding:2.75rem 1.35rem 2.5rem;
+  display:grid; grid-template-columns:1fr; gap:2rem; align-items:center;
+}
+@media (min-width:56rem){ .hero-grid{grid-template-columns:1.15fr .85fr; gap:3rem} }
+.hero-art{order:-1}
+@media (min-width:56rem){ .hero-art{order:0} }
+.hero-band h1{margin:0 0 1rem}
+.hero-band .byline{padding-bottom:0; border-bottom:0}
+
+/* ===== CORPO EM DUAS COLUNAS ===== */
+.shell{max-width:74rem; margin:0 auto; padding:0 1.35rem; display:grid; grid-template-columns:1fr; gap:2.5rem}
+@media (min-width:62rem){ .shell{grid-template-columns:minmax(0,1fr) 19rem; gap:3.25rem} }
+.shell > article{min-width:0; padding-top:2.25rem}
+.rail{display:none}
+@media (min-width:62rem){
+  .rail{display:block; padding-top:2.25rem}
+  .rail-inner{position:sticky; top:4.5rem; display:flex; flex-direction:column; gap:1.1rem}
+}
+.rail-cta{
+  background:var(--accent); color:#fff; border-radius:14px; padding:1.35rem 1.4rem;
+  font-family:system-ui,-apple-system,sans-serif; box-shadow:var(--shadow);
+}
+.rail-cta b{display:block; font-size:1.05rem; font-weight:750; letter-spacing:-.015em; line-height:1.3; margin-bottom:.5rem}
+.rail-cta p{font-size:.87rem; line-height:1.5; margin:0 0 1rem; opacity:.92}
+.rail-cta a{
+  display:block; text-align:center; background:#fff; color:var(--accent);
+  padding:.6rem 1rem; border-radius:8px; font-weight:700; font-size:.9rem; text-decoration:none;
+}
+.rail-cta a:hover{opacity:.92; text-decoration:none}
+.rail-cta small{display:block; margin-top:.6rem; font-size:.75rem; opacity:.85; text-align:center}
+.rail-box{
+  background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:1.1rem 1.25rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.86rem;
+}
+.rail-box strong{display:block; font-size:.72rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:.6rem}
+.rail-box ol{margin:0; padding-left:1.1rem}
+.rail-box li{margin-bottom:.35rem; line-height:1.4}
+.rail-box a{text-decoration:none}
+.rail-box a:hover{text-decoration:underline}
+
+/* ===== RODAPÉ ===== */
+.site-foot{border-top:1px solid var(--line); background:var(--surface); margin-top:4rem}
+.foot-grid{
+  max-width:74rem; margin:0 auto; padding:2.75rem 1.35rem 1.75rem;
+  display:grid; grid-template-columns:1fr; gap:2rem;
+  font-family:system-ui,-apple-system,sans-serif; font-size:.86rem;
+}
+@media (min-width:44rem){ .foot-grid{grid-template-columns:1.4fr 1fr 1fr} }
+.foot-grid h4{font-size:.74rem; letter-spacing:.09em; text-transform:uppercase; color:var(--muted);
+  margin:0 0 .7rem; font-weight:700}
+.foot-grid ul{list-style:none; margin:0; padding:0}
+.foot-grid li{margin-bottom:.4rem}
+.foot-grid a{color:var(--muted); text-decoration:none}
+.foot-grid a:hover{color:var(--fg)}
+.foot-about p{color:var(--muted); margin:0 0 .6rem; max-width:26rem; line-height:1.55}
+.foot-legal{
+  max-width:74rem; margin:0 auto; padding:1.1rem 1.35rem 2.5rem; border-top:1px solid var(--line);
+  font-family:system-ui,-apple-system,sans-serif; font-size:.78rem; color:var(--muted);
+}
+
+/* ===== home e pagina de autor ===== */
+.shell-solo{grid-template-columns:minmax(0,1fr) !important; max-width:52rem}
+.shell-solo > article{padding-top:3rem}
+.sub{font-size:1.15rem; color:var(--muted); margin:0 0 2rem}
+.cards{list-style:none; margin:1.5rem 0 0; padding:0; display:grid; gap:1rem}
+@media (min-width:44rem){ .cards{grid-template-columns:1fr 1fr} }
+.card a{display:block; text-decoration:none; color:inherit; height:100%;
+  background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  padding:1.25rem 1.35rem; box-shadow:var(--shadow)}
+.card a:hover{border-color:var(--accent); text-decoration:none}
+.card-tema{display:inline-block; font-family:system-ui,-apple-system,sans-serif;
+  font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent); background:var(--accent-soft); padding:.2rem .55rem;
+  border-radius:99px; margin-bottom:.65rem}
+.card b{display:block; font-size:1.08rem; line-height:1.3; letter-spacing:-.015em; margin-bottom:.4rem}
+.card p{font-size:.92rem; color:var(--muted); margin:0 0 .8rem; line-height:1.5}
+.card-data{font-family:system-ui,-apple-system,sans-serif; font-size:.78rem; color:var(--faint,var(--muted))}
+
+</style>
+</head>
+<body>
+
+
+
+<header class="site-head">
+  <div class="row">
+    <a class="logo" href="/"><span class="dot">D</span>Datafy<span>API</span></a>
+    <nav class="site-nav" aria-label="Temas">
+      <a href="/tema/oficial-vs-nao-oficial">Oficial vs não oficial</a>
+      <a href="/tema/custo">Custos</a>
+      <a href="/tema/coexistencia">Coexistência</a>
+      <a href="/tema/implementacao">Implementação</a>
+      <a href="/tema/compliance">Banimento e compliance</a>
+    </nav>
+    <div class="head-cta">
+      <a class="ghost" href="https://app.datafyapi.com.br/docs">Documentação</a>
+      <a class="solid" href="https://app.datafyapi.com.br">Teste 7 dias grátis</a>
+    </div>
+  </div>
+</header>
+
+<div class="hero-band">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">Implementação</p>
+      <h1>Mensagem de serviço e template: os dois tipos de mensagem da API oficial do WhatsApp</h1>
+      <div class="byline">
+        <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
+        <span class="badge">Tech Provider verificado pela Meta</span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 340 300" role="img" aria-labelledby="heroT heroD" style="width:100%;height:auto;max-width:340px;margin-inline:auto;display:block">
+  <title id="heroT">Migração de provedor mantendo o mesmo número</title>
+  <desc id="heroD">Ilustração de um número de telefone que permanece o mesmo enquanto a conexão muda de um provedor para outro.</desc>
+  <rect x="16" y="104" width="88" height="64" rx="12" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="60" y="142" text-anchor="middle" style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg);fill:var(--muted)">antes</text>
+  <rect x="236" y="104" width="88" height="64" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+  <text x="280" y="142" text-anchor="middle" style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg);fill:var(--accent)">depois</text>
+  <path d="M112 136 H150" stroke="var(--muted)" stroke-width="2" fill="none" opacity=".5"/>
+  <path d="M190 136 H228" stroke="var(--accent)" stroke-width="2" fill="none"/>
+  <path d="M222 130 l8 6 -8 6" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+  <rect x="146" y="96" width="48" height="80" rx="12" fill="var(--fg)" opacity=".92"/>
+  <rect x="150" y="100" width="40" height="72" rx="9" fill="var(--surface)"/>
+  <circle cx="170" cy="126" r="12" fill="var(--accent-soft)"/>
+  <path d="M165 126 l4 4 7 -8" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="156" y="148" width="28" height="4" rx="2" fill="var(--muted)" opacity=".45"/>
+  <rect x="160" y="158" width="20" height="4" rx="2" fill="var(--muted)" opacity=".45"/>
+  <text x="170" y="212" text-anchor="middle" style="font:700 12px system-ui,-apple-system,sans-serif;fill:var(--fg)">o número continua seu</text>
+  <text x="170" y="232" text-anchor="middle" style="font:600 10.5px system-ui,-apple-system,sans-serif;fill:var(--muted)">muda a URL e o token</text>
+</svg>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+<article>
+
+<p><strong>Resposta curta:</strong> na API oficial do WhatsApp existem dois tipos de mensagem. A <strong>mensagem de serviço</strong> é a resposta livre que você envia durante o atendimento, dentro da janela de 24 horas aberta pela mensagem do cliente. O <strong>template</strong> é um modelo aprovado pela Meta, obrigatório quando a pessoa nunca escreveu ou quando já passaram mais de 24 horas desde a última mensagem dela. Qual dos dois você pode usar depende sempre da <strong>última interação do cliente</strong> com a sua empresa.</p>
+<div class="stats">
+  <div class="stat"><b>2 tipos</b><span>serviço e template</span></div>
+  <div class="stat"><b>24 h</b><span>de janela depois da mensagem do cliente</span></div>
+  <div class="stat"><b>3 categorias</b><span>de template: marketing, utilidade e autenticação</span></div>
+  <div class="stat"><b>0</b><span>templates no Instagram</span></div>
+</div>
+
+<h2 id="principais-pontos">Principais pontos</h2>
+<ul>
+<li><strong>Mensagem de serviço:</strong> livre, sem aprovação, só com a janela de 24 horas aberta.</li>
+<li><strong>Template:</strong> modelo aprovado pela Meta, para quando a janela está fechada ou nunca abriu.</li>
+<li><strong>Só a mensagem do cliente abre e renova a janela.</strong> A da empresa não.</li>
+<li><strong>Enviar template não abre a janela.</strong> Ela abre quando o cliente responde.</li>
+<li><strong>Os dois saem pelo mesmo endpoint da Datafy API</strong>, mudando só o <code>type</code> do corpo.</li>
+</ul>
+<h2 id="mensagem-de-servi-o-durante-o-atendiment">Mensagem de serviço: durante o atendimento</h2>
+<p>Quando uma pessoa manda mensagem para o seu número, começa uma <strong>janela de atendimento de 24 horas</strong>. Nesse período, você responde com mensagens livres, como texto, imagem e áudio, <strong>sem template aprovado</strong>. Essas respostas são as mensagens de serviço.</p>
+<p>Cada nova mensagem da pessoa renova o prazo: as 24 horas passam a contar dela. As mensagens da sua empresa <strong>não renovam</strong> a janela. <a href="/janela-de-24-horas-whatsapp">Como contar a janela</a>.</p>
+<p>Mensagem de serviço inclui as respostas de atendentes, de bots e de automações.</p>
+<h2 id="template-quando-a-janela-est-fechada">Template: quando a janela está fechada</h2>
+<p>Se a pessoa <strong>ainda não mandou mensagem</strong>, ou se <strong>já passaram mais de 24 horas</strong> desde a última, você precisa de um <strong>template de mensagem</strong> para entrar em contato.</p>
+<p>Template é um modelo que você cadastra na Meta e submete à aprovação. Aprovado, ele pode ser enviado conforme a <strong>categoria</strong> e as regras do WhatsApp. <a href="/categorias-de-template-whatsapp">As três categorias</a>.</p>
+<p>Um ponto que muda o desenho da automação: <strong>enviar um template não abre a janela de atendimento</strong>. Ela abre quando a pessoa <strong>responde</strong>. A partir daí, você continua com mensagens de serviço.</p>
+<h2 id="qual-tipo-usar-em-cada-situa-o">Qual tipo usar em cada situação</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Situação do cliente</th>
+<th>O que você pode enviar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Escreveu há menos de 24 horas</td>
+<td>Mensagem de serviço ou template</td>
+</tr>
+<tr>
+<td>Nunca escreveu para a empresa</td>
+<td>Só template</td>
+</tr>
+<tr>
+<td>Escreveu há mais de 24 horas</td>
+<td>Só template</td>
+</tr>
+<tr>
+<td>Recebeu um template e não respondeu</td>
+<td>Só template</td>
+</tr>
+<tr>
+<td>Respondeu ao template</td>
+<td>Mensagem de serviço, por 24 horas a partir da resposta</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="o-mesmo-endpoint-dois-corpos">O mesmo endpoint, dois corpos</h2>
+<p>Pela Datafy API, os dois tipos saem pelo endpoint de mensagens da Cloud API. Muda o <code>type</code>.</p>
+<p>Mensagem de serviço, com a janela aberta:</p>
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json
+
+{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;to&quot;: &quot;5511999999999&quot;,
+  &quot;type&quot;: &quot;text&quot;,
+  &quot;text&quot;: { &quot;body&quot;: &quot;Seu pedido sai para entrega hoje à tarde.&quot; }
+}
+</code></pre>
+<p>Template, com a janela fechada:</p>
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json
+
+{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;to&quot;: &quot;5511999999999&quot;,
+  &quot;type&quot;: &quot;template&quot;,
+  &quot;template&quot;: {
+    &quot;name&quot;: &quot;atualizacao_pedido&quot;,
+    &quot;language&quot;: { &quot;code&quot;: &quot;pt_BR&quot; }
+  }
+}
+</code></pre>
+<p>Template com variáveis leva também <code>components</code> com os valores. <a href="/como-enviar-template-pela-api">Como enviar template com variáveis</a>.</p>
+<p>Nos dois casos, a resposta traz o <strong>ID da mensagem</strong>, que confirma que a requisição foi aceita, não que a mensagem chegou. Entrega, leitura ou falha chegam no webhook de status. <a href="/tres-status-da-mensagem-whatsapp">Os status</a>.</p>
+<h2 id="e-o-custo-de-cada-tipo">E o custo de cada tipo?</h2>
+<p>O tipo define o que você pode enviar. A cobrança da Meta é por <strong>mensagem entregue</strong>, pela categoria:</p>
+<ul>
+<li>Até 30 de setembro de 2026, mensagem de serviço dentro da janela <strong>não é cobrada</strong>.</li>
+<li>A partir de 1º de outubro de 2026, cada número tem <strong>1.000 mensagens de serviço grátis por mês</strong>, e a partir da 1.001ª cobra R$ 0,035 de referência.</li>
+<li>Template de <strong>marketing</strong> custa cerca de R$ 0,32 e é cobrado mesmo com a janela aberta. <strong>Utilidade</strong> e <strong>autenticação</strong>, cerca de R$ 0,035.</li>
+</ul>
+<p><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Custos de mensagens</a>.</p>
+<h2 id="e-no-instagram">E no Instagram?</h2>
+<p>A regra da janela existe também no <strong>Direct do Instagram</strong>: 24 horas depois da mensagem da pessoa, renovadas a cada nova mensagem dela. A diferença é que o Instagram <strong>não usa templates aprovados</strong> para iniciar ou retomar conversa fora da janela, e a Meta não cobra por mensagem de Direct enviada pela API. A Datafy API também dá acesso à API oficial do Instagram. <a href="/api-oficial-instagram-direct">Como funciona o Direct pela API</a>.</p>
+<h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+<h3>Posso mandar mensagem livre para quem nunca falou comigo?</h3>
+<p>Não. Sem mensagem do cliente não existe janela, e o primeiro contato só pode ser feito com template aprovado.</p>
+<h3>Mensagem de serviço precisa de aprovação da Meta?</h3>
+<p>Não. Só o template passa por aprovação. A mensagem de serviço é livre dentro da janela.</p>
+<h3>O template abre a janela de 24 horas?</h3>
+<p>Não. A janela abre quando o cliente responde ao template.</p>
+<h3>Preciso criar um template para cada cliente?</h3>
+<p>Não. Um template aprovado pode ser reutilizado com outros clientes, preenchendo as variáveis em cada envio.</p>
+<h3>Resposta de bot conta como mensagem de serviço?</h3>
+<p>Conta. A regra é a mesma para atendente, bot e automação.</p>
+<h2 id="resumo-para-a-sua-integra-o">Resumo para a sua integração</h2>
+<p>Antes de cada envio, olhe a última mensagem daquele cliente. Menos de 24 horas: mensagem de serviço. Mais que isso, ou nunca: template aprovado, e espere a resposta dele para voltar às mensagens livres.</p>
+<div class="cta"><h3>Envie os dois tipos para o seu número</h3><p>Mande uma mensagem do seu celular para o número conectado, responda com um texto pela Datafy API e depois envie um template aprovado. Compare os dois corpos e os status que chegam no webhook.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+
+<h2 id="leia-tamb-m">Leia também</h2>
+<ul>
+<li><a href="/janela-de-24-horas-whatsapp">Janela de 24 horas do WhatsApp</a></li>
+<li><a href="/categorias-de-template-whatsapp">Categorias de template: marketing, utilidade e autenticação</a></li>
+<li><a href="/api-oficial-instagram-direct">API oficial do Instagram: conversas pelo Direct</a></li>
+<li><a href="/quanto-custa-whatsapp-business-api-brasil-2026">Quanto custa a API oficial do WhatsApp</a></li>
+</ul>
+</article>
+
+<aside class="rail" aria-label="Ações">
+  <div class="rail-inner">
+    <div class="rail-cta">
+      <b>Teste com um número</b>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
+      <small>7 dias · sem cartão · sem setup</small>
+    </div>
+    <nav class="rail-box" aria-label="Sumário lateral">
+      <strong>Nesta página</strong>
+      <ol>
+        <li><a href="#principais-pontos">Principais pontos</a></li>
+        <li><a href="#mensagem-de-servi-o-durante-o-atendiment">Mensagem de serviço: durante o a...</a></li>
+        <li><a href="#template-quando-a-janela-est-fechada">Template: quando a janela está f...</a></li>
+        <li><a href="#qual-tipo-usar-em-cada-situa-o">Qual tipo usar em cada situação</a></li>
+        <li><a href="#o-mesmo-endpoint-dois-corpos">O mesmo endpoint, dois corpos</a></li>
+        <li><a href="#e-o-custo-de-cada-tipo">E o custo de cada tipo?</a></li>
+        <li><a href="#e-no-instagram">E no Instagram?</a></li>
+        <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+        <li><a href="#resumo-para-a-sua-integra-o">Resumo para a sua integração</a></li>
+        <li><a href="#leia-tamb-m">Leia também</a></li>
+      </ol>
+    </nav>
+    <div class="rail-box">
+      <strong>Falar com a gente</strong>
+      <p style="margin:0;color:var(--muted);line-height:1.5">Dúvida antes de assinar?
+      <a href="https://wa.me/5541991338055" rel="noopener">Chame no WhatsApp</a>.</p>
+    </div>
+  </div>
+</aside>
+</div>
+
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div class="foot-about">
+      <a class="logo" href="/" style="margin-bottom:.8rem"><span class="dot">D</span>Datafy<span>API</span></a>
+      <p>A API oficial do WhatsApp para quem automatiza e constrói software. Tech Provider verificado pela Meta, com coexistência e espelho 1:1 da Cloud API.</p>
+      <p>Agência Nexum Marketing e Performance Ltda<br>CNPJ 41.756.486/0001-70 · Curitiba/PR</p>
+    </div>
+    <div>
+      <h4>Temas</h4>
+      <ul>
+        <li><a href="/tema/oficial-vs-nao-oficial">Oficial vs não oficial</a></li>
+        <li><a href="/tema/custo">Custos</a></li>
+        <li><a href="/tema/coexistencia">Coexistência</a></li>
+        <li><a href="/tema/implementacao">Implementação</a></li>
+        <li><a href="/tema/compliance">Banimento e compliance</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Datafy</h4>
+      <ul>
+        <li><a href="https://datafyapi.com.br/">Site</a></li>
+        <li><a href="https://app.datafyapi.com.br/docs">Documentação</a></li>
+        <li><a href="https://app.datafyapi.com.br">Painel</a></li>
+        <li><a href="/autor/vitor-nogarolli">Sobre o autor</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">© 2026 Datafy API. Conteúdo técnico em português sobre WhatsApp Business API.</div>
+</footer>
+
+</body>
+</html>

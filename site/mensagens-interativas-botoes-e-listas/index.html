@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Mensagens com botões, lista e botão de link na API oficial do WhatsApp</title>
-<meta name="description" content="O mesmo endpoint de mensagens, com tipo interativo. Os exemplos prontos da documentação da Datafy, o botão de link montado no vídeo, e por que botão ajuda o seu número.">
+<meta name="description" content="O mesmo endpoint de mensagens, com tipo interativo. Os exemplos prontos da documentação da Datafy, o botão de link montado a partir da documentação da Meta, e por que botão ajuda o seu número.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/mensagens-interativas-botoes-e-listas">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -14,14 +14,14 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
 <meta property="og:title" content="Mensagens com botões, lista e botão de link na API oficial do WhatsApp">
-<meta property="og:description" content="O mesmo endpoint de mensagens, com tipo interativo. Os exemplos prontos da documentação da Datafy, o botão de link montado no vídeo, e por que botão ajuda o seu número.">
+<meta property="og:description" content="O mesmo endpoint de mensagens, com tipo interativo. Os exemplos prontos da documentação da Datafy, o botão de link montado a partir da documentação da Meta, e por que botão ajuda o seu número.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/mensagens-interativas-botoes-e-listas">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mensagens com botões, lista e botão de link na API oficial do WhatsApp">
-<meta name="twitter:description" content="O mesmo endpoint de mensagens, com tipo interativo. Os exemplos prontos da documentação da Datafy, o botão de link montado no vídeo, e por que botão ajuda o seu número.">
+<meta name="twitter:description" content="O mesmo endpoint de mensagens, com tipo interativo. Os exemplos prontos da documentação da Datafy, o botão de link montado a partir da documentação da Meta, e por que botão ajuda o seu número.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -121,10 +121,10 @@
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/mensagens-interativas-botoes-e-listas#article",
       "headline": "Mensagens com botões, lista e botão de link na API oficial do WhatsApp",
-      "description": "O mesmo endpoint de mensagens, com tipo interativo. Os exemplos prontos da documentação da Datafy, o botão de link montado no vídeo, e por que botão ajuda o seu número.",
+      "description": "O mesmo endpoint de mensagens, com tipo interativo. Os exemplos prontos da documentação da Datafy, o botão de link montado a partir da documentação da Meta, e por que botão ajuda o seu número.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -181,7 +181,7 @@
           "name": "Clique no botão conta como resposta?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No vídeo sobre bloqueio, sim: a pessoa clicando está interagindo com você."
+            "text": "Na observação da Datafy sobre bloqueio, sim: quem clica está interagindo com você."
           }
         }
       ]
@@ -572,7 +572,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -601,8 +601,8 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<p><strong>Resposta curta:</strong> mensagem com botões, lista ou botão de link sai pelo <strong>mesmo endpoint</strong> de qualquer mensagem, <code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages</code>, com o tipo interativo. O que muda é o corpo. A documentação da Datafy traz exemplos prontos por tipo, e no vídeo do canal DATA7 o Israel Henrique, CTO da Datafy, envia uma mensagem com três botões e monta um botão de link a partir da documentação da Meta.</p>
-<p>Dentro da janela de 24 horas, é mensagem de serviço. Fora dela, os botões precisam estar num template aprovado.</p>
+<p><strong>Resposta curta:</strong> mensagem com botões, lista ou botão de link sai pelo <strong>mesmo endpoint</strong> de qualquer mensagem, <code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages</code>, com o tipo interativo. O que muda é o corpo. A documentação da Datafy traz exemplos prontos por tipo, e o botão de link pode ser montado a partir do exemplo da documentação da Meta.</p>
+<p>Com a janela de 24 horas aberta, botões e listas são mensagens de serviço e não precisam de aprovação individual da Meta. Fora dela, os botões precisam estar num template aprovado.</p>
 <div class="stats">
   <div class="stat"><b>1 endpoint</b><span>o mesmo das outras mensagens</span></div>
   <div class="stat"><b>3 partes</b><span>cabeçalho, corpo e rodapé, além do botão</span></div>
@@ -619,8 +619,8 @@ footer p{margin:0 0 .5rem}
 <li><strong>Botão ajuda o número:</strong> a pessoa responde com um clique, e a falta de resposta é uma das causas de bloqueio.</li>
 </ul>
 <h2 id="bot-es-pelo-exemplo-pronto">Botões, pelo exemplo pronto</h2>
-<p>Na documentação da Datafy, o endpoint de envio de mensagem tem uma lista de exemplos por tipo. No vídeo, o Israel escolhe o de botões: <em>"eu vou clicar aqui, ele vai trazer aqui para mim o payload. Eu tenho que preencher o quê? O token, já tá preenchido, o phone number ID."</em> Ele preenche o destinatário e envia uma mensagem com três botões: confirmar, cancelar e remarcar.</p>
-<p>Na mesma lista estão os outros tipos: <em>"lista, template, mídia, localização, contato, tudo já bonitinho aqui. Você pode executar por aqui ou executar pelo N8N."</em></p>
+<p>Na documentação da Datafy, o endpoint de envio de mensagem tem uma lista de exemplos por tipo. Escolha o de botões: o payload vem pronto, com o token e o <code>phone_number_id</code> já preenchidos, e falta só o destinatário. O exemplo envia uma mensagem com três botões: confirmar, cancelar e remarcar.</p>
+<p>Na mesma lista estão os outros tipos: lista, template, mídia, localização e contato. Dá para executar pela própria documentação ou pelo n8n.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=S2IAOQWbZMg" rel="noopener">
   <span class="thumb">
@@ -629,37 +629,49 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como funciona a Datafy API</b><span>Canal DATA7 · 14 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 06:35 ele abre os exemplos por tipo, em 06:57 preenche o de botões, e em 07:42 a mensagem com confirmar, cancelar e remarcar chega no WhatsApp.</figcaption>
+<figcaption>Primeira mensagem pela Datafy API, o exemplo de botões da documentação e o botão de link montado a partir da documentação da Meta.</figcaption>
 </figure>
 
 <p>Não sabe o <code>phone_number_id</code>? <code>GET https://cloud.datafyapi.com.br/me</code> devolve, passando só o token no cabeçalho.</p>
 <h2 id="bot-o-de-link-pela-documenta-o-da-meta">Botão de link, pela documentação da Meta</h2>
-<p>Para o botão que abre um site, o Israel pega o exemplo da documentação da Meta. O endpoint e o cabeçalho não mudam, só o corpo: <em>"repare que aqui é exatamente o mesmo end point, né, que já temos aqui."</em></p>
-<p>As partes que ele preenche:</p>
+<p>Para o botão que abre um site, use o exemplo da documentação da Meta. O endpoint e o cabeçalho da requisição não mudam, só o corpo.</p>
+<p>As partes a preencher:</p>
 <p><strong>Destinatário e tipo interativo.</strong></p>
-<p><strong>Cabeçalho.</strong> O exemplo da Meta traz opções de documento, imagem, texto e vídeo, cada uma com a indicação de omitir se não for usar. Ele remove as de documento, imagem e vídeo e mantém texto.</p>
+<p><strong>Cabeçalho.</strong> O exemplo da Meta traz opções de documento, imagem, texto e vídeo, cada uma com a indicação de omitir se não for usar. Remova as que não vai usar; no exemplo de referência, ficou só o texto.</p>
 <p><strong>Corpo.</strong> O texto da mensagem.</p>
 <p><strong>Ação.</strong> O texto do botão e a URL.</p>
 <p><strong>Rodapé.</strong> Um texto curto.</p>
-<p>Um erro de chave fechando no lugar errado aparece no meio do caminho, e ele pede a uma IA para achar: <em>"sim, as chaves estão fechando no lugar errado."</em> Corrigido, a mensagem chega com cabeçalho, corpo, rodapé e o botão que abre o site.</p>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=S2IAOQWbZMg" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/S2IAOQWbZMg/maxresdefault.jpg" alt="Miniatura do vídeo: Como funciona a Datafy API" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>Como funciona a Datafy API</b><span>Canal DATA7 · 14 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Em 08:18 ele abre o exemplo de botão de link da Meta, entre 09:37 e 11:01 remove os cabeçalhos que não vai usar e preenche o resto, e em 11:47 a mensagem chega.</figcaption>
-</figure>
-
+<p>Ao remover os cabeçalhos, confira as chaves do JSON: na montagem de referência, uma chave fechando no lugar errado quebrou o corpo, e uma IA achou o erro. Corrigido, a mensagem chega com cabeçalho, corpo, rodapé e o botão que abre o site.</p>
 <h2 id="quando-precisa-de-template">Quando precisa de template</h2>
-<p>Mensagem livre, como essa, só vai para quem falou com você nas últimas 24 horas. No vídeo de primeiros passos, a regra aparece antes do envio: você só pode enviar mensagens de serviço <em>"para usuários que já enviaram mensagem para você nas últimas 24 horas."</em></p>
+<p>Mensagem livre, como essa, só vai para quem está com a janela de 24 horas aberta. A janela abre com a mensagem do cliente e recomeça a cada nova mensagem dele. Mensagem da empresa, seja de atendente, bot ou automação, não renova o prazo. Cada cliente tem a sua janela. <a href="/janela-de-24-horas-whatsapp">Como a janela funciona</a>.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Situação</th>
+<th>O que enviar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cliente mandou mensagem nas últimas 24 horas</td>
+<td>Botões e listas como mensagem de serviço</td>
+</tr>
+<tr>
+<td>Cliente nunca falou com você, ou a última mensagem dele passou de 24 horas</td>
+<td>Template aprovado, com os botões dentro dele</td>
+</tr>
+<tr>
+<td>Cliente respondeu ao template</td>
+<td>Janela aberta a partir da resposta: botões e listas liberados</td>
+</tr>
+</tbody>
+</table></div>
+<p>Enviar template não abre a janela; a resposta do cliente abre. E, fora da janela, uma mensagem interativa livre pode voltar HTTP 200 com ID e falhar depois, com o erro no webhook de status. <a href="/tipos-de-mensagem-whatsapp-servico-e-template">Mensagem de serviço e template, lado a lado</a>.</p>
 <p>Para quem não falou com você, os botões entram no template, criado e aprovado antes. <a href="/como-criar-template-whatsapp-passo-a-passo">Como criar um template com botões está aqui</a>.</p>
 <h2 id="por-que-bot-o-ajuda-o-seu-n-mero">Por que botão ajuda o seu número</h2>
-<p>No vídeo sobre bloqueio, o Israel conta que uma das causas de bloqueio, mesmo com template aprovado, é mandar para muita gente e ninguém responder. O botão resolve parte disso, porque o clique é uma resposta.</p>
-<p>O exemplo dele é um template com a opção de não ter interesse: <em>"se a pessoa recebe a mensagem e ela não tem interesse, ela vai clicar, não tem interesse. Quando ela faz isso, ela está te respondendo, ou seja, ela engajou com você."</em> E vai além, com um botão de bloquear: <em>"a pessoa clica nesse botão, ela acha que está te bloqueando, mas na verdade ela não tá te bloqueando, ela está interagindo com você."</em></p>
-<p>A condição que ele coloca: quem clicar tem que sair da sua lista, porque <em>"se você continuar enviando mensagem para ela, aí ela vai te bloquear de verdade."</em></p>
+<p>Uma das causas de bloqueio observadas pela Datafy, mesmo com template aprovado, é mandar para muita gente e ninguém responder. O botão resolve parte disso, porque o clique é uma resposta.</p>
+<p>O exemplo é um template com a opção de não ter interesse: quem não tem interesse clica, e com isso responde, ou seja, engaja com você. Vale até um botão de bloquear. Nas palavras de Israel Henrique, CTO da Datafy: <em>"a pessoa clica nesse botão, ela acha que está te bloqueando, mas na verdade ela não tá te bloqueando, ela está interagindo com você."</em></p>
+<p>A condição: quem clicar tem que sair da sua lista. Se você continuar enviando, a pessoa bloqueia de verdade.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=cZ_nyIUv5ic" rel="noopener">
   <span class="thumb">
@@ -668,7 +680,7 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Porque você é bloqueado no WhatsApp Business</b><span>Canal DATA7 · 26 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 11:49 ele mostra o botão de não tenho interesse num template, e em 13:08 o botão de bloquear e o cuidado de tirar da lista quem clicou.</figcaption>
+<figcaption>As causas de bloqueio e os botões de não tenho interesse e de bloquear no template.</figcaption>
 </figure>
 
 <h2 id="responder-citando-uma-mensagem">Responder citando uma mensagem</h2>
@@ -683,7 +695,7 @@ footer p{margin:0 0 .5rem}
 <h3>O exemplo da Meta tem vários cabeçalhos. Deixo todos?</h3>
 <p>Não. Deixe só o que vai usar e remova os outros.</p>
 <h3>Clique no botão conta como resposta?</h3>
-<p>No vídeo sobre bloqueio, sim: a pessoa clicando está interagindo com você.</p>
+<p>Na observação da Datafy sobre bloqueio, sim: quem clica está interagindo com você.</p>
 <h2 id="como-decidir">Como decidir</h2>
 <p>Dentro da janela de 24 horas, use botões sempre que a resposta esperada for uma escolha: o cliente responde com um clique e o seu fluxo recebe a opção. Nos templates que você dispara, inclua uma saída como não ter interesse, e tire da lista quem clicar.</p>
 <div class="cta"><h3>Envie o exemplo de botões para você mesmo</h3><p>Mande uma mensagem do seu celular para o número, abra o exemplo de botões na documentação da Datafy, preencha o seu número e envie dentro da janela.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
@@ -701,7 +713,7 @@ footer p{margin:0 0 .5rem}
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>

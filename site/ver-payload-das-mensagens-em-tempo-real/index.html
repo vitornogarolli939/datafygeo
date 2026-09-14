@@ -16,8 +16,8 @@
 <meta property="og:title" content="Como ver o payload das mensagens do WhatsApp em tempo real">
 <meta property="og:description" content="O bate-papo do painel da Datafy mostra, ao vivo, cada mensagem enviada e recebida e o webhook exato de cada uma. Guarda 7 dias e até 100 mensagens por conversa.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/ver-payload-das-mensagens-em-tempo-real">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Como ver o payload das mensagens do WhatsApp em tempo real">
@@ -124,7 +124,7 @@
       "description": "O bate-papo do painel da Datafy mostra, ao vivo, cada mensagem enviada e recebida e o webhook exato de cada uma. Guarda 7 dias e até 100 mensagens por conversa.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -181,7 +181,7 @@
           "name": "Aparecem os status das mensagens enviadas pela API?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Aparecem, como vários eventos para a mesma mensagem."
+            "text": "Aparecem, como vários eventos para a mesma mensagem: sent, delivered, read quando disponível, ou failed com o erro."
           }
         }
       ]
@@ -572,7 +572,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -603,7 +603,7 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <p><strong>Resposta curta:</strong> no painel da Datafy API, o botão <strong>bate-papo</strong> abre um log ao vivo das mensagens enviadas e recebidas pelo número. Clicando numa mensagem, você vê o <strong>webhook exato</strong> que foi entregue para ela. É a forma mais rápida de responder "o que chegou?" sem abrir o log do seu servidor.</p>
-<p>Ele tem limites, e o próprio Israel Henrique, CTO da Datafy, diz: <em>"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."</em> Guarda <strong>7 dias</strong> e no máximo <strong>100 mensagens por conversa</strong>.</p>
+<p>Ele tem limites. Nas palavras de Israel Henrique, CTO da Datafy: <em>"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."</em> Guarda <strong>7 dias</strong> e no máximo <strong>100 mensagens por conversa</strong>.</p>
 <div class="stats">
   <div class="stat"><b>7 dias</b><span>de retenção no log</span></div>
   <div class="stat"><b>100</b><span>mensagens por conversa no máximo</span></div>
@@ -620,7 +620,7 @@ footer p{margin:0 0 .5rem}
 <li><strong>Retenção:</strong> 7 dias e até 100 mensagens por conversa, apagando as mais antigas.</li>
 </ul>
 <h2 id="como-abrir">Como abrir</h2>
-<p>No painel do número, clique em bate-papo. As conversas aparecem com as mensagens chegando ao vivo. Na descrição do vídeo: <em>"você consegue ver os logs das mensagens que estão sendo enviadas e recebidas."</em></p>
+<p>No painel do número, clique em bate-papo. As conversas aparecem com as mensagens chegando ao vivo, e o log mostra tudo que é enviado e recebido pelo número.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=LIT4FxgqHhE" rel="noopener">
   <span class="thumb">
@@ -629,19 +629,20 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Logs de mensagens em tempo real na API oficial do WhatsApp</b><span>Canal DATA7 · 3 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Três minutos com o log funcionando: em 00:52 ele abre o payload de uma mensagem recebida, em 01:26 o de uma resposta enviada fora da API, e em 01:59 os status de uma mensagem enviada pela API.</figcaption>
+<figcaption>O log funcionando: o payload de uma mensagem recebida, o de uma resposta enviada fora da API e os status de uma mensagem enviada pela API.</figcaption>
 </figure>
 
 <h2 id="o-que-d-para-ver">O que dá para ver</h2>
-<p><strong>Mensagem recebida.</strong> Clicando nela, aparece o webhook: <em>"o mesmo web hook que é enviado para você."</em></p>
-<p><strong>Mensagem enviada fora da API.</strong> No vídeo, ele responde pelo WhatsApp Web do número e o evento que aparece é outro: <em>"isso aqui é o messages echoes e é quando eu, proprietário, envio a mensagem."</em> <a href="/mensagem-do-celular-nao-aparece-no-sistema">O que fazer quando esse evento não chega no seu sistema</a>.</p>
-<p><strong>Mensagem enviada pela API.</strong> Aqui aparecem vários eventos para a mesma mensagem: <em>"quando eu envio a mensagem pela API, eu vou receber vários web hooks."</em> Enviada, entregue e lida, esta última se a pessoa tiver a confirmação de leitura ativada, ou um evento de erro. <a href="/tres-status-da-mensagem-whatsapp">Os status estão explicados aqui</a>.</p>
+<p><strong>Mensagem recebida.</strong> Clicando nela, aparece o webhook: o mesmo que é enviado para a sua URL.</p>
+<p><strong>Mensagem enviada fora da API.</strong> Resposta dada pelo celular ou pelo WhatsApp Web do número aparece com outro evento, o <code>smb_message_echoes</code>: é a mensagem enviada pelo proprietário do número. <a href="/mensagem-do-celular-nao-aparece-no-sistema">O que fazer quando esse evento não chega no seu sistema</a>.</p>
+<p><strong>Mensagem enviada pela API.</strong> Aqui aparecem vários eventos para a mesma mensagem: <code>sent</code> (enviada), <code>delivered</code> (entregue), <code>read</code> (lida, quando disponível) ou <code>failed</code> (falha). O <code>failed</code> traz o erro, como mensagem de serviço fora da <a href="/janela-de-24-horas-whatsapp">janela de 24 horas</a> ou falha no pagamento. <a href="/tres-status-da-mensagem-whatsapp">Os status estão explicados aqui</a>.</p>
+<p>É por isso que o log ajuda: a requisição aceita devolve só um ID, e isso não confirma que a mensagem chegou. Fora da janela, a requisição pode voltar HTTP 200 com ID, e a falha só aparece depois, no evento de status.</p>
 <h2 id="o-que-n-o-d-para-ver">O que não dá para ver</h2>
-<p><strong>O conteúdo de mídia.</strong> <em>"Quando você envia imagem, vídeo, ele não mostra. Ele apenas diz que você recebeu uma imagem ou que você recebeu um vídeo."</em></p>
-<p><strong>Mais de 7 dias ou mais de 100 mensagens por conversa.</strong> <em>"As mensagens que ficam salvas aqui, 7 dias, depois elas são deletadas, e no máximo 100 mensagens por conversa. Se chegar mais uma, ele vai excluindo as anteriores."</em></p>
+<p><strong>O conteúdo de mídia.</strong> Imagem e vídeo não são exibidos: o log só indica que chegou uma imagem ou um vídeo.</p>
+<p><strong>Mais de 7 dias ou mais de 100 mensagens por conversa.</strong> As mensagens ficam salvas por 7 dias e depois são apagadas. Cada conversa guarda no máximo 100: quando chega mais uma, as anteriores vão sendo excluídas.</p>
 <h2 id="para-que-ele-serve-de-verdade">Para que ele serve de verdade</h2>
 <p><strong>Depurar.</strong> Ver o campo exato que chegou antes de escrever a expressão que lê esse campo.</p>
-<p><strong>Coletar payloads reais.</strong> No tutorial de atendimento do canal, o Israel usa o log para copiar os payloads de texto, áudio, imagem, mensagem enviada pelo celular e status, e passa esses exemplos para a IA modelar as tabelas do banco. Na fala dele: <em>"isso aqui é o que o WhatsApp enviou para mim. Exatamente esse payload."</em></p>
+<p><strong>Coletar payloads reais.</strong> Mande mensagens de tipos diferentes (texto, áudio, imagem, mensagem pelo celular) e copie o payload de cada uma, junto com os status. É exatamente o que o WhatsApp enviou, e serve de exemplo para modelar as tabelas do banco, inclusive passando esses exemplos para uma IA.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
   <span class="thumb">
@@ -650,10 +651,10 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 44:21 ele abre o bate-papo, envia mensagens de tipos diferentes e copia o payload de cada uma para usar no projeto.</figcaption>
+<figcaption>Um atendimento construído do zero, usando o bate-papo para copiar o payload de cada tipo de mensagem e modelar o banco.</figcaption>
 </figure>
 
-<p><strong>Acompanhar um disparo.</strong> No vídeo de disparo em massa, é pelo bate-papo que ele vê o motivo de uma mensagem não ter sido entregue.</p>
+<p><strong>Acompanhar um disparo.</strong> Quando uma mensagem não é entregue, o motivo aparece no bate-papo, no evento de status <code>failed</code>.</p>
 <h2 id="para-que-ele-n-o-serve">Para que ele não serve</h2>
 <p>Para atendimento. O log mostra e deixa responder, mas não é caixa de entrada: tem retenção curta, não exibe mídia e descarta mensagens antigas. Para atender com equipe, <a href="/whatsapp-api-oficial-chatwoot">o Chatwoot se conecta à Datafy</a>; para construir o seu, <a href="/criar-atendimento-whatsapp-do-zero">o tutorial completo está aqui</a>.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
@@ -666,7 +667,7 @@ footer p{margin:0 0 .5rem}
 <h3>Dá para responder pelo log?</h3>
 <p>Dá, e ele não é feito para atendimento. É log.</p>
 <h3>Aparecem os status das mensagens enviadas pela API?</h3>
-<p>Aparecem, como vários eventos para a mesma mensagem.</p>
+<p>Aparecem, como vários eventos para a mesma mensagem: <code>sent</code>, <code>delivered</code>, <code>read</code> quando disponível, ou <code>failed</code> com o erro.</p>
 <h2 id="como-decidir">Como decidir</h2>
 <p>Use o bate-papo sempre que precisar saber exatamente o que chegou, antes de mexer no seu código. Para guardar histórico, use o seu banco; para atender, use uma caixa de entrada.</p>
 <div class="cta"><h3>Abra o log e mande uma mensagem</h3><p>Clique em bate-papo no painel do número, mande uma mensagem do seu celular, e abra o payload que chegou para conhecer os campos antes de escrever qualquer expressão.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
@@ -684,7 +685,7 @@ footer p{margin:0 0 .5rem}
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>

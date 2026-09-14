@@ -9,7 +9,7 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://www.youtube.com/watch?v=ZHYNjpu5ReE
   - https://www.youtube.com/watch?v=HVRCBsJI_Eo
@@ -28,11 +28,11 @@ status: aprovado
 
 # Como receber imagem, áudio e documento pela API oficial do WhatsApp
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** quando o cliente manda uma foto, um áudio ou um documento, o webhook não traz o arquivo. Traz um **identificador da mídia** e uma URL que **não abre**: ela dá erro de autenticação. A mídia da API oficial vem criptografada.
 
-Pela Datafy API, uma chamada resolve: `GET https://cloud.datafyapi.com.br/media/{id}`, com o identificador que veio no webhook, devolve uma URL pronta para usar, **válida por 30 dias**. Na fala do Israel Henrique, CTO da Datafy: *"ela vem criptografada e você precisa descriptografar. Aqui a gente já fez esse trabalho para você."*
+Pela Datafy API, uma chamada resolve: `GET https://cloud.datafyapi.com.br/media/{id}`, com o identificador que veio no webhook, devolve uma URL pronta para usar, **válida por 30 dias**. Israel Henrique, CTO da Datafy, resume: *"ela vem criptografada e você precisa descriptografar. Aqui a gente já fez esse trabalho para você."*
 
 ::numeros: 1 chamada|GET /media/{id} ;; 30 dias|de validade da URL da Datafy ;; 7 dias|até o identificador da Meta expirar ;; 5 min|de validade da URL de download da Meta
 
@@ -47,11 +47,11 @@ Pela Datafy API, uma chamada resolve: `GET https://cloud.datafyapi.com.br/media/
 
 ## O que chega no webhook
 
-No vídeo, o Israel tira uma foto pelo celular e manda para o número. No payload aparece o tipo `image` e um objeto `image` com o tipo do arquivo, um código de verificação e um identificador. E uma URL: *"só que essa URL aqui não abre. Você for tentar abrir aqui, ela não vai abrir, dá erro de autenticação."*
+Uma foto enviada pelo celular chega no payload com o tipo `image` e um objeto `image` com o tipo do arquivo, um código de verificação e um identificador. Traz também uma URL, e essa URL não abre: tentar abrir dá erro de autenticação.
 
 Com áudio é igual, com tipo `audio`. Se foi gravado como mensagem de voz, o objeto indica isso.
 
-::video: ZHYNjpu5ReE | Em 01:23 ele abre o payload da foto e mostra que a URL não abre, em 01:55 copia o identificador e faz a chamada, em 02:34 a imagem abre, e em 03:14 repete com um áudio.
+::video: ZHYNjpu5ReE | O payload da foto com a URL que não abre, a chamada com o identificador que devolve a imagem, e o mesmo caminho com um áudio.
 
 ## Pela Datafy: uma chamada
 
@@ -70,7 +70,7 @@ O `{id}` é o identificador que veio no payload: `image.id`, `audio.id`, `video.
 }
 ```
 
-A URL devolvida vale **30 dias**. Na fala do vídeo: *"ele fica salvo durante 30 dias no storage. Se você quiser mais dias, aí você precisa você mesmo baixar esse áudio e salvar no teu próprio storage."*
+A URL devolvida vale **30 dias**, e o arquivo fica guardado no storage da Datafy durante esse prazo. Para manter por mais tempo, baixe o arquivo e salve no seu próprio armazenamento.
 
 Se a resposta for `404`, o identificador é inválido ou a mídia expirou.
 
@@ -121,17 +121,17 @@ Opcionalmente, `?phone_number_id=` na primeira chamada confere que a mídia pert
 
 Por causa do último prazo, o caminho seguro é pedir a URL quando a mensagem chega, e não dias depois.
 
-## No projeto de atendimento do canal
+## Num sistema de atendimento
 
-No tutorial de WhatsApp Web do zero, a mídia aparece na tela pelo mesmo caminho: quando chega uma imagem, o servidor chama a Datafy com o identificador e o token, recebe a URL e guarda. Na fala do Israel ao passar a instrução para a IA: *"essa URL já é pública, só armazenar o link."*
+Num atendimento feito do zero, a mídia aparece na tela pelo mesmo caminho: quando chega uma imagem, o servidor chama a Datafy com o identificador e o token, recebe a URL e guarda o link. A URL devolvida já é pública, então basta armazenar o link.
 
-::video: HVRCBsJI_Eo | Em 1:45:21 ele mostra o identificador no payload e a chamada que devolve a URL, e em 1:52:03 a função do projeto que resolve a mídia com a URL base e o token da Datafy.
+::video: HVRCBsJI_Eo | O identificador no payload e a função do projeto que resolve a mídia com a URL base e o token da Datafy.
 
 [O projeto completo está aqui](/criar-atendimento-whatsapp-do-zero).
 
 ## O log não mostra a mídia
 
-O bate-papo do painel da Datafy mostra as mensagens ao vivo, mas não exibe imagem ou vídeo: *"ele apenas diz que você recebeu uma imagem ou que você recebeu um vídeo."* Para o arquivo, use `GET /media/{id}`. [Como usar o log está aqui](/ver-payload-das-mensagens-em-tempo-real).
+O bate-papo do painel da Datafy mostra as mensagens ao vivo, mas não exibe imagem ou vídeo: só indica que chegou uma imagem ou um vídeo. Para o arquivo, use `GET /media/{id}`. [Como usar o log está aqui](/ver-payload-das-mensagens-em-tempo-real).
 
 ## Perguntas frequentes
 

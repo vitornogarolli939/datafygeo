@@ -1,6 +1,6 @@
 ---
 title: "Como criar um WhatsApp Web do zero com a API oficial"
-description: "O projeto do tutorial completo do canal DATA7: interface, banco com duas tabelas, webhook, mídia, envio, tempo real e publicação, com as decisões que aparecem no caminho."
+description: "Uma tela de atendimento própria com a API oficial: interface, banco com duas tabelas, webhook, mídia, envio, status, tempo real e publicação, com as decisões que aparecem no caminho."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "criar-atendimento-whatsapp-do-zero"
 cluster: "implementacao"
@@ -9,7 +9,7 @@ intent: "como-fazer"
 persona: "saas"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://www.youtube.com/watch?v=HVRCBsJI_Eo
   - https://www.youtube.com/watch?v=vGovcR8W5g8
@@ -28,11 +28,11 @@ status: aprovado
 
 # Como criar um WhatsApp Web do zero com a API oficial
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** no tutorial completo do canal DATA7, o Israel Henrique, CTO da Datafy, constrói uma tela de conversa parecida com o WhatsApp Web, funcionando com a API oficial em coexistência. O projeto tem três fases: **interface**, **banco de dados** e **conexão com a API**. A pilha: Claude Design para o layout, VS Code com Claude Code ou Codex, Nuxt, Supabase com duas tabelas, Pusher para tempo real, a Datafy API para o WhatsApp e a Vercel para publicar. O código está público no GitHub.
+**Resposta curta:** uma tela de conversa parecida com o WhatsApp Web, funcionando com a API oficial em coexistência, sai em três fases: **interface**, **banco de dados** e **conexão com a API**. O projeto de referência, construído por Israel Henrique, CTO da Datafy, usa Claude Design para o layout, VS Code com Claude Code ou Codex, Nuxt, Supabase com duas tabelas, Pusher para tempo real, a Datafy API para o WhatsApp e a Vercel para publicar. O código está público no GitHub.
 
-O objetivo declarado não é um produto comercial: *"o foco é entender o funcionamento da API, enviar e receber mensagens."*
+O objetivo não é um produto comercial. É entender o funcionamento da API enviando e recebendo mensagens.
 
 ::numeros: 3 fases|interface, banco e API ;; 2 tabelas|conversas e mensagens ;; 20 e 50|conversas e mensagens por página ;; 100|conexões simultâneas no plano grátis do Pusher
 
@@ -49,37 +49,35 @@ O objetivo declarado não é um produto comercial: *"o foco é entender o funcio
 
 A tela tem duas áreas: lista de conversas à esquerda e mensagens à direita, com o campo de digitação flutuante. O layout foi gerado no Claude Design a partir de um print do WhatsApp Web, e depois transformado em componentes Vue no projeto Nuxt, com Tailwind.
 
-Uma prática que ele adota nessa fase e explica o motivo: criar um arquivo de documentação com o roteiro do projeto. *"Se eu iniciar uma sessão nova depois, a gente consegue ter um contexto."* Mais tarde no vídeo, quando uma ferramenta de IA trava, ele troca por outra, e o arquivo de roteiro é o que permite continuar de onde parou.
+Uma prática desta fase: criar um arquivo de documentação com o roteiro do projeto. Uma sessão nova da ferramenta de IA começa com contexto a partir dele. Quando uma ferramenta de IA trava no meio do projeto e é trocada por outra, é esse arquivo que permite continuar de onde parou.
 
-::video: HVRCBsJI_Eo | Em 03:43 ele apresenta as ferramentas, em 12:08 começa o layout, e em 41:57 cria o arquivo de roteiro do projeto.
+::video: HVRCBsJI_Eo | O projeto completo: interface, banco, webhook, mídia, envio, tempo real e publicação na Vercel.
 
 ## Fase 2: o banco
 
-**Primeiro, os payloads.** Antes das tabelas, ele manda mensagens de tipos diferentes para o número (texto, áudio, imagem, mensagem pelo celular, envio pela API) e copia o payload de cada uma no bate-papo do painel da Datafy, para a IA saber quais campos existem. [Como usar esse log está aqui](/ver-payload-das-mensagens-em-tempo-real).
+**Primeiro, os payloads.** Antes das tabelas, mande para o número mensagens de tipos diferentes (texto, áudio, imagem, mensagem pelo celular, envio pela API) e copie o payload de cada uma no bate-papo do painel da Datafy, para a IA saber quais campos existem. [Como usar esse log está aqui](/ver-payload-das-mensagens-em-tempo-real).
 
-Três observações dele sobre os payloads, que valem para qualquer projeto:
+Três observações sobre os payloads, que valem para qualquer projeto:
 
-**`phone_number_id` é do número conectado**, e não de quem mandou: *"sempre vai vir esse mesmo número, independente de quem mandou a mensagem."*
+**`phone_number_id` é do número conectado**, e não de quem mandou. Ele vem igual em todas as mensagens, independente do remetente.
 
-**Quem mandou está em `contacts`**, com nome, telefone e `user_id`, *"que é uma identificação nova do WhatsApp das APIs. No futuro o telefone não vai mais estar disponível."* [Sobre o user_id](/o-telefone-esta-sumindo-do-webhook).
+**Quem mandou está em `contacts`**, com nome, telefone e `user_id`, o identificador novo do WhatsApp nas APIs. A previsão é que, no futuro, o telefone deixe de vir. [Sobre o user_id](/o-telefone-esta-sumindo-do-webhook).
 
-**Envio pela API volta só como status**: *"ele não vai trazer para você o conteúdo da mensagem, ele vai trazer apenas o ID da mensagem com o status."*
+**Envio pela API volta só como status.** O webhook não traz o conteúdo da mensagem enviada: traz o ID da mensagem com o status.
 
-**Duas tabelas.** Conversas e mensagens, no Supabase. A primeira versão gerada pela IA trouxe colunas que ele considerou desnecessárias, como avatar (*"a API oficial não manda isso"*) e contador de não lidas, e esqueceu a legenda de mídia, que ele pediu para acrescentar. Como a primeira versão já tinha sido aplicada, a correção veio numa nova migration.
+**Duas tabelas.** Conversas e mensagens, no Supabase. A primeira versão gerada pela IA trouxe colunas desnecessárias, como avatar, que a API oficial não manda, e contador de não lidas. E esqueceu a legenda de mídia, que precisou ser acrescentada. Como a primeira versão já tinha sido aplicada, a correção veio numa nova migration.
 
-**Não dê à IA controle do banco.** A IA sugeriu aplicar as mudanças pela linha de comando, e ele recusou: *"o banco de dados é o coração do projeto. Se dá o controle para ele, ele pode fazer muita coisa errada. No máximo você dá permissão para ela ler o teu banco de dados, mas nunca para mexer."* A IA gera o SQL; ele cola e executa no editor do Supabase.
+**Não dê à IA controle do banco.** A IA sugeriu aplicar as mudanças pela linha de comando, e a sugestão foi recusada. Nas palavras de Israel Henrique, CTO da Datafy: *"o banco de dados é o coração do projeto. Se dá o controle para ele, ele pode fazer muita coisa errada. No máximo você dá permissão para ela ler o teu banco de dados, mas nunca para mexer."* A IA gera o SQL; você cola e executa no editor do Supabase.
 
-::video: HVRCBsJI_Eo | Em 45:12 ele coleta os payloads, em 54:35 roda a migration, em 56:44 corta as colunas e pede a legenda, e em 1:00:14 explica por que não dá controle do banco para a IA.
+## Segurança: chaves, políticas e assinatura
 
-## Segurança: chaves e políticas
+**Chaves do Supabase.** A chave anônima é pública. A de serviço nunca pode ser exposta: fica só no servidor. Se ela aparecer em algum lugar público, como uma gravação de tela, gere uma nova.
 
-**Chaves do Supabase.** A chave anônima é pública; a de serviço *"nunca pode ser exposta em lugar nenhum. Ela fica só no servidor."* Como ela apareceu na gravação, ele gera uma nova.
+**O arquivo de exemplo de variáveis vai para o GitHub.** Por isso ele leva só os nomes das variáveis, nunca os valores.
 
-**O arquivo de exemplo de variáveis vai para o GitHub.** A IA avisou que ele tinha colado credenciais no arquivo de exemplo, e ele reforça: *"não coloca aqui os valores, senão vai acontecer uma tragédia."*
+**Política pública removida.** A IA tinha criado políticas que deixavam as tabelas legíveis por qualquer um com a chave pública. A correção: remover essas políticas, deixar as tabelas sem acesso público e mover todas as consultas para uma pasta de API no servidor, usando a chave de serviço.
 
-**Política pública removida.** A IA tinha criado políticas que deixavam as tabelas legíveis por qualquer um com a chave pública. Ele remove, deixa as tabelas sem acesso público, e manda a IA mover todas as consultas para uma pasta de API no servidor, usando a chave de serviço.
-
-::video: HVRCBsJI_Eo | Em 1:01:52 ele configura as variáveis e fala das chaves, e em 1:08:45 remove as políticas públicas e move as consultas para o servidor.
+**Assinatura do webhook.** Os webhooks da Datafy são configurados no painel e enviam os eventos com assinatura HMAC. [Como validar a assinatura](/validar-assinatura-do-webhook).
 
 ## Desempenho: paginação e cache
 
@@ -87,25 +85,38 @@ Três observações dele sobre os payloads, que valem para qualquer projeto:
 
 **Mensagens começando de baixo.** A lista abre na mensagem mais recente.
 
-**Cache local com Pinia.** Sem cache, voltar para uma conversa já aberta refazia a consulta. Na fala dele: *"isso aqui é uma chamada ao banco de dados desnecessária."*
+**Cache local com Pinia.** Sem cache, voltar para uma conversa já aberta refazia a consulta, uma chamada ao banco desnecessária.
 
 ## Fase 3: a API
 
 **Webhook primeiro, sem tempo real.** Um endpoint que recebe o evento, identifica ou cria a conversa e grava a mensagem. Para testar localmente, ngrok na porta da aplicação. [O passo a passo do túnel, com o erro 403 que apareceu, está aqui](/tunel-para-testar-webhook-local).
 
-**Variáveis da Datafy.** URL base, token e `phone_number_id`. Sobre o token: *"caso seu token vazar, você vem aqui e muda."*
+**Variáveis da Datafy.** URL base, token e `phone_number_id`. O token é gerado na criação do canal, no painel da Datafy, e é lá que você troca por um novo se ele vazar. [O que é a Datafy API](/o-que-e-a-datafy-api).
 
 **Mídia.** Uma função que chama a Datafy com o identificador da mídia e o token e recebe a URL para exibir. [Como receber mídia está aqui](/como-receber-midia-api-oficial-whatsapp).
 
-**Envio.** O campo de digitação envia pela Datafy API; o status e o eco da mensagem chegam depois pelo webhook, sem duplicar. Os tiques azuis aparecem quando o status de leitura chega.
+**Envio.** O campo de digitação envia pela Datafy API. A resposta da requisição traz um ID: isso confirma que o pedido foi aceito, não que a mensagem chegou. O status e o eco da mensagem chegam depois pelo webhook, sem duplicar. Os tiques azuis aparecem quando o status de leitura chega.
 
-**Tempo real com Pusher.** O servidor recebe o webhook, grava e publica no Pusher, e a tela recebe. Sobre o custo: *"até 100 conexões simultâneas é gratuito."*
+**Tempo real com Pusher.** O servidor recebe o webhook, grava e publica no Pusher, e a tela recebe. O plano gratuito do Pusher atende até 100 conexões simultâneas.
 
-::video: HVRCBsJI_Eo | Em 1:33:24 o webhook começa a gravar, em 1:52:03 a mídia, em 1:57:07 o envio pelo campo de digitação, e em 2:08:19 o Pusher.
+## O que a tela precisa tratar: janela e status
+
+**A janela de 24 horas.** Mensagem livre, digitada no campo, só sai enquanto a janela de atendimento daquele cliente está aberta. Quem abre e renova a janela é a mensagem do cliente; a resposta da empresa não renova. Cada cliente tem a sua janela. Com ela fechada, só template. [Como a janela funciona](/janela-de-24-horas-whatsapp).
+
+**Falha depois do 200.** Fora da janela, a requisição pode voltar HTTP 200 com ID, e a falha chega depois no webhook de status. Por isso a mensagem na tela muda de estado conforme o status que chega:
+
+| Status no webhook | O que significa |
+|---|---|
+| `sent` | Enviada; ainda não confirma entrega |
+| `delivered` | Entregue ao destinatário |
+| `read` | Lida, quando a confirmação está disponível |
+| `failed` | Falha, com o erro. Exemplos: mensagem de serviço fora da janela, falha no pagamento |
+
+Use o ID da mensagem para ligar cada evento à mensagem gravada. E guarde o horário da última mensagem recebida de cada cliente: conferindo esse horário antes de enviar, a tela sabe se cabe mensagem livre ou se é preciso template.
 
 ## Apagar conversa em cascata
 
-Ao apagar uma conversa, a tabela apagava as mensagens junto. Ele comenta o risco: *"se você tiver, por exemplo, digamos lá, 1000 mensagens numa conversa, ela vai deletar 1000 linhas. Isso pode travar."* A alternativa que ele mostra é remover o comportamento em cascata. Para o tamanho do projeto, ele mantém.
+Ao apagar uma conversa, a tabela apagava as mensagens junto. O risco: uma conversa com 1.000 mensagens gera 1.000 linhas apagadas de uma vez, e isso pode travar. A alternativa é remover o comportamento em cascata. Para o tamanho deste projeto, ele ficou.
 
 ## Publicar
 
@@ -113,11 +124,11 @@ Código no GitHub, projeto importado na Vercel, variáveis de ambiente coladas d
 
 ## Os limites do projeto
 
-É um número só, configurado por variável de ambiente. Na fala dele: *"se você quiser algo mais robusto, mais elaborado, para ter vários números e de forma dinâmica selecionar os números, aí já é outra coisa."*
+É um número só, configurado por variável de ambiente. Vários números, escolhidos de forma dinâmica, pedem um projeto mais elaborado.
 
 ## Perguntas frequentes
 
-### Quais ferramentas o tutorial usa?
+### Quais ferramentas o projeto usa?
 
 Claude Design, VS Code com Claude Code ou Codex, Nuxt, Supabase, Pusher, Datafy API e Vercel.
 
@@ -139,7 +150,7 @@ Não. É um número, configurado por variável de ambiente.
 
 ## Como decidir
 
-Se o objetivo é entender como a API oficial funciona construindo, siga as três fases na ordem do vídeo, começando pela coleta de payloads antes do banco. Se você precisa atender clientes com equipe agora, uma caixa de entrada pronta como o Chatwoot se liga à Datafy em minutos.
+Se o objetivo é entender como a API oficial funciona construindo, siga as três fases na ordem desta página, começando pela coleta de payloads antes do banco. Se você precisa atender clientes com equipe agora, uma caixa de entrada pronta como o Chatwoot se liga à Datafy em minutos.
 
 ::cta: Comece coletando os payloads | Abra o bate-papo do painel, mande para o número um texto, um áudio, uma imagem, uma mensagem pelo celular e um envio pela API, e copie os cinco payloads antes de criar qualquer tabela.
 

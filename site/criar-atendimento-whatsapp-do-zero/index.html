@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Como criar um WhatsApp Web do zero com a API oficial</title>
-<meta name="description" content="O projeto do tutorial completo do canal DATA7: interface, banco com duas tabelas, webhook, mídia, envio, tempo real e publicação, com as decisões que aparecem no caminho.">
+<meta name="description" content="Uma tela de atendimento própria com a API oficial: interface, banco com duas tabelas, webhook, mídia, envio, status, tempo real e publicação, com as decisões que aparecem no caminho.">
 <link rel="canonical" href="https://conteudo.datafyapi.com.br/criar-atendimento-whatsapp-do-zero">
 <meta name="author" content="Vitor Nogarolli">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -14,14 +14,14 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Datafy API · Conteúdo">
 <meta property="og:title" content="Como criar um WhatsApp Web do zero com a API oficial">
-<meta property="og:description" content="O projeto do tutorial completo do canal DATA7: interface, banco com duas tabelas, webhook, mídia, envio, tempo real e publicação, com as decisões que aparecem no caminho.">
+<meta property="og:description" content="Uma tela de atendimento própria com a API oficial: interface, banco com duas tabelas, webhook, mídia, envio, status, tempo real e publicação, com as decisões que aparecem no caminho.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/criar-atendimento-whatsapp-do-zero">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Como criar um WhatsApp Web do zero com a API oficial">
-<meta name="twitter:description" content="O projeto do tutorial completo do canal DATA7: interface, banco com duas tabelas, webhook, mídia, envio, tempo real e publicação, com as decisões que aparecem no caminho.">
+<meta name="twitter:description" content="Uma tela de atendimento própria com a API oficial: interface, banco com duas tabelas, webhook, mídia, envio, status, tempo real e publicação, com as decisões que aparecem no caminho.">
 
 <link rel="alternate" type="application/rss+xml" title="Datafy API · Conteúdo" href="/rss.xml">
 
@@ -121,10 +121,10 @@
       "@type": "Article",
       "@id": "https://conteudo.datafyapi.com.br/criar-atendimento-whatsapp-do-zero#article",
       "headline": "Como criar um WhatsApp Web do zero com a API oficial",
-      "description": "O projeto do tutorial completo do canal DATA7: interface, banco com duas tabelas, webhook, mídia, envio, tempo real e publicação, com as decisões que aparecem no caminho.",
+      "description": "Uma tela de atendimento própria com a API oficial: interface, banco com duas tabelas, webhook, mídia, envio, status, tempo real e publicação, com as decisões que aparecem no caminho.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -146,7 +146,7 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Quais ferramentas o tutorial usa?",
+          "name": "Quais ferramentas o projeto usa?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Claude Design, VS Code com Claude Code ou Codex, Nuxt, Supabase, Pusher, Datafy API e Vercel."
@@ -553,7 +553,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -578,8 +578,8 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<p><strong>Resposta curta:</strong> no tutorial completo do canal DATA7, o Israel Henrique, CTO da Datafy, constrói uma tela de conversa parecida com o WhatsApp Web, funcionando com a API oficial em coexistência. O projeto tem três fases: <strong>interface</strong>, <strong>banco de dados</strong> e <strong>conexão com a API</strong>. A pilha: Claude Design para o layout, VS Code com Claude Code ou Codex, Nuxt, Supabase com duas tabelas, Pusher para tempo real, a Datafy API para o WhatsApp e a Vercel para publicar. O código está público no GitHub.</p>
-<p>O objetivo declarado não é um produto comercial: <em>"o foco é entender o funcionamento da API, enviar e receber mensagens."</em></p>
+<p><strong>Resposta curta:</strong> uma tela de conversa parecida com o WhatsApp Web, funcionando com a API oficial em coexistência, sai em três fases: <strong>interface</strong>, <strong>banco de dados</strong> e <strong>conexão com a API</strong>. O projeto de referência, construído por Israel Henrique, CTO da Datafy, usa Claude Design para o layout, VS Code com Claude Code ou Codex, Nuxt, Supabase com duas tabelas, Pusher para tempo real, a Datafy API para o WhatsApp e a Vercel para publicar. O código está público no GitHub.</p>
+<p>O objetivo não é um produto comercial. É entender o funcionamento da API enviando e recebendo mensagens.</p>
 <div class="stats">
   <div class="stat"><b>3 fases</b><span>interface, banco e API</span></div>
   <div class="stat"><b>2 tabelas</b><span>conversas e mensagens</span></div>
@@ -641,7 +641,7 @@ footer p{margin:0 0 .5rem}
 
 <h2 id="fase-1-a-interface">Fase 1: a interface</h2>
 <p>A tela tem duas áreas: lista de conversas à esquerda e mensagens à direita, com o campo de digitação flutuante. O layout foi gerado no Claude Design a partir de um print do WhatsApp Web, e depois transformado em componentes Vue no projeto Nuxt, com Tailwind.</p>
-<p>Uma prática que ele adota nessa fase e explica o motivo: criar um arquivo de documentação com o roteiro do projeto. <em>"Se eu iniciar uma sessão nova depois, a gente consegue ter um contexto."</em> Mais tarde no vídeo, quando uma ferramenta de IA trava, ele troca por outra, e o arquivo de roteiro é o que permite continuar de onde parou.</p>
+<p>Uma prática desta fase: criar um arquivo de documentação com o roteiro do projeto. Uma sessão nova da ferramenta de IA começa com contexto a partir dele. Quando uma ferramenta de IA trava no meio do projeto e é trocada por outra, é esse arquivo que permite continuar de onde parou.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
   <span class="thumb">
@@ -650,72 +650,70 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 03:43 ele apresenta as ferramentas, em 12:08 começa o layout, e em 41:57 cria o arquivo de roteiro do projeto.</figcaption>
+<figcaption>O projeto completo: interface, banco, webhook, mídia, envio, tempo real e publicação na Vercel.</figcaption>
 </figure>
 
 <h2 id="fase-2-o-banco">Fase 2: o banco</h2>
-<p><strong>Primeiro, os payloads.</strong> Antes das tabelas, ele manda mensagens de tipos diferentes para o número (texto, áudio, imagem, mensagem pelo celular, envio pela API) e copia o payload de cada uma no bate-papo do painel da Datafy, para a IA saber quais campos existem. <a href="/ver-payload-das-mensagens-em-tempo-real">Como usar esse log está aqui</a>.</p>
-<p>Três observações dele sobre os payloads, que valem para qualquer projeto:</p>
-<p><strong><code>phone_number_id</code> é do número conectado</strong>, e não de quem mandou: <em>"sempre vai vir esse mesmo número, independente de quem mandou a mensagem."</em></p>
-<p><strong>Quem mandou está em <code>contacts</code></strong>, com nome, telefone e <code>user_id</code>, <em>"que é uma identificação nova do WhatsApp das APIs. No futuro o telefone não vai mais estar disponível."</em> <a href="/o-telefone-esta-sumindo-do-webhook">Sobre o user_id</a>.</p>
-<p><strong>Envio pela API volta só como status</strong>: <em>"ele não vai trazer para você o conteúdo da mensagem, ele vai trazer apenas o ID da mensagem com o status."</em></p>
-<p><strong>Duas tabelas.</strong> Conversas e mensagens, no Supabase. A primeira versão gerada pela IA trouxe colunas que ele considerou desnecessárias, como avatar (<em>"a API oficial não manda isso"</em>) e contador de não lidas, e esqueceu a legenda de mídia, que ele pediu para acrescentar. Como a primeira versão já tinha sido aplicada, a correção veio numa nova migration.</p>
-<p><strong>Não dê à IA controle do banco.</strong> A IA sugeriu aplicar as mudanças pela linha de comando, e ele recusou: <em>"o banco de dados é o coração do projeto. Se dá o controle para ele, ele pode fazer muita coisa errada. No máximo você dá permissão para ela ler o teu banco de dados, mas nunca para mexer."</em> A IA gera o SQL; ele cola e executa no editor do Supabase.</p>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg" alt="Miniatura do vídeo: Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Em 45:12 ele coleta os payloads, em 54:35 roda a migration, em 56:44 corta as colunas e pede a legenda, e em 1:00:14 explica por que não dá controle do banco para a IA.</figcaption>
-</figure>
-
-<h2 id="seguran-a-chaves-e-pol-ticas">Segurança: chaves e políticas</h2>
-<p><strong>Chaves do Supabase.</strong> A chave anônima é pública; a de serviço <em>"nunca pode ser exposta em lugar nenhum. Ela fica só no servidor."</em> Como ela apareceu na gravação, ele gera uma nova.</p>
-<p><strong>O arquivo de exemplo de variáveis vai para o GitHub.</strong> A IA avisou que ele tinha colado credenciais no arquivo de exemplo, e ele reforça: <em>"não coloca aqui os valores, senão vai acontecer uma tragédia."</em></p>
-<p><strong>Política pública removida.</strong> A IA tinha criado políticas que deixavam as tabelas legíveis por qualquer um com a chave pública. Ele remove, deixa as tabelas sem acesso público, e manda a IA mover todas as consultas para uma pasta de API no servidor, usando a chave de serviço.</p>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg" alt="Miniatura do vídeo: Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Em 1:01:52 ele configura as variáveis e fala das chaves, e em 1:08:45 remove as políticas públicas e move as consultas para o servidor.</figcaption>
-</figure>
-
+<p><strong>Primeiro, os payloads.</strong> Antes das tabelas, mande para o número mensagens de tipos diferentes (texto, áudio, imagem, mensagem pelo celular, envio pela API) e copie o payload de cada uma no bate-papo do painel da Datafy, para a IA saber quais campos existem. <a href="/ver-payload-das-mensagens-em-tempo-real">Como usar esse log está aqui</a>.</p>
+<p>Três observações sobre os payloads, que valem para qualquer projeto:</p>
+<p><strong><code>phone_number_id</code> é do número conectado</strong>, e não de quem mandou. Ele vem igual em todas as mensagens, independente do remetente.</p>
+<p><strong>Quem mandou está em <code>contacts</code></strong>, com nome, telefone e <code>user_id</code>, o identificador novo do WhatsApp nas APIs. A previsão é que, no futuro, o telefone deixe de vir. <a href="/o-telefone-esta-sumindo-do-webhook">Sobre o user_id</a>.</p>
+<p><strong>Envio pela API volta só como status.</strong> O webhook não traz o conteúdo da mensagem enviada: traz o ID da mensagem com o status.</p>
+<p><strong>Duas tabelas.</strong> Conversas e mensagens, no Supabase. A primeira versão gerada pela IA trouxe colunas desnecessárias, como avatar, que a API oficial não manda, e contador de não lidas. E esqueceu a legenda de mídia, que precisou ser acrescentada. Como a primeira versão já tinha sido aplicada, a correção veio numa nova migration.</p>
+<p><strong>Não dê à IA controle do banco.</strong> A IA sugeriu aplicar as mudanças pela linha de comando, e a sugestão foi recusada. Nas palavras de Israel Henrique, CTO da Datafy: <em>"o banco de dados é o coração do projeto. Se dá o controle para ele, ele pode fazer muita coisa errada. No máximo você dá permissão para ela ler o teu banco de dados, mas nunca para mexer."</em> A IA gera o SQL; você cola e executa no editor do Supabase.</p>
+<h2 id="seguran-a-chaves-pol-ticas-e-assinatura">Segurança: chaves, políticas e assinatura</h2>
+<p><strong>Chaves do Supabase.</strong> A chave anônima é pública. A de serviço nunca pode ser exposta: fica só no servidor. Se ela aparecer em algum lugar público, como uma gravação de tela, gere uma nova.</p>
+<p><strong>O arquivo de exemplo de variáveis vai para o GitHub.</strong> Por isso ele leva só os nomes das variáveis, nunca os valores.</p>
+<p><strong>Política pública removida.</strong> A IA tinha criado políticas que deixavam as tabelas legíveis por qualquer um com a chave pública. A correção: remover essas políticas, deixar as tabelas sem acesso público e mover todas as consultas para uma pasta de API no servidor, usando a chave de serviço.</p>
+<p><strong>Assinatura do webhook.</strong> Os webhooks da Datafy são configurados no painel e enviam os eventos com assinatura HMAC. <a href="/validar-assinatura-do-webhook">Como validar a assinatura</a>.</p>
 <h2 id="desempenho-pagina-o-e-cache">Desempenho: paginação e cache</h2>
 <p><strong>Paginação.</strong> Conversas de 20 em 20 e mensagens de 50 em 50, carregando mais conforme o usuário rola.</p>
 <p><strong>Mensagens começando de baixo.</strong> A lista abre na mensagem mais recente.</p>
-<p><strong>Cache local com Pinia.</strong> Sem cache, voltar para uma conversa já aberta refazia a consulta. Na fala dele: <em>"isso aqui é uma chamada ao banco de dados desnecessária."</em></p>
+<p><strong>Cache local com Pinia.</strong> Sem cache, voltar para uma conversa já aberta refazia a consulta, uma chamada ao banco desnecessária.</p>
 <h2 id="fase-3-a-api">Fase 3: a API</h2>
 <p><strong>Webhook primeiro, sem tempo real.</strong> Um endpoint que recebe o evento, identifica ou cria a conversa e grava a mensagem. Para testar localmente, ngrok na porta da aplicação. <a href="/tunel-para-testar-webhook-local">O passo a passo do túnel, com o erro 403 que apareceu, está aqui</a>.</p>
-<p><strong>Variáveis da Datafy.</strong> URL base, token e <code>phone_number_id</code>. Sobre o token: <em>"caso seu token vazar, você vem aqui e muda."</em></p>
+<p><strong>Variáveis da Datafy.</strong> URL base, token e <code>phone_number_id</code>. O token é gerado na criação do canal, no painel da Datafy, e é lá que você troca por um novo se ele vazar. <a href="/o-que-e-a-datafy-api">O que é a Datafy API</a>.</p>
 <p><strong>Mídia.</strong> Uma função que chama a Datafy com o identificador da mídia e o token e recebe a URL para exibir. <a href="/como-receber-midia-api-oficial-whatsapp">Como receber mídia está aqui</a>.</p>
-<p><strong>Envio.</strong> O campo de digitação envia pela Datafy API; o status e o eco da mensagem chegam depois pelo webhook, sem duplicar. Os tiques azuis aparecem quando o status de leitura chega.</p>
-<p><strong>Tempo real com Pusher.</strong> O servidor recebe o webhook, grava e publica no Pusher, e a tela recebe. Sobre o custo: <em>"até 100 conexões simultâneas é gratuito."</em></p>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=HVRCBsJI_Eo" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/HVRCBsJI_Eo/maxresdefault.jpg" alt="Miniatura do vídeo: Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>Como criar um WhatsApp Web do zero com a API oficial (tutorial completo)</b><span>Canal DATA7 · 2 h 22 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Em 1:33:24 o webhook começa a gravar, em 1:52:03 a mídia, em 1:57:07 o envio pelo campo de digitação, e em 2:08:19 o Pusher.</figcaption>
-</figure>
-
+<p><strong>Envio.</strong> O campo de digitação envia pela Datafy API. A resposta da requisição traz um ID: isso confirma que o pedido foi aceito, não que a mensagem chegou. O status e o eco da mensagem chegam depois pelo webhook, sem duplicar. Os tiques azuis aparecem quando o status de leitura chega.</p>
+<p><strong>Tempo real com Pusher.</strong> O servidor recebe o webhook, grava e publica no Pusher, e a tela recebe. O plano gratuito do Pusher atende até 100 conexões simultâneas.</p>
+<h2 id="o-que-a-tela-precisa-tratar-janela-e-sta">O que a tela precisa tratar: janela e status</h2>
+<p><strong>A janela de 24 horas.</strong> Mensagem livre, digitada no campo, só sai enquanto a janela de atendimento daquele cliente está aberta. Quem abre e renova a janela é a mensagem do cliente; a resposta da empresa não renova. Cada cliente tem a sua janela. Com ela fechada, só template. <a href="/janela-de-24-horas-whatsapp">Como a janela funciona</a>.</p>
+<p><strong>Falha depois do 200.</strong> Fora da janela, a requisição pode voltar HTTP 200 com ID, e a falha chega depois no webhook de status. Por isso a mensagem na tela muda de estado conforme o status que chega:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Status no webhook</th>
+<th>O que significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sent</code></td>
+<td>Enviada; ainda não confirma entrega</td>
+</tr>
+<tr>
+<td><code>delivered</code></td>
+<td>Entregue ao destinatário</td>
+</tr>
+<tr>
+<td><code>read</code></td>
+<td>Lida, quando a confirmação está disponível</td>
+</tr>
+<tr>
+<td><code>failed</code></td>
+<td>Falha, com o erro. Exemplos: mensagem de serviço fora da janela, falha no pagamento</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use o ID da mensagem para ligar cada evento à mensagem gravada. E guarde o horário da última mensagem recebida de cada cliente: conferindo esse horário antes de enviar, a tela sabe se cabe mensagem livre ou se é preciso template.</p>
 <h2 id="apagar-conversa-em-cascata">Apagar conversa em cascata</h2>
-<p>Ao apagar uma conversa, a tabela apagava as mensagens junto. Ele comenta o risco: <em>"se você tiver, por exemplo, digamos lá, 1000 mensagens numa conversa, ela vai deletar 1000 linhas. Isso pode travar."</em> A alternativa que ele mostra é remover o comportamento em cascata. Para o tamanho do projeto, ele mantém.</p>
+<p>Ao apagar uma conversa, a tabela apagava as mensagens junto. O risco: uma conversa com 1.000 mensagens gera 1.000 linhas apagadas de uma vez, e isso pode travar. A alternativa é remover o comportamento em cascata. Para o tamanho deste projeto, ele ficou.</p>
 <h2 id="publicar">Publicar</h2>
 <p>Código no GitHub, projeto importado na Vercel, variáveis de ambiente coladas de uma vez. E o passo que não pode faltar: trocar a URL do webhook no painel da Datafy, do túnel para a de produção. Enquanto o túnel estava ligado, as mensagens continuavam chegando por ele.</p>
 <h2 id="os-limites-do-projeto">Os limites do projeto</h2>
-<p>É um número só, configurado por variável de ambiente. Na fala dele: <em>"se você quiser algo mais robusto, mais elaborado, para ter vários números e de forma dinâmica selecionar os números, aí já é outra coisa."</em></p>
+<p>É um número só, configurado por variável de ambiente. Vários números, escolhidos de forma dinâmica, pedem um projeto mais elaborado.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
-<h3>Quais ferramentas o tutorial usa?</h3>
+<h3>Quais ferramentas o projeto usa?</h3>
 <p>Claude Design, VS Code com Claude Code ou Codex, Nuxt, Supabase, Pusher, Datafy API e Vercel.</p>
 <h3>Quantas tabelas?</h3>
 <p>Duas: conversas e mensagens.</p>
@@ -726,7 +724,7 @@ footer p{margin:0 0 .5rem}
 <h3>O projeto funciona com vários números?</h3>
 <p>Não. É um número, configurado por variável de ambiente.</p>
 <h2 id="como-decidir">Como decidir</h2>
-<p>Se o objetivo é entender como a API oficial funciona construindo, siga as três fases na ordem do vídeo, começando pela coleta de payloads antes do banco. Se você precisa atender clientes com equipe agora, uma caixa de entrada pronta como o Chatwoot se liga à Datafy em minutos.</p>
+<p>Se o objetivo é entender como a API oficial funciona construindo, siga as três fases na ordem desta página, começando pela coleta de payloads antes do banco. Se você precisa atender clientes com equipe agora, uma caixa de entrada pronta como o Chatwoot se liga à Datafy em minutos.</p>
 <div class="cta"><h3>Comece coletando os payloads</h3><p>Abra o bate-papo do painel, mande para o número um texto, um áudio, uma imagem, uma mensagem pelo celular e um envio pela API, e copie os cinco payloads antes de criar qualquer tabela.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
 
 <h2 id="leia-tamb-m">Leia também</h2>
@@ -742,7 +740,7 @@ footer p{margin:0 0 .5rem}
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>
@@ -752,9 +750,10 @@ footer p{margin:0 0 .5rem}
         <li><a href="#principais-pontos">Principais pontos</a></li>
         <li><a href="#fase-1-a-interface">Fase 1: a interface</a></li>
         <li><a href="#fase-2-o-banco">Fase 2: o banco</a></li>
-        <li><a href="#seguran-a-chaves-e-pol-ticas">Segurança: chaves e políticas</a></li>
+        <li><a href="#seguran-a-chaves-pol-ticas-e-assinatura">Segurança: chaves, políticas e a...</a></li>
         <li><a href="#desempenho-pagina-o-e-cache">Desempenho: paginação e cache</a></li>
         <li><a href="#fase-3-a-api">Fase 3: a API</a></li>
+        <li><a href="#o-que-a-tela-precisa-tratar-janela-e-sta">O que a tela precisa tratar: jan...</a></li>
         <li><a href="#apagar-conversa-em-cascata">Apagar conversa em cascata</a></li>
         <li><a href="#publicar">Publicar</a></li>
         <li><a href="#os-limites-do-projeto">Os limites do projeto</a></li>

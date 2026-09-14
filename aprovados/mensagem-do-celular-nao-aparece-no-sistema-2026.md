@@ -9,14 +9,14 @@ intent: "problema-urgente"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://www.youtube.com/watch?v=dIIkttPeBS0
   - https://www.youtube.com/watch?v=vGovcR8W5g8
   - https://www.youtube.com/watch?v=LIT4FxgqHhE
   - https://www.youtube.com/watch?v=T_ai6IvLzZE
   - https://app.datafyapi.com.br/docs
-videos: [dIIkttPeBS0, vGovcR8W5g8, LIT4FxgqHhE, T_ai6IvLzZE]
+videos: [dIIkttPeBS0, LIT4FxgqHhE]
 internal_links:
   - /coexistencia-whatsapp-api-oficial-app-celular
   - /tres-status-da-mensagem-whatsapp
@@ -28,19 +28,19 @@ status: aprovado
 
 # O atendente responde pelo celular e não aparece no meu sistema
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** falta assinar o evento **`smb_message_echoes`** no webhook do número. Em coexistência, a mensagem que sai do aplicativo do celular não chega pelo evento `messages`: ela chega por esse evento separado. Sem ele marcado, o que o atendente escreve não chega no seu webhook.
 
-Na explicação do Israel Henrique, CTO da Datafy, no vídeo sobre n8n: *"se você não marcar essa opção, as mensagens que você enviar no celular não vão chegar no web hook."*
+A correção é marcar esse evento na aba de webhooks do número, no painel da Datafy.
 
-::numeros: 2 eventos|messages e smb_message_echoes ;; 1 minuto|para testar se está funcionando ;; 0|mensagens da API nesse evento ;; 3 status|voltam de cada envio pela API
+::numeros: 2 eventos|messages e smb_message_echoes ;; 1 minuto|para testar se está funcionando ;; 0|mensagens da API nesse evento ;; 4 status|possíveis em cada envio pela API: sent, delivered, read e failed
 
 ## Principais pontos
 - **`messages`** traz o que o cliente manda para você e os status do que você envia pela API.
 - **`smb_message_echoes`** traz o que você envia **pelo celular** do número conectado.
 - **Mensagem enviada pela API não aparece em `smb_message_echoes`.** Dela voltam status.
-- O payload que a Datafy entrega é **idêntico ao da Meta**, sem alteração.
+- A Datafy é [proxy da API oficial da Meta](/o-que-e-a-datafy-api): o payload que ela entrega é **idêntico ao da Meta**, sem alteração.
 - O teste é simples: mande uma mensagem pelo celular do número e veja se ela chega no webhook.
 
 ## Como resolver
@@ -51,13 +51,13 @@ Na explicação do Israel Henrique, CTO da Datafy, no vídeo sobre n8n: *"se voc
 
 **3.** Salve e teste: pegue o celular do número conectado, mande uma mensagem para qualquer contato, e confira se o evento chegou.
 
-::video: vGovcR8W5g8 | Em 01:57 ele seleciona os dois eventos no cadastro do webhook e explica: o primeiro traz as mensagens recebidas e os status, o segundo traz as mensagens enviadas pelo celular.
+::video: dIIkttPeBS0 | O cadastro do webhook com os dois eventos, e por que a mensagem enviada pela API não aparece em smb_message_echoes.
 
 ## A confusão que faz parecer defeito
 
-Quem assina `smb_message_echoes` esperando ver as próprias mensagens enviadas **pela API** fica procurando erro onde não tem. No vídeo de conexão, a regra aparece com essas palavras: *"esse SMB Messages Echoes, ele vai te notificar sempre que você enviar uma mensagem do celular, tá? Quando você envia mensagens direto pela API, não aparece."*
+Quem assina `smb_message_echoes` esperando ver as próprias mensagens enviadas **pela API** fica procurando erro onde não tem. A regra: `smb_message_echoes` notifica toda mensagem enviada pelo celular. O que você envia direto pela API não aparece nele.
 
-Da mensagem enviada pela API voltam **status**: enviada, entregue e lida, pelo evento `messages`. [Os três status estão explicados aqui](/tres-status-da-mensagem-whatsapp).
+Da mensagem enviada pela API voltam **status**, pelo evento `messages`: `sent` (enviada), `delivered` (entregue), `read` (lida, quando disponível) ou `failed` (falha, com o erro). [Os status estão explicados aqui](/tres-status-da-mensagem-whatsapp).
 
 | De onde a mensagem saiu | Por qual evento chega |
 |---|---|
@@ -65,21 +65,17 @@ Da mensagem enviada pela API voltam **status**: enviada, entregue e lida, pelo e
 | Você mandou pela API | `messages`, como status |
 | Você mandou pelo celular do número | `smb_message_echoes` |
 
-::video: dIIkttPeBS0 | Em 06:40 ele cadastra os dois eventos e explica que a mensagem enviada pela API não aparece em smb_message_echoes.
-
 ## Vendo acontecer no log da Datafy
 
-No painel da Datafy existe um log em tempo real das mensagens, que mostra o payload de cada evento. No vídeo, o Israel responde pelo WhatsApp Web do número e abre o evento que chegou: *"isso aqui é o messages echoes e é quando eu, proprietário, envio a mensagem."*
+No painel da Datafy existe um log em tempo real das mensagens, que mostra o payload de cada evento. A resposta dada fora da API, pelo celular ou pelo WhatsApp Web do número, aparece nele como `smb_message_echoes`: é a mensagem enviada pelo proprietário do número.
 
-::video: LIT4FxgqHhE | Em 01:26 a resposta dada fora da API aparece no log como smb_message_echoes, com o payload visível.
+::video: LIT4FxgqHhE | O log do painel, com uma resposta dada fora da API aparecendo como smb_message_echoes e o payload visível.
 
 [Como usar esse log está aqui](/ver-payload-das-mensagens-em-tempo-real).
 
 ## Numa caixa de entrada
 
-Com o evento funcionando, a resposta do celular aparece também numa caixa de entrada integrada. No vídeo sobre o Chatwoot, ele manda uma mensagem pelo celular e ela aparece na conversa: *"então essa aqui foi enviada diretamente do celular que está conectado na API. Então tá sincronizado."*
-
-::video: T_ai6IvLzZE | Em 04:20 a mensagem enviada pelo celular aparece no Chatwoot.
+Com o evento funcionando, a resposta do celular aparece também numa caixa de entrada integrada, como o Chatwoot: a mensagem enviada pelo celular conectado entra na mesma conversa, sincronizada.
 
 ## Perguntas frequentes
 
@@ -93,7 +89,7 @@ Não. O evento passa a entregar a partir de quando está assinado. O histórico 
 
 ### Mensagem enviada pelo celular é cobrada?
 
-Não. A Meta cobra por mensagem enviada pela API.
+Não. A Meta cobra as mensagens enviadas pela API que foram entregues, conforme a categoria e o país do destinatário.
 
 ### Como sei se o evento está chegando?
 

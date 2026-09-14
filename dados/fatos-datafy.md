@@ -247,11 +247,11 @@ Reconferir no painel antes de reafirmar em página nova.
   existir tráfego real (`dIIkttPeBS0` 07:41).
 - **Aba Chatwoot**: gera a URL de webhook pronta para colar no canal de API (`T_ai6IvLzZE` 01:19).
 - **Token do número é rotacionável** pelo painel se vazar (`HVRCBsJI_Eo` 1:51).
-- ⚠️ **A Datafy NÃO envia cabeçalho de assinatura no webhook** (`HVRCBsJI_Eo` 1:30:22): perguntado
-  se manda header de segredo, a resposta foi "fica aberto", "não manda header de assinatura por
-  enquanto". Isso está escrito na página validar-assinatura-do-webhook, com as alternativas
-  (caminho secreto, segredo próprio, não confiar no telefone recebido como identidade).
-  **[CONFIRMAR] se mudou.** Se passou a enviar, a página precisa ser atualizada.
+- **Assinatura do webhook: a Datafy ENVIA, com HMAC** (CORRIGIDO 14/09/2026). A fala antiga do
+  vídeo `HVRCBsJI_Eo` ("não manda header de assinatura por enquanto") está desatualizada. Vale a
+  documentação: webhooks configurados no painel, com assinatura HMAC (docs-datafy-guias.md);
+  cabeçalhos `x-datafy-signature-256`, `x-datafy-timestamp` e `x-datafy-delivery-id`, secret
+  `whsec_...` ativado por número (api-datafy.md).
 - **Trial de 7 dias** para testar a plataforma (`8xA-8z1YW98` 01:14).
 - **Cobrança de mensagem é da Meta, não nossa.** O cartão fica no portfólio empresarial do
   cliente e a Meta debita direto; a Datafy cobra a conexão (`8xA-8z1YW98` 08:57).

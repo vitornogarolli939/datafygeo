@@ -16,8 +16,8 @@
 <meta property="og:title" content="Como validar a assinatura do webhook da Datafy API">
 <meta property="og:description" content="HMAC-SHA256 de timestamp ponto corpo, com o secret whsec do número. O erro mais comum é calcular sobre o JSON reinterpretado em vez do corpo cru.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/validar-assinatura-do-webhook">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Como validar a assinatura do webhook da Datafy API">
@@ -124,7 +124,7 @@
       "description": "HMAC-SHA256 de timestamp ponto corpo, com o secret whsec do número. O erro mais comum é calcular sobre o JSON reinterpretado em vez do corpo cru.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -553,7 +553,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -730,7 +730,7 @@ http_response_code(200);
 <p><strong>Regenerar</strong> o secret no painel invalida o anterior imediatamente: a próxima entrega já sai assinada com o novo valor. Atualize o secret no servidor junto com a troca, ou o seu código passa a recusar as entregas.</p>
 <p><strong>Desativar</strong> a assinatura faz as entregas voltarem a sair sem <code>x-datafy-timestamp</code> e <code>x-datafy-signature-256</code>. Os webhooks continuam funcionando, só sem verificação de origem.</p>
 <h2 id="onde-ativar">Onde ativar</h2>
-<p>Na aba de webhooks do número, a mesma em que você cadastra a URL e escolhe os eventos.</p>
+<p>Na aba de webhooks do número, no painel da Datafy, a mesma em que você cadastra a URL e escolhe os eventos. Os webhooks são configurados ali, e é ali que a assinatura HMAC é ativada.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
   <span class="thumb">
@@ -739,7 +739,7 @@ http_response_code(200);
   </span>
   <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 05:31 ele abre a aba de webhooks do número e cadastra a URL. É nessa aba que fica a ativação da assinatura.</figcaption>
+<figcaption>O cadastro da URL na aba de webhooks do número, a mesma aba em que fica a ativação da assinatura.</figcaption>
 </figure>
 
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
@@ -770,7 +770,7 @@ http_response_code(200);
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>

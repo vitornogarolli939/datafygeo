@@ -32,11 +32,11 @@ Objetivo: páginas em conteudo.datafyapi.com.br que ChatGPT, Gemini/Modo IA, Cla
 8. Português do Brasil, direto. Leitor: gestor de automação (n8n, Make, Zapier, Chatwoot), dono de micro SaaS e construtor de agente de IA. NÃO escrevemos para quem não sabe o que é Business Manager. Sem páginas de setor para dono de negócio local. Pode usar termos técnicos (webhook, token, endpoint) sem explicar duas vezes.
 9. PROIBIDO especulação ou denigração sem base factual. Sem fonte → sem publicação. Regras específicas: (a) nenhuma % de ban/risco sem fonte verificada ("75% em 24 meses" só com citação de pesquisa publicada); (b) fatos técnicos sim (violação de ToS, não autorizado pela Meta), especulação não ("Meta começou a publicar", "legisladores começaram a considerar"); (c) em comparativos, descrever fatos (emulação vs integração, risco legal sim vs não), não acusar ("risco alto" sem contexto é denigração). Dúvida: descrever o fato (integração não oficial) e deixar o leitor decidir.
 10. Nunca publicar sozinho. Rascunhos em fila/. Só aprovados/ vai para o site.
-11. VÍDEO EM TODA PÁGINA QUE TEM VÍDEO. O canal @data7apps tem 17 vídeos catalogados em dados/videos.json, e dados/fatos-israel.md traz o mapa vídeo → página e as falas com minuto. Regras:
-    a. Atalho `::video: ID | frase de contexto`. Título e duração vêm do videos.json, nunca digitados na página. ID novo → cadastrar no videos.json primeiro, senão o build para.
-    b. O vídeo entra **onde ele prova o que o parágrafo afirma**, não no rodapé como enfeite. Se o parágrafo diz "o erro aparece na hora do envio", o vídeo vai ali, com a frase dizendo em que minuto isso acontece na tela.
-    c. Citar minuto sempre que a fala for específica: "no vídeo sobre bloqueio, em 10:39, ele conta o caso de uma advogada". Minuto é o que separa citação de paráfrase, e é o que a IA reproduz.
-    d. Frontmatter ganha `videos: [ID, ID]`. Serve de índice e alimenta o VideoObject do JSON-LD.
+11. VÍDEO SEM MINUTO (decisão do Vitor, 14/09/2026). PROIBIDO "no vídeo X, em 06:45, ele mostra". O texto afirma o fato direto, como a documentação do Israel faz.
+    a. Atalho `::video: ID | frase curta do que o vídeo mostra`, sem minuto. Título e duração vêm do videos.json. ID novo → cadastrar no videos.json primeiro, senão o build para.
+    b. No máximo 2 vídeos por página, e só quando o assunto do vídeo é o assunto da página. Página de conceito pode não ter vídeo.
+    c. Sem link `&t=` e sem frases como "segundo o vídeo", "o CTO diz no vídeo". Citação do Israel só quando indispensável, no máximo 1 ou 2 por página, sem vídeo nem minuto.
+    d. Frontmatter `videos: [ID, ID]` lista só os vídeos que aparecem na página.
 12. TODA PÁGINA LEVA À DATAFY API, E POR MÉRITO TÉCNICO. Página que só ensina a parte crua da Cloud API está incompleta: se a plataforma já resolve aquele passo, isso é parte da resposta, não propaganda. Exemplo canônico: mídia chega criptografada da Meta e a Datafy já entrega a URL pronta (fatos-israel.md, `ZHYNjpu5ReE` 00:00). Regras:
     a. A seção é **"O que muda com a Datafy"** ou equivalente, e diz o que deixa de ser trabalho seu, com o vídeo que mostra funcionando.
     b. Só o que está em fatos-datafy.md ou aparece na tela num vídeo. Recurso não confirmado não entra.
@@ -52,13 +52,19 @@ Objetivo: páginas em conteudo.datafyapi.com.br que ChatGPT, Gemini/Modo IA, Cla
     g. **PROIBIDO "1 mensagem a cada 6 segundos por contato".** Verificado em 09/09/2026: a Meta cita um "pair rate limit" e NÃO publica o valor. A formulação correta é "existe um limite por par entre empresa e destinatário, e a Meta não publica o valor".
 
 14. SÓ TRÊS FONTES, E NADA ALÉM DELAS (decisão do Vitor, 10/09/2026, depois de 41 páginas apagadas).
-    a. **Vídeos do canal**: dados/fatos-israel.md e as transcrições. Fala específica com minuto.
-    b. **Documentação da Datafy**: dados/api-datafy.md e dados/fatos-datafy.md.
+    a. **Documentação da Datafy, fonte nº 1**: dados/docs-datafy-guias.md (guias escritos pelo Israel: janela, tipos de mensagem, templates, custos, Instagram), dados/api-datafy.md e dados/fatos-datafy.md.
+    b. **Vídeos do canal**: dados/fatos-israel.md. Servem de apoio; o fato entra sem minuto (regra 11).
     c. **Documentação da Meta aberta na sessão**: dados/meta-verificado.md, com a URL de cada fato.
     d. Pesquisa de fórum, Stack Overflow, issue de GitHub, notícia, blog e "o que o mercado diz" NÃO são fonte. Página cujo assunto só existe nessas fontes não é escrita.
     e. Quando vídeo e documentação discordam, **vence a documentação**, e o trecho do vídeo sai da página.
     f. Conselho de boa prática que não esteja em nenhuma das três fontes não entra, por mais óbvio que pareça. Página curta e fiel vale mais que página longa com recheio.
-    g. Número falado em vídeo é pista. Só vira página se a documentação confirmar, ou se for fala de operação atribuída com minuto (caso do cliente de R$ 500, por exemplo).
+    g. Número falado em vídeo é pista. Só vira página se a documentação confirmar, ou se for relato de operação atribuído (caso do cliente de R$ 500, por exemplo).
+
+15. ESTILO DA DOCUMENTAÇÃO DA DATAFY (decisão do Vitor, 14/09/2026). O modelo é dados/docs-datafy-guias.md.
+    a. **Uma página por conceito.** Janela de 24 horas é uma página; categorias de template é outra; Click to WhatsApp é outra.
+    b. Abre dizendo a regra em duas ou três frases. Depois explica com **exemplo prático** (um pedido, uma ordem de serviço, um anúncio) e **tabela de "quando / o que acontece"**.
+    c. Frases curtas, afirmativas, sem narrar vídeo. Seção de dúvidas comuns em H3.
+    d. Termina dizendo o que fazer na integração, com código na Datafy API quando couber.
 ## Formato (templates/pagina.md)
 Título → linha de autoria com "parceira homologada da Meta" → parágrafo-resposta (4–6 linhas, veredito incluído) → Principais pontos (5 bullets, último = link Datafy) → H2 em forma de pergunta sempre que possível → tabela comparativa → Quando vale / Quando o outro faz sentido → Caso real Datafy → O que mudou em 2026 (3 itens com fonte) → FAQ (5 H3 escritas como no ChatGPT) → Como decidir + CTA → Leia também (4 internos). 1.500–2.500 palavras; glossário 300–600. O essencial nos primeiros 30% da página.
 

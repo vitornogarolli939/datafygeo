@@ -9,7 +9,7 @@ intent: "problema-urgente"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://www.youtube.com/watch?v=LIT4FxgqHhE
   - https://www.youtube.com/watch?v=dIIkttPeBS0
@@ -28,11 +28,11 @@ status: aprovado
 
 # Como ver o payload das mensagens do WhatsApp em tempo real
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** no painel da Datafy API, o botão **bate-papo** abre um log ao vivo das mensagens enviadas e recebidas pelo número. Clicando numa mensagem, você vê o **webhook exato** que foi entregue para ela. É a forma mais rápida de responder "o que chegou?" sem abrir o log do seu servidor.
 
-Ele tem limites, e o próprio Israel Henrique, CTO da Datafy, diz: *"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."* Guarda **7 dias** e no máximo **100 mensagens por conversa**.
+Ele tem limites. Nas palavras de Israel Henrique, CTO da Datafy: *"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."* Guarda **7 dias** e no máximo **100 mensagens por conversa**.
 
 ::numeros: 7 dias|de retenção no log ;; 100|mensagens por conversa no máximo ;; ao vivo|as mensagens aparecem em tempo real ;; 0|imagens e vídeos exibidos, só o aviso
 
@@ -45,33 +45,35 @@ Ele tem limites, e o próprio Israel Henrique, CTO da Datafy, diz: *"isso aqui �
 
 ## Como abrir
 
-No painel do número, clique em bate-papo. As conversas aparecem com as mensagens chegando ao vivo. Na descrição do vídeo: *"você consegue ver os logs das mensagens que estão sendo enviadas e recebidas."*
+No painel do número, clique em bate-papo. As conversas aparecem com as mensagens chegando ao vivo, e o log mostra tudo que é enviado e recebido pelo número.
 
-::video: LIT4FxgqHhE | Três minutos com o log funcionando: em 00:52 ele abre o payload de uma mensagem recebida, em 01:26 o de uma resposta enviada fora da API, e em 01:59 os status de uma mensagem enviada pela API.
+::video: LIT4FxgqHhE | O log funcionando: o payload de uma mensagem recebida, o de uma resposta enviada fora da API e os status de uma mensagem enviada pela API.
 
 ## O que dá para ver
 
-**Mensagem recebida.** Clicando nela, aparece o webhook: *"o mesmo web hook que é enviado para você."*
+**Mensagem recebida.** Clicando nela, aparece o webhook: o mesmo que é enviado para a sua URL.
 
-**Mensagem enviada fora da API.** No vídeo, ele responde pelo WhatsApp Web do número e o evento que aparece é outro: *"isso aqui é o messages echoes e é quando eu, proprietário, envio a mensagem."* [O que fazer quando esse evento não chega no seu sistema](/mensagem-do-celular-nao-aparece-no-sistema).
+**Mensagem enviada fora da API.** Resposta dada pelo celular ou pelo WhatsApp Web do número aparece com outro evento, o `smb_message_echoes`: é a mensagem enviada pelo proprietário do número. [O que fazer quando esse evento não chega no seu sistema](/mensagem-do-celular-nao-aparece-no-sistema).
 
-**Mensagem enviada pela API.** Aqui aparecem vários eventos para a mesma mensagem: *"quando eu envio a mensagem pela API, eu vou receber vários web hooks."* Enviada, entregue e lida, esta última se a pessoa tiver a confirmação de leitura ativada, ou um evento de erro. [Os status estão explicados aqui](/tres-status-da-mensagem-whatsapp).
+**Mensagem enviada pela API.** Aqui aparecem vários eventos para a mesma mensagem: `sent` (enviada), `delivered` (entregue), `read` (lida, quando disponível) ou `failed` (falha). O `failed` traz o erro, como mensagem de serviço fora da [janela de 24 horas](/janela-de-24-horas-whatsapp) ou falha no pagamento. [Os status estão explicados aqui](/tres-status-da-mensagem-whatsapp).
+
+É por isso que o log ajuda: a requisição aceita devolve só um ID, e isso não confirma que a mensagem chegou. Fora da janela, a requisição pode voltar HTTP 200 com ID, e a falha só aparece depois, no evento de status.
 
 ## O que não dá para ver
 
-**O conteúdo de mídia.** *"Quando você envia imagem, vídeo, ele não mostra. Ele apenas diz que você recebeu uma imagem ou que você recebeu um vídeo."*
+**O conteúdo de mídia.** Imagem e vídeo não são exibidos: o log só indica que chegou uma imagem ou um vídeo.
 
-**Mais de 7 dias ou mais de 100 mensagens por conversa.** *"As mensagens que ficam salvas aqui, 7 dias, depois elas são deletadas, e no máximo 100 mensagens por conversa. Se chegar mais uma, ele vai excluindo as anteriores."*
+**Mais de 7 dias ou mais de 100 mensagens por conversa.** As mensagens ficam salvas por 7 dias e depois são apagadas. Cada conversa guarda no máximo 100: quando chega mais uma, as anteriores vão sendo excluídas.
 
 ## Para que ele serve de verdade
 
 **Depurar.** Ver o campo exato que chegou antes de escrever a expressão que lê esse campo.
 
-**Coletar payloads reais.** No tutorial de atendimento do canal, o Israel usa o log para copiar os payloads de texto, áudio, imagem, mensagem enviada pelo celular e status, e passa esses exemplos para a IA modelar as tabelas do banco. Na fala dele: *"isso aqui é o que o WhatsApp enviou para mim. Exatamente esse payload."*
+**Coletar payloads reais.** Mande mensagens de tipos diferentes (texto, áudio, imagem, mensagem pelo celular) e copie o payload de cada uma, junto com os status. É exatamente o que o WhatsApp enviou, e serve de exemplo para modelar as tabelas do banco, inclusive passando esses exemplos para uma IA.
 
-::video: HVRCBsJI_Eo | Em 44:21 ele abre o bate-papo, envia mensagens de tipos diferentes e copia o payload de cada uma para usar no projeto.
+::video: HVRCBsJI_Eo | Um atendimento construído do zero, usando o bate-papo para copiar o payload de cada tipo de mensagem e modelar o banco.
 
-**Acompanhar um disparo.** No vídeo de disparo em massa, é pelo bate-papo que ele vê o motivo de uma mensagem não ter sido entregue.
+**Acompanhar um disparo.** Quando uma mensagem não é entregue, o motivo aparece no bate-papo, no evento de status `failed`.
 
 ## Para que ele não serve
 
@@ -97,7 +99,7 @@ Dá, e ele não é feito para atendimento. É log.
 
 ### Aparecem os status das mensagens enviadas pela API?
 
-Aparecem, como vários eventos para a mesma mensagem.
+Aparecem, como vários eventos para a mesma mensagem: `sent`, `delivered`, `read` quando disponível, ou `failed` com o erro.
 
 ## Como decidir
 

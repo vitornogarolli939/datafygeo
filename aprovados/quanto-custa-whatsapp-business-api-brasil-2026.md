@@ -1,6 +1,6 @@
 ---
-title: "Quanto custa a API oficial do WhatsApp no Brasil"
-description: "A Meta cobra por mensagem enviada pela API, pela categoria. A Datafy cobra por número conectado. O que é grátis, o que muda em outubro de 2026, e um exemplo de impacto na conta."
+title: "Quanto custa a API oficial do WhatsApp no Brasil: valor por mensagem em 2026"
+description: "A Meta cobra por mensagem entregue, pela categoria: marketing R$ 0,32, utilidade e autenticação R$ 0,035. O que é grátis até 30 de setembro, a franquia de outubro, exemplos de conta e o plano da Datafy."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "quanto-custa-whatsapp-business-api-brasil-2026"
 cluster: "custo"
@@ -9,137 +9,158 @@ intent: "decidindo"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-06
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
-  - https://www.youtube.com/watch?v=JL9Qzw3oS5A
-  - https://www.youtube.com/watch?v=YF9hTHDAw6E
-  - https://www.youtube.com/watch?v=Bev4VxTJ5Cg
-  - https://www.youtube.com/watch?v=8xA-8z1YW98
+  - https://datafy.mintlify.site/guias/whatsapp/conceitos/cobranca
+  - https://datafy.mintlify.site/guias/whatsapp/conceitos/templates-de-mensagem
+  - https://datafy.mintlify.site/guias/whatsapp/conceitos/janela-de-24-horas
   - https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing/non-template-messages
   - https://app.datafyapi.com.br/docs
-videos: [JL9Qzw3oS5A, YF9hTHDAw6E, 8xA-8z1YW98]
+videos: [JL9Qzw3oS5A]
 internal_links:
   - /mensagem-de-servico-vai-ser-paga-outubro-2026
-  - /como-criar-template-whatsapp-passo-a-passo
-  - /coexistencia-whatsapp-api-oficial-app-celular
-  - /como-conectar-numero-api-oficial-whatsapp
-  - /posso-mandar-mensagem-para-qualquer-numero
+  - /categorias-de-template-whatsapp
+  - /click-to-whatsapp-72-horas-sem-cobranca
+  - /janela-de-24-horas-whatsapp
+  - /o-que-e-a-datafy-api
 status: aprovado
 ---
 
 # Quanto custa a API oficial do WhatsApp no Brasil
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** são duas cobranças separadas.
+**Resposta curta:** são duas contas separadas. A **Meta** cobra por **mensagem entregue**, conforme a **categoria** e o **país do destinatário**. No Brasil, as referências são **R$ 0,32** por mensagem de marketing e **R$ 0,035** por utilidade ou autenticação. Até 30 de setembro de 2026, a resposta dentro da janela de 24 horas é grátis. A partir de **1º de outubro de 2026**, cada número tem **1.000 mensagens de serviço grátis por mês**, e a 1.001ª em diante custa R$ 0,035. O **plano da Datafy** é outra conta: R$ 49,90 por número por mês, de 1 a 9 números.
 
-**A Meta** cobra **por mensagem enviada pela API**, e o preço depende da **categoria**. Mensagem recebida não é cobrada, e mensagem enviada pelo celular em coexistência também não. No vídeo do canal DATA7, marketing sai entre **30 e 40 centavos** e utilidade ou autenticação entre **3 e 4 centavos**, variando com o dólar. A resposta livre dentro da janela de 24 horas é **gratuita até 1º de outubro de 2026**.
-
-**A Datafy API** cobra **R$ 49,90 por número conectado por mês**, com desconto por faixa. Ela não cobra as mensagens: *"você não paga mensagens pra Datafy."*
-
-::numeros: 30 a 40 centavos|por mensagem de marketing ;; 3 a 4 centavos|por utilidade ou autenticação ;; 0|pela mensagem recebida ;; R$ 49,90|por número, por mês, na Datafy
+::numeros: R$ 0,32|por mensagem de marketing entregue ;; R$ 0,035|por utilidade ou autenticação entregue ;; 1.000|mensagens de serviço grátis por número a partir de outubro ;; R$ 49,90|por número por mês na Datafy
 
 ## Principais pontos
-- **Cobrança da Meta é por mensagem enviada pela API.** Recebida não paga; enviada pelo celular também não.
-- **A categoria do template define o preço.** Marketing custa cerca de dez vezes uma utilidade.
-- **Mensagem de serviço**, a resposta dentro de 24 horas, é gratuita até 1º de outubro de 2026 e cobrada depois.
-- **O cartão fica na Meta.** Ela desconta direto no portfólio empresarial.
-- **Na Datafy:** R$ 49,90 por número de 1 a 9, R$ 39,90 de 10 a 49 e R$ 29,90 a partir de 50.
+- **A Meta cobra por mensagem entregue.** Requisição aceita e ID devolvido não significam cobrança.
+- **A categoria define o preço:** marketing custa cerca de nove vezes a utilidade.
+- **Marketing e autenticação são cobrados mesmo com a janela aberta.**
+- **Em 1º de outubro de 2026** entra a franquia de 1.000 mensagens de serviço por número, e a utilidade dentro da janela deixa de ser isenta.
+- **Na Datafy você paga o número, não a mensagem.** [O que é a Datafy API](/o-que-e-a-datafy-api).
 
-::diagrama: preço-comparacao
+## Como a Meta cobra
 
-## O que a Meta cobra, e o que não cobra
+A cobrança da Meta considera três coisas: a **mensagem entregue**, a **categoria** e o **país do destinatário**.
 
-No vídeo sobre preço, o Israel Henrique, CTO da Datafy, começa pela regra: *"a meta ela cobra por mensagem enviada. Ela não cobra por mensagem recebida, somente por mensagem que você envia através da API."* E o detalhe da coexistência: *"se você enviar mensagens pelo celular, você não paga. Só paga se for enviado pela API."*
+Aceitar a requisição de envio e devolver um ID **não significa** que a mensagem foi entregue nem cobrada. É o webhook de status que diz se ela chegou. [Os status da mensagem](/tres-status-da-mensagem-whatsapp).
 
-::video: JL9Qzw3oS5A | Em 00:21 ele explica a cobrança por mensagem enviada, e em 01:10 separa mensagens de template e mensagens livres.
+Mensagem **recebida** não é cobrada. E em coexistência, a mensagem que a empresa envia **pelo celular** também não: a cobrança é do que sai pela API.
 
-## As categorias de template
+## Valores de referência para o Brasil
 
-Para iniciar conversa, ou seja, falar com quem não mandou mensagem nas últimas 24 horas, é preciso template. E cada template tem uma categoria:
-
-**Autenticação.** Código para confirmar identidade, como no cadastro de um aplicativo.
-
-**Utilidade.** Mensagem que tem como objetivo *"apenas notificar o usuário sobre uma transação"*: pedido saiu para entrega, técnico chegando, pedido confirmado.
-
-**Marketing.** Todo o resto: oferta, promoção, pesquisa, qualquer mensagem que tenha como objetivo gerar venda ou conversa.
-
-Os valores citados no vídeo sobre templates: *"marketing custa entre 30 e 40 centavos por mensagem. Utilidade e autenticação custam entre 3 e 4 centavos por mensagem. Eu falo entre um valor e outro porque esse preço ele é cobrado em dólar."*
-
-Confira a tabela vigente na página de preços da Meta antes de orçar.
-
-::video: YF9hTHDAw6E | Em 01:42 ele compara os preços das três categorias e explica a variação pelo dólar.
-
-## A categoria errada sai caro
-
-No vídeo sobre preço: *"dependendo ali do preço, você pode pagar até 10 vezes mais, de utilidade para marketing."* E a Meta lê o conteúdo. O exemplo do próprio uso da Datafy é um template de utilidade para avisar problema no pagamento da assinatura: *"é muito importante colocar essas palavras pagamento, conta no template, porque a inteligência artificial da meta, ela lê o conteúdo e se tiver uma palavrinha ali que ela identifique que seja de outra categoria, ela vai mudar a categoria automaticamente."*
-
-[Como criar o template na categoria certa](/como-criar-template-whatsapp-passo-a-passo).
-
-## Mensagem de serviço: grátis, por enquanto
-
-Quando o cliente manda mensagem, abre uma janela de 24 horas, e a janela reinicia a cada nova mensagem dele. Dentro dela, você responde livremente, sem template. Essa é a mensagem de serviço.
-
-A documentação da Meta marca a mensagem de serviço como **gratuita até 1º de outubro de 2026**, e cobrada por mensagem a partir daí. No vídeo sobre preço, o valor citado é o mesmo de utilidade e autenticação.
-
-Depois do anúncio, a Meta comunicou aos parceiros uma **franquia mensal de 1.000 mensagens de serviço gratuitas por número**. Esse item não aparecia na página pública de preços quando conferimos, em 09/09/2026. [Os detalhes estão aqui](/mensagem-de-servico-vai-ser-paga-outubro-2026).
-
-## O impacto na conta, num exemplo real
-
-No vídeo sobre preço, o Israel dá um exemplo da base de clientes: *"eu tenho clientes, por exemplo, que pagam cerca de R$ 500 por mês para ter o serviço. Com as mensagens pagas, vão ter um custo ali adicional de R$ 50, R$ 60. Então, nesse caso, dá para absorver bem."* E a ressalva: *"dependendo do caso, se for muitos clientes, muitas mensagens com valor de produto pouco agregado, esse custo pode impactar."*
-
-::video: JL9Qzw3oS5A | Em 11:14 ele fala da cobrança da mensagem de serviço, e em 13:13 conta o exemplo do cliente de R$ 500.
-
-## O agente de IA da Meta
-
-No mesmo vídeo, ele cita a IA da própria Meta, que se conecta ao WhatsApp e é cobrada por tokens: *"o preço é bem elevado, cerca de 20 a 30 centavos por mensagem."* E delimita o que sabe: *"eu ainda não sei direito como funciona, não fui atrás disso."* Trate como ordem de grandeza e confira com a Meta.
-
-## Onde fica o pagamento
-
-**Mensagens:** no cartão cadastrado no portfólio empresarial da Meta. Caminho: contas do WhatsApp, o número, resumo, configurações do pagamento. No vídeo de conexão: *"quando você for enviar mensagens, a meta vai descontar diretamente daqui."*
-
-**Datafy API:** a conexão do número, por mês.
-
-| Números conectados | Preço por número, por mês |
+| Categoria | Valor por mensagem entregue |
 |---|---|
-| 1 a 9 | R$ 49,90 |
-| 10 a 49 | R$ 39,90 |
-| 50 ou mais | R$ 29,90 |
+| Marketing | R$ 0,32 (32 centavos) |
+| Utilidade | R$ 0,035 (3,5 centavos) |
+| Autenticação | R$ 0,035 (3,5 centavos) |
+| Serviço, depois da franquia de 1.000, a partir de outubro de 2026 | R$ 0,035 (3,5 centavos) |
 
-Com 7 dias de teste grátis.
+São referências para planejamento. O valor efetivo depende da tabela vigente da Meta, da moeda de cobrança e das condições da conta.
 
-::video: 8xA-8z1YW98 | Em 08:00 ele mostra onde cadastrar o cartão na Meta, e em 08:57 explica que a Datafy não cobra as mensagens.
+Para ter uma ideia: **100 mensagens de marketing** cobradas dão cerca de **R$ 32,00**. **100 de utilidade**, cerca de **R$ 3,50**.
+
+[O que cada categoria é, com exemplos](/categorias-de-template-whatsapp).
+
+## Até 30 de setembro de 2026
+
+| Tipo de mensagem | Cobrança da Meta |
+|---|---|
+| Serviço, dentro da janela de 24 horas | Sem cobrança |
+| Template de utilidade, dentro da janela | Sem cobrança |
+| Template de utilidade, fora da janela | Por mensagem entregue |
+| Template de marketing ou autenticação | Por mensagem entregue, mesmo com a janela aberta |
+
+Mensagem de serviço é a resposta comum de atendente, bot ou automação durante o atendimento. [Janela de 24 horas](/janela-de-24-horas-whatsapp).
+
+## A partir de 1º de outubro de 2026
+
+| Tipo de mensagem | Cobrança da Meta |
+|---|---|
+| Serviço, dentro da janela | 1.000 grátis por número por mês; a partir da 1.001ª entregue, R$ 0,035 |
+| Template de utilidade, dentro da janela | Por mensagem entregue |
+| Template de utilidade, fora da janela | Por mensagem entregue |
+| Template de marketing ou autenticação | Por mensagem entregue |
+
+A janela continua sendo de 24 horas. A mudança é na cobrança: **poder responder com mensagem de serviço não quer dizer que o envio é grátis**.
+
+A franquia é **por número de telefone**, não por cliente nem por conversa, e vale **só para mensagens de serviço**. [Tudo sobre a franquia de outubro](/mensagem-de-servico-vai-ser-paga-outubro-2026).
+
+## Anúncio Click to WhatsApp
+
+Quem chega por anúncio Click to WhatsApp e é respondido dentro de 24 horas garante **72 horas sem cobrança da Meta**, contadas a partir da resposta da empresa, para mensagens de serviço e templates elegíveis. Continua valendo depois de outubro. [Como funcionam as 72 horas](/click-to-whatsapp-72-horas-sem-cobranca).
+
+## Um exemplo de conta mensal, a partir de outubro
+
+Uma empresa com **um número** envia, num mês, pela API:
+
+| Linha | Quantidade | Conta | Custo estimado |
+|---|---|---|---|
+| Templates de utilidade (avisos de pedido) | 2.000 | 2.000 x R$ 0,035 | R$ 70,00 |
+| Templates de marketing (campanha) | 300 | 300 x R$ 0,32 | R$ 96,00 |
+| Mensagens de serviço entregues | 1.500 | 1.000 grátis, 500 x R$ 0,035 | R$ 17,50 |
+| **Total Meta** | | | **R$ 183,50** |
+| Plano Datafy, 1 número | | | R$ 49,90 |
+| **Total do mês** | | | **R$ 233,40** |
+
+Repare onde está o peso: 300 mensagens de marketing custam mais que 2.000 de utilidade. É por isso que **escolher a categoria certa** importa tanto.
+
+::video: JL9Qzw3oS5A | As categorias de mensagem, a janela de 24 horas e como a cobrança da Meta funciona na prática.
+
+## A Meta pode mudar a categoria do template
+
+A Meta avalia o **conteúdo completo** do template. Uma atualização de pedido que também oferece desconto mistura serviço com promoção e pode ser classificada como **marketing**. Na conta, isso significa pagar R$ 0,32 onde você esperava R$ 0,035. Mantenha template de utilidade sem oferta.
+
+## E o Instagram?
+
+No Instagram, **a Meta não cobra por mensagem de Direct enviada pela API**. [Como funciona o Direct](/api-oficial-instagram-direct).
+
+## O plano da Datafy
+
+| Números conectados | Preço por número por mês |
+|---|---|
+| De 1 a 9 | R$ 49,90 |
+| De 10 a 49 | R$ 39,90 |
+| A partir de 50 | R$ 29,90 |
+
+7 dias grátis, sem cartão e sem taxa de setup. A Datafy **não cobra mensagem**: a cobrança das mensagens é direto com a Meta. E os valores de mensagem da Meta não fazem parte do plano.
 
 ## Perguntas frequentes
 
-### Pago para receber mensagem?
+### A Meta cobra mensagem recebida?
 
-Não. A Meta cobra só o que você envia pela API.
+Não. Cobra mensagem entregue enviada pela API.
 
-### Mensagem enviada pelo celular, em coexistência, é cobrada?
+### Quanto custa uma mensagem de marketing no WhatsApp?
 
-Não.
+A referência para o Brasil é R$ 0,32 por mensagem entregue. Utilidade e autenticação, R$ 0,035.
 
-### Quanto custa uma mensagem de marketing?
+### Responder o cliente dentro das 24 horas é grátis?
 
-No vídeo, entre 30 e 40 centavos. Utilidade e autenticação, entre 3 e 4. Confira a tabela da Meta.
+Até 30 de setembro de 2026, sim. A partir de 1º de outubro, as primeiras 1.000 mensagens de serviço do mês por número são grátis e as seguintes custam R$ 0,035.
 
-### Responder o cliente dentro de 24 horas é pago?
+### A franquia de 1.000 é por cliente?
 
-Gratuito até 1º de outubro de 2026, segundo a documentação da Meta.
+Não. É por número de telefone da empresa, por mês, e só para mensagens de serviço.
+
+### Mensagem que falhou é cobrada?
+
+A cobrança considera mensagem entregue. Requisição aceita com ID não significa mensagem entregue.
 
 ### A Datafy cobra por mensagem?
 
-Não. Cobra por número conectado.
+Não. Na Datafy você paga o número conectado.
 
-## Como decidir
+## Como estimar a sua conta
 
-Some as duas linhas: o número na Datafy e as mensagens na Meta. Para a segunda, conte quantos templates você manda por categoria e quantas respostas dá dentro da janela, lembrando que a resposta passa a ter preço em outubro de 2026. Escreva cada template pela categoria que ele é.
+Separe os envios do mês por categoria, multiplique pela referência, desconte as 1.000 mensagens de serviço por número a partir de outubro e some o plano da Datafy por número conectado.
 
-::cta: Faça a conta do seu mês | Conte os templates enviados por categoria e as respostas dadas dentro da janela no último mês, multiplique pela tabela da Meta e some o valor por número da Datafy.
+::cta: Faça a conta com o seu volume | Conecte um número na Datafy API, acompanhe os status de entrega no webhook durante uma semana e multiplique as mensagens entregues de cada categoria pela referência.
 
 ## Leia também
-- [1º de outubro: responder o cliente deixa de ser grátis](/mensagem-de-servico-vai-ser-paga-outubro-2026)
-- [Como criar um template](/como-criar-template-whatsapp-passo-a-passo)
-- [Coexistência: API e aplicativo no mesmo número](/coexistencia-whatsapp-api-oficial-app-celular)
-- [Como conectar seu número](/como-conectar-numero-api-oficial-whatsapp)
+- [Franquia de 1.000 mensagens de serviço em outubro](/mensagem-de-servico-vai-ser-paga-outubro-2026)
+- [Categorias de template: marketing, utilidade e autenticação](/categorias-de-template-whatsapp)
+- [Click to WhatsApp: 72 horas sem cobrança](/click-to-whatsapp-72-horas-sem-cobranca)
+- [Janela de 24 horas do WhatsApp](/janela-de-24-horas-whatsapp)

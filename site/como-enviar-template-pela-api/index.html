@@ -16,8 +16,8 @@
 <meta property="og:title" content="Como enviar uma mensagem de template pela API oficial do WhatsApp">
 <meta property="og:description" content="Listar os templates aprovados, montar o corpo com nome, idioma e componentes, e enviar pela Datafy API. Template com imagem no cabeçalho exige a imagem no envio.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/como-enviar-template-pela-api">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Como enviar uma mensagem de template pela API oficial do WhatsApp">
@@ -124,7 +124,7 @@
       "description": "Listar os templates aprovados, montar o corpo com nome, idioma e componentes, e enviar pela Datafy API. Template com imagem no cabeçalho exige a imagem no envio.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -165,7 +165,7 @@
           "name": "Posso enviar template para quem não falou comigo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pode. É para isso que template existe. E é cobrado."
+            "text": "Pode. É para isso que template existe. A Meta cobra por mensagem entregue, conforme a categoria."
           }
         },
         {
@@ -173,7 +173,7 @@
           "name": "A IA consegue montar o corpo?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No vídeo, consegue, porque o formato é o da documentação da Meta. E errou no caso da imagem, que só apareceu testando."
+            "text": "Consegue, porque o formato é o da documentação da Meta. Troque a URL pela da Datafy e o token pelo seu, e confira o caso da imagem no cabeçalho, em que a IA pode errar."
           }
         },
         {
@@ -553,7 +553,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -583,12 +583,12 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <p><strong>Resposta curta:</strong> template sai pelo mesmo endpoint de qualquer mensagem, <code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages</code>, com <code>"type": "template"</code> e um objeto <code>template</code> com o <strong>nome</strong>, o <strong>idioma</strong> e os <strong>componentes</strong>, que carregam os valores das variáveis. Antes, liste os templates aprovados da conta com <code>GET https://cloud.datafyapi.com.br/templates</code> para saber o nome exato.</p>
-<p>No vídeo do canal DATA7, o Israel Henrique, CTO da Datafy, envia dois templates. O segundo tem imagem no cabeçalho, e mostra o erro que acontece quando a imagem não vai no envio.</p>
+<p>Template com imagem no cabeçalho é o caso que mais dá erro: a imagem precisa ir no envio, mesmo que o template aprovado já tenha uma.</p>
 <div class="stats">
   <div class="stat"><b>1 nome</b><span>identifica o template, e não repete</span></div>
   <div class="stat"><b>1 endpoint</b><span>o mesmo das outras mensagens</span></div>
   <div class="stat"><b>1 imagem</b><span>obrigatória no envio de template com cabeçalho de imagem</span></div>
-  <div class="stat"><b>pago</b><span>cada template enviado, pela categoria</span></div>
+  <div class="stat"><b>entregue</b><span>é o template entregue que a Meta cobra, pela categoria</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
@@ -597,10 +597,10 @@ footer p{margin:0 0 .5rem}
 <li><strong>Liste os aprovados</strong> com <code>GET /templates</code>, sem precisar do <code>waba_id</code>.</li>
 <li><strong>O corpo</strong> leva <code>name</code>, <code>language</code> com <code>code</code>, e <code>components</code> com os parâmetros.</li>
 <li><strong>Template com imagem no cabeçalho exige a imagem no envio.</strong> A imagem cadastrada no template é só exemplo.</li>
-<li><strong>Template é cobrado</strong> pela Meta, e pode ser enviado fora da janela de 24 horas.</li>
+<li><strong>A Meta cobra o template por mensagem entregue</strong>, conforme a categoria. É ele que permite falar com quem está fora da janela de 24 horas.</li>
 </ul>
 <h2 id="1-descobrir-o-nome-exato">1. Descobrir o nome exato</h2>
-<p>No vídeo: <em>"a identificação do template é o nome do template, por isso que eles não podem se repetir."</em></p>
+<p>O nome é a identificação do template, e por isso não pode se repetir na conta.</p>
 <p>Pela rota simplificada da Datafy, sem o identificador da conta:</p>
 <pre><code>GET https://cloud.datafyapi.com.br/templates
 Authorization: Bearer sk_live_xxx
@@ -622,7 +622,7 @@ Authorization: Bearer sk_live_xxx
   &quot;paging&quot;: {}
 }
 </code></pre>
-<p>No vídeo, ele tira os filtros para trazer todos: <em>"eu vou remover tudo que tem aqui no parâmetro, nos parâmetros, para ele trazer todos os templates."</em> Não sabe o <code>waba_id</code>? <code>GET https://cloud.datafyapi.com.br/me</code> devolve.</p>
+<p>Sem os parâmetros de filtro, a chamada traz todos os templates, com o status de cada um. Não sabe o <code>waba_id</code>? <code>GET https://cloud.datafyapi.com.br/me</code> devolve.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=62oSY66J3s4" rel="noopener">
   <span class="thumb">
@@ -631,7 +631,7 @@ Authorization: Bearer sk_live_xxx
   </span>
   <span class="meta"><b>Como enviar mensagens de templates pela API oficial</b><span>Canal DATA7 · 8 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 00:24 ele abre a listagem de templates pela API, e em 01:03 remove os filtros para ver todos com o status de cada um.</figcaption>
+<figcaption>A listagem de templates pela API, sem filtros, com o status de cada um.</figcaption>
 </figure>
 
 <h2 id="2-montar-o-corpo">2. Montar o corpo</h2>
@@ -658,12 +658,11 @@ Content-Type: application/json
 }
 </code></pre>
 <p>Os <code>parameters</code> levam os valores das variáveis do template, na ordem ou pelo nome, conforme o template foi criado. Para ver um corpo de template preenchido, o endpoint de envio na documentação da Datafy tem exemplos por tipo de mensagem, incluindo template.</p>
-<p>No vídeo, o Israel copia a lista de templates para uma IA e pede o corpo de um deles: <em>"quero enviar o template de confirmação de consulta, monte para mim o payload."</em> Funciona porque o formato é o da documentação da Meta. E ele lembra de trocar o começo da URL e o token se usar o comando que a IA gerar: <em>"lembre só de substituir aqui pelo nosso URL, e aqui o token."</em></p>
+<p>Um assistente de IA monta esse corpo se você passar a lista de templates e pedir o payload de um deles, por exemplo o de confirmação de consulta. Funciona porque o formato é o da documentação da Meta. Se usar o comando que a IA gerar, troque o começo da URL pelo da Datafy e o token pelo seu.</p>
 <h2 id="3-template-com-imagem-no-cabe-alho">3. Template com imagem no cabeçalho</h2>
-<p>Esse é o caso que mais dá erro, e o vídeo mostra acontecendo.</p>
-<p>A IA respondeu que, como o cabeçalho já tinha uma imagem aprovada, não era preciso mandar imagem no envio. O Israel desconfia: <em>"eu acho que isso aqui que ele falou tá errado, tá? Ele tá dizendo que eu não preciso colocar imagem, mas eu preciso sim."</em> Envia assim mesmo, e dá erro. Com o erro na mão, o corpo é corrigido para incluir a imagem, e o envio passa.</p>
-<p>A regra vem do vídeo de criação de templates: <em>"essa imagem que a gente colocou aqui, ela só é para criar o template. Ela seria um exemplo. Na hora você vai ter que enviar outra."</em></p>
-<p>Para a imagem do envio, ele usa o link de uma imagem já subida na aba de mídias do painel, e avisa: <em>"a imagem tem que ser quadrada, 500 por 500, senão ele não deixa."</em></p>
+<p>A imagem cadastrada no cabeçalho serve só como exemplo para criar o template. No envio, o corpo precisa trazer a imagem. Sem ela, o envio volta erro; com a imagem incluída, passa.</p>
+<p>Um assistente de IA pode responder que a imagem aprovada basta e que não é preciso mandar outra. Não basta. Israel Henrique, CTO da Datafy, explica: <em>"essa imagem que a gente colocou aqui, ela só é para criar o template. Ela seria um exemplo. Na hora você vai ter que enviar outra."</em></p>
+<p>Para a imagem do envio, use o link de uma imagem subida na aba de mídias do painel. A imagem precisa ser quadrada, de 500 por 500.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=62oSY66J3s4" rel="noopener">
   <span class="thumb">
@@ -672,14 +671,57 @@ Content-Type: application/json
   </span>
   <span class="meta"><b>Como enviar mensagens de templates pela API oficial</b><span>Canal DATA7 · 8 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 04:41 ele pede o corpo do template com imagem, em 05:31 desconfia da resposta da IA, em 06:11 o envio dá erro, e em 06:43 corrige com a imagem e envia.</figcaption>
+<figcaption>O envio do template com imagem no cabeçalho: o erro sem a imagem e o envio corrigido.</figcaption>
 </figure>
 
 <p>Sem servidor para hospedar a imagem, a aba de mídias do painel dá o link, válido por 30 dias. <a href="/como-enviar-midia-api-oficial-whatsapp">Como enviar mídia está aqui</a>.</p>
 <h2 id="quando-usar-template-e-quanto-custa">Quando usar template, e quanto custa</h2>
-<p>Template é o que permite falar com quem não mandou mensagem nas últimas 24 horas. No vídeo: <em>"nesse caso aqui eu posso enviar fora da janela de 24 horas, porém eu vou pagar por cada mensagem enviada."</em> O preço depende da categoria. <a href="/quanto-custa-whatsapp-business-api-brasil-2026">Os preços estão aqui</a>.</p>
+<p>Template é o que permite falar com quem não mandou mensagem nas últimas 24 horas. Enviar o template <strong>não abre</strong> a janela de atendimento: ela abre quando o cliente responde, e daí em diante valem as mensagens de serviço. <a href="/janela-de-24-horas-whatsapp">Como a janela funciona</a>.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Depois do envio</th>
+<th>O que acontece com a janela</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Template entregue ou lido, cliente não responde</td>
+<td>Continua fechada; novos envios só com template</td>
+</tr>
+<tr>
+<td>Cliente responde ao template</td>
+<td>Abre 24 horas a partir da resposta; mensagens de serviço liberadas</td>
+</tr>
+</tbody>
+</table></div>
+<p>A Meta cobra por mensagem <strong>entregue</strong>, conforme a categoria do template e o país do destinatário. Valores de referência no Brasil:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Valor por mensagem entregue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Marketing</td>
+<td>R$ 0,32</td>
+</tr>
+<tr>
+<td>Utilidade</td>
+<td>R$ 0,035</td>
+</tr>
+<tr>
+<td>Autenticação</td>
+<td>R$ 0,035</td>
+</tr>
+</tbody>
+</table></div>
+<p>A janela aberta muda a conta em alguns casos. Até 30/09/2026, template de utilidade enviado dentro da janela não é cobrado; marketing e autenticação são cobrados mesmo com a janela aberta. A partir de 1º de outubro de 2026, template de utilidade dentro da janela também passa a ser cobrado.</p>
+<p>São referências para planejamento: o efetivo depende da tabela vigente, da moeda de cobrança e das condições da conta. <a href="/categorias-de-template-whatsapp">As categorias de template estão aqui</a>. <a href="/quanto-custa-whatsapp-business-api-brasil-2026">Os preços completos estão aqui</a>.</p>
 <h2 id="depois-do-envio">Depois do envio</h2>
-<p>A resposta traz o identificador da mensagem e significa que a Meta aceitou. O que aconteceu chega no webhook, como status: enviada, entregue, lida, ou falha. <a href="/tres-status-da-mensagem-whatsapp">Os status estão explicados aqui</a>.</p>
+<p>A resposta traz o ID da mensagem e confirma só que a requisição foi aceita. O que aconteceu chega no webhook de status: enviada (<code>sent</code>), entregue (<code>delivered</code>), lida (<code>read</code>) ou falha (<code>failed</code>). <a href="/tres-status-da-mensagem-whatsapp">Os status estão explicados aqui</a>.</p>
 <h2 id="para-muitos-contatos">Para muitos contatos</h2>
 <p>Pela API, é um laço que envia o template para cada número, dentro do limite de 500 requisições por minuto da Datafy. Sem código, a aba Disparos do painel faz isso com uma planilha CSV. <a href="/disparo-em-massa-api-oficial-whatsapp">Como fazer disparo em massa</a>.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
@@ -688,9 +730,9 @@ Content-Type: application/json
 <h3>Preciso mandar a imagem se o template já tem uma?</h3>
 <p>Precisa. A imagem do template é só exemplo, e sem a imagem no envio dá erro.</p>
 <h3>Posso enviar template para quem não falou comigo?</h3>
-<p>Pode. É para isso que template existe. E é cobrado.</p>
+<p>Pode. É para isso que template existe. A Meta cobra por mensagem entregue, conforme a categoria.</p>
 <h3>A IA consegue montar o corpo?</h3>
-<p>No vídeo, consegue, porque o formato é o da documentação da Meta. E errou no caso da imagem, que só apareceu testando.</p>
+<p>Consegue, porque o formato é o da documentação da Meta. Troque a URL pela da Datafy e o token pelo seu, e confira o caso da imagem no cabeçalho, em que a IA pode errar.</p>
 <h3>Onde vejo se foi entregue?</h3>
 <p>No webhook, pelos status, ou no log em tempo real do painel da Datafy.</p>
 <h2 id="como-decidir">Como decidir</h2>
@@ -710,7 +752,7 @@ Content-Type: application/json
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>

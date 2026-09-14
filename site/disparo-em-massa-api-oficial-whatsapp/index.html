@@ -16,8 +16,8 @@
 <meta property="og:title" content="Como fazer disparo em massa na API oficial do WhatsApp">
 <meta property="og:description" content="Pela aba de disparos da Datafy: planilha CSV com a coluna telefone, template aprovado, mapeamento de variáveis e agendamento. E o que o status mostra quando a Meta não entrega.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/disparo-em-massa-api-oficial-whatsapp">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Como fazer disparo em massa na API oficial do WhatsApp">
@@ -124,7 +124,7 @@
       "description": "Pela aba de disparos da Datafy: planilha CSV com a coluna telefone, template aprovado, mapeamento de variáveis e agendamento. E o que o status mostra quando a Meta não entrega.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -173,7 +173,7 @@
           "name": "Por que uma mensagem não foi entregue sem erro de número?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Um motivo que aparece no vídeo é a Meta não entregar para manter a saúde do ecossistema, quando a pessoa não costuma responder. Outros: saldo ou cartão."
+            "text": "A Meta pode deixar de entregar para manter a saúde do ecossistema, como no caso de um número que não costuma responder. Outro motivo é falha no pagamento, que chega como failed no status."
           }
         },
         {
@@ -181,7 +181,7 @@
           "name": "Posso disparar sem template?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não para quem não falou com você nas últimas 24 horas."
+            "text": "Não para quem não falou com você nas últimas 24 horas. E o template não abre a janela: ela abre quando a pessoa responde."
           }
         }
       ]
@@ -572,7 +572,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -598,7 +598,7 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <p><strong>Resposta curta:</strong> disparo em massa na API oficial é <strong>template aprovado</strong> enviado para uma lista. Pela API, você faz um laço chamando o envio de template. Pelo painel da Datafy, a aba <strong>Disparos</strong> faz isso sem código: você sobe uma planilha CSV com a coluna <strong><code>telefone</code></strong>, escolhe o template, liga as colunas às variáveis e envia agora ou agenda.</p>
-<p>No vídeo, o Israel Henrique, CTO da Datafy, explica por que a aba existe: <em>"basta você implementar no teu sistema e fazer um loop ali para enviar para todo mundo. Mas tem gente que não tem esse conhecimento técnico."</em></p>
+<p>A aba existe para quem não tem time técnico. Com código, o mesmo resultado sai de um laço no seu sistema enviando o template para cada contato.</p>
 <div class="stats">
   <div class="stat"><b>1 coluna</b><span>obrigatória: telefone</span></div>
   <div class="stat"><b>55</b><span>o código do Brasil no começo do número</span></div>
@@ -608,15 +608,39 @@ footer p{margin:0 0 .5rem}
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
-<li><strong>Precisa de template aprovado.</strong> Fora da janela de 24 horas, a política exige template para iniciar conversa.</li>
+<li><strong>Precisa de template aprovado.</strong> Fora da janela de 24 horas, só template. E enviar template não abre a janela: ela abre quando a pessoa responde.</li>
 <li><strong>Planilha CSV</strong> com a coluna <code>telefone</code> no cabeçalho, números no formato 55, DDD e número.</li>
 <li><strong>Outras colunas viram variáveis</strong> do template, com o nome que você quiser.</li>
 <li><strong>Template com imagem</strong> pede a imagem na hora do disparo. As mídias da aba de mídias duram 30 dias.</li>
-<li><strong>O status mostra quando a Meta não entrega</strong>, inclusive para quem não costuma responder.</li>
+<li><strong>ID não é entrega.</strong> O status de cada contato mostra quem recebeu e quem falhou, inclusive quando a Meta não entrega.</li>
 </ul>
-<h2 id="antes-de-disparar-permiss-o-e-resposta">Antes de disparar: permissão e resposta</h2>
+<h2 id="antes-de-disparar-permiss-o-template-e-r">Antes de disparar: permissão, template e resposta</h2>
 <p>A política comercial do WhatsApp exige duas coisas para contatar alguém: a pessoa ter fornecido o número e ter dado opt-in. E só permite iniciar conversa com template aprovado. <a href="/opt-in-por-link-whatsapp">Como coletar opt-in com um link de cadastro</a>.</p>
-<p>No vídeo sobre bloqueio, o Israel conta o que acontece quando ninguém responde, mesmo com template certo: uma advogada que disparou para a própria lista por três dias, sem resposta, e foi bloqueada. <a href="/numero-banido-no-whatsapp-o-que-fazer">O caso e as causas de bloqueio estão aqui</a>.</p>
+<p>O disparo é feito com template porque a lista, em geral, não mandou mensagem para você nas últimas 24 horas. <a href="/tipos-de-mensagem-whatsapp-servico-e-template">A diferença entre mensagem de serviço e template</a>. O template chega, mas a janela de atendimento continua fechada até a pessoa responder:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Depois do disparo</th>
+<th>O que acontece com a janela</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Template entregue ou lido, cliente não responde</td>
+<td>Continua fechada; novos envios só com template</td>
+</tr>
+<tr>
+<td>Cliente responde ao template</td>
+<td>Abre 24 horas a partir da resposta; mensagens de serviço liberadas</td>
+</tr>
+<tr>
+<td>Cliente envia outra mensagem durante o atendimento</td>
+<td>As 24 horas contam a partir dessa nova mensagem</td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="/janela-de-24-horas-whatsapp">Como a janela de 24 horas funciona</a>.</p>
+<p>A resposta também pesa no número. Template certo sem resposta leva a bloqueio. Um caso acompanhado pela Datafy: uma advogada disparou para a própria lista por três dias, ninguém respondeu, e o número foi bloqueado. <a href="/numero-banido-no-whatsapp-o-que-fazer">O caso e as causas de bloqueio estão aqui</a>.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=cZ_nyIUv5ic" rel="noopener">
   <span class="thumb">
@@ -625,17 +649,17 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Porque você é bloqueado no WhatsApp Business</b><span>Canal DATA7 · 26 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 10:01 ele explica a taxa de engajamento, e em 10:39 conta o caso da advogada.</figcaption>
+<figcaption>Por que template aprovado sem resposta também leva a bloqueio, e como incluir uma saída no template.</figcaption>
 </figure>
 
 <h2 id="a-planilha">A planilha</h2>
-<p>Na fala do vídeo: <em>"tem que ter uma coluna chamada telefone, que é onde você vai colocar os telefones dos usuários. E eles têm que estar nesse formato aqui: 55, que no caso seria o DDI, o código do país, DDD e o número."</em></p>
+<p>A planilha precisa de uma coluna chamada <code>telefone</code>, com os números no formato 55 (o código do país), DDD e número.</p>
 <pre><code>telefone,nome
 5511999999999,Maria
 5541988887777,João
 </code></pre>
 <p><strong>A coluna <code>telefone</code></strong> pode estar em qualquer posição, mas o nome precisa estar na primeira linha.</p>
-<p><strong>As outras colunas</strong> são as variáveis do template: <em>"o nome da coluna pode ser qualquer um, tanto faz."</em></p>
+<p><strong>As outras colunas</strong> são as variáveis do template, e o nome delas pode ser qualquer um.</p>
 <p><strong>Exportar como CSV.</strong> No Google Sheets, pelo menu de arquivo, baixando como CSV.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=ly5nOHFpXcI" rel="noopener">
@@ -645,46 +669,79 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Disparo em massa de mensagens na API oficial do WhatsApp</b><span>Canal DATA7 · 10 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 02:19 ele mostra o formato da planilha, em 02:53 a regra da coluna telefone, e em 03:47 as colunas que viram variáveis.</figcaption>
+<figcaption>A aba Disparos por completo: planilha CSV, template com imagem, mapeamento de variáveis, agendamento e status por contato.</figcaption>
 </figure>
 
 <h2 id="o-disparo-na-aba-disparos">O disparo, na aba Disparos</h2>
 <p><strong>1. Nova campanha</strong>, com um nome.</p>
 <p><strong>2. Subir a planilha.</strong> O painel mostra os três primeiros contatos para você conferir.</p>
 <p><strong>3. Escolher o template.</strong> Aparecem os templates aprovados na Meta. <a href="/como-criar-template-whatsapp-passo-a-passo">Como criar um está aqui</a>.</p>
-<p><strong>4. Mídia, se o template tiver.</strong> Um template com imagem no cabeçalho pede a imagem nessa hora. No vídeo, ele usa uma que já estava na aba de mídias, e lembra: <em>"essa aba de mídias fica aqui durante 30 dias."</em></p>
+<p><strong>4. Mídia, se o template tiver.</strong> Um template com imagem no cabeçalho pede a imagem nessa hora, porque a imagem usada na criação do template é só exemplo. Dá para usar uma que já esteja na aba de mídias, que guarda os arquivos por 30 dias.</p>
 <p><strong>5. Mapear as variáveis.</strong> Para cada variável do template, a coluna da planilha que preenche. O painel mostra uma prévia.</p>
-<p><strong>6. Enviar agora ou agendar.</strong> O agendamento usa o fuso horário do computador de quem agenda: <em>"como eu tô no Brasil, ele vai pegar o do teu computador."</em></p>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=ly5nOHFpXcI" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/ly5nOHFpXcI/maxresdefault.jpg" alt="Miniatura do vídeo: Disparo em massa de mensagens na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>Disparo em massa de mensagens na API oficial do WhatsApp</b><span>Canal DATA7 · 10 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Em 04:38 ele sobe a planilha, em 05:16 escolhe o template e a imagem, em 05:39 mapeia a variável, e em 07:20 agenda um segundo disparo.</figcaption>
-</figure>
-
+<p><strong>6. Enviar agora ou agendar.</strong> O agendamento usa o fuso horário do computador de quem agenda.</p>
 <h2 id="o-que-o-status-mostra">O que o status mostra</h2>
-<p>Depois do disparo, o painel mostra o resultado por contato. No vídeo, dois enviados e um erro, que era o número inventado de propósito na planilha.</p>
-<p>E o Israel avisa sobre outros motivos: <em>"às vezes a meta simplesmente não entrega porque ela não quer. Isso acontece. Ou talvez você não tem saldo, teu cartão de crédito tá com problema."</em></p>
-<p>No bate-papo do painel, ele abre uma mensagem que não foi entregue e lê o motivo: a mensagem não foi entregue <strong>para manter a saúde do ecossistema</strong>. E explica por que aquele número recebia isso: <em>"porque esse número aqui eu não respondo ele. Quando a API envia mensagens, eu não costumo responder."</em> Mais adiante: <em>"a meta entende que essa pessoa não quer receber mensagens."</em></p>
-<p>Os status também chegam no seu webhook. <a href="/tres-status-da-mensagem-whatsapp">Os três status estão explicados aqui</a>.</p>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=ly5nOHFpXcI" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/ly5nOHFpXcI/maxresdefault.jpg" alt="Miniatura do vídeo: Disparo em massa de mensagens na API oficial do WhatsApp" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>Disparo em massa de mensagens na API oficial do WhatsApp</b><span>Canal DATA7 · 10 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Em 06:29 aparece o resultado com o erro do número inexistente, e em 08:52 ele abre a mensagem que a Meta não entregou para manter a saúde do ecossistema.</figcaption>
-</figure>
-
-<h2 id="pela-api">Pela API</h2>
+<p>Depois do disparo, o painel mostra o resultado por contato. Um número inexistente na planilha, por exemplo, aparece como erro.</p>
+<p>Aceitar o envio não é entregar. Cada envio aceito recebe um ID, e isso confirma só que a solicitação foi recebida. O que acontece depois chega pelos webhooks de status:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>O que significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sent</code></td>
+<td>Enviada; ainda não confirma entrega</td>
+</tr>
+<tr>
+<td><code>delivered</code></td>
+<td>Entregue ao destinatário</td>
+</tr>
+<tr>
+<td><code>read</code></td>
+<td>Lida, quando a confirmação está disponível</td>
+</tr>
+<tr>
+<td><code>failed</code></td>
+<td>Falha, com o erro. Exemplos: mensagem de serviço fora da janela, falha no pagamento</td>
+</tr>
+</tbody>
+</table></div>
+<p>Um número válido também pode não receber. Nas palavras de Israel Henrique, CTO da Datafy: <em>"às vezes a meta simplesmente não entrega porque ela não quer. Isso acontece."</em> Outro motivo é o pagamento: cartão com problema gera falha, e o erro vem no status.</p>
+<p>Um exemplo real, visto no bate-papo do painel: uma mensagem não entregue trazia o motivo <strong>para manter a saúde do ecossistema</strong>. O destino era um número de teste que não costumava responder às mensagens enviadas pela API. A leitura da Datafy: a Meta entende esse comportamento como de alguém que não quer receber mensagens.</p>
+<p>Os status também chegam no seu webhook. <a href="/tres-status-da-mensagem-whatsapp">Os status da mensagem explicados</a>.</p>
+<h2 id="pela-api-e-quanto-custa">Pela API, e quanto custa</h2>
 <p>O mesmo resultado sai de um laço que envia o template para cada número da lista, pelo endpoint de mensagens da Datafy API. <a href="/como-enviar-template-pela-api">Como enviar template pela API está aqui</a>.</p>
-<p>Dois limites para o laço: o envio de mensagens na Datafy API aceita <strong>500 requisições por minuto</strong>, com resposta <code>429</code> indicando quantos segundos esperar. E cada template enviado é cobrado pela Meta, pela categoria dele.</p>
+<p><strong>Limite da Datafy.</strong> O envio de mensagens na Datafy API aceita <strong>500 requisições por minuto</strong>, com resposta <code>429</code> indicando quantos segundos esperar.</p>
+<p><strong>Custo da Meta.</strong> A Meta cobra cada template <strong>entregue</strong>, pela categoria e pelo país do destinatário. Requisição aceita com ID não significa mensagem entregue nem cobrada. Valores de referência no Brasil:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Categoria do template</th>
+<th>Por mensagem entregue</th>
+<th>100 mensagens entregues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Marketing</td>
+<td>R$ 0,32</td>
+<td>cerca de R$ 32,00</td>
+</tr>
+<tr>
+<td>Utilidade</td>
+<td>R$ 0,035</td>
+<td>cerca de R$ 3,50</td>
+</tr>
+<tr>
+<td>Autenticação</td>
+<td>R$ 0,035</td>
+<td>cerca de R$ 3,50</td>
+</tr>
+</tbody>
+</table></div>
+<p>Marketing e autenticação são cobrados mesmo com a janela aberta. Utilidade é cobrada fora da janela e, a partir de 1º de outubro de 2026, também dentro dela. Os valores são referência para planejamento: o efetivo depende da tabela vigente, da moeda de cobrança e das condições da conta, e não representam o preço do plano da Datafy. <a href="/categorias-de-template-whatsapp">Como a categoria é definida</a>.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Qual o formato do telefone na planilha?</h3>
 <p>55, DDD e número, na coluna <code>telefone</code>.</p>
@@ -693,9 +750,9 @@ footer p{margin:0 0 .5rem}
 <h3>Posso agendar?</h3>
 <p>Pode, no fuso horário do computador de quem agenda.</p>
 <h3>Por que uma mensagem não foi entregue sem erro de número?</h3>
-<p>Um motivo que aparece no vídeo é a Meta não entregar para manter a saúde do ecossistema, quando a pessoa não costuma responder. Outros: saldo ou cartão.</p>
+<p>A Meta pode deixar de entregar para manter a saúde do ecossistema, como no caso de um número que não costuma responder. Outro motivo é falha no pagamento, que chega como <code>failed</code> no status.</p>
 <h3>Posso disparar sem template?</h3>
-<p>Não para quem não falou com você nas últimas 24 horas.</p>
+<p>Não para quem não falou com você nas últimas 24 horas. E o template não abre a janela: ela abre quando a pessoa responde.</p>
 <h2 id="como-decidir">Como decidir</h2>
 <p>Sem time técnico, use a aba Disparos: planilha com <code>telefone</code>, template aprovado, mapeamento e, se quiser, agendamento. Com time técnico, faça o laço pela API respeitando as 500 requisições por minuto. Nos dois casos, olhe o status depois: é ali que aparece quem não está recebendo.</p>
 <div class="cta"><h3>Faça um disparo de três linhas</h3><p>Monte a planilha com o seu número e mais dois de teste, escolha um template aprovado, mapeie a variável e dispare. Confira o status de cada linha no painel.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
@@ -713,7 +770,7 @@ footer p{margin:0 0 .5rem}
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>
@@ -721,11 +778,11 @@ footer p{margin:0 0 .5rem}
       <strong>Nesta página</strong>
       <ol>
         <li><a href="#principais-pontos">Principais pontos</a></li>
-        <li><a href="#antes-de-disparar-permiss-o-e-resposta">Antes de disparar: permissão e r...</a></li>
+        <li><a href="#antes-de-disparar-permiss-o-template-e-r">Antes de disparar: permissão, te...</a></li>
         <li><a href="#a-planilha">A planilha</a></li>
         <li><a href="#o-disparo-na-aba-disparos">O disparo, na aba Disparos</a></li>
         <li><a href="#o-que-o-status-mostra">O que o status mostra</a></li>
-        <li><a href="#pela-api">Pela API</a></li>
+        <li><a href="#pela-api-e-quanto-custa">Pela API, e quanto custa</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
         <li><a href="#como-decidir">Como decidir</a></li>
         <li><a href="#leia-tamb-m">Leia também</a></li>

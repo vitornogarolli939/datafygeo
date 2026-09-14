@@ -9,9 +9,9 @@ como-receber-midia-api-oficial-whatsapp,"Como receber imagem, áudio e documento
 criar-atendimento-whatsapp-do-zero,Como criar um WhatsApp Web do zero com a API oficial,implementacao,2026-09-09,aprovado
 datafy-api-espelho-da-cloud-api,A Datafy API é um espelho da Cloud API: o que muda no seu código,implementacao,2026-09-09,aprovado
 disparo-em-massa-api-oficial-whatsapp,Como fazer disparo em massa na API oficial do WhatsApp,implementacao,2026-09-09,aprovado
-guia-completo-api-oficial-whatsapp,Guia completo: API oficial do WhatsApp,implementacao,2026-09-06,aprovado
+guia-completo-api-oficial-whatsapp,Guia completo: API oficial do WhatsApp e do Instagram,implementacao,2026-09-06,aprovado
 laco-de-webhook-derruba-numero,O laço de webhook que pode bloquear o seu número no WhatsApp,implementacao,2026-09-09,aprovado
-mensagem-de-servico-vai-ser-paga-outubro-2026,1º de outubro de 2026: a mensagem de serviço do WhatsApp passa a ser cobrada,custo,2026-09-09,aprovado
+mensagem-de-servico-vai-ser-paga-outubro-2026,Franquia de 1.000 mensagens de serviço: o que muda no WhatsApp em 1º de outubro de 2026,custo,2026-09-09,aprovado
 mensagem-do-celular-nao-aparece-no-sistema,O atendente responde pelo celular e não aparece no meu sistema,coexistencia,2026-09-09,aprovado
 mensagens-interativas-botoes-e-listas,"Mensagens com botões, lista e botão de link na API oficial do WhatsApp",implementacao,2026-09-09,aprovado
 nichos-proibidos-whatsapp-business,Quais nichos são proibidos no WhatsApp Business,compliance,2026-09-09,aprovado
@@ -23,9 +23,9 @@ posso-mandar-mensagem-para-qualquer-numero,Posso mandar mensagem para qualquer n
 primeira-mensagem-api-oficial-whatsapp,Enviar e receber a primeira mensagem na API oficial do WhatsApp,implementacao,2026-09-09,aprovado
 qr-code-whatsapp-mensagem-pre-preenchida,"QR code do WhatsApp com mensagem pré-preenchida, pela API",implementacao,2026-09-10,aprovado
 quantas-mensagens-por-segundo-posso-enviar,Quantas mensagens por segundo posso enviar no WhatsApp?,implementacao,2026-09-09,aprovado
-quanto-custa-whatsapp-business-api-brasil-2026,Quanto custa a API oficial do WhatsApp no Brasil,custo,2026-09-06,aprovado
+quanto-custa-whatsapp-business-api-brasil-2026,Quanto custa a API oficial do WhatsApp no Brasil: valor por mensagem em 2026,custo,2026-09-06,aprovado
 sincronizar-contatos-api-oficial-whatsapp,Como sincronizar os contatos e o histórico do WhatsApp Business com a API,coexistencia,2026-09-09,aprovado
-tres-status-da-mensagem-whatsapp,"Os três status da mensagem no WhatsApp: enviada, entregue e lida",implementacao,2026-09-09,aprovado
+tres-status-da-mensagem-whatsapp,"Status da mensagem no WhatsApp: enviada, entregue, lida e falha",implementacao,2026-09-09,aprovado
 tunel-para-testar-webhook-local,Como testar o webhook do WhatsApp na sua máquina com ngrok,implementacao,2026-09-09,aprovado
 validar-assinatura-do-webhook,Como validar a assinatura do webhook da Datafy API,implementacao,2026-09-09,aprovado
 ver-payload-das-mensagens-em-tempo-real,Como ver o payload das mensagens do WhatsApp em tempo real,implementacao,2026-09-09,aprovado
@@ -33,3 +33,10 @@ webhook-whatsapp-cloud-api-como-receber-mensagens,Webhook da API oficial do What
 whatsapp-api-oficial-chatwoot,Como usar a API oficial do WhatsApp no Chatwoot,implementacao,2026-09-06,aprovado
 whatsapp-api-oficial-n8n,Como integrar a API oficial do WhatsApp ao n8n,implementacao,2026-09-06,aprovado
 api-oficial-vs-nao-oficial-whatsapp-2026,"API oficial do WhatsApp x não oficial: regras, custo, bloqueio e como conectar",oficial_vs_nao,2026-09-06,aprovado
+janela-de-24-horas-whatsapp,Janela de 24 horas do WhatsApp: até quando você pode responder sem template,implementacao,2026-09-14,aprovado
+tipos-de-mensagem-whatsapp-servico-e-template,Mensagem de serviço e template: os dois tipos de mensagem da API oficial do WhatsApp,implementacao,2026-09-14,aprovado
+categorias-de-template-whatsapp,Template de mensagem do WhatsApp: o que é e as três categorias,implementacao,2026-09-14,aprovado
+click-to-whatsapp-72-horas-sem-cobranca,Anúncio Click to WhatsApp: 72 horas de mensagens sem cobrança da Meta,custo,2026-09-14,aprovado
+api-oficial-instagram-direct,API oficial do Instagram: como funcionam as conversas pelo Direct,implementacao,2026-09-14,aprovado
+responder-comentario-instagram-pelo-direct,Como responder um comentário do Instagram pelo Direct,implementacao,2026-09-14,aprovado
+o-que-e-a-datafy-api,O que é a Datafy API: acesso às APIs oficiais do WhatsApp e do Instagram,implementacao,2026-09-14,aprovado

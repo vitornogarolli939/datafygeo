@@ -9,7 +9,7 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-10
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://whatsappbusiness.com/policy/
   - https://app.datafyapi.com.br/docs
@@ -28,7 +28,7 @@ status: aprovado
 
 # Opt-in no WhatsApp: como pedir permissão com um link de cadastro
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** a política comercial do WhatsApp diz que você só pode contatar alguém se essa pessoa **forneceu o número** e **deu permissão (opt-in)**. O jeito de coletar essa permissão dentro do próprio WhatsApp é o **Cadastro no App**: você cria um cadastro pela API e recebe um link no formato `wa.me/<NUMERO>/signup/<SIGNUP_ID>`. Quem clica e confirma recebe a sua mensagem de confirmação, entra na base de clientes da conta, e você recebe um webhook.
 
@@ -47,11 +47,11 @@ Dois trechos da [política comercial do WhatsApp](https://whatsappbusiness.com/p
 
 **Contato só com permissão.** Você só pode contatar pessoas no WhatsApp se elas forneceram o número de celular **e** se você recebeu o opt-in delas.
 
-**Iniciar só com template.** Você só pode iniciar conversa usando um template de mensagem aprovado.
+**Iniciar só com template.** Você só pode iniciar conversa usando um template de mensagem aprovado. E enviar o template não abre a [janela de 24 horas](/janela-de-24-horas-whatsapp): ela abre quando a pessoa responde, e só aí você pode mandar mensagens de serviço, sem template.
 
-No vídeo sobre bloqueio, o Israel Henrique, CTO da Datafy, conta o que acontece na prática quando a regra de iniciar conversa é ignorada: a prospecção, ou seja, começar conversa com quem não falou com você, é para ele *"o primeiro grande causador de banimento"*.
+Ignorar a regra de iniciar conversa tem consequência prática. Israel Henrique, CTO da Datafy, aponta a prospecção, ou seja, começar conversa com quem não falou com você, como *"o primeiro grande causador de banimento"*.
 
-::video: cZ_nyIUv5ic | Em 02:38 ele apresenta a prospecção como a principal causa de bloqueio, e em 03:40 lê o trecho dos termos que exige template aprovado para iniciar conversa.
+::video: cZ_nyIUv5ic | A prospecção como principal causa de bloqueio, e o trecho dos termos que exige template aprovado para iniciar conversa.
 
 ## Criar o cadastro
 
@@ -157,11 +157,11 @@ Todos esses endpoints exigem a permissão `whatsapp_business_management`.
 
 ## Opt-in não garante que a pessoa responda
 
-Permissão resolve a política. Não resolve o que acontece depois do envio. No mesmo vídeo sobre bloqueio, o Israel conta o caso de uma advogada que tinha uma lista de clientes, montou o template certo, e foi bloqueada de novo porque ninguém respondia às mensagens.
+Permissão resolve a política. Não resolve o que acontece depois do envio. Um caso relatado pelo Israel: uma advogada tinha uma lista de clientes, montou o template certo, e foi bloqueada de novo porque ninguém respondia às mensagens.
 
-A recomendação dele, no vídeo de criação de templates, é dar à pessoa um jeito de responder: *"é sempre importante você fazer com que o usuário responda a você, mesmo que você coloque aqui uma opção assim, não quero mais receber mensagens."*
+Por isso, dê à pessoa um jeito de responder, mesmo que seja uma opção como "não quero mais receber mensagens". É a resposta dela que abre a janela de 24 horas.
 
-::video: YF9hTHDAw6E | Em 05:58 ele adiciona botões ao template e explica por que a resposta do usuário importa para a Meta não entender o envio como spam.
+::video: YF9hTHDAw6E | A criação de um template com botões, e por que a resposta do usuário importa para a Meta não entender o envio como spam.
 
 ## Perguntas frequentes
 

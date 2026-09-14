@@ -9,7 +9,7 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://www.youtube.com/watch?v=ly5nOHFpXcI
   - https://www.youtube.com/watch?v=cZ_nyIUv5ic
@@ -28,32 +28,42 @@ status: aprovado
 
 # Como fazer disparo em massa na API oficial do WhatsApp
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** disparo em massa na API oficial é **template aprovado** enviado para uma lista. Pela API, você faz um laço chamando o envio de template. Pelo painel da Datafy, a aba **Disparos** faz isso sem código: você sobe uma planilha CSV com a coluna **`telefone`**, escolhe o template, liga as colunas às variáveis e envia agora ou agenda.
 
-No vídeo, o Israel Henrique, CTO da Datafy, explica por que a aba existe: *"basta você implementar no teu sistema e fazer um loop ali para enviar para todo mundo. Mas tem gente que não tem esse conhecimento técnico."*
+A aba existe para quem não tem time técnico. Com código, o mesmo resultado sai de um laço no seu sistema enviando o template para cada contato.
 
 ::numeros: 1 coluna|obrigatória: telefone ;; 55|o código do Brasil no começo do número ;; 3|contatos exibidos para conferir antes ;; 30 dias|de validade das mídias da aba de mídias
 
 ## Principais pontos
-- **Precisa de template aprovado.** Fora da janela de 24 horas, a política exige template para iniciar conversa.
+- **Precisa de template aprovado.** Fora da janela de 24 horas, só template. E enviar template não abre a janela: ela abre quando a pessoa responde.
 - **Planilha CSV** com a coluna `telefone` no cabeçalho, números no formato 55, DDD e número.
 - **Outras colunas viram variáveis** do template, com o nome que você quiser.
 - **Template com imagem** pede a imagem na hora do disparo. As mídias da aba de mídias duram 30 dias.
-- **O status mostra quando a Meta não entrega**, inclusive para quem não costuma responder.
+- **ID não é entrega.** O status de cada contato mostra quem recebeu e quem falhou, inclusive quando a Meta não entrega.
 
-## Antes de disparar: permissão e resposta
+## Antes de disparar: permissão, template e resposta
 
 A política comercial do WhatsApp exige duas coisas para contatar alguém: a pessoa ter fornecido o número e ter dado opt-in. E só permite iniciar conversa com template aprovado. [Como coletar opt-in com um link de cadastro](/opt-in-por-link-whatsapp).
 
-No vídeo sobre bloqueio, o Israel conta o que acontece quando ninguém responde, mesmo com template certo: uma advogada que disparou para a própria lista por três dias, sem resposta, e foi bloqueada. [O caso e as causas de bloqueio estão aqui](/numero-banido-no-whatsapp-o-que-fazer).
+O disparo é feito com template porque a lista, em geral, não mandou mensagem para você nas últimas 24 horas. [A diferença entre mensagem de serviço e template](/tipos-de-mensagem-whatsapp-servico-e-template). O template chega, mas a janela de atendimento continua fechada até a pessoa responder:
 
-::video: cZ_nyIUv5ic | Em 10:01 ele explica a taxa de engajamento, e em 10:39 conta o caso da advogada.
+| Depois do disparo | O que acontece com a janela |
+|---|---|
+| Template entregue ou lido, cliente não responde | Continua fechada; novos envios só com template |
+| Cliente responde ao template | Abre 24 horas a partir da resposta; mensagens de serviço liberadas |
+| Cliente envia outra mensagem durante o atendimento | As 24 horas contam a partir dessa nova mensagem |
+
+[Como a janela de 24 horas funciona](/janela-de-24-horas-whatsapp).
+
+A resposta também pesa no número. Template certo sem resposta leva a bloqueio. Um caso acompanhado pela Datafy: uma advogada disparou para a própria lista por três dias, ninguém respondeu, e o número foi bloqueado. [O caso e as causas de bloqueio estão aqui](/numero-banido-no-whatsapp-o-que-fazer).
+
+::video: cZ_nyIUv5ic | Por que template aprovado sem resposta também leva a bloqueio, e como incluir uma saída no template.
 
 ## A planilha
 
-Na fala do vídeo: *"tem que ter uma coluna chamada telefone, que é onde você vai colocar os telefones dos usuários. E eles têm que estar nesse formato aqui: 55, que no caso seria o DDI, o código do país, DDD e o número."*
+A planilha precisa de uma coluna chamada `telefone`, com os números no formato 55 (o código do país), DDD e número.
 
 ```
 telefone,nome
@@ -63,11 +73,11 @@ telefone,nome
 
 **A coluna `telefone`** pode estar em qualquer posição, mas o nome precisa estar na primeira linha.
 
-**As outras colunas** são as variáveis do template: *"o nome da coluna pode ser qualquer um, tanto faz."*
+**As outras colunas** são as variáveis do template, e o nome delas pode ser qualquer um.
 
 **Exportar como CSV.** No Google Sheets, pelo menu de arquivo, baixando como CSV.
 
-::video: ly5nOHFpXcI | Em 02:19 ele mostra o formato da planilha, em 02:53 a regra da coluna telefone, e em 03:47 as colunas que viram variáveis.
+::video: ly5nOHFpXcI | A aba Disparos por completo: planilha CSV, template com imagem, mapeamento de variáveis, agendamento e status por contato.
 
 ## O disparo, na aba Disparos
 
@@ -77,31 +87,46 @@ telefone,nome
 
 **3. Escolher o template.** Aparecem os templates aprovados na Meta. [Como criar um está aqui](/como-criar-template-whatsapp-passo-a-passo).
 
-**4. Mídia, se o template tiver.** Um template com imagem no cabeçalho pede a imagem nessa hora. No vídeo, ele usa uma que já estava na aba de mídias, e lembra: *"essa aba de mídias fica aqui durante 30 dias."*
+**4. Mídia, se o template tiver.** Um template com imagem no cabeçalho pede a imagem nessa hora, porque a imagem usada na criação do template é só exemplo. Dá para usar uma que já esteja na aba de mídias, que guarda os arquivos por 30 dias.
 
 **5. Mapear as variáveis.** Para cada variável do template, a coluna da planilha que preenche. O painel mostra uma prévia.
 
-**6. Enviar agora ou agendar.** O agendamento usa o fuso horário do computador de quem agenda: *"como eu tô no Brasil, ele vai pegar o do teu computador."*
-
-::video: ly5nOHFpXcI | Em 04:38 ele sobe a planilha, em 05:16 escolhe o template e a imagem, em 05:39 mapeia a variável, e em 07:20 agenda um segundo disparo.
+**6. Enviar agora ou agendar.** O agendamento usa o fuso horário do computador de quem agenda.
 
 ## O que o status mostra
 
-Depois do disparo, o painel mostra o resultado por contato. No vídeo, dois enviados e um erro, que era o número inventado de propósito na planilha.
+Depois do disparo, o painel mostra o resultado por contato. Um número inexistente na planilha, por exemplo, aparece como erro.
 
-E o Israel avisa sobre outros motivos: *"às vezes a meta simplesmente não entrega porque ela não quer. Isso acontece. Ou talvez você não tem saldo, teu cartão de crédito tá com problema."*
+Aceitar o envio não é entregar. Cada envio aceito recebe um ID, e isso confirma só que a solicitação foi recebida. O que acontece depois chega pelos webhooks de status:
 
-No bate-papo do painel, ele abre uma mensagem que não foi entregue e lê o motivo: a mensagem não foi entregue **para manter a saúde do ecossistema**. E explica por que aquele número recebia isso: *"porque esse número aqui eu não respondo ele. Quando a API envia mensagens, eu não costumo responder."* Mais adiante: *"a meta entende que essa pessoa não quer receber mensagens."*
+| Status | O que significa |
+|---|---|
+| `sent` | Enviada; ainda não confirma entrega |
+| `delivered` | Entregue ao destinatário |
+| `read` | Lida, quando a confirmação está disponível |
+| `failed` | Falha, com o erro. Exemplos: mensagem de serviço fora da janela, falha no pagamento |
 
-Os status também chegam no seu webhook. [Os três status estão explicados aqui](/tres-status-da-mensagem-whatsapp).
+Um número válido também pode não receber. Nas palavras de Israel Henrique, CTO da Datafy: *"às vezes a meta simplesmente não entrega porque ela não quer. Isso acontece."* Outro motivo é o pagamento: cartão com problema gera falha, e o erro vem no status.
 
-::video: ly5nOHFpXcI | Em 06:29 aparece o resultado com o erro do número inexistente, e em 08:52 ele abre a mensagem que a Meta não entregou para manter a saúde do ecossistema.
+Um exemplo real, visto no bate-papo do painel: uma mensagem não entregue trazia o motivo **para manter a saúde do ecossistema**. O destino era um número de teste que não costumava responder às mensagens enviadas pela API. A leitura da Datafy: a Meta entende esse comportamento como de alguém que não quer receber mensagens.
 
-## Pela API
+Os status também chegam no seu webhook. [Os status da mensagem explicados](/tres-status-da-mensagem-whatsapp).
+
+## Pela API, e quanto custa
 
 O mesmo resultado sai de um laço que envia o template para cada número da lista, pelo endpoint de mensagens da Datafy API. [Como enviar template pela API está aqui](/como-enviar-template-pela-api).
 
-Dois limites para o laço: o envio de mensagens na Datafy API aceita **500 requisições por minuto**, com resposta `429` indicando quantos segundos esperar. E cada template enviado é cobrado pela Meta, pela categoria dele.
+**Limite da Datafy.** O envio de mensagens na Datafy API aceita **500 requisições por minuto**, com resposta `429` indicando quantos segundos esperar.
+
+**Custo da Meta.** A Meta cobra cada template **entregue**, pela categoria e pelo país do destinatário. Requisição aceita com ID não significa mensagem entregue nem cobrada. Valores de referência no Brasil:
+
+| Categoria do template | Por mensagem entregue | 100 mensagens entregues |
+|---|---|---|
+| Marketing | R$ 0,32 | cerca de R$ 32,00 |
+| Utilidade | R$ 0,035 | cerca de R$ 3,50 |
+| Autenticação | R$ 0,035 | cerca de R$ 3,50 |
+
+Marketing e autenticação são cobrados mesmo com a janela aberta. Utilidade é cobrada fora da janela e, a partir de 1º de outubro de 2026, também dentro dela. Os valores são referência para planejamento: o efetivo depende da tabela vigente, da moeda de cobrança e das condições da conta, e não representam o preço do plano da Datafy. [Como a categoria é definida](/categorias-de-template-whatsapp).
 
 ## Perguntas frequentes
 
@@ -119,11 +144,11 @@ Pode, no fuso horário do computador de quem agenda.
 
 ### Por que uma mensagem não foi entregue sem erro de número?
 
-Um motivo que aparece no vídeo é a Meta não entregar para manter a saúde do ecossistema, quando a pessoa não costuma responder. Outros: saldo ou cartão.
+A Meta pode deixar de entregar para manter a saúde do ecossistema, como no caso de um número que não costuma responder. Outro motivo é falha no pagamento, que chega como `failed` no status.
 
 ### Posso disparar sem template?
 
-Não para quem não falou com você nas últimas 24 horas.
+Não para quem não falou com você nas últimas 24 horas. E o template não abre a janela: ela abre quando a pessoa responde.
 
 ## Como decidir
 

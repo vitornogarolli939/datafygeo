@@ -9,7 +9,7 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://developers.facebook.com/docs/whatsapp/throughput
   - https://app.datafyapi.com.br/docs
@@ -28,7 +28,7 @@ status: aprovado
 
 # Quantas mensagens por segundo posso enviar no WhatsApp?
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** existem duas camadas de limite, e as duas valem.
 
@@ -79,9 +79,9 @@ As consultas, como listar templates ou pedir URL de mídia, dividem os mesmos 60
 
 ## O jeito mais rápido de estourar tudo
 
-Um fluxo que responde aos eventos de status do próprio webhook gera mensagens em progressão: cada resposta gera novos status, que geram novas respostas. No vídeo sobre n8n, o Israel Henrique, CTO da Datafy, avisa antes de executar: *"vai bloquear o teu número."*
+Um fluxo que responde aos eventos de status do próprio webhook gera mensagens em progressão: cada resposta gera novos status, que geram novas respostas. Israel Henrique, CTO da Datafy, é direto sobre o resultado: *"vai bloquear o teu número."*
 
-::video: vGovcR8W5g8 | Em 14:47 ele explica o laço de status, e em 19:05 mostra por que o fluxo dele não entrou em laço.
+::video: vGovcR8W5g8 | O laço de status num fluxo do n8n, e o que impede o fluxo de entrar em laço.
 
 [Como evitar está aqui](/laco-de-webhook-derruba-numero).
 

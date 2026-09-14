@@ -16,8 +16,8 @@
 <meta property="og:title" content="Posso mandar mensagem para qualquer número na API oficial do WhatsApp?">
 <meta property="og:description" content="Não. A política exige que a pessoa tenha dado o número e o opt-in, e para iniciar conversa só com template aprovado. Texto livre só vai para quem falou com você nas últimas 24 horas.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/posso-mandar-mensagem-para-qualquer-numero">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Posso mandar mensagem para qualquer número na API oficial do WhatsApp?">
@@ -124,7 +124,7 @@
       "description": "Não. A política exige que a pessoa tenha dado o número e o opt-in, e para iniciar conversa só com template aprovado. Texto livre só vai para quem falou com você nas últimas 24 horas.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -157,7 +157,7 @@
           "name": "Por quanto tempo posso responder sem template?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "24 horas depois da última mensagem da pessoa. A janela reinicia a cada nova mensagem dela."
+            "text": "24 horas depois da última mensagem da pessoa. A janela reinicia a cada nova mensagem dela. Mensagem sua não renova o prazo."
           }
         },
         {
@@ -165,7 +165,7 @@
           "name": "A chamada deu certo. A mensagem chegou?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não necessariamente. A falha por janela fechada chega no webhook."
+            "text": "Não necessariamente. A requisição pode voltar HTTP 200 com ID, e a falha por janela fechada chega depois no webhook de status."
           }
         },
         {
@@ -173,7 +173,7 @@
           "name": "Template aprovado evita bloqueio?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. Se as pessoas não respondem, a Meta entende como spam."
+            "text": "Não. Se as pessoas não respondem, a Meta pode entender como spam."
           }
         },
         {
@@ -572,7 +572,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -602,21 +602,21 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <p><strong>Resposta curta:</strong> não. A <a href="https://whatsappbusiness.com/policy/" rel="noopener">política comercial do WhatsApp</a> só permite contatar quem <strong>forneceu o número</strong> e <strong>deu opt-in</strong>, e só permite <strong>iniciar conversa com template aprovado</strong>. Mensagem livre, sem template, só vai para quem mandou mensagem para você nas <strong>últimas 24 horas</strong>.</p>
-<p>E um detalhe prático: se você tentar mandar texto livre fora da janela, a chamada responde normalmente, e a falha aparece depois, no webhook.</p>
+<p>E um detalhe prático: se você tentar mandar texto livre fora da janela, a requisição pode voltar HTTP 200 com um ID, e a falha chega depois, no webhook de status.</p>
 <div class="stats">
   <div class="stat"><b>2</b><span>condições da política para contatar alguém</span></div>
   <div class="stat"><b>24 h</b><span>a janela para responder sem template</span></div>
   <div class="stat"><b>1 template</b><span>aprovado, para iniciar conversa</span></div>
-  <div class="stat"><b>1 id</b><span>volta mesmo quando a mensagem vai falhar</span></div>
+  <div class="stat"><b>1 ID</b><span>volta mesmo quando a mensagem vai falhar</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
 <ul>
 <li><strong>Opt-in:</strong> a pessoa precisa ter dado o número e a permissão.</li>
-<li><strong>Iniciar conversa:</strong> só com template aprovado.</li>
-<li><strong>Dentro de 24 horas</strong> da última mensagem da pessoa, você responde livremente. A janela reinicia a cada nova mensagem dela.</li>
+<li><strong>Iniciar conversa:</strong> só com template aprovado. Enviar o template não abre a janela; a resposta da pessoa abre.</li>
+<li><strong>Dentro de 24 horas</strong> da última mensagem da pessoa, você responde livremente. Só a mensagem dela renova o prazo; a sua não renova.</li>
 <li><strong>Fora da janela</strong>, o texto livre falha, e o motivo chega no webhook.</li>
-<li><strong>Template aprovado não impede bloqueio.</strong> Se ninguém responde, a Meta entende como spam.</li>
+<li><strong>Template aprovado não impede bloqueio.</strong> Se ninguém responde, a Meta pode entender como spam.</li>
 </ul>
 <figure>
 <div class="diagram">
@@ -638,7 +638,7 @@ footer p{margin:0 0 .5rem}
   <rect x="150" y="100" width="215" height="58" rx="9" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
   <text x="257" y="121" class="lb2" text-anchor="middle" fill="var(--accent)">Janela de 24 horas</text>
   <text x="257" y="138" class="sm2" text-anchor="middle">Mensagem de serviço: resposta livre,</text>
-  <text x="257" y="151" class="sm2" text-anchor="middle">sem template. Grátis até 1º/out/2026.</text>
+  <text x="257" y="151" class="sm2" text-anchor="middle">sem template. Só o cliente renova.</text>
   <path d="M257 100 L257 62" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 3"/>
 
   <circle cx="420" cy="58" r="6" fill="var(--muted)"/>
@@ -663,12 +663,51 @@ footer p{margin:0 0 .5rem}
 <p><strong>Seção 2:</strong> você só pode iniciar conversas usando um template de mensagem aprovado.</p>
 <p>Para coletar o opt-in dentro do próprio WhatsApp, <a href="/opt-in-por-link-whatsapp">o Cadastro no App cria um link de inscrição</a>. E para a pessoa começar a conversa, <a href="/qr-code-whatsapp-mensagem-pre-preenchida">um QR code com mensagem pré-preenchida</a>.</p>
 <h2 id="a-janela-de-24-horas">A janela de 24 horas</h2>
-<p>No vídeo de primeiros passos, o Israel Henrique, CTO da Datafy, explica a regra antes de responder pela API: a mensagem de serviço <em>"é gratuita, você não paga para enviar essas mensagens, porém você só pode enviar essas mensagens para usuários que já enviaram mensagem para você nas últimas 24 horas."</em></p>
-<p>No vídeo sobre preço, ele lê a documentação: a janela de atendimento é iniciada quando o usuário envia mensagem e é reiniciada a cada nova mensagem dele. E, passadas as 24 horas sem nova mensagem, <em>"a janela fecha e eu não consigo mais falar com ele, a não ser que eu envie um template novamente."</em></p>
-<p>Sobre o custo dessa resposta: gratuita até 1º de outubro de 2026, segundo a documentação da Meta.</p>
+<p>A mensagem do cliente abre a janela de atendimento. Durante 24 horas, contadas a partir da última mensagem dele, você responde com mensagem de serviço, sem template. Se ele escrever de novo, o prazo recomeça dessa nova mensagem.</p>
+<p>Três regras que confundem:</p>
+<p><strong>Quem renova é o cliente.</strong> Resposta da empresa, de atendente, bot ou automação, não aumenta o prazo.</p>
+<p><strong>Cada cliente tem a sua janela.</strong> Uma conversa aberta com um cliente não libera envio para outro.</p>
+<p><strong>Template não abre a janela.</strong> Ela abre quando a pessoa responde ao template.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Quando</th>
+<th>O que você pode enviar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A pessoa nunca escreveu para você</td>
+<td>Só template aprovado, com opt-in</td>
+</tr>
+<tr>
+<td>A pessoa escreveu há menos de 24 horas</td>
+<td>Mensagem de serviço, sem template</td>
+</tr>
+<tr>
+<td>Você respondeu, e ela não escreveu de novo</td>
+<td>O prazo continua contando da última mensagem dela</td>
+</tr>
+<tr>
+<td>Passaram 24 horas desde a última mensagem dela</td>
+<td>Só template aprovado</td>
+</tr>
+<tr>
+<td>Você enviou template e ela não respondeu</td>
+<td>A janela continua fechada; só template</td>
+</tr>
+<tr>
+<td>Ela respondeu ao template</td>
+<td>Abre nova janela de 24 horas a partir da resposta</td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="/janela-de-24-horas-whatsapp">A regra completa da janela está aqui</a>.</p>
+<p>Janela aberta não significa envio gratuito. A Meta cobra por mensagem entregue, conforme a categoria e o país do destinatário. Até 30/09/2026, mensagem de serviço dentro da janela não é cobrada. A partir de 1º de outubro de 2026, cada número tem 1.000 mensagens de serviço grátis por mês, e a cobrança começa na 1.001ª entregue (R$ 0,035 de referência no Brasil). Template de marketing e de autenticação é cobrado mesmo com a janela aberta.</p>
+<p>Quem chega por anúncio Click to WhatsApp e escreve abre a mesma janela de 24 horas. Se a empresa responder dentro desse prazo, ganha 72 horas sem cobrança da Meta, contadas a partir da resposta da empresa. <a href="/click-to-whatsapp-72-horas-sem-cobranca">Como funciona o Click to WhatsApp</a>.</p>
 <h2 id="como-a-falha-aparece">Como a falha aparece</h2>
-<p>No vídeo, o Israel escolhe de propósito um número que não mandou mensagem para ele nas últimas 24 horas e envia um texto. A chamada devolve um identificador, igual ao envio que deu certo: <em>"isso daqui sempre aparece, independente se a mensagem enviou ou não enviou ou se deu erro, ele vai retornar esse ID."</em></p>
-<p>No webhook chega a falha, com o mesmo identificador e o motivo: não foi entregue porque já se passaram mais de 24 horas desde a última vez que aquele usuário entrou em contato. <em>"Então, ele realmente não entrega a mensagem."</em></p>
+<p>Envie texto livre para um número que não mandou mensagem para você nas últimas 24 horas. A requisição volta com um ID, igual ao envio que deu certo. ID não significa entrega.</p>
+<p>No webhook de status chega a falha, com o mesmo ID e o motivo: a mensagem não foi entregue porque já se passaram mais de 24 horas desde a última vez que aquele usuário entrou em contato.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
   <span class="thumb">
@@ -677,15 +716,15 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 11:23 ele explica a janela de 24 horas, em 12:57 envia para um número fora dela, e em 14:15 a falha aparece no webhook com o motivo.</figcaption>
+<figcaption>O envio para um número fora da janela de 24 horas e a falha chegando no webhook com o motivo.</figcaption>
 </figure>
 
 <p><a href="/tres-status-da-mensagem-whatsapp">Os status de cada envio estão explicados aqui</a>.</p>
 <h2 id="fora-da-janela-template">Fora da janela: template</h2>
-<p>Para falar com quem não mandou mensagem nas últimas 24 horas, o caminho é template aprovado pela Meta, que é pago pela categoria. <a href="/como-criar-template-whatsapp-passo-a-passo">Como criar um template</a>.</p>
+<p>Para falar com quem não mandou mensagem nas últimas 24 horas, o caminho é template aprovado pela Meta, cobrado por mensagem entregue conforme a categoria. <a href="/categorias-de-template-whatsapp">As categorias de template estão aqui</a>. <a href="/como-criar-template-whatsapp-passo-a-passo">Como criar um template</a>.</p>
 <h2 id="template-aprovado-n-o-permiss-o-para-qua">Template aprovado não é permissão para qualquer lista</h2>
-<p>No vídeo sobre bloqueio, a primeira causa observada na base de clientes é iniciar conversa sem template, e ela vale para qualquer ferramenta: celular, WhatsApp Web, CRM ou API não oficial.</p>
-<p>E a segunda é o que acontece com template: <em>"a pessoa criou um template, ela começou a disparar e mesmo assim ela é banida. Ou seja, usar um template, usar a API oficial do WhatsApp não é blindagem contra banimento."</em> O caso que ele conta é o de uma advogada que disparou por três dias sem ninguém responder e foi bloqueada. <a href="/numero-banido-no-whatsapp-o-que-fazer">As causas de bloqueio estão aqui</a>.</p>
+<p>Na base de clientes da Datafy, a primeira causa de bloqueio observada é iniciar conversa sem template, e ela vale para qualquer ferramenta: celular, WhatsApp Web, CRM ou API não oficial.</p>
+<p>A segunda é disparar template que ninguém responde. Israel Henrique, CTO da Datafy, resume: <em>"usar um template, usar a API oficial do WhatsApp não é blindagem contra banimento."</em> O caso é o de uma cliente, advogada, que disparou por três dias sem ninguém responder e foi bloqueada. <a href="/numero-banido-no-whatsapp-o-que-fazer">As causas de bloqueio estão aqui</a>.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=cZ_nyIUv5ic" rel="noopener">
   <span class="thumb">
@@ -694,18 +733,18 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Porque você é bloqueado no WhatsApp Business</b><span>Canal DATA7 · 26 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 02:38 ele apresenta a prospecção como primeira causa, em 03:40 lê o trecho dos termos sobre template, e em 09:05 explica por que template não é blindagem.</figcaption>
+<figcaption>As causas de bloqueio observadas nos clientes da Datafy e por que template não é blindagem.</figcaption>
 </figure>
 
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Posso mandar mensagem para quem nunca falou comigo?</h3>
 <p>Só com template aprovado, e com o opt-in da pessoa, segundo a política.</p>
 <h3>Por quanto tempo posso responder sem template?</h3>
-<p>24 horas depois da última mensagem da pessoa. A janela reinicia a cada nova mensagem dela.</p>
+<p>24 horas depois da última mensagem da pessoa. A janela reinicia a cada nova mensagem dela. Mensagem sua não renova o prazo.</p>
 <h3>A chamada deu certo. A mensagem chegou?</h3>
-<p>Não necessariamente. A falha por janela fechada chega no webhook.</p>
+<p>Não necessariamente. A requisição pode voltar HTTP 200 com ID, e a falha por janela fechada chega depois no webhook de status.</p>
 <h3>Template aprovado evita bloqueio?</h3>
-<p>Não. Se as pessoas não respondem, a Meta entende como spam.</p>
+<p>Não. Se as pessoas não respondem, a Meta pode entender como spam.</p>
 <h3>Como consigo o opt-in?</h3>
 <p>Um jeito é o link de Cadastro no App, que registra a inscrição e avisa você por webhook.</p>
 <h2 id="como-decidir">Como decidir</h2>
@@ -725,7 +764,7 @@ footer p{margin:0 0 .5rem}
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>

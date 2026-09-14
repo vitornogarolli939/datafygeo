@@ -9,7 +9,7 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-10
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=cZ_nyIUv5ic
@@ -28,11 +28,11 @@ status: aprovado
 
 # Como bloquear e desbloquear um usuário pela API do WhatsApp
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** com `POST /v1/{phone_number_id}/block_users`, a empresa bloqueia um ou mais usuários. **Usuário bloqueado não consegue mandar mensagem para o número.** O mesmo endpoint lista os bloqueados com `GET` e desbloqueia com `DELETE`.
 
-Vale separar isso de outra coisa que tem o mesmo nome: quando **o cliente bloqueia a sua empresa** no WhatsApp. Esse segundo caso é o que pesa contra o seu número, segundo o vídeo sobre bloqueio do canal DATA7.
+Vale separar isso de outra coisa que tem o mesmo nome: quando **o cliente bloqueia a sua empresa** no WhatsApp. Esse segundo caso é o que pesa contra o seu número.
 
 ::numeros: 3 métodos|GET lista, POST bloqueia, DELETE desbloqueia ;; 1 chamada|pode bloquear vários usuários ;; 0|mensagens que o bloqueado consegue mandar ;; 1 endpoint|para as três operações
 
@@ -41,7 +41,7 @@ Vale separar isso de outra coisa que tem o mesmo nome: quando **o cliente bloque
 - **Bloquear:** `POST` no mesmo endpoint, com a lista de usuários em `block_users`.
 - **Desbloquear:** `DELETE` no mesmo endpoint, com a mesma estrutura de corpo.
 - Bloqueado **não consegue enviar mensagem** para o número da empresa.
-- **Cliente bloqueando a empresa é outra coisa**, e é a que aparece como sinal de risco no vídeo sobre bloqueio.
+- **Cliente bloqueando a empresa é outra coisa**, e é essa que pesa contra o número.
 
 ## Listar os bloqueados
 
@@ -117,17 +117,17 @@ Depois de desbloqueado, o usuário volta a conseguir mandar mensagens para o nú
 
 O endpoint acima é a **empresa** bloqueando alguém. O caso que preocupa quem envia mensagem é o inverso: **o cliente** bloqueando ou denunciando a empresa.
 
-No vídeo sobre bloqueio, o Israel Henrique, CTO da Datafy, é direto sobre esse segundo caso: *"quando a pessoa te bloqueia ou te denuncia, a chance de você tomar um bloqueio da meta é muito alta."* E ele conta como ele mesmo age do lado de quem recebe: quando uma empresa que ele não conhece manda mensagem oferecendo alguma coisa, *"eu bloqueio na hora."*
+Israel Henrique, CTO da Datafy, é direto sobre esse segundo caso: *"quando a pessoa te bloqueia ou te denuncia, a chance de você tomar um bloqueio da meta é muito alta."* E ele mesmo, do lado de quem recebe, bloqueia na hora a empresa que não conhece e manda mensagem oferecendo alguma coisa.
 
-::video: cZ_nyIUv5ic | Em 13:32 ele descreve como bloqueia empresas que mandam mensagem sem ele conhecer, e em 14:20 explica por que bloqueio e denúncia pesam contra o número.
+::video: cZ_nyIUv5ic | Por que o bloqueio e a denúncia feitos pelo cliente pesam contra o número da empresa.
 
-A recomendação dele para reduzir esse risco é dar à pessoa uma saída dentro do template, como um botão de não ter interesse, e tirar da lista quem clicar. [Isso está na página sobre bloqueio de número](/numero-banido-no-whatsapp-o-que-fazer).
+Para reduzir esse risco, dê à pessoa uma saída dentro do template, como um botão de não ter interesse, e tire da lista quem clicar. [Isso está na página sobre bloqueio de número](/numero-banido-no-whatsapp-o-que-fazer).
 
 ## Por que o endpoint funciona igual ao da Meta
 
-A Datafy API espelha a Cloud API: o caminho, o corpo e a resposta são os mesmos, e mudam só o domínio e o token. Na explicação do vídeo sobre como a Datafy funciona, se o endpoint não estiver na documentação da Datafy, você usa o da Meta com essa troca.
+A Datafy API é um proxy da API oficial da Meta e espelha a Cloud API: o caminho, o corpo e a resposta são os mesmos, e mudam só o domínio e o token. Se um endpoint não estiver na documentação da Datafy, use o da Meta com essa troca. [O que é a Datafy API](/o-que-e-a-datafy-api).
 
-::video: S2IAOQWbZMg | Em 12:40 ele resume: a única coisa que muda é a URL, e o token vai em todas as chamadas.
+::video: S2IAOQWbZMg | Como a Datafy API funciona: muda só a URL, e o token vai em todas as chamadas.
 
 ## Perguntas frequentes
 
@@ -145,7 +145,7 @@ Pode. `block_users` é uma lista.
 
 ### Bloquear um usuário prejudica a qualidade do meu número?
 
-A documentação não diz isso. O que o vídeo sobre bloqueio aponta como risco é o contrário: o cliente bloquear ou denunciar a empresa.
+A documentação não diz isso. O risco é o contrário: o cliente bloquear ou denunciar a empresa.
 
 ### Como vejo quem está bloqueado?
 

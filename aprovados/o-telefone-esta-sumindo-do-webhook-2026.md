@@ -9,7 +9,7 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://www.youtube.com/watch?v=fhz6n2s91-g
   - https://www.youtube.com/watch?v=vGovcR8W5g8
@@ -28,13 +28,13 @@ status: aprovado
 
 # O telefone vai sumir do webhook: como usar o user_id na API oficial
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** a Meta lançou o **nome de usuário** do WhatsApp, e na API ele aparece como **`user_id`**. O telefone da pessoa deixa de vir no webhook de forma progressiva, e o `user_id` passa a ser o identificador. Para responder por ele, no corpo do envio você troca o campo **`to`** por **`recipient`**, com o `user_id` que vem **dentro de `messages`**.
 
 O detalhe que muda a modelagem: o `user_id` **não é o mesmo para todas as empresas**. Ele identifica a relação entre aquela pessoa e aquela empresa.
 
-::numeros: 1 campo|to vira recipient ;; 1 relação|pessoa e empresa, e não a pessoa ;; progressivo|o telefone some aos poucos ;; 3 status|continuam chegando, e continuam exigindo filtro
+::numeros: 1 campo|to vira recipient ;; 1 relação|pessoa e empresa, e não a pessoa ;; progressivo|o telefone some aos poucos ;; status|sent, delivered, read e failed continuam chegando, e exigindo filtro
 
 ## Principais pontos
 - **`user_id` é o username na API**: o que aparece como nome de usuário no aplicativo.
@@ -45,29 +45,31 @@ O detalhe que muda a modelagem: o `user_id` **não é o mesmo para todas as empr
 
 ## O que está mudando
 
-No vídeo sobre user id, o Israel Henrique, CTO da Datafy, explica: *"a meta lançou user ID, que o username, que a gente já tá vendo o username aparecer aqui no celular. Você vai poder falar com as pessoas através do username, igual no Instagram, sem precisar saber o número. Isso a pessoa vai poder trocar de número depois e manter o mesmo username."*
+O **nome de usuário** do WhatsApp já aparece no aplicativo e funciona como no Instagram: dá para falar com a pessoa pelo username, sem saber o número dela. A pessoa pode trocar de número e manter o mesmo username.
 
-E na API: *"o número da pessoa vai parar de aparecer num dado momento. Isso é progressivo, tá acontecendo aos poucos. O número não vai vir mais."*
-
-Sobre quando, ele fala como expectativa, e não como data: no tutorial de atendimento, *"eu digo lá, acho que pro final de 2026 parece que tá previsto."*
-
-::video: fhz6n2s91-g | Em 00:00 ele apresenta o username, e em 00:38 explica que a mudança é progressiva e que o número deixa de vir.
+Na API, o número da pessoa para de vir. A mudança é progressiva, já está acontecendo aos poucos, e não tem data confirmada. Israel Henrique, CTO da Datafy, trata o final de 2026 como expectativa, e não como prazo.
 
 ## Use como identificador desde já
 
-No vídeo sobre n8n, o conselho é direto: *"você precisa usar o user ID como identificador único no teu sistema, porque você consegue responder o usuário através do user ID quando o número não estiver mais vindo."*
+Use o `user_id` como identificador único no seu sistema. Quando o número deixar de vir, é por ele que você continua respondendo a pessoa.
 
 No payload que chega, ele aparece em dois lugares: em `contacts`, junto com o nome e o telefone de quem mandou, e dentro de `messages`, como identificador de quem enviou.
 
-::video: vGovcR8W5g8 | Em 04:03 ele mostra o user_id no payload e explica por que usar como identificador único.
+::video: vGovcR8W5g8 | O user_id no payload do webhook, num fluxo do n8n, e por que usar como identificador único.
 
 ## Não é o mesmo para todas as empresas
 
-Esse é o ponto que mais muda o desenho do seu banco. Na explicação do vídeo: *"esse user ID aqui ele não é universal para um usuário, ele é uma relação entre o usuário e a empresa. Por exemplo, eu tenho o meu WhatsApp Business, o João entrou em contato comigo, o user ID do João vai ser um entre eu e ele. Se o João entrar em contato com outro WhatsApp Business, uma outra empresa, o user ID do João vai ser outro."*
+Esse é o ponto que mais muda o desenho do seu banco. O `user_id` não é universal: ele identifica a relação entre a pessoa e a empresa.
+
+Exemplo: o João manda mensagem para o WhatsApp Business da sua empresa.
+
+| Quando | O que acontece com o identificador |
+|---|---|
+| João fala com a sua empresa | Existe um `user_id` da relação entre ele e você |
+| João troca de número | Continua com o mesmo username |
+| João fala com outra empresa | O `user_id` dele nessa outra relação é outro |
 
 Consequência: o `user_id` serve para identificar a pessoa **na sua conta**. Não serve para reconhecer a mesma pessoa em outra empresa.
-
-::video: fhz6n2s91-g | Em 01:27 ele explica, com o exemplo do João, que o user_id é da relação entre a pessoa e a empresa.
 
 ## Responder pelo user_id
 
@@ -86,13 +88,13 @@ Content-Type: application/json
 }
 ```
 
-Na fala do vídeo: *"no lugar do to, você simplesmente vai colocar recipient."* E o valor vem de dentro de `messages`, não do topo do payload: *"então dentro do objeto messages, não aqui em cima, tá? Para não dar o loop que eu falei na aula anterior."*
+A troca é só essa: no lugar de `to`, `recipient`. O valor vem de dentro do objeto `messages`, e não do topo do payload, para o fluxo não cair no laço de responder a status.
 
-::video: fhz6n2s91-g | Em 02:30 ele troca to por recipient no n8n, em 03:07 arrasta o user_id de dentro de messages, e em 04:19 a resposta chega.
+::video: fhz6n2s91-g | O username na API, a troca de to por recipient no n8n e a resposta chegando pelo user_id.
 
 ## Os status continuam chegando
 
-Depois do envio pelo `user_id`, os três eventos de status aparecem de novo, e o vídeo reforça: *"por isso que você tem que colocar um filtro aí no teu projeto para não responder status de mensagem, responder apenas mensagens."* [O laço que isso evita está aqui](/laco-de-webhook-derruba-numero).
+Depois do envio pelo `user_id`, os eventos de status voltam como em qualquer envio: `sent`, `delivered`, `read` (quando disponível) ou `failed`, com o erro. Coloque um filtro no seu fluxo para responder só mensagens, e nunca status. [O laço que isso evita está aqui](/laco-de-webhook-derruba-numero).
 
 ## Perguntas frequentes
 
@@ -102,7 +104,7 @@ Não. Ele é da relação entre a pessoa e cada empresa.
 
 ### Quando o telefone deixa de vir?
 
-A mudança é progressiva. No tutorial, o Israel cita o final de 2026 como expectativa dele, sem data confirmada.
+A mudança é progressiva e não tem data confirmada. O final de 2026 aparece só como expectativa, não como prazo.
 
 ### Como envio mensagem usando o user_id?
 
@@ -114,7 +116,7 @@ Em `contacts`, com o nome e o telefone, e dentro de `messages`, como identificad
 
 ### A pessoa perde o user_id se trocar de número?
 
-Segundo o vídeo, ela pode trocar de número e manter o mesmo username.
+Não. Ela pode trocar de número e manter o mesmo username.
 
 ## Como decidir
 

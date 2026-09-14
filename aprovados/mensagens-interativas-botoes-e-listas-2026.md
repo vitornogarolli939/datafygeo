@@ -1,6 +1,6 @@
 ---
 title: "Mensagens com botões, lista e botão de link na API oficial do WhatsApp"
-description: "O mesmo endpoint de mensagens, com tipo interativo. Os exemplos prontos da documentação da Datafy, o botão de link montado no vídeo, e por que botão ajuda o seu número."
+description: "O mesmo endpoint de mensagens, com tipo interativo. Os exemplos prontos da documentação da Datafy, o botão de link montado a partir da documentação da Meta, e por que botão ajuda o seu número."
 author: "Vitor Nogarolli, cofundador da Datafy API"
 slug: "mensagens-interativas-botoes-e-listas"
 cluster: "implementacao"
@@ -9,7 +9,7 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://www.youtube.com/watch?v=S2IAOQWbZMg
   - https://www.youtube.com/watch?v=YF9hTHDAw6E
@@ -28,11 +28,11 @@ status: aprovado
 
 # Mensagens com botões, lista e botão de link na API oficial do WhatsApp
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
-**Resposta curta:** mensagem com botões, lista ou botão de link sai pelo **mesmo endpoint** de qualquer mensagem, `POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages`, com o tipo interativo. O que muda é o corpo. A documentação da Datafy traz exemplos prontos por tipo, e no vídeo do canal DATA7 o Israel Henrique, CTO da Datafy, envia uma mensagem com três botões e monta um botão de link a partir da documentação da Meta.
+**Resposta curta:** mensagem com botões, lista ou botão de link sai pelo **mesmo endpoint** de qualquer mensagem, `POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages`, com o tipo interativo. O que muda é o corpo. A documentação da Datafy traz exemplos prontos por tipo, e o botão de link pode ser montado a partir do exemplo da documentação da Meta.
 
-Dentro da janela de 24 horas, é mensagem de serviço. Fora dela, os botões precisam estar num template aprovado.
+Com a janela de 24 horas aberta, botões e listas são mensagens de serviço e não precisam de aprovação individual da Meta. Fora dela, os botões precisam estar num template aprovado.
 
 ::numeros: 1 endpoint|o mesmo das outras mensagens ;; 3 partes|cabeçalho, corpo e rodapé, além do botão ;; 24 h|a janela para mandar sem template ;; 1 clique|conta como resposta
 
@@ -45,23 +45,23 @@ Dentro da janela de 24 horas, é mensagem de serviço. Fora dela, os botões pre
 
 ## Botões, pelo exemplo pronto
 
-Na documentação da Datafy, o endpoint de envio de mensagem tem uma lista de exemplos por tipo. No vídeo, o Israel escolhe o de botões: *"eu vou clicar aqui, ele vai trazer aqui para mim o payload. Eu tenho que preencher o quê? O token, já tá preenchido, o phone number ID."* Ele preenche o destinatário e envia uma mensagem com três botões: confirmar, cancelar e remarcar.
+Na documentação da Datafy, o endpoint de envio de mensagem tem uma lista de exemplos por tipo. Escolha o de botões: o payload vem pronto, com o token e o `phone_number_id` já preenchidos, e falta só o destinatário. O exemplo envia uma mensagem com três botões: confirmar, cancelar e remarcar.
 
-Na mesma lista estão os outros tipos: *"lista, template, mídia, localização, contato, tudo já bonitinho aqui. Você pode executar por aqui ou executar pelo N8N."*
+Na mesma lista estão os outros tipos: lista, template, mídia, localização e contato. Dá para executar pela própria documentação ou pelo n8n.
 
-::video: S2IAOQWbZMg | Em 06:35 ele abre os exemplos por tipo, em 06:57 preenche o de botões, e em 07:42 a mensagem com confirmar, cancelar e remarcar chega no WhatsApp.
+::video: S2IAOQWbZMg | Primeira mensagem pela Datafy API, o exemplo de botões da documentação e o botão de link montado a partir da documentação da Meta.
 
 Não sabe o `phone_number_id`? `GET https://cloud.datafyapi.com.br/me` devolve, passando só o token no cabeçalho.
 
 ## Botão de link, pela documentação da Meta
 
-Para o botão que abre um site, o Israel pega o exemplo da documentação da Meta. O endpoint e o cabeçalho não mudam, só o corpo: *"repare que aqui é exatamente o mesmo end point, né, que já temos aqui."*
+Para o botão que abre um site, use o exemplo da documentação da Meta. O endpoint e o cabeçalho da requisição não mudam, só o corpo.
 
-As partes que ele preenche:
+As partes a preencher:
 
 **Destinatário e tipo interativo.**
 
-**Cabeçalho.** O exemplo da Meta traz opções de documento, imagem, texto e vídeo, cada uma com a indicação de omitir se não for usar. Ele remove as de documento, imagem e vídeo e mantém texto.
+**Cabeçalho.** O exemplo da Meta traz opções de documento, imagem, texto e vídeo, cada uma com a indicação de omitir se não for usar. Remova as que não vai usar; no exemplo de referência, ficou só o texto.
 
 **Corpo.** O texto da mensagem.
 
@@ -69,25 +69,31 @@ As partes que ele preenche:
 
 **Rodapé.** Um texto curto.
 
-Um erro de chave fechando no lugar errado aparece no meio do caminho, e ele pede a uma IA para achar: *"sim, as chaves estão fechando no lugar errado."* Corrigido, a mensagem chega com cabeçalho, corpo, rodapé e o botão que abre o site.
-
-::video: S2IAOQWbZMg | Em 08:18 ele abre o exemplo de botão de link da Meta, entre 09:37 e 11:01 remove os cabeçalhos que não vai usar e preenche o resto, e em 11:47 a mensagem chega.
+Ao remover os cabeçalhos, confira as chaves do JSON: na montagem de referência, uma chave fechando no lugar errado quebrou o corpo, e uma IA achou o erro. Corrigido, a mensagem chega com cabeçalho, corpo, rodapé e o botão que abre o site.
 
 ## Quando precisa de template
 
-Mensagem livre, como essa, só vai para quem falou com você nas últimas 24 horas. No vídeo de primeiros passos, a regra aparece antes do envio: você só pode enviar mensagens de serviço *"para usuários que já enviaram mensagem para você nas últimas 24 horas."*
+Mensagem livre, como essa, só vai para quem está com a janela de 24 horas aberta. A janela abre com a mensagem do cliente e recomeça a cada nova mensagem dele. Mensagem da empresa, seja de atendente, bot ou automação, não renova o prazo. Cada cliente tem a sua janela. [Como a janela funciona](/janela-de-24-horas-whatsapp).
+
+| Situação | O que enviar |
+|---|---|
+| Cliente mandou mensagem nas últimas 24 horas | Botões e listas como mensagem de serviço |
+| Cliente nunca falou com você, ou a última mensagem dele passou de 24 horas | Template aprovado, com os botões dentro dele |
+| Cliente respondeu ao template | Janela aberta a partir da resposta: botões e listas liberados |
+
+Enviar template não abre a janela; a resposta do cliente abre. E, fora da janela, uma mensagem interativa livre pode voltar HTTP 200 com ID e falhar depois, com o erro no webhook de status. [Mensagem de serviço e template, lado a lado](/tipos-de-mensagem-whatsapp-servico-e-template).
 
 Para quem não falou com você, os botões entram no template, criado e aprovado antes. [Como criar um template com botões está aqui](/como-criar-template-whatsapp-passo-a-passo).
 
 ## Por que botão ajuda o seu número
 
-No vídeo sobre bloqueio, o Israel conta que uma das causas de bloqueio, mesmo com template aprovado, é mandar para muita gente e ninguém responder. O botão resolve parte disso, porque o clique é uma resposta.
+Uma das causas de bloqueio observadas pela Datafy, mesmo com template aprovado, é mandar para muita gente e ninguém responder. O botão resolve parte disso, porque o clique é uma resposta.
 
-O exemplo dele é um template com a opção de não ter interesse: *"se a pessoa recebe a mensagem e ela não tem interesse, ela vai clicar, não tem interesse. Quando ela faz isso, ela está te respondendo, ou seja, ela engajou com você."* E vai além, com um botão de bloquear: *"a pessoa clica nesse botão, ela acha que está te bloqueando, mas na verdade ela não tá te bloqueando, ela está interagindo com você."*
+O exemplo é um template com a opção de não ter interesse: quem não tem interesse clica, e com isso responde, ou seja, engaja com você. Vale até um botão de bloquear. Nas palavras de Israel Henrique, CTO da Datafy: *"a pessoa clica nesse botão, ela acha que está te bloqueando, mas na verdade ela não tá te bloqueando, ela está interagindo com você."*
 
-A condição que ele coloca: quem clicar tem que sair da sua lista, porque *"se você continuar enviando mensagem para ela, aí ela vai te bloquear de verdade."*
+A condição: quem clicar tem que sair da sua lista. Se você continuar enviando, a pessoa bloqueia de verdade.
 
-::video: cZ_nyIUv5ic | Em 11:49 ele mostra o botão de não tenho interesse num template, e em 13:08 o botão de bloquear e o cuidado de tirar da lista quem clicou.
+::video: cZ_nyIUv5ic | As causas de bloqueio e os botões de não tenho interesse e de bloquear no template.
 
 ## Responder citando uma mensagem
 
@@ -113,7 +119,7 @@ Não. Deixe só o que vai usar e remova os outros.
 
 ### Clique no botão conta como resposta?
 
-No vídeo sobre bloqueio, sim: a pessoa clicando está interagindo com você.
+Na observação da Datafy sobre bloqueio, sim: quem clica está interagindo com você.
 
 ## Como decidir
 

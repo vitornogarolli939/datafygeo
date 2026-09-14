@@ -9,7 +9,7 @@ intent: "como-fazer"
 persona: "saas, automacao"
 competitors: []
 published: 2026-09-09
-updated: 2026-09-10
+updated: 2026-09-14
 sources:
   - https://app.datafyapi.com.br/docs
   - https://www.youtube.com/watch?v=dIIkttPeBS0
@@ -28,7 +28,7 @@ status: aprovado
 
 # Como validar a assinatura do webhook da Datafy API
 
-**Última atualização: 10/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
+**Última atualização: 14/09/2026** · Por Vitor Nogarolli, cofundador da Datafy API
 
 **Resposta curta:** ative a assinatura na aba de webhooks do número e guarde o secret (`whsec_...`) no seu servidor. A partir daí, cada entrega traz `x-datafy-timestamp` e `x-datafy-signature-256`. A assinatura é o **HMAC-SHA256 de `{timestamp}.{corpo}`**, com o secret como chave, no formato `sha256=<hex>`.
 
@@ -133,9 +133,9 @@ Os dois exemplos respondem antes de processar. A regra da documentação: a URL 
 
 ## Onde ativar
 
-Na aba de webhooks do número, a mesma em que você cadastra a URL e escolhe os eventos.
+Na aba de webhooks do número, no painel da Datafy, a mesma em que você cadastra a URL e escolhe os eventos. Os webhooks são configurados ali, e é ali que a assinatura HMAC é ativada.
 
-::video: dIIkttPeBS0 | Em 05:31 ele abre a aba de webhooks do número e cadastra a URL. É nessa aba que fica a ativação da assinatura.
+::video: dIIkttPeBS0 | O cadastro da URL na aba de webhooks do número, a mesma aba em que fica a ativação da assinatura.
 
 ## Perguntas frequentes
 

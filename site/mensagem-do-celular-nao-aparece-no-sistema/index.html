@@ -16,8 +16,8 @@
 <meta property="og:title" content="O atendente responde pelo celular e não aparece no meu sistema">
 <meta property="og:description" content="Em coexistência, a mensagem enviada pelo aplicativo chega por um evento separado, o smb_message_echoes. Sem ele assinado, o que o atendente escreve não chega no webhook.">
 <meta property="og:url" content="https://conteudo.datafyapi.com.br/mensagem-do-celular-nao-aparece-no-sistema">
-<meta property="article:published_time" content="2026-09-10">
-<meta property="article:modified_time" content="2026-09-10">
+<meta property="article:published_time" content="2026-09-14">
+<meta property="article:modified_time" content="2026-09-14">
 <meta property="article:author" content="Vitor Nogarolli">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="O atendente responde pelo celular e não aparece no meu sistema">
@@ -124,7 +124,7 @@
       "description": "Em coexistência, a mensagem enviada pelo aplicativo chega por um evento separado, o smb_message_echoes. Sem ele assinado, o que o atendente escreve não chega no webhook.",
       "inLanguage": "pt-BR",
       "datePublished": "2026-09-09",
-      "dateModified": "2026-09-10",
+      "dateModified": "2026-09-14",
       "author": {
         "@id": "https://conteudo.datafyapi.com.br/autor/vitor-nogarolli#person"
       },
@@ -165,7 +165,7 @@
           "name": "Mensagem enviada pelo celular é cobrada?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Não. A Meta cobra por mensagem enviada pela API."
+            "text": "Não. A Meta cobra as mensagens enviadas pela API que foram entregues, conforme a categoria e o país do destinatário."
           }
         },
         {
@@ -177,25 +177,6 @@
           }
         }
       ]
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://conteudo.datafyapi.com.br/mensagem-do-celular-nao-aparece-no-sistema#video-vGovcR8W5g8",
-      "name": "Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens",
-      "description": "Webhook de teste e de producao, envio pelo no de HTTP, e o laco de status que derruba numero",
-      "thumbnailUrl": "https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg",
-      "uploadDate": "2026-09-09",
-      "contentUrl": "https://www.youtube.com/watch?v=vGovcR8W5g8",
-      "embedUrl": "https://www.youtube.com/embed/vGovcR8W5g8",
-      "creator": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "publisher": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "isPartOf": {
-        "@id": "https://conteudo.datafyapi.com.br/mensagem-do-celular-nao-aparece-no-sistema#article"
-      }
     },
     {
       "@type": "VideoObject",
@@ -225,25 +206,6 @@
       "uploadDate": "2026-09-09",
       "contentUrl": "https://www.youtube.com/watch?v=LIT4FxgqHhE",
       "embedUrl": "https://www.youtube.com/embed/LIT4FxgqHhE",
-      "creator": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "publisher": {
-        "@id": "https://datafyapi.com.br/#organization"
-      },
-      "isPartOf": {
-        "@id": "https://conteudo.datafyapi.com.br/mensagem-do-celular-nao-aparece-no-sistema#article"
-      }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://conteudo.datafyapi.com.br/mensagem-do-celular-nao-aparece-no-sistema#video-T_ai6IvLzZE",
-      "name": "Como usar a API oficial do WhatsApp no Chatwoot",
-      "description": "Canal de API no Chatwoot, webhook, e o teste de texto, imagem e documento nos dois sentidos",
-      "thumbnailUrl": "https://i.ytimg.com/vi/T_ai6IvLzZE/maxresdefault.jpg",
-      "uploadDate": "2026-09-09",
-      "contentUrl": "https://www.youtube.com/watch?v=T_ai6IvLzZE",
-      "embedUrl": "https://www.youtube.com/embed/T_ai6IvLzZE",
       "creator": {
         "@id": "https://datafyapi.com.br/#organization"
       },
@@ -602,7 +564,7 @@ footer p{margin:0 0 .5rem}
       <div class="byline">
         <span>Por <a href="/autor/vitor-nogarolli" rel="author">Vitor Nogarolli</a>, cofundador da Datafy API</span>
         <span class="badge">Tech Provider verificado pela Meta</span>
-        <span>Atualizado em <time datetime="2026-09-10">10 de setembro de 2026</time></span>
+        <span>Atualizado em <time datetime="2026-09-14">14 de setembro de 2026</time></span>
       </div>
     </div>
 
@@ -645,12 +607,12 @@ footer p{margin:0 0 .5rem}
 <article>
 
 <p><strong>Resposta curta:</strong> falta assinar o evento <strong><code>smb_message_echoes</code></strong> no webhook do número. Em coexistência, a mensagem que sai do aplicativo do celular não chega pelo evento <code>messages</code>: ela chega por esse evento separado. Sem ele marcado, o que o atendente escreve não chega no seu webhook.</p>
-<p>Na explicação do Israel Henrique, CTO da Datafy, no vídeo sobre n8n: <em>"se você não marcar essa opção, as mensagens que você enviar no celular não vão chegar no web hook."</em></p>
+<p>A correção é marcar esse evento na aba de webhooks do número, no painel da Datafy.</p>
 <div class="stats">
   <div class="stat"><b>2 eventos</b><span>messages e smb_message_echoes</span></div>
   <div class="stat"><b>1 minuto</b><span>para testar se está funcionando</span></div>
   <div class="stat"><b>0</b><span>mensagens da API nesse evento</span></div>
-  <div class="stat"><b>3 status</b><span>voltam de cada envio pela API</span></div>
+  <div class="stat"><b>4 status</b><span>possíveis em cada envio pela API: sent, delivered, read e failed</span></div>
 </div>
 
 <h2 id="principais-pontos">Principais pontos</h2>
@@ -658,7 +620,7 @@ footer p{margin:0 0 .5rem}
 <li><strong><code>messages</code></strong> traz o que o cliente manda para você e os status do que você envia pela API.</li>
 <li><strong><code>smb_message_echoes</code></strong> traz o que você envia <strong>pelo celular</strong> do número conectado.</li>
 <li><strong>Mensagem enviada pela API não aparece em <code>smb_message_echoes</code>.</strong> Dela voltam status.</li>
-<li>O payload que a Datafy entrega é <strong>idêntico ao da Meta</strong>, sem alteração.</li>
+<li>A Datafy é <a href="/o-que-e-a-datafy-api">proxy da API oficial da Meta</a>: o payload que ela entrega é <strong>idêntico ao da Meta</strong>, sem alteração.</li>
 <li>O teste é simples: mande uma mensagem pelo celular do número e veja se ela chega no webhook.</li>
 </ul>
 <h2 id="como-resolver">Como resolver</h2>
@@ -666,19 +628,19 @@ footer p{margin:0 0 .5rem}
 <p><strong>2.</strong> Edite o webhook e marque os dois eventos: <code>messages</code> e <code>smb_message_echoes</code>.</p>
 <p><strong>3.</strong> Salve e teste: pegue o celular do número conectado, mande uma mensagem para qualquer contato, e confira se o evento chegou.</p>
 <figure>
-<a class="video" href="https://www.youtube.com/watch?v=vGovcR8W5g8" rel="noopener">
+<a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
   <span class="thumb">
-    <img src="https://i.ytimg.com/vi/vGovcR8W5g8/maxresdefault.jpg" alt="Miniatura do vídeo: Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens" loading="lazy" width="1280" height="720">
+    <img src="https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia" loading="lazy" width="1280" height="720">
     <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
   </span>
-  <span class="meta"><b>Como integrar a API oficial do WhatsApp ao n8n: envie e receba mensagens</b><span>Canal DATA7 · 20 min · assistir no YouTube</span></span>
+  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 01:57 ele seleciona os dois eventos no cadastro do webhook e explica: o primeiro traz as mensagens recebidas e os status, o segundo traz as mensagens enviadas pelo celular.</figcaption>
+<figcaption>O cadastro do webhook com os dois eventos, e por que a mensagem enviada pela API não aparece em smb_message_echoes.</figcaption>
 </figure>
 
 <h2 id="a-confus-o-que-faz-parecer-defeito">A confusão que faz parecer defeito</h2>
-<p>Quem assina <code>smb_message_echoes</code> esperando ver as próprias mensagens enviadas <strong>pela API</strong> fica procurando erro onde não tem. No vídeo de conexão, a regra aparece com essas palavras: <em>"esse SMB Messages Echoes, ele vai te notificar sempre que você enviar uma mensagem do celular, tá? Quando você envia mensagens direto pela API, não aparece."</em></p>
-<p>Da mensagem enviada pela API voltam <strong>status</strong>: enviada, entregue e lida, pelo evento <code>messages</code>. <a href="/tres-status-da-mensagem-whatsapp">Os três status estão explicados aqui</a>.</p>
+<p>Quem assina <code>smb_message_echoes</code> esperando ver as próprias mensagens enviadas <strong>pela API</strong> fica procurando erro onde não tem. A regra: <code>smb_message_echoes</code> notifica toda mensagem enviada pelo celular. O que você envia direto pela API não aparece nele.</p>
+<p>Da mensagem enviada pela API voltam <strong>status</strong>, pelo evento <code>messages</code>: <code>sent</code> (enviada), <code>delivered</code> (entregue), <code>read</code> (lida, quando disponível) ou <code>failed</code> (falha, com o erro). <a href="/tres-status-da-mensagem-whatsapp">Os status estão explicados aqui</a>.</p>
 <div class="tablewrap"><table>
 <thead>
 <tr>
@@ -701,19 +663,8 @@ footer p{margin:0 0 .5rem}
 </tr>
 </tbody>
 </table></div>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=dIIkttPeBS0" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/dIIkttPeBS0/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>Como usar a API oficial do WhatsApp: simples, fácil, sem burocracia</b><span>Canal DATA7 · 16 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Em 06:40 ele cadastra os dois eventos e explica que a mensagem enviada pela API não aparece em smb_message_echoes.</figcaption>
-</figure>
-
 <h2 id="vendo-acontecer-no-log-da-datafy">Vendo acontecer no log da Datafy</h2>
-<p>No painel da Datafy existe um log em tempo real das mensagens, que mostra o payload de cada evento. No vídeo, o Israel responde pelo WhatsApp Web do número e abre o evento que chegou: <em>"isso aqui é o messages echoes e é quando eu, proprietário, envio a mensagem."</em></p>
+<p>No painel da Datafy existe um log em tempo real das mensagens, que mostra o payload de cada evento. A resposta dada fora da API, pelo celular ou pelo WhatsApp Web do número, aparece nele como <code>smb_message_echoes</code>: é a mensagem enviada pelo proprietário do número.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=LIT4FxgqHhE" rel="noopener">
   <span class="thumb">
@@ -722,30 +673,19 @@ footer p{margin:0 0 .5rem}
   </span>
   <span class="meta"><b>Logs de mensagens em tempo real na API oficial do WhatsApp</b><span>Canal DATA7 · 3 min · assistir no YouTube</span></span>
 </a>
-<figcaption>Em 01:26 a resposta dada fora da API aparece no log como smb_message_echoes, com o payload visível.</figcaption>
+<figcaption>O log do painel, com uma resposta dada fora da API aparecendo como smb_message_echoes e o payload visível.</figcaption>
 </figure>
 
 <p><a href="/ver-payload-das-mensagens-em-tempo-real">Como usar esse log está aqui</a>.</p>
 <h2 id="numa-caixa-de-entrada">Numa caixa de entrada</h2>
-<p>Com o evento funcionando, a resposta do celular aparece também numa caixa de entrada integrada. No vídeo sobre o Chatwoot, ele manda uma mensagem pelo celular e ela aparece na conversa: <em>"então essa aqui foi enviada diretamente do celular que está conectado na API. Então tá sincronizado."</em></p>
-<figure>
-<a class="video" href="https://www.youtube.com/watch?v=T_ai6IvLzZE" rel="noopener">
-  <span class="thumb">
-    <img src="https://i.ytimg.com/vi/T_ai6IvLzZE/maxresdefault.jpg" alt="Miniatura do vídeo: Como usar a API oficial do WhatsApp no Chatwoot" loading="lazy" width="1280" height="720">
-    <span class="play"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
-  </span>
-  <span class="meta"><b>Como usar a API oficial do WhatsApp no Chatwoot</b><span>Canal DATA7 · 5 min · assistir no YouTube</span></span>
-</a>
-<figcaption>Em 04:20 a mensagem enviada pelo celular aparece no Chatwoot.</figcaption>
-</figure>
-
+<p>Com o evento funcionando, a resposta do celular aparece também numa caixa de entrada integrada, como o Chatwoot: a mensagem enviada pelo celular conectado entra na mesma conversa, sincronizada.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Isso vale para número que não está em coexistência?</h3>
 <p>Não. Se o número não está no aplicativo do celular, não existe mensagem enviada pelo celular para chegar.</p>
 <h3>As mensagens enviadas pelo celular antes de eu assinar o evento chegam depois?</h3>
 <p>Não. O evento passa a entregar a partir de quando está assinado. O histórico anterior só vem pela <a href="/sincronizar-contatos-api-oficial-whatsapp">sincronização</a>, dentro das 24 horas depois da conexão.</p>
 <h3>Mensagem enviada pelo celular é cobrada?</h3>
-<p>Não. A Meta cobra por mensagem enviada pela API.</p>
+<p>Não. A Meta cobra as mensagens enviadas pela API que foram entregues, conforme a categoria e o país do destinatário.</p>
 <h3>Como sei se o evento está chegando?</h3>
 <p>Mande uma mensagem pelo celular do número e olhe o seu endpoint, ou o log de mensagens do painel da Datafy.</p>
 <h2 id="como-decidir">Como decidir</h2>
@@ -766,7 +706,7 @@ footer p{margin:0 0 .5rem}
   <div class="rail-inner">
     <div class="rail-cta">
       <b>Teste com um número</b>
-      <p>Conecte pelo Embedded Signup, copie o token e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
+      <p>Crie o canal, copie o token gerado na hora, conecte o número e envie a primeira mensagem. Com uma BM já criada, leva menos de 5 minutos.</p>
       <a href="https://app.datafyapi.com.br" rel="noopener">Começar grátis</a>
       <small>7 dias · sem cartão · sem setup</small>
     </div>
