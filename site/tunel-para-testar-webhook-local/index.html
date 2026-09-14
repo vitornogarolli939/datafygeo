@@ -342,6 +342,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -599,7 +602,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como testar o webhook do WhatsApp na sua máquina com ngrok</h1>
 <p><strong>Resposta curta:</strong> o webhook precisa de um endereço público, e a sua máquina não tem. O ngrok resolve: ele expõe a porta onde a aplicação roda com um endereço público, que você cadastra como webhook na Datafy. Aí as mensagens do WhatsApp chegam direto no seu computador.</p>
 <p>No tutorial de atendimento do canal DATA7, dois problemas aparecem nessa etapa: um <strong>403</strong> causado pela configuração do framework, e a necessidade de <strong>trocar a URL do webhook</strong> pela de produção quando a aplicação é publicada.</p>
 <div class="stats">

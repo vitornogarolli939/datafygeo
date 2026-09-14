@@ -323,6 +323,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -594,7 +597,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Por que o número é bloqueado no WhatsApp Business</h1>
 <p><strong>Resposta curta:</strong> a Meta diz que você violou os termos, e parte dos termos é subjetiva. No vídeo sobre bloqueio do canal DATA7, o Israel Henrique, CTO da Datafy, conta o que a equipe observou olhando o que os clientes estavam fazendo quando foram bloqueados. As causas: <strong>iniciar conversa sem template</strong>, <strong>template certo e ninguém responder</strong>, <strong>número novo começando a disparar</strong>, <strong>marketing disfarçado de utilidade</strong> e <strong>nicho proibido</strong>. Às vezes, <strong>engano da própria Meta</strong>.</p>
 <p>E o ponto mais importante do vídeo: <em>"usar um template, usar a API oficial do WhatsApp não é blindagem contra banimento."</em></p>
 <div class="stats">
@@ -702,15 +704,16 @@ footer p{margin:0 0 .5rem}
 <h2 id="o-aviso-que-aparece-antes">O aviso que aparece antes</h2>
 <p><em>"Antes de ele te bloquear, ele vai te falar a qualidade do número."</em> No gerenciador do WhatsApp, a qualidade aparece como alta, média ou baixa. <em>"Se eu começar a enviar mensagem pros meus clientes e eu ver que a qualidade tá média ou baixa, já fica um alerta: opa, eu tenho que melhorar alguma coisa. Você não é bloqueado do nada."</em></p>
 <p>Pela API, a documentação da Datafy lista <code>quality_rating</code> entre os campos do número:</p>
-<p><code>GET https://cloud.datafyapi.com.br/v1/{phone_number_id}?fields=verified_name,display_phone_number,quality_rating
-Authorization: Bearer sk_live_xxx</code></p>
-<p><code>json
-{
-  "verified_name": "Jasper's Market",
-  "display_phone_number": "+1 631-555-5555",
-  "id": "1906385232743451",
-  "quality_rating": "GREEN"
-}</code></p>
+<pre><code>GET https://cloud.datafyapi.com.br/v1/{phone_number_id}?fields=verified_name,display_phone_number,quality_rating
+Authorization: Bearer sk_live_xxx
+</code></pre>
+<pre><code class="language-json">{
+  &quot;verified_name&quot;: &quot;Jasper's Market&quot;,
+  &quot;display_phone_number&quot;: &quot;+1 631-555-5555&quot;,
+  &quot;id&quot;: &quot;1906385232743451&quot;,
+  &quot;quality_rating&quot;: &quot;GREEN&quot;
+}
+</code></pre>
 <h2 id="quando-engano-da-meta">Quando é engano da Meta</h2>
 <p><em>"Às vezes a meta bane mesmo, por engano, eu já fui vítima disso."</em> Ele perdeu uma conta de desenvolvedor, e a resposta da Meta reconheceu que a conta foi banida por engano pelos agentes automatizados.</p>
 <p>E sobre o que fazer depois de um bloqueio indevido, a posição dele: quem está no oficial, com empresa registrada, seguindo as regras e com qualidade alta tem respaldo para recorrer, e ele relata ter visto casos de processo com indenização. Já quem usava API não oficial, <em>"aí não adianta muito tentar reclamar."</em></p>

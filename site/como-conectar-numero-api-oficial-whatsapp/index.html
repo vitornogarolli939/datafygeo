@@ -361,6 +361,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -617,7 +620,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como conectar seu número na API oficial do WhatsApp</h1>
 <p><strong>Resposta curta:</strong> pela Datafy API, você cria uma conta, cria um número no painel, clica em conectar ao WhatsApp e passa pelo fluxo de conexão oficial do Facebook: escolhe o portfólio empresarial, escaneia um QR code com o celular e conclui. No fim, o número está na API oficial e você tem um token para chamar os endpoints.</p>
 <p>O que esse caminho dispensa, na formulação do Israel Henrique, CTO da Datafy: <em>"sem precisar passar por aprovações da Meta, sem ter que criar aplicativo da Meta e sem ter que se tornar um Tech Provider."</em></p>
 <div class="stats">
@@ -741,15 +743,16 @@ footer p{margin:0 0 .5rem}
 
 <h2 id="depois-de-conectar-descobrir-seus-identi">Depois de conectar: descobrir seus identificadores</h2>
 <p>Para chamar os endpoints você vai precisar do identificador do número e do identificador da conta do WhatsApp Business. Com o token em mãos, uma chamada devolve os dois:</p>
-<p><code>GET https://cloud.datafyapi.com.br/me
-Authorization: Bearer sk_live_xxx</code></p>
-<p><code>json
-{
-  "cliente_id": "uuid-do-cliente",
-  "phone_number_id": "106540352242922",
-  "waba_id": "366634483210360",
-  "business_id": "123456789"
-}</code></p>
+<pre><code>GET https://cloud.datafyapi.com.br/me
+Authorization: Bearer sk_live_xxx
+</code></pre>
+<pre><code class="language-json">{
+  &quot;cliente_id&quot;: &quot;uuid-do-cliente&quot;,
+  &quot;phone_number_id&quot;: &quot;106540352242922&quot;,
+  &quot;waba_id&quot;: &quot;366634483210360&quot;,
+  &quot;business_id&quot;: &quot;123456789&quot;
+}
+</code></pre>
 <p>O token vai sempre no cabeçalho <code>Authorization</code>. Passar como parâmetro na URL não funciona na Datafy API.</p>
 <h2 id="os-tr-s-passos-seguintes">Os três passos seguintes</h2>
 <p><strong>Pedir contatos e histórico, em até 24 horas.</strong> A sincronização não é automática. A documentação da Meta dá 24 horas a partir da conexão, e depois disso só refazendo o fluxo. <a href="/sincronizar-contatos-api-oficial-whatsapp">O passo a passo está aqui</a>.</p>

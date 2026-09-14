@@ -342,6 +342,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -604,7 +607,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como bloquear e desbloquear um usuário pela API do WhatsApp</h1>
 <p><strong>Resposta curta:</strong> com <code>POST /v1/{phone_number_id}/block_users</code>, a empresa bloqueia um ou mais usuários. <strong>Usuário bloqueado não consegue mandar mensagem para o número.</strong> O mesmo endpoint lista os bloqueados com <code>GET</code> e desbloqueia com <code>DELETE</code>.</p>
 <p>Vale separar isso de outra coisa que tem o mesmo nome: quando <strong>o cliente bloqueia a sua empresa</strong> no WhatsApp. Esse segundo caso é o que pesa contra o seu número, segundo o vídeo sobre bloqueio do canal DATA7.</p>
 <div class="stats">
@@ -623,54 +625,55 @@ footer p{margin:0 0 .5rem}
 <li><strong>Cliente bloqueando a empresa é outra coisa</strong>, e é a que aparece como sinal de risco no vídeo sobre bloqueio.</li>
 </ul>
 <h2 id="listar-os-bloqueados">Listar os bloqueados</h2>
-<p><code>GET https://cloud.datafyapi.com.br/v1/{phone_number_id}/block_users
-Authorization: Bearer sk_live_xxx</code></p>
-<p><code>json
-{
-  "data": [
-    { "user_identity": "5511999999999" },
-    { "user_identity": "5521988888888" }
-  ]
-}</code></p>
-<p>Não sabe o <code>phone_number_id</code>? <code>GET https://cloud.datafyapi.com.br/me</code> devolve, passando só o token no cabeçalho.</p>
-<h2 id="bloquear">Bloquear</h2>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/block_users
+<pre><code>GET https://cloud.datafyapi.com.br/v1/{phone_number_id}/block_users
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{
-  "messaging_product": "whatsapp",
-  "block_users": [
-    { "user": "5511999999999" }
+</code></pre>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    { &quot;user_identity&quot;: &quot;5511999999999&quot; },
+    { &quot;user_identity&quot;: &quot;5521988888888&quot; }
   ]
 }
-```</p>
-<p><code>json
+</code></pre>
+<p>Não sabe o <code>phone_number_id</code>? <code>GET https://cloud.datafyapi.com.br/me</code> devolve, passando só o token no cabeçalho.</p>
+<h2 id="bloquear">Bloquear</h2>
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/block_users
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json
+
 {
-  "block_users": [
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;block_users&quot;: [
+    { &quot;user&quot;: &quot;5511999999999&quot; }
+  ]
+}
+</code></pre>
+<pre><code class="language-json">{
+  &quot;block_users&quot;: [
     {
-      "user": "5511999999999",
-      "input_phone_number": "5511999999999",
-      "wa_id": "5511999999999"
+      &quot;user&quot;: &quot;5511999999999&quot;,
+      &quot;input_phone_number&quot;: &quot;5511999999999&quot;,
+      &quot;wa_id&quot;: &quot;5511999999999&quot;
     }
   ]
-}</code></p>
+}
+</code></pre>
 <p>O campo <code>block_users</code> é uma lista, então a mesma chamada aceita mais de um usuário.</p>
 <h2 id="desbloquear">Desbloquear</h2>
 <p>Mesmo endpoint, método <code>DELETE</code>, mesmo formato de corpo:</p>
-<p>```
-DELETE https://cloud.datafyapi.com.br/v1/{phone_number_id}/block_users
+<pre><code>DELETE https://cloud.datafyapi.com.br/v1/{phone_number_id}/block_users
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{
-  "messaging_product": "whatsapp",
-  "block_users": [
-    { "user": "5511999999999" }
+Content-Type: application/json
+
+{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;block_users&quot;: [
+    { &quot;user&quot;: &quot;5511999999999&quot; }
   ]
 }
-```</p>
-<p><code>json
-{ "success": true }</code></p>
+</code></pre>
+<pre><code class="language-json">{ &quot;success&quot;: true }
+</code></pre>
 <p>Depois de desbloqueado, o usuário volta a conseguir mandar mensagens para o número.</p>
 <h2 id="bloquear-n-o-o-mesmo-que-ser-bloqueado">Bloquear não é o mesmo que ser bloqueado</h2>
 <p>O endpoint acima é a <strong>empresa</strong> bloqueando alguém. O caso que preocupa quem envia mensagem é o inverso: <strong>o cliente</strong> bloqueando ou denunciando a empresa.</p>

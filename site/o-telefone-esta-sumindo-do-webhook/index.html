@@ -342,6 +342,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -600,7 +603,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>O telefone vai sumir do webhook: como usar o user_id na API oficial</h1>
 <p><strong>Resposta curta:</strong> a Meta lançou o <strong>nome de usuário</strong> do WhatsApp, e na API ele aparece como <strong><code>user_id</code></strong>. O telefone da pessoa deixa de vir no webhook de forma progressiva, e o <code>user_id</code> passa a ser o identificador. Para responder por ele, no corpo do envio você troca o campo <strong><code>to</code></strong> por <strong><code>recipient</code></strong>, com o <code>user_id</code> que vem <strong>dentro de <code>messages</code></strong>.</p>
 <p>O detalhe que muda a modelagem: o <code>user_id</code> <strong>não é o mesmo para todas as empresas</strong>. Ele identifica a relação entre aquela pessoa e aquela empresa.</p>
 <div class="stats">
@@ -663,17 +665,17 @@ footer p{margin:0 0 .5rem}
 
 <h2 id="responder-pelo-user-id">Responder pelo user_id</h2>
 <p>No corpo do envio, o campo <code>to</code> dá lugar a <code>recipient</code>:</p>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{
-  "messaging_product": "whatsapp",
-  "recipient": "<user_id que veio dentro de messages>",
-  "type": "text",
-  "text": { "body": "Respondendo essa mensagem via API" }
+Content-Type: application/json
+
+{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;recipient&quot;: &quot;&lt;user_id que veio dentro de messages&gt;&quot;,
+  &quot;type&quot;: &quot;text&quot;,
+  &quot;text&quot;: { &quot;body&quot;: &quot;Respondendo essa mensagem via API&quot; }
 }
-```</p>
+</code></pre>
 <p>Na fala do vídeo: <em>"no lugar do to, você simplesmente vai colocar recipient."</em> E o valor vem de dentro de <code>messages</code>, não do topo do payload: <em>"então dentro do objeto messages, não aqui em cima, tá? Para não dar o loop que eu falei na aula anterior."</em></p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=fhz6n2s91-g" rel="noopener">

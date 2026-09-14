@@ -342,6 +342,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -599,7 +602,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Webhook da API oficial do WhatsApp: receber mensagens no seu servidor</h1>
 <p><strong>Resposta curta:</strong> webhook é a URL que recebe um <code>POST</code> a cada evento do número: mensagem que chega, status do que você enviou, mensagem enviada pelo celular. Na Datafy API você cadastra essa URL no painel, escolhe os eventos e pode testar com um clique. O payload é <strong>idêntico ao que a Meta envia</strong>, e cada entrega vem com cabeçalhos da Datafy para identificar e, se você ativar, assinar a entrega.</p>
 <p>A sua URL precisa responder <strong>200 em até 20 segundos</strong>.</p>
 <div class="stats">

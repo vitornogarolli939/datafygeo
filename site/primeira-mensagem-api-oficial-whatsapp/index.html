@@ -323,6 +323,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -589,7 +592,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Enviar e receber a primeira mensagem na API oficial do WhatsApp</h1>
 <p><strong>Resposta curta:</strong> com o número conectado, receber é cadastrar uma URL na aba de webhooks e escolher os eventos. Enviar é um <code>POST</code> em <code>https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages</code> com o token no cabeçalho.</p>
 <p>A regra que decide se o envio chega: a <strong>mensagem de serviço</strong>, em texto livre, só pode ir para quem mandou mensagem para você nas <strong>últimas 24 horas</strong>. E o detalhe que engana: <strong>a chamada devolve um identificador mesmo quando a mensagem vai falhar</strong>. A falha aparece depois, no webhook.</p>
 <div class="stats">
@@ -671,30 +673,31 @@ footer p{margin:0 0 .5rem}
 <p>O payload que a Datafy entrega é idêntico ao que a Meta envia, sem alteração. Sobre o <code>user_id</code>, que está substituindo o telefone, <a href="/o-telefone-esta-sumindo-do-webhook">há uma página própria</a>.</p>
 <h2 id="enviar-a-chamada">Enviar: a chamada</h2>
 <p>Se você não sabe o identificador do número, pegue com o token:</p>
-<p><code>GET https://cloud.datafyapi.com.br/me
-Authorization: Bearer sk_live_xxx</code></p>
-<p>E envie:</p>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+<pre><code>GET https://cloud.datafyapi.com.br/me
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{
-  "messaging_product": "whatsapp",
-  "recipient_type": "individual",
-  "to": "5511999999999",
-  "type": "text",
-  "text": {
-    "preview_url": false,
-    "body": "Olá! Tudo bem?"
+</code></pre>
+<p>E envie:</p>
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json
+
+{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;recipient_type&quot;: &quot;individual&quot;,
+  &quot;to&quot;: &quot;5511999999999&quot;,
+  &quot;type&quot;: &quot;text&quot;,
+  &quot;text&quot;: {
+    &quot;preview_url&quot;: false,
+    &quot;body&quot;: &quot;Olá! Tudo bem?&quot;
   }
 }
-```</p>
-<p><code>json
-{
-  "messaging_product": "whatsapp",
-  "contacts": [{ "input": "5511999999999", "wa_id": "5511999999999" }],
-  "messages": [{ "id": "wamid.HBgLMTY0Nj..." }]
-}</code></p>
+</code></pre>
+<pre><code class="language-json">{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;contacts&quot;: [{ &quot;input&quot;: &quot;5511999999999&quot;, &quot;wa_id&quot;: &quot;5511999999999&quot; }],
+  &quot;messages&quot;: [{ &quot;id&quot;: &quot;wamid.HBgLMTY0Nj...&quot; }]
+}
+</code></pre>
 <p>Para responder citando uma mensagem recebida, inclua <code>context.message_id</code> com o <code>wamid</code> dela. É opcional.</p>
 <p>O token vai sempre no cabeçalho. A documentação da Meta mostra exemplos com o token na URL, e na Datafy API isso não funciona. <a href="/datafy-api-espelho-da-cloud-api">A troca completa entre Meta e Datafy está aqui</a>.</p>
 <h2 id="a-janela-de-24-horas">A janela de 24 horas</h2>
@@ -718,15 +721,16 @@ Content-Type: application/json</p>
 <p><a href="/tres-status-da-mensagem-whatsapp">Os três status de cada envio estão explicados aqui</a>.</p>
 <h2 id="marcar-a-mensagem-recebida-como-lida">Marcar a mensagem recebida como lida</h2>
 <p>Para mostrar os dois tiques azuis para quem mandou, há uma rota simplificada que dispensa o identificador do número:</p>
-<p><code>POST https://cloud.datafyapi.com.br/messages/read
-Authorization: Bearer sk_live_xxx</code></p>
+<pre><code>POST https://cloud.datafyapi.com.br/messages/read
+Authorization: Bearer sk_live_xxx
+</code></pre>
 <p>No espelho, o equivalente é <code>PUT /v1/{phone_number_id}/messages/read</code>:</p>
-<p><code>json
-{
-  "messaging_product": "whatsapp",
-  "status": "read",
-  "message_id": "wamid.HBgLMTY0Nj..."
-}</code></p>
+<pre><code class="language-json">{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;status&quot;: &quot;read&quot;,
+  &quot;message_id&quot;: &quot;wamid.HBgLMTY0Nj...&quot;
+}
+</code></pre>
 <p>Segundo a documentação da Datafy, só dá para marcar mensagem <strong>recebida</strong>, e o recomendado é fazer isso em até 30 dias do recebimento.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Onde encontro o phone_number_id?</h3>

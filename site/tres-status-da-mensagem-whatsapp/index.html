@@ -361,6 +361,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -623,7 +626,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Os três status da mensagem no WhatsApp: enviada, entregue e lida</h1>
 <p><strong>Resposta curta:</strong> quando você envia uma mensagem pela API, a resposta traz um identificador e só significa que a Meta <strong>aceitou</strong> a mensagem. O que aconteceu com ela chega depois, no webhook, como status: <strong><code>sent</code></strong> (enviada, um tique), <strong><code>delivered</code></strong> (entregue, dois tiques) e <strong><code>read</code></strong> (lida, azul), este último só se a pessoa tiver a confirmação de leitura ativada. Se deu errado, chega <strong>um evento de falha</strong>, com o motivo.</p>
 <div class="stats">
   <div class="stat"><b>1 tique</b><span>sent, enviada</span></div>
@@ -753,12 +755,12 @@ footer p{margin:0 0 .5rem}
 
 <h2 id="a-resposta-do-envio-s-diz-que-a-meta-ace">A resposta do envio só diz que a Meta aceitou</h2>
 <p>A documentação da Datafy descreve a resposta padrão de envio assim: ela indica que a Meta aceitou a mensagem, não que foi entregue, e o status real chega pelo webhook.</p>
-<p><code>json
-{
-  "messaging_product": "whatsapp",
-  "contacts": [{ "input": "5511999999999", "wa_id": "5511999999999" }],
-  "messages": [{ "id": "wamid.HBgLMTY0Nj..." }]
-}</code></p>
+<pre><code class="language-json">{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;contacts&quot;: [{ &quot;input&quot;: &quot;5511999999999&quot;, &quot;wa_id&quot;: &quot;5511999999999&quot; }],
+  &quot;messages&quot;: [{ &quot;id&quot;: &quot;wamid.HBgLMTY0Nj...&quot; }]
+}
+</code></pre>
 <p>Guarde o <code>id</code>. É ele que aparece nos eventos de status e liga cada evento à mensagem enviada.</p>
 <h2 id="o-status-n-o-traz-o-conte-do">O status não traz o conteúdo</h2>
 <p>No tutorial de atendimento do canal, ao olhar os payloads, o Israel destaca: <em>"quando você envia a mensagem pela API, a meta ela vai retornar para você apenas o status da mensagem. Ele não vai trazer para você o conteúdo da mensagem. Ele vai trazer apenas o ID da mensagem com o status."</em></p>

@@ -342,6 +342,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -594,7 +597,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>A Datafy API é um espelho da Cloud API: o que muda no seu código</h1>
 <p><strong>Resposta curta:</strong> duas coisas. O <strong>domínio</strong> e o <strong>token</strong>. Onde a documentação da Meta usa <code>https://graph.facebook.com/v21.0/</code>, você usa <code>https://cloud.datafyapi.com.br/v1/</code>; onde usa o token da Meta, você usa o <code>sk_live_xxx</code> que recebe ao conectar o número. O resto do caminho, o corpo da requisição e a resposta seguem a documentação da Meta.</p>
 <p>Na formulação do Israel Henrique, CTO da Datafy: <em>"ele é literalmente um espelho da cloud API. A única coisa que muda é a URL e você tem que passar o token em todas as chamadas."</em></p>
 <div class="stats">
@@ -685,17 +687,17 @@ footer p{margin:0 0 .5rem}
 </tbody>
 </table></div>
 <p>Enviar uma mensagem de texto fica assim:</p>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{
-  "messaging_product": "whatsapp",
-  "to": "5511999999999",
-  "type": "text",
-  "text": { "body": "Olá!" }
+Content-Type: application/json
+
+{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;to&quot;: &quot;5511999999999&quot;,
+  &quot;type&quot;: &quot;text&quot;,
+  &quot;text&quot;: { &quot;body&quot;: &quot;Olá!&quot; }
 }
-```</p>
+</code></pre>
 <p>Segundo a documentação da Datafy, o token da Datafy substitui completamente o da Meta, e a sua credencial real nunca é exposta.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=S2IAOQWbZMg" rel="noopener">
@@ -710,23 +712,23 @@ Content-Type: application/json</p>
 
 <h2 id="o-token-s-funciona-no-cabe-alho">O token só funciona no cabeçalho</h2>
 <p>A documentação da Meta mostra exemplos com o token como parâmetro de URL. Na Datafy API isso não é aceito:</p>
-<p>```</p>
-<h1>Funciona</h1>
-<p>GET https://cloud.datafyapi.com.br/v1/{WABA_ID}?fields=...
+<pre><code># Funciona
+GET https://cloud.datafyapi.com.br/v1/{WABA_ID}?fields=...
 Authorization: Bearer sk_live_xxx
-```</p>
+</code></pre>
 <p>Se você copiou um exemplo da Meta que passa o token na URL, mova para o cabeçalho. O proxy repassa o token para a Meta do jeito que cada endpoint exige.</p>
 <h2 id="descobrir-os-seus-identificadores">Descobrir os seus identificadores</h2>
 <p>Para usar o espelho você precisa de identificadores como <code>phone_number_id</code> e <code>waba_id</code>. Quem só tem o token descobre com uma chamada:</p>
-<p><code>GET https://cloud.datafyapi.com.br/me
-Authorization: Bearer sk_live_xxx</code></p>
-<p><code>json
-{
-  "cliente_id": "uuid-do-cliente",
-  "phone_number_id": "106540352242922",
-  "waba_id": "366634483210360",
-  "business_id": "123456789"
-}</code></p>
+<pre><code>GET https://cloud.datafyapi.com.br/me
+Authorization: Bearer sk_live_xxx
+</code></pre>
+<pre><code class="language-json">{
+  &quot;cliente_id&quot;: &quot;uuid-do-cliente&quot;,
+  &quot;phone_number_id&quot;: &quot;106540352242922&quot;,
+  &quot;waba_id&quot;: &quot;366634483210360&quot;,
+  &quot;business_id&quot;: &quot;123456789&quot;
+}
+</code></pre>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=S2IAOQWbZMg" rel="noopener">
   <span class="thumb">

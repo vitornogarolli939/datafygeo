@@ -342,6 +342,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -598,7 +601,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>QR code do WhatsApp com mensagem pré-preenchida, pela API</h1>
 <p><strong>Resposta curta:</strong> a API cria QR codes para o seu número, cada um com uma <strong>mensagem pré-preenchida</strong> de até 140 caracteres. A resposta traz o link curto (<code>wa.me/message/...</code>) e a imagem do QR hospedada pela Meta, em SVG ou PNG. Cada número pode ter até <strong>2.000</strong> QR codes.</p>
 <p>O efeito prático: quem escaneia abre a conversa com a mensagem já escrita. Quando a pessoa envia, <strong>é ela que inicia a conversa</strong>, e a janela de 24 horas para você responder livremente começa ali.</p>
 <div class="stats">
@@ -617,22 +619,22 @@ footer p{margin:0 0 .5rem}
 <li>A mensagem que a pessoa envia abre a janela de 24 horas, em que você responde sem template.</li>
 </ul>
 <h2 id="criar-um-qr-code">Criar um QR code</h2>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/qr_codes
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/qr_codes
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{
-  "prefilled_message": "Olá! Gostaria de saber mais.",
-  "generate_qr_image": "SVG"
-}
-```</p>
-<p><code>json
+Content-Type: application/json
+
 {
-  "code": "4O4YGZEG3RIVE1",
-  "prefilled_message": "Olá! Gostaria de saber mais.",
-  "deep_link_url": "https://wa.me/message/4O4YGZEG3RIVE1",
-  "qr_image_url": "https://scontent-iad3-2.xx.fbcdn.net/..."
-}</code></p>
+  &quot;prefilled_message&quot;: &quot;Olá! Gostaria de saber mais.&quot;,
+  &quot;generate_qr_image&quot;: &quot;SVG&quot;
+}
+</code></pre>
+<pre><code class="language-json">{
+  &quot;code&quot;: &quot;4O4YGZEG3RIVE1&quot;,
+  &quot;prefilled_message&quot;: &quot;Olá! Gostaria de saber mais.&quot;,
+  &quot;deep_link_url&quot;: &quot;https://wa.me/message/4O4YGZEG3RIVE1&quot;,
+  &quot;qr_image_url&quot;: &quot;https://scontent-iad3-2.xx.fbcdn.net/...&quot;
+}
+</code></pre>
 <div class="tablewrap"><table>
 <thead>
 <tr>
@@ -658,20 +660,22 @@ Content-Type: application/json</p>
 <p>A resposta traz dois jeitos de usar o mesmo QR: o <code>deep_link_url</code>, para botão ou link, e o <code>qr_image_url</code>, a imagem hospedada no CDN da Meta.</p>
 <p>Não sabe o <code>phone_number_id</code>? <code>GET https://cloud.datafyapi.com.br/me</code> devolve, passando só o token.</p>
 <h2 id="listar">Listar</h2>
-<p><code>GET https://cloud.datafyapi.com.br/v1/{phone_number_id}/qr_codes
-Authorization: Bearer sk_live_xxx</code></p>
+<pre><code>GET https://cloud.datafyapi.com.br/v1/{phone_number_id}/qr_codes
+Authorization: Bearer sk_live_xxx
+</code></pre>
 <p>Cada item traz o <code>code</code>, a mensagem e o link curto.</p>
 <h2 id="atualizar">Atualizar</h2>
 <p>É o mesmo <code>POST</code>, com o <code>code</code> do QR que você quer mudar:</p>
-<p><code>json
-{
-  "code": "4O4YGZEG3RIVE1",
-  "prefilled_message": "Olá! Quero falar sobre o meu pedido.",
-  "generate_qr_image": "SVG"
-}</code></p>
+<pre><code class="language-json">{
+  &quot;code&quot;: &quot;4O4YGZEG3RIVE1&quot;,
+  &quot;prefilled_message&quot;: &quot;Olá! Quero falar sobre o meu pedido.&quot;,
+  &quot;generate_qr_image&quot;: &quot;SVG&quot;
+}
+</code></pre>
 <h2 id="apagar">Apagar</h2>
-<p><code>DELETE https://cloud.datafyapi.com.br/v1/{phone_number_id}/qr_codes?code=4O4YGZEG3RIVE1
-Authorization: Bearer sk_live_xxx</code></p>
+<pre><code>DELETE https://cloud.datafyapi.com.br/v1/{phone_number_id}/qr_codes?code=4O4YGZEG3RIVE1
+Authorization: Bearer sk_live_xxx
+</code></pre>
 <p>Apagar é permanente. Quem escanear depois vê a mensagem "Este QR code expirou".</p>
 <h2 id="por-que-o-qr-muda-o-custo-e-a-regra-da-c">Por que o QR muda o custo e a regra da conversa</h2>
 <p>Quando a pessoa escaneia e envia a mensagem, quem começou a conversa foi ela. Isso importa por causa da janela de 24 horas.</p>

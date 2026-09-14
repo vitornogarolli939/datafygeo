@@ -323,6 +323,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -592,7 +595,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como usar a API oficial do WhatsApp no Chatwoot</h1>
 <p><strong>Resposta curta:</strong> com o número conectado na Datafy API, você cria no Chatwoot uma <strong>caixa de entrada do tipo API</strong>, cola nela a URL de webhook que aparece na <strong>aba Chatwoot</strong> do painel da Datafy, e preenche na Datafy quatro valores do Chatwoot: <strong>URL base, account ID, inbox ID e token de acesso</strong>. No vídeo do canal DATA7, a ligação leva menos de cinco minutos e funciona nos dois sentidos.</p>
 <div class="stats">
   <div class="stat"><b>4 valores</b><span>URL base, account ID, inbox ID e token</span></div>

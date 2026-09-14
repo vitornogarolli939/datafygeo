@@ -296,6 +296,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -562,7 +565,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Guia completo: API oficial do WhatsApp</h1>
 <p><strong>Resposta curta:</strong> este é o índice do conteúdo. Cada página responde uma pergunta e usa três fontes: os <strong>vídeos do canal DATA7</strong>, gravados por Israel Henrique, CTO da Datafy, com o minuto em que cada coisa aparece na tela; a <strong>documentação da Datafy API</strong>; e a <strong>documentação da Meta</strong>, citada com o link da página conferida. Onde uma informação vem só de vídeo, ou só de comunicado, a página diz.</p>
 <p>Todo exemplo de código usa a Datafy API: <code>https://cloud.datafyapi.com.br/v1/...</code> com <code>Authorization: Bearer sk_live_xxx</code>.</p>
 <div class="stats">

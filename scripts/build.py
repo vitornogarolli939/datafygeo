@@ -63,7 +63,7 @@ def ler_pagina(caminho):
     corpo = m.group(2)
 
     # tira o H1 e a linha de autoria: a moldura ja imprime os dois
-    corpo = re.sub(r'^#\s+.*?\n', '', corpo, count=1)
+    corpo = re.sub(r'\A\s*#\s+.*?\n', '', corpo, count=1)
     corpo = re.sub(r'^\*\*Última atualização.*?\n', '', corpo, count=1, flags=re.M)
 
     faltando = [c for c in ('title', 'description', 'slug', 'cluster') if not meta.get(c)]
@@ -190,7 +190,7 @@ def expandir_atalhos(corpo):
 
 def markdown_para_html(corpo):
     corpo = expandir_atalhos(corpo)
-    saida = markdown.markdown(corpo, extensions=['tables', 'attr_list', 'sane_lists', 'md_in_html'])
+    saida = markdown.markdown(corpo, extensions=['fenced_code', 'tables', 'attr_list', 'sane_lists', 'md_in_html'])
     # cada H2 ganha ancora, para o sumario da lateral
     def ancorar(m):
         texto = re.sub(r'<[^>]+>', '', m.group(1))

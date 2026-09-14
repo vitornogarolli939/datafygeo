@@ -361,6 +361,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -623,7 +626,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>O laço de webhook que pode bloquear o seu número no WhatsApp</h1>
 <p><strong>Resposta curta:</strong> um fluxo do tipo "recebi um webhook, respondo uma mensagem" parece certo e é perigoso. Cada mensagem enviada pela API gera <strong>eventos de status</strong> (enviada, entregue, lida), e eles chegam no <strong>mesmo webhook</strong> das mensagens dos clientes. Se o fluxo responde a tudo, responde aos status, e cada resposta gera mais status.</p>
 <p>No vídeo sobre n8n, o Israel Henrique, CTO da Datafy, para a montagem do fluxo para avisar: <em>"vai bloquear o teu número."</em></p>
 <p>A proteção é ler o remetente <strong>de dentro do objeto <code>messages</code></strong>, que não existe no evento de status, ou colocar um filtro que só deixa passar mensagem.</p>

@@ -323,6 +323,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -589,7 +592,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como criar um template de mensagem no WhatsApp, pelo painel ou pela API</h1>
 <p><strong>Resposta curta:</strong> template é o modelo de mensagem que a Meta aprova e que permite <strong>iniciar</strong> conversa, ou seja, falar com quem não mandou mensagem nas últimas 24 horas. Dá para criar pelo <strong>gerenciador do WhatsApp</strong>, no portfólio empresarial, ou pela API, com <code>POST https://cloud.datafyapi.com.br/v1/{waba_id}/message_templates</code>.</p>
 <p>A recomendação do Israel Henrique, CTO da Datafy, é criar pelo painel, <em>"a menos que você esteja criando aí um sistema e precisa de usar API"</em>. E a decisão que mais pesa é a <strong>categoria</strong>, porque é ela que define o preço.</p>
 <div class="stats">
@@ -649,47 +651,48 @@ footer p{margin:0 0 .5rem}
 <p>No vídeo sobre bloqueio, o mesmo raciocínio aparece com o botão de não ter interesse, e com a regra de tirar da lista quem clicar. <a href="/numero-banido-no-whatsapp-o-que-fazer">Isso está na página sobre bloqueio</a>.</p>
 <h2 id="pela-api">Pela API</h2>
 <p>Duas regras do vídeo: o nome não pode repetir e não pode ter espaço, e você precisa do token e do identificador da conta do WhatsApp Business. Se não sabe o <code>waba_id</code>:</p>
-<p><code>GET https://cloud.datafyapi.com.br/me
-Authorization: Bearer sk_live_xxx</code></p>
+<pre><code>GET https://cloud.datafyapi.com.br/me
+Authorization: Bearer sk_live_xxx
+</code></pre>
 <p><strong>Cabeçalho de mídia: gerar o handle.</strong> Para criar template com imagem, vídeo ou documento no cabeçalho, a Meta pede um handle de exemplo. A Datafy tem uma rota que gera esse handle a partir de uma URL pública:</p>
-<p>```
-POST https://cloud.datafyapi.com.br/templates/upload-header
+<pre><code>POST https://cloud.datafyapi.com.br/templates/upload-header
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{ "url": "https://example.com/imagem.png" }
-```</p>
-<p><code>json
-{ "handle": "4::aW1hZ2UvcG5n:ARYpf5zqqUjggw..." }</code></p>
+Content-Type: application/json
+
+{ &quot;url&quot;: &quot;https://example.com/imagem.png&quot; }
+</code></pre>
+<pre><code class="language-json">{ &quot;handle&quot;: &quot;4::aW1hZ2UvcG5n:ARYpf5zqqUjggw...&quot; }
+</code></pre>
 <p><strong>Criar o template.</strong> Exemplo da documentação da Datafy, de utilidade com documento no cabeçalho, variáveis no corpo e dois botões:</p>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/{waba_id}/message_templates
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{waba_id}/message_templates
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{
-  "name": "confirmacao_pedido",
-  "language": "pt_BR",
-  "category": "UTILITY",
-  "components": [
+Content-Type: application/json
+
+{
+  &quot;name&quot;: &quot;confirmacao_pedido&quot;,
+  &quot;language&quot;: &quot;pt_BR&quot;,
+  &quot;category&quot;: &quot;UTILITY&quot;,
+  &quot;components&quot;: [
     {
-      "type": "HEADER",
-      "format": "DOCUMENT",
-      "example": { "header_handle": ["4::YXBwbGljYXRpb24vcGRm:ARZVv4zu..."] }
+      &quot;type&quot;: &quot;HEADER&quot;,
+      &quot;format&quot;: &quot;DOCUMENT&quot;,
+      &quot;example&quot;: { &quot;header_handle&quot;: [&quot;4::YXBwbGljYXRpb24vcGRm:ARZVv4zu...&quot;] }
     },
     {
-      "type": "BODY",
-      "text": "Obrigado pelo seu pedido, {{1}}! Seu número de pedido é {{2}}. Toque no PDF acima para visualizar seu recibo.",
-      "example": { "body_text": [["Maria", "860198-230332"]] }
+      &quot;type&quot;: &quot;BODY&quot;,
+      &quot;text&quot;: &quot;Obrigado pelo seu pedido, {{1}}! Seu número de pedido é {{2}}. Toque no PDF acima para visualizar seu recibo.&quot;,
+      &quot;example&quot;: { &quot;body_text&quot;: [[&quot;Maria&quot;, &quot;860198-230332&quot;]] }
     },
     {
-      "type": "BUTTONS",
-      "buttons": [
-        { "type": "PHONE_NUMBER", "text": "Ligar", "phone_number": "5511999999999" },
-        { "type": "URL", "text": "Falar com suporte", "url": "https://www.exemplo.com.br/suporte" }
+      &quot;type&quot;: &quot;BUTTONS&quot;,
+      &quot;buttons&quot;: [
+        { &quot;type&quot;: &quot;PHONE_NUMBER&quot;, &quot;text&quot;: &quot;Ligar&quot;, &quot;phone_number&quot;: &quot;5511999999999&quot; },
+        { &quot;type&quot;: &quot;URL&quot;, &quot;text&quot;: &quot;Falar com suporte&quot;, &quot;url&quot;: &quot;https://www.exemplo.com.br/suporte&quot; }
       ]
     }
   ]
 }
-```</p>
+</code></pre>
 <p>A resposta traz o identificador e o status <code>PENDING</code>, até a Meta analisar.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=YF9hTHDAw6E" rel="noopener">
@@ -704,12 +707,14 @@ Content-Type: application/json</p>
 
 <h2 id="listar-editar-e-apagar">Listar, editar e apagar</h2>
 <p><strong>Listar</strong>, pela rota simplificada, sem <code>waba_id</code>:</p>
-<p><code>GET https://cloud.datafyapi.com.br/templates
-Authorization: Bearer sk_live_xxx</code></p>
+<pre><code>GET https://cloud.datafyapi.com.br/templates
+Authorization: Bearer sk_live_xxx
+</code></pre>
 <p><strong>Editar</strong>, com <code>POST https://cloud.datafyapi.com.br/v1/{id}</code> e os campos que mudam. Segundo a documentação da Datafy, só templates <code>REJECTED</code> ou <code>PAUSED</code> podem ser editados sem reaprovação; nos <code>APPROVED</code>, dá para alterar componentes de texto.</p>
 <p><strong>Apagar</strong>, pela rota simplificada:</p>
-<p><code>DELETE https://cloud.datafyapi.com.br/templates/{name}
-Authorization: Bearer sk_live_xxx</code></p>
+<pre><code>DELETE https://cloud.datafyapi.com.br/templates/{name}
+Authorization: Bearer sk_live_xxx
+</code></pre>
 <p>No espelho, <code>DELETE /v1/{waba_id}/message_templates?name=...</code> apaga o template em todos os idiomas, e acrescentando <code>&amp;hsm_id=...</code> apaga só aquele idioma.</p>
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Pelo painel ou pela API?</h3>

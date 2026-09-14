@@ -323,6 +323,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -575,7 +578,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Quantas mensagens por segundo posso enviar no WhatsApp?</h1>
 <p><strong>Resposta curta:</strong> existem duas camadas de limite, e as duas valem.</p>
 <p><strong>Na Meta:</strong> o padrão é <strong>80 mensagens por segundo</strong> por número, com atualização automática até <strong>1.000</strong> para números elegíveis. Número do WhatsApp Business App, em coexistência, fica em <strong>20 por segundo</strong>, fixo. E existe um limite <strong>por par</strong>, entre a empresa e um mesmo usuário, cujo valor a Meta não publica.</p>
 <p><strong>Na Datafy API:</strong> <strong>500 requisições por minuto</strong> no envio de mensagens, e <strong>60 por minuto</strong> no upload de mídia e nas consultas. Passou, a resposta é <code>429</code>, com os segundos que você deve esperar.</p>

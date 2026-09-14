@@ -323,6 +323,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -583,7 +586,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como enviar imagem, documento e áudio pela API oficial do WhatsApp</h1>
 <p><strong>Resposta curta:</strong> mídia sai pelo mesmo endpoint das mensagens, <code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages</code>, de dois jeitos: <strong>por link</strong>, apontando para a URL do arquivo, ou <strong>por identificador</strong>, subindo o arquivo antes com <code>POST /v1/{phone_number_id}/media</code>. No vídeo do canal DATA7, o Israel Henrique, CTO da Datafy, envia imagem com legenda, documento com nome de arquivo e áudio como mensagem de voz, usando link.</p>
 <p>Para o áudio chegar com a onda sonora de mensagem de voz, a documentação da Meta exige <strong>arquivo OGG com codec Opus</strong> e <strong><code>"voice": true</code></strong>.</p>
 <div class="stats">
@@ -604,16 +606,16 @@ footer p{margin:0 0 .5rem}
 <h2 id="subir-o-arquivo-e-usar-o-identificador">Subir o arquivo e usar o identificador</h2>
 <p>No vídeo, o Israel explica os dois caminhos: <em>"na hora de enviar a imagem, você pode ou passar um link de uma imagem ou um ID. Esse ID você faz um upload antes, que fica hospedado lá na meta, no próprio servidor da meta."</em></p>
 <p>O upload:</p>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/media
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/media
 Authorization: Bearer sk_live_xxx
-Content-Type: multipart/form-data</p>
-<p>messaging_product=whatsapp
+Content-Type: multipart/form-data
+
+messaging_product=whatsapp
 type=image/jpeg
 file=@foto.jpg
-```</p>
-<p><code>json
-{ "id": "1037543291543636" }</code></p>
+</code></pre>
+<pre><code class="language-json">{ &quot;id&quot;: &quot;1037543291543636&quot; }
+</code></pre>
 <p>Esse <code>id</code> vai no lugar do link no corpo do envio. Segundo a documentação da Datafy, identificadores de mídia que você sobe expiram em 30 dias. O upload tem limite de <strong>60 requisições por minuto</strong>.</p>
 <p>Limites de tamanho, conforme a documentação da Meta e da Datafy:</p>
 <div class="tablewrap"><table>
@@ -661,45 +663,45 @@ file=@foto.jpg
 </figure>
 
 <h2 id="imagem-com-legenda">Imagem com legenda</h2>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{
-  "messaging_product": "whatsapp",
-  "to": "5511999999999",
-  "type": "image",
-  "image": {
-    "link": "https://.../foto.jpg",
-    "caption": "Segue a foto"
+Content-Type: application/json
+
+{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;to&quot;: &quot;5511999999999&quot;,
+  &quot;type&quot;: &quot;image&quot;,
+  &quot;image&quot;: {
+    &quot;link&quot;: &quot;https://.../foto.jpg&quot;,
+    &quot;caption&quot;: &quot;Segue a foto&quot;
   }
 }
-```</p>
+</code></pre>
 <p>Lembre da janela: fora das 24 horas depois da última mensagem da pessoa, mensagem livre não sai. No vídeo: <em>"como ele entrou em contato comigo em 24 horas, eu posso respondê-lo nessa janela de forma gratuita."</em> <a href="/primeira-mensagem-api-oficial-whatsapp">A regra está aqui</a>.</p>
 <h2 id="documento-com-nome-de-arquivo">Documento com nome de arquivo</h2>
-<p><code>json
-{
-  "messaging_product": "whatsapp",
-  "to": "5511999999999",
-  "type": "document",
-  "document": {
-    "link": "https://.../proposta.pdf",
-    "caption": "Segue a proposta conforme combinado",
-    "filename": "Proposta comercial"
+<pre><code class="language-json">{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;to&quot;: &quot;5511999999999&quot;,
+  &quot;type&quot;: &quot;document&quot;,
+  &quot;document&quot;: {
+    &quot;link&quot;: &quot;https://.../proposta.pdf&quot;,
+    &quot;caption&quot;: &quot;Segue a proposta conforme combinado&quot;,
+    &quot;filename&quot;: &quot;Proposta comercial&quot;
   }
-}</code></p>
+}
+</code></pre>
 <p>No vídeo, o documento é uma proposta, com legenda e o nome de arquivo preenchido.</p>
 <h2 id="udio-como-mensagem-de-voz">Áudio como mensagem de voz</h2>
-<p><code>json
-{
-  "messaging_product": "whatsapp",
-  "to": "5511999999999",
-  "type": "audio",
-  "audio": {
-    "link": "https://.../audio.ogg",
-    "voice": true
+<pre><code class="language-json">{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;to&quot;: &quot;5511999999999&quot;,
+  &quot;type&quot;: &quot;audio&quot;,
+  &quot;audio&quot;: {
+    &quot;link&quot;: &quot;https://.../audio.ogg&quot;,
+    &quot;voice&quot;: true
   }
-}</code></p>
+}
+</code></pre>
 <p>No vídeo, o Israel acrescenta o campo e explica de onde tirou: <em>"esse parâmetro eu vou chamar de voice. Voice entre aspas dois pontos true. Por quê? Porque está aqui na documentação da meta. Isso quer dizer que ele vai ser enviado como aquelas ondinhas."</em></p>
 <p>O que a documentação da Meta diz sobre isso:</p>
 <p><strong>Formato:</strong> mensagem de voz exige arquivo <code>.ogg</code> com codec <strong>Opus</strong>.</p>

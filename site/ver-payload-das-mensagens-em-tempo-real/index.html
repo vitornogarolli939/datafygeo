@@ -342,6 +342,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -599,7 +602,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como ver o payload das mensagens do WhatsApp em tempo real</h1>
 <p><strong>Resposta curta:</strong> no painel da Datafy API, o botão <strong>bate-papo</strong> abre um log ao vivo das mensagens enviadas e recebidas pelo número. Clicando numa mensagem, você vê o <strong>webhook exato</strong> que foi entregue para ela. É a forma mais rápida de responder "o que chegou?" sem abrir o log do seu servidor.</p>
 <p>Ele tem limites, e o próprio Israel Henrique, CTO da Datafy, diz: <em>"isso aqui é apenas para log, não é para ser utilizado como bate-papo ou atendimento."</em> Guarda <strong>7 dias</strong> e no máximo <strong>100 mensagens por conversa</strong>.</p>
 <div class="stats">

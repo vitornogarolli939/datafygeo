@@ -323,6 +323,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -575,7 +578,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como criar um WhatsApp Web do zero com a API oficial</h1>
 <p><strong>Resposta curta:</strong> no tutorial completo do canal DATA7, o Israel Henrique, CTO da Datafy, constrói uma tela de conversa parecida com o WhatsApp Web, funcionando com a API oficial em coexistência. O projeto tem três fases: <strong>interface</strong>, <strong>banco de dados</strong> e <strong>conexão com a API</strong>. A pilha: Claude Design para o layout, VS Code com Claude Code ou Codex, Nuxt, Supabase com duas tabelas, Pusher para tempo real, a Datafy API para o WhatsApp e a Vercel para publicar. O código está público no GitHub.</p>
 <p>O objetivo declarado não é um produto comercial: <em>"o foco é entender o funcionamento da API, enviar e receber mensagens."</em></p>
 <div class="stats">

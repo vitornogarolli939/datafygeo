@@ -342,6 +342,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -598,7 +601,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Opt-in no WhatsApp: como pedir permissão com um link de cadastro</h1>
 <p><strong>Resposta curta:</strong> a política comercial do WhatsApp diz que você só pode contatar alguém se essa pessoa <strong>forneceu o número</strong> e <strong>deu permissão (opt-in)</strong>. O jeito de coletar essa permissão dentro do próprio WhatsApp é o <strong>Cadastro no App</strong>: você cria um cadastro pela API e recebe um link no formato <code>wa.me/&lt;NUMERO&gt;/signup/&lt;SIGNUP_ID&gt;</code>. Quem clica e confirma recebe a sua mensagem de confirmação, entra na base de clientes da conta, e você recebe um webhook.</p>
 <div class="stats">
   <div class="stat"><b>2 condições</b><span>número fornecido e opt-in, pela política</span></div>
@@ -633,26 +635,26 @@ footer p{margin:0 0 .5rem}
 
 <h2 id="criar-o-cadastro">Criar o cadastro</h2>
 <p>Na primeira vez que a empresa cria um cadastro, é preciso aceitar os termos, com o objeto <code>policy</code>. Nas seguintes, não.</p>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/{waba_id}/signups
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{waba_id}/signups
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{
-  "signup_message": "Receba ofertas exclusivas diretamente no seu WhatsApp!",
-  "confirmation_message": "Obrigado por se inscrever! Seu código de boas-vindas: {{promo_code}}.",
-  "privacy_policy_url": "https://exemplo.com.br/politica-privacidade",
-  "promo_code": "BEMVINDO10",
-  "display_name": "Promoção de Verão",
-  "website_url": "https://exemplo.com.br",
-  "policy": {
-    "tos": "https://www.whatsapp.com/legal/meta-terms-whatsapp-business",
-    "accepted": true
+Content-Type: application/json
+
+{
+  &quot;signup_message&quot;: &quot;Receba ofertas exclusivas diretamente no seu WhatsApp!&quot;,
+  &quot;confirmation_message&quot;: &quot;Obrigado por se inscrever! Seu código de boas-vindas: {{promo_code}}.&quot;,
+  &quot;privacy_policy_url&quot;: &quot;https://exemplo.com.br/politica-privacidade&quot;,
+  &quot;promo_code&quot;: &quot;BEMVINDO10&quot;,
+  &quot;display_name&quot;: &quot;Promoção de Verão&quot;,
+  &quot;website_url&quot;: &quot;https://exemplo.com.br&quot;,
+  &quot;policy&quot;: {
+    &quot;tos&quot;: &quot;https://www.whatsapp.com/legal/meta-terms-whatsapp-business&quot;,
+    &quot;accepted&quot;: true
   }
 }
-```</p>
+</code></pre>
 <p>A resposta traz o identificador do cadastro:</p>
-<p><code>json
-{ "id": "9876543210123456" }</code></p>
+<pre><code class="language-json">{ &quot;id&quot;: &quot;9876543210123456&quot; }
+</code></pre>
 <p>Não sabe o <code>waba_id</code>? <code>GET https://cloud.datafyapi.com.br/me</code> devolve, passando só o token no cabeçalho.</p>
 <p>O que cada campo faz:</p>
 <div class="tablewrap"><table>
@@ -698,37 +700,40 @@ Content-Type: application/json</p>
 </table></div>
 <h2 id="o-link">O link</h2>
 <p>Com o identificador em mãos, o link é montado com o número de telefone:</p>
-<p><code>wa.me/&lt;NUMERO&gt;/signup/&lt;SIGNUP_ID&gt;</code></p>
+<pre><code>wa.me/&lt;NUMERO&gt;/signup/&lt;SIGNUP_ID&gt;
+</code></pre>
 <p>O cadastro não fica preso a um número: o mesmo <code>signup_id</code> funciona com qualquer número da conta. Quando alguém clica e confirma, você recebe uma notificação de webhook e a pessoa recebe a <code>confirmation_message</code>.</p>
 <h2 id="listar-consultar-e-desativar">Listar, consultar e desativar</h2>
 <p>Listar os cadastros da conta, com paginação por cursor:</p>
-<p><code>GET https://cloud.datafyapi.com.br/v1/{waba_id}/signups
-Authorization: Bearer sk_live_xxx</code></p>
-<p>Consultar um cadastro:</p>
-<p><code>GET https://cloud.datafyapi.com.br/v1/signups/{signup_id}
-Authorization: Bearer sk_live_xxx</code></p>
-<p>Atualizar, mandando só os campos que mudam. Para parar um link, que é a única forma de interromper um cadastro:</p>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/signups/{signup_id}
+<pre><code>GET https://cloud.datafyapi.com.br/v1/{waba_id}/signups
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{ "status": "DISABLED" }
-```</p>
+</code></pre>
+<p>Consultar um cadastro:</p>
+<pre><code>GET https://cloud.datafyapi.com.br/v1/signups/{signup_id}
+Authorization: Bearer sk_live_xxx
+</code></pre>
+<p>Atualizar, mandando só os campos que mudam. Para parar um link, que é a única forma de interromper um cadastro:</p>
+<pre><code>POST https://cloud.datafyapi.com.br/v1/signups/{signup_id}
+Authorization: Bearer sk_live_xxx
+Content-Type: application/json
+
+{ &quot;status&quot;: &quot;DISABLED&quot; }
+</code></pre>
 <p>Quem clicar num link desativado vê um erro. Para reativar, <code>status: "ACTIVE"</code>.</p>
 <h2 id="bases-de-clientes">Bases de clientes</h2>
 <p>Quem assina por um link entra na <strong>base de clientes padrão</strong> da conta, criada automaticamente no primeiro cadastro. Se você quiser separar assinantes, dá para criar outras bases e trocar a padrão:</p>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/{business_id}/messaging_customer_base
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{business_id}/messaging_customer_base
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{ "messaging_customer_base_name": "Assinantes Verão 2026" }
-```</p>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/{waba_id}/default_messaging_customer_base
+Content-Type: application/json
+
+{ &quot;messaging_customer_base_name&quot;: &quot;Assinantes Verão 2026&quot; }
+</code></pre>
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{waba_id}/default_messaging_customer_base
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{ "messaging_customer_base_id": "456789012345678" }
-```</p>
+Content-Type: application/json
+
+{ &quot;messaging_customer_base_id&quot;: &quot;456789012345678&quot; }
+</code></pre>
 <p>Todos esses endpoints exigem a permissão <code>whatsapp_business_management</code>.</p>
 <h2 id="opt-in-n-o-garante-que-a-pessoa-responda">Opt-in não garante que a pessoa responda</h2>
 <p>Permissão resolve a política. Não resolve o que acontece depois do envio. No mesmo vídeo sobre bloqueio, o Israel conta o caso de uma advogada que tinha uma lista de clientes, montou o template certo, e foi bloqueada de novo porque ninguém respondia às mensagens.</p>

@@ -342,6 +342,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -602,7 +605,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como receber imagem, áudio e documento pela API oficial do WhatsApp</h1>
 <p><strong>Resposta curta:</strong> quando o cliente manda uma foto, um áudio ou um documento, o webhook não traz o arquivo. Traz um <strong>identificador da mídia</strong> e uma URL que <strong>não abre</strong>: ela dá erro de autenticação. A mídia da API oficial vem criptografada.</p>
 <p>Pela Datafy API, uma chamada resolve: <code>GET https://cloud.datafyapi.com.br/media/{id}</code>, com o identificador que veio no webhook, devolve uma URL pronta para usar, <strong>válida por 30 dias</strong>. Na fala do Israel Henrique, CTO da Datafy: <em>"ela vem criptografada e você precisa descriptografar. Aqui a gente já fez esse trabalho para você."</em></p>
 <div class="stats">
@@ -679,34 +681,37 @@ footer p{margin:0 0 .5rem}
 </figure>
 
 <h2 id="pela-datafy-uma-chamada">Pela Datafy: uma chamada</h2>
-<p><code>GET https://cloud.datafyapi.com.br/media/{id}
-Authorization: Bearer sk_live_xxx</code></p>
+<pre><code>GET https://cloud.datafyapi.com.br/media/{id}
+Authorization: Bearer sk_live_xxx
+</code></pre>
 <p>O <code>{id}</code> é o identificador que veio no payload: <code>image.id</code>, <code>audio.id</code>, <code>video.id</code> ou <code>document.id</code>.</p>
-<p><code>json
-{
-  "url": "https://files.datafyapi.com.br/uuid-cliente/2026/06/1749500000000-a1b2c3d4.jpg",
-  "mime_type": "image/jpeg",
-  "size": 86620
-}</code></p>
+<pre><code class="language-json">{
+  &quot;url&quot;: &quot;https://files.datafyapi.com.br/uuid-cliente/2026/06/1749500000000-a1b2c3d4.jpg&quot;,
+  &quot;mime_type&quot;: &quot;image/jpeg&quot;,
+  &quot;size&quot;: 86620
+}
+</code></pre>
 <p>A URL devolvida vale <strong>30 dias</strong>. Na fala do vídeo: <em>"ele fica salvo durante 30 dias no storage. Se você quiser mais dias, aí você precisa você mesmo baixar esse áudio e salvar no teu próprio storage."</em></p>
 <p>Se a resposta for <code>404</code>, o identificador é inválido ou a mídia expirou.</p>
 <h2 id="pelo-espelho-duas-chamadas-e-o-bin-rio">Pelo espelho: duas chamadas e o binário</h2>
 <p>Se você quer baixar o arquivo direto da Meta, a documentação da Datafy indica o caminho espelhado.</p>
 <p><strong>1. Pedir a URL de download:</strong></p>
-<p><code>GET https://cloud.datafyapi.com.br/v1/{media_id}
-Authorization: Bearer sk_live_xxx</code></p>
-<p><code>json
-{
-  "url": "https://lookaside.fbsbx.com/whatsapp_business/attachments/?mid=1037543291543636",
-  "mime_type": "image/jpeg",
-  "sha256": "f20c6c7c34d56b...",
-  "file_size": 23418,
-  "id": "1037543291543636",
-  "messaging_product": "whatsapp"
-}</code></p>
+<pre><code>GET https://cloud.datafyapi.com.br/v1/{media_id}
+Authorization: Bearer sk_live_xxx
+</code></pre>
+<pre><code class="language-json">{
+  &quot;url&quot;: &quot;https://lookaside.fbsbx.com/whatsapp_business/attachments/?mid=1037543291543636&quot;,
+  &quot;mime_type&quot;: &quot;image/jpeg&quot;,
+  &quot;sha256&quot;: &quot;f20c6c7c34d56b...&quot;,
+  &quot;file_size&quot;: 23418,
+  &quot;id&quot;: &quot;1037543291543636&quot;,
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;
+}
+</code></pre>
 <p><strong>2. Baixar o arquivo</strong>, com o token no cabeçalho:</p>
-<p><code>GET {url retornada}
-Authorization: Bearer sk_live_xxx</code></p>
+<pre><code>GET {url retornada}
+Authorization: Bearer sk_live_xxx
+</code></pre>
 <p>Dois cuidados que a documentação da Datafy destaca:</p>
 <p><strong>A URL da Meta vale apenas 5 minutos.</strong> Baixe imediatamente depois de consultar. Recebendo <code>404</code>, peça uma nova URL e tente de novo.</p>
 <p><strong>O token é obrigatório no download.</strong> Clicar na URL no navegador retorna erro.</p>

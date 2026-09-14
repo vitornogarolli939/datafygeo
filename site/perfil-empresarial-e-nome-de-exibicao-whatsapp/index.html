@@ -342,6 +342,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -594,7 +597,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Perfil empresarial e nome de exibição do WhatsApp pela API</h1>
 <p><strong>Resposta curta:</strong> o perfil é o que o cliente vê ao abrir o chat com a empresa: sobre, endereço, descrição, e-mail, sites, setor e foto. Pela Datafy API, <code>GET /profile</code> lê e <code>PUT /profile</code> atualiza, sem precisar informar o identificador do número. O <strong>nome de exibição</strong> é separado: <code>GET /profile/display-name</code> mostra o nome e o status, e <code>POST /profile/display-name</code> pede a troca, que entra em análise da Meta.</p>
 <div class="stats">
   <div class="stat"><b>139</b><span>caracteres no campo sobre</span></div>
@@ -613,44 +615,47 @@ footer p{margin:0 0 .5rem}
 </ul>
 <h2 id="ler-o-perfil">Ler o perfil</h2>
 <p>Pela rota simplificada:</p>
-<p><code>GET https://cloud.datafyapi.com.br/profile
-Authorization: Bearer sk_live_xxx</code></p>
+<pre><code>GET https://cloud.datafyapi.com.br/profile
+Authorization: Bearer sk_live_xxx
+</code></pre>
 <p>Pelo espelho, escolhendo os campos:</p>
-<p><code>GET https://cloud.datafyapi.com.br/v1/{phone_number_id}/whatsapp_business_profile?fields=about,address,description,email,profile_picture_url,websites,vertical
-Authorization: Bearer sk_live_xxx</code></p>
-<p><code>json
-{
-  "data": [
+<pre><code>GET https://cloud.datafyapi.com.br/v1/{phone_number_id}/whatsapp_business_profile?fields=about,address,description,email,profile_picture_url,websites,vertical
+Authorization: Bearer sk_live_xxx
+</code></pre>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
     {
-      "messaging_product": "whatsapp",
-      "address": "Av. Paulista, 1000, São Paulo, SP",
-      "description": "Sua loja online de confiança.",
-      "vertical": "RETAIL",
-      "about": "Atendimento de seg a sex, das 9h às 18h.",
-      "email": "contato@minhaempresa.com.br",
-      "websites": ["https://minhaempresa.com.br"],
-      "profile_picture_url": "https://..."
+      &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+      &quot;address&quot;: &quot;Av. Paulista, 1000, São Paulo, SP&quot;,
+      &quot;description&quot;: &quot;Sua loja online de confiança.&quot;,
+      &quot;vertical&quot;: &quot;RETAIL&quot;,
+      &quot;about&quot;: &quot;Atendimento de seg a sex, das 9h às 18h.&quot;,
+      &quot;email&quot;: &quot;contato@minhaempresa.com.br&quot;,
+      &quot;websites&quot;: [&quot;https://minhaempresa.com.br&quot;],
+      &quot;profile_picture_url&quot;: &quot;https://...&quot;
     }
   ]
-}</code></p>
+}
+</code></pre>
 <h2 id="atualizar-o-perfil">Atualizar o perfil</h2>
-<p><code>PUT https://cloud.datafyapi.com.br/profile
+<pre><code>PUT https://cloud.datafyapi.com.br/profile
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</code></p>
+Content-Type: application/json
+</code></pre>
 <p>No espelho, o equivalente é <code>POST /v1/{phone_number_id}/whatsapp_business_profile</code>, com <code>messaging_product: "whatsapp"</code> no corpo:</p>
-<p><code>json
-{
-  "messaging_product": "whatsapp",
-  "about": "Atendimento de seg a sex, das 9h às 18h.",
-  "address": "Av. Paulista, 1000, São Paulo, SP",
-  "description": "Sua loja online de confiança.",
-  "email": "contato@minhaempresa.com.br",
-  "vertical": "RETAIL",
-  "websites": [
-    "https://minhaempresa.com.br",
-    "https://instagram.com/minhaempresa"
+<pre><code class="language-json">{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;about&quot;: &quot;Atendimento de seg a sex, das 9h às 18h.&quot;,
+  &quot;address&quot;: &quot;Av. Paulista, 1000, São Paulo, SP&quot;,
+  &quot;description&quot;: &quot;Sua loja online de confiança.&quot;,
+  &quot;email&quot;: &quot;contato@minhaempresa.com.br&quot;,
+  &quot;vertical&quot;: &quot;RETAIL&quot;,
+  &quot;websites&quot;: [
+    &quot;https://minhaempresa.com.br&quot;,
+    &quot;https://instagram.com/minhaempresa&quot;
   ]
-}</code></p>
+}
+</code></pre>
 <p>Os limites de cada campo, segundo a documentação da Datafy:</p>
 <div class="tablewrap"><table>
 <thead>
@@ -704,14 +709,15 @@ Content-Type: application/json</code></p>
 </figure>
 
 <p>Para consultar o nome e o status:</p>
-<p><code>GET https://cloud.datafyapi.com.br/profile/display-name
-Authorization: Bearer sk_live_xxx</code></p>
-<p><code>json
-{
-  "verified_name": "Minha Empresa",
-  "name_status": "AVAILABLE_WITHOUT_REVIEW",
-  "id": "106540352242922"
-}</code></p>
+<pre><code>GET https://cloud.datafyapi.com.br/profile/display-name
+Authorization: Bearer sk_live_xxx
+</code></pre>
+<pre><code class="language-json">{
+  &quot;verified_name&quot;: &quot;Minha Empresa&quot;,
+  &quot;name_status&quot;: &quot;AVAILABLE_WITHOUT_REVIEW&quot;,
+  &quot;id&quot;: &quot;106540352242922&quot;
+}
+</code></pre>
 <p>Os valores possíveis de <code>name_status</code>:</p>
 <div class="tablewrap"><table>
 <thead>
@@ -744,12 +750,12 @@ Authorization: Bearer sk_live_xxx</code></p>
 </tbody>
 </table></div>
 <p>Para pedir a troca:</p>
-<p>```
-POST https://cloud.datafyapi.com.br/profile/display-name
+<pre><code>POST https://cloud.datafyapi.com.br/profile/display-name
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{ "new_display_name": "Minha Empresa Ltda" }
-```</p>
+Content-Type: application/json
+
+{ &quot;new_display_name&quot;: &quot;Minha Empresa Ltda&quot; }
+</code></pre>
 <p>A resposta confirma o pedido. O <code>name_status</code> passa para <code>PENDING_REVIEW</code>, e a documentação avisa que a aprovação pode levar alguns dias. Consulte com o <code>GET</code> para acompanhar.</p>
 <h2 id="por-que-d-para-chamar-sem-o-identificado">Por que dá para chamar sem o identificador do número</h2>
 <p>As rotas <code>/profile</code> e <code>/profile/display-name</code> são simplificadas da Datafy: o token já identifica o número. As rotas com <code>/v1/...</code> são o espelho da Cloud API, e nelas você informa o <code>phone_number_id</code>. Se não souber, <code>GET /me</code> devolve, e o vídeo sobre como a Datafy funciona mostra essa chamada.</p>

@@ -323,6 +323,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -579,7 +582,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como enviar uma mensagem de template pela API oficial do WhatsApp</h1>
 <p><strong>Resposta curta:</strong> template sai pelo mesmo endpoint de qualquer mensagem, <code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages</code>, com <code>"type": "template"</code> e um objeto <code>template</code> com o <strong>nome</strong>, o <strong>idioma</strong> e os <strong>componentes</strong>, que carregam os valores das variáveis. Antes, liste os templates aprovados da conta com <code>GET https://cloud.datafyapi.com.br/templates</code> para saber o nome exato.</p>
 <p>No vídeo do canal DATA7, o Israel Henrique, CTO da Datafy, envia dois templates. O segundo tem imagem no cabeçalho, e mostra o erro que acontece quando a imagem não vai no envio.</p>
 <div class="stats">
@@ -600,24 +602,26 @@ footer p{margin:0 0 .5rem}
 <h2 id="1-descobrir-o-nome-exato">1. Descobrir o nome exato</h2>
 <p>No vídeo: <em>"a identificação do template é o nome do template, por isso que eles não podem se repetir."</em></p>
 <p>Pela rota simplificada da Datafy, sem o identificador da conta:</p>
-<p><code>GET https://cloud.datafyapi.com.br/templates
-Authorization: Bearer sk_live_xxx</code></p>
+<pre><code>GET https://cloud.datafyapi.com.br/templates
+Authorization: Bearer sk_live_xxx
+</code></pre>
 <p>Pelo espelho, com filtros:</p>
-<p><code>GET https://cloud.datafyapi.com.br/v1/{waba_id}/message_templates?name=entrega_em_andamento
-Authorization: Bearer sk_live_xxx</code></p>
-<p><code>json
-{
-  "data": [
+<pre><code>GET https://cloud.datafyapi.com.br/v1/{waba_id}/message_templates?name=entrega_em_andamento
+Authorization: Bearer sk_live_xxx
+</code></pre>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
     {
-      "name": "entrega_em_andamento",
-      "status": "APPROVED",
-      "category": "UTILITY",
-      "language": "pt_BR",
-      "id": "4206368849626155"
+      &quot;name&quot;: &quot;entrega_em_andamento&quot;,
+      &quot;status&quot;: &quot;APPROVED&quot;,
+      &quot;category&quot;: &quot;UTILITY&quot;,
+      &quot;language&quot;: &quot;pt_BR&quot;,
+      &quot;id&quot;: &quot;4206368849626155&quot;
     }
   ],
-  "paging": {}
-}</code></p>
+  &quot;paging&quot;: {}
+}
+</code></pre>
 <p>No vídeo, ele tira os filtros para trazer todos: <em>"eu vou remover tudo que tem aqui no parâmetro, nos parâmetros, para ele trazer todos os templates."</em> Não sabe o <code>waba_id</code>? <code>GET https://cloud.datafyapi.com.br/me</code> devolve.</p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=62oSY66J3s4" rel="noopener">
@@ -632,27 +636,27 @@ Authorization: Bearer sk_live_xxx</code></p>
 
 <h2 id="2-montar-o-corpo">2. Montar o corpo</h2>
 <p>A estrutura, conforme a documentação de templates da Meta:</p>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/messages
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{
-  "messaging_product": "whatsapp",
-  "recipient_type": "individual",
-  "to": "5511999999999",
-  "type": "template",
-  "template": {
-    "name": "entrega_em_andamento",
-    "language": { "code": "pt_BR" },
-    "components": [
+Content-Type: application/json
+
+{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;recipient_type&quot;: &quot;individual&quot;,
+  &quot;to&quot;: &quot;5511999999999&quot;,
+  &quot;type&quot;: &quot;template&quot;,
+  &quot;template&quot;: {
+    &quot;name&quot;: &quot;entrega_em_andamento&quot;,
+    &quot;language&quot;: { &quot;code&quot;: &quot;pt_BR&quot; },
+    &quot;components&quot;: [
       {
-        "type": "body",
-        "parameters": [ ... ]
+        &quot;type&quot;: &quot;body&quot;,
+        &quot;parameters&quot;: [ ... ]
       }
     ]
   }
 }
-```</p>
+</code></pre>
 <p>Os <code>parameters</code> levam os valores das variáveis do template, na ordem ou pelo nome, conforme o template foi criado. Para ver um corpo de template preenchido, o endpoint de envio na documentação da Datafy tem exemplos por tipo de mensagem, incluindo template.</p>
 <p>No vídeo, o Israel copia a lista de templates para uma IA e pede o corpo de um deles: <em>"quero enviar o template de confirmação de consulta, monte para mim o payload."</em> Funciona porque o formato é o da documentação da Meta. E ele lembra de trocar o começo da URL e o token se usar o comando que a IA gerar: <em>"lembre só de substituir aqui pelo nosso URL, e aqui o token."</em></p>
 <h2 id="3-template-com-imagem-no-cabe-alho">3. Template com imagem no cabeçalho</h2>

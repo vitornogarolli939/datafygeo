@@ -323,6 +323,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -580,7 +583,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como validar a assinatura do webhook da Datafy API</h1>
 <p><strong>Resposta curta:</strong> ative a assinatura na aba de webhooks do número e guarde o secret (<code>whsec_...</code>) no seu servidor. A partir daí, cada entrega traz <code>x-datafy-timestamp</code> e <code>x-datafy-signature-256</code>. A assinatura é o <strong>HMAC-SHA256 de <code>{timestamp}.{corpo}</code></strong>, com o secret como chave, no formato <code>sha256=&lt;hex&gt;</code>.</p>
 <p>O erro mais comum, segundo a própria documentação da Datafy: calcular sobre o JSON depois de interpretado. <strong>Use o corpo cru</strong>, exatamente como chegou.</p>
 <div class="stats">
@@ -668,49 +670,57 @@ footer p{margin:0 0 .5rem}
 <p>O <code>x-datafy-delivery-id</code> vem sempre. Os outros dois só quando a assinatura está ativada para o número.</p>
 <h2 id="validando-em-node-js">Validando em Node.js</h2>
 <p>Exemplo da documentação da Datafy:</p>
-<p>```js
-import express from 'express'
-import crypto from 'node:crypto'</p>
-<p>const app = express()</p>
-<p>// express.raw preserva o corpo original. express.json() destruiria a verificação
+<pre><code class="language-js">import express from 'express'
+import crypto from 'node:crypto'
+
+const app = express()
+
+// express.raw preserva o corpo original. express.json() destruiria a verificação
 app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) =&gt; {
   const assinatura = req.get('x-datafy-signature-256') ?? ''
   const timestamp  = req.get('x-datafy-timestamp') ?? ''
-  const corpo      = req.body.toString('utf8')</p>
-<p>const esperada = 'sha256=' + crypto
+  const corpo      = req.body.toString('utf8')
+
+  const esperada = 'sha256=' + crypto
     .createHmac('sha256', process.env.DATAFY_WEBHOOK_SECRET)
-    .update(<code>${timestamp}.${corpo}</code>)
-    .digest('hex')</p>
-<p>const a = Buffer.from(assinatura)
+    .update(`${timestamp}.${corpo}`)
+    .digest('hex')
+
+  const a = Buffer.from(assinatura)
   const b = Buffer.from(esperada)
   if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
     return res.sendStatus(401)
-  }</p>
-<p>// Rejeita entregas antigas: protege contra reenvio de uma requisição capturada
+  }
+
+  // Rejeita entregas antigas: protege contra reenvio de uma requisição capturada
   if (Math.abs(Math.floor(Date.now() / 1000) - Number(timestamp)) &gt; 300) {
     return res.sendStatus(401)
-  }</p>
-<p>res.sendStatus(200)          // responda primeiro
+  }
+
+  res.sendStatus(200)          // responda primeiro
   processarEmBackground(JSON.parse(corpo))
 })
-```</p>
+</code></pre>
 <h2 id="validando-em-php">Validando em PHP</h2>
-<p>```php
-&lt;?php
+<pre><code class="language-php">&lt;?php
 $corpo      = file_get_contents('php://input');   // corpo cru
 $assinatura = $_SERVER['HTTP_X_DATAFY_SIGNATURE_256'] ?? '';
-$timestamp  = $_SERVER['HTTP_X_DATAFY_TIMESTAMP'] ?? '';</p>
-<p>$esperada = 'sha256=' . hash_hmac('sha256', $timestamp . '.' . $corpo, getenv('DATAFY_WEBHOOK_SECRET'));</p>
-<p>if (!hash_equals($esperada, $assinatura)) {
+$timestamp  = $_SERVER['HTTP_X_DATAFY_TIMESTAMP'] ?? '';
+
+$esperada = 'sha256=' . hash_hmac('sha256', $timestamp . '.' . $corpo, getenv('DATAFY_WEBHOOK_SECRET'));
+
+if (!hash_equals($esperada, $assinatura)) {
     http_response_code(401);
     exit;
-}</p>
-<p>if (abs(time() - (int) $timestamp) &gt; 300) {
+}
+
+if (abs(time() - (int) $timestamp) &gt; 300) {
     http_response_code(401);
     exit;
-}</p>
-<p>http_response_code(200);
-```</p>
+}
+
+http_response_code(200);
+</code></pre>
 <h2 id="por-que-precisa-ser-o-corpo-cru">Por que precisa ser o corpo cru</h2>
 <p>A documentação da Datafy destaca esse ponto como o erro mais comum ao implementar a verificação: se você interpreta o JSON e depois gera o texto de novo, os bytes mudam, e o HMAC calculado não é o mesmo que foi assinado.</p>
 <p>Por isso, no exemplo em Node, a rota usa <code>express.raw</code> em vez de <code>express.json</code>, e no PHP o corpo vem de <code>php://input</code> antes de qualquer interpretação. Só depois de validar é que o corpo vira objeto.</p>
@@ -731,6 +741,7 @@ $timestamp  = $_SERVER['HTTP_X_DATAFY_TIMESTAMP'] ?? '';</p>
 </a>
 <figcaption>Em 05:31 ele abre a aba de webhooks do número e cadastra a URL. É nessa aba que fica a ativação da assinatura.</figcaption>
 </figure>
+
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>O secret é por URL ou por número?</h3>
 <p>Por número. O mesmo secret vale para todas as URLs daquele número.</p>
@@ -745,6 +756,7 @@ $timestamp  = $_SERVER['HTTP_X_DATAFY_TIMESTAMP'] ?? '';</p>
 <h2 id="como-decidir">Como decidir</h2>
 <p>Se o seu endpoint está público, ative a assinatura e valide cada entrega antes de processar. Use o exemplo da documentação na sua linguagem, mantenha o corpo cru até validar, e responda 200 antes de trabalhar.</p>
 <div class="cta"><h3>Ative e valide com um evento de teste</h3><p>Ative a assinatura na aba de webhooks, guarde o whsec no servidor, clique no botão de teste do painel e confira se o seu código aceita a entrega.</p><p><a class="btn" href="https://app.datafyapi.com.br" rel="noopener">Começar 7 dias grátis, sem cartão</a></p><small>Sem taxa de setup · Cancele quando quiser · Suporte por WhatsApp</small></div>
+
 <h2 id="leia-tamb-m">Leia também</h2>
 <ul>
 <li><a href="/webhook-whatsapp-cloud-api-como-receber-mensagens">Webhook: receber mensagens no seu servidor</a></li>

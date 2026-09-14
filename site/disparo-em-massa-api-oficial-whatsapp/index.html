@@ -342,6 +342,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -594,7 +597,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como fazer disparo em massa na API oficial do WhatsApp</h1>
 <p><strong>Resposta curta:</strong> disparo em massa na API oficial é <strong>template aprovado</strong> enviado para uma lista. Pela API, você faz um laço chamando o envio de template. Pelo painel da Datafy, a aba <strong>Disparos</strong> faz isso sem código: você sobe uma planilha CSV com a coluna <strong><code>telefone</code></strong>, escolhe o template, liga as colunas às variáveis e envia agora ou agenda.</p>
 <p>No vídeo, o Israel Henrique, CTO da Datafy, explica por que a aba existe: <em>"basta você implementar no teu sistema e fazer um loop ali para enviar para todo mundo. Mas tem gente que não tem esse conhecimento técnico."</em></p>
 <div class="stats">
@@ -628,9 +630,10 @@ footer p{margin:0 0 .5rem}
 
 <h2 id="a-planilha">A planilha</h2>
 <p>Na fala do vídeo: <em>"tem que ter uma coluna chamada telefone, que é onde você vai colocar os telefones dos usuários. E eles têm que estar nesse formato aqui: 55, que no caso seria o DDI, o código do país, DDD e o número."</em></p>
-<p><code>telefone,nome
+<pre><code>telefone,nome
 5511999999999,Maria
-5541988887777,João</code></p>
+5541988887777,João
+</code></pre>
 <p><strong>A coluna <code>telefone</code></strong> pode estar em qualquer posição, mas o nome precisa estar na primeira linha.</p>
 <p><strong>As outras colunas</strong> são as variáveis do template: <em>"o nome da coluna pode ser qualquer um, tanto faz."</em></p>
 <p><strong>Exportar como CSV.</strong> No Google Sheets, pelo menu de arquivo, baixando como CSV.</p>

@@ -323,6 +323,9 @@ li::marker{color:var(--muted)}
 strong{font-weight:650}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   background:var(--code-bg); padding:.12rem .38rem; border-radius:5px; font-size:.86em}
+pre{background:var(--code-bg); border:1px solid var(--line); border-radius:8px;
+  padding:.9rem 1rem; margin:0 0 1.25rem; overflow-x:auto; line-height:1.5}
+pre code{background:none; padding:0; border-radius:0; font-size:.84rem; white-space:pre}
 
 blockquote{
   margin:2rem 0; padding:1.4rem 1.5rem; background:var(--accent-soft);
@@ -581,7 +584,6 @@ footer p{margin:0 0 .5rem}
 <div class="shell">
 <article>
 
-<h1>Como sincronizar os contatos e o histórico do WhatsApp Business com a API</h1>
 <p><strong>Resposta curta:</strong> a sincronização <strong>não é automática</strong>. Depois de conectar o número em coexistência, você precisa ter autorizado o compartilhamento no celular, assinar os eventos <code>history</code> e <code>smb_app_state_sync</code> no webhook, e fazer uma chamada para <code>POST /v1/{phone_number_id}/smb_app_data</code>, uma para contatos e outra para histórico.</p>
 <p>São duas regras que não perdoam: <strong>24 horas</strong> a partir da conexão, e <strong>uma vez só</strong> por tipo. Perdeu a janela ou errou, só refazendo a conexão.</p>
 <div class="stats">
@@ -649,28 +651,28 @@ footer p{margin:0 0 .5rem}
 <p><strong>3. Você está dentro das 24 horas.</strong> Na fala dele: <em>"isso tem que ser feito em até 24 horas após você fazer a conexão. Se passou de 24 horas, não dá mais. Aí tem que desconectar e conectar de novo."</em> A documentação da Meta diz o mesmo: sem sincronizar em 24 horas, o cliente precisa ser desconectado e refazer o fluxo.</p>
 <h2 id="a-chamada">A chamada</h2>
 <p>Contatos:</p>
-<p>```
-POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/smb_app_data
+<pre><code>POST https://cloud.datafyapi.com.br/v1/{phone_number_id}/smb_app_data
 Authorization: Bearer sk_live_xxx
-Content-Type: application/json</p>
-<p>{
-  "messaging_product": "whatsapp",
-  "sync_type": "smb_app_state_sync"
+Content-Type: application/json
+
+{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;sync_type&quot;: &quot;smb_app_state_sync&quot;
 }
-```</p>
+</code></pre>
 <p>Histórico de conversas, trocando só o tipo:</p>
-<p><code>json
-{
-  "messaging_product": "whatsapp",
-  "sync_type": "history"
-}</code></p>
+<pre><code class="language-json">{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;sync_type&quot;: &quot;history&quot;
+}
+</code></pre>
 <p>A resposta confirma o aceite. Os dados chegam depois, pelo webhook:</p>
-<p><code>json
-{
-  "messaging_product": "whatsapp",
-  "request_id": "7a3b2c1d-e5f6-4a8b-9c0d-1e2f3a4b5c6d",
-  "success": true
-}</code></p>
+<pre><code class="language-json">{
+  &quot;messaging_product&quot;: &quot;whatsapp&quot;,
+  &quot;request_id&quot;: &quot;7a3b2c1d-e5f6-4a8b-9c0d-1e2f3a4b5c6d&quot;,
+  &quot;success&quot;: true
+}
+</code></pre>
 <p><strong>Guarde o <code>request_id</code>.</strong> É o identificador que você passa ao suporte da Meta se a entrega falhar. No vídeo, o conselho é o mesmo: <em>"é bom salvar esse valor aqui caso dê algum problema, que daí você pode entrar em contato com a meta."</em></p>
 <figure>
 <a class="video" href="https://www.youtube.com/watch?v=HQm5UuW50bM" rel="noopener">
@@ -690,10 +692,11 @@ Content-Type: application/json</p>
 <p>Depois da sincronização inicial, as alterações nos contatos do aplicativo continuam chegando por esse mesmo evento, sem chamar o endpoint de novo.</p>
 <h2 id="como-o-hist-rico-chega">Como o histórico chega</h2>
 <p>Pelo campo <code>history</code>, em vários webhooks assíncronos. Cada um pode carregar muitas mensagens:</p>
-<p><code>webhook (1 POST)
+<pre><code>webhook (1 POST)
 └── value.history[]
     └── threads[]       1 thread = 1 conversa com 1 contato
-        └── messages[]  mensagens daquela conversa</code></p>
+        └── messages[]  mensagens daquela conversa
+</code></pre>
 <p><strong>Fases.</strong> São três, com o dia da conexão como referência: fase 0 do dia 0 ao 1, fase 1 do dia 1 ao 90, fase 2 do dia 90 ao 180. <strong>Na prática as fases se sobrepõem</strong>: mensagem de qualquer data pode aparecer em qualquer fase. Não use a fase para deduzir período.</p>
 <p><strong>Pedaços.</strong> Cada fase pode vir em vários pedaços (<code>chunk_order</code>), fora de ordem. O campo <code>progress</code> vai de 0 a 100, e <code>progress: 100</code> na última fase indica histórico completo.</p>
 <p><strong>Duplicatas.</strong> O mesmo <code>thread.id</code> aparece em vários webhooks, e a mesma mensagem pode vir repetida. A regra: junte as mensagens de todos os webhooks pelo <code>thread.id</code>, remova as repetidas pelo <code>wamid</code>, e ordene pelo <code>timestamp</code>.</p>
